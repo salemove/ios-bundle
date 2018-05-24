@@ -195,6 +195,13 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK12Configurable_")
 - (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
 @end
 
+enum LogLevel : NSInteger;
+
+SWIFT_PROTOCOL("_TtP11SalemoveSDK17DebugConfigurable_")
+@protocol DebugConfigurable
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
 @class Operator;
 @class EngagementRequest;
 @class SalemoveError;
@@ -279,6 +286,13 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK13MediaHandling_")
 SWIFT_PROTOCOL("_TtP11SalemoveSDK12Interactable_")
 @protocol Interactable <EngagementHandling, ErrorHandling, MediaHandling, MessageHandling, OperatorHandling>
 @end
+
+/// The protocol to configure debug internals
+typedef SWIFT_ENUM(NSInteger, LogLevel) {
+  LogLevelNone = 0,
+  LogLevelError = 1,
+  LogLevelDebug = 2,
+};
 
 
 
@@ -366,7 +380,7 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK9Queueable_")
 
 /// Shared instance that can be accessed across all the application
 SWIFT_CLASS("_TtC11SalemoveSDK8Salemove")
-@interface Salemove : NSObject <Configurable, Engageable, Mediable, Messageable, Queueable>
+@interface Salemove : NSObject <Configurable, DebugConfigurable, Engageable, Mediable, Messageable, Queueable>
 /// Use this to access the client library, avoid creating the instance manually
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _Nonnull sharedInstance;)
 + (Salemove * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
@@ -384,8 +398,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request media upgrade with specific offer
 /// \param offer The `MediaUpgradeOffer’ that is used for the request
@@ -394,6 +406,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
+
+
 
 
 
@@ -415,6 +429,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// \param completion The callback that will return the <code>Message</code>
 ///
 - (void)sendWithMessage:(NSString * _Nonnull)message queueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
+@end
+
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// \param level One of the ‘LogLevel’ values that the logger should use
+///
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
 
 
@@ -456,8 +480,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
 @end
-
-
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
