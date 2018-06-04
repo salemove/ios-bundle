@@ -267,6 +267,9 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15MessageHandling_")
 /// \param message Instance of <code>Message</code>
 ///
 - (void)receiveWithMessage:(Message * _Nonnull)message;
+/// Handling the incoming messages updates that happen when
+/// the client library fetches new information on ‘UIApplicationDidBecomeActive’
+@property (nonatomic, readonly, copy) void (^ _Nonnull onMessagesUpdated)(NSArray<Message *> * _Nonnull);
 @end
 
 @class MediaUpgradeOffer;

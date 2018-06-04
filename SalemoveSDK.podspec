@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SalemoveSDK'
-  s.version          = '0.7.8'
+  s.version          = '0.7.9'
   s.summary          = 'A short description of SalemoveSDK.'
 
 # This description is used to generate tags and improve search results.
