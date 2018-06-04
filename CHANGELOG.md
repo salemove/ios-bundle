@@ -6,6 +6,18 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.9] - 2018-05-24
+
+### Added
+
+- Messages updates are delivered through `onMessagesUpdated` callback of the `MessageHandling` protocol
+
+## [0.7.8] - 2018-05-24
+
+### Added
+
+- Ability to configure log levels of the library
+
 ## [0.7.7] - 2018-05-01
 
 ### Changed
