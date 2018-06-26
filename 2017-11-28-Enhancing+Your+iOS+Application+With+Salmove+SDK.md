@@ -286,9 +286,4 @@ After the Visitor has selected an Operator, there is a time during which the Ope
 func fail(with reason: String?)
 ```
 
-## Demo
-
-[EMI Calculator][1] with the SalemoveSDK integration is also available as an example.
-
 [0]: https://cocoapods.org
-[1]: https://github.com/salemove/ios-integration-demo
