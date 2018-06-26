@@ -73,7 +73,7 @@ After the push certificate and the keys are generated, please submit *pem*, *p12
 
 The SalemoveSDK push service relies on [environment variables][4] so please make sure to add the `DEBUG` `1` to the run configuration. This will differentiate the gateway used to submit the messages.
 
-The SalemoveSDK uses the audio/video capabilities of the device. As such, the hosting app needs [NSCameraUsageDescription] [11] and [NSMicrophoneUsageDescription] [12] added to the plist file.
+The SalemoveSDK uses the audio/video capabilities of the device. As such, the hosting app needs [NSCameraUsageDescription][11] and [NSMicrophoneUsageDescription][12] added to the plist file.
 
 ### SDK Configuration
 
