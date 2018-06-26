@@ -131,4 +131,4 @@ Check out the [integration guide][10].
 [7]: https://github.com/ReactiveCocoa/ReactiveCocoa
 [8]: https://github.com/Moya/Moya
 [9]: https://github.com/ivanbruel/Moya-ObjectMapper
-[10]: https://techmovers.salemove.com/http-api/2017/11/28/Enhancing+your+iOS+application+with+SalemoveSDK.html
+[10]: https://github.com/salemove/ios-bundle/blob/master/2017-11-28-Enhancing%2BYour%2BiOS%2BApplication%2BWith%2BSalmove%2BSDK.md
