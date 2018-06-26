@@ -22,7 +22,7 @@ In order to make the library work correctly, it uses third party dependencies li
 
 
 ## Documentation
-Can be found at our [here][5].
+API documentation may be found [here][5].
 
 ## Installation
 
