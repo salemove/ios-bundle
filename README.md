@@ -56,7 +56,7 @@ $ pod install
 
 ## Setup
 
-The process of making the SalemoveSDK work is quite simple:
+To configure the SalemoveSDK, follow the steps:
 
 1. [Generating a universal push certificate](#certificate-generation)
 2. [Enabling the push capabilities](#push-notifications)
@@ -87,7 +87,7 @@ The SalemoveSDK push service relies on [environment variables][4] so please make
 
 The SalemoveSDK currently accepts two configuration options:
 
-- The avaiable site ID and environment are available by accessing:
+- The site ID and environment are available by accessing:
 ```swift
 Salemove.sharedInstance.configurationFile
 ```
