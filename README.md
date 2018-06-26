@@ -1,10 +1,5 @@
 # SaleMove iOS SDK
 
-[![Build Status](https://www.bitrise.io/app/ff9d24c2354f2d85/status.svg?token=1M5jvlOg4n_ADEl2k-a9gg&branch=master)](https://www.bitrise.io/app/ff9d24c2354f2d85)
-[![Version](https://img.shields.io/cocoapods/v/SalemoveSDK.svg?style=flat)](http://cocoapods.org/pods/SalemoveSDK)
-[![License](https://img.shields.io/cocoapods/l/SalemoveSDK.svg?style=flat)](http://cocoapods.org/pods/SalemoveSDK)
-[![Platform](https://img.shields.io/cocoapods/p/SalemoveSDK.svg?style=flat)](http://cocoapods.org/pods/SalemoveSDK)
-
 The complete guide to get started with the SaleMove iOS SDK.
 
 ## Prerequisites
