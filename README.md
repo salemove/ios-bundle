@@ -27,7 +27,7 @@ In order to make the library work correctly, it uses third party dependencies li
 
 
 ## Documentation
-Can be found at our [private repository][5] but soon to be available publicly.
+Can be found at our [here][5].
 
 ## Installation
 
@@ -126,7 +126,7 @@ Check out the [integration guide][10].
 [2]: https://docs.fastlane.tools/actions/pem/
 [3]: https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html
 [4]: https://medium.com/@derrickho_28266/xcode-custom-environment-variables-681b5b8674ec
-[5]: https://github.com/salemove/ios-sdk/blob/master/SalemoveSDK/docs/index.html
+[5]: http://ios-sdk-docs.salemove.com.s3-website-us-east-1.amazonaws.com/index.html
 [6]: https://github.com/SwiftyBeaver/SwiftyBeaver
 [7]: https://github.com/ReactiveCocoa/ReactiveCocoa
 [8]: https://github.com/Moya/Moya
