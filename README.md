@@ -7,19 +7,9 @@ The complete guide to get started with the SaleMove iOS SDK.
 Make sure that you have received a **developer API token** and **site ID** from your success manager at SaleMove.
 
 ### Requirements
-- Xcode 9.1+
+- Xcode 9.4+
 - iOS 10.0+
-- Swift 3.2+
-
-## Component Libraries
-
-In order to make the library work correctly, it uses third party dependencies listed below:
-
-- [SwiftyBeaver][6] - An advanced logging system
-- [ReactiveCocoa][7] - Reactive support all over the SDK
-- [Moya/ReactiveSwift][8] - An advanced networking layer built on top of Alamofire
-- [Moya-ObjectMapper/ReactiveSwift][9] - An advanced mapping system
-
+- Swift 3.3+
 
 ## Documentation
 API documentation may be found [here][5].
@@ -34,7 +24,7 @@ API documentation may be found [here][5].
 $ gem install cocoapods
 ```
 
-> CocoaPods 1.1+ is required to build SalemoveSDK.
+> CocoaPods 1.5+ is required to build SalemoveSDK.
 
 To incorporate SalemoveSDK into your Xcode project using CocoaPods specify it in your `Podfile`:
 
@@ -63,6 +53,10 @@ To configure the SalemoveSDK, follow the steps:
 3. [Configuring the project](#project-configuration)
 4. [Configuring the sdk](#sdk-configuration)
 
+### Push Notifications
+
+In order for the project to receive chat messages and other events, [push capabilities][3] should be enabled for the target. SaleMove will use your certificate when sending messages via the Apple Push Notification Service to the SaleMove client in your app.
+
 ### Certificate generation
 
 Be sure to generate the **universal production** certificate.
@@ -75,21 +69,19 @@ The easies way to generate all the required files is to use [fastlane][1] built 
 
 After the push certificate and the keys are generated, please submit *pem*, *p12* and *pkey* files to support@salemove.com.
 
-### Push Notifications
-
-In order for the project to receive chat messages and other events, [push capabilities][3] should be enabled for the target.
-
 ### Project Configuration
 
 The SalemoveSDK push service relies on [environment variables][4] so please make sure to add the `DEBUG` `1` to the run configuration. This will differentiate the gateway used to submit the messages.
 
+The SalemoveSDK uses the audio/video capabilities of the device. As such, the hosting app needs [NSCameraUsageDescription] [11] and [NSMicrophoneUsageDescription] [12] added to the plist file.
+
 ### SDK Configuration
 
-The SalemoveSDK currently accepts two configuration options:
+he SalemoveSDK accepts three configuration options:
 
-- The site ID and environment are available by accessing:
+- In order to configure the developer API token used by the SDK:
 ```swift
-Salemove.sharedInstance.configurationFile
+func configure(appToken: String)
 ```
 
 - In order to configure the environment used by the SDK:
@@ -127,3 +119,5 @@ Check out the [integration guide][10].
 [8]: https://github.com/Moya/Moya
 [9]: https://github.com/ivanbruel/Moya-ObjectMapper
 [10]: https://github.com/salemove/ios-bundle/blob/master/2017-11-28-Enhancing%2BYour%2BiOS%2BApplication%2BWith%2BSalmove%2BSDK.md
+[11]: https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW24
+[12]: https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW25
