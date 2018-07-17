@@ -184,6 +184,13 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+
+SWIFT_PROTOCOL("_TtP11SalemoveSDK15AudioStreamable_")
+@protocol AudioStreamable
+/// Play the incoming/outgoing audio stream
+- (void)play;
+@end
+
 @protocol Interactable;
 
 /// The protocol to configure internals
@@ -273,15 +280,17 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15MessageHandling_")
 @end
 
 @class MediaUpgradeOffer;
-@protocol Streamable;
+@protocol VideoStreamable;
 
 /// Basic protocol for handling incoming media
 SWIFT_PROTOCOL("_TtP11SalemoveSDK13MediaHandling_")
 @protocol MediaHandling
 /// Handling the incoming media upgrade offer
 @property (nonatomic, readonly, copy) void (^ _Nonnull onMediaUpgradeOffer)(MediaUpgradeOffer * _Nonnull, SWIFT_NOESCAPE void (^ _Nonnull)(BOOL));
-/// Handling the incoming media stream
-@property (nonatomic, readonly, copy) void (^ _Nonnull onMediaStreamAdded)(id <Streamable> _Nonnull);
+/// Handling the incoming video stream
+@property (nonatomic, readonly, copy) void (^ _Nonnull onVideoStreamAdded)(id <VideoStreamable> _Nonnull);
+/// Handling the incoming audio stream
+@property (nonatomic, readonly, copy) void (^ _Nonnull onAudioStreamAdded)(id <AudioStreamable> _Nonnull);
 @end
 
 
@@ -401,6 +410,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
+
+
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request media upgrade with specific offer
 /// \param offer The `MediaUpgradeOffer’ that is used for the request
@@ -409,10 +420,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
-
-
-
-
 
 
 
@@ -445,6 +452,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
+
+
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Queue for an Engagement with a specific queue
 /// \param queueID The id that will be used by the client library
@@ -466,26 +475,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Change the site used by the client library
-/// \param site The siteID that should be selected
-///
-- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error;
-/// Change the environment used by the client library
-/// \param environment The environment baseURL that should be selected
-///
-- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error;
-/// Change the interactor used by the client library
-/// \param interactor Interactable instance that the client library will communicate with
-///
-- (void)configureWithInteractor:(id <Interactable> _Nonnull)interactor;
-/// Change the appToken used by the client library
-/// \param appToken The token that is going to be used by the client library
-///
-- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request an Engagement with a selected Operator
 /// \param selectedOperator The Operator that will be selected
 ///
@@ -502,6 +491,26 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 - (void)requestOperators;
 /// End an engagement
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Change the site used by the client library
+/// \param site The siteID that should be selected
+///
+- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error;
+/// Change the environment used by the client library
+/// \param environment The environment baseURL that should be selected
+///
+- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error;
+/// Change the interactor used by the client library
+/// \param interactor Interactable instance that the client library will communicate with
+///
+- (void)configureWithInteractor:(id <Interactable> _Nonnull)interactor;
+/// Change the appToken used by the client library
+/// \param appToken The token that is going to be used by the client library
+///
+- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
 @end
 
 
@@ -535,15 +544,34 @@ SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
 @end
 
 
-SWIFT_PROTOCOL("_TtP11SalemoveSDK10Streamable_")
-@protocol Streamable
+
+
+
+
+SWIFT_PROTOCOL("_TtP11SalemoveSDK15VideoStreamable_")
+@protocol VideoStreamable
+/// Access the stream view
+///
+/// returns:
+/// <code>StremaView</code> that contains the video stream
 - (StreamView * _Nonnull)getStreamView SWIFT_WARN_UNUSED_RESULT;
+/// Play the incoming/outgoing video stream
 - (void)play;
+/// Pause the incoming/outgoing video stream
+- (void)pause;
+/// Resume the incoming/outgoing video stream
+- (void)resume;
+/// State of the video stream
+///
+/// returns:
+/// bool indicating if the stream is paused or not
+@property (nonatomic, readonly) BOOL isPaused;
+/// Source of the video stream
+///
+/// returns:
+/// bool indicating if the stream is local or remote
+@property (nonatomic, readonly) BOOL isRemote;
 @end
-
-
-
-
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
