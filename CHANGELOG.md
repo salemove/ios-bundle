@@ -6,6 +6,16 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.10] - 2018-07-18
+
+### Added
+
+- Two-way video support
+
+### Changed
+
+- Environment URL handling
+
 ## [0.7.9] - 2018-05-24
 
 ### Added
