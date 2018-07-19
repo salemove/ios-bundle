@@ -75,6 +75,8 @@ The SalemoveSDK push service relies on [environment variables][4] so please make
 
 The SalemoveSDK uses the audio/video capabilities of the device. As such, the hosting app needs [NSCameraUsageDescription][11] and [NSMicrophoneUsageDescription][12] added to the plist file.
 
+The SalemoveSDK is not using Bitcode so this should be disabled for the project.
+
 ### SDK Configuration
 
 he SalemoveSDK accepts three configuration options:
