@@ -10,6 +10,14 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+- Aspect ration of the video
+
+- Operator offering two-way video
+
+## [0.7.11] - 2018-07-23
+
+### Fixed
+
 - Crash when finishing an engagement
 
 ## [0.7.10] - 2018-07-18
