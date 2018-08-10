@@ -1,6 +1,6 @@
 {
   "name": "salemove-ios",
-  "version": "0.7.13",
+  "version": "0.8.0",
   "description": "The Salemove iOS library brings the in-person customer experience to iOS devices.",
   "main": "index.js",
   "scripts": {
