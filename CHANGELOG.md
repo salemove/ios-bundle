@@ -6,6 +6,12 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.13] - 2018-08-27
+
+### Added
+
+- Screen sharing possbbilities
+
 ## [0.7.12] - 2018-08-10
 
 ### Fixed
