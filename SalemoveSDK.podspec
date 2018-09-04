@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.dependency 'Locksmith', '4.0.0'
   s.dependency 'Moya/ReactiveSwift', '11.0.2'
   s.dependency 'ObjectMapper', '3.3.0'
-  s.dependency 'SwiftWebSocket', '2.6.5'
+  s.dependency 'SwiftPhoenixClient', '0.9.1'
   s.dependency 'WebRTC', '63.11.20455'
   s.dependency 'Socket.IO-Client-Swift', '9.0.1'
 
