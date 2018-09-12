@@ -164,8 +164,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if __has_feature(modules)
 @import ObjectiveC;
-@import UIKit;
 @import Foundation;
+@import UIKit;
 @import CoreGraphics;
 @import WebRTC;
 #endif
@@ -186,11 +186,24 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 
+SWIFT_CLASS("_TtC11SalemoveSDK5Audio")
+@interface Audio : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
 SWIFT_PROTOCOL("_TtP11SalemoveSDK15AudioStreamable_")
 @protocol AudioStreamable
 /// Play the incoming/outgoing audio stream
-- (void)play;
+- (void)playAudio;
 @end
+
+
+@interface Audio (SWIFT_EXTENSION(SalemoveSDK)) <AudioStreamable>
+- (void)playAudio;
+@end
+
 
 @protocol Interactable;
 
@@ -202,6 +215,8 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK12Configurable_")
 - (void)configureWithInteractor:(id <Interactable> _Nonnull)interactor;
 - (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
 @end
+
+
 
 enum LogLevel : NSInteger;
 
@@ -282,7 +297,6 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15MessageHandling_")
 
 @class MediaUpgradeOffer;
 @protocol VideoStreamable;
-@protocol ScreenStreamable;
 
 /// Basic protocol for handling incoming media
 SWIFT_PROTOCOL("_TtP11SalemoveSDK13MediaHandling_")
@@ -296,7 +310,7 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK13MediaHandling_")
 /// Handling the incoming audio stream
 @property (nonatomic, readonly, copy) void (^ _Nonnull onAudioStreamAdded)(id <AudioStreamable> _Nonnull);
 /// Handling the incoming screen stream
-@property (nonatomic, readonly, copy) void (^ _Nonnull onScreenStreamAdded)(id <ScreenStreamable> _Nonnull);
+@property (nonatomic, readonly, copy) void (^ _Nonnull onScreenStreamAdded)(id <VideoStreamable> _Nonnull);
 @end
 
 
@@ -416,10 +430,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
-
-
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request media upgrade with specific offer
 /// \param offer The `MediaUpgradeOffer’ that is used for the request
@@ -428,6 +438,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
+
+
+
+
 
 
 
@@ -451,6 +465,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// \param level One of the ‘LogLevel’ values that the logger should use
+///
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Queue for an Engagement with a specific queue
 /// \param queueID The id that will be used by the client library
 ///
@@ -467,36 +489,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// \param completion The callback that will return the <code>Queue</code> list
 ///
 - (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, SalemoveError * _Nullable))completion;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// \param level One of the ‘LogLevel’ values that the logger should use
-///
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
-
-
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request an Engagement with a selected Operator
-/// \param selectedOperator The Operator that will be selected
-///
-/// \param completion The callback that will return the <code>EngagementRequest</code>
-///
-- (void)requestEngagementWith:(Operator * _Nonnull)selectedOperator completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
-/// Cancel an ongoing EngagementRequest
-/// \param engagementRequest The ongoing EngagementRequest to be canceled
-///
-/// \param completion The callback that will return the canceling result
-///
-- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-/// Request an Operator for an Engagement
-- (void)requestOperators;
-/// End an engagement
-- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
 
 
@@ -522,6 +514,28 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request an Engagement with a selected Operator
+/// \param selectedOperator The Operator that will be selected
+///
+/// \param completion The callback that will return the <code>EngagementRequest</code>
+///
+- (void)requestEngagementWith:(Operator * _Nonnull)selectedOperator completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
+/// Cancel an ongoing EngagementRequest
+/// \param engagementRequest The ongoing EngagementRequest to be canceled
+///
+/// \param completion The callback that will return the canceling result
+///
+- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+/// Request an Operator for an Engagement
+- (void)requestOperators;
+/// End an engagement
+- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
+
+
+
+
 
 @class UIApplication;
 
@@ -543,15 +557,6 @@ SWIFT_CLASS("_TtC11SalemoveSDK13SalemoveError")
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
-
-SWIFT_PROTOCOL("_TtP11SalemoveSDK16ScreenStreamable_")
-@protocol ScreenStreamable
-/// Start capturing the screen
-- (void)start;
-/// Stop capturing the screen
-- (void)stop;
-@end
-
 @class NSCoder;
 
 SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
@@ -571,19 +576,28 @@ SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
 
 
 
+SWIFT_CLASS("_TtC11SalemoveSDK5Video")
+@interface Video : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
 SWIFT_PROTOCOL("_TtP11SalemoveSDK15VideoStreamable_")
 @protocol VideoStreamable
 /// Access the stream view
 ///
 /// returns:
-/// <code>StremaView</code> that contains the video stream
+/// <code>StreamView</code> that contains the video stream
 - (StreamView * _Nonnull)getStreamView SWIFT_WARN_UNUSED_RESULT;
 /// Play the incoming/outgoing video stream
-- (void)play;
+- (void)playVideo;
 /// Pause the incoming/outgoing video stream
 - (void)pause;
 /// Resume the incoming/outgoing video stream
 - (void)resume;
+/// Stop the incoming/outgoing video stream
+- (void)stop;
 /// State of the video stream
 ///
 /// returns:
@@ -595,6 +609,18 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15VideoStreamable_")
 /// bool indicating if the stream is local or remote
 @property (nonatomic, readonly) BOOL isRemote;
 @end
+
+
+@interface Video (SWIFT_EXTENSION(SalemoveSDK)) <VideoStreamable>
+- (StreamView * _Nonnull)getStreamView SWIFT_WARN_UNUSED_RESULT;
+- (void)playVideo;
+- (void)pause;
+- (void)resume;
+- (void)stop;
+@property (nonatomic, readonly) BOOL isPaused;
+@property (nonatomic, readonly) BOOL isRemote;
+@end
+
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
