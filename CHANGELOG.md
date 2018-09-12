@@ -6,6 +6,10 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.14] - 2018-09-12
+
+### Changed
+
 - Replace SwiftyWebSocket with SwiftPhoenixClient 
 
 ## [0.7.13] - 2018-08-27
