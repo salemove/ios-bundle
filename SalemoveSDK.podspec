@@ -19,7 +19,6 @@ Pod::Spec.new do |s|
   s.swift_version = '3.3'
 
   s.dependency 'SwiftyBeaver', '1.4.2'
-  s.dependency 'ReactiveCocoa', '7.2.0'
   s.dependency 'Locksmith', '4.0.0'
   s.dependency 'Moya/ReactiveSwift', '11.0.2'
   s.dependency 'ObjectMapper', '3.3.0'
