@@ -12,9 +12,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
   s.ios.vendored_frameworks = 'SalemoveSDK.framework'
 
-  s.pod_target_xcconfig = {
-  'SWIFT_VERSION' => '4.1',
-  }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
 
   s.swift_version = '3.3'
 
