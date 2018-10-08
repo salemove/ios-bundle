@@ -6,6 +6,14 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.15] - 2018-10-08
+
+### Added
+
+- Carthage support
+
+- Swift 4.2 support
+
 ## [0.7.14] - 2018-09-12
 
 ### Changed
