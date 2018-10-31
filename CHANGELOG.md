@@ -6,6 +6,14 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.17] - 2018-10-31
+
+### Changed
+
+- Internal usage of the access tokens
+
+- More reliable visitor state handling
+
 ## [0.7.16] - 2018-10-16
 
 ### Changed
