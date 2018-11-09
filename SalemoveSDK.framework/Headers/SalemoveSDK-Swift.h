@@ -376,6 +376,16 @@ SWIFT_CLASS("_TtC11SalemoveSDK8Operator")
 @end
 
 
+@class NSCoder;
+@class UIEvent;
+
+SWIFT_CLASS("_TtC11SalemoveSDK11OverlayView")
+@interface OverlayView : UIView
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (UIView * _Nullable)hitTest:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
+@end
+
 
 /// Push object sent by the client library
 SWIFT_CLASS("_TtC11SalemoveSDK4Push")
@@ -467,6 +477,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// \param level One of the ‘LogLevel’ values that the logger should use
+///
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Queue for an Engagement with a specific queue
 /// \param queueID The id that will be used by the client library
 ///
@@ -483,34 +501,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// \param completion The callback that will return the <code>Queue</code> list
 ///
 - (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, SalemoveError * _Nullable))completion;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// \param level One of the ‘LogLevel’ values that the logger should use
-///
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request an Engagement with a selected Operator
-/// \param selectedOperator The Operator that will be selected
-///
-/// \param completion The callback that will return the <code>EngagementRequest</code>
-///
-- (void)requestEngagementWith:(Operator * _Nonnull)selectedOperator completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
-/// Cancel an ongoing EngagementRequest
-/// \param engagementRequest The ongoing EngagementRequest to be canceled
-///
-/// \param completion The callback that will return the canceling result
-///
-- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-/// Request an Operator for an Engagement
-- (void)requestOperators;
-/// End an engagement
-- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
 
 
@@ -538,6 +528,28 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request an Engagement with a selected Operator
+/// \param selectedOperator The Operator that will be selected
+///
+/// \param completion The callback that will return the <code>EngagementRequest</code>
+///
+- (void)requestEngagementWith:(Operator * _Nonnull)selectedOperator completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
+/// Cancel an ongoing EngagementRequest
+/// \param engagementRequest The ongoing EngagementRequest to be canceled
+///
+/// \param completion The callback that will return the canceling result
+///
+- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+/// Request an Operator for an Engagement
+- (void)requestOperators;
+/// End an engagement
+- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
+
+
+
+
 
 @class UIApplication;
 
@@ -559,7 +571,6 @@ SWIFT_CLASS("_TtC11SalemoveSDK13SalemoveError")
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
-@class NSCoder;
 
 SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
 @interface StreamView : UIView
