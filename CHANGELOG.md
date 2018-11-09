@@ -6,6 +6,14 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.18] - 2018-11-09
+
+### Changed
+
+- Internal visitor state handling
+
+- Overlay drawing
+
 ## [0.7.17] - 2018-10-31
 
 ### Changed
