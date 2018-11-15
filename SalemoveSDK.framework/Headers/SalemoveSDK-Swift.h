@@ -228,13 +228,13 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK17DebugConfigurable_")
 @end
 
 @class Operator;
-@class EngagementRequest;
 @class SalemoveError;
+@class EngagementRequest;
 
 /// The protocol to work with engagement
 SWIFT_PROTOCOL("_TtP11SalemoveSDK10Engageable_")
 @protocol Engageable
-- (void)requestOperators;
+- (void)requestOperatorsWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
 - (void)requestEngagementWith:(Operator * _Nonnull)selectedOperator completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
 - (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
@@ -542,7 +542,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 /// Request an Operator for an Engagement
-- (void)requestOperators;
+/// \param completion The callback that will return the ‘Operator’ list
+///
+- (void)requestOperatorsWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
 /// End an engagement
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
