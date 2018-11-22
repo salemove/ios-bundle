@@ -95,10 +95,17 @@ Here is an example how a controller could be implemented:
 
 ```swift
 extension UIViewController: Interactable {
+    var onScreenSharingOffer: ScreenshareOfferBlock {
+        // When the Operator asks for sharing the screen, supply the answer
+        return { [unowned self] answer in
+            self.showRequestingView(request: "Possibility to share screen", answer: answer)
+        }
+    }
+
     var onMediaUpgradeOffer: MediaUgradeOfferBlock {
-        return { _, answer in
         // When the Operator asks for audio/video, supply the answer
-            answer(true)
+        return { [unowned self] _, answer in
+            self.showRequestingView(request: "Posibility to enable media", answer: answer)
         }
     }
 
