@@ -1,3 +1,5 @@
 * [Introduction](../README.md)
-* [Developer quickstart](./Quickstart.md)
-* [Integration guide](./2017-11-28-Enhancing+Your+iOS+Application+With+Salmove+SDK.md)
+* [API reference](./API.md)
+* [Quickstart](./Quickstart.md)
+* [Project setup](./Setup.md)
+* [Integration example](./2017-11-28-Enhancing+Your+iOS+Application+With+Salmove+SDK.md)
