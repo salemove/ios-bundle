@@ -164,6 +164,8 @@ extension EngagementStatusViewController: Interactable {
 
     func start() {
         // Remove any spinners or activity indicators and proceed with the flow
+        
+
         queueTicket = nil
         engagementRequest = nil
     }

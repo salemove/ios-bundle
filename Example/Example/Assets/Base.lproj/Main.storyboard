@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2f-EG-OzS">
-                                <rect key="frame" x="20" y="714" width="335" height="44"/>
+                                <rect key="frame" x="20" y="662" width="335" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="gmK-i7-75s"/>
                                 </constraints>
@@ -39,7 +39,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29s-qe-KgG">
-                                <rect key="frame" x="20" y="662" width="335" height="44"/>
+                                <rect key="frame" x="20" y="610" width="335" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="GCm-Ti-hUD"/>
                                 </constraints>
@@ -47,6 +47,17 @@
                                 <state key="normal" title="Message"/>
                                 <connections>
                                     <action selector="queueMessage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Jib-z3-TdE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zD-Tj-Gra">
+                                <rect key="frame" x="20" y="714" width="335" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="VAn-aF-HpT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Engage"/>
+                                <connections>
+                                    <action selector="beginEngagement:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Dlj-Px-Hai"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -57,9 +68,12 @@
                             <constraint firstAttribute="trailing" secondItem="29s-qe-KgG" secondAttribute="trailing" constant="20" id="I4y-dd-V3g"/>
                             <constraint firstAttribute="trailing" secondItem="X2f-EG-OzS" secondAttribute="trailing" constant="20" id="Jlg-HQ-d9b"/>
                             <constraint firstItem="Dyb-uz-afN" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="LJl-HS-kgd"/>
+                            <constraint firstItem="7zD-Tj-Gra" firstAttribute="top" secondItem="X2f-EG-OzS" secondAttribute="bottom" constant="8" id="Yd1-0X-C2D"/>
                             <constraint firstItem="X2f-EG-OzS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="ajf-o2-hKq"/>
                             <constraint firstItem="29s-qe-KgG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="cWY-DH-Vqx"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="X2f-EG-OzS" secondAttribute="bottom" constant="20" id="eVh-hn-wam"/>
+                            <constraint firstAttribute="trailing" secondItem="7zD-Tj-Gra" secondAttribute="trailing" constant="20" id="m7p-A2-1RP"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="7zD-Tj-Gra" secondAttribute="bottom" constant="20" id="oft-TI-JPb"/>
+                            <constraint firstItem="7zD-Tj-Gra" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="tha-gl-JV8"/>
                             <constraint firstItem="Dyb-uz-afN" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="vNJ-Rh-sJ5"/>
                         </constraints>
                     </view>
