@@ -27,6 +27,7 @@ extension AppDelegate {
         try? Salemove.sharedInstance.configure(site: "YOUR_SITE")
         try? Salemove.sharedInstance.configure(environment: "YOUR_ENVIRONMENT")
         try? Salemove.sharedInstance.configure(appToken: "YOUR_TOKEN")
+        try? Salemove.sharedInstance.configure(apiToken: "YOUR_API_TOKEN")
     }
 }
 

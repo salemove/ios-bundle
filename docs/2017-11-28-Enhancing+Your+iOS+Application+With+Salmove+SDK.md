@@ -84,6 +84,7 @@ func configureSalemove() {
   try? Salemove.sharedInstance.configure(site: "72bd8093-eae1-4f31-88c1-0c3132eb0906")
   try? Salemove.sharedInstance.configure(environment: "https://api.salemove.com/")
   try? Salemove.sharedInstance.configure(appToken: "sEQaZ6S2ULiFGK9F")
+  try? Salemove.sharedInstance.configure(apiToken: "sRh5M2NN90p_W03Hs")
 }
 ```
 
