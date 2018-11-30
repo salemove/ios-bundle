@@ -4,7 +4,7 @@ The complete guide to get started with the SaleMove iOS SDK.
 
 ## Prerequisites
 
-Make sure that you have received a **developer API token** and **site ID** from your success manager at SaleMove.
+Make sure that you have received a **developer APP token**, **API token** and **site ID** from your success manager at SaleMove.
 
 ### Requirements
 - Xcode 10.0+
