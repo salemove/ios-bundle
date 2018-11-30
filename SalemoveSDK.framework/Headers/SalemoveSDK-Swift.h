@@ -436,6 +436,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @property (nonatomic, readonly, copy) NSString * _Nonnull site;
 /// The current provided app token
 @property (nonatomic, readonly, copy) NSString * _Nonnull appToken;
+/// The current provided api token
+@property (nonatomic, readonly, copy) NSString * _Nonnull apiToken;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -506,26 +508,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Change the site used by the client library
-/// \param site The siteID that should be selected
-///
-- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error;
-/// Change the environment used by the client library
-/// \param environment The environment baseURL that should be selected
-///
-- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error;
-/// Change the interactor used by the client library
-/// \param interactor Interactable instance that the client library will communicate with
-///
-- (void)configureWithInteractor:(id <Interactable> _Nonnull)interactor;
-/// Change the appToken used by the client library
-/// \param appToken The token that is going to be used by the client library
-///
-- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
-@end
-
-
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -547,6 +529,26 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 - (void)requestOperatorsWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
 /// End an engagement
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Change the site used by the client library
+/// \param site The siteID that should be selected
+///
+- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error;
+/// Change the environment used by the client library
+/// \param environment The environment baseURL that should be selected
+///
+- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error;
+/// Change the interactor used by the client library
+/// \param interactor Interactable instance that the client library will communicate with
+///
+- (void)configureWithInteractor:(id <Interactable> _Nonnull)interactor;
+/// Change the appToken used by the client library
+/// \param appToken The token that is going to be used by the client library
+///
+- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
 @end
 
 
