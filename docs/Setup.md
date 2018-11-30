@@ -33,11 +33,16 @@ The SalemoveSDK is not using Bitcode so this should be disabled for the project.
 
 ### SDK Configuration
 
-he SalemoveSDK accepts three configuration options:
+he SalemoveSDK accepts four configuration options:
+
+- In order to configure the developer APP token used by the SDK:
+```swift
+func configure(appToken: String)
+```
 
 - In order to configure the developer API token used by the SDK:
 ```swift
-func configure(appToken: String)
+func configure(apiToken: String)
 ```
 
 - In order to configure the environment used by the SDK:
