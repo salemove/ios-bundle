@@ -70,6 +70,7 @@ github "Hearst-DD/ObjectMapper" == 3.3.0
 github "davidstump/SwiftPhoenixClient" == 0.9.1
 github "Anakros/WebRTC" == 63.11.20455
 github "socketio/Socket.IO-Client-Swift" == 9.0.1
+github "Exyte/Macaw" ~> 0.9.3
 ```
 
 Check out the [carthage example][1].
