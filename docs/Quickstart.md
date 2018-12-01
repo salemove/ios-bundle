@@ -9,7 +9,7 @@ Make sure that you have received a **developer APP token**, **API token** and **
 ### Requirements
 - Xcode 10.0+
 - iOS 10.0+
-- Swift 3.3+
+- Swift 4.2+
 
 ## Installation
 
@@ -31,7 +31,8 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'SalemoveSDK'
+    pod 'SalemoveSDK', :git => 'https://github.com/salemove/ios-bundle'
+    pod 'Socket.IO-Client-Swift', :git => 'https://github.com/socketio/socket.io-client-swift', :branch => '1.0-swift4'
 end
 ```
 
