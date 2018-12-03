@@ -4,12 +4,12 @@ The complete guide to get started with the SaleMove iOS SDK.
 
 ## Prerequisites
 
-Make sure that you have received a **developer API token** and **site ID** from your success manager at SaleMove.
+Make sure that you have received a **developer APP token**, **API token** and **site ID** from your success manager at SaleMove.
 
 ### Requirements
 - Xcode 10.0+
 - iOS 10.0+
-- Swift 3.3+
+- Swift 4.2+
 
 ## Installation
 
@@ -31,7 +31,8 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'SalemoveSDK'
+    pod 'SalemoveSDK', :git => 'https://github.com/salemove/ios-bundle'
+    pod 'Socket.IO-Client-Swift', :git => 'https://github.com/socketio/socket.io-client-swift', :branch => '1.0-swift4'
 end
 ```
 
@@ -70,6 +71,7 @@ github "Hearst-DD/ObjectMapper" == 3.3.0
 github "davidstump/SwiftPhoenixClient" == 0.9.1
 github "Anakros/WebRTC" == 63.11.20455
 github "socketio/Socket.IO-Client-Swift" == 9.0.1
+github "Exyte/Macaw" ~> 0.9.3
 ```
 
 Check out the [carthage example][1].

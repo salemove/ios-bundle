@@ -15,6 +15,18 @@ class DemoViewController: UIViewController {
 
     // MARK: Initialisation
 
+    // MARK: IBActions
+
+    @IBAction func beginEngagement(_ sender: Any) {
+        Salemove.sharedInstance.requestOperators { [unowned self] operators, error in
+            if let operatorError = error {
+                self.showError(message: operatorError.reason)
+            } else if let operators = operators {
+                self.showOperatorSelection(operators: operators)
+            }
+        }
+    }
+
     @IBAction func queueMessage(_ sender: Any) {
         configureInteractor(chatType: .async)
         showMessageComposer()
@@ -53,6 +65,12 @@ extension DemoViewController {
         present(inputController, animated: true, completion: nil)
     }
 
+    fileprivate func showOperatorSelection(operators: [Operator]) {
+        selectOperator(operators: operators) { [unowned self] selectedOperator in
+            self.requestEngagement(selectedOperator: selectedOperator)
+        }
+    }
+
     fileprivate func sendMessageToQueue(queueMessage: String, queue: Queue) {
         Salemove.sharedInstance.send(message: queueMessage, queueID: queue.id) { [unowned self] message, error in
             if let error = error {
@@ -85,10 +103,37 @@ extension DemoViewController {
         }
     }
 
+    fileprivate func requestEngagement(selectedOperator: Operator) {
+        configureInteractor(chatType: .sync)
+
+        Salemove.sharedInstance.requestEngagement(with: selectedOperator) { [unowned self] engagementRequest, error in
+            if let reason = error?.reason {
+                self.showError(message: reason)
+            } else if let request = engagementRequest {
+                guard let controller = self.statusViewController else {
+                    self.cancelEngagementRequest(request)
+                    return
+                }
+
+                controller.engagementRequest = request
+                self.present(controller, animated: true)
+            }
+        }
+    }
+
+    fileprivate func cancelEngagementRequest(_ request: EngagementRequest) {
+        Salemove.sharedInstance.cancel(engagementRequest: request) { success, error in
+            if let cancelError = error {
+                self.showError(message: cancelError.reason)
+            } 
+        }
+    }
+
+
     fileprivate func showQueueSelection(queues: [Queue], queueMessage: String? = nil, chatType: ChatType = .sync) {
         configureInteractor(chatType: chatType)
 
-        selectQueue(queues: queues) { queue in
+        selectQueue(queues: queues) { [unowned self] queue in
             if let queueMessage = queueMessage {
                 self.sendMessageToQueue(queueMessage: queueMessage, queue: queue)
             } else {
@@ -106,6 +151,22 @@ extension DemoViewController {
             }
             controller.addAction(action)
         }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        controller.addAction(cancel)
+        present(controller, animated: true, completion: nil)
+    }
+
+    fileprivate func selectOperator(operators: [Operator], completion: @escaping (Operator) -> Void) {
+        let controller = UIAlertController(title: "Operators", message: "Please select", preferredStyle: .actionSheet)
+
+        for availableOperator in operators {
+            let action = UIAlertAction(title: availableOperator.name, style: .default) { _ in
+                completion(availableOperator)
+
+            }
+            controller.addAction(action)
+        }
+
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         controller.addAction(cancel)
         present(controller, animated: true, completion: nil)
