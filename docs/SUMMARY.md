@@ -4,3 +4,4 @@
 * [Project setup](./Setup.md)
 * [Integration example](./Integration.md)
 * [Explanation videos](./Video.md)
+* [FAQ](./FAQ.md)
