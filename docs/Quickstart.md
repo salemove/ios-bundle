@@ -1,4 +1,4 @@
-# SaleMove iOS SDK
+# Quickstart
 
 The complete guide to get started with the SaleMove iOS SDK.
 
@@ -75,14 +75,6 @@ github "Exyte/Macaw" ~> 0.9.3
 ```
 
 Check out the [carthage example][1].
-
-## Author
-
-SaleMove TechMovers, techmovers@salemove.com
-
-## License
-
-SalemoveSDK is available under the MIT license. See the LICENSE file for more info.
 
 [0]: http://cocoapods.org
 [1]: https://github.com/salemove/ios-carthage-integration

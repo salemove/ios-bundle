@@ -1,4 +1,8 @@
-## Setup
+# Setup
+
+The complete guide to configure the SaleMove iOS SDK.
+
+## Steps
 
 To configure the SalemoveSDK, follow the steps:
 
@@ -58,14 +62,6 @@ func configure(site: String)
 ## What's next?
 
 Check out the [integration guide][6].
-
-## Author
-
-SaleMove TechMovers, techmovers@salemove.com
-
-## License
-
-SalemoveSDK is available under the MIT license. See the LICENSE file for more info.
 
 [0]: https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html 
 [1]: https://docs.fastlane.tools

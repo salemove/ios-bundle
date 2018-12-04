@@ -1,10 +1,4 @@
----
-layout: post
-title: "Enhancing your iOS application with SalemoveSDK"
-categories: ios-sdk
-tags: ios-sdk guide
-author: Dmitry Preobrazhenskiy
----
+# Integration
 
 Please find documentation on how to integrate SaleMove Engagement into your iOS app below.
 
@@ -75,18 +69,6 @@ extension AppDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 }
-```
-
-Configure client settings, specifying your Site ID and App Token.
-
-```swift
-func configureSalemove() {
-  try? Salemove.sharedInstance.configure(site: "72bd8093-eae1-4f31-88c1-0c3132eb0906")
-  try? Salemove.sharedInstance.configure(environment: "https://api.salemove.com/")
-  try? Salemove.sharedInstance.configure(appToken: "sEQaZ6S2ULiFGK9F")
-  try? Salemove.sharedInstance.configure(apiToken: "sRh5M2NN90p_W03Hs")
-}
-```
 
 ## Create Interactable
 
