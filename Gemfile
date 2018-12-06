@@ -1,3 +1,6 @@
 source "https://rubygems.org"
 
-gem 'cocoapods-packager', path: '~/cocoapods-packager'
+ruby '>= 2.5.0'
+
+gem 'bundler', '1.16.3'
+gem "cocoapods", '1.5.3'
