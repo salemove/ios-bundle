@@ -16,7 +16,7 @@ def ui_pods
 end
 
 def dependency_pods
-    pod 'SalemoveSDK', :path => '../'
+    pod 'SalemoveSDK', :git => 'git@github.com:salemove/ios-bundle.git', :branch => 'static-library'
     pod 'Socket.IO-Client-Swift', :git => 'https://github.com/socketio/socket.io-client-swift', :branch => '1.0-swift4'
 end
 

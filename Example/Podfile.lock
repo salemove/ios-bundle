@@ -4,13 +4,13 @@ PODS:
   - ReactiveSwift (3.1.0):
     - Result (~> 3.2)
   - Result (3.2.4)
-  - SalemoveSDK (0.7.25)
+  - SalemoveSDK (0.7.26)
   - Socket.IO-Client-Swift (9.0.1)
   - SwiftyBeaver (1.4.2)
 
 DEPENDENCIES:
   - ReactiveCocoa (= 7.2.0)
-  - SalemoveSDK (from `../`)
+  - "SalemoveSDK (from `git@github.com:salemove/ios-bundle.git`, branch `static-library`)"
   - Socket.IO-Client-Swift (from `https://github.com/socketio/socket.io-client-swift`, branch `1.0-swift4`)
   - SwiftyBeaver (= 1.4.2)
 
@@ -23,12 +23,16 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   SalemoveSDK:
-    :path: "../"
+    :branch: static-library
+    :git: "git@github.com:salemove/ios-bundle.git"
   Socket.IO-Client-Swift:
     :branch: 1.0-swift4
     :git: https://github.com/socketio/socket.io-client-swift
 
 CHECKOUT OPTIONS:
+  SalemoveSDK:
+    :commit: 7a2f1aeaabf048a56202de37a35989af27c78bb1
+    :git: "git@github.com:salemove/ios-bundle.git"
   Socket.IO-Client-Swift:
     :commit: 9b44bfb754758a26c4187c46f2710c9707a552f2
     :git: https://github.com/socketio/socket.io-client-swift
@@ -37,10 +41,10 @@ SPEC CHECKSUMS:
   ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5
   ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
-  SalemoveSDK: c819c264ec25d2b428e8262846082f349a489e47
+  SalemoveSDK: c2087178d24365c00e749027ffd4e71807dfaa73
   Socket.IO-Client-Swift: db3f384c2b9ebae245fbc003baae4e17e441faa3
   SwiftyBeaver: 91057725648ee4980308f1650af077d04b3654a0
 
-PODFILE CHECKSUM: 56b2e44ce2acdf67e1ad6fabaa51e9f653179ede
+PODFILE CHECKSUM: 15a7483c6e6a3cb818bceeddcf2f477d87f34b97
 
 COCOAPODS: 1.5.3
