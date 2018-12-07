@@ -14,7 +14,7 @@ PODS:
   - ReactiveSwift (3.1.0):
     - Result (~> 3.2)
   - Result (3.2.4)
-  - SalemoveSDK (0.7.19):
+  - SalemoveSDK (0.7.23):
     - Locksmith (= 4.0.0)
     - Macaw (= 0.9.3)
     - Moya (= 11.0.2)
@@ -35,6 +35,7 @@ PODS:
 DEPENDENCIES:
   - ReactiveCocoa (= 7.2.0)
   - SalemoveSDK (from `../`)
+  - Socket.IO-Client-Swift (from `https://github.com/socketio/socket.io-client-swift`, branch `1.0-swift4`)
   - SwiftyBeaver (= 1.4.2)
 
 SPEC REPOS:
@@ -47,7 +48,6 @@ SPEC REPOS:
     - ReactiveCocoa
     - ReactiveSwift
     - Result
-    - Socket.IO-Client-Swift
     - Starscream
     - SwiftPhoenixClient
     - SwiftyBeaver
@@ -57,6 +57,14 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   SalemoveSDK:
     :path: "../"
+  Socket.IO-Client-Swift:
+    :branch: 1.0-swift4
+    :git: https://github.com/socketio/socket.io-client-swift
+
+CHECKOUT OPTIONS:
+  Socket.IO-Client-Swift:
+    :commit: 9b44bfb754758a26c4187c46f2710c9707a552f2
+    :git: https://github.com/socketio/socket.io-client-swift
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -67,14 +75,14 @@ SPEC CHECKSUMS:
   ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5
   ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
-  SalemoveSDK: e1c5c413e034d0ef029720e0bebeb128e6c5f1d8
-  Socket.IO-Client-Swift: 60b71a684692a312c4aba3ef52f186e0e254e868
+  SalemoveSDK: e6e91a793dbc8a070c278e0dfaada54daae7e5d3
+  Socket.IO-Client-Swift: db3f384c2b9ebae245fbc003baae4e17e441faa3
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SwiftPhoenixClient: 5661c8075eca7cbc5cfa0b3b54cbd9534cd4418a
   SwiftyBeaver: 91057725648ee4980308f1650af077d04b3654a0
   SWXMLHash: b35739a5cfd915c3b482977aa720d6708e260a90
   WebRTC: f2a6203584745fe53532633397557876b5d71640
 
-PODFILE CHECKSUM: 7e85cda7ae81b7b6861ddbfa0e6e6bdbdd1fcbba
+PODFILE CHECKSUM: 56b2e44ce2acdf67e1ad6fabaa51e9f653179ede
 
 COCOAPODS: 1.5.3

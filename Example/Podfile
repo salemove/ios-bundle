@@ -17,6 +17,7 @@ end
 
 def dependency_pods
     pod 'SalemoveSDK', :path => '../'
+    pod 'Socket.IO-Client-Swift', :git => 'https://github.com/socketio/socket.io-client-swift', :branch => '1.0-swift4'
 end
 
 target 'Example' do
@@ -27,12 +28,6 @@ end
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|
-        if target.name == 'Socket.IO-Client-Swift'
-            target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '3'
-            end
-        end
-
         if target.name == 'ReactiveCocoa'
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '4.0'
