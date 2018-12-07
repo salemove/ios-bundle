@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/salemove/ios-sdk'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Salemove' => 'support@salemove.com' }
-  s.source           = { :git => 'git@github.com:salemove/ios-bundle/SalemoveSDK.framework.zip', :branch => 'static-library' }
+  s.source           = { :http => 'https://github.com/salemove/ios-bundle/blob/static-library/SalemoveSDK.zip' }
 
   s.module_name = 'SalemoveSDK'
   s.ios.deployment_target = '10.0'
