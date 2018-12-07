@@ -14,7 +14,7 @@ PODS:
   - ReactiveSwift (3.1.0):
     - Result (~> 3.2)
   - Result (3.2.4)
-  - SalemoveSDK (0.7.23):
+  - SalemoveSDK (0.7.25):
     - Locksmith (= 4.0.0)
     - Macaw (= 0.9.3)
     - Moya (= 11.0.2)
@@ -75,7 +75,7 @@ SPEC CHECKSUMS:
   ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5
   ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
-  SalemoveSDK: e6e91a793dbc8a070c278e0dfaada54daae7e5d3
+  SalemoveSDK: 17df416554c9841b4f24bd1ea379be694e162785
   Socket.IO-Client-Swift: db3f384c2b9ebae245fbc003baae4e17e441faa3
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SwiftPhoenixClient: 5661c8075eca7cbc5cfa0b3b54cbd9534cd4418a
