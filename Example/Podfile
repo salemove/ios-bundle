@@ -18,6 +18,8 @@ end
 def dependency_pods
     pod 'SalemoveSDK', :path => '../'
     pod 'Socket.IO-Client-Swift', :git => 'https://github.com/socketio/socket.io-client-swift', :branch => '1.0-swift4'
+    pod 'Starscream', '3.0.5'
+    pod 'Macaw', '0.9.2'
 end
 
 target 'Example' do

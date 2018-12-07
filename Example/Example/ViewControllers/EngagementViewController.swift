@@ -242,7 +242,7 @@ class EngagementViewController: UIViewController {
     // MARK: Initialisation
 
     fileprivate func setupInitialViews() {
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.backgroundColor = .clear

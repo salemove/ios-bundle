@@ -2,7 +2,7 @@ import UIKit
 
 extension UIViewController {
     func childInstance<T>(class: T.Type) -> T? {
-        return children.filter({$0 is T}).first as? T
+        return childViewControllers.filter({$0 is T}).first as? T
     }
 
     func showError(message: String) {
