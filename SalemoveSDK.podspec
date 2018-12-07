@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.module_name = 'SalemoveSDK'
   s.ios.deployment_target = '10.0'
   s.ios.vendored_frameworks = 'SalemoveSDK.framework'
-  s.swift_version = '4.2'
+  s.swift_version = '4.1'
 
   s.dependency 'SwiftyBeaver', '1.4.2'
   s.dependency 'Locksmith', '4.0.0'
@@ -21,6 +21,6 @@ Pod::Spec.new do |s|
   s.dependency 'SwiftPhoenixClient', '0.9.1'
   s.dependency 'WebRTC', '63.11.20455'
   s.dependency 'Socket.IO-Client-Swift', '9.0.1'
-  s.dependency 'Macaw', '0.9.3'
+  s.dependency 'Macaw', '0.9.2'
 
 end
