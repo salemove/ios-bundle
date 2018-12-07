@@ -3,5 +3,5 @@
 * [Quickstart](./Quickstart.md)
 * [Project setup](./Setup.md)
 * [Integration example](./Integration.md)
-* [Explanation videos](./Video.md)
+* [Screensharing](./Screensharing.md)
 * [FAQ](./FAQ.md)

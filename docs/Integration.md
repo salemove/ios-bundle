@@ -2,6 +2,8 @@
 
 Please find documentation on how to integrate SaleMove Engagement into your iOS app below.
 
+See [explanation video][1]
+
 ## Prerequisites
 
 This tutorial is written for:
@@ -297,3 +299,4 @@ func fail(with reason: String?)
 ```
 
 [0]: https://cocoapods.org
+[1]: https://drive.google.com/open?id=1yx-WJauZTtoSE_ijzk9J7sKPG2S2HLZO
