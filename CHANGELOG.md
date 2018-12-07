@@ -6,6 +6,14 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.24] - 2018-12-7
+
+### Fixed
+
+- SDK configuration
+
+- Video during Engagement
+
 ## [0.7.23] - 2018-11-30
 
 ### Added
