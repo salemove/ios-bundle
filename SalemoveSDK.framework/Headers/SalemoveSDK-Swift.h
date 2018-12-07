@@ -422,9 +422,16 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK9Queueable_")
 @end
 
 
+/// The protocol to handling the session
+SWIFT_PROTOCOL("_TtP11SalemoveSDK15SessionHandling_")
+@protocol SessionHandling
+- (void)clearSession;
+@end
+
+
 /// Shared instance that can be accessed across all the application
 SWIFT_CLASS("_TtC11SalemoveSDK8Salemove")
-@interface Salemove : NSObject <Configurable, DebugConfigurable, Engageable, Mediable, Messageable, Queueable>
+@interface Salemove : NSObject <Configurable, DebugConfigurable, Engageable, Mediable, Messageable, Queueable, SessionHandling>
 /// Use this to access the client library, avoid creating the instance manually
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _Nonnull sharedInstance;)
 + (Salemove * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
@@ -447,6 +454,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request media upgrade with specific offer
 /// \param offer The `MediaUpgradeOffer’ that is used for the request
 ///
@@ -454,6 +467,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
+
+
 
 
 
@@ -473,16 +488,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// \param completion The callback that will return the <code>Message</code>
 ///
 - (void)sendWithMessage:(NSString * _Nonnull)message queueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
-@end
-
-
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// \param level One of the ‘LogLevel’ values that the logger should use
-///
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
 
 
@@ -506,6 +511,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// \param level One of the ‘LogLevel’ values that the logger should use
+///
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
 
 
 
@@ -530,6 +541,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// End an engagement
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
+
+
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -574,6 +587,7 @@ SWIFT_CLASS("_TtC11SalemoveSDK13SalemoveError")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
+
 
 
 SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
