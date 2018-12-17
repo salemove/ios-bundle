@@ -39,24 +39,24 @@ The SalemoveSDK is not using Bitcode so this should be disabled for the project.
 
 ### SDK Configuration
 
-he SalemoveSDK accepts four configuration options:
+The SalemoveSDK accepts four configuration options:
 
-- In order to configure the developer APP token used by the SDK:
+- APP Token is used for authentication while interacting with our REST API
 ```swift
 func configure(appToken: String)
 ```
 
-- In order to configure the developer API token used by the SDK:
+- API Token is used for Operator actions, for example quering for available Operators
 ```swift
 func configure(apiToken: String)
 ```
 
-- In order to configure the environment used by the SDK:
+- Environment URL can be either for Europe (https://api.salemove.eu) or USA (https://api.salemove.com)
 ```swift
 func configure(environment: String)
 ```
 
-- In order to configure the site ID used by the SDK:
+- SiteID is used to help associate Visitors with your business and your application
 ```swift
 func configure(site: String)
 ```
