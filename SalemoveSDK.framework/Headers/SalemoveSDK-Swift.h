@@ -186,59 +186,30 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 
-SWIFT_CLASS("_TtC11SalemoveSDK5Audio")
-@interface Audio : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
-@end
-
-
+/// Audio stream, that can be used to control operator and visitor audio during an engagement
 SWIFT_PROTOCOL("_TtP11SalemoveSDK15AudioStreamable_")
 @protocol AudioStreamable
 /// Play the incoming/outgoing audio stream
 - (void)playAudio;
-@end
-
-
-@interface Audio (SWIFT_EXTENSION(SalemoveSDK)) <AudioStreamable>
-- (void)playAudio;
-@end
-
-
-
-
-@protocol Interactable;
-
-/// The protocol to configure internals
-SWIFT_PROTOCOL("_TtP11SalemoveSDK12Configurable_")
-@protocol Configurable
-- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error;
-- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error;
-- (void)configureWithInteractor:(id <Interactable> _Nonnull)interactor;
-- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
+/// Mute the incoming/outgoing audio stream
+- (void)mute;
+/// Unmute the incoming/outgoing audio stream
+- (void)unmute;
+/// State of the audio stream
+///
+/// returns:
+/// bool indicating if the stream is muted or not
+@property (nonatomic, readonly) BOOL isMuted;
+/// Source of the audio stream
+///
+/// returns:
+/// bool indicating if the stream is local or remote
+@property (nonatomic, readonly) BOOL isRemote;
 @end
 
 
 
-enum LogLevel : NSInteger;
 
-SWIFT_PROTOCOL("_TtP11SalemoveSDK17DebugConfigurable_")
-@protocol DebugConfigurable
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
-
-@class Operator;
-@class SalemoveError;
-@class EngagementRequest;
-
-/// The protocol to work with engagement
-SWIFT_PROTOCOL("_TtP11SalemoveSDK10Engageable_")
-@protocol Engageable
-- (void)requestOperatorsWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
-- (void)requestEngagementWith:(Operator * _Nonnull)selectedOperator completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
-- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
 
 
 /// Basic for interacting with the Engagement
@@ -260,6 +231,7 @@ SWIFT_CLASS("_TtC11SalemoveSDK17EngagementRequest")
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
+@class SalemoveError;
 
 /// Basic protocol for selecting an Operator
 SWIFT_PROTOCOL("_TtP11SalemoveSDK13ErrorHandling_")
@@ -270,16 +242,6 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK13ErrorHandling_")
 /// \param error the error object why would something fail
 ///
 - (void)failWith:(SalemoveError * _Nonnull)error;
-@end
-
-
-/// Basic protocol for selecting an Operator
-SWIFT_PROTOCOL("_TtP11SalemoveSDK16OperatorHandling_")
-@protocol OperatorHandling
-/// Getting the list of available operators for selection
-/// \param operators the list of the operators which can be selected
-///
-- (void)handleOperatorsWithOperators:(NSArray<Operator *> * _Nonnull)operators;
 @end
 
 @class Message;
@@ -318,13 +280,16 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK13MediaHandling_")
 
 /// Basic protocol that requires implementation before passing over to the client library
 SWIFT_PROTOCOL("_TtP11SalemoveSDK12Interactable_")
-@protocol Interactable <EngagementHandling, ErrorHandling, MediaHandling, MessageHandling, OperatorHandling>
+@protocol Interactable <EngagementHandling, ErrorHandling, MediaHandling, MessageHandling>
 @end
 
-/// The protocol to configure debug internals
+/// Available log levels. This can be configured by <code>Salemove.sharedIsntance.configureLogLevel(level: LogLevel)</code>
 typedef SWIFT_ENUM(NSInteger, LogLevel, closed) {
+/// The SDK will not produce any logs
   LogLevelNone = 0,
+/// Only the errors will be show in the console
   LogLevelError = 1,
+/// Show all the logs
   LogLevelDebug = 2,
 };
 
@@ -340,19 +305,12 @@ SWIFT_CLASS("_TtC11SalemoveSDK17MediaUpgradeOffer")
 
 
 
-/// The protocol to handle different media request
-SWIFT_PROTOCOL("_TtP11SalemoveSDK8Mediable_")
-@protocol Mediable
-- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
-
-
 /// Chat message sent by an Operator or a Visitor
 SWIFT_CLASS("_TtC11SalemoveSDK7Message")
 @interface Message : NSObject
-/// Chat message identifier
+/// Identifier of the message. This identifier can be used to track a single message.
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
-/// Chat message content
+/// Content of the message
 @property (nonatomic, readonly, copy) NSString * _Nonnull content;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
@@ -360,30 +318,13 @@ SWIFT_CLASS("_TtC11SalemoveSDK7Message")
 
 
 
-/// The protocol to send chat messages
-SWIFT_PROTOCOL("_TtP11SalemoveSDK11Messageable_")
-@protocol Messageable
-- (void)sendWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
-- (void)sendWithMessage:(NSString * _Nonnull)message queueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
-@end
-
-
+/// An Operator for an Engagement
 SWIFT_CLASS("_TtC11SalemoveSDK8Operator")
 @interface Operator : NSObject
+/// Operator name
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
-@end
-
-
-@class NSCoder;
-@class UIEvent;
-
-SWIFT_CLASS("_TtC11SalemoveSDK11OverlayView")
-@interface OverlayView : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (UIView * _Nullable)hitTest:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -397,15 +338,19 @@ SWIFT_CLASS("_TtC11SalemoveSDK4Push")
 @end
 
 
+/// A Queue for an Engagement
 SWIFT_CLASS("_TtC11SalemoveSDK5Queue")
 @interface Queue : NSObject
+/// Queue identifier
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
+/// Queue name
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
 
+/// A token for Visitor’s spot in the queue. This ticket can also be used to cancel queueing
 SWIFT_CLASS("_TtC11SalemoveSDK11QueueTicket")
 @interface QueueTicket : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -413,25 +358,9 @@ SWIFT_CLASS("_TtC11SalemoveSDK11QueueTicket")
 @end
 
 
-/// The protocol to queue for an engagement
-SWIFT_PROTOCOL("_TtP11SalemoveSDK9Queueable_")
-@protocol Queueable
-- (void)queueForEngagementWithQueueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(QueueTicket * _Nullable, SalemoveError * _Nullable))completion;
-- (void)cancelWithQueueTicket:(QueueTicket * _Nonnull)queueTicket completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-- (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, SalemoveError * _Nullable))completion;
-@end
-
-
-/// The protocol to handling the session
-SWIFT_PROTOCOL("_TtP11SalemoveSDK15SessionHandling_")
-@protocol SessionHandling
-- (void)clearSession;
-@end
-
-
 /// Shared instance that can be accessed across all the application
 SWIFT_CLASS("_TtC11SalemoveSDK8Salemove")
-@interface Salemove : NSObject <Configurable, DebugConfigurable, Engageable, Mediable, Messageable, Queueable, SessionHandling>
+@interface Salemove : NSObject
 /// Use this to access the client library, avoid creating the instance manually
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _Nonnull sharedInstance;)
 + (Salemove * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
@@ -445,7 +374,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @property (nonatomic, readonly, copy) NSString * _Nonnull appToken;
 /// The current provided api token
 @property (nonatomic, readonly, copy) NSString * _Nonnull apiToken;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
 
@@ -453,116 +383,26 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request media upgrade with specific offer
-/// \param offer The `MediaUpgradeOffer’ that is used for the request
-///
-/// \param completion The callback that returns the upgrade result
-///
-- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
 
 
 
 
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Send a chat message
-/// \param message The content of the message that should be sent to the operator
-///
-/// \param completion The callback that will return the <code>Message</code>
-///
-- (void)sendWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
-/// Send a chat message
-/// \param message The content of the message that should be queued
-///
-/// \param queueID The id of the queue to which the message is sent
-///
-/// \param completion The callback that will return the <code>Message</code>
-///
-- (void)sendWithMessage:(NSString * _Nonnull)message queueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Queue for an Engagement with a specific queue
-/// \param queueID The id that will be used by the client library
-///
-/// \param completion The callback that will return the <code>QueueTicket</code>
-///
-- (void)queueForEngagementWithQueueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(QueueTicket * _Nullable, SalemoveError * _Nullable))completion;
-/// Cancel the Engagement queueing with specific ticket
-/// \param queueTicket The <code>QueueTicket</code> that was used to enqueue
-///
-/// \param completion The callback that will return the dequeuing result
-///
-- (void)cancelWithQueueTicket:(QueueTicket * _Nonnull)queueTicket completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-/// List all Queues of the configured site
-/// \param completion The callback that will return the <code>Queue</code> list
-///
-- (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, SalemoveError * _Nullable))completion;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// \param level One of the ‘LogLevel’ values that the logger should use
-///
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
 
 
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request an Engagement with a selected Operator
-/// \param selectedOperator The Operator that will be selected
-///
-/// \param completion The callback that will return the <code>EngagementRequest</code>
-///
-- (void)requestEngagementWith:(Operator * _Nonnull)selectedOperator completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
-/// Cancel an ongoing EngagementRequest
-/// \param engagementRequest The ongoing EngagementRequest to be canceled
-///
-/// \param completion The callback that will return the canceling result
-///
-- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-/// Request an Operator for an Engagement
-/// \param completion The callback that will return the ‘Operator’ list
-///
-- (void)requestOperatorsWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
-/// End an engagement
-- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
 
 
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Change the site used by the client library
-/// \param site The siteID that should be selected
-///
-- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error;
-/// Change the environment used by the client library
-/// \param environment The environment baseURL that should be selected
-///
-- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error;
-/// Change the interactor used by the client library
-/// \param interactor Interactable instance that the client library will communicate with
-///
-- (void)configureWithInteractor:(id <Interactable> _Nonnull)interactor;
-/// Change the appToken used by the client library
-/// \param appToken The token that is going to be used by the client library
-///
-- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
-@end
+
+
+
+
+
+
 
 
 
@@ -580,25 +420,30 @@ SWIFT_CLASS("_TtC11SalemoveSDK19SalemoveAppDelegate")
 @end
 
 
+/// Wrapped error object
 SWIFT_CLASS("_TtC11SalemoveSDK13SalemoveError")
 @interface SalemoveError : NSObject
+/// Human readable string that explains what went wrong
 @property (nonatomic, readonly, copy) NSString * _Nonnull reason;
+/// Underlying error object
 @property (nonatomic, readonly) NSError * _Nullable error;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
+@class NSCoder;
 
-
+/// View that displays video stream. This can be added as a subview or insereted into a UIStackView for resizing.
 SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
 @interface StreamView : UIView
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
 @end
 
 @class RTCEAGLVideoView;
 
 @interface StreamView (SWIFT_EXTENSION(SalemoveSDK)) <RTCEAGLVideoViewDelegate>
+/// :nodoc:
 - (void)videoView:(RTCEAGLVideoView * _Nonnull)videoView didChangeVideoSize:(CGSize)size;
 @end
 
@@ -607,13 +452,7 @@ SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
 
 
 
-SWIFT_CLASS("_TtC11SalemoveSDK5Video")
-@interface Video : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
-@end
-
-
+/// Video stream, that can be used to display and control operator and visitor video during an engagement
 SWIFT_PROTOCOL("_TtP11SalemoveSDK15VideoStreamable_")
 @protocol VideoStreamable
 /// Access the stream view
@@ -640,18 +479,6 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15VideoStreamable_")
 /// bool indicating if the stream is local or remote
 @property (nonatomic, readonly) BOOL isRemote;
 @end
-
-
-@interface Video (SWIFT_EXTENSION(SalemoveSDK)) <VideoStreamable>
-- (StreamView * _Nonnull)getStreamView SWIFT_WARN_UNUSED_RESULT;
-- (void)playVideo;
-- (void)pause;
-- (void)resume;
-- (void)stop;
-@property (nonatomic, readonly) BOOL isPaused;
-@property (nonatomic, readonly) BOOL isRemote;
-@end
-
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
