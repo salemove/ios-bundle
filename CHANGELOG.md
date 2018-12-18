@@ -6,6 +6,20 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.26] - 2018-12-18
+
+### Added
+
+- Audio control mute/unmute
+
+### Removed
+
+- OperatorHandling protocol
+
+### Fixed
+
+- General SDK fixes
+
 ## [0.7.25] - 2018-12-7
 
 ### Added
