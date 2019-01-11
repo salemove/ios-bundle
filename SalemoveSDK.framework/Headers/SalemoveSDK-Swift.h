@@ -408,6 +408,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
+
+
+
+
 @class UIApplication;
 
 /// The basic gateway class that interacts with the client library through the app delegate
