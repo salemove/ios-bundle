@@ -6,6 +6,12 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.29] - 2019-01-11
+
+### Added
+
+- Visitor code request for OmniBrowse
+
 ## [0.7.28] - 2019-01-07
 
 ### Fixed
