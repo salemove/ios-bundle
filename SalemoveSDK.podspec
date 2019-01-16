@@ -15,8 +15,8 @@ Pod::Spec.new do |s|
 
   s.dependency 'SwiftyBeaver', '1.4.2'
   s.dependency 'Locksmith', '4.0.0'
-  s.dependency 'Moya', '11.0.2'
-  s.dependency 'ReactiveSwift', '3.1.0'
+  s.dependency 'Moya', '12.0.1'
+  s.dependency 'ReactiveSwift', '4.0.0'
   s.dependency 'ObjectMapper', '3.3.0'
   s.dependency 'SwiftPhoenixClient', '0.9.1'
   s.dependency 'WebRTC', '63.11.20455'
