@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.dependency 'Moya', '12.0.1'
   s.dependency 'ReactiveSwift', '4.0.0'
   s.dependency 'ObjectMapper', '3.3.0'
-  s.dependency 'SwiftPhoenixClient', '0.9.1'
+  s.dependency 'SwiftPhoenixClient', '0.9.2'
   s.dependency 'WebRTC', '63.11.20455'
   s.dependency 'Socket.IO-Client-Swift', '9.0.1'
   s.dependency 'Macaw', '0.9.3'
