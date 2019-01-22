@@ -6,6 +6,14 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.29] - 2019-01-22
+
+### Fixed
+
+- Objc header generation
+
+- Swift 4.2 lib lint issues
+
 ## [0.7.29] - 2019-01-11
 
 ### Added
