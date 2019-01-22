@@ -385,6 +385,31 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request media upgrade with specific offer
+/// \param offer The `MediaUpgradeOffer’ that is used for the request
+///
+/// \param completion The callback that returns the upgrade result
+///
+- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request a VisitorCode for current Visitor
+/// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code. OmniBrowse Operators use the Visitor’s code to start an OmniBrowse Engagement with the Visitor.
+/// Each Visitor code is generated on demand and is unique for every Visitor on a particular site. Upon the first time this function is called for a Visitor the code is generated and returned. For each successive call thereafter the same code will be returned as long as the code has not expired. The expiration time for Visitor codes is 3 hours. Once the expiration time has arrived this function will return a new Visitor code.
+/// The expiration time is important to take note of if you plan on retrieving the code only once during the Visitor’s session. A new code should be requested once the initial one has expired. When Visitor provides an expired code to Operator the Operator will not be able to connect with the Visitor.
+/// \param completion The callback that will return the visitor code
+///
+- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
+@end
 
 
 
@@ -393,24 +418,102 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Send a chat message
+/// \param message The content of the message that should be sent to the operator
+///
+/// \param completion The callback that will return the <code>Message</code>
+///
+- (void)sendWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
+/// Send a chat message
+/// \param message The content of the message that should be queued
+///
+/// \param queueID The id of the queue to which the message is sent
+///
+/// \param completion The callback that will return the <code>Message</code>
+///
+- (void)sendWithMessage:(NSString * _Nonnull)message queueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
+@end
+
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Queue for an Engagement with a specific queue
+/// \param queueID The id that will be used by the client library
+///
+/// \param completion The callback that will return the <code>QueueTicket</code>
+///
+- (void)queueForEngagementWithQueueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(QueueTicket * _Nullable, SalemoveError * _Nullable))completion;
+/// Cancel the Engagement queueing with specific ticket
+/// \param queueTicket The <code>QueueTicket</code> that was used to enqueue
+///
+/// \param completion The callback that will return the dequeuing result
+///
+- (void)cancelWithQueueTicket:(QueueTicket * _Nonnull)queueTicket completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+/// List all Queues of the configured site
+/// \param completion The callback that will return the <code>Queue</code> list
+///
+- (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, SalemoveError * _Nullable))completion;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// \param level One of the ‘LogLevel’ values that the logger should use
+///
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
 
 
 
 
 
 
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Change the site used by the client library
+/// \param site The siteID that should be selected
+///
+- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error;
+/// Change the environment used by the client library
+/// \param environment The environment baseURL that should be selected
+///
+- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error;
+/// Change the interactor used by the client library
+/// \param interactor Interactable instance that the client library will communicate with
+///
+- (void)configureWithInteractor:(id <Interactable> _Nonnull)interactor;
+/// Change the appToken used by the client library
+/// \param appToken The token that is going to be used by the client library
+///
+- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
+/// Change the apiToken used by the client library
+/// \param apiToken The token that is going to be used by the client library
+///
+- (BOOL)configureWithApiToken:(NSString * _Nonnull)apiToken error:(NSError * _Nullable * _Nullable)error;
+@end
 
 
-
-
-
-
-
-
-
-
-
-
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request an Engagement with a selected Operator
+/// \param selectedOperator The Operator that will be selected
+///
+/// \param completion The callback that will return the <code>EngagementRequest</code>
+///
+- (void)requestEngagementWith:(Operator * _Nonnull)selectedOperator completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
+/// Cancel an ongoing EngagementRequest
+/// \param engagementRequest The ongoing EngagementRequest to be canceled
+///
+/// \param completion The callback that will return the canceling result
+///
+- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+/// Request an Operator for an Engagement
+/// \param completion The callback that will return the ‘Operator’ list
+///
+- (void)requestOperatorsWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
+/// End an Engagement
+- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
 
 
 

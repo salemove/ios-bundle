@@ -34,7 +34,6 @@ use_frameworks!
 
 target '<Your Target Name>' do
     pod 'SalemoveSDK', :git => 'https://github.com/salemove/ios-bundle'
-    pod 'Socket.IO-Client-Swift', :git => 'https://github.com/socketio/socket.io-client-swift', :branch => '1.0-swift4'
 end
 ```
 
