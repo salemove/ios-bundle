@@ -13,4 +13,9 @@ See [explanation video][0]
 
 When Operator is engaged with a Visitor and the Visitor has shared their screen, Operator can draw on the _screensharing_ view and the drawing will be drawn on the Visitor screen overlaying the application.
 
+## Permissions
+
+Visitor will get a [system popup][1] asking for permission to record the screen
+
 [0]: https://drive.google.com/open?id=15GNxrHEaL-u_34HPkRVDhX8kgzVBl3k6
+[1]: https://drive.google.com/open?id=1pQkPMgZy5-hENr9ZENuWwFgf6PvvSAa8
