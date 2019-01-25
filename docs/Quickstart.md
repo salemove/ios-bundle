@@ -60,20 +60,7 @@ To integrate SalemoveSDK into your Xcode project using Carthage, specify it in y
 github "Salemove/ios-bundle"
 ```
 
-Run `carthage update` to build the framework and drag the built `SalemoveSDK.framework` into your Xcode project.
-
-SalemoveSDK uses 3rd party dependencies which need to be also added to the project:
-
-```ogdl
-github "SwiftyBeaver/SwiftyBeaver" == 1.4.2
-github "matthewpalmer/Locksmith" == 4.0.0
-github "Moya/Moya" == 11.0.2
-github "Hearst-DD/ObjectMapper" == 3.3.0
-github "davidstump/SwiftPhoenixClient" == 0.9.1
-github "Anakros/WebRTC" == 63.11.20455
-github "socketio/Socket.IO-Client-Swift" == 9.0.1
-github "Exyte/Macaw" ~> 0.9.3
-```
+Run `carthage update` to build the framework and drag the built `SalemoveSDK.framework` into your Xcode project along with any other dependencies.
 
 Check out the [carthage example][1].
 
