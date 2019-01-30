@@ -6,7 +6,13 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [0.7.29] - 2019-01-22
+## [0.7.31] - 2019-01-30
+
+### Added
+
+- Video resize optins for the StreamView
+
+## [0.7.30] - 2019-01-22
 
 ### Fixed
 
