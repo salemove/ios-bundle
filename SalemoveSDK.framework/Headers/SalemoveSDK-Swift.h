@@ -439,6 +439,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// \param level One of the ‘LogLevel’ values that the logger should use
+///
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Queue for an Engagement with a specific queue
 /// \param queueID The id that will be used by the client library
 ///
@@ -455,14 +463,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// \param completion The callback that will return the <code>Queue</code> list
 ///
 - (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, SalemoveError * _Nullable))completion;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// \param level One of the ‘LogLevel’ values that the logger should use
-///
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
 
 
@@ -540,14 +540,18 @@ SWIFT_CLASS("_TtC11SalemoveSDK13SalemoveError")
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
+enum VideoScalingOptions : NSInteger;
 @class NSCoder;
 
 /// View that displays video stream. This can be added as a subview or insereted into a UIStackView for resizing.
 SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
 @interface StreamView : UIView
+@property (nonatomic) enum VideoScalingOptions scale;
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
 @end
+
+
 
 @class RTCEAGLVideoView;
 
@@ -559,6 +563,16 @@ SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
 
 
 
+
+/// Video scaling options, can be used to specify desired resize options
+typedef SWIFT_ENUM(NSInteger, VideoScalingOptions, closed) {
+/// Scales the video to the screen bounds by changing the aspect ratio if needed.
+  VideoScalingOptionsFill = 0,
+/// Scales the video to fit the bounds by maintaining the aspect ratio. Any remaining area is transparent.
+  VideoScalingOptionsAspectFit = 1,
+/// Scales the video to fill the screen bounds. Some portion of the content maybe be clipped.
+  VideoScalingOptionsAspectFill = 2,
+};
 
 
 /// Video stream, that can be used to display and control operator and visitor video during an engagement
