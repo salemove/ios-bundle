@@ -261,6 +261,7 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15MessageHandling_")
 
 @class MediaUpgradeOffer;
 @protocol VideoStreamable;
+@class LocalScreen;
 
 /// Basic protocol for handling incoming media
 SWIFT_PROTOCOL("_TtP11SalemoveSDK13MediaHandling_")
@@ -273,14 +274,30 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK13MediaHandling_")
 @property (nonatomic, readonly, copy) void (^ _Nonnull onVideoStreamAdded)(id <VideoStreamable> _Nonnull);
 /// Handling the incoming audio stream
 @property (nonatomic, readonly, copy) void (^ _Nonnull onAudioStreamAdded)(id <AudioStreamable> _Nonnull);
-/// Handling the incoming screen stream
-@property (nonatomic, readonly, copy) void (^ _Nonnull onScreenStreamAdded)(id <VideoStreamable> _Nonnull);
+/// Handling the incoming screen streaming
+@property (nonatomic, readonly, copy) void (^ _Nonnull onLocalScreenAdded)(LocalScreen * _Nonnull);
 @end
 
 
 /// Basic protocol that requires implementation before passing over to the client library
 SWIFT_PROTOCOL("_TtP11SalemoveSDK12Interactable_")
 @protocol Interactable <EngagementHandling, ErrorHandling, MediaHandling, MessageHandling>
+@end
+
+@class StreamView;
+
+/// LocalScreen provides an ability to stop a screen shared by a Visitor during an Engagement.
+SWIFT_CLASS("_TtC11SalemoveSDK11LocalScreen")
+@interface LocalScreen : NSObject
+/// Stop sharing Visitor screen with Operator
+- (void)stopSharing;
+/// Access the stream view
+///
+/// returns:
+/// ‘StreamView’ that contains the the screen stream
+- (StreamView * _Nonnull)getStreamView SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
 /// Available log levels. This can be configured by <code>Salemove.sharedIsntance.configureLogLevel(level: LogLevel)</code>
