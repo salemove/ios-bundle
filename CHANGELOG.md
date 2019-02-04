@@ -6,6 +6,16 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.32] - 2019-02-04
+
+### Added
+
+- LocalScreen class to cancel an active screensharing
+
+### Fixed
+
+- Some issue with visitor_state context and multiple requests in a row
+
 ## [0.7.31] - 2019-01-30
 
 ### Added
