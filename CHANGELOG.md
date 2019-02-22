@@ -6,6 +6,12 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.8.0] - 2019-02-22
+
+### Fixed
+
+- Some of the push notification issues
+
 ## [0.7.32] - 2019-02-04
 
 ### Added
