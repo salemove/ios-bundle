@@ -6,6 +6,16 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.9.0] - 2019-02-26
+
+### Added
+
+- Visitor context configuration for the CoBrowsing content
+
+### Fixed
+
+- Screensharing multiple session problem
+
 ## [0.8.0] - 2019-02-22
 
 ### Fixed
