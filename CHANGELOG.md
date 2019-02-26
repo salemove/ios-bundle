@@ -6,6 +6,12 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.9.1] - 2019-02-26
+
+### Fixed
+
+- Some methods calling UI changes not from the main thread
+
 ## [0.9.0] - 2019-02-26
 
 ### Added
