@@ -211,6 +211,7 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15AudioStreamable_")
 
 
 
+@class VisitorContext;
 
 /// Basic for interacting with the Engagement
 SWIFT_PROTOCOL("_TtP11SalemoveSDK18EngagementHandling_")
@@ -219,6 +220,8 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK18EngagementHandling_")
 - (void)start;
 /// Engagement request / active engagement was closed or declined
 - (void)end;
+/// Incoming engagement request
+@property (nonatomic, readonly, copy) void (^ _Nonnull onEngagementRequest)(void (^ _Nonnull)(VisitorContext * _Nonnull, BOOL));
 @end
 
 
@@ -267,9 +270,9 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15MessageHandling_")
 SWIFT_PROTOCOL("_TtP11SalemoveSDK13MediaHandling_")
 @protocol MediaHandling
 /// Handling the incoming media upgrade offer
-@property (nonatomic, readonly, copy) void (^ _Nonnull onMediaUpgradeOffer)(MediaUpgradeOffer * _Nonnull, SWIFT_NOESCAPE void (^ _Nonnull)(BOOL));
+@property (nonatomic, readonly, copy) void (^ _Nonnull onMediaUpgradeOffer)(MediaUpgradeOffer * _Nonnull, void (^ _Nonnull)(BOOL));
 /// Handling the incoming screen share offer
-@property (nonatomic, readonly, copy) void (^ _Nonnull onScreenSharingOffer)(SWIFT_NOESCAPE void (^ _Nonnull)(BOOL));
+@property (nonatomic, readonly, copy) void (^ _Nonnull onScreenSharingOffer)(void (^ _Nonnull)(BOOL));
 /// Handling the incoming video stream
 @property (nonatomic, readonly, copy) void (^ _Nonnull onVideoStreamAdded)(id <VideoStreamable> _Nonnull);
 /// Handling the incoming audio stream
@@ -403,6 +406,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
+@end
+
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request media upgrade with specific offer
 /// \param offer The `MediaUpgradeOffer’ that is used for the request
 ///
@@ -412,10 +423,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-@end
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -427,8 +434,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
 @end
-
-
 
 
 
@@ -456,20 +461,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// \param level One of the ‘LogLevel’ values that the logger should use
-///
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Queue for an Engagement with a specific queue
 /// \param queueID The id that will be used by the client library
 ///
+/// \param visitorContext The visitor context that should be displayed
+///
 /// \param completion The callback that will return the <code>QueueTicket</code>
 ///
-- (void)queueForEngagementWithQueueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(QueueTicket * _Nullable, SalemoveError * _Nullable))completion;
+- (void)queueForEngagementWithQueueID:(NSString * _Nonnull)queueID visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(QueueTicket * _Nullable, SalemoveError * _Nullable))completion;
 /// Cancel the Engagement queueing with specific ticket
 /// \param queueTicket The <code>QueueTicket</code> that was used to enqueue
 ///
@@ -480,6 +479,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// \param completion The callback that will return the <code>Queue</code> list
 ///
 - (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, SalemoveError * _Nullable))completion;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// \param level One of the ‘LogLevel’ values that the logger should use
+///
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
 
 
@@ -515,9 +522,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// Request an Engagement with a selected Operator
 /// \param selectedOperator The Operator that will be selected
 ///
+/// \param visitorContext The visitor context that should be displayed
+///
 /// \param completion The callback that will return the <code>EngagementRequest</code>
 ///
-- (void)requestEngagementWith:(Operator * _Nonnull)selectedOperator completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
+- (void)requestEngagementWithSelectedOperator:(Operator * _Nonnull)selectedOperator visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
 /// Cancel an ongoing EngagementRequest
 /// \param engagementRequest The ongoing EngagementRequest to be canceled
 ///
@@ -618,6 +627,15 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15VideoStreamable_")
 /// returns:
 /// bool indicating if the stream is local or remote
 @property (nonatomic, readonly) BOOL isRemote;
+@end
+
+
+/// Visitor context specifies a content that can be shown to an Operator during an Engagement
+/// on the place of CoBrowsing section in Operator App
+SWIFT_CLASS("_TtC11SalemoveSDK14VisitorContext")
+@interface VisitorContext : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
 #if __has_attribute(external_source_symbol)
