@@ -405,12 +405,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-@end
-
-
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -423,6 +417,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
+@end
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -434,6 +432,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
 @end
+
+
 
 
 
@@ -461,6 +461,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// \param level One of the ‘LogLevel’ values that the logger should use
+///
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Queue for an Engagement with a specific queue
 /// \param queueID The id that will be used by the client library
 ///
@@ -482,40 +490,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// \param level One of the ‘LogLevel’ values that the logger should use
-///
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
 
 
-
-
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Change the site used by the client library
-/// \param site The siteID that should be selected
-///
-- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error;
-/// Change the environment used by the client library
-/// \param environment The environment baseURL that should be selected
-///
-- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error;
-/// Change the interactor used by the client library
-/// \param interactor Interactable instance that the client library will communicate with
-///
-- (void)configureWithInteractor:(id <Interactable> _Nonnull)interactor;
-/// Change the appToken used by the client library
-/// \param appToken The token that is going to be used by the client library
-///
-- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
-/// Change the apiToken used by the client library
-/// \param apiToken The token that is going to be used by the client library
-///
-- (BOOL)configureWithApiToken:(NSString * _Nonnull)apiToken error:(NSError * _Nullable * _Nullable)error;
-@end
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -539,6 +515,30 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 - (void)requestOperatorsWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
 /// End an Engagement
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Change the site used by the client library
+/// \param site The siteID that should be selected
+///
+- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error;
+/// Change the environment used by the client library
+/// \param environment The environment baseURL that should be selected
+///
+- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error;
+/// Change the interactor used by the client library
+/// \param interactor Interactable instance that the client library will communicate with
+///
+- (void)configureWithInteractor:(id <Interactable> _Nonnull)interactor;
+/// Change the appToken used by the client library
+/// \param appToken The token that is going to be used by the client library
+///
+- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
+/// Change the apiToken used by the client library
+/// \param apiToken The token that is going to be used by the client library
+///
+- (BOOL)configureWithApiToken:(NSString * _Nonnull)apiToken error:(NSError * _Nullable * _Nullable)error;
 @end
 
 
@@ -585,6 +585,8 @@ SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
 /// :nodoc:
 - (void)videoView:(RTCEAGLVideoView * _Nonnull)videoView didChangeVideoSize:(CGSize)size;
 @end
+
+
 
 
 
