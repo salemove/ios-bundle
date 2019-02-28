@@ -3,7 +3,6 @@
 This is a list of questions we frequently get and problems that are often encountered. 
 
 * [Example app not compiling](#example-app-not-compiling)
-* [Why do we include a custom socket.io library](#why-do-we-include-a-custom-socket-library)
 * [Why do we include 3rd party dependencies when using Carthage?](#why-do-we-include-3rd-party-dependencies-when-using-carthage)
 * [What to do if your App does not support latest Swift and Xcode?](#what-to-do-if-your-app-does-not-support-latest-swift-and-xcode)
 
