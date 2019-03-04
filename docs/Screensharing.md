@@ -7,7 +7,7 @@ See [explanation video][0]
 ## Setup
 
 - An iOS device running iOS 11.0+ (on earlier versions no screensharing is possible)
-- No active Screencast or Airplay enabled on the device
+- No active Screencast, Airplay or Quicktime mirror enabled on the device
 
 ## Annotations
 
