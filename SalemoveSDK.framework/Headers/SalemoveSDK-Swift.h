@@ -209,9 +209,47 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15AudioStreamable_")
 
 
 
+/// Error of the configuration of the sdk
+typedef SWIFT_ENUM(NSInteger, ConfigurationError, closed) {
+/// The site ID is invalid.
+  ConfigurationErrorInvalidSite = 0,
+/// The environemnt is invalid.
+  ConfigurationErrorInvalidEnvironment = 1,
+/// The app token is invalid.
+  ConfigurationErrorInvalidAppToken = 2,
+/// The api token is invalid.
+  ConfigurationErrorInvalidApiToken = 3,
+};
+static NSString * _Nonnull const ConfigurationErrorDomain = @"SalemoveSDK.ConfigurationError";
 
+/// Error of the visitor context
+typedef SWIFT_ENUM(NSInteger, ContextError, closed) {
+/// The context URL is invalid.
+  ContextErrorInvalidURL = 0,
+};
+static NSString * _Nonnull const ContextErrorDomain = @"SalemoveSDK.ContextError";
+
+
+
+/// Error of the Engagement
+typedef SWIFT_ENUM(NSInteger, EngagementError, closed) {
+/// The Operator is unavailable for an Engagement.
+  EngagementErrorOperatorUnavailable = 0,
+/// Engagement request timeout.
+  EngagementErrorTimeout = 1,
+/// Engagement request rejected by the Operator.
+  EngagementErrorRejected = 2,
+/// Engagment request cancelled by the Visitor.
+  EngagementErrorVisitorCanceled = 3,
+/// Engagmenet request cancelled by Operator.
+  EngagementErrorOperatorCanceled = 4,
+/// Engagmenet request aborted by Operator leaving.
+  EngagementErrorOperatorLeft = 5,
+};
+static NSString * _Nonnull const EngagementErrorDomain = @"SalemoveSDK.EngagementError";
 
 @class VisitorContext;
+@class SalemoveError;
 
 /// Basic for interacting with the Engagement
 SWIFT_PROTOCOL("_TtP11SalemoveSDK18EngagementHandling_")
@@ -221,7 +259,34 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK18EngagementHandling_")
 /// Engagement request / active engagement was closed or declined
 - (void)end;
 /// Incoming engagement request
-@property (nonatomic, readonly, copy) void (^ _Nonnull onEngagementRequest)(void (^ _Nonnull)(VisitorContext * _Nonnull, BOOL));
+/// remark:
+///
+/// If the request is unsuccessful for any reason then the <code>SuccessBlock</code> inside <code>RequestAnswerBlock</code>  will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ContextError.invalidURL</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, copy) void (^ _Nonnull onEngagementRequest)(void (^ _Nonnull)(VisitorContext * _Nonnull, BOOL, void (^ _Nonnull)(BOOL, SalemoveError * _Nullable)));
 @end
 
 
@@ -234,20 +299,48 @@ SWIFT_CLASS("_TtC11SalemoveSDK17EngagementRequest")
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
-@class SalemoveError;
 
 /// Basic protocol for selecting an Operator
 SWIFT_PROTOCOL("_TtP11SalemoveSDK13ErrorHandling_")
 @protocol ErrorHandling
-/// Error when working with the client library
-/// \param reason the description of the failing reason
+/// Called when there is a failure in the client library or in the Engagement flow
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code> - in the case when there is an internal error
+///   </li>
+///   <li>
+///     <code>EngagementError.timeout</code> - in the case when an Engagement request was not accepted in time by the Operator
+///   </li>
+///   <li>
+///     <code>EngagementError.rejected</code> - in the case when an Engagement request was rejected by the Operator
+///   </li>
+///   <li>
+///     <code>EngagementError.visitorCanceled</code> - in the case when the Visitor cancels an Engagement request
+///   </li>
+///   <li>
+///     <code>EngagementError.operatorCanceled</code> - in the case when Operator cancels an Engagement request
+///   </li>
+///   <li>
+///     <code>EngagementError.operatorLeft</code> - in the case when Operator leaves an active Engagement
+///   </li>
+/// </ul>
+/// \param error the <code>SalemoveError</code>
 ///
-/// \param error the error object why would something fail
-///
-- (void)failWith:(SalemoveError * _Nonnull)error;
+- (void)failWithError:(SalemoveError * _Nonnull)error;
 @end
 
+/// General error of the client library
+typedef SWIFT_ENUM(NSInteger, GeneralError, closed) {
+/// Internal error
+  GeneralErrorInternalError = 0,
+/// Networking error
+  GeneralErrorNetworkError = 1,
+};
+static NSString * _Nonnull const GeneralErrorDomain = @"SalemoveSDK.GeneralError";
+
 @class Message;
+@class OperatorTypingStatus;
 
 /// Basic protocol for handling chat incoming messages
 SWIFT_PROTOCOL("_TtP11SalemoveSDK15MessageHandling_")
@@ -257,7 +350,9 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15MessageHandling_")
 /// \param message Instance of <code>Message</code>
 ///
 - (void)receiveWithMessage:(Message * _Nonnull)message;
-/// Handling the incoming messages updates that happen when
+/// Receiving an <code>OperatorTypingStatusUpdate</code> when the Operator starts or stops writing a chat message
+@property (nonatomic, readonly, copy) void (^ _Nonnull onOperatorTypingStatusUpdate)(OperatorTypingStatus * _Nonnull);
+/// Handling the incoming messages updates that happens when
 /// the client library fetches new information on ‘UIApplicationDidBecomeActive’
 @property (nonatomic, readonly, copy) void (^ _Nonnull onMessagesUpdated)(NSArray<Message *> * _Nonnull);
 @end
@@ -314,6 +409,13 @@ typedef SWIFT_ENUM(NSInteger, LogLevel, closed) {
 };
 
 
+/// Error of the media upgrade request
+typedef SWIFT_ENUM(NSInteger, MediaUpgradeError, closed) {
+/// Upgrade to requested media failed.
+  MediaUpgradeErrorRequestError = 0,
+};
+static NSString * _Nonnull const MediaUpgradeErrorDomain = @"SalemoveSDK.MediaUpgradeError";
+
 
 /// MediaUpgradeOffer object sent by the client library
 SWIFT_CLASS("_TtC11SalemoveSDK17MediaUpgradeOffer")
@@ -348,14 +450,35 @@ SWIFT_CLASS("_TtC11SalemoveSDK8Operator")
 @end
 
 
+/// Operator typing status
+SWIFT_CLASS("_TtC11SalemoveSDK20OperatorTypingStatus")
+@interface OperatorTypingStatus : NSObject
+/// True if the Operator has written or is writing a message but has not sent it yet, false otherwise.
+@property (nonatomic, readonly) BOOL isTyping;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+enum PushType : NSInteger;
+
 /// Push object sent by the client library
 SWIFT_CLASS("_TtC11SalemoveSDK4Push")
 @interface Push : NSObject
 /// UNNotificationResponse.actionIdentifier that is returned by the system
 @property (nonatomic, readonly, copy) NSString * _Nonnull actionIdentifier;
+/// Push type. One of <code>PushType</code> values.
+@property (nonatomic, readonly) enum PushType type;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
+
+/// Available push notification types
+typedef SWIFT_ENUM(NSInteger, PushType, closed) {
+/// Unknown type
+  PushTypeUnidentified = 0,
+/// Chat type
+  PushTypeChatMessage = 1,
+};
 
 
 /// A Queue for an Engagement
@@ -368,6 +491,15 @@ SWIFT_CLASS("_TtC11SalemoveSDK5Queue")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
+
+/// Error of the Queue
+typedef SWIFT_ENUM(NSInteger, QueueError, closed) {
+/// The Queue is closed for an Engagement.
+  QueueErrorQueueClosed = 0,
+/// The Queue is full.
+  QueueErrorQueueFull = 1,
+};
+static NSString * _Nonnull const QueueErrorDomain = @"SalemoveSDK.QueueError";
 
 
 /// A token for Visitor’s spot in the queue. This ticket can also be used to cancel queueing
@@ -409,11 +541,71 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request media upgrade with specific offer
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>MediaUpgradeError.requestError</code>
+///   </li>
+/// </ul>
 /// \param offer The `MediaUpgradeOffer’ that is used for the request
 ///
-/// \param completion The callback that returns the upgrade result
+/// \param completion The callback that returns the upgrade result or <code>SalemoveError</code>
 ///
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
+
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request a VisitorCode for current Visitor
+/// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code. OmniBrowse Operators use the Visitor’s code to start an OmniBrowse Engagement with the Visitor.
+/// Each Visitor code is generated on demand and is unique for every Visitor on a particular site. Upon the first time this function is called for a Visitor the code is generated and returned. For each successive call thereafter the same code will be returned as long as the code has not expired. The expiration time for Visitor codes is 3 hours. Once the expiration time has arrived this function will return a new Visitor code.
+/// The expiration time is important to take note of if you plan on retrieving the code only once during the Visitor’s session. A new code should be requested once the initial one has expired. When Visitor provides an expired code to Operator the Operator will not be able to connect with the Visitor.
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+/// \param completion The callback that will return the visitor code or <code>SalemoveError</code>
+///
+- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
 @end
 
 
@@ -423,17 +615,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request a VisitorCode for current Visitor
-/// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code. OmniBrowse Operators use the Visitor’s code to start an OmniBrowse Engagement with the Visitor.
-/// Each Visitor code is generated on demand and is unique for every Visitor on a particular site. Upon the first time this function is called for a Visitor the code is generated and returned. For each successive call thereafter the same code will be returned as long as the code has not expired. The expiration time for Visitor codes is 3 hours. Once the expiration time has arrived this function will return a new Visitor code.
-/// The expiration time is important to take note of if you plan on retrieving the code only once during the Visitor’s session. A new code should be requested once the initial one has expired. When Visitor provides an expired code to Operator the Operator will not be able to connect with the Visitor.
-/// \param completion The callback that will return the visitor code
-///
-- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
-@end
-
-
 
 
 
@@ -442,22 +623,163 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Send a chat message
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
 /// \param message The content of the message that should be sent to the operator
 ///
-/// \param completion The callback that will return the <code>Message</code>
+/// \param completion The callback that will return the <code>Message</code> or <code>SalemoveError</code>
 ///
 - (void)sendWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
 /// Send a chat message
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
 /// \param message The content of the message that should be queued
 ///
 /// \param queueID The id of the queue to which the message is sent
 ///
-/// \param completion The callback that will return the <code>Message</code>
+/// \param completion The callback that will return the <code>Message</code> or <code>SalemoveError</code>
 ///
 - (void)sendWithMessage:(NSString * _Nonnull)message queueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
 @end
 
 
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Queue for an Engagement with a specific queue
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ContextError.invalidURL</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>QueueError.queueClosed</code>
+///   </li>
+///   <li>
+///     <code>QueueError.queueFull</code>
+///   </li>
+/// </ul>
+/// \param queueID The id that will be used by the client library
+///
+/// \param visitorContext The visitor context that should be displayed
+///
+/// \param completion The callback that will return the <code>QueueTicket</code> or <code>SalemoveError</code>
+///
+- (void)queueForEngagementWithQueueID:(NSString * _Nonnull)queueID visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(QueueTicket * _Nullable, SalemoveError * _Nullable))completion;
+/// Cancel the Engagement queueing with specific ticket
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+/// \param queueTicket The <code>QueueTicket</code> that was used to enqueue
+///
+/// \param completion The callback that will return the dequeuing result or <code>SalemoveError</code>
+///
+- (void)cancelWithQueueTicket:(QueueTicket * _Nonnull)queueTicket completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+/// List all Queues of the configured site
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+/// \param completion The callback that will return the <code>Queue</code> list or <code>SalemoveError</code>
+///
+- (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, SalemoveError * _Nullable))completion;
+@end
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -468,64 +790,22 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Queue for an Engagement with a specific queue
-/// \param queueID The id that will be used by the client library
-///
-/// \param visitorContext The visitor context that should be displayed
-///
-/// \param completion The callback that will return the <code>QueueTicket</code>
-///
-- (void)queueForEngagementWithQueueID:(NSString * _Nonnull)queueID visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(QueueTicket * _Nullable, SalemoveError * _Nullable))completion;
-/// Cancel the Engagement queueing with specific ticket
-/// \param queueTicket The <code>QueueTicket</code> that was used to enqueue
-///
-/// \param completion The callback that will return the dequeuing result
-///
-- (void)cancelWithQueueTicket:(QueueTicket * _Nonnull)queueTicket completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-/// List all Queues of the configured site
-/// \param completion The callback that will return the <code>Queue</code> list
-///
-- (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, SalemoveError * _Nullable))completion;
-@end
-
-
-
-
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request an Engagement with a selected Operator
-/// \param selectedOperator The Operator that will be selected
-///
-/// \param visitorContext The visitor context that should be displayed
-///
-/// \param completion The callback that will return the <code>EngagementRequest</code>
-///
-- (void)requestEngagementWithSelectedOperator:(Operator * _Nonnull)selectedOperator visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
-/// Cancel an ongoing EngagementRequest
-/// \param engagementRequest The ongoing EngagementRequest to be canceled
-///
-/// \param completion The callback that will return the canceling result
-///
-- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-/// Request an Operator for an Engagement
-/// \param completion The callback that will return the ‘Operator’ list
-///
-- (void)requestOperatorsWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
-/// End an Engagement
-- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Change the site used by the client library
 /// \param site The siteID that should be selected
 ///
+///
+/// throws:
+/// <code>ConfigurationError.invalidSite</code>
 - (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error;
 /// Change the environment used by the client library
 /// \param environment The environment baseURL that should be selected
 ///
+///
+/// throws:
+/// <code>ConfigurationError.invalidEnvironment</code>
 - (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error;
 /// Change the interactor used by the client library
 /// \param interactor Interactable instance that the client library will communicate with
@@ -534,12 +814,148 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// Change the appToken used by the client library
 /// \param appToken The token that is going to be used by the client library
 ///
+///
+/// throws:
+/// <code>ConfigurationError.invalidAppToken</code>
 - (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
 /// Change the apiToken used by the client library
 /// \param apiToken The token that is going to be used by the client library
 ///
+///
+/// throws:
+/// <code>ConfigurationError.invalidApiToken</code>
 - (BOOL)configureWithApiToken:(NSString * _Nonnull)apiToken error:(NSError * _Nullable * _Nullable)error;
 @end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request an Engagement with a selected Operator
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ContextError.invalidURL</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>EngagementError.operatorUnavailable</code>
+///   </li>
+/// </ul>
+/// \param selectedOperator The Operator that will be selected
+///
+/// \param visitorContext The visitor context that should be displayed
+///
+/// \param completion The callback that will return the <code>EngagementRequest</code> or <code>SalemoveError</code>
+///
+- (void)requestEngagementWithSelectedOperator:(Operator * _Nonnull)selectedOperator visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
+/// Cancel an ongoing EngagementRequest
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+/// \param engagementRequest The ongoing EngagementRequest to be canceled
+///
+/// \param completion The callback that will return the canceling result or <code>SalemoveError</code>
+///
+- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+/// Request an Operator for an Engagement
+/// <ul>
+///   <li>
+///     parameter:
+///     <ul>
+///       <li>
+///         completion: The callback that will return the ‘Operator’ list or <code>SalemoveError</code>
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+- (void)requestOperatorsWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
+/// End an Engagement
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+/// \param completion The callback that will return the ending result or <code>SalemoveError</code>
+///
+- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
+
+
 
 
 
@@ -548,8 +964,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// The basic gateway class that interacts with the client library through the app delegate
 SWIFT_CLASS("_TtC11SalemoveSDK19SalemoveAppDelegate")
 @interface SalemoveAppDelegate : NSObject <UIApplicationDelegate>
+/// Identify the app launch and initialize the sdk internals.
 - (BOOL)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
+/// Handle the internal push services.
 - (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
+/// Handle the application active state and setup the internals.
 - (void)applicationDidBecomeActive:(UIApplication * _Nonnull)application;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -572,6 +991,8 @@ enum VideoScalingOptions : NSInteger;
 /// View that displays video stream. This can be added as a subview or insereted into a UIStackView for resizing.
 SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
 @interface StreamView : UIView
+/// This modifies the internal constrains to change the view bounds.
+/// One of the <code>VideoScalingOptions</code>
 @property (nonatomic) enum VideoScalingOptions scale;
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
