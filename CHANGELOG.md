@@ -6,6 +6,16 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.10.0] - 2019-03-13
+
+### Added
+
+- onOperatorTypingStatusUpdate to MessageHandling
+
+### Fixed
+
+- ScreenSharing issue for OmniBrowse
+
 ## [0.9.1] - 2019-02-26
 
 ### Fixed
