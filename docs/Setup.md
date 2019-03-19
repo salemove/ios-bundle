@@ -27,7 +27,7 @@ The easiest way to generate all the required files is to use [fastlane][1] built
 
 #### Submitting
 
-After the push certificate and the keys are generated, please submit *pem*, *p12* and *pkey* files to support@salemove.com.
+After the push certificate and the keys are generated, please submit *pem*, *p12* and *pkey* files to operations@salemove.com.
 
 ### Project Configuration
 
