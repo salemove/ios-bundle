@@ -8,9 +8,9 @@ See [explanation video][1]
 
 This tutorial is written for:
 
-- Xcode 9.4
-- Swift 4.0
-- SalemoveSDK 0.7.9
+- Xcode 10.1
+- Swift 4.2
+- SalemoveSDK 0.10.0
 
 ## Introduction
 
@@ -25,6 +25,7 @@ In order to provide a user of your application with Engagement capabilities few 
 3. [Queue for an Engagement](#queue-for-an-engagement)
 4. [Select an Operator for an Engagement](#select-an-operator-for-an-engagement)
 5. [Send a chat message](#send-a-chat-message)
+6. [Start OmbiBrowse session](#start-omnibrowse-session)
 
 ## Configure the SaleMove Client
 
@@ -95,15 +96,67 @@ extension UIViewController: Interactable {
         }
     }
 
-    var onMediaStreamAdded: MediaStreamAddedBlock {
-        return { [unowned self] stream in
-        // Handle the incoming stream 
+    var onEngagementRequest: RequestOfferBlock {
+        // Handle the incoming Engagement request
+        return { answer in
+        // Supply the context that will be shown in the CoBrowsing area
+            let context = VisitorContext(type: .page, url: "wwww.example.com")
+            answer(context, true) {_, _ in }
+        }
+    }
+
+    var onOperatorTypingStatusUpdate: OperatorTypingStatusUpdate {
+        // Handle the Operator typing status during an Engagement
+        return { _ in
+
         }
     }
 
     var onMessagesUpdated: MessagesUpdateBlock {
-        return { [unowned self] messages in
         // Handle the incoming messages list
+        return { [unowned self] messages in
+
+        }
+    }
+
+    var onVisitorScreenSharingStateChange: VisitorScreenSharingStateChange {
+         // Handle the screen sharing state
+        return { [unowned self] state, error in
+            if let error = error {
+                // Show or log the error
+            } else {
+                // Update the view by showing the stream
+                DispatchQueue.main.async {
+                }
+            }
+        }
+    }
+
+    var onAudioStreamAdded: AudioStreamAddedBlock {
+        // Handle the incoming audio stream block
+        return { [unowned self] stream, error in
+            if let stream = stream {
+                // Update the view by showing the stream
+                DispatchQueue.main.async {
+
+                }
+            } else if let error = error {
+                // Show or log the error
+            }
+        }
+    }
+
+    var onVideoStreamAdded: VideoStreamAddedBlock {
+         // Handle the incoming video stream block
+        return { [unowned self] stream, error in
+            if let stream = stream {
+                // Update the view by showing the stream
+                DispatchQueue.main.async {
+
+                }
+            } else if let error = error {
+                // Show or log the error
+            }
         }
     }
 
@@ -271,6 +324,45 @@ Example:
 
     present(inputController, animated: true, completion: nil)
 }
+```
+
+## Start OmniBrowse session
+
+First you need to request a visitor code from the client library, possibly with a shake gesture:
+
+```swift
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            Salemove.sharedInstance.requestVisitorCode { code, error in
+                if let visitorCodeError = error {
+                    // Handle the visitor code error
+                } else if let code = code {
+                    // Display the visitor code
+                }
+            }
+        }
+    }
+```
+
+Then you need the Operator to enter the code in the OmniBrowse section and Interactable will receive a callback where you should supply an answer and VisitorContext:
+
+```swift
+    var onEngagementRequest: RequestOfferBlock {
+        return { answer in
+            let context = VisitorContext(type: .page, url: "wwww.example.com")
+            answer(context, true) { _, _ in }
+        }
+    }
+```
+
+After the Operator requests visitor to share his screen the Interactable will receive a callback where you should supply an answer:
+
+```swift
+    var onScreenSharingOffer: ScreenshareOfferBlock {
+        return { answer in
+            answer(true)
+        }
+    }
 ```
 
 ## Engagement End
