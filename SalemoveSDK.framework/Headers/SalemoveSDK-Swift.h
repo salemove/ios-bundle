@@ -359,7 +359,7 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15MessageHandling_")
 
 @class MediaUpgradeOffer;
 @protocol VideoStreamable;
-@class LocalScreen;
+@class VisitorScreenSharingState;
 
 /// Basic protocol for handling incoming media
 SWIFT_PROTOCOL("_TtP11SalemoveSDK13MediaHandling_")
@@ -369,11 +369,44 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK13MediaHandling_")
 /// Handling the incoming screen share offer
 @property (nonatomic, readonly, copy) void (^ _Nonnull onScreenSharingOffer)(void (^ _Nonnull)(BOOL));
 /// Handling the incoming video stream
-@property (nonatomic, readonly, copy) void (^ _Nonnull onVideoStreamAdded)(id <VideoStreamable> _Nonnull);
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code> - in the case when there is an internal error
+///   </li>
+///   <li>
+///     <code>MediaError.permissionDenied</code> - in the case when the Visitor denies the permission to use the camera to record the video
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, copy) void (^ _Nonnull onVideoStreamAdded)(id <VideoStreamable> _Nullable, SalemoveError * _Nullable);
 /// Handling the incoming audio stream
-@property (nonatomic, readonly, copy) void (^ _Nonnull onAudioStreamAdded)(id <AudioStreamable> _Nonnull);
-/// Handling the incoming screen streaming
-@property (nonatomic, readonly, copy) void (^ _Nonnull onLocalScreenAdded)(LocalScreen * _Nonnull);
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code> - in the case when there is an internal error
+///   </li>
+///   <li>
+///     <code>MediaError.permissionDenied</code> - in the case when the Visitor denies the permission to record the audio using the microphone
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, copy) void (^ _Nonnull onAudioStreamAdded)(id <AudioStreamable> _Nullable, SalemoveError * _Nullable);
+/// Handling the visitor screensharing state changes
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code> - in the case when there is an internal error
+///   </li>
+///   <li>
+///     <code>MediaError.screenSharingNotAvailable</code> - in the case there is an active Screencast, Airplay or Quicktime mirroring enabled on the device
+///   </li>
+///   <li>
+///     <code>MediaError.notAvailableOnIOSVersion</code> - in the case when the deivice is running older iOS version than 11.0
+///   </li>
+///   <li>
+///     <code>MediaError.permissionDenied</code> - in the case when the Visitor denies the permission to record the screen
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, copy) void (^ _Nonnull onVisitorScreenSharingStateChange)(VisitorScreenSharingState * _Nonnull, SalemoveError * _Nullable);
 @end
 
 
@@ -407,6 +440,17 @@ typedef SWIFT_ENUM(NSInteger, LogLevel, closed) {
 /// Show all the logs
   LogLevelDebug = 2,
 };
+
+/// Error of the media
+typedef SWIFT_ENUM(NSInteger, MediaError, closed) {
+/// When the user has explicitly denied the permission to work with the media
+  MediaErrorPermissionDenied = 0,
+/// When there is an active screensharing session but does not allow screensharing to start
+  MediaErrorScreenSharingNotAvailable = 1,
+/// When the Visitor is using an older iOS version that 11.0
+  MediaErrorNotAvailableOnIOSVersion = 2,
+};
+static NSString * _Nonnull const MediaErrorDomain = @"SalemoveSDK.MediaError";
 
 
 /// Error of the media upgrade request
@@ -540,6 +584,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request media upgrade with specific offer
 /// If the request is unsuccessful for any reason then the completion will have an Error.
 /// The Error may have one of the following causes:
@@ -576,6 +626,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
+
+
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request a VisitorCode for current Visitor
 /// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code. OmniBrowse Operators use the Visitor’s code to start an OmniBrowse Engagement with the Visitor.
@@ -607,14 +659,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
 @end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-@end
-
-
 
 
 
@@ -985,6 +1029,14 @@ SWIFT_CLASS("_TtC11SalemoveSDK13SalemoveError")
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
+/// List of available screen sharing statuses
+typedef SWIFT_ENUM(NSInteger, ScreenSharingStatus, closed) {
+/// There is an ongoing screen sharing session
+  ScreenSharingStatusSharing = 0,
+/// No ongoing screensharing session
+  ScreenSharingStatusNotSharing = 1,
+};
+
 enum VideoScalingOptions : NSInteger;
 @class NSCoder;
 
@@ -1057,6 +1109,17 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15VideoStreamable_")
 /// on the place of CoBrowsing section in Operator App
 SWIFT_CLASS("_TtC11SalemoveSDK14VisitorContext")
 @interface VisitorContext : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC11SalemoveSDK25VisitorScreenSharingState")
+@interface VisitorScreenSharingState : NSObject
+/// ScreenSharing status, which is one of <code>ScreenSharingStatus</code>
+@property (nonatomic, readonly) enum ScreenSharingStatus status;
+/// <code>LocalScreen</code> can be used to stop screen sharing.
+@property (nonatomic, readonly, strong) LocalScreen * _Nullable localScreen;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
