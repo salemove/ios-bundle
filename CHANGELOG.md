@@ -6,6 +6,16 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.11.0] - 2019-03-20
+
+### Added
+
+- onVisitorScreenSharingStateChange to MediaHandling
+
+### Fixed
+
+- Errors returned by the client library
+
 ## [0.10.0] - 2019-03-13
 
 ### Added
