@@ -6,6 +6,16 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.12.0] - 2019-03-31
+
+### Added
+
+- Bitcode support
+
+### Changed
+
+- WebRTC library now includes bitcode
+
 ## [0.11.0] - 2019-03-20
 
 ### Added
