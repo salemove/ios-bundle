@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.dependency 'ObjectMapper', '3.4.2'
   s.dependency 'SwiftPhoenixClient', '0.9.3'
   s.dependency 'ios-socket-client', '9.0.2'
-  s.dependency 'glia-webrtc/bitcode', '0.0.2'
+  s.dependency 'glia-webrtc/bitcode', '0.0.3'
   s.dependency 'Macaw', '0.9.3'
 
 end
