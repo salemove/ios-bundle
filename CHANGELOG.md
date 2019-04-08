@@ -6,7 +6,7 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [0.12.0] - 2019-03-31
+## [0.12.0] - 2019-04-08
 
 ### Added
 
@@ -15,6 +15,10 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 - WebRTC library now includes bitcode
+
+### Fixed
+
+- Propogating SalemoveError when Engagement failed to start for some reason
 
 ## [0.11.0] - 2019-03-20
 
