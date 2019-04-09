@@ -1,0 +1,11 @@
+framework module SwiftPhoenixClient {
+  umbrella header "SwiftPhoenixClient-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module SwiftPhoenixClient.Swift {
+    header "SwiftPhoenixClient-Swift.h"
+    requires objc
+}
