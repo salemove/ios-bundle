@@ -1,0 +1,14 @@
+SalemoveSDK.framework/SalemoveSDK filter=lfs diff=lfs merge=lfs -text
+SalemoveSDK.framework/Frameworks/ObjectMapper.framework/ObjectMapper filter=lfs diff=lfs merge=lfs -text
+SalemoveSDK.framework/Frameworks/Alamofire.framework/Alamofire filter=lfs diff=lfs merge=lfs -text
+SalemoveSDK.framework/Frameworks/Locksmith.framework/Locksmith filter=lfs diff=lfs merge=lfs -text
+SalemoveSDK.framework/Frameworks/Macaw.framework/Macaw filter=lfs diff=lfs merge=lfs -text
+SalemoveSDK.framework/Frameworks/Moya.framework/Moya filter=lfs diff=lfs merge=lfs -text
+SalemoveSDK.framework/Frameworks/ReactiveSwift.framework/ReactiveSwift filter=lfs diff=lfs merge=lfs -text
+SalemoveSDK.framework/Frameworks/Result.framework/Result filter=lfs diff=lfs merge=lfs -text
+SalemoveSDK.framework/Frameworks/SocketIO.framework/SocketIO filter=lfs diff=lfs merge=lfs -text
+SalemoveSDK.framework/Frameworks/Starscream.framework/Starscream filter=lfs diff=lfs merge=lfs -text
+SalemoveSDK.framework/Frameworks/SwiftPhoenixClient.framework/SwiftPhoenixClient filter=lfs diff=lfs merge=lfs -text
+SalemoveSDK.framework/Frameworks/SwiftyBeaver.framework/SwiftyBeaver filter=lfs diff=lfs merge=lfs -text
+SalemoveSDK.framework/Frameworks/SWXMLHash.framework/SWXMLHash filter=lfs diff=lfs merge=lfs -text
+SalemoveSDK.framework/Frameworks/WebRTC.framework/WebRTC filter=lfs diff=lfs merge=lfs -text
