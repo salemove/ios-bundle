@@ -13,14 +13,4 @@ Pod::Spec.new do |s|
   s.ios.vendored_frameworks = 'SalemoveSDK.framework'
   s.swift_version = '4.2'
 
-  s.dependency 'SwiftyBeaver', '1.6.1'
-  s.dependency 'Locksmith', '4.0.0'
-  s.dependency 'Moya', '12.0.1'
-  s.dependency 'ReactiveSwift', '4.0.0'
-  s.dependency 'ObjectMapper', '3.4.2'
-  s.dependency 'SwiftPhoenixClient', '0.9.3'
-  s.dependency 'ios-socket-client', '9.0.2'
-  s.dependency 'glia-webrtc/bitcode', '0.0.3'
-  s.dependency 'Macaw', '0.9.3'
-
 end
