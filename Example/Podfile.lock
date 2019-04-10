@@ -1,36 +1,10 @@
 PODS:
-  - Alamofire (4.8.1)
-  - ios-socket-client (9.0.2)
-  - Locksmith (4.0.0)
-  - Macaw (0.9.3):
-    - SWXMLHash
-  - Moya (12.0.1):
-    - Moya/Core (= 12.0.1)
-  - Moya/Core (12.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.0)
-  - ObjectMapper (3.4.2)
   - ReactiveCocoa (8.0.2):
     - ReactiveSwift (~> 4.0)
   - ReactiveSwift (4.0.0):
     - Result (~> 4.0)
   - Result (4.1.0)
-  - SalemoveSDK (0.7.29):
-    - ios-socket-client (= 9.0.2)
-    - Locksmith (= 4.0.0)
-    - Macaw (= 0.9.3)
-    - Moya (= 12.0.1)
-    - ObjectMapper (= 3.4.2)
-    - ReactiveSwift (= 4.0.0)
-    - SwiftPhoenixClient (= 0.9.3)
-    - SwiftyBeaver (= 1.6.1)
-    - WebRTC (= 63.11.20455)
-  - Starscream (3.0.6)
-  - SwiftPhoenixClient (0.9.3):
-    - Starscream (~> 3.0.6)
-  - SwiftyBeaver (1.6.1)
-  - SWXMLHash (4.7.6)
-  - WebRTC (63.11.20455)
+  - SalemoveSDK (0.12.0)
 
 DEPENDENCIES:
   - ReactiveCocoa (= 8.0.2)
@@ -38,41 +12,19 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Alamofire
-    - ios-socket-client
-    - Locksmith
-    - Macaw
-    - Moya
-    - ObjectMapper
     - ReactiveCocoa
     - ReactiveSwift
     - Result
-    - Starscream
-    - SwiftPhoenixClient
-    - SwiftyBeaver
-    - SWXMLHash
-    - WebRTC
 
 EXTERNAL SOURCES:
   SalemoveSDK:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
-  ios-socket-client: 8acc396db85c694265ccfbd14b718f217f2d9754
-  Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
-  Macaw: e370d81f465ea1daa8a72d2afa218000bcd24f0a
-  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
-  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   ReactiveCocoa: fbd26e9ba60e98417ee47433e59465a98ed9da0f
   ReactiveSwift: a2bb9ace428a109e9c0209615645d9d286c8c433
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  SalemoveSDK: c0f1c3bbc5cff9d0095f88aa15dc43c348a35e6c
-  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
-  SwiftPhoenixClient: 0bcdfff24412f79e40465cdfd903b262d3a4953f
-  SwiftyBeaver: ccfcdf85a04d429f1633f668650b0ce8020bda3a
-  SWXMLHash: f6e0933ce74f2626669dc544851bc9fc1941670d
-  WebRTC: f2a6203584745fe53532633397557876b5d71640
+  SalemoveSDK: 46ce366548811a9666bf90227e9d0e8855f65e51
 
 PODFILE CHECKSUM: 07034afe2ef94006355cde90512ba926645b0fb9
 

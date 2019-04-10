@@ -1,5 +1,4 @@
 import Foundation
-import SwiftyBeaver
 import SalemoveSDK
 import Result
 
@@ -29,6 +28,7 @@ class EngagementStatusViewController: UIViewController {
     var queueTicket: QueueTicket?
     var engagementRequest: EngagementRequest?
     var chatType: ChatType = .unidentified
+    var visitorScreenSharing: VisitorScreenSharingState?
 
     var cleanUpBlock: (() -> Void)?
 
@@ -119,6 +119,31 @@ extension EngagementStatusViewController {
 }
 
 extension EngagementStatusViewController: Interactable {
+    var onOperatorTypingStatusUpdate: OperatorTypingStatusUpdate {
+        return { _ in }
+    }
+
+    var onVisitorScreenSharingStateChange: VisitorScreenSharingStateChange {
+        return { [unowned self] state, error in
+            if let error = error {
+                self.showError(message: error.reason)
+            } else {
+                DispatchQueue.main.async {
+                    self.visitorScreenSharing = state
+                }
+            }
+        }
+    }
+
+    var onEngagementRequest: RequestOfferBlock {
+        return { answer in
+            let success: SuccessBlock = { _, _ in }
+
+            let context = VisitorContext(type: .page, url: "www.glia.com")
+            answer(context, true, success)
+        }
+    }
+
     var onScreenSharingOffer: ScreenshareOfferBlock {
         return { [unowned self] answer in
             self.showRequestingView(request: "Possibility to share screen", answer: answer)
@@ -131,23 +156,29 @@ extension EngagementStatusViewController: Interactable {
         }
     }
 
-    var onScreenStreamAdded: ScreenStreamAddedBlock {
-        return { [unowned self] stream in
-            self.mediaViewController?.handleScreenStream(stream: stream)
-        }
-    }
-
     var onAudioStreamAdded: AudioStreamAddedBlock {
-        return { [unowned self] stream in
-            self.mediaView.isHidden = false
-            self.mediaViewController?.handleAudioStream(stream: stream)
+        return { [unowned self] stream, error in
+            if let stream = stream {
+                DispatchQueue.main.async {
+                    self.mediaView.isHidden = false
+                    self.mediaViewController?.handleAudioStream(stream: stream)
+                }
+            } else if let error = error {
+                self.showError(message: error.reason)
+            }
         }
     }
 
     var onVideoStreamAdded: VideoStreamAddedBlock {
-        return { [unowned self] stream in
-            self.mediaView.isHidden = false
-            self.mediaViewController?.handleVideoStream(stream: stream)
+        return { [unowned self] stream, error in
+            if let stream = stream {
+                DispatchQueue.main.async {
+                    self.mediaView.isHidden = false
+                    self.mediaViewController?.handleVideoStream(stream: stream)
+                }
+            } else if let error = error {
+                self.showError(message: error.reason)
+            }
         }
     }
 
@@ -175,7 +206,7 @@ extension EngagementStatusViewController: Interactable {
         endEngagement()
     }
 
-    func fail(with error: SalemoveError) {
+    func fail(error: SalemoveError) {
         // Handle the failing Engagement request and maybe log the reason or show it to the user
         showError(message: error.reason)
     }
@@ -195,14 +226,14 @@ extension EngagementStatusViewController: Interactable {
 
         for availableOperator in operators {
             let action = UIAlertAction(title: availableOperator.name, style: .default) { _ in
+                let context = VisitorContext(type: .page, url: "www.glia.com")
+
                 // Select an operator and pass it to the client library
-                Salemove.sharedInstance.requestEngagement(with: availableOperator) { [unowned self] engagementRequest, error in
+                Salemove.sharedInstance.requestEngagementWith(selectedOperator: availableOperator, visitorContext: context) { [unowned self] engagementRequest, error in
                     self.engagementRequest = engagementRequest
                     // Handle the error as you wish
                     if let reason = error?.reason {
                         self.showError(message: reason)
-                    } else if let timeout = self.engagementRequest?.timeout {
-                        SwiftyBeaver.info("Processing engagement request within \(timeout) seconds")
                     }
                 }
             }
