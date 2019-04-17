@@ -271,7 +271,7 @@
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftPhoenixClient/SwiftPhoenixClient.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
-				"${PODS_ROOT}/WebRTC/WebRTC.framework",
+				"${PODS_ROOT}/glia-webrtc/output/bitcode/WebRTC.framework",
 				"${BUILT_PRODUCTS_DIR}/ios-socket-client/SocketIO.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";

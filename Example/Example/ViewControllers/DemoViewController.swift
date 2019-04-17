@@ -89,7 +89,8 @@ extension DemoViewController {
     }
 
     fileprivate func queueForAnEngagemement(queue: Queue) {
-        Salemove.sharedInstance.queueForEngagement(queueID: queue.id) { [unowned self] queueTicket, error in
+        let context = VisitorContext(type: .page, url: "www.glia.com")
+        Salemove.sharedInstance.queueForEngagement(queueID: queue.id, visitorContext: context) { [unowned self] queueTicket, error in
             if let queueError = error {
                 self.showError(message: queueError.reason)
             } else if let ticket = queueTicket {
@@ -106,7 +107,8 @@ extension DemoViewController {
     fileprivate func requestEngagement(selectedOperator: Operator) {
         configureInteractor(chatType: .sync)
 
-        Salemove.sharedInstance.requestEngagement(with: selectedOperator) { [unowned self] engagementRequest, error in
+        let context = VisitorContext(type: .page, url: "www.glia.com")
+        Salemove.sharedInstance.requestEngagementWith(selectedOperator: selectedOperator, visitorContext: context) { [unowned self] engagementRequest, error in
             if let reason = error?.reason {
                 self.showError(message: reason)
             } else if let request = engagementRequest {
@@ -125,7 +127,7 @@ extension DemoViewController {
         Salemove.sharedInstance.cancel(engagementRequest: request) { success, error in
             if let cancelError = error {
                 self.showError(message: cancelError.reason)
-            } 
+            }
         }
     }
 
