@@ -12,6 +12,10 @@ There is an Example app where the SDK is integrated using cocoapods. After check
 the repository please remember to do 'pod install' to get all the dependencies. After that open the 
 Example.xcworkspace and run the app.
 
+## Error fetching dependencies using Cocoapods
+
+If you get something like `git-lfs filter-process: git-lfs: command not found` then this means that something is wrong with configuration of git. Please try to install the [git-lfs](https://git-lfs.github.com) and then run `git lfs install` and fetch the dependencies again.
+
 ## Why do we include 3rd party dependencies when using Carthage?
 
 Our client library is dynamically linking the libraries during the runtime but in order to provide the correct versions, we need to [download them and add to an application.](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application) You are not obligated to get the dependencies using Carthage.
