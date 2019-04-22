@@ -28,7 +28,6 @@ $ gem install cocoapods
 To incorporate SalemoveSDK into your Xcode project using CocoaPods specify it in your `Podfile`:
 
 ```ruby
-source 'git@github.com:salemove/ios-cocoapods-repo.git'
 platform :ios, '10.0'
 use_frameworks!
 
