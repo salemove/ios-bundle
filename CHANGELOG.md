@@ -6,6 +6,12 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.12.1] - 2019-04-23
+
+### Added
+
+- Xcode 10.2 support
+
 ## [0.12.0] - 2019-04-08
 
 ### Added
