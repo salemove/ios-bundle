@@ -11,9 +11,9 @@ Pod::Spec.new do |s|
   s.module_name = 'SalemoveSDK'
   s.ios.deployment_target = '10.0'
   s.ios.vendored_frameworks = 'SalemoveSDK.framework'
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
 
-  s.dependency 'SwiftyBeaver', '1.6.1'
+  s.dependency 'SwiftyBeaver', '1.7.0'
   s.dependency 'Locksmith', '4.0.0'
   s.dependency 'Moya', '12.0.1'
   s.dependency 'ReactiveSwift', '4.0.0'
