@@ -9,9 +9,9 @@ See [explanation video][2]
 Make sure that you have received a **developer APP token**, **API token** and **site ID** from your success manager at SaleMove.
 
 ### Requirements
-- Xcode 10.0+
+- Xcode 10.2.1+
 - iOS 10.0+
-- Swift 4.2+
+- Swift 5.0
 
 ## Installation
 
