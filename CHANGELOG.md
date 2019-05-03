@@ -6,6 +6,12 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.14.0] - 2019-05-03
+
+### Added
+
+- Update information of the visitor
+
 ## [0.13.1] - 2019-04-25
 
 ### Added 
