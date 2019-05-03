@@ -587,8 +587,85 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request media upgrade with specific offer
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>MediaUpgradeError.requestError</code>
+///   </li>
+/// </ul>
+/// \param offer The `MediaUpgradeOffer’ that is used for the request
+///
+/// \param completion The callback that returns the upgrade result or <code>SalemoveError</code>
+///
+- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Clear the use session of the client library
 - (void)clearSession;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Update current Visitor’s information.
+/// The information provided by this endpoint is available to all the Operators observing or interacting with the Visitor. This means that this endpoint can be used to provide additional context about the Visitor to the Operators. For example, if a Visitor is logged into the current site and their name and email are recorded on their profile, then taking the data from the profile and passing it into this endpoint helps the Operators see the real names and emails of every logged in Visitor even before they start a conversation.
+/// In a similar manner custom attributes can be also be used to provide additional context. For example, if your site separates paying users from free users, then setting a custom attribute of ‘user_type’ with a value of either ‘free’ or ‘paying’ depending on the Visitor’s account can help Operators prioritize different Visitors.
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+/// \param name The Visitor’s name
+///
+/// \param email The Visitor’s email address
+///
+/// \param phone The Visitor’s phone number
+///
+/// \param customAttributes An object with custom key-value pairs to be assigned to the Visitor. The server treats all keys and values as strings and also returns them as strings. Nested key-value pairs are not supported.
+///
+/// \param externalId The Visitor’s unique identifier in scope of the current Site. Valuable information about the current Visitor may often be available in CRMs and other systems external to SaleMove. This field allows matching the Visitor to their record in such CRMs and other external systems. For example, a Visitor can have an ID within Salesforce. By setting the ‘external_id’ to the current Visitor’s Salesforce ID, they can easily be matched to their record within Salesforce.
+///
+/// \param completion The callback that will return the update result or <code>SalemoveError</code>
+///
+- (void)updateInformationWithName:(NSString * _Nullable)name email:(NSString * _Nullable)email phone:(NSString * _Nullable)phone externalID:(NSString * _Nullable)externalID customAttributes:(NSDictionary<NSString *, NSString *> * _Nullable)customAttributes completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
 
 
@@ -627,41 +704,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request media upgrade with specific offer
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
-///     <code>MediaUpgradeError.requestError</code>
-///   </li>
-/// </ul>
-/// \param offer The `MediaUpgradeOffer’ that is used for the request
-///
-/// \param completion The callback that returns the upgrade result or <code>SalemoveError</code>
-///
-- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
 
 
 
