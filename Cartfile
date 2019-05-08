@@ -1,6 +1,6 @@
 github "SwiftyBeaver/SwiftyBeaver" == 1.7.0
 github "matthewpalmer/Locksmith" == 4.0.0
-github "Moya/Moya" == 12.0.1
+github "Moya/Moya" == 13.0.1
 github "Hearst-DD/ObjectMapper" == 3.4.0
 github "davidstump/SwiftPhoenixClient" == 0.9.3
 github "salemove/ios-webrtc" == 0.0.3
