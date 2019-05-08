@@ -15,6 +15,10 @@ Make sure that you have received a **developer APP token**, **API token** and **
 
 ## Installation
 
+### Prepare git-lfs
+
+Some of the dependencies are hosted using [git-lfs][3] so before using Cocoapods or Carthage make sure to have git-lfs installed then and run `git lfs install --skip-smudge` in your repository. It might take some time for all dependencies to load for the first time.
+
 ### CocoaPods
 
 [CocoaPods][0] is a dependency manager for Cocoa projects. You can install it with the following command:
@@ -75,3 +79,4 @@ Check out the [carthage example][1].
 [0]: http://cocoapods.org
 [1]: https://github.com/salemove/ios-carthage-integration
 [2]: https://drive.google.com/open?id=1-QcgKyyZZ5YDMH3pBlebTg5jCaKNGDvE
+[3]: https://git-lfs.github.com
