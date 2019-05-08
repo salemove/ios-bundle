@@ -6,6 +6,12 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.14.1] - 2019-05-08
+
+### Changed
+
+- Moya version to 13.0.1
+
 ## [0.14.0] - 2019-05-03
 
 ### Added
