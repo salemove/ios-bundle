@@ -71,6 +71,6 @@ Check out the [integration guide][6].
 [3]: https://medium.com/@derrickho_28266/xcode-custom-environment-variables-681b5b8674ec
 [4]: https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW24
 [5]: https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW25
-[6]: ./2017-11-28-Enhancing+Your+iOS+Application+With+Salmove+SDK.md
+[6]: ./Integration.md
 [7]: https://drive.google.com/open?id=13OppFV2wN3OvM8Iod--MC1f34oww30mG
 
