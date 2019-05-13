@@ -17,7 +17,7 @@ Make sure that you have received a **developer APP token**, **API token** and **
 
 ### Prepare git-lfs
 
-Some of the dependencies are hosted using [git-lfs][3] so before using Cocoapods or Carthage make sure to have git-lfs installed then and run `git lfs install --skip-smudge` in your repository. It might take some time for all dependencies to load for the first time.
+Some of the dependencies are hosted using [git-lfs][3] so before using Cocoapods or Carthage make sure to have git-lfs installed and configured for your repository. It might take some time for all dependencies to load for the first time.
 
 ### CocoaPods
 
