@@ -6,6 +6,12 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.14.3] - 2019-05-30
+
+### Changed
+
+- Internal chat messages handling
+
 ## [0.14.2] - 2019-05-27
 
 ### Fixed
