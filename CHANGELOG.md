@@ -6,6 +6,16 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.15.0] - 2019-07-25
+
+### Changed
+
+- Media establishing internals
+
+### Added
+
+- Media accept/decline completion block
+
 ## [0.14.4] - 2019-06-07
 
 ### Added
