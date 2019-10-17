@@ -487,6 +487,8 @@ static NSString * _Nonnull const MediaErrorDomain = @"SalemoveSDK.MediaError";
 typedef SWIFT_ENUM(NSInteger, MediaUpgradeError, closed) {
 /// Upgrade to requested media failed.
   MediaUpgradeErrorRequestError = 0,
+/// Received unexpected arguments or unexpected response from server.
+  MediaUpgradeErrorUnsupportedRequest = 1,
 };
 static NSString * _Nonnull const MediaUpgradeErrorDomain = @"SalemoveSDK.MediaUpgradeError";
 
@@ -554,6 +556,7 @@ typedef SWIFT_ENUM(NSInteger, PushType, closed) {
   PushTypeChatMessage = 1,
 };
 
+@class QueueState;
 
 /// A Queue for an Engagement
 SWIFT_CLASS("_TtC11SalemoveSDK5Queue")
@@ -562,6 +565,8 @@ SWIFT_CLASS("_TtC11SalemoveSDK5Queue")
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
 /// Queue name
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
+/// Queue state
+@property (nonatomic, readonly, strong) QueueState * _Nonnull state;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -572,8 +577,17 @@ typedef SWIFT_ENUM(NSInteger, QueueError, closed) {
   QueueErrorQueueClosed = 0,
 /// The Queue is full.
   QueueErrorQueueFull = 1,
+/// The Queue ID is invalid.
+  QueueErrorInvalidId = 2,
 };
 static NSString * _Nonnull const QueueErrorDomain = @"SalemoveSDK.QueueError";
+
+
+SWIFT_CLASS("_TtC11SalemoveSDK10QueueState")
+@interface QueueState : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 
 /// A token for Visitor’s spot in the queue. This ticket can also be used to cancel queueing
@@ -627,7 +641,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     parameters:
 ///   </li>
 ///   <li>
-///     completion: The callback that will return the visitor code or <code>SalemoveError</code>
+///     completion: A callback that will return the visitor code or <code>SalemoveError</code>
 ///   </li>
 /// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -656,8 +670,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
-
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request media upgrade with specific offer
 /// <ul>
@@ -668,7 +680,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     offer: The `MediaUpgradeOffer’ that is used for the request
 ///   </li>
 ///   <li>
-///     completion: The callback that returns the upgrade result or <code>SalemoveError</code>
+///     completion: A callback that returns the upgrade result or <code>SalemoveError</code>
 ///   </li>
 /// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -700,6 +712,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
+
+
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Update current Visitor’s information.
 /// The information provided by this endpoint is available to all the Operators observing or interacting with the Visitor. This means that this endpoint can be used to provide additional context about the Visitor to the Operators. For example, if a Visitor is logged into the current site and their name and email are recorded on their profile, then taking the data from the profile and passing it into this endpoint helps the Operators see the real names and emails of every logged in Visitor even before they start a conversation.
@@ -724,7 +738,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     externalId: The Visitor’s unique identifier in scope of the current Site. Valuable information about the current Visitor may often be available in CRMs and other systems external to SaleMove. This field allows matching the Visitor to their record in such CRMs and other external systems. For example, a Visitor can have an ID within Salesforce. By setting the ‘external_id’ to the current Visitor’s Salesforce ID, they can easily be matched to their record within Salesforce.
 ///   </li>
 ///   <li>
-///     completion: The callback that will return the update result or <code>SalemoveError</code>
+///     completion: A callback that will return the update result or <code>SalemoveError</code>
 ///   </li>
 /// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -768,6 +782,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// \param level One of the ‘LogLevel’ values that the logger should use
+///
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Send a chat message
 /// <ul>
 ///   <li>
@@ -777,7 +799,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     message: The content of the message that should be sent to the operator
 ///   </li>
 ///   <li>
-///     completion: The callback that will return the <code>Message</code> or <code>SalemoveError</code>
+///     completion: A callback that will return the <code>Message</code> or <code>SalemoveError</code>
 ///   </li>
 /// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -809,13 +831,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     parameters:
 ///   </li>
 ///   <li>
-///     message: The content of the message that should be queued
+///     message: A content of the message that should be queued
 ///   </li>
 ///   <li>
-///     queueID: The id of the queue to which the message is sent
+///     queueID: The ID of the queue to which the message is sent
 ///   </li>
 ///   <li>
-///     completion: The callback that will return the <code>Message</code> or <code>SalemoveError</code>
+///     completion: A callback that will return the <code>Message</code> or <code>SalemoveError</code>
 ///   </li>
 /// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -854,7 +876,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     message: The content of the message preview
 ///   </li>
 ///   <li>
-///     completion: The callback that will return the sending result or <code>SalemoveError</code>
+///     completion: A callback that will return the sending result or <code>SalemoveError</code>
 ///   </li>
 /// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -890,13 +912,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     parameters:
 ///   </li>
 ///   <li>
-///     queueID: The id that will be used by the client library
+///     queueID: The ID that will be used by the client library
 ///   </li>
 ///   <li>
 ///     visitorContext: The visitor context that should be displayed
 ///   </li>
 ///   <li>
-///     completion: The callback that will return the <code>QueueTicket</code> or <code>SalemoveError</code>
+///     completion: A callback that will return the <code>QueueTicket</code> or <code>SalemoveError</code>
 ///   </li>
 /// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -929,6 +951,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   <li>
 ///     <code>QueueError.queueFull</code>
 ///   </li>
+///   <li>
+///     <code>QueueError.invalidId</code>
+///   </li>
 /// </ul>
 - (void)queueForEngagementWithQueueID:(NSString * _Nonnull)queueID visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(QueueTicket * _Nullable, SalemoveError * _Nullable))completion;
 /// Cancel the Engagement queueing with specific ticket
@@ -940,7 +965,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     queueTicket: The <code>QueueTicket</code> that was used to enqueue
 ///   </li>
 ///   <li>
-///     completion: The callback that will return the dequeuing result or <code>SalemoveError</code>
+///     completion: A callback that will return the dequeuing result or <code>SalemoveError</code>
 ///   </li>
 /// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -966,13 +991,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   </li>
 /// </ul>
 - (void)cancelWithQueueTicket:(QueueTicket * _Nonnull)queueTicket completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-/// List all Queues of the configured site
+/// It is also possible to monitor Queues changes with <a href="x-source-tag://subscribeForUpdates">subscribeForUpdates</a> method.
 /// <ul>
 ///   <li>
 ///     parameters:
 ///   </li>
 ///   <li>
-///     completion: The callback that will return the <code>Queue</code> list or <code>SalemoveError</code>
+///     completion: A callback that will return the <code>Queue</code> list or <code>SalemoveError</code>
 ///   </li>
 /// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -998,14 +1023,71 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   </li>
 /// </ul>
 - (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, SalemoveError * _Nullable))completion;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// \param level One of the ‘LogLevel’ values that the logger should use
+/// Registers Queue change listener for Queues with specified ID’s. It is possible to retrieve Queue ID’s with the <a href="x-source-tag://listQueues">listQueues</a> method.
+/// To unsubscribe from receiving this changes <a href="x-source-tag://unsubscribeFromUpdates">unsubscribeFromUpdates</a> method can be used.
+/// <hr/>
+/// Example:
+/// \code
+/// let queueUpdatesCallbackId = Salemove.sharedInstance.subscribeForUpdates(
+///     forQueue: [QUEUE_ID_1, QUEUE_ID_2],
+///     onError: showError(salemoveError:),
+///     onUpdate: updateQueueInfo(newQueue:)
+/// )
 ///
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+/// \endcode\param for Array of strings represinting Queue IDs that you want to get updates for
+///
+/// \param onUpdate A callback that returns a new instance of <code>Queue</code> every time its info is changed
+///
+/// \param onError A callback that returns <code>SalemoveError</code> which could have one of the reasons:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>QueueError.invalidId</code>
+///   </li>
+/// </ul>
+///
+///
+/// returns:
+///
+/// A unique callback ID or <code>nil</code> if callback was not registered due to error.
+/// This callback ID could be used to usubscribe from Queue updates.
+- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(SalemoveError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT;
+/// \param queueCallbackId ID of callback for which you would like to stop receiving updates.
+///
+/// \param onError A callback that returns <code>SalemoveError</code> which could have one of the reasons:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+///
+- (void)unsubscribeFromUpdatesWithQueueCallbackId:(NSString * _Nonnull)queueCallbackId onError:(void (^ _Nonnull)(SalemoveError * _Nonnull))onError;
 @end
 
 
@@ -1088,7 +1170,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     visitorContext: The visitor context that should be displayed
 ///   </li>
 ///   <li>
-///     completion: The callback that will return the <code>EngagementRequest</code> or <code>SalemoveError</code>
+///     completion: A callback that will return the <code>EngagementRequest</code> or <code>SalemoveError</code>
 ///   </li>
 /// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -1129,7 +1211,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     engagementRequest: The ongoing EngagementRequest to be canceled
 ///   </li>
 ///   <li>
-///     completion: The callback that will return the canceling result or <code>SalemoveError</code>
+///     completion: A callback that will return the canceling result or <code>SalemoveError</code>
 ///   </li>
 /// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -1161,7 +1243,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     parameter:
 ///   </li>
 ///   <li>
-///     completion: The callback that will return the ‘Operator’ list or <code>SalemoveError</code>
+///     completion: A callback that will return the ‘Operator’ list or <code>SalemoveError</code>
 ///   </li>
 /// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -1193,7 +1275,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     parameters:
 ///   </li>
 ///   <li>
-///     completion: The callback that will return the ending result or <code>SalemoveError</code>
+///     completion: A callback that will return the ending result or <code>SalemoveError</code>
 ///   </li>
 /// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
