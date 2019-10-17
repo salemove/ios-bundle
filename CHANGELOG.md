@@ -6,6 +6,17 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.16.0] - 2019-10-17
+
+### Added
+
+- Queue state
+- Queue state subscriptions
+
+### Fixed
+
+- Old messages appearing after Engagement end
+
 ## [0.15.0] - 2019-07-25
 
 ### Changed
@@ -48,7 +59,7 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.13.1] - 2019-04-25
 
-### Added 
+### Added
 
 - Swift 5.0 support
 
@@ -240,7 +251,7 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-- Replace SwiftyWebSocket with SwiftPhoenixClient 
+- Replace SwiftyWebSocket with SwiftPhoenixClient
 
 ## [0.7.13] - 2018-08-27
 
