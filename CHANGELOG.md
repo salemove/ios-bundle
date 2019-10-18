@@ -17,6 +17,8 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 - Old messages appearing after Engagement end
 
+[0.16.0]: https://github.com/salemove/ios-bundle/compare/0.15.0...0.16.0
+
 ## [0.15.0] - 2019-07-25
 
 ### Changed
