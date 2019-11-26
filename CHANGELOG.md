@@ -6,13 +6,21 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [0.16.1] - 2019-11-18
+## [0.16.3] - 2019-11-26
+
+### Fixed
+
+- Incorect SDK version in logs
+
+[0.16.3]: https://github.com/salemove/ios-bundle/compare/0.16.2...0.16.3
+
+## [0.16.2] - 2019-11-18
 
 ### Fixed
 
 - Operator typing status not being updated after transfer
 
-[0.16.1]: https://github.com/salemove/ios-bundle/compare/0.16.0...0.16.1
+[0.16.2]: https://github.com/salemove/ios-bundle/compare/0.16.0...0.16.2
 
 ## [0.16.0] - 2019-10-17
 
