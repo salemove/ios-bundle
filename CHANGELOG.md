@@ -6,6 +6,15 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.17.0] - 2019-12-12
+
+### Changed
+
+- Support for XCode 11.2 and Swift 5.1.2 (Cocoapods)
+
+[0.17.0]: https://github.com/salemove/ios-bundle/compare/0.16.3...0.17.0
+
+
 ## [0.16.3] - 2019-11-26
 
 ### Fixed
