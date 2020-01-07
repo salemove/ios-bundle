@@ -6,6 +6,14 @@ and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.18.0] - 2020-01-07
+
+### Changed
+
+- Upgraded to Moya 14.0.0-beta.6 and ReactiveSwift 6.1.0
+
+[0.18.0]: https://github.com/salemove/ios-bundle/compare/0.17.0...0.18.0
+
 ## [0.17.0] - 2019-12-12
 
 ### Changed

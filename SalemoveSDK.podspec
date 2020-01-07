@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SalemoveSDK'
-  s.version          = '0.17.0'
+  s.version          = '0.18.0'
   s.summary          = 'The Salemove iOS library'
   s.description      = 'The Salemove iOS library brings the in-person customer experience to iOS devices.'
   s.homepage         = 'https://github.com/salemove/ios-sdk'
@@ -13,10 +13,10 @@ Pod::Spec.new do |s|
   s.ios.vendored_frameworks = 'SalemoveSDK.framework'
   s.swift_version = '5.0'
 
-  s.dependency 'SwiftyBeaver', '1.8.3'
+  s.dependency 'SwiftyBeaver', '1.8.4'
   s.dependency 'Locksmith', '4.0.0'
-  s.dependency 'Moya', '13.0.1'
-  s.dependency 'ReactiveSwift', '5.0.1'
+  s.dependency 'Moya', '14.0.0-beta.6'
+  s.dependency 'ReactiveSwift', '6.1.0'
   s.dependency 'ObjectMapper', '3.5.1'
   s.dependency 'SwiftPhoenixClient', '0.9.3'
   s.dependency 'ios-socket-client', '9.1.0'
