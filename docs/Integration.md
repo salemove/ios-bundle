@@ -4,14 +4,6 @@ Please find documentation on how to integrate SaleMove Engagement into your iOS 
 
 See [explanation video][1]
 
-## Prerequisites
-
-This tutorial is written for:
-
-- Xcode 10.1
-- Swift 4.2
-- SalemoveSDK 0.10.0
-
 ## Introduction
 
 *SalemoveSDK* is a swift library with closed source that comes with a well-documented API and ability to install it using modern dependency management systems such as [CocoaPods][0]
