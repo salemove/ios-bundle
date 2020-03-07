@@ -1,43 +1,40 @@
 PODS:
-  - Alamofire (4.8.2)
+  - Alamofire (5.0.0-rc.3)
   - glia-webrtc/bitcode (0.0.3)
-  - ios-socket-client (9.0.2)
+  - ios-socket-client (9.1.0)
   - Locksmith (4.0.0)
-  - Macaw (0.9.3):
+  - Macaw (0.9.5):
     - SWXMLHash
-  - Moya (12.0.1):
-    - Moya/Core (= 12.0.1)
-  - Moya/Core (12.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.0)
-  - ObjectMapper (3.4.2)
-  - ReactiveCocoa (8.0.2):
-    - ReactiveSwift (~> 4.0)
-  - ReactiveSwift (4.0.0):
-    - Result (~> 4.0)
-  - Result (4.1.0)
-  - SalemoveSDK (0.13.1):
+  - Moya (14.0.0-beta.6):
+    - Moya/Core (= 14.0.0-beta.6)
+  - Moya/Core (14.0.0-beta.6):
+    - Alamofire (= 5.0.0-rc.3)
+  - ObjectMapper (3.5.1)
+  - ReactiveCocoa (10.1.0):
+    - ReactiveSwift (~> 6.1)
+  - ReactiveSwift (6.1.0)
+  - SalemoveSDK (0.18.0):
     - glia-webrtc/bitcode (= 0.0.3)
-    - ios-socket-client (= 9.0.2)
+    - ios-socket-client (= 9.1.0)
     - Locksmith (= 4.0.0)
-    - Macaw (= 0.9.3)
-    - Moya (= 12.0.1)
-    - ObjectMapper (= 3.4.2)
-    - ReactiveSwift (= 4.0.0)
+    - Macaw (= 0.9.5)
+    - Moya (= 14.0.0-beta.6)
+    - ObjectMapper (= 3.5.1)
+    - ReactiveSwift (= 6.1.0)
     - SwiftPhoenixClient (= 0.9.3)
-    - SwiftyBeaver (= 1.7.0)
+    - SwiftyBeaver (= 1.8.4)
   - Starscream (3.0.6)
   - SwiftPhoenixClient (0.9.3):
     - Starscream (~> 3.0.6)
-  - SwiftyBeaver (1.7.0)
-  - SWXMLHash (4.9.0)
+  - SwiftyBeaver (1.8.4)
+  - SWXMLHash (5.0.1)
 
 DEPENDENCIES:
-  - ReactiveCocoa (= 8.0.2)
+  - ReactiveCocoa (= 10.1.0)
   - SalemoveSDK (from `../`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - glia-webrtc
     - ios-socket-client
@@ -47,7 +44,6 @@ SPEC REPOS:
     - ObjectMapper
     - ReactiveCocoa
     - ReactiveSwift
-    - Result
     - Starscream
     - SwiftPhoenixClient
     - SwiftyBeaver
@@ -58,22 +54,21 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
   glia-webrtc: a5c7e59ae752281d19734b4f918db9da39e8009d
-  ios-socket-client: 8acc396db85c694265ccfbd14b718f217f2d9754
+  ios-socket-client: 52860f6a2a49d3b526a9fed6e3ed0b26b0735f4c
   Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
-  Macaw: e370d81f465ea1daa8a72d2afa218000bcd24f0a
-  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
-  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
-  ReactiveCocoa: fbd26e9ba60e98417ee47433e59465a98ed9da0f
-  ReactiveSwift: a2bb9ace428a109e9c0209615645d9d286c8c433
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  SalemoveSDK: 87777cf89bee7d544e18604f4b5766d8930679d1
+  Macaw: 10bf9e327cb75f24e3225d5229a80ed544df85f0
+  Moya: d4821fbcb3e784f34d2f82869e6855057a0b85d1
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  ReactiveCocoa: 2f1d942d79072eded6d8c3bc7c2a641d40855a56
+  ReactiveSwift: b78c7259f8ca46368238c895ae33a6a3bf9f811c
+  SalemoveSDK: e355c868c36197eff99fc846a3ea70df17ad64fc
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SwiftPhoenixClient: 0bcdfff24412f79e40465cdfd903b262d3a4953f
-  SwiftyBeaver: 4cc0080d2e23f980652e28978db11a5c9da39165
-  SWXMLHash: 87b0006848a548b7f9485b40bc71721b3ae39add
+  SwiftyBeaver: f9a9aba96a6a6166e21682377804d728b0d20b95
+  SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
 
-PODFILE CHECKSUM: 07034afe2ef94006355cde90512ba926645b0fb9
+PODFILE CHECKSUM: f1be2e5a405a4c812e71ae33c9282a63ddee89f5
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

@@ -1,6 +1,5 @@
 import Foundation
 import SalemoveSDK
-import Result
 
 enum ChatType {
     case unidentified
@@ -60,7 +59,13 @@ class EngagementStatusViewController: UIViewController {
 
     // MARK: Public Methods
     @IBAction func requestAudio(_ sender: Any) {
-        let offer = MediaUpgradeOffer(type: MediaType.audio, direction: MediaDirection.twoWay)
+        guard let offer = try? MediaUpgradeOffer(
+            type: MediaType.audio,
+            direction: MediaDirection.twoWay
+            ) else {
+            print("Failed to create media upgrade offer")
+            return
+        }
         Salemove.sharedInstance.requestMediaUpgrade(offer: offer) { [unowned self] success, _ in
             if success {
                 self.audioButton.setTitleColor(UIColor.green, for: .normal)
@@ -69,7 +74,13 @@ class EngagementStatusViewController: UIViewController {
     }
 
     @IBAction func requestVideo(_ sender: Any) {
-        let offer = MediaUpgradeOffer(type: MediaType.video, direction: MediaDirection.twoWay)
+        guard let offer = try? MediaUpgradeOffer(
+            type: MediaType.video,
+            direction: MediaDirection.twoWay
+            ) else {
+            print("Failed to create media upgrade offer")
+            return
+        }
         Salemove.sharedInstance.requestMediaUpgrade(offer: offer) { [unowned self] success, _ in
             if success {
                 self.videoButton.setTitleColor(UIColor.green, for: .normal)
@@ -152,7 +163,7 @@ extension EngagementStatusViewController: Interactable {
 
     var onMediaUpgradeOffer: MediaUgradeOfferBlock {
         return { [unowned self] _, answer in
-            self.showRequestingView(request: "Posibility to enable media", answer: answer)
+            answer(true, nil)
         }
     }
 
