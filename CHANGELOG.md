@@ -1,10 +1,16 @@
 # Change Log
-All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and `SalemoveSDK` adheres to [Semantic Versioning](http://semver.org/).
+## [0.19.0] - 2020-03-10
 
-## [Unreleased]
+### Changed
+
+- Typing indicator improvements
+
+### Fixed
+
+- Fixes carthage issues with incompatible Starscream dependency
+
+[0.19.0]: https://github.com/salemove/ios-bundle/compare/0.18.0...0.19.0
 
 ## [0.18.0] - 2020-01-07
 

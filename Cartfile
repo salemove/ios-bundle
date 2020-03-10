@@ -1,8 +1,18 @@
-github "Moya/Moya" == 14.0.0-beta.6 # adds also ReactiveSwift and RxSwift
+# This dependency of "SwiftPhoenixClient" needs to be extra declared here to avoid Carthage
+# pulling the latest version which is at the moment incompatible with SalemoveSDK
+github "daltoniam/Starscream" "3.0.6" 
+
+# These dependencies of "Moya" need to be extra declared here to avoid Carthage
+# pulling the latest version which are at the moment incompatible with SalemoveSDK
+github "ReactiveCocoa/ReactiveSwift" "6.1.0"
+github "ReactiveX/RxSwift" "5.1.0"
+
+# Main Dependencies required by SalemoveSDK
+github "SwiftyBeaver/SwiftyBeaver" == 1.8.4
 github "matthewpalmer/Locksmith" == 4.0.0
+github "Moya/Moya" == 14.0.0-beta.6
 github "Hearst-DD/ObjectMapper" == 3.5.1
 github "davidstump/SwiftPhoenixClient" == 0.9.3
-github "exyte/Macaw" == 0.9.5
 github "salemove/ios-socket-client" == 9.1.0
-github "SwiftyBeaver/SwiftyBeaver" == 1.8.4
 github "salemove/ios-webrtc" == 0.0.3
+github "exyte/Macaw" == 0.9.5
