@@ -1,5 +1,13 @@
 # Change Log
 
+## [0.20.0] - 2020-05-06
+
+### Changed
+
+- Upgrade SDK to Swift 5.2 and XCode 11.4
+
+[0.20.0]: https://github.com/salemove/ios-bundle/compare/0.19.0...0.20.0
+
 ## [0.19.0] - 2020-03-10
 
 ### Changed
