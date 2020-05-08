@@ -1,7 +1,0 @@
-* [Introduction](../README.md)
-* [API reference](./API.md)
-* [Quickstart](./Quickstart.md)
-* [Project setup](./Setup.md)
-* [Integration example](./Integration.md)
-* [Screensharing](./Screensharing.md)
-* [FAQ](./FAQ.md)

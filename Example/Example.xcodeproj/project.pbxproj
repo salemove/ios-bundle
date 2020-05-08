@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,7 +17,6 @@
 		39AEA1271FC30582007FA3D6 /* Engagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39B6BA8E1FBD80AD00AA28F7 /* Engagement.storyboard */; };
 		39AEA12E1FC37356007FA3D6 /* ConvenienceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEA12D1FC37356007FA3D6 /* ConvenienceExtensions.swift */; };
 		39DB074F20443313003E057D /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DB074E20443313003E057D /* MediaViewController.swift */; };
-		DCCD410DFD3CA42BAD57C86A /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A938D91671DF836FD233A297 /* Pods_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,9 +37,6 @@
 		39C96AC71FBD9EA000CE11A7 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		39CC9E811FE9645E008C16B2 /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		39DB074E20443313003E057D /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
-		A938D91671DF836FD233A297 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0341808522E114BEBBDA6BF /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		CE29F15F7116DA4D0EA4E68F /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,21 +44,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCCD410DFD3CA42BAD57C86A /* Pods_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		088E0DA7098CD92FF437E349 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A938D91671DF836FD233A297 /* Pods_Example.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		391BB4751FBD944500D798E4 /* Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,8 +89,6 @@
 				391BB4751FBD944500D798E4 /* Example */,
 				39B6BA7E1FBD807B00AA28F7 /* Products */,
 				F0F2AC511FEC373400BE1598 /* Recovered References */,
-				8B97C8ABA0D7E62908CE2CAC /* Pods */,
-				088E0DA7098CD92FF437E349 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,15 +110,6 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		8B97C8ABA0D7E62908CE2CAC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C0341808522E114BEBBDA6BF /* Pods-Example.debug.xcconfig */,
-				CE29F15F7116DA4D0EA4E68F /* Pods-Example.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		F0F2AC511FEC373400BE1598 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,11 +128,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 391BB4851FBD944500D798E4 /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
-				D427D072C8DB54CB9D83116F /* [CP] Check Pods Manifest.lock */,
 				391BB4701FBD944500D798E4 /* Sources */,
 				391BB4711FBD944500D798E4 /* Frameworks */,
 				391BB4721FBD944500D798E4 /* Resources */,
-				F8E4D7D1A742F0B7816B7F7F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -195,7 +169,7 @@
 				};
 			};
 			buildConfigurationList = 39B6BA771FBD807B00AA28F7 /* Build configuration list for PBXProject "Example" */;
-			compatibilityVersion = "Xcode 8.0";
+			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -225,75 +199,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		D427D072C8DB54CB9D83116F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F8E4D7D1A742F0B7816B7F7F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Locksmith/Locksmith.framework",
-				"${BUILT_PRODUCTS_DIR}/Macaw/Macaw.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
-				"${PODS_ROOT}/../../SalemoveSDK.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftPhoenixClient/SwiftPhoenixClient.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
-				"${PODS_ROOT}/glia-webrtc/output/bitcode/WebRTC.framework",
-				"${BUILT_PRODUCTS_DIR}/ios-socket-client/SocketIO.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Locksmith.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Macaw.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SalemoveSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftPhoenixClient.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		391BB4701FBD944500D798E4 /* Sources */ = {
@@ -333,7 +238,6 @@
 /* Begin XCBuildConfiguration section */
 		391BB4831FBD944500D798E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0341808522E114BEBBDA6BF /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Example/Example.entitlements;
@@ -347,7 +251,10 @@
 				FABRIC_BUILD_SECRET = 0f0e8cd3c6c4ae1121a8372361db1d872926e514582ce9b5ab497a1f23d4b9df;
 				INFOPLIST_FILE = "Example/Supporting Files/Example.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.SalemoveSDK-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -359,7 +266,6 @@
 		};
 		391BB4841FBD944500D798E4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE29F15F7116DA4D0EA4E68F /* Pods-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Example/Example.entitlements;
@@ -372,7 +278,10 @@
 				FABRIC_BUILD_SECRET = 0f0e8cd3c6c4ae1121a8372361db1d872926e514582ce9b5ab497a1f23d4b9df;
 				INFOPLIST_FILE = "Example/Supporting Files/Example.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.SalemoveSDK-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -487,7 +396,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
