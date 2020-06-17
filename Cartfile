@@ -8,8 +8,7 @@ github "ReactiveCocoa/ReactiveSwift" "6.2.1"
 github "ReactiveX/RxSwift" "5.1.0"
 
 # Main Dependencies required by SalemoveSDK
-github "SwiftyBeaver/SwiftyBeaver" == 1.9.1
-github "matthewpalmer/Locksmith" == 4.0.0
+binary "https://raw.githubusercontent.com/twilio/twilio-voice-ios/Releases/twilio-voice-ios.json" == 5.3.1
 github "Moya/Moya" == 14.0.0
 github "Hearst-DD/ObjectMapper" == 3.5.2
 github "davidstump/SwiftPhoenixClient" == 1.2.1

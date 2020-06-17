@@ -2,7 +2,6 @@ PODS:
   - Alamofire (5.1.0)
   - glia-webrtc/bitcode (0.0.3)
   - ios-socket-client (9.1.0)
-  - Locksmith (4.0.0)
   - Macaw (0.9.6):
     - SWXMLHash
   - Moya (14.0.0):
@@ -13,21 +12,20 @@ PODS:
   - ReactiveCocoa (10.1.0):
     - ReactiveSwift (~> 6.1)
   - ReactiveSwift (6.2.1)
-  - SalemoveSDK (0.19.0):
+  - SalemoveSDK (0.21.0):
     - glia-webrtc/bitcode (= 0.0.3)
     - ios-socket-client (= 9.1.0)
-    - Locksmith (= 4.0.0)
     - Macaw (= 0.9.6)
     - Moya (= 14.0.0)
     - ObjectMapper (= 3.5.2)
     - ReactiveSwift (= 6.2.1)
     - SwiftPhoenixClient (= 1.2.1)
-    - SwiftyBeaver (= 1.9.1)
+    - TwilioVoice (= 5.3.1)
   - Starscream (3.1.1)
   - SwiftPhoenixClient (1.2.1):
     - Starscream (~> 3.1.0)
-  - SwiftyBeaver (1.9.1)
   - SWXMLHash (5.0.1)
+  - TwilioVoice (5.3.1)
 
 DEPENDENCIES:
   - ReactiveCocoa (= 10.1.0)
@@ -38,7 +36,6 @@ SPEC REPOS:
     - Alamofire
     - glia-webrtc
     - ios-socket-client
-    - Locksmith
     - Macaw
     - Moya
     - ObjectMapper
@@ -46,8 +43,8 @@ SPEC REPOS:
     - ReactiveSwift
     - Starscream
     - SwiftPhoenixClient
-    - SwiftyBeaver
     - SWXMLHash
+    - TwilioVoice
 
 EXTERNAL SOURCES:
   SalemoveSDK:
@@ -57,17 +54,16 @@ SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   glia-webrtc: a5c7e59ae752281d19734b4f918db9da39e8009d
   ios-socket-client: 52860f6a2a49d3b526a9fed6e3ed0b26b0735f4c
-  Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
   Macaw: 8306d775625ba003beee4186b9533fd7cf284024
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   ObjectMapper: b53ae947d370bf89423e86be7d4e2d2b2a8d3f40
   ReactiveCocoa: 2f1d942d79072eded6d8c3bc7c2a641d40855a56
   ReactiveSwift: 07ddf579f4eb3ee3bd656214f0461aaf2c0fd639
-  SalemoveSDK: 09690145e6d4683c1ecf9b254e3871020000f18c
+  SalemoveSDK: 367cead59e51c359f9bb72170365ea1753c3112a
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftPhoenixClient: 259aba446df6329d6bf9ac794dccb8228eedf19c
-  SwiftyBeaver: a1f5691458561414bcfab51874b2b7445451602b
   SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
+  TwilioVoice: 524743a779dfbd4b93ebd15cb0aba9fe678a2beb
 
 PODFILE CHECKSUM: f1be2e5a405a4c812e71ae33c9282a63ddee89f5
 

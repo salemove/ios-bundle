@@ -1,5 +1,19 @@
 # Change Log
 
+## [0.21.0] - 2020-06-16
+
+### Changed
+
+- Remove SwiftyBeaver from dependencies
+- Remove Locksmith from dependencies
+- Remove iOS 10 from supported platforms
+- Add TwilioVoice to dependencies
+- Add operator picture and media information
+- Add support for operator phone and SIP audio
+- Add more control over the log levels
+
+[0.21.0]: https://github.com/salemove/ios-bundle/compare/0.20.0...0.21.0
+
 ## [0.20.0] - 2020-05-06
 
 ### Changed
