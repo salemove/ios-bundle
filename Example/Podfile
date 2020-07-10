@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-project 'Example.xcodeproj'
+project 'ExampleApp.xcodeproj'
 platform :ios, '10.0'
 
 # ignore all warnings from all pods
@@ -7,24 +7,11 @@ inhibit_all_warnings!
 
 use_frameworks!
 
-def ui_pods
-    pod 'ReactiveCocoa', '10.1.0'
-end
+target 'ExampleApp' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
 
-def dependency_pods
-    pod 'SalemoveSDK', :path => '../'
-end
-
-target 'Example' do
-    dependency_pods
-    ui_pods
-end
-
-post_install do |installer|
-    installer.pods_project.targets.each do |target|
-
-        target.build_configurations.each do |config|
-            config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
-        end
-    end
+  # Pods for ExampleApp
+  pod 'SalemoveSDK', :git => 'https://github.com/salemove/ios-bundle', :tag => '0.21.0'
+  pod 'SwiftyBeaver', '1.8.4'
 end
