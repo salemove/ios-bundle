@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>environments</key>
+	<array>
+		<dict>
+			<key>baseURL</key>
+			<string>BASE_URL</string>
+			<key>description</key>
+			<string>Environment 1</string>
+		</dict>
+	</array>
+	<key>sites</key>
+	<array>
+		<dict>
+			<key>appToken</key>
+			<string>APP_TOKEN</string>
+			<key>apiToken</key>
+			<string>API_TOKEN</string>
+			<key>siteID</key>
+			<string>SITE_ID</string>
+			<key>description</key>
+			<string>Site 1</string>
+		</dict>
+	</array>
+</dict>
+</plist>
