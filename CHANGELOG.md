@@ -1,5 +1,14 @@
 # Change Log
 
+## [0.21.1] - 2020-07-10
+
+### Changed
+
+- Fixed the Log class access modifier 
+- Fixed Keychain problem when using real devices
+
+[0.21.1]: https://github.com/salemove/ios-bundle/compare/0.21.0...0.21.1
+
 ## [0.21.0] - 2020-06-16
 
 ### Changed
