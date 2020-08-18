@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TLQ-Yk-hgx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TLQ-Yk-hgx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,67 +18,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBG-VX-de6">
-                                <rect key="frame" x="20" y="798" width="374" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="ABg-S7-TZe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Engage"/>
-                                <connections>
-                                    <action selector="beginEngagement:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wvD-cv-SdF"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyb-uz-afN">
-                                <rect key="frame" x="40" y="425" width="334" height="46"/>
+                                <rect key="frame" x="40" y="425.5" width="334" height="45.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2f-EG-OzS">
-                                <rect key="frame" x="20" y="746" width="374" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="gmK-i7-75s"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Enqueue"/>
-                                <connections>
-                                    <segue destination="8fX-VM-r7O" kind="show" id="XdT-tB-mjB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29s-qe-KgG">
-                                <rect key="frame" x="20" y="694" width="374" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="GCm-Ti-hUD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Message"/>
-                                <connections>
-                                    <action selector="queueMessage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Jib-z3-TdE"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bh0-kc-zUf">
+                                <rect key="frame" x="20" y="644" width="374" height="198"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29s-qe-KgG">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="GCm-Ti-hUD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Message"/>
+                                        <connections>
+                                            <action selector="queueMessage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Jib-z3-TdE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2f-EG-OzS">
+                                        <rect key="frame" x="0.0" y="52" width="374" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="gmK-i7-75s"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Enqueue"/>
+                                        <connections>
+                                            <segue destination="8fX-VM-r7O" kind="show" id="XdT-tB-mjB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBG-VX-de6">
+                                        <rect key="frame" x="0.0" y="104" width="374" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="ABg-S7-TZe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Operators"/>
+                                        <connections>
+                                            <action selector="beginEngagement:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wvD-cv-SdF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d58-D2-pPZ">
+                                        <rect key="frame" x="0.0" y="156" width="374" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Visitor Code"/>
+                                        <connections>
+                                            <action selector="showVisitorCode" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rlz-3Z-jmA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="X2f-EG-OzS" firstAttribute="leading" secondItem="cBG-VX-de6" secondAttribute="leading" id="1Vx-pB-xLp"/>
-                            <constraint firstItem="X2f-EG-OzS" firstAttribute="top" secondItem="29s-qe-KgG" secondAttribute="bottom" constant="8" id="CD7-gS-vvg"/>
-                            <constraint firstItem="cBG-VX-de6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Cs8-NJ-RM8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bh0-kc-zUf" secondAttribute="trailing" id="2bj-Fz-hYa"/>
                             <constraint firstItem="Dyb-uz-afN" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Hau-qM-RK2"/>
-                            <constraint firstAttribute="trailing" secondItem="29s-qe-KgG" secondAttribute="trailing" constant="20" id="I4y-dd-V3g"/>
-                            <constraint firstAttribute="trailing" secondItem="X2f-EG-OzS" secondAttribute="trailing" constant="20" id="Jlg-HQ-d9b"/>
                             <constraint firstItem="Dyb-uz-afN" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="LJl-HS-kgd"/>
-                            <constraint firstItem="cBG-VX-de6" firstAttribute="top" secondItem="X2f-EG-OzS" secondAttribute="bottom" constant="8" symbolic="YES" id="XHM-8H-c5k"/>
-                            <constraint firstItem="X2f-EG-OzS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="ajf-o2-hKq"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="cBG-VX-de6" secondAttribute="bottom" constant="20" id="brd-Lp-Efs"/>
-                            <constraint firstItem="29s-qe-KgG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="cWY-DH-Vqx"/>
-                            <constraint firstItem="X2f-EG-OzS" firstAttribute="trailing" secondItem="cBG-VX-de6" secondAttribute="trailing" id="dYX-KY-fTT"/>
-                            <constraint firstAttribute="trailing" secondItem="cBG-VX-de6" secondAttribute="trailing" constant="20" id="mNc-fd-xzs"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="bh0-kc-zUf" secondAttribute="bottom" constant="20" id="sHf-pv-jh0"/>
+                            <constraint firstItem="bh0-kc-zUf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="vL9-3U-Qaq"/>
                             <constraint firstItem="Dyb-uz-afN" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="vNJ-Rh-sJ5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hNf-CO-YbG">
                         <barButtonItem key="rightBarButtonItem" style="done" id="xXW-eq-x1A">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="a3h-B8-RcX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="a3h-B8-RcX">
                                 <rect key="frame" x="369" y="10" width="25" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -170,6 +175,7 @@
                             <outlet property="delegate" destination="8fX-VM-r7O" id="4Lu-Fn-RY8"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="sLF-wD-iX6"/>
                     <connections>
                         <outlet property="tableView" destination="rgE-L9-vhb" id="qor-eV-tc8"/>
                     </connections>

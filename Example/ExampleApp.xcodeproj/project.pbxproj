@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		314F053124DAA569006EAAAE /* EngagementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314F053024DAA569006EAAAE /* EngagementTableViewCell.swift */; };
+		314F053424DAA73F006EAAAE /* UIImageView+ImageDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314F053224DAA73F006EAAAE /* UIImageView+ImageDownload.swift */; };
+		314F053524DAA73F006EAAAE /* UIView+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314F053324DAA73F006EAAAE /* UIView+Identifier.swift */; };
+		317544B124E57AF40043A2C6 /* OperatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317544B024E57AF40043A2C6 /* OperatorsViewController.swift */; };
+		317544B324E57BB50043A2C6 /* Operators.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 317544B224E57BB50043A2C6 /* Operators.storyboard */; };
+		317544B524E5837C0043A2C6 /* OperatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317544B424E5837C0043A2C6 /* OperatorTableViewCell.swift */; };
 		C086009C243E7772005E0D11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086009B243E7772005E0D11 /* AppDelegate.swift */; };
 		C086009E243E7772005E0D11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086009D243E7772005E0D11 /* SceneDelegate.swift */; };
 		C08600A3243E7772005E0D11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08600A1243E7772005E0D11 /* Main.storyboard */; };
@@ -26,6 +32,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		314F053024DAA569006EAAAE /* EngagementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EngagementTableViewCell.swift; path = ../../../SalemoveSDK/TestingApp/CustomViews/EngagementTableViewCell.swift; sourceTree = "<group>"; };
+		314F053224DAA73F006EAAAE /* UIImageView+ImageDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+ImageDownload.swift"; path = "../../../SalemoveSDK/TestingApp/Extensions/UIImageView+ImageDownload.swift"; sourceTree = "<group>"; };
+		314F053324DAA73F006EAAAE /* UIView+Identifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Identifier.swift"; path = "../../../SalemoveSDK/TestingApp/Extensions/UIView+Identifier.swift"; sourceTree = "<group>"; };
+		317544B024E57AF40043A2C6 /* OperatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorsViewController.swift; sourceTree = "<group>"; };
+		317544B224E57BB50043A2C6 /* Operators.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Operators.storyboard; sourceTree = "<group>"; };
+		317544B424E5837C0043A2C6 /* OperatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTableViewCell.swift; sourceTree = "<group>"; };
 		C0860098243E7772005E0D11 /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C086009B243E7772005E0D11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C086009D243E7772005E0D11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +120,7 @@
 				C08600B1243E79E3005E0D11 /* Configuration.storyboard */,
 				C08600B2243E79E3005E0D11 /* Engagement.storyboard */,
 				C08600A1243E7772005E0D11 /* Main.storyboard */,
+				317544B224E57BB50043A2C6 /* Operators.storyboard */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -120,6 +133,7 @@
 				C08600B7243E7EBB005E0D11 /* EngagementViewController.swift */,
 				C08600B8243E7EBC005E0D11 /* MediaViewController.swift */,
 				C08600BB243E7EBC005E0D11 /* QueueTableViewController.swift */,
+				317544B024E57AF40043A2C6 /* OperatorsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -127,7 +141,9 @@
 		C08600C3243E82DE005E0D11 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				314F053024DAA569006EAAAE /* EngagementTableViewCell.swift */,
 				C08600C4243E82FA005E0D11 /* QueueTableViewCell.swift */,
+				317544B424E5837C0043A2C6 /* OperatorTableViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -137,6 +153,8 @@
 			children = (
 				C08600C8243E8350005E0D11 /* ConvenienceExtensions.swift */,
 				C08600C7243E8350005E0D11 /* StoryboardExtensions.swift */,
+				314F053224DAA73F006EAAAE /* UIImageView+ImageDownload.swift */,
+				314F053324DAA73F006EAAAE /* UIView+Identifier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -199,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				317544B324E57BB50043A2C6 /* Operators.storyboard in Resources */,
 				C08600A8243E7773005E0D11 /* LaunchScreen.storyboard in Resources */,
 				C08600A5243E7773005E0D11 /* Assets.xcassets in Resources */,
 				C08600B4243E79E3005E0D11 /* Engagement.storyboard in Resources */,
@@ -215,11 +234,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				317544B124E57AF40043A2C6 /* OperatorsViewController.swift in Sources */,
 				C08600BD243E7EBC005E0D11 /* MediaViewController.swift in Sources */,
 				C08600CA243E8350005E0D11 /* ConvenienceExtensions.swift in Sources */,
+				314F053124DAA569006EAAAE /* EngagementTableViewCell.swift in Sources */,
 				C086009C243E7772005E0D11 /* AppDelegate.swift in Sources */,
+				314F053424DAA73F006EAAAE /* UIImageView+ImageDownload.swift in Sources */,
 				C08600C5243E82FA005E0D11 /* QueueTableViewCell.swift in Sources */,
+				317544B524E5837C0043A2C6 /* OperatorTableViewCell.swift in Sources */,
 				C08600C9243E8350005E0D11 /* StoryboardExtensions.swift in Sources */,
+				314F053524DAA73F006EAAAE /* UIView+Identifier.swift in Sources */,
 				C08600BE243E7EBC005E0D11 /* DemoViewController.swift in Sources */,
 				C08600BF243E7EBC005E0D11 /* ConfigurationViewController.swift in Sources */,
 				C08600C0243E7EBC005E0D11 /* QueueTableViewController.swift in Sources */,
@@ -380,7 +404,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.SalemoveSDK-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = com.glia.sdk.ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -399,7 +423,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.SalemoveSDK-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = com.glia.sdk.ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

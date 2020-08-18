@@ -1,5 +1,4 @@
 import Foundation
-import SwiftyBeaver
 import SalemoveSDK
 
 enum ChatType {
@@ -12,9 +11,14 @@ class EngagementNavigationController: UINavigationController {
 }
 
 class EngagementStatusViewController: UIViewController {
-    class func initStoryboardInstance() -> EngagementStatusViewController {
-        return UIStoryboard.engagement.instantiateViewController(withIdentifier: "EngagementStatusViewController")
-            as! EngagementStatusViewController
+    class func initStoryboardInstance() -> EngagementStatusViewController? {
+        if let controller = UIStoryboard.engagement.instantiateViewController(
+            withIdentifier: "EngagementStatusViewController"
+            ) as? EngagementStatusViewController {
+            return controller
+        } else {
+            return nil
+        }
     }
 
     var engagementNavigationController: EngagementNavigationController?
@@ -85,6 +89,15 @@ class EngagementStatusViewController: UIViewController {
             }
         }
     }
+
+    @IBAction func toggleAudio(_ sender: Any) {
+        self.mediaViewController?.toggleAudio()
+    }
+
+    @IBAction func toggleVideo(_ sender: Any) {
+        self.mediaViewController?.toggleVideo()
+    }
+
     @IBAction func cancelScreenRecording(_ sender: Any) {
         visitorScreenSharing?.localScreen?.stopSharing()
         localScreenButton.isHidden = true
@@ -151,7 +164,7 @@ extension EngagementStatusViewController: Interactable {
 
             let completion: SuccessBlock = { success, error in
                 if let reason = error?.reason {
-                    SwiftyBeaver.error(reason)
+                    print(reason)
                 }
             }
 
@@ -252,7 +265,7 @@ extension EngagementStatusViewController: Interactable {
                     if let reason = error?.reason {
                         self.showError(message: reason)
                     } else if let timeout = self.engagementRequest?.timeout {
-                        SwiftyBeaver.info("Processing engagement request within \(timeout) seconds")
+                        print("Processing engagement request within \(timeout) seconds")
                     }
                 }
             }
@@ -273,8 +286,14 @@ extension Selector {
 }
 
 class EngagementViewController: UIViewController {
-    class var storyboardInstance: EngagementViewController {
-        return UIStoryboard.engagement.instantiateViewController(withIdentifier: "EngagementViewController") as! EngagementViewController
+    class var storyboardInstance: EngagementViewController? {
+        if let controller = UIStoryboard.engagement.instantiateViewController(
+            withIdentifier: "EngagementViewController"
+            ) as? EngagementViewController {
+            return controller
+        } else {
+            return nil
+        }
     }
 
     @IBOutlet weak var statusLabel: UILabel!
@@ -283,6 +302,7 @@ class EngagementViewController: UIViewController {
 
     @IBOutlet weak var endButton: UIButton!
     var chatType: ChatType = .unidentified
+    var engagedOperator: Operator?
 
     // MARK: System
 
@@ -310,8 +330,11 @@ class EngagementViewController: UIViewController {
     // MARK: Public Methods
 
     func update(with message: Message) {
-        // Update the message that is coming from the client library and show them to to the user
+        Salemove.sharedInstance.requestEngagedOperator { [weak self] engagedOperator, _ in
+            self?.engagedOperator = engagedOperator?.first
+        }
 
+        // Update the message that is coming from the client library and show them to to the user
         let isDuplicate = !messages.filter({ $0.id == message.id }).isEmpty
 
         if !isDuplicate {
@@ -403,14 +426,43 @@ extension EngagementViewController: UITableViewDelegate {
 
 extension EngagementViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let identifier = EngagementTableViewCell.identifier
+        let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+
+        guard let cell = dequeuedCell as? EngagementTableViewCell else { return UITableViewCell() }
+
         let message = messages[indexPath.row]
-        let messageText = String(describing: message.sender).capitalized + ": " + message.content
-        let cell = UITableViewCell()
-        cell.textLabel?.text = messageText
+        cell.senderLabel.text = messageSender(using: message)
+        cell.contentLabel.text = message.content
+
+        if message.sender == .operator,
+            let stringUrl = self.engagedOperator?.picture?.url,
+            let url = URL(string: stringUrl) {
+            cell.pictureImageView.setImage(using: url)
+        } else {
+            cell.pictureImageView.image = nil
+        }
+
         return cell
+    }
+
+    private func messageSender(using message: Message) -> String {
+        var sender = String(describing: message.sender)
+
+        if message.sender == .operator, let operatorName = self.engagedOperator?.name {
+            sender = operatorName
+        } else if message.sender == .visitor {
+            sender = "Me"
+        }
+
+        return sender.capitalized
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

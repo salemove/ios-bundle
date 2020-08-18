@@ -2,17 +2,16 @@ import Foundation
 import UIKit
 import ReactiveSwift
 import SalemoveSDK
-import SwiftyBeaver
 
 final class Configuration {
     static let sharedInstance: Configuration = Configuration()
 
     private var configurationFile: NSDictionary {
         guard let configurationFile = Bundle.main.path(forResource: "Configuration", ofType: "plist") else {
-            SwiftyBeaver.error("Configuration file not found")
+            print("Configuration file not found")
             return NSDictionary()
         }
-        SwiftyBeaver.info("Configuration file found")
+        print("Configuration file found")
         return NSDictionary(contentsOfFile: configurationFile)!
     }
 
@@ -39,7 +38,7 @@ final class Configuration {
                     try Salemove.sharedInstance.configure(appToken: newValue)
                     UserDefaults.standard.set(newValue, forKey: "appToken")
                 } catch let error {
-                    SwiftyBeaver.error(error.localizedDescription)
+                    print(error.localizedDescription)
                 }
             }
         }
@@ -58,7 +57,7 @@ final class Configuration {
                     try Salemove.sharedInstance.configure(apiToken: newValue)
                     UserDefaults.standard.set(newValue, forKey: "apiToken")
                 } catch let error {
-                    SwiftyBeaver.error(error.localizedDescription)
+                    print(error.localizedDescription)
                 }
             }
         }
@@ -77,7 +76,7 @@ final class Configuration {
                     try Salemove.sharedInstance.configure(environment: newValue)
                     UserDefaults.standard.set(newValue, forKey: "baseURL")
                 } catch let error {
-                    SwiftyBeaver.error(error.localizedDescription)
+                    print(error.localizedDescription)
                 }
             }
         }
@@ -97,7 +96,7 @@ final class Configuration {
                     try Salemove.sharedInstance.configure(site: newValue)
                     UserDefaults.standard.set(newValue, forKey: "siteID")
                 } catch let error {
-                     SwiftyBeaver.error(error.localizedDescription)
+                     print(error.localizedDescription)
                 }
             }
         }
@@ -108,7 +107,7 @@ final class Configuration {
     }
 
     func initialize() {
-        SwiftyBeaver.info("initialize sdk")
+        print("initialize sdk")
         try? Salemove.sharedInstance.configure(environment: selectedEnvironment)
         try? Salemove.sharedInstance.configure(site: selectedSiteID)
         try? Salemove.sharedInstance.configure(apiToken: selectedApiToken)

@@ -1,5 +1,20 @@
 # Change Log
 
+## [Unreleased]
+
+[Unreleased]: https://github.com/salemove/ios-sdk/compare/0.22.0...HEAD
+
+
+## [0.22.0] - 2020-08-18
+
+### Changed
+
+- Added support for requesting engaged operator information
+- Internal optimizations
+
+[0.22.0]: https://github.com/salemove/ios-bundle/compare/0.21.1...0.22.0
+
+
 ## [0.21.1] - 2020-07-10
 
 ### Changed

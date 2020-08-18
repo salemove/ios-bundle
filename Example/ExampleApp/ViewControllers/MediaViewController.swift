@@ -33,16 +33,16 @@ class MediaViewController: UIViewController {
     func handleVideoStream(stream: VideoStreamable) {
         if stream.isRemote {
             remoteVideoStream = stream
-            let view = remoteVideoStream!.getStreamView()
+            let view = stream.getStreamView()
             remoteMediaStack.insertArrangedSubview(view, at: 0)
-            remoteVideoStream!.playVideo()
+            stream.playVideo()
 
             remoteVideoView = view
         } else {
             localVideoStream = stream
-            let view = localVideoStream!.getStreamView()
+            let view = stream.getStreamView()
             localMediaStack.insertArrangedSubview(view, at: 0)
-            localVideoStream!.playVideo()
+            stream.playVideo()
 
             localVideoView = view
         }
@@ -147,6 +147,24 @@ class MediaViewController: UIViewController {
         controller.addAction(cancel)
 
         present(controller, animated: true, completion: nil)
+    }
+
+    /// Toggles Audio On or Off on currently estabilished audio stream
+    func toggleAudio() {
+        guard let audioStream = localAudioStream else {
+            debugPrint("No audio stream, can not toggle audio")
+            return
+        }
+        audioStream.isMuted ? audioStream.unmute() : audioStream.mute()
+    }
+
+    /// Toggles Video On or Off on currently estabilished video stream
+    func toggleVideo() {
+        guard let videoStream = localVideoStream else {
+            debugPrint("No video stream, can not toggle video")
+            return
+        }
+        videoStream.isPaused ? videoStream.resume() : videoStream.pause()
     }
 
     func cleanUp() {

@@ -12,6 +12,5 @@ target 'ExampleApp' do
   use_frameworks!
 
   # Pods for ExampleApp
-  pod 'SalemoveSDK', :path => '../'
-  pod 'SwiftyBeaver', '1.8.4'
+  pod 'SalemoveSDK', :git => 'https://github.com/salemove/ios-bundle', :tag => '0.21.0'
 end

@@ -25,12 +25,16 @@ class DemoViewController: UIViewController {
 
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-            Salemove.sharedInstance.requestVisitorCode { code, error in
-                if let visitorCodeError = error {
-                    self.showError(message: visitorCodeError.reason)
-                } else if let code = code {
-                    self.handleVisitorCode(code: code)
-                }
+            requestVisitorCode()
+        }
+    }
+
+    private func requestVisitorCode() {
+        Salemove.sharedInstance.requestVisitorCode { code, error in
+            if let visitorCodeError = error {
+                self.showError(message: visitorCodeError.reason)
+            } else if let code = code {
+                self.handleVisitorCode(code: code)
             }
         }
     }
@@ -38,7 +42,10 @@ class DemoViewController: UIViewController {
     // MARK: Initialisation
 
     @IBAction func queueMessage(_ sender: Any) {
-        let interactor = EngagementStatusViewController.initStoryboardInstance()
+        guard let interactor = EngagementStatusViewController.initStoryboardInstance() else {
+            debugPrint("could not initialise storyboard for EngagementStatusViewController")
+            return
+        }
         interactor.chatType = .async
         Salemove.sharedInstance.configure(interactor: interactor)
 
@@ -69,24 +76,31 @@ class DemoViewController: UIViewController {
     }
 
     @IBAction func beginEngagement(_ sender: Any) {
-        Salemove.sharedInstance.requestOperators { operators, error in
-            if let operatorError = error {
-                self.showError(message: operatorError.reason)
-            } else if let operators = operators {
-                self.handleOperators(operators: operators)
-            }
+        guard let operators = OperatorsViewController.storyboardInstance else {
+            debugPrint("could not retrieve storyboard for OperatorsViewController")
+            return
         }
+
+        let navigationController = UINavigationController(rootViewController: operators)
+        present(navigationController, animated: true, completion: nil)
     }
 
     @IBAction func beginConfiguration(_ sender: Any) {
         let configuration = ConfigurationViewController.storyboardInstance
         present(configuration, animated: true, completion: nil)
     }
+
+    @IBAction func showVisitorCode() {
+        requestVisitorCode()
+    }
 }
 
 extension DemoViewController {
     fileprivate func handleVisitorCode(code: String) {
-        let interactor = EngagementStatusViewController.initStoryboardInstance()
+        guard let interactor = EngagementStatusViewController.initStoryboardInstance() else {
+            debugPrint("could not initialise storyboard for EngagementStatusViewController")
+            return
+        }
         interactor.chatType = .sync
         Salemove.sharedInstance.configure(interactor: interactor)
         statusViewController = interactor
@@ -105,24 +119,11 @@ extension DemoViewController {
         }
     }
 
-    fileprivate func handleOperators(operators: [Operator]) {
-        let interactor = EngagementStatusViewController.initStoryboardInstance()
-        interactor.chatType = .sync
-        Salemove.sharedInstance.configure(interactor: interactor)
-
-        statusViewController = interactor
-        statusViewController?.cleanUpBlock = { [unowned self] in
-            self.statusViewController?.dismiss(animated: true, completion: nil)
-            self.statusViewController = nil
-        }
-
-        self.present(interactor, animated: true) { [unowned self] in
-            self.statusViewController?.handleOperators(operators: operators)
-        }
-    }
-
     fileprivate func handleQueues(queues: [Queue], queueMessage: String? = nil, chatType: ChatType = .sync) {
-        let interactor = EngagementStatusViewController.initStoryboardInstance()
+        guard let interactor = EngagementStatusViewController.initStoryboardInstance() else {
+            debugPrint("could not initialise storyboard for EngagementStatusViewController")
+            return
+        }
         interactor.chatType = chatType
         Salemove.sharedInstance.configure(interactor: interactor)
 

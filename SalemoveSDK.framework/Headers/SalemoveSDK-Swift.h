@@ -951,153 +951,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request an Engagement with a selected Operator
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     selectedOperator: The Operator that will be selected
-///   </li>
-///   <li>
-///     visitorContext: The visitor context that should be displayed
-///   </li>
-///   <li>
-///     completion: A callback that will return the <code>EngagementRequest</code> or <code>SalemoveError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ContextError.invalidURL</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
-///     <code>EngagementError.operatorUnavailable</code>
-///   </li>
-/// </ul>
-- (void)requestEngagementWithSelectedOperator:(Operator * _Nonnull)selectedOperator visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
-/// Cancel an ongoing EngagementRequest
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     engagementRequest: The ongoing EngagementRequest to be canceled
-///   </li>
-///   <li>
-///     completion: A callback that will return the canceling result or <code>SalemoveError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-/// Request an Operator for an Engagement
-/// <ul>
-///   <li>
-///     parameter:
-///   </li>
-///   <li>
-///     completion: A callback that will return the ‘Operator’ list or <code>SalemoveError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-- (void)requestOperatorsWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
-/// End an Engagement
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     completion: A callback that will return the ending result or <code>SalemoveError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Change the site used by the client library
 /// <ul>
 ///   <li>
@@ -1346,6 +1199,185 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// </ul>
 ///
 - (void)unsubscribeFromUpdatesWithQueueCallbackId:(NSString * _Nonnull)queueCallbackId onError:(void (^ _Nonnull)(SalemoveError * _Nonnull))onError;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request an Engagement with a selected Operator
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     selectedOperator: The Operator that will be selected
+///   </li>
+///   <li>
+///     visitorContext: The visitor context that should be displayed
+///   </li>
+///   <li>
+///     completion: A callback that will return the <code>EngagementRequest</code> or <code>SalemoveError</code>
+///   </li>
+/// </ul>
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ContextError.invalidURL</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>EngagementError.operatorUnavailable</code>
+///   </li>
+/// </ul>
+- (void)requestEngagementWithSelectedOperator:(Operator * _Nonnull)selectedOperator visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
+/// Cancel an ongoing EngagementRequest
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     engagementRequest: The ongoing EngagementRequest to be canceled
+///   </li>
+///   <li>
+///     completion: A callback that will return the canceling result or <code>SalemoveError</code>
+///   </li>
+/// </ul>
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+/// Request an Operator for an Engagement
+/// <ul>
+///   <li>
+///     parameter:
+///   </li>
+///   <li>
+///     completion: A callback that will return the ‘Operator’ list or <code>SalemoveError</code>
+///   </li>
+/// </ul>
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+- (void)requestOperatorsWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
+/// Requests information of the Operator(s) that are currently engaged with the Visitor
+/// <ul>
+///   <li>
+///     parameter:
+///   </li>
+///   <li>
+///     completion: A callback that will return a list of all ‘Operator’s in engagement  or <code>SalemoveError</code>
+///   </li>
+/// </ul>
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+- (void)requestEngagedOperatorWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
+/// End an Engagement
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     completion: A callback that will return the ending result or <code>SalemoveError</code>
+///   </li>
+/// </ul>
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
 
 

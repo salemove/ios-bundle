@@ -7,6 +7,14 @@ class QueueTableViewController: UITableViewController, ClickCallback {
     private var statusViewController: EngagementStatusViewController?
     private var queueUpdatesCallbackId: String?
 
+    private var selectedQueueId: String? {
+        guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return nil }
+
+        let queue = queues[selectedIndexPath.row]
+
+        return queue.id
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         Salemove.sharedInstance.listQueues { [unowned self] queues, error in
@@ -103,9 +111,17 @@ class QueueTableViewController: UITableViewController, ClickCallback {
     }
 
     private func startEngagementStroryboard(with queueTicket: QueueTicket) {
-        let engagementController = EngagementStatusViewController.initStoryboardInstance()
-        engagementController.chatType = .async
+        guard let engagementController = EngagementStatusViewController.initStoryboardInstance() else {
+            debugPrint("could not initialise storyboard for EngagementStatusViewController")
+            return
+        }
+        engagementController.chatType = .sync
         engagementController.queueTicket = queueTicket
+
+        if let selectedQueueId = selectedQueueId {
+            Configuration.sharedInstance.selectedQueueID = selectedQueueId
+        }
+
         Salemove.sharedInstance.configure(interactor: engagementController)
         statusViewController = engagementController
 
