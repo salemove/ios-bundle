@@ -12,10 +12,8 @@ class DemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Salemove.sharedInstance.pushHandler = {
-            push in
-
-            // Do any additional refresh/updates when a user interacts with the notification
+        Salemove.sharedInstance.pushHandler = { [weak self] push in
+            self?.handlePushNotification(push)
         }
     }
 
@@ -37,6 +35,38 @@ class DemoViewController: UIViewController {
                 self.handleVisitorCode(code: code)
             }
         }
+    }
+
+    private func handlePushNotification(_ push: Push) {
+        switch push.type {
+        case .chatMessage:
+            presentEngagementScreenIfNeeded(using: push.actionIdentifier)
+        default: return
+        }
+    }
+
+    private func presentEngagementScreenIfNeeded(using actionIdentifier: String) {
+        // Engagement screen should be created here only when opening a push notification
+        // while the app has been force closed. This means that there is no currentInteractor
+        // to handle it and a new one needs to be created. If currentInteractor is not nil,
+        // then it is the one in charge of handling events, so we should not do anything.
+        guard Salemove.sharedInstance.currentInteractor == nil else { return }
+
+        guard let interactor = EngagementStatusViewController.initStoryboardInstance() else {
+            debugPrint("could not initialise storyboard for EngagementStatusViewController")
+            return
+        }
+        interactor.chatType = .sync
+        Salemove.sharedInstance.configure(interactor: interactor)
+
+        interactor.cleanUpBlock = { [weak self] in
+            guard let self = self else { return }
+
+            self.statusViewController?.dismiss(animated: true, completion: nil)
+            self.statusViewController = nil
+        }
+
+        self.present(interactor, animated: true)
     }
 
     // MARK: Initialisation

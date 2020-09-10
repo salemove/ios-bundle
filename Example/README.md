@@ -10,7 +10,7 @@ Find the Configuration.plist file in project tree and replace the placeholders w
 
 The values can be asked from Glia.
 
-[Documentation](https://developer.glia.com/api-usage-refs/ios-api)
+[Documentation](https://docs.glia.com/glia-dev/docs/visitor-ios-sdk)
 
 # App Usage Instructions
 

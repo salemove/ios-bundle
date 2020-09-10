@@ -830,6 +830,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
+
+
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Send a chat message
 /// <ul>
@@ -944,8 +946,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// </ul>
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
-
-
 
 
 
@@ -1439,6 +1439,10 @@ SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
 /// :nodoc:
 - (void)videoView:(id <RTCVideoRenderer> _Nonnull)videoView didChangeVideoSize:(CGSize)size;
 @end
+
+
+
+
 
 
 

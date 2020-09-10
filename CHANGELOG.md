@@ -1,13 +1,22 @@
 # Change Log
 
-## [Unreleased]
+## [0.23.0] - 2020-09-10
 
-[Unreleased]: https://github.com/salemove/ios-sdk/compare/0.22.0...HEAD
+### Changed
+
+- Added support building with XCode 12 for iOS14
+- Improved internal error logging
+
+### Fixed
+
+- Fixed handling push notifications when they are touched after app was force closed.
+
+[0.23.0]: https://github.com/salemove/ios-bundle/compare/0.22.0...0.23.0
 
 
 ## [0.22.0] - 2020-08-18
 
-### Changed
+
 
 - Added support for requesting engaged operator information
 - Internal optimizations
