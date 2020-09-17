@@ -2,5 +2,5 @@ source "https://rubygems.org"
 
 ruby '>= 2.5.0'
 
-gem 'bundler', '1.16.3'
-gem "cocoapods", '1.5.3'
+gem 'bundler', '2.1.4'
+gem "cocoapods", '1.10.0.rc.1'

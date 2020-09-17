@@ -402,8 +402,9 @@ extension EngagementViewController: UITextFieldDelegate {
             }
         }
 
-        Salemove.sharedInstance.sendMessagePreview(message: message,
-                                                   completion: completion)
+        if chatType != .async {
+            Salemove.sharedInstance.sendMessagePreview(message: message, completion: completion)
+        }
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -413,8 +414,9 @@ extension EngagementViewController: UITextFieldDelegate {
             }
         }
 
-        Salemove.sharedInstance.sendMessagePreview(message: "",
-                                                   completion: completion)
+        if chatType != .async {
+            Salemove.sharedInstance.sendMessagePreview(message: "", completion: completion)
+        }
     }
 }
 

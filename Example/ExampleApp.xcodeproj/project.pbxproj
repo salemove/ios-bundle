@@ -32,9 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		314F053024DAA569006EAAAE /* EngagementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EngagementTableViewCell.swift; path = ../../../SalemoveSDK/TestingApp/CustomViews/EngagementTableViewCell.swift; sourceTree = "<group>"; };
-		314F053224DAA73F006EAAAE /* UIImageView+ImageDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+ImageDownload.swift"; path = "../../../SalemoveSDK/TestingApp/Extensions/UIImageView+ImageDownload.swift"; sourceTree = "<group>"; };
-		314F053324DAA73F006EAAAE /* UIView+Identifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Identifier.swift"; path = "../../../SalemoveSDK/TestingApp/Extensions/UIView+Identifier.swift"; sourceTree = "<group>"; };
+		314F053024DAA569006EAAAE /* EngagementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngagementTableViewCell.swift; sourceTree = "<group>"; };
+		314F053224DAA73F006EAAAE /* UIImageView+ImageDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageDownload.swift"; sourceTree = "<group>"; };
+		314F053324DAA73F006EAAAE /* UIView+Identifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Identifier.swift"; sourceTree = "<group>"; };
 		317544B024E57AF40043A2C6 /* OperatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorsViewController.swift; sourceTree = "<group>"; };
 		317544B224E57BB50043A2C6 /* Operators.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Operators.storyboard; sourceTree = "<group>"; };
 		317544B424E5837C0043A2C6 /* OperatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTableViewCell.swift; sourceTree = "<group>"; };

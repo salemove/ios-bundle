@@ -1,5 +1,14 @@
 # Change Log
 
+## [0.24.0] - 2020-09-17
+
+### Fixed
+
+- Added support for building on Simulators using XCode 12
+- Attempting to send a message preview on an async chat type reports an error instead of silently failing
+
+[0.24.0]: https://github.com/salemove/ios-bundle/compare/0.23.0...0.24.0
+
 ## [0.23.0] - 2020-09-10
 
 ### Changed
