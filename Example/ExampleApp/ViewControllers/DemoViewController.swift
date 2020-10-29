@@ -12,9 +12,30 @@ class DemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initializeSDK()
+        Salemove.sharedInstance.configurePushNotifications([.start, .end, .message])
         Salemove.sharedInstance.pushHandler = { [weak self] push in
             self?.handlePushNotification(push)
         }
+    }
+
+    private func initializeSDK() {
+        do {
+            try Configuration.sharedInstance.initialize()
+        } catch {
+            showInitializationError()
+        }
+    }
+
+    private func showInitializationError() {
+        let alert = UIAlertController(
+            title: "Error",
+            message: "The SDK failed to initialize. Please make sure you have input correct values in Configuration.plist.",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        present(alert, animated: true, completion: nil)
     }
 
     override var canBecomeFirstResponder: Bool {
@@ -116,7 +137,8 @@ class DemoViewController: UIViewController {
     }
 
     @IBAction func beginConfiguration(_ sender: Any) {
-        let configuration = ConfigurationViewController.storyboardInstance
+        guard let configuration = ConfigurationViewController.storyboardInstance else { return }
+
         present(configuration, animated: true, completion: nil)
     }
 

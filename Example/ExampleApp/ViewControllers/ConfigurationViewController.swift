@@ -12,15 +12,16 @@ final class Configuration {
             return NSDictionary()
         }
         print("Configuration file found")
-        return NSDictionary(contentsOfFile: configurationFile)!
+
+        return NSDictionary(contentsOfFile: configurationFile) ?? NSDictionary()
     }
 
     var availableEnvironments: [[String: AnyObject]] {
-        return Configuration.sharedInstance.configurationFile["environments"] as! [[String: AnyObject]]
+        return Configuration.sharedInstance.configurationFile["environments"] as? [[String: AnyObject]] ?? []
     }
 
     var availableSites: [[String: AnyObject]] {
-        return Configuration.sharedInstance.configurationFile["sites"] as! [[String: AnyObject]]
+        return Configuration.sharedInstance.configurationFile["sites"] as? [[String: AnyObject]] ?? []
     }
 
     var selectedQueueID: String = "Undefined-Queue"
@@ -106,12 +107,12 @@ final class Configuration {
         return VisitorContext(type: .page, url: "https://www.salemoveinsurance.com")
     }
 
-    func initialize() {
+    func initialize() throws {
         print("initialize sdk")
-        try? Salemove.sharedInstance.configure(environment: selectedEnvironment)
-        try? Salemove.sharedInstance.configure(site: selectedSiteID)
-        try? Salemove.sharedInstance.configure(apiToken: selectedApiToken)
-        try? Salemove.sharedInstance.configure(appToken: selectedAppToken)
+        try Salemove.sharedInstance.configure(environment: selectedEnvironment)
+        try Salemove.sharedInstance.configure(site: selectedSiteID)
+        try Salemove.sharedInstance.configure(apiToken: selectedApiToken)
+        try Salemove.sharedInstance.configure(appToken: selectedAppToken)
 
         Salemove.sharedInstance.configureLogLevel(level: .debug)
     }
@@ -122,8 +123,8 @@ final class Configuration {
 }
 
 class ConfigurationViewController: UIViewController {
-    class var storyboardInstance: ConfigurationViewController {
-        return UIStoryboard.configuration.instantiateViewController(withIdentifier: "ConfigurationViewController") as! ConfigurationViewController
+    class var storyboardInstance: ConfigurationViewController? {
+        return UIStoryboard.configuration.instantiateViewController(withIdentifier: "ConfigurationViewController") as? ConfigurationViewController
     }
 
     @IBOutlet weak var siteLabel: UILabel!
@@ -149,7 +150,8 @@ class ConfigurationViewController: UIViewController {
         let controller = UIAlertController(title: "Environment", message: "Please choose", preferredStyle: .actionSheet)
 
         for env in Configuration.sharedInstance.availableEnvironments {
-            let environment = env["baseURL"] as! String
+            guard let environment = env["baseURL"] as? String else { continue }
+
             let action = UIAlertAction(title: env["description"] as? String, style: .default) { _ in
                 Configuration.sharedInstance.selectedEnvironment = environment
                 self.updateValues()
@@ -168,9 +170,10 @@ class ConfigurationViewController: UIViewController {
         let controller = UIAlertController(title: "Site", message: "Please choose", preferredStyle: .actionSheet)
 
         for site in Configuration.sharedInstance.availableSites {
-            let siteID = site["siteID"] as! String
-            let appToken = site["appToken"] as! String
-            let apiToken = site["apiToken"] as! String
+            guard let siteID = site["siteID"] as? String,
+                  let appToken = site["appToken"] as? String,
+                  let apiToken = site["apiToken"] as? String else { continue }
+
             let action = UIAlertAction(title: site["description"] as? String, style: .default) { _ in
                 Configuration.sharedInstance.selectedSiteID = siteID
                 Configuration.sharedInstance.selectedAppToken = appToken
@@ -195,14 +198,14 @@ class ConfigurationViewController: UIViewController {
 
     fileprivate func updateValues() {
         let sites = Configuration.sharedInstance.availableSites
-        if let site = sites.filter({ $0["siteID"] as! String == Salemove.sharedInstance.site }).first {
+        if let site = sites.filter({ $0["siteID"] as? String == Salemove.sharedInstance.site }).first {
             siteLabel.text = site["description"] as? String
         } else {
             siteLabel.text = Salemove.sharedInstance.site
         }
 
         let environemnts = Configuration.sharedInstance.availableEnvironments
-        if let environement = environemnts.filter({ $0["baseURL"] as! String == Salemove.sharedInstance.environment }).first {
+        if let environement = environemnts.filter({ $0["baseURL"] as? String == Salemove.sharedInstance.environment }).first {
             environmentLabel.text = environement["description"] as? String
         } else {
             environmentLabel.text = Salemove.sharedInstance.environment

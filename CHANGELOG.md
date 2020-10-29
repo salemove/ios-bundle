@@ -1,5 +1,14 @@
 # Change Log
 
+## [0.25.0] - 2020-10-29
+
+- Added support for selecting which push notification to enable
+- Removed third party dependency: ObjectMapper
+- Internal optimizations
+- Fixed screen sharing option showing as available on some simulators
+
+[0.25.0]: https://github.com/salemove/ios-sdk/compare/0.24.0...0.25.0
+
 ## [0.24.0] - 2020-09-17
 
 ### Fixed

@@ -1,7 +1,7 @@
 source 'https://github.com/salemove/glia-ios-podspecs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 project 'ExampleApp.xcodeproj'
-platform :ios, '10.0'
+platform :ios, '12.0'
 
 # ignore all warnings from all pods
 inhibit_all_warnings!
@@ -13,5 +13,5 @@ target 'ExampleApp' do
   use_frameworks!
 
   # Pods for ExampleApp
-  pod 'SalemoveSDK', :git => 'https://github.com/salemove/ios-bundle', :tag => "0.24.0"
+  pod 'SalemoveSDK', :git => 'https://github.com/salemove/ios-bundle', :tag => "0.25.0"
 end

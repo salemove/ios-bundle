@@ -1,6 +1,5 @@
 github "salemove/twilio-voice-ios" "156d0b32cebbc37f112ebe03cec410f217646ff4" #5.5.0.g
 github "Alamofire/Alamofire" "2777659076fda38bd4e487739ee331c7a65b5924"
-github "Hearst-DD/ObjectMapper" "8b69860cc62987a778d5e0bd7db50268ba9596d3"
 github "Moya/Moya" "b3e5a233e0d85fd4d69f561c80988590859c7dee"
 github "ReactiveCocoa/ReactiveSwift" "e27ccdbf4ec36f154b60b91a0d7e0110c4e882cb"
 github "ReactiveX/RxSwift" "002d325b0bdee94e7882e1114af5ff4fe1e96afa"

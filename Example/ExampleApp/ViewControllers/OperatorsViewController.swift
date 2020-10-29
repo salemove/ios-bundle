@@ -7,7 +7,7 @@ class OperatorsViewController: UIViewController {
 
     var engagementRequest: EngagementRequest?
     private var statusViewController: EngagementStatusViewController?
-    var operators: [Operator]? {
+    var operators: [Operator] = [] {
         didSet {
             configureNoActiveOperatorsLabel()
             tableView.refreshControl?.endRefreshing()
@@ -82,18 +82,13 @@ extension OperatorsViewController {
     private func showOperators(_ operators: [Operator]?, error: SalemoveError?) {
         if let operatorError = error {
             self.showError(message: operatorError.reason)
-            self.operators = nil
+            self.operators = []
         } else if let operators = operators {
             self.operators = operators
         }
     }
 
     private func configureNoActiveOperatorsLabel() {
-        guard let operators = operators else {
-            noActiveOperatorsLabel.isHidden = true
-            return
-        }
-
         noActiveOperatorsLabel.text = "No active operators"
         noActiveOperatorsLabel.isHidden = !operators.isEmpty
     }
@@ -109,14 +104,11 @@ extension OperatorsViewController {
 
 extension OperatorsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return operators?.count ?? 0
+        return operators.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let operators = operators else { return UITableViewCell() }
-
-        guard let availableMedia = operators[indexPath.row].availableMedia,
-            let picture = operators[indexPath.row].picture else { return UITableViewCell() }
+        guard let availableMedia = operators[indexPath.row].availableMedia else { return UITableViewCell() }
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "operatorTableViewCell", for: indexPath) as? OperatorTableViewCell else {
             debugPrint("could not create OperatorCell")
@@ -126,7 +118,9 @@ extension OperatorsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.labelName.text = operators[indexPath.row].name
         cell.labelAvailableMedia.text = mediaValues(availableMedia)
 
-        if let stringUrl = picture.url, let url = URL(string: stringUrl) {
+        if let picture = operators[indexPath.row].picture,
+           let stringUrl = picture.url,
+           let url = URL(string: stringUrl) {
             cell.imageOperator.setImage(using: url)
         }
 
@@ -135,8 +129,6 @@ extension OperatorsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
-        guard let operators = operators else { return }
 
         beginEngagement(selectedOperator: operators[indexPath.row])
     }

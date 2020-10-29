@@ -3,9 +3,10 @@ import SalemoveSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
-    let salemoveDelegate = SalemoveAppDelegate()
+    // swiftlint:disable weak_delegate
+    // We are just forwarding the same messages sent to the AppDelegate, so the warning is misleading.
+    var salemoveDelegate = SalemoveAppDelegate()
 }
 
 // MARK: Initialization
@@ -14,7 +15,6 @@ extension AppDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         salemoveDelegate.application(application, didFinishLaunchingWithOptions: launchOptions)
-        Configuration.sharedInstance.initialize()
         return true
     }
 }

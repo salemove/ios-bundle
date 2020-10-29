@@ -121,7 +121,6 @@ Pulled files are placed in *Carthage/checkouts* folder and *Carthage/build* file
 	* `$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework`
 	* `$(SRCROOT)/Carthage/Build/iOS/Moya.framework`
 	* `$(SRCROOT)/Carthage/Build/iOS/Macaw.framework`
-	* `$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework`
 	* `$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework`
 	* `$(SRCROOT)/Carthage/Build/iOS/SocketIO.framework`
 	* `$(SRCROOT)/Carthage/Build/iOS/Starscream.framework`
