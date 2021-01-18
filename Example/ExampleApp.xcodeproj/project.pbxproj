@@ -13,6 +13,10 @@
 		317544B124E57AF40043A2C6 /* OperatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317544B024E57AF40043A2C6 /* OperatorsViewController.swift */; };
 		317544B324E57BB50043A2C6 /* Operators.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 317544B224E57BB50043A2C6 /* Operators.storyboard */; };
 		317544B524E5837C0043A2C6 /* OperatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317544B424E5837C0043A2C6 /* OperatorTableViewCell.swift */; };
+		31A09C0325A8424A00FEBF07 /* OptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A09C0225A8424A00FEBF07 /* OptionButton.swift */; };
+		31A09C0625A8427E00FEBF07 /* EngagementStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A09C0525A8427E00FEBF07 /* EngagementStatusViewController.swift */; };
+		31E2935525828CEE0077A966 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2935425828CEE0077A966 /* Cache.swift */; };
+		31E2935925828DCF0077A966 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2935825828DCF0077A966 /* UIImage.swift */; };
 		C086009C243E7772005E0D11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086009B243E7772005E0D11 /* AppDelegate.swift */; };
 		C086009E243E7772005E0D11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086009D243E7772005E0D11 /* SceneDelegate.swift */; };
 		C08600A3243E7772005E0D11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08600A1243E7772005E0D11 /* Main.storyboard */; };
@@ -38,6 +42,10 @@
 		317544B024E57AF40043A2C6 /* OperatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorsViewController.swift; sourceTree = "<group>"; };
 		317544B224E57BB50043A2C6 /* Operators.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Operators.storyboard; sourceTree = "<group>"; };
 		317544B424E5837C0043A2C6 /* OperatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTableViewCell.swift; sourceTree = "<group>"; };
+		31A09C0225A8424A00FEBF07 /* OptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionButton.swift; sourceTree = "<group>"; };
+		31A09C0525A8427E00FEBF07 /* EngagementStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngagementStatusViewController.swift; sourceTree = "<group>"; };
+		31E2935425828CEE0077A966 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		31E2935825828DCF0077A966 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C0860098243E7772005E0D11 /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C086009B243E7772005E0D11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C086009D243E7772005E0D11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31E2935025828B750077A966 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				31E2935425828CEE0077A966 /* Cache.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		5FCBDCD144E3D92DFCF47FB4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +121,7 @@
 				C086009D243E7772005E0D11 /* SceneDelegate.swift */,
 				C08600A6243E7773005E0D11 /* LaunchScreen.storyboard */,
 				C08600A9243E7773005E0D11 /* Info.plist */,
+				31E2935025828B750077A966 /* Classes */,
 				C08600B0243E7948005E0D11 /* Assets */,
 				C08600C6243E8335005E0D11 /* Extensions */,
 				C08600C3243E82DE005E0D11 /* CustomViews */,
@@ -131,6 +148,7 @@
 				C08600BA243E7EBC005E0D11 /* ConfigurationViewController.swift */,
 				C08600B9243E7EBC005E0D11 /* DemoViewController.swift */,
 				C08600B7243E7EBB005E0D11 /* EngagementViewController.swift */,
+				31A09C0525A8427E00FEBF07 /* EngagementStatusViewController.swift */,
 				C08600B8243E7EBC005E0D11 /* MediaViewController.swift */,
 				C08600BB243E7EBC005E0D11 /* QueueTableViewController.swift */,
 				317544B024E57AF40043A2C6 /* OperatorsViewController.swift */,
@@ -144,6 +162,7 @@
 				314F053024DAA569006EAAAE /* EngagementTableViewCell.swift */,
 				C08600C4243E82FA005E0D11 /* QueueTableViewCell.swift */,
 				317544B424E5837C0043A2C6 /* OperatorTableViewCell.swift */,
+				31A09C0225A8424A00FEBF07 /* OptionButton.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -151,6 +170,7 @@
 		C08600C6243E8335005E0D11 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				31E2935825828DCF0077A966 /* UIImage.swift */,
 				C08600C8243E8350005E0D11 /* ConvenienceExtensions.swift */,
 				C08600C7243E8350005E0D11 /* StoryboardExtensions.swift */,
 				314F053224DAA73F006EAAAE /* UIImageView+ImageDownload.swift */,
@@ -236,10 +256,14 @@
 			files = (
 				317544B124E57AF40043A2C6 /* OperatorsViewController.swift in Sources */,
 				C08600BD243E7EBC005E0D11 /* MediaViewController.swift in Sources */,
+				31E2935525828CEE0077A966 /* Cache.swift in Sources */,
+				31A09C0625A8427E00FEBF07 /* EngagementStatusViewController.swift in Sources */,
 				C08600CA243E8350005E0D11 /* ConvenienceExtensions.swift in Sources */,
 				314F053124DAA569006EAAAE /* EngagementTableViewCell.swift in Sources */,
 				C086009C243E7772005E0D11 /* AppDelegate.swift in Sources */,
+				31E2935925828DCF0077A966 /* UIImage.swift in Sources */,
 				314F053424DAA73F006EAAAE /* UIImageView+ImageDownload.swift in Sources */,
+				31A09C0325A8424A00FEBF07 /* OptionButton.swift in Sources */,
 				C08600C5243E82FA005E0D11 /* QueueTableViewCell.swift in Sources */,
 				317544B524E5837C0043A2C6 /* OperatorTableViewCell.swift in Sources */,
 				C08600C9243E8350005E0D11 /* StoryboardExtensions.swift in Sources */,

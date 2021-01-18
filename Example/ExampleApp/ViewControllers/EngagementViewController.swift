@@ -1,5 +1,7 @@
 import Foundation
 import SalemoveSDK
+import MobileCoreServices
+import Kingfisher
 
 enum ChatType {
     case unidentified
@@ -8,276 +10,6 @@ enum ChatType {
 }
 
 class EngagementNavigationController: UINavigationController {
-}
-
-class EngagementStatusViewController: UIViewController {
-    class func initStoryboardInstance() -> EngagementStatusViewController? {
-        if let controller = UIStoryboard.engagement.instantiateViewController(
-            withIdentifier: "EngagementStatusViewController"
-            ) as? EngagementStatusViewController {
-            return controller
-        } else {
-            return nil
-        }
-    }
-
-    var engagementNavigationController: EngagementNavigationController?
-    var engagementViewController: EngagementViewController?
-    var mediaViewController: MediaViewController?
-
-    @IBOutlet weak var audioButton: UIButton!
-    @IBOutlet weak var videoButton: UIButton!
-    @IBOutlet weak var localScreenButton: UIButton!
-    @IBOutlet weak var mediaView: UIView!
-
-    var queueTicket: QueueTicket?
-    var engagementRequest: EngagementRequest?
-    var chatType: ChatType = .unidentified
-
-    var visitorScreenSharing: VisitorScreenSharingState?
-
-    var cleanUpBlock: (() -> Void)?
-
-    // MARK: System
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setUpChildControllers()
-        setUpInitialViews()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        checkActiveEngagement()
-    }
-
-    // MARK: Initialisation
-
-    fileprivate func setUpInitialViews() {
-        mediaView.isHidden = true
-        localScreenButton.isHidden = true
-    }
-
-    fileprivate func setUpChildControllers() {
-        engagementNavigationController = childInstance(class: EngagementNavigationController.self)
-        engagementViewController = engagementNavigationController?.childInstance(class: EngagementViewController.self)
-        mediaViewController = childInstance(class: MediaViewController.self)
-    }
-
-    // MARK: Public Methods
-    @IBAction func requestAudio(_ sender: Any) {
-        guard let offer = try? MediaUpgradeOffer(type: MediaType.audio, direction: MediaDirection.twoWay) else {
-            print("Failed to create media upgrade offer")
-            return
-        }
-        Salemove.sharedInstance.requestMediaUpgrade(offer: offer) { [unowned self] success, _ in
-            if success {
-                self.audioButton.setTitleColor(UIColor.green, for: .normal)
-            }
-        }
-    }
-
-    @IBAction func requestVideo(_ sender: Any) {
-        guard let offer = try? MediaUpgradeOffer(type: MediaType.video, direction: MediaDirection.twoWay) else {
-            print("Failed to create media upgrade offer")
-            return
-        }
-        Salemove.sharedInstance.requestMediaUpgrade(offer: offer) { [unowned self] success, _ in
-            if success {
-                self.videoButton.setTitleColor(UIColor.green, for: .normal)
-            }
-        }
-    }
-
-    @IBAction func toggleAudio(_ sender: Any) {
-        self.mediaViewController?.toggleAudio()
-    }
-
-    @IBAction func toggleVideo(_ sender: Any) {
-        self.mediaViewController?.toggleVideo()
-    }
-
-    @IBAction func cancelScreenRecording(_ sender: Any) {
-        visitorScreenSharing?.localScreen?.stopSharing()
-        localScreenButton.isHidden = true
-        visitorScreenSharing = nil
-    }
-
-    @IBAction func cancelEngagement() {
-        if let ticket = queueTicket {
-            cancelQueueing(ticket)
-        } else if let request = engagementRequest {
-            cancelEngagementRequest(request)
-        } else {
-            endEngagement()
-        }
-    }
-
-    func cancelQueueing(_ ticket: QueueTicket) {
-        Salemove.sharedInstance.cancel(queueTicket: ticket) { [unowned self] _, _ in
-            self.queueTicket = nil
-            self.cleanUp()
-        }
-    }
-
-    func cancelEngagementRequest(_ request: EngagementRequest) {
-        Salemove.sharedInstance.cancel(engagementRequest: request) { [unowned self] _, _ in
-            self.engagementRequest = nil
-            self.cleanUp()
-        }
-    }
-
-    func endEngagement() {
-        Salemove.sharedInstance.endEngagement { [unowned self] _, _ in
-            self.cleanUp()
-        }
-    }
-
-    // MARK: Private Methods
-
-    fileprivate func checkActiveEngagement() {
-        engagementViewController?.chatType = chatType
-    }
-
-    fileprivate func cleanUp() {
-        mediaViewController?.cleanUp()
-        cleanUpBlock?()
-    }
-}
-
-extension EngagementStatusViewController: Interactable {
-    var onScreenSharingOffer: ScreenshareOfferBlock {
-        return { answer in
-            answer(true)
-        }
-    }
-
-    var onMediaUpgradeOffer: MediaUgradeOfferBlock {
-        return { _, answer in
-            answer(true, nil)
-        }
-    }
-
-    var onEngagementRequest: RequestOfferBlock {
-        return { answer in
-
-            let completion: SuccessBlock = { success, error in
-                if let reason = error?.reason {
-                    print(reason)
-                }
-            }
-
-            let context = Configuration.sharedInstance.visitorContext
-            answer(context, true, completion)
-        }
-    }
-
-    var onOperatorTypingStatusUpdate: OperatorTypingStatusUpdate {
-        return { [unowned self] status in
-             self.engagementViewController?.updateOperatorTypingStatus(status: status)
-        }
-    }
-
-    var onVisitorScreenSharingStateChange: VisitorScreenSharingStateChange {
-        return { [unowned self] state, error in
-            if let error = error {
-                self.showError(message: error.reason)
-            } else {
-                DispatchQueue.main.async {
-                    self.visitorScreenSharing = state
-                    self.localScreenButton.setTitleColor(UIColor.red, for: .normal)
-                    self.localScreenButton.isHidden = false
-                }
-            }
-        }
-    }
-
-    var onAudioStreamAdded: AudioStreamAddedBlock {
-        return { [unowned self] stream, error in
-            if let stream = stream {
-                DispatchQueue.main.async {
-                    self.mediaView.isHidden = false
-                    self.mediaViewController?.handleAudioStream(stream: stream)
-                }
-            } else if let error = error {
-                self.showError(message: error.reason)
-            }
-        }
-    }
-
-    var onVideoStreamAdded: VideoStreamAddedBlock {
-        return { [unowned self] stream, error in
-            if let stream = stream {
-                DispatchQueue.main.async {
-                    self.mediaView.isHidden = false
-                    self.mediaViewController?.handleVideoStream(stream: stream)
-                }
-            } else if let error = error {
-                self.showError(message: error.reason)
-            }
-        }
-    }
-
-    var onMessagesUpdated: MessagesUpdateBlock {
-        return { [unowned self] messages in
-            DispatchQueue.main.async {
-                self.engagementViewController?.update(with: messages)
-            }
-        }
-    }
-
-    func start() {
-        // Remove any spinners or activity indicators and proceed with the flow
-        queueTicket = nil
-        engagementRequest = nil
-    }
-
-    func end() {
-        // Remove any active sessions and do a cleanup and maybe dismiss the controller
-        endEngagement()
-    }
-
-    func fail(error: SalemoveError) {
-        // Handle the failing Engagement request and maybe log the reason or show it to the user
-        showError(message: error.reason)
-    }
-
-    func receive(message: Message) {
-        engagementViewController?.update(with: message)
-    }
-
-    func handleOperators(operators: [Operator]) {
-        // Remove any spinners or activity indicators and proceed with the flow of selecting an Operator
-
-        let controller = UIAlertController(title: "Operators", message: "Please select", preferredStyle: .actionSheet)
-
-        for availableOperator in operators {
-            let action = UIAlertAction(title: availableOperator.name, style: .default) { _ in
-
-                let context = Configuration.sharedInstance.visitorContext
-
-                // Select an operator and pass it to the client library
-                Salemove.sharedInstance.requestEngagementWith(selectedOperator: availableOperator,
-                                                              visitorContext: context) { [unowned self] engagementRequest, error in
-                    self.engagementRequest = engagementRequest
-                    // Handle the error as you wish
-                    if let reason = error?.reason {
-                        self.showError(message: reason)
-                    } else if let timeout = self.engagementRequest?.timeout {
-                        print("Processing engagement request within \(timeout) seconds")
-                    }
-                }
-            }
-            controller.addAction(action)
-        }
-
-        controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [unowned self] _ in
-            self.cleanUpBlock?()
-        }))
-
-        engagementViewController?.present(controller, animated: true, completion: nil)
-    }
 }
 
 extension Selector {
@@ -303,6 +35,7 @@ class EngagementViewController: UIViewController {
     @IBOutlet weak var endButton: UIButton!
     var chatType: ChatType = .unidentified
     var engagedOperator: Operator?
+    var attachment: Attachment?
 
     // MARK: System
 
@@ -339,7 +72,10 @@ class EngagementViewController: UIViewController {
 
         if !isDuplicate {
             messages.append(message)
+        } else if let index = messages.firstIndex(where: { $0.id == message.id })?.advanced(by: 0) {
+            messages[index] = message
         }
+
         tableView.reloadData()
     }
 
@@ -376,7 +112,7 @@ class EngagementViewController: UIViewController {
                 if self.chatType == .async {
                     Salemove.sharedInstance.send(message: message, queueID: Configuration.sharedInstance.selectedQueueID, completion: completion)
                 } else if self.chatType == .sync {
-                    Salemove.sharedInstance.send(message: message, completion: completion)
+                    Salemove.sharedInstance.send(message: message, attachment: self.attachment, completion: completion)
                 }
             }
         }
@@ -429,23 +165,32 @@ extension EngagementViewController: UITableViewDelegate {
 extension EngagementViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = EngagementTableViewCell.identifier
-        let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-
-        guard let cell = dequeuedCell as? EngagementTableViewCell else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: identifier,
+            for: indexPath
+        ) as? EngagementTableViewCell
 
         let message = messages[indexPath.row]
-        cell.senderLabel.text = messageSender(using: message)
-        cell.contentLabel.text = message.content
+        cell?.senderLabel.text = messageSender(using: message)
+        cell?.contentLabel.text = message.content
 
         if message.sender == .operator,
             let stringUrl = self.engagedOperator?.picture?.url,
             let url = URL(string: stringUrl) {
-            cell.pictureImageView.setImage(using: url)
+            cell?.pictureImageView.kf.setImage(with: url)
         } else {
-            cell.pictureImageView.image = nil
+            cell?.pictureImageView.image = nil
         }
 
-        return cell
+        if let options = message.attachment?.options {
+            cell?.addAttachmentOptionButtons(options: options, for: message.id)
+        } else if let selectedOption = message.attachment?.selectedOption {
+            cell?.addAttachmentSelectedOption(selectedOption)
+        } else {
+            downloadFilesIfNeeded(in: message.attachment, using: cell, indexPath: indexPath)
+        }
+
+        return cell ?? UITableViewCell()
     }
 
     private func messageSender(using message: Message) -> String {
@@ -466,5 +211,48 @@ extension EngagementViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+extension EngagementViewController {
+    private func downloadFilesIfNeeded(in attachment: Attachment?, using cell: EngagementTableViewCell?, indexPath: IndexPath) {
+        guard attachment?.type == .files, let files = attachment?.files else { return }
+
+        for file in files {
+            guard let id = file.id else { return }
+
+            Cache.image(using: id) { [weak self] image in
+                if let image = image {
+                    let imageView = UIImageView()
+                    cell?.addAttachmentImageView(imageView)
+                    imageView.image = image
+                } else {
+                    self?.fetchFile(using: file, cell: cell)
+                }
+            }
+        }
+    }
+
+    private func fetchFile(using file: EngagementFile, cell: EngagementTableViewCell?) {
+        guard let id = file.id else { return }
+
+        Salemove.sharedInstance.fetchFile(id, progress: nil) { data, error in
+            guard error == nil, let data = data, let mimeType = file.contentType else {
+                print("Error download file with ID \(id)")
+                return
+            }
+
+            if mimeType.contains("image") {
+                guard let image = UIImage(data: data.data) else { return }
+
+                Cache.save(image, original: data.data, usingKey: id)
+                DispatchQueue.main.async { [weak self] in
+                    let imageView = UIImageView()
+                    cell?.addAttachmentImageView(imageView)
+                    imageView.image = image
+                    self?.tableView.reloadSections(IndexSet([0]), with: .none)
+                }
+            }
+        }
     }
 }
