@@ -1,5 +1,20 @@
 # Change Log
 
+## Unreleased
+
+Unreleased: https://github.com/salemove/ios-sdk/compare/0.25.0...master
+
+## [0.26.0] - 2021-01-18
+
+### Changed
+
+- Improved management of queue tickets.
+- Added support for sending and receiving files.
+- Added support for sending and receiving single choice messages.
+- Internal optimizations.
+
+[0.26.0]: https://github.com/salemove/ios-sdk/compare/0.25.0...0.26.0
+
 ## [0.25.0] - 2020-10-29
 
 - Added support for selecting which push notification to enable
