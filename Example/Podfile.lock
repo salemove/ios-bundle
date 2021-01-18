@@ -9,7 +9,7 @@ PODS:
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
   - ReactiveSwift (6.2.1)
-  - SalemoveSDK (0.25.0):
+  - SalemoveSDK (0.26.0):
     - glia-webrtc/bitcode (= 0.0.3)
     - ios-socket-client (= 9.1.0)
     - Macaw (= 0.9.7)
