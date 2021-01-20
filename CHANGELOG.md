@@ -4,6 +4,14 @@
 
 Unreleased: https://github.com/salemove/ios-sdk/compare/0.25.0...master
 
+## [0.26.1] - 2021-01-19
+
+### Changed
+
+- Support for Xcode version 12.3.
+
+[0.26.0]: https://github.com/salemove/ios-sdk/compare/0.25.0...0.26.0
+
 ## [0.26.0] - 2021-01-18
 
 ### Changed
