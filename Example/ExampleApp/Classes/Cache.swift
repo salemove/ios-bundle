@@ -1,5 +1,4 @@
 import Kingfisher
-import UIKit
 
 /// A wrapper for Kingfisher's cache. As we aren't using Kingfisher's default functionality (loading the image URL directly and setting
 /// the cache's key as the absoluteURL), then we manually cache and retrieve the files by using its ID.
