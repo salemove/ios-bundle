@@ -4,13 +4,22 @@
 
 Unreleased: https://github.com/salemove/ios-sdk/compare/0.25.0...master
 
+## [0.27.0] - 2021-02-23
+
+### Changed
+
+- Support for Swift Package Manager.
+- Cocoapods now delivers an XCFramework instead of a Framework
+
+[0.27.0]: https://github.com/salemove/ios-sdk/compare/0.26.1...0.27.0
+
 ## [0.26.1] - 2021-01-19
 
 ### Changed
 
 - Support for Xcode version 12.3.
 
-[0.26.0]: https://github.com/salemove/ios-sdk/compare/0.25.0...0.26.0
+[0.26.0]: https://github.com/salemove/ios-sdk/compare/0.26.0...0.26.1
 
 ## [0.26.0] - 2021-01-18
 
@@ -24,6 +33,8 @@ Unreleased: https://github.com/salemove/ios-sdk/compare/0.25.0...master
 [0.26.0]: https://github.com/salemove/ios-sdk/compare/0.25.0...0.26.0
 
 ## [0.25.0] - 2020-10-29
+
+### Changed
 
 - Added support for selecting which push notification to enable
 - Removed third party dependency: ObjectMapper
@@ -57,7 +68,7 @@ Unreleased: https://github.com/salemove/ios-sdk/compare/0.25.0...master
 
 ## [0.22.0] - 2020-08-18
 
-
+### Changed
 
 - Added support for requesting engaged operator information
 - Internal optimizations
