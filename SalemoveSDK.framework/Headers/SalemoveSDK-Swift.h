@@ -1653,9 +1653,9 @@ typedef SWIFT_ENUM(NSInteger, ScreenSharingStatus, closed) {
 /// Option for single choice messages.
 SWIFT_CLASS("_TtC11SalemoveSDK18SingleChoiceOption")
 @interface SingleChoiceOption : NSObject
-/// Text of the option.
+/// Text displayed to the user as a choice label.
 @property (nonatomic, copy) NSString * _Nullable text;
-/// Value of the option.
+/// Value of the choice sent as a response on user interaction.
 @property (nonatomic, copy) NSString * _Nullable value;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
