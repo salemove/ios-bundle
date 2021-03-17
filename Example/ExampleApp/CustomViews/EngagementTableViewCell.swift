@@ -1,5 +1,6 @@
 import UIKit
 import SalemoveSDK
+import Kingfisher
 
 final class EngagementTableViewCell: UITableViewCell {
     @IBOutlet weak var pictureImageView: UIImageView!
@@ -30,6 +31,16 @@ final class EngagementTableViewCell: UITableViewCell {
         label.textColor = .lightGray
 
         attachmentContainerStackView.addArrangedSubview(label)
+    }
+
+    func addAttachmentImage(_ imageLink: String) {
+        attachmentContainerStackView.alignment = .leading
+
+        let url = URL(string: imageLink)
+        let image = UIImageView()
+        image.kf.setImage(with: url)
+
+        addAttachmentImageView(image)
     }
 
     func addAttachmentOptionButtons(options: [SingleChoiceOption], for messageId: String) {

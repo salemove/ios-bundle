@@ -182,6 +182,10 @@ extension EngagementViewController: UITableViewDataSource {
             cell?.pictureImageView.image = nil
         }
 
+        if let imageLink = message.attachment?.imageUrl {
+            cell?.addAttachmentImage(imageLink)
+        }
+
         if let options = message.attachment?.options {
             cell?.addAttachmentOptionButtons(options: options, for: message.id)
         } else if let selectedOption = message.attachment?.selectedOption {
