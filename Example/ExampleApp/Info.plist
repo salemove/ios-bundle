@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.28.0</string>
+	<string>0.29.0</string>
 	<key>CFBundleVersion</key>
 	<string>76</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -62,6 +62,8 @@
 	</array>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app needs microphone for audio/video calls</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs camera for audio/video calls</string>
 </dict>

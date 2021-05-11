@@ -264,6 +264,12 @@ extension EngagementStatusViewController: Interactable {
         }
     }
 
+    var onEngagementTransfer: EngagementTransferBlock {
+        return { _ in
+            print("Transfer completed")
+        }
+    }
+
     var onOperatorTypingStatusUpdate: OperatorTypingStatusUpdate {
         return { [unowned self] status in
              self.engagementViewController?.updateOperatorTypingStatus(status: status)

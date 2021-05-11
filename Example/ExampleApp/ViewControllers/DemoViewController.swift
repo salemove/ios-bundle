@@ -13,7 +13,6 @@ class DemoViewController: UIViewController {
         super.viewDidLoad()
 
         initializeSDK()
-        Salemove.sharedInstance.configurePushNotifications([.start, .end, .message])
         Salemove.sharedInstance.pushHandler = { [weak self] push in
             self?.handlePushNotification(push)
         }

@@ -14,12 +14,12 @@ The values can be asked from Glia.
 
 # App Usage Instructions
 
-* Ensure Operator page is open (in your computer browser)
+* Ensure Operator page is open (in your computer browser).
 
 ## Select Environment and Site
 * Open the configuration screen by clicking on the icon at the top right corner.
-* Select Environment by clicking on blue Change button/link under Environments
-* Select Site by clicking on blue Change button/link under Sites
+* Select Environment by clicking on blue Change button/link under Environments.
+* Select Site by clicking on blue Change button/link under Sites.
 * Click on the Apply button/link at the bottom of the screen.
 
 ## Messaging to queue
@@ -58,8 +58,8 @@ The values can be asked from Glia.
 # Integration of SalemoveSDK using Carthage
 
 ### Integration was validated with 
-* XCode 11.6 (`/usr/bin/xcodebuild -version`)
-* Swift 5.2.4 (`xcrun swift -version`)
+* XCode 12.4 (`/usr/bin/xcodebuild -version`)
+* Swift 5.4 (`xcrun swift -version`)
 * Carthage 0.34.0 (`carthage version`)
 
 ### Integration steps
@@ -67,7 +67,7 @@ The values can be asked from Glia.
 #### 1) Ensure that SalemoveSDK dependency in your Cartfile specifies version tag
 This way you always get the Released state of the SDK
 
-* Example: `github "Salemove/ios-bundle" "0.21.1"`
+* Example: `github "Salemove/ios-bundle" "0.29.0"`
 
 #### 2) Get and build dependencies
 Run `carthage update --platform iOS` to get latest dependencies

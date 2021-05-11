@@ -2,13 +2,22 @@
 
 ## Unreleased
 
-Unreleased: https://github.com/salemove/ios-sdk/compare/0.28.0...master
+Unreleased: https://github.com/salemove/ios-sdk/compare/0.29.0...master
+
+## [0.29.0] - 2021-05-11
+
+### Fixed
+
+- Fixes SDK initialization deleting all keys in the keychain.
+- Fixes issue with screen sharing not initializing properly.
+
+[0.29.0]: https://github.com/salemove/ios-sdk/compare/0.28.0...0.29.0
 
 ## [0.28.0] - 2021-03-16
 
 ### Changed
 
-- Added response card image URL support
+- Added response card image URL support.
 
 [0.28.0]: https://github.com/salemove/ios-sdk/compare/0.27.0...0.28.0
 
@@ -17,7 +26,7 @@ Unreleased: https://github.com/salemove/ios-sdk/compare/0.28.0...master
 ### Changed
 
 - Support for Swift Package Manager.
-- Cocoapods now delivers an XCFramework instead of a Framework
+- Cocoapods now delivers an XCFramework instead of a Framework.
 
 [0.27.0]: https://github.com/salemove/ios-sdk/compare/0.26.1...0.27.0
 
