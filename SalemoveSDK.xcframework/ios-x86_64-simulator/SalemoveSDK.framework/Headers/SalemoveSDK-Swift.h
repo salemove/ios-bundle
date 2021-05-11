@@ -192,6 +192,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import Foundation;
 @import ObjectiveC;
 @import UIKit;
+@import UserNotifications;
 @import WebRTC;
 #endif
 
@@ -339,6 +340,7 @@ SWIFT_CLASS("_TtC11SalemoveSDK22EngagementFileProgress")
 
 @class VisitorContext;
 @class SalemoveError;
+@class Operator;
 
 /// Basic for interacting with the Engagement
 SWIFT_PROTOCOL("_TtP11SalemoveSDK18EngagementHandling_")
@@ -376,6 +378,8 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK18EngagementHandling_")
 ///   </li>
 /// </ul>
 @property (nonatomic, readonly, copy) void (^ _Nonnull onEngagementRequest)(void (^ _Nonnull)(VisitorContext * _Nonnull, BOOL, void (^ _Nonnull)(BOOL, SalemoveError * _Nullable)));
+/// Called after an engagement has been transferred successfully to another operator.
+@property (nonatomic, readonly, copy) void (^ _Nonnull onEngagementTransfer)(NSArray<Operator *> * _Nullable);
 @end
 
 
@@ -673,6 +677,42 @@ SWIFT_CLASS("_TtC11SalemoveSDK4Push")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class UNUserNotificationCenter;
+@class UNNotification;
+@class UNNotificationResponse;
+
+/// The protocol to be used to notify the SDK about push notifications.
+SWIFT_PROTOCOL("_TtP11SalemoveSDK24PushNotificationHandling_")
+@protocol PushNotificationHandling
+/// Call this method when <code>userNotificationCenter:willPresent:withCompletionHandler:</code> is called
+/// from <code>UNUserNotificationCenterDelegate</code>.
+/// Send all parameters that you receive in the delegate method as they are, without modifying them. By default, the completion
+/// handler will not be called by the SDK, which means that iOS will not present a notification banner. If you wish to do so,
+/// call the completion handler manually after calling this method.
+/// <h1>Reference</h1>
+/// <a href="https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate">UNUserNotificationCenterDelegate</a>
+/// \param center The instance of <code>UNUserNotificationCenter</code>.
+///
+/// \param notification The notification, exactly as received from the delegate method.
+///
+/// \param completionHandler The completion handler, exactly as received from the delegate method.
+///
+- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresent:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
+/// Call this method when <code>userNotificationCenter:didReceive:withCompletionHandler:</code> is called
+/// from <code>UNUserNotificationCenterDelegate</code>.
+/// Send all parameters that you receive in the delegate method as they are, without modifying them. By default, the completion
+/// handler will be called by the SDK, which means that iOS will present a notification banner.
+/// <h1>Reference</h1>
+/// <a href="https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate">UNUserNotificationCenterDelegate</a>
+/// \param center The instance of <code>UNUserNotificationCenter</code>.
+///
+/// \param response The notification response, exactly as received from the delegate method.
+///
+/// \param completionHandler The completion handler, exactly as received from the delegate method.
+///
+- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceive:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
+@end
+
 /// Available push notification types.
 typedef SWIFT_ENUM(NSInteger, PushNotificationType, open) {
 /// The SDK will subscribe to push notifications for when the engagement starts.
@@ -683,10 +723,8 @@ typedef SWIFT_ENUM(NSInteger, PushNotificationType, open) {
   PushNotificationTypeFailed = 2,
 /// The SDK will subscribe to push notifications for when a new message is received.
   PushNotificationTypeMessage = 3,
-/// The SDK will subscribe to push notifications for when an operator is typing a message for the visitor.
-/// Decide carefully when and where to use this notification, as the constant banners shown by iOS distract
-/// engagement participants.
-  PushNotificationTypeOperatorTypingIndicator = 4,
+/// The SDK will subscribe to push notifications for when the engagement is transferred to another operator.
+  PushNotificationTypeTransfer = 4,
 };
 
 /// Available push notification types
@@ -767,6 +805,47 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request a VisitorCode for current Visitor
+/// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code. OmniBrowse Operators use the Visitor’s code to start an OmniBrowse Engagement with the Visitor.
+/// Each Visitor code is generated on demand and is unique for every Visitor on a particular site. Upon the first time this function is called for a Visitor the code is generated and returned. For each successive call thereafter the same code will be returned as long as the code has not expired. The expiration time for Visitor codes is 3 hours. During that time the code can be used to initiate an engagement. Once Operator uses the Visitor code to initiate an engagement, the code will expire immediately. When the Visitor Code expires this function will return a new Visitor code.
+/// The expiration time is important to take note of if you plan on retrieving the code only once during the Visitor’s session. A new code should be requested once the initial one has expired. When Visitor provides an expired code to Operator the Operator will not be able to connect with the Visitor.
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     completion: A callback that will return the visitor code or <code>SalemoveError</code>
+///   </li>
+/// </ul>
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
+@end
+
+
+
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request media upgrade with specific offer
 /// <ul>
@@ -811,43 +890,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request a VisitorCode for current Visitor
-/// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code. OmniBrowse Operators use the Visitor’s code to start an OmniBrowse Engagement with the Visitor.
-/// Each Visitor code is generated on demand and is unique for every Visitor on a particular site. Upon the first time this function is called for a Visitor the code is generated and returned. For each successive call thereafter the same code will be returned as long as the code has not expired. The expiration time for Visitor codes is 3 hours. During that time the code can be used to initiate an engagement. Once Operator uses the Visitor code to initiate an engagement, the code will expire immediately. When the Visitor Code expires this function will return a new Visitor code.
-/// The expiration time is important to take note of if you plan on retrieving the code only once during the Visitor’s session. A new code should be requested once the initial one has expired. When Visitor provides an expired code to Operator the Operator will not be able to connect with the Visitor.
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     completion: A callback that will return the visitor code or <code>SalemoveError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
+/// Clear the use session of the client library
+- (void)clearSession;
 @end
-
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -903,12 +948,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK)) <PushNotificationHandling>
+/// See the method description in <a href="x-source-tag://PushNotificationHandlingWillPresent">PushNotificationHandling</a>.
+- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresent:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
+/// See the method description in <a href="x-source-tag://PushNotificationHandlingDidReceive">PushNotificationHandling</a>.
+- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceive:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
 @end
-
-
 
 
 
@@ -993,7 +1040,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)fetchFile:(NSString * _Nonnull)id progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion;
 @end
-
 
 
 
@@ -1620,12 +1666,30 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// The basic gateway class that interacts with the client library through the app delegate
 SWIFT_CLASS("_TtC11SalemoveSDK19SalemoveAppDelegate")
 @interface SalemoveAppDelegate : NSObject <UIApplicationDelegate>
-/// Identify the app launch and initialize the sdk internals.
-- (BOOL)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
-/// Handle the internal push services.
-- (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
 /// Handle the application active state and setup the internals.
+/// \param application The current application.
+///
 - (void)applicationDidBecomeActive:(UIApplication * _Nonnull)application;
+/// Call this method when <code>application:didRegisterForRemoteNotificationsWithDeviceToken:</code> is called
+/// from <code>UNUserNotificationCenterDelegate</code>.
+/// Send all parameters that you receive in the delegate method as they are, without modifying them.
+/// <h1>Reference</h1>
+/// <a href="https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate">UNUserNotificationCenterDelegate</a>
+/// \param application The current application.
+///
+/// \param deviceToken The data that holds the push notification device token.
+///
+- (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
+/// Call this method when <code>application:didFailToRegisterForRemoteNotificationsWithError:</code> is called
+/// from <code>UNUserNotificationCenterDelegate</code>.
+/// Send all parameters that you receive in the delegate method as they are, without modifying them.
+/// <h1>Reference</h1>
+/// <a href="https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate">UNUserNotificationCenterDelegate</a>
+/// \param application The current application.
+///
+/// \param error The error describing the push notification registration failure.
+///
+- (void)application:(UIApplication * _Nonnull)application didFailToRegisterForRemoteNotificationsWithError:(NSError * _Nonnull)error;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
