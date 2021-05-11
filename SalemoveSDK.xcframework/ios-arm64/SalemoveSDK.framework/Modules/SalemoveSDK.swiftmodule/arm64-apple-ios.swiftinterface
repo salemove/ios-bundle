@@ -58,7 +58,7 @@ public protocol PushNotificationConfigurable {
   case end
   case failed
   case message
-  case operatorTypingIndicator
+  case transfer
   public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
@@ -73,6 +73,7 @@ public protocol PushNotificationConfigurable {
   @objc func start()
   @objc func end()
   @objc var onEngagementRequest: SalemoveSDK.RequestOfferBlock { get }
+  @objc var onEngagementTransfer: SalemoveSDK.EngagementTransferBlock { get }
 }
 @objc public protocol MessageHandling {
   @objc func receive(message: SalemoveSDK.Message)
@@ -137,11 +138,16 @@ public typealias VisitorScreenSharingStateChange = (SalemoveSDK.VisitorScreenSha
 public typealias AudioStreamAddedBlock = (SalemoveSDK.AudioStreamable?, SalemoveSDK.SalemoveError?) -> Swift.Void
 public typealias VideoStreamAddedBlock = (SalemoveSDK.VideoStreamable?, SalemoveSDK.SalemoveError?) -> Swift.Void
 public typealias MessagesUpdateBlock = ([SalemoveSDK.Message]) -> Swift.Void
+public typealias EngagementTransferBlock = ([SalemoveSDK.Operator]?) -> Swift.Void
 public typealias PushActionBlock = (SalemoveSDK.Push) -> Swift.Void
 public typealias OperatorTypingStatusUpdate = (SalemoveSDK.OperatorTypingStatus) -> Swift.Void
 public typealias EngagementFileProgressBlock = (SalemoveSDK.EngagementFileProgress) -> Swift.Void
 public typealias EngagementFileCompletionBlock = (SalemoveSDK.EngagementFileInformation?, SalemoveSDK.SalemoveError?) -> Swift.Void
 public typealias EngagementFileFetchCompletionBlock = (SalemoveSDK.EngagementFileData?, SalemoveSDK.SalemoveError?) -> Swift.Void
+@objc public protocol PushNotificationHandling {
+  @objc func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  @objc func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+}
 extension MoyaProvider : ReactiveSwift.ReactiveExtensionsProvider {
 }
 @objc public protocol AudioStreamable {
@@ -163,11 +169,16 @@ extension MoyaProvider : ReactiveSwift.ReactiveExtensionsProvider {
 }
 @objc @_inheritsConvenienceInitializers public class SalemoveAppDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
   @discardableResult
-  @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
-  @objc public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+  public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil, enablePushNotifications isPushNotificationsEnabled: Swift.Bool = false) -> Swift.Bool
   @objc public func applicationDidBecomeActive(_ application: UIKit.UIApplication)
+  @objc public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+  @objc public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
   @objc deinit
   @objc override dynamic public init()
+}
+extension Salemove : SalemoveSDK.PushNotificationHandling {
+  @objc final public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  @objc final public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
 }
 public enum ContextType : Swift.String {
   case page
