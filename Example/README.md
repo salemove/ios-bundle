@@ -67,7 +67,7 @@ The values can be asked from Glia.
 #### 1) Ensure that SalemoveSDK dependency in your Cartfile specifies version tag
 This way you always get the Released state of the SDK
 
-* Example: `github "Salemove/ios-bundle" "0.29.0"`
+* Example: `github "Salemove/ios-bundle" "0.29.1"`
 
 #### 2) Get and build dependencies
 Run `carthage update --platform iOS` to get latest dependencies

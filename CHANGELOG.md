@@ -2,7 +2,15 @@
 
 ## Unreleased
 
-Unreleased: https://github.com/salemove/ios-sdk/compare/0.29.0...master
+Unreleased: https://github.com/salemove/ios-sdk/compare/0.29.1...master
+
+## [0.29.1] - 2021-05-13
+
+### Fixed
+
+- Fixed video stream issues that appeared under certain network conditions.
+
+[0.29.1]: https://github.com/salemove/ios-sdk/compare/0.29.0...0.29.1
 
 ## [0.29.0] - 2021-05-11
 
