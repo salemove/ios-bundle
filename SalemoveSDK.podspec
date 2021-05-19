@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.module_name = 'SalemoveSDK'
   s.ios.deployment_target = '12.0'
-  s.ios.vendored_frameworks = 'SalemoveSDK.framework'
+  s.ios.vendored_frameworks = 'SalemoveSDK.xcframework'
   s.swift_version = '5.3'
 
   s.dependency 'Moya', '14.0.0'
