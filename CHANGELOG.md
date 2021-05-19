@@ -2,7 +2,15 @@
 
 ## Unreleased
 
-Unreleased: https://github.com/salemove/ios-sdk/compare/0.29.2...master
+Unreleased: https://github.com/salemove/ios-sdk/compare/0.29.3...master
+
+## [0.29.3] - 2021-05-19
+
+### Fixed
+
+- Improved stability of media upgrade requests.
+
+[0.29.3]: https://github.com/salemove/ios-sdk/compare/0.29.2...0.29.3
 
 ## [0.29.2] - 2021-05-14
 
