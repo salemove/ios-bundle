@@ -2,7 +2,16 @@
 
 ## Unreleased
 
-Unreleased: https://github.com/salemove/ios-sdk/compare/0.29.3...master
+Unreleased: https://github.com/salemove/ios-sdk/compare/0.29.4...master
+
+## [0.29.4] - 2021-06-17
+
+### Fixed
+
+- Fixed fetching file issue after engagement is ended.
+- Fixed intermittent issues with video upgrades.
+
+[0.29.4]: https://github.com/salemove/ios-sdk/compare/0.29.3...0.29.4
 
 ## [0.29.3] - 2021-05-19
 

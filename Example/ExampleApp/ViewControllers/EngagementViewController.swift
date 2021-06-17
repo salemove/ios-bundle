@@ -223,9 +223,9 @@ extension EngagementViewController {
         guard attachment?.type == .files, let files = attachment?.files else { return }
 
         for file in files {
-            guard let id = file.id else { return }
+            guard let path = file.url?.absoluteString else { return }
 
-            Cache.image(using: id) { [weak self] image in
+            Cache.image(using: path) { [weak self] image in
                 if let image = image {
                     let imageView = UIImageView()
                     cell?.addAttachmentImageView(imageView)
@@ -238,25 +238,27 @@ extension EngagementViewController {
     }
 
     private func fetchFile(using file: EngagementFile, cell: EngagementTableViewCell?) {
-        guard let id = file.id else { return }
 
-        Salemove.sharedInstance.fetchFile(id, progress: nil) { data, error in
-            guard error == nil, let data = data, let mimeType = file.contentType else {
-                print("Error download file with ID \(id)")
-                return
-            }
+        Salemove.sharedInstance
+            .fetchFile(engagementFile: file, progress: nil) { data, error in
+                guard error == nil, let data = data, let mimeType = file.contentType else {
+                    print("Error download file with url '\(file.url?.absoluteString ?? "Undefined")'.")
+                    return
+                }
 
-            if mimeType.contains("image") {
-                guard let image = UIImage(data: data.data) else { return }
+                if mimeType.contains("image") {
+                    guard let image = UIImage(data: data.data) else { return }
 
-                Cache.save(image, original: data.data, usingKey: id)
-                DispatchQueue.main.async { [weak self] in
-                    let imageView = UIImageView()
-                    cell?.addAttachmentImageView(imageView)
-                    imageView.image = image
-                    self?.tableView.reloadSections(IndexSet([0]), with: .none)
+                    if let key = file.url?.absoluteString {
+                        Cache.save(image, original: data.data, usingKey: key)
+                    }
+                    DispatchQueue.main.async { [weak self] in
+                        let imageView = UIImageView()
+                        cell?.addAttachmentImageView(imageView)
+                        imageView.image = image
+                        self?.tableView.reloadSections(IndexSet([0]), with: .none)
+                    }
                 }
             }
-        }
     }
 }
