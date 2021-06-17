@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/SalemoveSDK-Swift.h</key>
 		<data>
-		WVKi6CHMi3lVsPOUoGFDo1+EDpo=
+		iMqslKA0hGeGYzLX0pl/Ik6Dcr0=
 		</data>
 		<key>Headers/SalemoveSDK.h</key>
 		<data>
@@ -14,31 +14,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		kfLv8fn+S0tgc/OXb+qKeUjtKAE=
+		cjJMXfLsDdHsoZ5t5M0sYpP3me4=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		Lz8r+vD8Ix+fw+Hq94jQVBDatx0=
+		jEPlFG8gysp8zlA/TnQKJQifsiM=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		tOqVaZNWRe8rrJc6x1TeXaktkqo=
+		2ClBoO3RwtiFRhfYEq0H3RLTl3I=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		7Zw505oYOzhG1T26ziHpYu5wAUc=
+		N3lsCcRg4BiMcNVbLFAHUPdfRyA=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		Lz8r+vD8Ix+fw+Hq94jQVBDatx0=
+		jEPlFG8gysp8zlA/TnQKJQifsiM=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		tOqVaZNWRe8rrJc6x1TeXaktkqo=
+		2ClBoO3RwtiFRhfYEq0H3RLTl3I=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		7Zw505oYOzhG1T26ziHpYu5wAUc=
+		N3lsCcRg4BiMcNVbLFAHUPdfRyA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -51,7 +51,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			HFDyqvR6XXFhcbpZeHkvyPwqnWlY2F+z2FE8i6cVty0=
+			i10EZzLUR0YPvN9TLulhjobR4wvExvMRcrPvBhSoBxM=
 			</data>
 		</dict>
 		<key>Headers/SalemoveSDK.h</key>
@@ -65,42 +65,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xhKpLyRMIRiMi7d28uxMS0z0lt4llTdCE6wuBPxc8qQ=
+			xBnaVgk6K3EPdgSgOEiOQCOqG8zR2w2JlDUiWwQVGds=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			d9kY7B5jOp2S1Ry9gtEz7k/grvM3O4mU01Uhyx+hsy0=
+			wlVvfbaR9ybO6rONm07mMWocLySe8OTuptOzFJqCLRg=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			G7dkE+bwrrL8AtXRENjckppcqnZU+e+PqiNlYB5LD2E=
+			xDbzS42R9FR/Xz8vztl1uv+Kc+T8iLxdUnazE/AkQtE=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xhKpLyRMIRiMi7d28uxMS0z0lt4llTdCE6wuBPxc8qQ=
+			xBnaVgk6K3EPdgSgOEiOQCOqG8zR2w2JlDUiWwQVGds=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			d9kY7B5jOp2S1Ry9gtEz7k/grvM3O4mU01Uhyx+hsy0=
+			wlVvfbaR9ybO6rONm07mMWocLySe8OTuptOzFJqCLRg=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			G7dkE+bwrrL8AtXRENjckppcqnZU+e+PqiNlYB5LD2E=
+			xDbzS42R9FR/Xz8vztl1uv+Kc+T8iLxdUnazE/AkQtE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

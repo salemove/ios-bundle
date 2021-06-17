@@ -31,6 +31,10 @@ import WebRTC
   @objc deinit
   @objc override dynamic public init()
 }
+extension Salemove {
+  @objc final public func uploadFileToEngagement(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping SalemoveSDK.EngagementFileCompletionBlock)
+  @objc final public func fetchFile(engagementFile: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping SalemoveSDK.EngagementFileFetchCompletionBlock)
+}
 @_hasMissingDesignatedInitializers @objc public class Attachment : ObjectiveC.NSObject {
   final public let type: SalemoveSDK.AttachmentType?
   final public let selectedOption: Swift.String?
@@ -125,6 +129,7 @@ public typealias QueueTicketBlock = (SalemoveSDK.QueueTicket?, SalemoveSDK.Salem
 public typealias QueueRequestBlock = ([SalemoveSDK.Queue]?, SalemoveSDK.SalemoveError?) -> Swift.Void
 public typealias QueueUpdateBlock = (SalemoveSDK.Queue) -> Swift.Void
 public typealias MessageBlock = (SalemoveSDK.Message?, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias EngagementBlock = (SalemoveSDK.Engagement?, SalemoveSDK.SalemoveError?) -> Swift.Void
 public typealias SuccessBlock = (Swift.Bool, SalemoveSDK.SalemoveError?) -> Swift.Void
 public typealias AnswerBlock = (Swift.Bool) -> Swift.Void
 public typealias ErrorBlock = (SalemoveSDK.SalemoveError) -> Swift.Void
@@ -175,6 +180,18 @@ extension MoyaProvider : ReactiveSwift.ReactiveExtensionsProvider {
   @objc public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
   @objc deinit
   @objc override dynamic public init()
+}
+extension Salemove {
+  @available(*, deprecated, message: "Use fetchFile(engagementFile:progress:completion:) instead")
+  @objc final public func fetchFile(_ id: Swift.String, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping SalemoveSDK.EngagementFileFetchCompletionBlock)
+}
+extension Salemove {
+  @objc final public func waitForActiveEngagement(completion: @escaping SalemoveSDK.EngagementBlock)
+  @objc final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, completion: @escaping SalemoveSDK.EngagementSessionBlock)
+  @objc final public func cancel(engagementRequest: SalemoveSDK.EngagementRequest, completion: @escaping SalemoveSDK.SuccessBlock)
+  @objc final public func requestOperators(completion: @escaping SalemoveSDK.OperatorBlock)
+  @objc final public func requestEngagedOperator(completion: @escaping SalemoveSDK.OperatorBlock)
+  @objc final public func endEngagement(completion: @escaping SalemoveSDK.SuccessBlock)
 }
 extension Salemove : SalemoveSDK.PushNotificationHandling {
   @objc final public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
@@ -233,13 +250,6 @@ extension Salemove {
   @objc final public func clearSession()
 }
 extension Salemove {
-  @objc final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, completion: @escaping SalemoveSDK.EngagementSessionBlock)
-  @objc final public func cancel(engagementRequest: SalemoveSDK.EngagementRequest, completion: @escaping SalemoveSDK.SuccessBlock)
-  @objc final public func requestOperators(completion: @escaping SalemoveSDK.OperatorBlock)
-  @objc final public func requestEngagedOperator(completion: @escaping SalemoveSDK.OperatorBlock)
-  @objc final public func endEngagement(completion: @escaping SalemoveSDK.SuccessBlock)
-}
-extension Salemove {
   @objc final public func requestMediaUpgrade(offer: SalemoveSDK.MediaUpgradeOffer, completion: @escaping SalemoveSDK.SuccessBlock)
 }
 extension Salemove {
@@ -247,10 +257,6 @@ extension Salemove {
   @objc final public func send(message: Swift.String = "", attachment: SalemoveSDK.Attachment? = nil, completion: @escaping SalemoveSDK.MessageBlock)
   @objc final public func send(message: Swift.String, queueID: Swift.String, completion: @escaping SalemoveSDK.MessageBlock)
   @objc final public func sendMessagePreview(message: Swift.String, completion: @escaping SalemoveSDK.SuccessBlock)
-}
-extension Salemove {
-  @objc final public func uploadFileToEngagement(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping SalemoveSDK.EngagementFileCompletionBlock)
-  @objc final public func fetchFile(_ id: Swift.String, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping SalemoveSDK.EngagementFileFetchCompletionBlock)
 }
 @_hasMissingDesignatedInitializers @objc public class Push : ObjectiveC.NSObject, Swift.Codable {
   @objc public var actionIdentifier: Swift.String {
@@ -456,6 +462,7 @@ extension StreamView : WebRTC.RTCVideoViewDelegate {
   case unsupportedFileType
   case fileTooBig
   case invalidFileURL
+  case fileUnavailable
   public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
@@ -575,6 +582,12 @@ extension Salemove {
   @objc public var localScreen: SalemoveSDK.LocalScreen? {
     get
   }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class Engagement : ObjectiveC.NSObject {
+  @objc final public let id: Swift.String
+  @objc final public let engagedOperator: SalemoveSDK.Operator?
   @objc override dynamic public init()
   @objc deinit
 }
