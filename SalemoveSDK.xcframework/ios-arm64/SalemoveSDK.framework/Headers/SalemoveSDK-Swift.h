@@ -273,6 +273,19 @@ typedef SWIFT_ENUM(NSInteger, ContextError, open) {
 static NSString * _Nonnull const ContextErrorDomain = @"SalemoveSDK.ContextError";
 
 
+@class Operator;
+
+/// Representation of an engagement in Glia.
+SWIFT_CLASS("_TtC11SalemoveSDK10Engagement")
+@interface Engagement : NSObject
+/// The ID of the engagement.
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+/// The operator that is currently engaged with the visitor.
+@property (nonatomic, readonly, strong) Operator * _Nullable engagedOperator;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 /// Error of the Engagement
 typedef SWIFT_ENUM(NSInteger, EngagementError, open) {
 /// The Operator is unavailable for an Engagement.
@@ -309,6 +322,9 @@ SWIFT_CLASS("_TtC11SalemoveSDK14EngagementFile")
 /// \param url The file’s URL in the device’s internal memory.
 ///
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name url:(NSURL * _Nonnull)url OBJC_DESIGNATED_INITIALIZER;
+/// Creates an object with information for uploading a file to Glia’s servers.
+/// \param id The ID of a file.
+///
 - (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -340,7 +356,6 @@ SWIFT_CLASS("_TtC11SalemoveSDK22EngagementFileProgress")
 
 @class VisitorContext;
 @class SalemoveError;
-@class Operator;
 
 /// Basic for interacting with the Engagement
 SWIFT_PROTOCOL("_TtP11SalemoveSDK18EngagementHandling_")
@@ -433,6 +448,8 @@ typedef SWIFT_ENUM(NSInteger, FileError, open) {
   FileErrorFileTooBig = 2,
 /// The provided file URL is invalid.
   FileErrorInvalidFileURL = 3,
+/// The file is unavailable. For example, the file might have been deleted.
+  FileErrorFileUnavailable = 4,
 };
 static NSString * _Nonnull const FileErrorDomain = @"SalemoveSDK.FileError";
 
@@ -779,6 +796,8 @@ SWIFT_CLASS("_TtC11SalemoveSDK11QueueTicket")
 @end
 
 
+
+
 /// Shared instance that can be accessed across all the application
 SWIFT_CLASS("_TtC11SalemoveSDK8Salemove")
 @interface Salemove : NSObject
@@ -804,44 +823,17 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Deprecated. Use <code>fetchFile(engagementFile:progress:completion:)</code> instead
+- (void)fetchFile:(NSString * _Nonnull)id progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use fetchFile(engagementFile:progress:completion:) instead");
+@end
+
+
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request a VisitorCode for current Visitor
-/// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code. OmniBrowse Operators use the Visitor’s code to start an OmniBrowse Engagement with the Visitor.
-/// Each Visitor code is generated on demand and is unique for every Visitor on a particular site. Upon the first time this function is called for a Visitor the code is generated and returned. For each successive call thereafter the same code will be returned as long as the code has not expired. The expiration time for Visitor codes is 3 hours. During that time the code can be used to initiate an engagement. Once Operator uses the Visitor code to initiate an engagement, the code will expire immediately. When the Visitor Code expires this function will return a new Visitor code.
-/// The expiration time is important to take note of if you plan on retrieving the code only once during the Visitor’s session. A new code should be requested once the initial one has expired. When Visitor provides an expired code to Operator the Operator will not be able to connect with the Visitor.
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     completion: A callback that will return the visitor code or <code>SalemoveError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
+/// Clear the use session of the client library
+- (void)clearSession;
 @end
 
 
@@ -885,13 +877,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   </li>
 /// </ul>
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
-
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
 @end
 
 
@@ -949,13 +934,45 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK)) <PushNotificationHandling>
-/// See the method description in <a href="x-source-tag://PushNotificationHandlingWillPresent">PushNotificationHandling</a>.
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresent:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
-/// See the method description in <a href="x-source-tag://PushNotificationHandlingDidReceive">PushNotificationHandling</a>.
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceive:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request a VisitorCode for current Visitor
+/// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code. OmniBrowse Operators use the Visitor’s code to start an OmniBrowse Engagement with the Visitor.
+/// Each Visitor code is generated on demand and is unique for every Visitor on a particular site. Upon the first time this function is called for a Visitor the code is generated and returned. For each successive call thereafter the same code will be returned as long as the code has not expired. The expiration time for Visitor codes is 3 hours. During that time the code can be used to initiate an engagement. Once Operator uses the Visitor code to initiate an engagement, the code will expire immediately. When the Visitor Code expires this function will return a new Visitor code.
+/// The expiration time is important to take note of if you plan on retrieving the code only once during the Visitor’s session. A new code should be requested once the initial one has expired. When Visitor provides an expired code to Operator the Operator will not be able to connect with the Visitor.
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     completion: A callback that will return the visitor code or <code>SalemoveError</code>
+///   </li>
+/// </ul>
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
 @end
+
+
 
 
 
@@ -964,6 +981,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// \param level One of the ‘LogLevel’ values that the logger should use
 ///
 - (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK)) <PushNotificationHandling>
+/// See the method description in <a href="x-source-tag://PushNotificationHandlingWillPresent">PushNotificationHandling</a>.
+- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresent:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
+/// See the method description in <a href="x-source-tag://PushNotificationHandlingDidReceive">PushNotificationHandling</a>.
+- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceive:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
 @end
 
 
@@ -1032,13 +1057,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     <code>ConfigurationError.invalidApiToken</code>
 ///   </li>
 /// </ul>
-/// \param id The ID of the file.
+/// \param engagementFile A instance of EngagementFile.
 ///
 /// \param progress A callback that reports the upload progress of the file.
 ///
 /// \param completion A callback that will return an <code>EngagementFileData</code> object if successful, or <code>InternalError</code>.
 ///
-- (void)fetchFile:(NSString * _Nonnull)id progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion;
+- (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion;
 @end
 
 
@@ -1253,6 +1278,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Waits until there is an active engagement handled by the SDK.
+/// If the SDK already has an active engagement present, then it returns information about it through
+/// the <code>completion</code> block. Otherwise, it waits until the SDK receives information about an active engagement.
+/// This method is useful to decide if touching on a push notification after the app has been force closed should open
+/// an engagement screen. If there is an engagement restored by the SDK, then this method will notify soon after the
+/// SDK is initialized, and you can show an engagement screen. Otherwise, then you should do nothing about the push
+/// notification.
+/// \param completion The closure that will be called once the SDK detects an active engagement.
+///
+- (void)waitForActiveEngagementWithCompletion:(void (^ _Nonnull)(Engagement * _Nullable, SalemoveError * _Nullable))completion;
 /// Request an Engagement with a selected Operator
 /// <ul>
 ///   <li>
