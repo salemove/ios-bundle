@@ -1,6 +1,5 @@
 import Foundation
 import UIKit
-import ReactiveSwift
 import SalemoveSDK
 
 final class Configuration {

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SalemoveSDK'
-  s.version          = '0.29.5'
+  s.version          = '0.29.6'
   s.summary          = 'The Salemove iOS library'
   s.description      = 'The Salemove iOS library brings the in-person customer experience to iOS devices.'
   s.homepage         = 'https://github.com/salemove/ios-sdk'
