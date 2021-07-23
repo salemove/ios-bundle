@@ -1,3 +1,4 @@
 {
-    "0.29.6": "https://github.com/salemove/ios-bundle/releases/download/0.29.6/SalemoveSDK.xcframework.zip?alt=https://github.com/salemove/ios-bundle/releases/download/0.29.6/Dependencies.xcframework.zip"
+    "0.29.6": "https://github.com/salemove/ios-bundle/releases/download/0.29.6/SalemoveSDK.xcframework.zip?alt=https://github.com/salemove/ios-bundle/releases/download/0.29.6/Dependencies.xcframework.zip",
+    "0.30.0": "https://github.com/salemove/ios-bundle/releases/download/0.30.0/SalemoveSDK.xcframework.zip?alt=https://github.com/salemove/ios-bundle/releases/download/0.29.6/Dependencies.xcframework.zip"
 }
