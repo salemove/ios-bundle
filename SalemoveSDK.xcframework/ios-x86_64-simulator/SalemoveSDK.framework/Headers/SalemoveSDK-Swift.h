@@ -677,6 +677,8 @@ typedef SWIFT_ENUM(NSInteger, MediaError, open) {
   MediaErrorScreenSharingNotAvailable = 1,
 /// When the Visitor is using an older iOS version that 11.0
   MediaErrorNotAvailableOnIOSVersion = 2,
+/// The SDK does not support the specified engagement type.
+  MediaErrorUnsupportedEngagementType = 3,
 };
 static NSString * _Nonnull const MediaErrorDomain = @"SalemoveSDK.MediaError";
 
@@ -797,55 +799,32 @@ SWIFT_CLASS("_TtC11SalemoveSDK4Push")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+SWIFT_CLASS("_TtC11SalemoveSDK17PushNotifications")
+@interface PushNotifications : NSObject
+/// The current handler that the SDK is forwarding the UNNotificationResponse.actionIdentifier to.
+@property (nonatomic, copy) void (^ _Nullable handler)(Push * _Nonnull);
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+@class UIApplication;
 @class UNUserNotificationCenter;
 @class UNNotification;
 @class UNNotificationResponse;
 
-/// The protocol to be used to notify the SDK about push notifications.
-SWIFT_PROTOCOL("_TtP11SalemoveSDK24PushNotificationHandling_")
-@protocol PushNotificationHandling
-/// Call this method when <code>userNotificationCenter:willPresent:withCompletionHandler:</code> is called
-/// from <code>UNUserNotificationCenterDelegate</code>.
-/// Send all parameters that you receive in the delegate method as they are, without modifying them. By default, the completion
-/// handler will not be called by the SDK, which means that iOS will not present a notification banner. If you wish to do so,
-/// call the completion handler manually after calling this method.
-/// <h1>Reference</h1>
-/// <a href="https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate">UNUserNotificationCenterDelegate</a>
-/// \param center The instance of <code>UNUserNotificationCenter</code>.
-///
-/// \param notification The notification, exactly as received from the delegate method.
-///
-/// \param completionHandler The completion handler, exactly as received from the delegate method.
-///
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresent:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
-/// Call this method when <code>userNotificationCenter:didReceive:withCompletionHandler:</code> is called
-/// from <code>UNUserNotificationCenterDelegate</code>.
-/// Send all parameters that you receive in the delegate method as they are, without modifying them. By default, the completion
-/// handler will be called by the SDK, which means that iOS will present a notification banner.
-/// <h1>Reference</h1>
-/// <a href="https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate">UNUserNotificationCenterDelegate</a>
-/// \param center The instance of <code>UNUserNotificationCenter</code>.
-///
-/// \param response The notification response, exactly as received from the delegate method.
-///
-/// \param completionHandler The completion handler, exactly as received from the delegate method.
-///
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceive:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
+@interface PushNotifications (SWIFT_EXTENSION(SalemoveSDK)) <UNUserNotificationCenterDelegate>
+/// See <a href="x-source-tag://PushNotificationsHandlingDidRegister">PushNotificationsHandling</a> for more information.
+- (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
+/// See <a href="x-source-tag://PushNotificationsHandlingDidFailToRegister">PushNotificationsHandling</a> for more information.
+- (void)application:(UIApplication * _Nonnull)application didFailToRegisterForRemoteNotificationsWithError:(NSError * _Nonnull)error;
+/// See <a href="x-source-tag://PushNotificationsHandlingWillPresent">PushNotificationsHandling</a> for more information.
+- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresentNotification:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
+/// See <a href="x-source-tag://PushNotificationsHandlingDidReceive">PushNotificationsHandling</a> for more information.
+- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
 @end
-
-/// Available push notification types.
-typedef SWIFT_ENUM(NSInteger, PushNotificationType, open) {
-/// The SDK will subscribe to push notifications for when the engagement starts.
-  PushNotificationTypeStart = 0,
-/// The SDK will subscribe to push notifications for when the engagement ends.
-  PushNotificationTypeEnd = 1,
-/// The SDK will subscribe to push notifications for when the engagement fails.
-  PushNotificationTypeFailed = 2,
-/// The SDK will subscribe to push notifications for when a new message is received.
-  PushNotificationTypeMessage = 3,
-/// The SDK will subscribe to push notifications for when the engagement is transferred to another operator.
-  PushNotificationTypeTransfer = 4,
-};
 
 /// Available push notification types
 typedef SWIFT_ENUM(NSInteger, PushType, open) {
@@ -918,8 +897,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 + (Salemove * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 /// The current interactor that the SDK is forwarding the events to
 @property (nonatomic, weak) id <Interactable> _Nullable currentInteractor;
-/// The current handler that the SDK is forwarding the UNNotificationResponse.actionIdentifier to
-@property (nonatomic, copy) void (^ _Nullable pushHandler)(Push * _Nonnull);
 /// The current selected environment
 @property (nonatomic, readonly, copy) NSString * _Nonnull environment;
 /// The current selected site
@@ -933,11 +910,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Deprecated. Use <code>fetchFile(engagementFile:progress:completion:)</code> instead
 - (void)fetchFile:(NSString * _Nonnull)id progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use fetchFile(engagementFile:progress:completion:) instead");
 @end
+
+
 
 
 
@@ -1032,76 +1010,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Update current Visitor’s information.
-/// The information provided by this endpoint is available to all the Operators observing or interacting with the Visitor. This means that this endpoint can be used to provide additional context about the Visitor to the Operators. For example, if a Visitor is logged into the current site and their name and email are recorded on their profile, then taking the data from the profile and passing it into this endpoint helps the Operators see the real names and emails of every logged in Visitor even before they start a conversation.
-/// In a similar manner custom attributes can be also be used to provide additional context. For example, if your site separates paying users from free users, then setting a custom attribute of ‘user_type’ with a value of either ‘free’ or ‘paying’ depending on the Visitor’s account can help Operators prioritize different Visitors.
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     name: The Visitor’s name
-///   </li>
-///   <li>
-///     email: The Visitor’s email address
-///   </li>
-///   <li>
-///     phone: The Visitor’s phone number
-///   </li>
-///   <li>
-///     customAttributes: An object with custom key-value pairs to be assigned to the Visitor. The server treats all keys and values as strings and also returns them as strings. Nested key-value pairs are not supported.
-///   </li>
-///   <li>
-///     externalId: The Visitor’s unique identifier in scope of the current Site. Valuable information about the current Visitor may often be available in CRMs and other systems external to SaleMove. This field allows matching the Visitor to their record in such CRMs and other external systems. For example, a Visitor can have an ID within Salesforce. By setting the ‘external_id’ to the current Visitor’s Salesforce ID, they can easily be matched to their record within Salesforce.
-///   </li>
-///   <li>
-///     completion: A callback that will return the update result or <code>SalemoveError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-- (void)updateInformationWithName:(NSString * _Nullable)name email:(NSString * _Nullable)email phone:(NSString * _Nullable)phone externalID:(NSString * _Nullable)externalID customAttributes:(NSDictionary<NSString *, NSString *> * _Nullable)customAttributes completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
-
-
-
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK)) <PushNotificationHandling>
-/// See the method description in <a href="x-source-tag://PushNotificationHandlingWillPresent">PushNotificationHandling</a>.
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresent:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
-/// See the method description in <a href="x-source-tag://PushNotificationHandlingDidReceive">PushNotificationHandling</a>.
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceive:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// \param level One of the ‘LogLevel’ values that the logger should use
-///
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -1177,6 +1085,15 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion;
 @end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// \param level One of the ‘LogLevel’ values that the logger should use
+///
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
 
 
 
@@ -1400,21 +1317,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// \param completion The closure that will be called once the SDK detects an active engagement.
 ///
 - (void)waitForActiveEngagementWithCompletion:(void (^ _Nonnull)(Engagement * _Nullable, SalemoveError * _Nullable))completion;
-/// Request an Engagement with a selected Operator
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     selectedOperator: The Operator that will be selected
-///   </li>
-///   <li>
-///     visitorContext: The visitor context that should be displayed
-///   </li>
-///   <li>
-///     completion: A callback that will return the <code>EngagementRequest</code> or <code>SalemoveError</code>
-///   </li>
-/// </ul>
+/// Request an Engagement with a selected Operator.
+/// This method is the equivalent of calling <code>requestEngagementWith:visitorContext:options:completion:</code>
+/// with the <code>options</code> parameter set to an <code>EngagementMediaOptions</code> instance with <code>type</code>
+/// as <code>MediaType.text</code>.
 /// If the request is unsuccessful for any reason then the completion will have an Error.
 /// The Error may have one of the following causes:
 /// <ul>
@@ -1443,6 +1349,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     <code>EngagementError.operatorUnavailable</code>
 ///   </li>
 /// </ul>
+/// \param selectedOperator The Operator that will be selected.
+///
+/// \param visitorContext The visitor context that should be displayed.
+///
+/// \param completion A callback that will return the <code>EngagementRequest</code> or <code>SalemoveError</code>.
+///
 - (void)requestEngagementWithSelectedOperator:(Operator * _Nonnull)selectedOperator visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion;
 /// Cancel an ongoing EngagementRequest
 /// <ul>
@@ -1583,6 +1495,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// Queue for an Engagement with a specific queue.
 /// If you decide to use this method with <code>shouldCloseAllQueues</code> as <code>false</code>, please note that you will
 /// need to cancel any active queue tickets yourself. This can be done by calling <code>dequeueFromActiveQueueTickets</code>.
+/// This method is the equivalent of calling <code>queueForEngagement:visitorContext:shouldCloseAllQueues:mediaType:completion:</code>
+/// with the <code>options</code> parameter set to an <code>EngagementMediaOptions</code> instance with <code>type</code>
+/// as <code>MediaType.text</code>.
 /// If the request is unsuccessful for any reason then the completion will have an Error.
 /// The Error may have one of the following causes:
 /// <ul>
@@ -1616,22 +1531,15 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   <li>
 ///     <code>QueueError.invalidId</code>
 ///   </li>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     queueID: The ID that will be used by the client library
-///   </li>
-///   <li>
-///     visitorContext: The visitor context that should be displayed
-///   </li>
-///   <li>
-///     shouldCloseAllQueues: If <code>true</code>, the method closes all active queue tickets. The default value is <code>true</code>.
-///   </li>
-///   <li>
-///     completion: A callback that will return the <code>QueueTicket</code> or <code>SalemoveError</code>
-///   </li>
 /// </ul>
+/// \param queueID The ID that will be used by the client library
+///
+/// \param visitorContext The visitor context that should be displayed
+///
+/// \param shouldCloseAllQueues If <code>true</code>, the method closes all active queue tickets. The default value is <code>true</code>.
+///
+/// \param completion A callback that will return the <code>QueueTicket</code> or <code>SalemoveError</code>
+///
 - (void)queueForEngagementWithQueueID:(NSString * _Nonnull)queueID visitorContext:(VisitorContext * _Nonnull)visitorContext shouldCloseAllQueues:(BOOL)shouldCloseAllQueues completion:(void (^ _Nonnull)(QueueTicket * _Nullable, SalemoveError * _Nullable))completion;
 /// Cancels all active queue tickets that the current visitor has.
 /// Use this method to avoid attempting to enter a queue while the visitor is already enqueued. If you call <code>queueForEngagement</code>
@@ -1674,17 +1582,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)dequeueFromActiveTicketsWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 /// Cancel the Engagement queueing with specific ticket
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     queueTicket: The <code>QueueTicket</code> that was used to enqueue
-///   </li>
-///   <li>
-///     completion: A callback that will return the dequeuing result or <code>SalemoveError</code>
-///   </li>
-/// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
 /// The Error may have one of the following causes:
 /// <ul>
@@ -1707,16 +1604,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     <code>ConfigurationError.invalidApiToken</code>
 ///   </li>
 /// </ul>
+/// \param queueTicket The <code>QueueTicket</code> that was used to enqueue
+///
+/// \param completion A callback that will return the dequeuing result or <code>SalemoveError</code>
+///
 - (void)cancelWithQueueTicket:(QueueTicket * _Nonnull)queueTicket completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+/// List all Queues of the configured site.
 /// It is also possible to monitor Queues changes with <a href="x-source-tag://subscribeForUpdates">subscribeForUpdates</a> method.
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     completion: A callback that will return the <code>Queue</code> list or <code>SalemoveError</code>
-///   </li>
-/// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
 /// The Error may have one of the following causes:
 /// <ul>
@@ -1739,7 +1633,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     <code>ConfigurationError.invalidApiToken</code>
 ///   </li>
 /// </ul>
+/// \param completion A callback that will return the <code>Queue</code> list or <code>SalemoveError</code>
+///
 - (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, SalemoveError * _Nullable))completion;
+/// Subscribes to state updates of one or multiple Queues.
 /// Registers Queue change listener for Queues with specified ID’s. It is possible to retrieve Queue ID’s with the <a href="x-source-tag://listQueues">listQueues</a> method.
 /// To unsubscribe from receiving this changes <a href="x-source-tag://unsubscribeFromUpdates">unsubscribeFromUpdates</a> method can be used.
 /// <hr/>
@@ -1783,6 +1680,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// A unique callback ID or <code>nil</code> if callback was not registered due to error.
 /// This callback ID could be used to usubscribe from Queue updates.
 - (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(SalemoveError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT;
+/// Unsubscribes from Queue updates.
 /// \param queueCallbackId ID of callback for which you would like to stop receiving updates.
 ///
 /// \param onError A callback that returns <code>SalemoveError</code> which could have one of the reasons:
@@ -1808,35 +1706,26 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
-@class UIApplication;
 
 /// The basic gateway class that interacts with the client library through the app delegate
 SWIFT_CLASS("_TtC11SalemoveSDK19SalemoveAppDelegate")
 @interface SalemoveAppDelegate : NSObject <UIApplicationDelegate>
+/// Identify the app launch and initialize the sdk internals.
+/// \param application The current application.
+///
+/// \param launchOptions The options with which the application has been launched.
+///
+/// \param enablePushNotifications Set it to <code>true</code> if you want to enable push notifications. Otherwise, set it to <code>false</code>.
+/// The default value is <code>false</code>.
+///
+///
+/// returns:
+/// <code>true</code> if the application can be started with the specified launch options. Otherwise, it returns <code>false</code>.
+- (BOOL)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
 /// Handle the application active state and setup the internals.
 /// \param application The current application.
 ///
 - (void)applicationDidBecomeActive:(UIApplication * _Nonnull)application;
-/// Call this method when <code>application:didRegisterForRemoteNotificationsWithDeviceToken:</code> is called
-/// from <code>UNUserNotificationCenterDelegate</code>.
-/// Send all parameters that you receive in the delegate method as they are, without modifying them.
-/// <h1>Reference</h1>
-/// <a href="https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate">UNUserNotificationCenterDelegate</a>
-/// \param application The current application.
-///
-/// \param deviceToken The data that holds the push notification device token.
-///
-- (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
-/// Call this method when <code>application:didFailToRegisterForRemoteNotificationsWithError:</code> is called
-/// from <code>UNUserNotificationCenterDelegate</code>.
-/// Send all parameters that you receive in the delegate method as they are, without modifying them.
-/// <h1>Reference</h1>
-/// <a href="https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate">UNUserNotificationCenterDelegate</a>
-/// \param application The current application.
-///
-/// \param error The error describing the push notification registration failure.
-///
-- (void)application:(UIApplication * _Nonnull)application didFailToRegisterForRemoteNotificationsWithError:(NSError * _Nonnull)error;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -1851,6 +1740,7 @@ SWIFT_CLASS("_TtC11SalemoveSDK13SalemoveError")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 /// List of available screen sharing statuses

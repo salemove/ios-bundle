@@ -2,7 +2,29 @@
 
 ## Unreleased
 
-Unreleased: https://github.com/salemove/ios-sdk/compare/0.29.4...master
+Unreleased: https://github.com/salemove/ios-sdk/compare/0.30.0...master
+
+## [0.30.0] - 2021-07-26
+
+### Added
+
+- Added push notification support
+- Added possibility to fetch visitor information
+- Added possibility to start engagement with media
+  
+### Fixed
+
+- Fixed media streaming on engagement transfer
+
+[0.30.0]: https://github.com/salemove/ios-sdk/compare/0.29.6...0.30.0
+
+## [0.29.6] - 2021-07-01
+  
+### Fixed
+
+- Fixed `Avoiding duplicate symbols with static libraries/frameworks` issue (Swift Package Manager)
+
+[0.29.6]: https://github.com/salemove/ios-sdk/compare/0.29.4...0.29.6
 
 ## [0.29.4] - 2021-06-17
 

@@ -119,6 +119,9 @@ final public class SerialDisposable : SalemoveSDK.Disposable {
   final public let angle: Swift.Double
   @objc deinit
 }
+public struct EngagementOptions {
+  public init(mediaDirection: SalemoveSDK.MediaDirection? = nil)
+}
 public protocol ShapeInterpolation : SalemoveSDK.Interpolable {
 }
 extension Shape : SalemoveSDK.ShapeInterpolation {
@@ -176,6 +179,18 @@ public struct AccessTokenPlugin : SalemoveSDK.PluginType {
   public let tokenClosure: SalemoveSDK.AccessTokenPlugin.TokenClosure
   public init(tokenClosure: @escaping SalemoveSDK.AccessTokenPlugin.TokenClosure)
   public func prepare(_ request: Foundation.URLRequest, target: SalemoveSDK.TargetType) -> Foundation.URLRequest
+}
+public enum PushNotificationsType : Swift.Int {
+  case start
+  case end
+  case failed
+  case message
+  case transfer
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 open class Color : SalemoveSDK.Fill {
   final public let val: Swift.Int
@@ -635,6 +650,19 @@ open class ContentLayout {
   open func layout(rect: SalemoveSDK.Rect, into sizeToFitIn: SalemoveSDK.Size) -> SalemoveSDK.Transform
   @objc deinit
 }
+extension Salemove {
+  public struct VisitorInfo : Swift.Equatable, Swift.Codable {
+    public let name: Swift.String?
+    public let email: Swift.String?
+    public let phone: Swift.String?
+    public let note: Swift.String?
+    public let customAttributes: [Swift.String : Swift.String]?
+    public let banned: Swift.Bool
+    public static func == (a: SalemoveSDK.Salemove.VisitorInfo, b: SalemoveSDK.Salemove.VisitorInfo) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
 open class Locus {
   public init()
   open func bounds() -> SalemoveSDK.Rect
@@ -692,20 +720,9 @@ extension ResponseCacher : SalemoveSDK.CachedResponseHandler {
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
-public protocol PushNotificationConfigurable {
-  func configurePushNotifications(_ notifications: [SalemoveSDK.PushNotificationType])
-}
-@objc public enum PushNotificationType : Swift.Int {
-  case start
-  case end
-  case failed
-  case message
-  case transfer
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+public protocol PushNotificationsConfigurable {
+  func enable(_ shouldEnablePushNotifications: Swift.Bool)
+  func subscribeTo(_ notifications: [SalemoveSDK.PushNotificationsType])
 }
 public struct AlamofireHTTPMethod : Swift.RawRepresentable, Swift.Equatable, Swift.Hashable {
   public static let connect: SalemoveSDK.AlamofireHTTPMethod
@@ -1315,9 +1332,32 @@ public typealias OperatorTypingStatusUpdate = (SalemoveSDK.OperatorTypingStatus)
 public typealias EngagementFileProgressBlock = (SalemoveSDK.EngagementFileProgress) -> Swift.Void
 public typealias EngagementFileCompletionBlock = (SalemoveSDK.EngagementFileInformation?, SalemoveSDK.SalemoveError?) -> Swift.Void
 public typealias EngagementFileFetchCompletionBlock = (SalemoveSDK.EngagementFileData?, SalemoveSDK.SalemoveError?) -> Swift.Void
-@objc public protocol PushNotificationHandling {
-  @objc func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
-  @objc func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+public protocol PushNotificationsHandling {
+  func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+  func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
+  func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+}
+@objc @_hasMissingDesignatedInitializers public class PushNotifications : ObjectiveC.NSObject {
+  @objc public var handler: SalemoveSDK.PushActionBlock? {
+    @objc get
+    @objc set
+  }
+  public func register()
+  public func registerIfAuthorized()
+  public func setAsNotificationCenterDelegate()
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension PushNotifications : SalemoveSDK.PushNotificationsHandling, UserNotifications.UNUserNotificationCenterDelegate {
+  @objc dynamic public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+  @objc dynamic public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
+  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+}
+extension PushNotifications : SalemoveSDK.PushNotificationsConfigurable {
+  public func enable(_ shouldEnablePushNotifications: Swift.Bool)
+  public func subscribeTo(_ notifications: [SalemoveSDK.PushNotificationsType])
 }
 open class Stroke {
   final public let fill: SalemoveSDK.Fill
@@ -1953,10 +1993,8 @@ extension Optional : SalemoveSDK.OptionalProtocol {
 }
 @objc @_inheritsConvenienceInitializers public class SalemoveAppDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
   @discardableResult
-  public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil, enablePushNotifications isPushNotificationsEnabled: Swift.Bool = false) -> Swift.Bool
+  @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
   @objc public func applicationDidBecomeActive(_ application: UIKit.UIApplication)
-  @objc public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
-  @objc public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
   @objc override dynamic public init()
   @objc deinit
 }
@@ -2298,6 +2336,7 @@ public struct ChannelEvent {
 extension Salemove {
   @objc final public func waitForActiveEngagement(completion: @escaping SalemoveSDK.EngagementBlock)
   @objc final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, completion: @escaping SalemoveSDK.EngagementSessionBlock)
+  final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions? = nil, completion: @escaping SalemoveSDK.EngagementSessionBlock)
   @objc final public func cancel(engagementRequest: SalemoveSDK.EngagementRequest, completion: @escaping SalemoveSDK.SuccessBlock)
   @objc final public func requestOperators(completion: @escaping SalemoveSDK.OperatorBlock)
   @objc final public func requestEngagedOperator(completion: @escaping SalemoveSDK.OperatorBlock)
@@ -2409,10 +2448,6 @@ public protocol Cancellable {
   public static let defaultStrokeLineCap: SalemoveSDK.LineCap
   public static let defaultStrokeLineJoin: SalemoveSDK.LineJoin
   @objc deinit
-}
-extension Salemove : SalemoveSDK.PushNotificationHandling {
-  @objc final public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
-  @objc final public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
 }
 public enum SocketIOClientOption {
   case connectParams([Swift.String : Any])
@@ -3343,9 +3378,6 @@ extension Salemove {
   @objc final public func requestVisitorCode(completion: @escaping SalemoveSDK.VisitorCodeBlock)
 }
 extension Salemove {
-  @objc final public func updateInformation(name: Swift.String?, email: Swift.String?, phone: Swift.String?, externalID: Swift.String?, customAttributes: [Swift.String : Swift.String]?, completion: @escaping SalemoveSDK.SuccessBlock)
-}
-extension Salemove {
   @objc final public func clearSession()
 }
 extension Salemove {
@@ -3719,6 +3751,10 @@ public func == (lhs: SalemoveSDK.Stop, rhs: SalemoveSDK.Stop) -> Swift.Bool
   @objc public init(id: Swift.String)
   @objc override dynamic public init()
   @objc deinit
+}
+extension Salemove {
+  final public func updateInformation(name: Swift.String?, email: Swift.String?, phone: Swift.String?, externalID: Swift.String?, customAttributes: [Swift.String : Swift.String]?, completion: @escaping SalemoveSDK.SuccessBlock)
+  final public func fetchVisitorInfo(_ completion: @escaping (Swift.Result<SalemoveSDK.Salemove.VisitorInfo, Swift.Error>) -> Swift.Void)
 }
 public protocol SSLTrustValidator {
   func isValid(_ trust: Security.SecTrust, domain: Swift.String?) -> Swift.Bool
@@ -4831,6 +4867,7 @@ public typealias SWXMLHashXMLElement = SalemoveSDK.XMLElement
   case permissionDenied
   case screenSharingNotAvailable
   case notAvailableOnIOSVersion
+  case unsupportedEngagementType
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public static var _nsErrorDomain: Swift.String {
@@ -4878,6 +4915,8 @@ public typealias SWXMLHashXMLElement = SalemoveSDK.XMLElement
   }
   @objc override dynamic public init()
   @objc deinit
+}
+extension SalemoveError : Swift.Error {
 }
 @_hasMissingDesignatedInitializers @objc public class Queue : ObjectiveC.NSObject {
   @objc public var id: Swift.String {
@@ -5030,10 +5069,6 @@ extension URLSessionConfiguration {
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class Salemove : ObjectiveC.NSObject {
   @objc public static let sharedInstance: SalemoveSDK.Salemove
   @objc weak final public var currentInteractor: SalemoveSDK.Interactable?
-  @objc final public var pushHandler: SalemoveSDK.PushActionBlock? {
-    @objc get
-    @objc set
-  }
   @objc final public var environment: Swift.String {
     @objc get
   }
@@ -5046,13 +5081,13 @@ extension URLSessionConfiguration {
   @objc final public var apiToken: Swift.String {
     @objc get
   }
+  final public var pushNotifications: SalemoveSDK.PushNotifications {
+    get
+  }
   @objc deinit
 }
 extension Salemove {
   @objc final public func configureLogLevel(level: SalemoveSDK.LogLevel)
-}
-extension Salemove : SalemoveSDK.PushNotificationConfigurable {
-  final public func configurePushNotifications(_ notifications: [SalemoveSDK.PushNotificationType])
 }
 @_hasMissingDesignatedInitializers @objc public class Operator : ObjectiveC.NSObject {
   @objc public var name: Swift.String {
@@ -5451,6 +5486,7 @@ extension Bag : Swift.RandomAccessCollection {
 }
 extension Salemove {
   @objc final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping SalemoveSDK.QueueTicketBlock)
+  final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext, shouldCloseAllQueues: Swift.Bool = true, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions?, completion: @escaping SalemoveSDK.QueueTicketBlock)
   @objc final public func dequeueFromActiveTickets(completion: @escaping SalemoveSDK.SuccessBlock)
   @objc final public func cancel(queueTicket: SalemoveSDK.QueueTicket, completion: @escaping SalemoveSDK.SuccessBlock)
   @objc final public func listQueues(completion: @escaping SalemoveSDK.QueueRequestBlock)
@@ -6264,15 +6300,15 @@ open class GaussianBlur : SalemoveSDK.Effect {
 extension SalemoveSDK.AttachmentType : Swift.Equatable {}
 extension SalemoveSDK.AttachmentType : Swift.Hashable {}
 extension SalemoveSDK.AttachmentType : Swift.RawRepresentable {}
+extension SalemoveSDK.PushNotificationsType : Swift.Equatable {}
+extension SalemoveSDK.PushNotificationsType : Swift.Hashable {}
+extension SalemoveSDK.PushNotificationsType : Swift.RawRepresentable {}
 extension SalemoveSDK.URLEncodedFormEncoder.ArrayEncoding : Swift.Equatable {}
 extension SalemoveSDK.URLEncodedFormEncoder.ArrayEncoding : Swift.Hashable {}
 extension SalemoveSDK.URLEncodedFormEncoder.BoolEncoding : Swift.Equatable {}
 extension SalemoveSDK.URLEncodedFormEncoder.BoolEncoding : Swift.Hashable {}
 extension SalemoveSDK.URLEncodedFormEncoder.SpaceEncoding : Swift.Equatable {}
 extension SalemoveSDK.URLEncodedFormEncoder.SpaceEncoding : Swift.Hashable {}
-extension SalemoveSDK.PushNotificationType : Swift.Equatable {}
-extension SalemoveSDK.PushNotificationType : Swift.Hashable {}
-extension SalemoveSDK.PushNotificationType : Swift.RawRepresentable {}
 extension SalemoveSDK.Relativity : Swift.Equatable {}
 extension SalemoveSDK.Relativity : Swift.Hashable {}
 extension SalemoveSDK.Presence.Events : Swift.Equatable {}
