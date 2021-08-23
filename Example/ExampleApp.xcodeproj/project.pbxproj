@@ -3,13 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15EA54792C1BFAEF7A654BF8 /* Pods_ExampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A32219103381DCDE0D503511 /* Pods_ExampleApp.framework */; };
+		3107059A268B5E2300022695 /* InteractorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31070599268B5E2300022695 /* InteractorFactory.swift */; };
 		314F053124DAA569006EAAAE /* EngagementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314F053024DAA569006EAAAE /* EngagementTableViewCell.swift */; };
 		314F053424DAA73F006EAAAE /* UIImageView+ImageDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314F053224DAA73F006EAAAE /* UIImageView+ImageDownload.swift */; };
 		314F053524DAA73F006EAAAE /* UIView+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314F053324DAA73F006EAAAE /* UIView+Identifier.swift */; };
+		3157A81926932AE400B62900 /* MediaTypeActionSheetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157A81826932AE400B62900 /* MediaTypeActionSheetFactory.swift */; };
 		317544B124E57AF40043A2C6 /* OperatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317544B024E57AF40043A2C6 /* OperatorsViewController.swift */; };
 		317544B324E57BB50043A2C6 /* Operators.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 317544B224E57BB50043A2C6 /* Operators.storyboard */; };
 		317544B524E5837C0043A2C6 /* OperatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317544B424E5837C0043A2C6 /* OperatorTableViewCell.swift */; };
@@ -17,6 +20,21 @@
 		31A09C0625A8427E00FEBF07 /* EngagementStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A09C0525A8427E00FEBF07 /* EngagementStatusViewController.swift */; };
 		31E2935525828CEE0077A966 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2935425828CEE0077A966 /* Cache.swift */; };
 		31E2935925828DCF0077A966 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E2935825828DCF0077A966 /* UIImage.swift */; };
+		6B49819E26D3ECDC00965BD3 /* SalemoveSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B49819D26D3ECD400965BD3 /* SalemoveSDK.xcframework */; };
+		6B49819F26D3ECDC00965BD3 /* SalemoveSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B49819D26D3ECD400965BD3 /* SalemoveSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6B4981A226D3EE3400965BD3 /* TwilioVoice.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B4981A126D3EE3400965BD3 /* TwilioVoice.xcframework */; };
+		6B4981A426D3EEFA00965BD3 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B4981A326D3EEFA00965BD3 /* WebRTC.xcframework */; };
+		9AA7DC0326B2A18700478368 /* UpdateVisitor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AA7DC0226B2A18700478368 /* UpdateVisitor.storyboard */; };
+		9AA7DC0926B2A32600478368 /* UpdateVisitorInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7DC0526B2A32600478368 /* UpdateVisitorInfoViewController.swift */; };
+		9AA7DC0A26B2A32600478368 /* VisitorInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7DC0626B2A32600478368 /* VisitorInfoView.swift */; };
+		9AA7DC0B26B2A32600478368 /* VisitorInfoUpdate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7DC0726B2A32600478368 /* VisitorInfoUpdate+Extensions.swift */; };
+		9AA7DC0C26B2A32600478368 /* VisitorInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7DC0826B2A32600478368 /* VisitorInfoViewController.swift */; };
+		9AA7DC1426B2A57100478368 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7DC0E26B2A57100478368 /* ViewController.swift */; };
+		9AA7DC1526B2A57100478368 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7DC0F26B2A57100478368 /* View.swift */; };
+		9AA7DC1626B2A57100478368 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7DC1026B2A57100478368 /* UIView+Extensions.swift */; };
+		9AA7DC1726B2A57100478368 /* Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7DC1126B2A57100478368 /* Makeable.swift */; };
+		9AA7DC1826B2A57100478368 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7DC1226B2A57100478368 /* UIStackView+Extensions.swift */; };
+		9AA7DC1926B2A57100478368 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7DC1326B2A57100478368 /* Layout.swift */; };
 		C086009C243E7772005E0D11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086009B243E7772005E0D11 /* AppDelegate.swift */; };
 		C086009E243E7772005E0D11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086009D243E7772005E0D11 /* SceneDelegate.swift */; };
 		C08600A3243E7772005E0D11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08600A1243E7772005E0D11 /* Main.storyboard */; };
@@ -35,10 +53,27 @@
 		C08600CA243E8350005E0D11 /* ConvenienceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08600C8243E8350005E0D11 /* ConvenienceExtensions.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6B4981A026D3ECDC00965BD3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6B49819F26D3ECDC00965BD3 /* SalemoveSDK.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1F773217F93D1021A3654327 /* Pods-ExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-ExampleApp/Pods-ExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		31070599268B5E2300022695 /* InteractorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorFactory.swift; sourceTree = "<group>"; };
 		314F053024DAA569006EAAAE /* EngagementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngagementTableViewCell.swift; sourceTree = "<group>"; };
 		314F053224DAA73F006EAAAE /* UIImageView+ImageDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageDownload.swift"; sourceTree = "<group>"; };
 		314F053324DAA73F006EAAAE /* UIView+Identifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Identifier.swift"; sourceTree = "<group>"; };
+		3157A81826932AE400B62900 /* MediaTypeActionSheetFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTypeActionSheetFactory.swift; sourceTree = "<group>"; };
 		317544B024E57AF40043A2C6 /* OperatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorsViewController.swift; sourceTree = "<group>"; };
 		317544B224E57BB50043A2C6 /* Operators.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Operators.storyboard; sourceTree = "<group>"; };
 		317544B424E5837C0043A2C6 /* OperatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTableViewCell.swift; sourceTree = "<group>"; };
@@ -46,6 +81,22 @@
 		31A09C0525A8427E00FEBF07 /* EngagementStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngagementStatusViewController.swift; sourceTree = "<group>"; };
 		31E2935425828CEE0077A966 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		31E2935825828DCF0077A966 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		6B49819D26D3ECD400965BD3 /* SalemoveSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SalemoveSDK.xcframework; path = ../SalemoveSDK.xcframework; sourceTree = "<group>"; };
+		6B4981A126D3EE3400965BD3 /* TwilioVoice.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TwilioVoice.xcframework; path = ../TwilioVoice.xcframework; sourceTree = "<group>"; };
+		6B4981A326D3EEFA00965BD3 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = ../WebRTC.xcframework; sourceTree = "<group>"; };
+		9AA7DC0226B2A18700478368 /* UpdateVisitor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UpdateVisitor.storyboard; sourceTree = "<group>"; };
+		9AA7DC0526B2A32600478368 /* UpdateVisitorInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateVisitorInfoViewController.swift; sourceTree = "<group>"; };
+		9AA7DC0626B2A32600478368 /* VisitorInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorInfoView.swift; sourceTree = "<group>"; };
+		9AA7DC0726B2A32600478368 /* VisitorInfoUpdate+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VisitorInfoUpdate+Extensions.swift"; sourceTree = "<group>"; };
+		9AA7DC0826B2A32600478368 /* VisitorInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorInfoViewController.swift; sourceTree = "<group>"; };
+		9AA7DC0E26B2A57100478368 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9AA7DC0F26B2A57100478368 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		9AA7DC1026B2A57100478368 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		9AA7DC1126B2A57100478368 /* Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Makeable.swift; sourceTree = "<group>"; };
+		9AA7DC1226B2A57100478368 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		9AA7DC1326B2A57100478368 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		A32219103381DCDE0D503511 /* Pods_ExampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD64716842AAEAF5BAC9C9FF /* Pods-ExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.release.xcconfig"; path = "Target Support Files/Pods-ExampleApp/Pods-ExampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		C0860098243E7772005E0D11 /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C086009B243E7772005E0D11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C086009D243E7772005E0D11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,23 +124,63 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B4981A426D3EEFA00965BD3 /* WebRTC.xcframework in Frameworks */,
+				6B49819E26D3ECDC00965BD3 /* SalemoveSDK.xcframework in Frameworks */,
+				15EA54792C1BFAEF7A654BF8 /* Pods_ExampleApp.framework in Frameworks */,
+				6B4981A226D3EE3400965BD3 /* TwilioVoice.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		053903D0E407D5F513187CF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A32219103381DCDE0D503511 /* Pods_ExampleApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		31E2935025828B750077A966 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				31E2935425828CEE0077A966 /* Cache.swift */,
+				31070599268B5E2300022695 /* InteractorFactory.swift */,
+				3157A81826932AE400B62900 /* MediaTypeActionSheetFactory.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		5FCBDCD144E3D92DFCF47FB4 /* Pods */ = {
+		9AA7DC0426B2A32600478368 /* VisitorInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9AA7DC0526B2A32600478368 /* UpdateVisitorInfoViewController.swift */,
+				9AA7DC0626B2A32600478368 /* VisitorInfoView.swift */,
+				9AA7DC0726B2A32600478368 /* VisitorInfoUpdate+Extensions.swift */,
+				9AA7DC0826B2A32600478368 /* VisitorInfoViewController.swift */,
+			);
+			path = VisitorInfoViewController;
+			sourceTree = "<group>";
+		};
+		9AA7DC0D26B2A57100478368 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				9AA7DC0E26B2A57100478368 /* ViewController.swift */,
+				9AA7DC0F26B2A57100478368 /* View.swift */,
+				9AA7DC1026B2A57100478368 /* UIView+Extensions.swift */,
+				9AA7DC1126B2A57100478368 /* Makeable.swift */,
+				9AA7DC1226B2A57100478368 /* UIStackView+Extensions.swift */,
+				9AA7DC1326B2A57100478368 /* Layout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		A747591F726B709EBE6DD883 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F773217F93D1021A3654327 /* Pods-ExampleApp.debug.xcconfig */,
+				BD64716842AAEAF5BAC9C9FF /* Pods-ExampleApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -97,10 +188,14 @@
 		C086008F243E7771005E0D11 = {
 			isa = PBXGroup;
 			children = (
+				6B4981A126D3EE3400965BD3 /* TwilioVoice.xcframework */,
+				6B4981A326D3EEFA00965BD3 /* WebRTC.xcframework */,
+				6B49819D26D3ECD400965BD3 /* SalemoveSDK.xcframework */,
 				C08600CE243F1522005E0D11 /* README.md */,
 				C086009A243E7772005E0D11 /* ExampleApp */,
 				C0860099243E7772005E0D11 /* Products */,
-				5FCBDCD144E3D92DFCF47FB4 /* Pods */,
+				A747591F726B709EBE6DD883 /* Pods */,
+				053903D0E407D5F513187CF8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +216,7 @@
 				C086009D243E7772005E0D11 /* SceneDelegate.swift */,
 				C08600A6243E7773005E0D11 /* LaunchScreen.storyboard */,
 				C08600A9243E7773005E0D11 /* Info.plist */,
+				9AA7DC0D26B2A57100478368 /* Layout */,
 				31E2935025828B750077A966 /* Classes */,
 				C08600B0243E7948005E0D11 /* Assets */,
 				C08600C6243E8335005E0D11 /* Extensions */,
@@ -133,6 +229,7 @@
 		C08600B0243E7948005E0D11 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				9AA7DC0226B2A18700478368 /* UpdateVisitor.storyboard */,
 				C08600A4243E7773005E0D11 /* Assets.xcassets */,
 				C08600B1243E79E3005E0D11 /* Configuration.storyboard */,
 				C08600B2243E79E3005E0D11 /* Engagement.storyboard */,
@@ -145,6 +242,7 @@
 		C08600B6243E7E74005E0D11 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9AA7DC0426B2A32600478368 /* VisitorInfoViewController */,
 				C08600BA243E7EBC005E0D11 /* ConfigurationViewController.swift */,
 				C08600B9243E7EBC005E0D11 /* DemoViewController.swift */,
 				C08600B7243E7EBB005E0D11 /* EngagementViewController.swift */,
@@ -186,9 +284,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C08600AC243E7773005E0D11 /* Build configuration list for PBXNativeTarget "ExampleApp" */;
 			buildPhases = (
+				46BBCD6EF502E2BB2758A86B /* [CP] Check Pods Manifest.lock */,
 				C0860094243E7772005E0D11 /* Sources */,
 				C0860095243E7772005E0D11 /* Frameworks */,
 				C0860096243E7772005E0D11 /* Resources */,
+				8D110FF7545D44544FE178F7 /* [CP] Embed Pods Frameworks */,
+				6B4981A026D3ECDC00965BD3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,6 +340,7 @@
 			files = (
 				317544B324E57BB50043A2C6 /* Operators.storyboard in Resources */,
 				C08600A8243E7773005E0D11 /* LaunchScreen.storyboard in Resources */,
+				9AA7DC0326B2A18700478368 /* UpdateVisitor.storyboard in Resources */,
 				C08600A5243E7773005E0D11 /* Assets.xcassets in Resources */,
 				C08600B4243E79E3005E0D11 /* Engagement.storyboard in Resources */,
 				C08600C2243E80F9005E0D11 /* Configuration.plist in Resources */,
@@ -249,6 +351,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		46BBCD6EF502E2BB2758A86B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ExampleApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D110FF7545D44544FE178F7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleApp/Pods-ExampleApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleApp/Pods-ExampleApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExampleApp/Pods-ExampleApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C0860094243E7772005E0D11 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -258,12 +402,19 @@
 				C08600BD243E7EBC005E0D11 /* MediaViewController.swift in Sources */,
 				31E2935525828CEE0077A966 /* Cache.swift in Sources */,
 				31A09C0625A8427E00FEBF07 /* EngagementStatusViewController.swift in Sources */,
+				9AA7DC0C26B2A32600478368 /* VisitorInfoViewController.swift in Sources */,
 				C08600CA243E8350005E0D11 /* ConvenienceExtensions.swift in Sources */,
+				3107059A268B5E2300022695 /* InteractorFactory.swift in Sources */,
 				314F053124DAA569006EAAAE /* EngagementTableViewCell.swift in Sources */,
+				9AA7DC1426B2A57100478368 /* ViewController.swift in Sources */,
 				C086009C243E7772005E0D11 /* AppDelegate.swift in Sources */,
 				31E2935925828DCF0077A966 /* UIImage.swift in Sources */,
+				9AA7DC1926B2A57100478368 /* Layout.swift in Sources */,
 				314F053424DAA73F006EAAAE /* UIImageView+ImageDownload.swift in Sources */,
+				9AA7DC0926B2A32600478368 /* UpdateVisitorInfoViewController.swift in Sources */,
 				31A09C0325A8424A00FEBF07 /* OptionButton.swift in Sources */,
+				9AA7DC1626B2A57100478368 /* UIView+Extensions.swift in Sources */,
+				9AA7DC1526B2A57100478368 /* View.swift in Sources */,
 				C08600C5243E82FA005E0D11 /* QueueTableViewCell.swift in Sources */,
 				317544B524E5837C0043A2C6 /* OperatorTableViewCell.swift in Sources */,
 				C08600C9243E8350005E0D11 /* StoryboardExtensions.swift in Sources */,
@@ -271,7 +422,12 @@
 				C08600BE243E7EBC005E0D11 /* DemoViewController.swift in Sources */,
 				C08600BF243E7EBC005E0D11 /* ConfigurationViewController.swift in Sources */,
 				C08600C0243E7EBC005E0D11 /* QueueTableViewController.swift in Sources */,
+				9AA7DC0B26B2A32600478368 /* VisitorInfoUpdate+Extensions.swift in Sources */,
 				C086009E243E7772005E0D11 /* SceneDelegate.swift in Sources */,
+				3157A81926932AE400B62900 /* MediaTypeActionSheetFactory.swift in Sources */,
+				9AA7DC1726B2A57100478368 /* Makeable.swift in Sources */,
+				9AA7DC1826B2A57100478368 /* UIStackView+Extensions.swift in Sources */,
+				9AA7DC0A26B2A32600478368 /* VisitorInfoView.swift in Sources */,
 				C08600BC243E7EBC005E0D11 /* EngagementViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +574,7 @@
 		};
 		C08600AD243E7773005E0D11 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F773217F93D1021A3654327 /* Pods-ExampleApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ExampleApp/ExampleApp.entitlements;
@@ -438,6 +595,7 @@
 		};
 		C08600AE243E7773005E0D11 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD64716842AAEAF5BAC9C9FF /* Pods-ExampleApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ExampleApp/ExampleApp.entitlements;

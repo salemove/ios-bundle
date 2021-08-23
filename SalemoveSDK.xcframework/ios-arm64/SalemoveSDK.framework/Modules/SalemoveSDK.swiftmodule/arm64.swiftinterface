@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SalemoveSDK
 import AVFoundation
 import CommonCrypto
@@ -94,16 +94,16 @@ final public class SerialDisposable : SalemoveSDK.Disposable {
   case files
   case singleChoice
   case singleChoiceResponse
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
 }
 @objc @_hasMissingDesignatedInitializers @objcMembers public class EngagementFileData : ObjectiveC.NSObject {
   @objc final public let data: Foundation.Data
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @_hasMissingDesignatedInitializers open class SVGParser {
   @available(*, deprecated)
@@ -179,18 +179,6 @@ public struct AccessTokenPlugin : SalemoveSDK.PluginType {
   public let tokenClosure: SalemoveSDK.AccessTokenPlugin.TokenClosure
   public init(tokenClosure: @escaping SalemoveSDK.AccessTokenPlugin.TokenClosure)
   public func prepare(_ request: Foundation.URLRequest, target: SalemoveSDK.TargetType) -> Foundation.URLRequest
-}
-public enum PushNotificationsType : Swift.Int {
-  case start
-  case end
-  case failed
-  case message
-  case transfer
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
 }
 open class Color : SalemoveSDK.Fill {
   final public let val: Swift.Int
@@ -395,6 +383,18 @@ extension Notification {
   final public func request(_ request: SalemoveSDK.AlamofireRequest, didCompleteTask task: Foundation.URLSessionTask, with error: SalemoveSDK.AFError?)
   @objc deinit
 }
+public enum PushNotificationsType : Swift.Int {
+  case start
+  case end
+  case failed
+  case message
+  case transfer
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 open class Circle : SalemoveSDK.Locus {
   final public let cx: Swift.Double
   final public let cy: Swift.Double
@@ -469,27 +469,27 @@ extension MacawDisposable {
   final public let files: [SalemoveSDK.EngagementFile]?
   public init(file: SalemoveSDK.EngagementFile)
   public init(files: [SalemoveSDK.EngagementFile])
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 final public class URLEncodedFormEncoder {
   public enum ArrayEncoding {
     case brackets
     case noBrackets
     public static func == (a: SalemoveSDK.URLEncodedFormEncoder.ArrayEncoding, b: SalemoveSDK.URLEncodedFormEncoder.ArrayEncoding) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum BoolEncoding {
     case numeric
     case literal
     public static func == (a: SalemoveSDK.URLEncodedFormEncoder.BoolEncoding, b: SalemoveSDK.URLEncodedFormEncoder.BoolEncoding) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum DataEncoding {
     case deferredToData
@@ -517,10 +517,10 @@ final public class URLEncodedFormEncoder {
     case percentEscaped
     case plusReplaced
     public static func == (a: SalemoveSDK.URLEncodedFormEncoder.SpaceEncoding, b: SalemoveSDK.URLEncodedFormEncoder.SpaceEncoding) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum Error : Swift.Error {
     case invalidRootObject(Swift.String)
@@ -658,9 +658,9 @@ extension Salemove {
     public let note: Swift.String?
     public let customAttributes: [Swift.String : Swift.String]?
     public let banned: Swift.Bool
+    public init(from decoder: Swift.Decoder) throws
     public static func == (a: SalemoveSDK.Salemove.VisitorInfo, b: SalemoveSDK.Salemove.VisitorInfo) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
-    public init(from decoder: Swift.Decoder) throws
   }
 }
 open class Locus {
@@ -715,10 +715,10 @@ extension ResponseCacher : SalemoveSDK.CachedResponseHandler {
 @objc @_hasMissingDesignatedInitializers @objcMembers public class SingleChoiceOption : ObjectiveC.NSObject, Swift.Codable {
   @objc public var text: Swift.String?
   @objc public var value: Swift.String?
-  @objc override dynamic public init()
   @objc deinit
-  public func encode(to encoder: Swift.Encoder) throws
+  @objc override dynamic public init()
   required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
 public protocol PushNotificationsConfigurable {
   func enable(_ shouldEnablePushNotifications: Swift.Bool)
@@ -743,10 +743,10 @@ public enum Relativity {
   case scene
   case view
   public static func == (a: SalemoveSDK.Relativity, b: SalemoveSDK.Relativity) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 public struct TouchPoint {
   public let id: Swift.Int
@@ -869,8 +869,8 @@ final public class Presence {
   public enum Events : Swift.String {
     case state
     case diff
-    public init?(rawValue: Swift.String)
     public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
     public var rawValue: Swift.String {
       get
     }
@@ -922,8 +922,8 @@ final public class Presence {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class QueueTicket : ObjectiveC.NSObject {
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @objc public protocol EngagementHandling {
   @objc func start()
@@ -936,17 +936,17 @@ final public class Presence {
   @objc var onOperatorTypingStatusUpdate: SalemoveSDK.OperatorTypingStatusUpdate { get }
   @objc var onMessagesUpdated: SalemoveSDK.MessagesUpdateBlock { get }
 }
-@objc public protocol MediaHandling {
-  @objc var onMediaUpgradeOffer: SalemoveSDK.MediaUgradeOfferBlock { get }
-  @objc var onScreenSharingOffer: SalemoveSDK.ScreenshareOfferBlock { get }
-  @objc var onVideoStreamAdded: SalemoveSDK.VideoStreamAddedBlock { get }
-  @objc var onAudioStreamAdded: SalemoveSDK.AudioStreamAddedBlock { get }
-  @objc var onVisitorScreenSharingStateChange: SalemoveSDK.VisitorScreenSharingStateChange { get }
+public protocol MediaHandling {
+  var onMediaUpgradeOffer: SalemoveSDK.MediaUgradeOfferBlock { get }
+  var onScreenSharingOffer: SalemoveSDK.ScreenshareOfferBlock { get }
+  var onVideoStreamAdded: SalemoveSDK.VideoStreamAddedBlock { get }
+  var onAudioStreamAdded: SalemoveSDK.AudioStreamAddedBlock { get }
+  var onVisitorScreenSharingStateChange: SalemoveSDK.VisitorScreenSharingStateChange { get }
 }
 @objc public protocol ErrorHandling {
   @objc func fail(error: SalemoveSDK.SalemoveError)
 }
-@objc public protocol Interactable : SalemoveSDK.EngagementHandling, SalemoveSDK.ErrorHandling, SalemoveSDK.MediaHandling, SalemoveSDK.MessageHandling {
+public protocol Interactable : SalemoveSDK.EngagementHandling, SalemoveSDK.ErrorHandling, SalemoveSDK.MediaHandling, SalemoveSDK.MessageHandling {
 }
 @objc @_hasMissingDesignatedInitializers final public class SocketAnyEvent : ObjectiveC.NSObject {
   final public let event: Swift.String
@@ -954,8 +954,8 @@ final public class Presence {
   @objc override final public var description: Swift.String {
     @objc get
   }
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public struct AlamofireExtension<ExtendedType> {
   public var type: ExtendedType {
@@ -983,10 +983,10 @@ public enum LineJoin {
   case round
   case bevel
   public static func == (a: SalemoveSDK.LineJoin, b: SalemoveSDK.LineJoin) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 open class AlamofireMultipartFormData {
   public static let encodingMemoryThreshold: Swift.UInt64
@@ -1090,10 +1090,10 @@ public enum MessageSender {
   case omniguide
   case system
   public static func == (a: SalemoveSDK.MessageSender, b: SalemoveSDK.MessageSender) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 public protocol SocketLogger : AnyObject {
   var log: Swift.Bool { get set }
@@ -1332,32 +1332,12 @@ public typealias OperatorTypingStatusUpdate = (SalemoveSDK.OperatorTypingStatus)
 public typealias EngagementFileProgressBlock = (SalemoveSDK.EngagementFileProgress) -> Swift.Void
 public typealias EngagementFileCompletionBlock = (SalemoveSDK.EngagementFileInformation?, SalemoveSDK.SalemoveError?) -> Swift.Void
 public typealias EngagementFileFetchCompletionBlock = (SalemoveSDK.EngagementFileData?, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias StreamableOnHoldHandler = (Swift.Bool) -> Swift.Void
 public protocol PushNotificationsHandling {
   func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
   func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
   func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
   func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
-}
-@objc @_hasMissingDesignatedInitializers public class PushNotifications : ObjectiveC.NSObject {
-  @objc public var handler: SalemoveSDK.PushActionBlock? {
-    @objc get
-    @objc set
-  }
-  public func register()
-  public func registerIfAuthorized()
-  public func setAsNotificationCenterDelegate()
-  @objc override dynamic public init()
-  @objc deinit
-}
-extension PushNotifications : SalemoveSDK.PushNotificationsHandling, UserNotifications.UNUserNotificationCenterDelegate {
-  @objc dynamic public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
-  @objc dynamic public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
-  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
-  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
-}
-extension PushNotifications : SalemoveSDK.PushNotificationsConfigurable {
-  public func enable(_ shouldEnablePushNotifications: Swift.Bool)
-  public func subscribeTo(_ notifications: [SalemoveSDK.PushNotificationsType])
 }
 open class Stroke {
   final public let fill: SalemoveSDK.Fill
@@ -1369,6 +1349,24 @@ open class Stroke {
   final public let offset: Swift.Double
   public init(fill: SalemoveSDK.Fill = Color.black, width: Swift.Double = 1, cap: SalemoveSDK.LineCap = .butt, join: SalemoveSDK.LineJoin = .miter, miterLimit: Swift.Double = 10, dashes: [Swift.Double] = [], offset: Swift.Double = 0.0)
   @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class PushNotifications : ObjectiveC.NSObject {
+  @objc public var handler: SalemoveSDK.PushActionBlock? {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension PushNotifications : SalemoveSDK.PushNotificationsHandling, UserNotifications.UNUserNotificationCenterDelegate {
+  @objc dynamic public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+  @objc dynamic public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
+  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+}
+extension PushNotifications : SalemoveSDK.PushNotificationsConfigurable {
+  public func enable(_ shouldEnablePushNotifications: Swift.Bool)
+  public func subscribeTo(_ notifications: [SalemoveSDK.PushNotificationsType])
 }
 public struct MoyaMultipartFormData {
   public enum FormDataProvider {
@@ -1718,8 +1716,8 @@ final public class DataResponseSerializer : SalemoveSDK.ResponseSerializer {
   final public let emptyRequestMethods: Swift.Set<SalemoveSDK.AlamofireHTTPMethod>
   public init(dataPreprocessor: SalemoveSDK.DataPreprocessor = DataResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = DataResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<SalemoveSDK.AlamofireHTTPMethod> = DataResponseSerializer.defaultEmptyRequestMethods)
   final public func serialize(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: Swift.Error?) throws -> Foundation.Data
-  public typealias SerializedObject = Foundation.Data
   @objc deinit
+  public typealias SerializedObject = Foundation.Data
 }
 extension AlamofireDataRequest {
   @discardableResult
@@ -1736,8 +1734,8 @@ final public class StringResponseSerializer : SalemoveSDK.ResponseSerializer {
   final public let emptyRequestMethods: Swift.Set<SalemoveSDK.AlamofireHTTPMethod>
   public init(dataPreprocessor: SalemoveSDK.DataPreprocessor = StringResponseSerializer.defaultDataPreprocessor, encoding: Swift.String.Encoding? = nil, emptyResponseCodes: Swift.Set<Swift.Int> = StringResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<SalemoveSDK.AlamofireHTTPMethod> = StringResponseSerializer.defaultEmptyRequestMethods)
   final public func serialize(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: Swift.Error?) throws -> Swift.String
-  public typealias SerializedObject = Swift.String
   @objc deinit
+  public typealias SerializedObject = Swift.String
 }
 extension AlamofireDataRequest {
   @discardableResult
@@ -1754,8 +1752,8 @@ final public class JSONResponseSerializer : SalemoveSDK.ResponseSerializer {
   final public let options: Foundation.JSONSerialization.ReadingOptions
   public init(dataPreprocessor: SalemoveSDK.DataPreprocessor = JSONResponseSerializer.defaultDataPreprocessor, emptyResponseCodes: Swift.Set<Swift.Int> = JSONResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<SalemoveSDK.AlamofireHTTPMethod> = JSONResponseSerializer.defaultEmptyRequestMethods, options: Foundation.JSONSerialization.ReadingOptions = .allowFragments)
   final public func serialize(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: Swift.Error?) throws -> Any
-  public typealias SerializedObject = Any
   @objc deinit
+  public typealias SerializedObject = Any
 }
 extension AlamofireDataRequest {
   @discardableResult
@@ -1770,8 +1768,8 @@ public protocol EmptyResponse {
 }
 public struct Empty : Swift.Codable {
   public static let value: SalemoveSDK.Empty
-  public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
 extension Empty : SalemoveSDK.EmptyResponse {
   public static func emptyValue() -> SalemoveSDK.Empty
@@ -1790,8 +1788,8 @@ final public class DecodableResponseSerializer<T> : SalemoveSDK.ResponseSerializ
   final public let emptyRequestMethods: Swift.Set<SalemoveSDK.AlamofireHTTPMethod>
   public init(dataPreprocessor: SalemoveSDK.DataPreprocessor = DecodableResponseSerializer.defaultDataPreprocessor, decoder: SalemoveSDK.DataDecoder = JSONDecoder(), emptyResponseCodes: Swift.Set<Swift.Int> = DecodableResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<SalemoveSDK.AlamofireHTTPMethod> = DecodableResponseSerializer.defaultEmptyRequestMethods)
   final public func serialize(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: Swift.Error?) throws -> T
-  public typealias SerializedObject = T
   @objc deinit
+  public typealias SerializedObject = T
 }
 extension AlamofireDataRequest {
   @discardableResult
@@ -1981,22 +1979,24 @@ extension Optional : SalemoveSDK.OptionalProtocol {
   @objc func unmute()
   @objc var isMuted: Swift.Bool { get }
   @objc var isRemote: Swift.Bool { get }
+  @objc var onHold: SalemoveSDK.StreamableOnHoldHandler? { get set }
 }
-@objc public protocol VideoStreamable {
-  @objc func getStreamView() -> SalemoveSDK.StreamView
-  @objc func playVideo()
-  @objc func pause()
-  @objc func resume()
-  @objc func stop()
-  @objc var isPaused: Swift.Bool { get }
-  @objc var isRemote: Swift.Bool { get }
+public protocol VideoStreamable : AnyObject {
+  func getStreamView() -> SalemoveSDK.StreamView
+  func playVideo()
+  func pause()
+  func resume()
+  func stop()
+  var isPaused: Swift.Bool { get }
+  var isRemote: Swift.Bool { get }
+  var onHold: SalemoveSDK.StreamableOnHoldHandler? { get set }
 }
 @objc @_inheritsConvenienceInitializers public class SalemoveAppDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
   @discardableResult
   @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
   @objc public func applicationDidBecomeActive(_ application: UIKit.UIApplication)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @_hasMissingDesignatedInitializers public class SwiftPhoenixClientMessage {
   final public let ref: Swift.String
@@ -2011,6 +2011,10 @@ extension Optional : SalemoveSDK.OptionalProtocol {
 extension Salemove {
   @available(*, deprecated, message: "Use fetchFile(engagementFile:progress:completion:) instead")
   @objc final public func fetchFile(_ id: Swift.String, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping SalemoveSDK.EngagementFileFetchCompletionBlock)
+  @available(*, deprecated, message: "Use updateVisitorInfo(_:completion:) instead")
+  final public func updateInformation(name: Swift.String?, email: Swift.String?, phone: Swift.String?, externalID: Swift.String?, customAttributes: [Swift.String : Swift.String]?, completion: @escaping SalemoveSDK.SuccessBlock)
+  @available(*, deprecated, message: "Use send(selectedOptionValue:completion:) instead")
+  @objc final public func send(selectedOptionValue: Swift.String, messageId: Swift.String, completion: @escaping SalemoveSDK.MessageBlock)
 }
 @objc final public class SocketEngine : ObjectiveC.NSObject, Foundation.URLSessionDelegate, SalemoveSDK.SocketEnginePollable, SalemoveSDK.SocketEngineWebsocket {
   @objc final public let engineQueue: Dispatch.DispatchQueue
@@ -2099,8 +2103,8 @@ extension SocketEngine {
   case disconnected
   case connecting
   case connected
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -2214,8 +2218,8 @@ public protocol SocketIOWebSocketPongDelegate : AnyObject {
     case encoding
     case policyViolated
     case messageTooBig
-    public init?(rawValue: Swift.UInt16)
     public typealias RawValue = Swift.UInt16
+    public init?(rawValue: Swift.UInt16)
     public var rawValue: Swift.UInt16 {
       get
     }
@@ -2319,8 +2323,8 @@ public enum ChannelState : Swift.String {
   case joined
   case joining
   case leaving
-  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
@@ -2366,8 +2370,8 @@ extension Result : SalemoveSDK.SignalProducerConvertible {
   public var producer: SalemoveSDK.SignalProducer<Success, Failure> {
     get
   }
-  public typealias Error = Failure
   public typealias Value = Success
+  public typealias Error = Failure
 }
 @objc @_inheritsConvenienceInitializers open class SVGView : SalemoveSDK.MacawView {
   @objc @IBInspectable open var fileName: Swift.String? {
@@ -2416,10 +2420,10 @@ public enum AnimationState {
   case running
   case paused
   public static func == (a: SalemoveSDK.AnimationState, b: SalemoveSDK.AnimationState) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 @_hasMissingDesignatedInitializers public class Animation {
   public func play()
@@ -2516,10 +2520,10 @@ public enum LineCap {
   case round
   case square
   public static func == (a: SalemoveSDK.LineCap, b: SalemoveSDK.LineCap) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 extension AnimatableVariable where T : SalemoveSDK.ContentsInterpolation {
   public func animation(_ f: @escaping (Swift.Double) -> [SalemoveSDK.Node]) -> SalemoveSDK.Animation
@@ -2548,10 +2552,10 @@ public enum Baseline {
   case bottom
   case mid
   public static func == (a: SalemoveSDK.Baseline, b: SalemoveSDK.Baseline) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 @objc public protocol SocketEngineClient {
   @objc func engineDidError(reason: Swift.String)
@@ -2626,8 +2630,8 @@ final public class RevocationTrustEvaluator : SalemoveSDK.ServerTrustEvaluating 
     public static let any: SalemoveSDK.RevocationTrustEvaluator.Options
     public let rawValue: CoreFoundation.CFOptionFlags
     public init(rawValue: CoreFoundation.CFOptionFlags)
-    public typealias ArrayLiteralElement = SalemoveSDK.RevocationTrustEvaluator.Options
     public typealias Element = SalemoveSDK.RevocationTrustEvaluator.Options
+    public typealias ArrayLiteralElement = SalemoveSDK.RevocationTrustEvaluator.Options
     public typealias RawValue = CoreFoundation.CFOptionFlags
   }
   public init(performDefaultValidation: Swift.Bool = true, validateHost: Swift.Bool = true, options: SalemoveSDK.RevocationTrustEvaluator.Options = .any)
@@ -2675,18 +2679,18 @@ extension SecTrust : SalemoveSDK.AlamofireExtended {
   public typealias ExtendedType = Security.SecTrust
 }
 extension AlamofireExtension where ExtendedType == Security.SecTrust {
-  @available(iOS 12, macOS 10.14, tvOS 12, watchOS 5, *)
+  @available(iOS 12, OSX 10.14, tvOS 12, watchOS 5, *)
   public func evaluate(afterApplying policy: Security.SecPolicy) throws
   @available(iOS, introduced: 10, deprecated: 12, renamed: "evaluate(afterApplying:)")
-  @available(macOS, introduced: 10.12, deprecated: 10.14, renamed: "evaluate(afterApplying:)")
+  @available(OSX, introduced: 10.12, deprecated: 10.14, renamed: "evaluate(afterApplying:)")
   @available(tvOS, introduced: 10, deprecated: 12, renamed: "evaluate(afterApplying:)")
   @available(watchOS, introduced: 3, deprecated: 5, renamed: "evaluate(afterApplying:)")
   public func validate(policy: Security.SecPolicy, errorProducer: (Darwin.OSStatus, Security.SecTrustResultType) -> Swift.Error) throws
   public func apply(policy: Security.SecPolicy) throws -> Security.SecTrust
-  @available(iOS 12, macOS 10.14, tvOS 12, watchOS 5, *)
+  @available(iOS 12, OSX 10.14, tvOS 12, watchOS 5, *)
   public func evaluate() throws
   @available(iOS, introduced: 10, deprecated: 12, renamed: "evaluate()")
-  @available(macOS, introduced: 10.12, deprecated: 10.14, renamed: "evaluate()")
+  @available(OSX, introduced: 10.12, deprecated: 10.14, renamed: "evaluate()")
   @available(tvOS, introduced: 10, deprecated: 12, renamed: "evaluate()")
   @available(watchOS, introduced: 3, deprecated: 5, renamed: "evaluate()")
   public func validate(errorProducer: (Darwin.OSStatus, Security.SecTrustResultType) -> Swift.Error) throws
@@ -2800,8 +2804,8 @@ extension AlamofireSession : SalemoveSDK.RequestDelegate {
 }
 public enum ContextType : Swift.String {
   case page
-  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
@@ -2814,8 +2818,8 @@ public enum ContextType : Swift.String {
     get
   }
   public init(type: SalemoveSDK.ContextType, url: Swift.String)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public protocol ParameterEncoder {
   func encode<Parameters>(_ parameters: Parameters?, into request: Foundation.URLRequest) throws -> Foundation.URLRequest where Parameters : Swift.Encodable
@@ -2827,7 +2831,7 @@ open class JSONParameterEncoder : SalemoveSDK.ParameterEncoder {
   public static var prettyPrinted: SalemoveSDK.JSONParameterEncoder {
     get
   }
-  @available(macOS 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
+  @available(OSX 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
   public static var sortedKeys: SalemoveSDK.JSONParameterEncoder {
     get
   }
@@ -2842,10 +2846,10 @@ open class URLEncodedFormParameterEncoder : SalemoveSDK.ParameterEncoder {
     case queryString
     case httpBody
     public static func == (a: SalemoveSDK.URLEncodedFormParameterEncoder.Destination, b: SalemoveSDK.URLEncodedFormParameterEncoder.Destination) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public static var `default`: SalemoveSDK.URLEncodedFormParameterEncoder {
     get
@@ -3124,11 +3128,11 @@ public enum MediaType : Swift.String, Swift.Codable {
   case text
   case phone
   case unknown
-  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
+  public init?(rawValue: Swift.String)
 }
 final public class Transform {
   final public let m11: Swift.Double
@@ -3305,8 +3309,8 @@ extension Size {
   @discardableResult
   open func removeSocket(_ socket: SalemoveSDK.SocketIOClient) -> SalemoveSDK.SocketIOClient?
   open func removeSockets()
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public enum MultiTarget : SalemoveSDK.TargetType {
   case target(SalemoveSDK.TargetType)
@@ -3370,7 +3374,7 @@ extension MoyaProvider {
 extension Salemove {
   @objc final public func configure(site: Swift.String) throws
   @objc final public func configure(environment: Swift.String) throws
-  @objc final public func configure(interactor: SalemoveSDK.Interactable)
+  final public func configure(interactor: SalemoveSDK.Interactable)
   @objc final public func configure(appToken: Swift.String) throws
   @objc final public func configure(apiToken: Swift.String) throws
 }
@@ -3384,7 +3388,7 @@ extension Salemove {
   @objc final public func requestMediaUpgrade(offer: SalemoveSDK.MediaUpgradeOffer, completion: @escaping SalemoveSDK.SuccessBlock)
 }
 extension Salemove {
-  @objc final public func send(selectedOptionValue: Swift.String, messageId: Swift.String, completion: @escaping SalemoveSDK.MessageBlock)
+  final public func send(selectedOptionValue: Swift.String, completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void)
   @objc final public func send(message: Swift.String = "", attachment: SalemoveSDK.Attachment? = nil, completion: @escaping SalemoveSDK.MessageBlock)
   @objc final public func send(message: Swift.String, queueID: Swift.String, completion: @escaping SalemoveSDK.MessageBlock)
   @objc final public func sendMessagePreview(message: Swift.String, completion: @escaping SalemoveSDK.SuccessBlock)
@@ -3499,8 +3503,8 @@ open class RetryPolicy : SalemoveSDK.AlamofireRequestInterceptor {
 }
 open class ConnectionLostRetryPolicy : SalemoveSDK.RetryPolicy {
   public init(retryLimit: Swift.UInt = RetryPolicy.defaultRetryLimit, exponentialBackoffBase: Swift.UInt = RetryPolicy.defaultExponentialBackoffBase, exponentialBackoffScale: Swift.Double = RetryPolicy.defaultExponentialBackoffScale, retryableHTTPMethods: Swift.Set<SalemoveSDK.AlamofireHTTPMethod> = RetryPolicy.defaultRetryableHTTPMethods)
-  override public init(retryLimit: Swift.UInt = super, exponentialBackoffBase: Swift.UInt = super, exponentialBackoffScale: Swift.Double = super, retryableHTTPMethods: Swift.Set<SalemoveSDK.AlamofireHTTPMethod> = super, retryableHTTPStatusCodes: Swift.Set<Swift.Int> = super, retryableURLErrorCodes: Swift.Set<Foundation.URLError.Code> = super)
   @objc deinit
+  override public init(retryLimit: Swift.UInt = super, exponentialBackoffBase: Swift.UInt = super, exponentialBackoffScale: Swift.Double = super, retryableHTTPMethods: Swift.Set<SalemoveSDK.AlamofireHTTPMethod> = super, retryableHTTPStatusCodes: Swift.Set<Swift.Int> = super, retryableURLErrorCodes: Swift.Set<Foundation.URLError.Code> = super)
 }
 @_hasMissingDesignatedInitializers @objc public class Push : ObjectiveC.NSObject, Swift.Codable {
   @objc public var actionIdentifier: Swift.String {
@@ -3511,14 +3515,14 @@ open class ConnectionLostRetryPolicy : SalemoveSDK.RetryPolicy {
   }
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @objc public enum PushType : Swift.Int {
   case unidentified
   case chatMessage
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -3569,11 +3573,11 @@ public enum SocketClientEvent : Swift.String {
   case reconnect
   case reconnectAttempt
   case statusChange
-  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
+  public init?(rawValue: Swift.String)
 }
 public typealias Payload = [Swift.String : Any]
 public typealias PayloadClosure = () -> SalemoveSDK.Payload?
@@ -3659,7 +3663,7 @@ extension SessionDelegate : Foundation.URLSessionTaskDelegate {
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, willPerformHTTPRedirection response: Foundation.HTTPURLResponse, newRequest request: Foundation.URLRequest, completionHandler: @escaping (Foundation.URLRequest?) -> Swift.Void)
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didFinishCollecting metrics: Foundation.URLSessionTaskMetrics)
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didCompleteWithError error: Swift.Error?)
-  @available(macOS 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
+  @available(OSX 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, taskIsWaitingForConnectivity task: Foundation.URLSessionTask)
 }
 extension SessionDelegate : Foundation.URLSessionDataDelegate {
@@ -3753,7 +3757,7 @@ public func == (lhs: SalemoveSDK.Stop, rhs: SalemoveSDK.Stop) -> Swift.Bool
   @objc deinit
 }
 extension Salemove {
-  final public func updateInformation(name: Swift.String?, email: Swift.String?, phone: Swift.String?, externalID: Swift.String?, customAttributes: [Swift.String : Swift.String]?, completion: @escaping SalemoveSDK.SuccessBlock)
+  final public func updateVisitorInfo(_ info: SalemoveSDK.VisitorInfoUpdate, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
   final public func fetchVisitorInfo(_ completion: @escaping (Swift.Result<SalemoveSDK.Salemove.VisitorInfo, Swift.Error>) -> Swift.Void)
 }
 public protocol SSLTrustValidator {
@@ -3843,28 +3847,28 @@ public struct AlamofireURLEncoding : SalemoveSDK.AlamofireParameterEncoding {
     case queryString
     case httpBody
     public static func == (a: SalemoveSDK.AlamofireURLEncoding.Destination, b: SalemoveSDK.AlamofireURLEncoding.Destination) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum ArrayEncoding {
     case brackets
     case noBrackets
     public static func == (a: SalemoveSDK.AlamofireURLEncoding.ArrayEncoding, b: SalemoveSDK.AlamofireURLEncoding.ArrayEncoding) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum BoolEncoding {
     case numeric
     case literal
     public static func == (a: SalemoveSDK.AlamofireURLEncoding.BoolEncoding, b: SalemoveSDK.AlamofireURLEncoding.BoolEncoding) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public static var `default`: SalemoveSDK.AlamofireURLEncoding {
     get
@@ -4080,8 +4084,8 @@ final public class ValidatingProperty<Value, ValidationError> : SalemoveSDK.Muta
       get
     }
   }
-  public typealias Error = Swift.Never
   @objc deinit
+  public typealias Error = Swift.Never
 }
 open class ColorMatrixEffect : SalemoveSDK.Effect {
   final public let matrix: SalemoveSDK.ColorMatrix
@@ -4094,8 +4098,8 @@ open class ColorMatrixEffect : SalemoveSDK.Effect {
   final public let isSecurityScanningRequired: Swift.Bool
   final public let url: Swift.String?
   @objc deinit
-  public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
 public enum EndpointSampleResponse {
   case networkResponse(Swift.Int, Foundation.Data)
@@ -4248,10 +4252,10 @@ open class ColorMatrix {
 public enum FillRule {
   case nonzero, evenodd
   public static func == (a: SalemoveSDK.FillRule, b: SalemoveSDK.FillRule) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 open class Path : SalemoveSDK.Locus {
   final public let segments: [SalemoveSDK.PathSegment]
@@ -4276,10 +4280,10 @@ extension Fill : SalemoveSDK.FillInterpolation {
       case ethernetOrWiFi
       case cellular
       public static func == (a: SalemoveSDK.NetworkReachabilityManager.NetworkReachabilityStatus.ConnectionType, b: SalemoveSDK.NetworkReachabilityManager.NetworkReachabilityStatus.ConnectionType) -> Swift.Bool
-      public func hash(into hasher: inout Swift.Hasher)
       public var hashValue: Swift.Int {
         get
       }
+      public func hash(into hasher: inout Swift.Hasher)
     }
   }
   public typealias Listener = (SalemoveSDK.NetworkReachabilityManager.NetworkReachabilityStatus) -> Swift.Void
@@ -4331,7 +4335,7 @@ public protocol EventMonitor {
   func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, willPerformHTTPRedirection response: Foundation.HTTPURLResponse, newRequest request: Foundation.URLRequest)
   func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didFinishCollecting metrics: Foundation.URLSessionTaskMetrics)
   func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didCompleteWithError error: Swift.Error?)
-  @available(macOS 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
+  @available(OSX 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
   func urlSession(_ session: Foundation.URLSession, taskIsWaitingForConnectivity task: Foundation.URLSessionTask)
   func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive data: Foundation.Data)
   func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, willCacheResponse proposedResponse: Foundation.CachedURLResponse)
@@ -4426,7 +4430,7 @@ extension EventMonitor {
   final public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, willPerformHTTPRedirection response: Foundation.HTTPURLResponse, newRequest request: Foundation.URLRequest)
   final public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didFinishCollecting metrics: Foundation.URLSessionTaskMetrics)
   final public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didCompleteWithError error: Swift.Error?)
-  @available(macOS 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
+  @available(OSX 10.13, iOS 11.0, tvOS 11.0, watchOS 4.0, *)
   final public func urlSession(_ session: Foundation.URLSession, taskIsWaitingForConnectivity task: Foundation.URLSessionTask)
   final public func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive data: Foundation.Data)
   final public func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, willCacheResponse proposedResponse: Foundation.CachedURLResponse)
@@ -4556,8 +4560,8 @@ public struct MCAMediaTimingFunctionName {
   case fill
   case aspectFit
   case aspectFill
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -4584,8 +4588,8 @@ extension Transform : SalemoveSDK.TransformInterpolation {
   case info
   case debug
   public static func >= (a: SalemoveSDK.LogLevel, b: SalemoveSDK.LogLevel) -> Swift.Bool
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -4593,8 +4597,8 @@ extension Transform : SalemoveSDK.TransformInterpolation {
 @_hasMissingDesignatedInitializers @objc public class LocalScreen : ObjectiveC.NSObject {
   @objc public func stopSharing()
   @objc public func getStreamView() -> SalemoveSDK.StreamView
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @_hasMissingDesignatedInitializers public class SwiftPhoenixClientChannel {
   final public let topic: Swift.String
@@ -4648,8 +4652,8 @@ public protocol SocketIOSSLTrustValidator {
 @objc open class SocketIOSSLCert : ObjectiveC.NSObject {
   public init(data: Foundation.Data)
   public init(key: Security.SecKey)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 open class SocketIOSSLSecurity : SalemoveSDK.SocketIOSSLTrustValidator {
   public var validatedDN: Swift.Bool
@@ -4801,23 +4805,23 @@ public typealias SWXMLHashXMLElement = SalemoveSDK.XMLElement
 @objc public enum GeneralError : Swift.Int, Swift.Error {
   case internalError
   case networkError
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
 @objc public enum ContextError : Swift.Int, Swift.Error {
   case invalidURL
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
@@ -4826,24 +4830,24 @@ public typealias SWXMLHashXMLElement = SalemoveSDK.XMLElement
   case invalidEnvironment
   case invalidAppToken
   case invalidApiToken
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
 @objc public enum MediaUpgradeError : Swift.Int, Swift.Error {
   case requestError
   case unsupportedRequest
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
@@ -4854,12 +4858,12 @@ public typealias SWXMLHashXMLElement = SalemoveSDK.XMLElement
   case visitorCanceled
   case operatorCanceled
   case operatorLeft
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
@@ -4868,12 +4872,12 @@ public typealias SWXMLHashXMLElement = SalemoveSDK.XMLElement
   case screenSharingNotAvailable
   case notAvailableOnIOSVersion
   case unsupportedEngagementType
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
@@ -4882,12 +4886,12 @@ public typealias SWXMLHashXMLElement = SalemoveSDK.XMLElement
   case queueFull
   case invalidId
   case alreadyEnqueued
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
@@ -4897,12 +4901,12 @@ public typealias SWXMLHashXMLElement = SalemoveSDK.XMLElement
   case fileTooBig
   case invalidFileURL
   case fileUnavailable
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
@@ -4938,8 +4942,8 @@ extension SalemoveError : Swift.Error {
   public var media: [SalemoveSDK.MediaType] {
     get
   }
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public enum QueueStatus : Swift.String, Swift.Codable {
   case open
@@ -4947,8 +4951,8 @@ public enum QueueStatus : Swift.String, Swift.Codable {
   case full
   case unstaffed
   case unknown
-  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
@@ -5005,9 +5009,9 @@ extension HTTPHeaders : Swift.Collection {
   public func index(after i: Swift.Int) -> Swift.Int
   public typealias Element = SalemoveSDK.HTTPHeader
   public typealias Index = Swift.Int
-  public typealias Indices = Swift.DefaultIndices<SalemoveSDK.HTTPHeaders>
   public typealias Iterator = Swift.IndexingIterator<[SalemoveSDK.HTTPHeader]>
   public typealias SubSequence = Swift.Slice<SalemoveSDK.HTTPHeaders>
+  public typealias Indices = Swift.DefaultIndices<SalemoveSDK.HTTPHeaders>
 }
 extension HTTPHeaders : Swift.CustomStringConvertible {
   public var description: Swift.String {
@@ -5018,11 +5022,11 @@ public struct HTTPHeader : Swift.Hashable {
   public let name: Swift.String
   public let value: Swift.String
   public init(name: Swift.String, value: Swift.String)
-  public func hash(into hasher: inout Swift.Hasher)
-  public static func == (a: SalemoveSDK.HTTPHeader, b: SalemoveSDK.HTTPHeader) -> Swift.Bool
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: SalemoveSDK.HTTPHeader, b: SalemoveSDK.HTTPHeader) -> Swift.Bool
 }
 extension HTTPHeader : Swift.CustomStringConvertible {
   public var description: Swift.String {
@@ -5068,7 +5072,7 @@ extension URLSessionConfiguration {
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class Salemove : ObjectiveC.NSObject {
   @objc public static let sharedInstance: SalemoveSDK.Salemove
-  @objc weak final public var currentInteractor: SalemoveSDK.Interactable?
+  weak final public var currentInteractor: SalemoveSDK.Interactable?
   @objc final public var environment: Swift.String {
     @objc get
   }
@@ -5195,10 +5199,10 @@ public enum AuthenticationError : Swift.Error {
   case missingCredential
   case excessiveRefresh
   public static func == (a: SalemoveSDK.AuthenticationError, b: SalemoveSDK.AuthenticationError) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 public class AuthenticationInterceptor<AuthenticatorType> : SalemoveSDK.AlamofireRequestInterceptor where AuthenticatorType : SalemoveSDK.Authenticator {
   public typealias Credential = AuthenticatorType.Credential
@@ -5247,8 +5251,8 @@ extension NetworkLoggerPlugin.Configuration {
     public static let errorResponseBody: SalemoveSDK.NetworkLoggerPlugin.Configuration.LogOptions
     public static let `default`: SalemoveSDK.NetworkLoggerPlugin.Configuration.LogOptions
     public static let verbose: SalemoveSDK.NetworkLoggerPlugin.Configuration.LogOptions
-    public typealias ArrayLiteralElement = SalemoveSDK.NetworkLoggerPlugin.Configuration.LogOptions
     public typealias Element = SalemoveSDK.NetworkLoggerPlugin.Configuration.LogOptions
+    public typealias ArrayLiteralElement = SalemoveSDK.NetworkLoggerPlugin.Configuration.LogOptions
     public typealias RawValue = Swift.Int
   }
 }
@@ -5403,13 +5407,13 @@ public enum LoggingEvent {
     public static var allEvents: Swift.Set<SalemoveSDK.LoggingEvent.Signal> {
       get
     }
-    public init?(rawValue: Swift.String)
-    public typealias AllCases = [SalemoveSDK.LoggingEvent.Signal]
     public typealias RawValue = Swift.String
-    public static var allCases: [SalemoveSDK.LoggingEvent.Signal] {
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
       get
     }
-    public var rawValue: Swift.String {
+    public typealias AllCases = [SalemoveSDK.LoggingEvent.Signal]
+    public static var allCases: [SalemoveSDK.LoggingEvent.Signal] {
       get
     }
   }
@@ -5419,13 +5423,13 @@ public enum LoggingEvent {
     public static var allEvents: Swift.Set<SalemoveSDK.LoggingEvent.SignalProducer> {
       get
     }
-    public init?(rawValue: Swift.String)
-    public typealias AllCases = [SalemoveSDK.LoggingEvent.SignalProducer]
     public typealias RawValue = Swift.String
-    public static var allCases: [SalemoveSDK.LoggingEvent.SignalProducer] {
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
       get
     }
-    public var rawValue: Swift.String {
+    public typealias AllCases = [SalemoveSDK.LoggingEvent.SignalProducer]
+    public static var allCases: [SalemoveSDK.LoggingEvent.SignalProducer] {
       get
     }
   }
@@ -5443,8 +5447,8 @@ extension UIImage {
 }
 public enum SocketAckStatus : Swift.String {
   case noAck
-  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
@@ -5455,6 +5459,37 @@ extension URLRequest {
     set
   }
   public func validate() throws
+}
+public struct VisitorInfoUpdate {
+  public var name: Swift.String?
+  public var email: Swift.String?
+  public var phone: Swift.String?
+  public var note: Swift.String?
+  public var noteUpdateMethod: SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod?
+  public var externalID: Swift.String?
+  public var customAttributes: [Swift.String : Swift.String]?
+  public var customAttributesUpdateMethod: SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod?
+  public init(name: Swift.String? = nil, email: Swift.String? = nil, phone: Swift.String? = nil, note: Swift.String? = nil, noteUpdateMethod: SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod? = nil, externalID: Swift.String? = nil, customAttributes: [Swift.String : Swift.String]? = nil, customAttributesUpdateMethod: SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod? = nil)
+}
+extension VisitorInfoUpdate {
+  public enum NoteUpdateMethod : Swift.String {
+    case replace
+    case append
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.String)
+  }
+  public enum CustomAttributesUpdateMethod : Swift.String {
+    case replace
+    case merge
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.String)
+  }
 }
 public struct Bag<Element> {
   public struct Token {
@@ -5481,8 +5516,8 @@ extension Bag : Swift.RandomAccessCollection {
     public mutating func next() -> Element?
   }
   public typealias Index = Swift.Int
-  public typealias Indices = Swift.Range<Swift.Int>
   public typealias SubSequence = Swift.Slice<SalemoveSDK.Bag<Element>>
+  public typealias Indices = Swift.Range<Swift.Int>
 }
 extension Salemove {
   @objc final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping SalemoveSDK.QueueTicketBlock)
@@ -5507,11 +5542,11 @@ extension Salemove {
   case message
   case upgrade
   case noop
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
+  public init?(rawValue: Swift.Int)
 }
 public let WebsocketDidConnectNotification: Swift.String
 public let WebsocketDidDisconnectNotification: Swift.String
@@ -5525,11 +5560,11 @@ public enum CloseCode : Swift.UInt16 {
   case encoding
   case policyViolated
   case messageTooBig
-  public init?(rawValue: Swift.UInt16)
   public typealias RawValue = Swift.UInt16
   public var rawValue: Swift.UInt16 {
     get
   }
+  public init?(rawValue: Swift.UInt16)
 }
 public enum ErrorType : Swift.Error {
   case outputStreamWriteError
@@ -5540,10 +5575,10 @@ public enum ErrorType : Swift.Error {
   case upgradeError
   case closeError
   public static func == (a: SalemoveSDK.ErrorType, b: SalemoveSDK.ErrorType) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 public struct WSError : Swift.Error {
   public let type: SalemoveSDK.ErrorType
@@ -5603,8 +5638,8 @@ public protocol WSStream {
   public func cleanup()
   public func sslTrust() -> (trust: Security.SecTrust?, domain: Swift.String?)
   @objc open func stream(_ aStream: Foundation.Stream, handle eventCode: Foundation.Stream.Event)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public protocol WebSocketDelegate : AnyObject {
   func websocketDidConnect(socket: SalemoveSDK.WebSocketClient)
@@ -5631,8 +5666,8 @@ public protocol WebSocketAdvancedDelegate : AnyObject {
     case connectionClose
     case ping
     case pong
-    public init?(rawValue: Swift.UInt8)
     public typealias RawValue = Swift.UInt8
+    public init?(rawValue: Swift.UInt8)
     public var rawValue: Swift.UInt8 {
       get
     }
@@ -5688,8 +5723,8 @@ public func == (lhs: SalemoveSDK.Node, rhs: SalemoveSDK.Node) -> Swift.Bool
 @objc public enum ScreenSharingStatus : Swift.Int {
   case sharing
   case notSharing
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -5910,10 +5945,10 @@ public enum PathSegmentType {
   case E
   case e
   public static func == (a: SalemoveSDK.PathSegmentType, b: SalemoveSDK.PathSegmentType) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 @_hasMissingDesignatedInitializers public class AlamofireRequest {
   public enum State {
@@ -5923,10 +5958,10 @@ public enum PathSegmentType {
     case cancelled
     case finished
     public static func == (a: SalemoveSDK.AlamofireRequest.State, b: SalemoveSDK.AlamofireRequest.State) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   final public let id: Foundation.UUID
   final public let underlyingQueue: Dispatch.DispatchQueue
@@ -6122,8 +6157,8 @@ extension DataStreamRequest.Stream {
     public static let removePreviousFile: SalemoveSDK.AlamofireDownloadRequest.Options
     public let rawValue: Swift.Int
     public init(rawValue: Swift.Int)
-    public typealias ArrayLiteralElement = SalemoveSDK.AlamofireDownloadRequest.Options
     public typealias Element = SalemoveSDK.AlamofireDownloadRequest.Options
+    public typealias ArrayLiteralElement = SalemoveSDK.AlamofireDownloadRequest.Options
     public typealias RawValue = Swift.Int
   }
   public typealias Destination = (Foundation.URL, Foundation.HTTPURLResponse) -> (destinationURL: Foundation.URL, options: SalemoveSDK.AlamofireDownloadRequest.Options)
@@ -6188,8 +6223,8 @@ extension AlamofireExtension where ExtendedType : Foundation.URLSessionConfigura
 public enum MediaDirection : Swift.String {
   case oneWay
   case twoWay
-  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
@@ -6223,10 +6258,10 @@ final public class UIScheduler : SalemoveSDK.Scheduler {
     get
   }
   final public let queue: Dispatch.DispatchQueue
-  @available(macOS, deprecated: 10.10, obsoleted: 10.11, message: "Use init(qos:name:targeting:) instead")
+  @available(OSX, deprecated: 10.10, obsoleted: 10.11, message: "Use init(qos:name:targeting:) instead")
   @available(iOS, deprecated: 8.0, obsoleted: 9.0, message: "Use init(qos:name:targeting:) instead.")
   convenience public init(queue: Dispatch.DispatchQueue, name: Swift.String = "org.reactivecocoa.ReactiveSwift.QueueScheduler")
-  @available(macOS 10.10, *)
+  @available(OSX 10.10, *)
   convenience public init(qos: Dispatch.DispatchQoS = .default, name: Swift.String = "org.reactivecocoa.ReactiveSwift.QueueScheduler", targeting targetQueue: Dispatch.DispatchQueue? = nil)
   @discardableResult
   final public func schedule(_ action: @escaping () -> Swift.Void) -> SalemoveSDK.Disposable?
@@ -6262,10 +6297,10 @@ final public class TestScheduler : SalemoveSDK.DateScheduler {
 public enum NetworkActivityChangeType {
   case began, ended
   public static func == (a: SalemoveSDK.NetworkActivityChangeType, b: SalemoveSDK.NetworkActivityChangeType) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 final public class NetworkActivityPlugin : SalemoveSDK.PluginType {
   public typealias NetworkActivityClosure = (SalemoveSDK.NetworkActivityChangeType, SalemoveSDK.TargetType) -> Swift.Void
@@ -6403,6 +6438,12 @@ extension SalemoveSDK.LoggingEvent.SignalProducer : Swift.RawRepresentable {}
 extension SalemoveSDK.SocketAckStatus : Swift.Equatable {}
 extension SalemoveSDK.SocketAckStatus : Swift.Hashable {}
 extension SalemoveSDK.SocketAckStatus : Swift.RawRepresentable {}
+extension SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.Equatable {}
+extension SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.Hashable {}
+extension SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.RawRepresentable {}
+extension SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.Equatable {}
+extension SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.Hashable {}
+extension SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.RawRepresentable {}
 extension SalemoveSDK.SocketEnginePacketType : Swift.Equatable {}
 extension SalemoveSDK.SocketEnginePacketType : Swift.Hashable {}
 extension SalemoveSDK.SocketEnginePacketType : Swift.RawRepresentable {}

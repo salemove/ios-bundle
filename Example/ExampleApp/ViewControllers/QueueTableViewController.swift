@@ -1,7 +1,7 @@
 import UIKit
 import SalemoveSDK
 
-class QueueTableViewController: UITableViewController, ClickCallback {
+class QueueTableViewController: UITableViewController {
     private let QUEUE_VIEW_CELL_ID = "QueueTableViewCell"
     private var queues = [Queue]()
     private var statusViewController: EngagementStatusViewController?
@@ -84,21 +84,69 @@ class QueueTableViewController: UITableViewController, ClickCallback {
         queueView.nameView.text = queueData.name
         queueView.statusView.text = queueData.state.status.rawValue.uppercased()
         queueView.mediaView.text = queueData.state.media.map { $0.rawValue }.joined(separator: ", ")
-        queueView.queueId = queueData.id
-        queueView.delegate = self
 
         return queueView
     }
 
-    func queueViewCellClicked(clickedItemId: String) {
-        requestEngagement(inQueue: clickedItemId)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let queue = queues[indexPath.row]
+        let mediaTypes = queue.state.media
+
+        if shouldShowActionSheet(for: mediaTypes) {
+            showEngagementTypeActionSheet(queue: queue)
+        } else {
+            requestEngagement(inQueue: queue.id)
+        }
     }
 
-    private func requestEngagement(inQueue: String) {
+    private func shouldShowActionSheet(for mediaTypes: [MediaType]) -> Bool {
+        return mediaTypes.contains(.audio) || mediaTypes.contains(.video)
+    }
+
+    private func showEngagementTypeActionSheet(queue: Queue) {
+        let onTextSelected = { [weak self] in
+            self?.requestEngagement(inQueue: queue.id)
+        }
+
+        let onAudioSelected = { [weak self] in
+            self?.requestEngagement(inQueue: queue.id, mediaType: .audio)
+        }
+
+        let onOneWayVideoSelected = { [weak self] in
+            let options = EngagementOptions(mediaDirection: .oneWay)
+            self?.requestEngagement(inQueue: queue.id, mediaType: .video, options: options)
+        }
+
+        let onTwoWayVideoSelected = { [weak self] in
+            self?.requestEngagement(inQueue: queue.id, mediaType: .video)
+        }
+
+        let factory = MediaTypeActionSheetFactory(
+            mediaTypes: queue.state.media,
+            onTextSelected: onTextSelected,
+            onAudioSelected: onAudioSelected,
+            onOneWayVideoSelected: onOneWayVideoSelected,
+            onTwoWayVideoSelected: onTwoWayVideoSelected
+        )
+
+        let actionSheet = factory.actionSheet()
+        present(actionSheet, animated: true, completion: nil)
+    }
+
+    private func requestEngagement(
+        inQueue: String,
+        mediaType: MediaType = .text,
+        options: EngagementOptions? = nil
+    ) {
         let context = Configuration.sharedInstance.visitorContext
         Salemove.sharedInstance.queueForEngagement(
             queueID: inQueue,
             visitorContext: context,
+            shouldCloseAllQueues: true,
+            mediaType: mediaType,
+            options: options,
             completion: handleQueueRequestResult(queueTicket:requestError:))
     }
 

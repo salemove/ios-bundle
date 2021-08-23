@@ -10,15 +10,28 @@ private extension Selector {
 class MediaViewController: UIViewController {
     @IBOutlet weak var remoteMediaStack: UIStackView!
     @IBOutlet weak var localMediaStack: UIStackView!
+    @IBOutlet weak var onHoldIconStack: UIStackView!
 
-    var remoteVideoStream: VideoStreamable?
-    var localVideoStream: VideoStreamable?
+    private lazy var videoOnHoldIcon: UIImageView = {
+        let icon = UIImageView(image: UIImage(named: "video-on-hold"))
+        icon.contentMode = .scaleAspectFit
+        return icon
+    }()
 
-    weak var localVideoView: StreamView?
-    weak var remoteVideoView: StreamView?
+    private lazy var audioOnHoldIcon: UIImageView = {
+        let icon = UIImageView(image: UIImage(named: "audio-on-hold"))
+        icon.contentMode = .scaleAspectFit
+        return icon
+    }()
 
-    var localAudioStream: AudioStreamable?
-    var remoteAudioStream: AudioStreamable?
+    private var remoteVideoStream: VideoStreamable?
+    private var localVideoStream: VideoStreamable?
+
+    private weak var localVideoView: StreamView?
+    private weak var remoteVideoView: StreamView?
+
+    private var localAudioStream: AudioStreamable?
+    private var remoteAudioStream: AudioStreamable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,13 +47,22 @@ class MediaViewController: UIViewController {
         if stream.isRemote {
             remoteVideoStream = stream
             let view = stream.getStreamView()
+            remoteMediaStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
             remoteMediaStack.insertArrangedSubview(view, at: 0)
             stream.playVideo()
 
             remoteVideoView = view
+
+            stream.onHold = { [weak self] onHold in
+                guard let self = self else {
+                    return
+                }
+                self.toggleOnHold(icon: self.videoOnHoldIcon, visible: onHold)
+            }
         } else {
             localVideoStream = stream
             let view = stream.getStreamView()
+            localMediaStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
             localMediaStack.insertArrangedSubview(view, at: 0)
             stream.playVideo()
 
@@ -51,6 +73,13 @@ class MediaViewController: UIViewController {
     func handleAudioStream(stream: AudioStreamable) {
         if stream.isRemote {
             remoteAudioStream = stream
+
+            stream.onHold = { [weak self] onHold in
+                guard let self = self else {
+                    return
+                }
+                self.toggleOnHold(icon: self.audioOnHoldIcon, visible: onHold)
+            }
         } else {
             localAudioStream = stream
         }
@@ -165,6 +194,14 @@ class MediaViewController: UIViewController {
             return
         }
         videoStream.isPaused ? videoStream.resume() : videoStream.pause()
+    }
+
+    private func toggleOnHold(icon: UIImageView, visible: Bool) {
+        if visible {
+            self.onHoldIconStack.addArrangedSubview(icon)
+        } else {
+            icon.removeFromSuperview()
+        }
     }
 
     func cleanUp() {

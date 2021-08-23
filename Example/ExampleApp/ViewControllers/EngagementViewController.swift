@@ -72,8 +72,6 @@ class EngagementViewController: UIViewController {
 
         if !isDuplicate {
             messages.append(message)
-        } else if let index = messages.firstIndex(where: { $0.id == message.id })?.advanced(by: 0) {
-            messages[index] = message
         }
 
         tableView.reloadData()

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TLQ-Yk-hgx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TLQ-Yk-hgx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,19 +28,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bh0-kc-zUf">
                                 <rect key="frame" x="20" y="644" width="374" height="198"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29s-qe-KgG">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2f-EG-OzS">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="GCm-Ti-hUD"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Message"/>
-                                        <connections>
-                                            <action selector="queueMessage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Jib-z3-TdE"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2f-EG-OzS">
-                                        <rect key="frame" x="0.0" y="52" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="gmK-i7-75s"/>
                                         </constraints>
@@ -49,7 +39,18 @@
                                             <segue destination="8fX-VM-r7O" kind="show" id="XdT-tB-mjB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBG-VX-de6">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29s-qe-KgG">
+                                        <rect key="frame" x="0.0" y="52" width="374" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="GCm-Ti-hUD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Message"/>
+                                        <connections>
+                                            <action selector="queueMessage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Jib-z3-TdE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBG-VX-de6">
                                         <rect key="frame" x="0.0" y="104" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="ABg-S7-TZe"/>
@@ -57,15 +58,15 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="Operators"/>
                                         <connections>
-                                            <action selector="beginEngagement:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wvD-cv-SdF"/>
+                                            <action selector="beginOperators:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QIm-ns-KDR"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d58-D2-pPZ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d58-D2-pPZ">
                                         <rect key="frame" x="0.0" y="156" width="374" height="42"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="Visitor Code"/>
                                         <connections>
-                                            <action selector="showVisitorCode" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rlz-3Z-jmA"/>
+                                            <action selector="showVisitorCode:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="P4t-PW-iQA"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -82,19 +83,25 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hNf-CO-YbG">
-                        <barButtonItem key="rightBarButtonItem" style="done" id="xXW-eq-x1A">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="a3h-B8-RcX">
-                                <rect key="frame" x="369" y="10" width="25" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <rightBarButtonItems>
+                            <barButtonItem style="done" id="xXW-eq-x1A">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="a3h-B8-RcX">
+                                    <rect key="frame" x="369" y="10" width="25" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="beginConfiguration:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="OM7-zv-ZGs"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="person.circle" catalog="system" id="0RY-ju-VsE">
                                 <connections>
-                                    <action selector="beginConfiguration:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="OM7-zv-ZGs"/>
+                                    <action selector="visitorInfoButtonTouchUpInside:" destination="vXZ-lx-hvc" id="iUr-I5-vbC"/>
                                 </connections>
-                            </button>
-                        </barButtonItem>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="configurationButton" destination="a3h-B8-RcX" id="9MD-O8-pqv"/>
-                        <outlet property="engagementButton" destination="cBG-VX-de6" id="tjr-Nz-P8E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -118,7 +125,7 @@
                         </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QueueTableViewCell" rowHeight="90" id="b7Q-wQ-t5y" customClass="QueueTableViewCell" customModule="ExampleApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="414" height="90"/>
+                                <rect key="frame" x="0.0" y="68.5" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b7Q-wQ-t5y" id="nCz-HM-fOd">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -203,4 +210,7 @@
             <point key="canvasLocation" x="136.23188405797103" y="119.19642857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

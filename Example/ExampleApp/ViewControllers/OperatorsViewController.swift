@@ -45,7 +45,7 @@ extension OperatorsViewController {
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView()
 
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(loadOperators), for: .valueChanged)
@@ -108,20 +108,26 @@ extension OperatorsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let availableMedia = operators[indexPath.row].availableMedia else { return UITableViewCell() }
+        let currentOperator = operators[indexPath.row]
+
+        guard let availableMedia = currentOperator.availableMedia else { return UITableViewCell() }
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "operatorTableViewCell", for: indexPath) as? OperatorTableViewCell else {
             debugPrint("could not create OperatorCell")
             return UITableViewCell()
         }
 
-        cell.labelName.text = operators[indexPath.row].name
+        cell.labelName.text = currentOperator.name
         cell.labelAvailableMedia.text = mediaValues(availableMedia)
+        cell.labelAvailableMedia.isHidden = cell.labelAvailableMedia.text?.isEmpty ?? true
 
-        if let picture = operators[indexPath.row].picture,
+        if let picture = currentOperator.picture,
            let stringUrl = picture.url,
            let url = URL(string: stringUrl) {
-            cell.imageOperator.setImage(using: url)
+            cell.imageOperator.kf.setImage(with: url)
+        } else {
+            cell.imageOperator.image = nil
+            cell.imageOperator.backgroundColor = .lightGray
         }
 
         return cell
@@ -129,8 +135,15 @@ extension OperatorsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let selectedOperator = operators[indexPath.row]
 
-        beginEngagement(selectedOperator: operators[indexPath.row])
+        guard let mediaTypes = selectedOperator.availableMedia else { return }
+
+        if shouldShowActionSheet(for: mediaTypes) {
+            showEngagementTypeActionSheet(selectedOperator: selectedOperator)
+        } else {
+            beginEngagement(selectedOperator: selectedOperator)
+        }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -139,22 +152,78 @@ extension OperatorsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension OperatorsViewController {
-    private func beginEngagement(selectedOperator: Operator) {
+    private func shouldShowActionSheet(for mediaTypes: [MediaType]) -> Bool {
+        return mediaTypes.contains(.audio) || mediaTypes.contains(.video)
+    }
+
+    private func showEngagementTypeActionSheet(selectedOperator: Operator) {
+        guard let mediaTypes = selectedOperator.availableMedia else { return }
+
+        let onTextSelected = { [weak self] in
+            self?.beginEngagement(selectedOperator: selectedOperator)
+        }
+
+        let onAudioSelected = { [weak self] in
+            self?.beginEngagement(selectedOperator: selectedOperator, mediaType: .audio)
+        }
+
+        let onOneWayVideoSelected = { [weak self] in
+            let options = EngagementOptions(mediaDirection: .oneWay)
+            self?.beginEngagement(
+                selectedOperator: selectedOperator,
+                mediaType: .video,
+                options: options
+            )
+        }
+
+        let onTwoWayVideoSelected = { [weak self] in
+            self?.beginEngagement(
+                selectedOperator: selectedOperator,
+                mediaType: .video
+            )
+        }
+
+        let factory = MediaTypeActionSheetFactory(
+            mediaTypes: mediaTypes,
+            onTextSelected: onTextSelected,
+            onAudioSelected: onAudioSelected,
+            onOneWayVideoSelected: onOneWayVideoSelected,
+            onTwoWayVideoSelected: onTwoWayVideoSelected
+        )
+
+        let actionSheet = factory.actionSheet()
+        present(actionSheet, animated: true, completion: nil)
+    }
+
+    private func beginEngagement(
+        selectedOperator: Operator,
+        mediaType: MediaType = .text,
+        options: EngagementOptions? = nil
+    ) {
         let context = Configuration.sharedInstance.visitorContext
-        Salemove.sharedInstance.requestEngagementWith(selectedOperator: selectedOperator,
-                                                      visitorContext: context) { [unowned self] engagementRequest, error in
+
+        Salemove.sharedInstance.requestEngagementWith(
+            selectedOperator: selectedOperator,
+            visitorContext: context,
+            mediaType: mediaType,
+            options: options
+        ) { [unowned self] engagementRequest, error in
+            if let reason = error?.reason {
+                self.showError(message: reason)
+                return
+            }
+
             self.engagementRequest = engagementRequest
             if let controller = self.statusViewController {
                 controller.engagementRequest = engagementRequest
             }
-            // Handle the error as you wish
-            if let reason = error?.reason {
-                self.showError(message: reason)
-            } else if let timeout = self.engagementRequest?.timeout {
+
+            if let timeout = self.engagementRequest?.timeout {
                 print("Processing engagement request within \(timeout) seconds")
             }
+
+            handleOperators(operators: [selectedOperator])
         }
-        handleOperators(operators: [selectedOperator])
     }
 
     private func handleOperators(operators: [Operator]) {
