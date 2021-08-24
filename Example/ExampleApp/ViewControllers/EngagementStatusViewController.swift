@@ -77,29 +77,27 @@ class EngagementStatusViewController: UIViewController {
     // MARK: Public Methods
 
     @objc func onOptionSelected(_ notification: NSNotification) {
-        if let optionValue = notification.userInfo?["optionValue"] as? String,
-           let messageId = notification.userInfo?["messageId"] as? String {
-            self.sendSingleChoiceOptionResponse(
-                option: optionValue,
-                messageId: messageId
-            )
+        if let optionValue = notification.userInfo?["optionValue"] as? String {
+            sendSingleChoiceOptionResponse(option: optionValue)
         }
     }
 
-    func sendSingleChoiceOptionResponse(option: String, messageId: String) {
-        let completion: MessageBlock = { [unowned self] message, error in
-            if let error = error {
-                self.showError(message: error.reason)
+    func sendSingleChoiceOptionResponse(option: String) {
+        let completion: (Result<Message, Error>) -> Void = { [unowned self] result in
+            switch result {
+            case let .success(message):
+                self.engagementViewController?.update(with: message)
+            case let .failure(error):
+                if let error = error as? SalemoveError {
+                    self.showError(message: error.reason)
+                } else {
+                    self.showError(message: "\(error)")
+                }
             }
-
-            guard let message = message else { return }
-
-            self.engagementViewController?.update(with: message)
         }
 
         Salemove.sharedInstance.send(
             selectedOptionValue: option,
-            messageId: messageId,
             completion: completion
         )
     }
