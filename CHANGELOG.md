@@ -2,7 +2,35 @@
 
 ## Unreleased
 
-Unreleased: https://github.com/salemove/ios-sdk/compare/0.30.0...master
+Unreleased: https://github.com/salemove/ios-sdk/compare/0.30.2...master
+
+## [0.30.2] - 2021-08-27
+
+### Added
+
+- Response Card
+
+### Improved
+
+- Update visitor information
+
+### Fixed
+
+- Fixed push notification configuration issue
+
+## [0.30.1] - 2021-08-25
+
+### Added
+
+- Response Card
+
+### Improved
+
+- Update visitor information
+
+### Fixed
+
+- Fixed push notification configuration issue
 
 ## [0.30.0] - 2021-07-26
 
