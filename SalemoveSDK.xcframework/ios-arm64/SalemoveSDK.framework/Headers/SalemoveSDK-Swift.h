@@ -269,6 +269,8 @@ typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
   ConfigurationErrorInvalidAppToken = 2,
 /// The api token is invalid.
   ConfigurationErrorInvalidApiToken = 3,
+/// The api token is not supported
+  ConfigurationErrorApiTokenNotSupported = 4,
 };
 static NSString * _Nonnull const ConfigurationErrorDomain = @"SalemoveSDK.ConfigurationError";
 
@@ -419,8 +421,6 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK18EngagementHandling_")
 /// Engagement request sent to an Operator
 SWIFT_CLASS("_TtC11SalemoveSDK17EngagementRequest")
 @interface EngagementRequest : NSObject
-/// The amount of time in seconds the Operator has to respond to this engagement request
-@property (nonatomic, readonly) NSInteger timeout;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -815,8 +815,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @property (nonatomic, readonly, copy) NSString * _Nonnull site;
 /// The current provided app token
 @property (nonatomic, readonly, copy) NSString * _Nonnull appToken;
-/// The current provided api token
-@property (nonatomic, readonly, copy) NSString * _Nonnull apiToken;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -826,6 +824,49 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request media upgrade with specific offer
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     offer: The `MediaUpgradeOffer’ that is used for the request
+///   </li>
+///   <li>
+///     completion: A callback that returns the upgrade result or <code>SalemoveError</code>
+///   </li>
+/// </ul>
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>MediaUpgradeError.requestError</code>
+///   </li>
+/// </ul>
+- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -874,54 +915,17 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
+
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request media upgrade with specific offer
+/// Configure log level
 /// <ul>
 ///   <li>
 ///     parameters:
 ///   </li>
 ///   <li>
-///     offer: The `MediaUpgradeOffer’ that is used for the request
-///   </li>
-///   <li>
-///     completion: A callback that returns the upgrade result or <code>SalemoveError</code>
+///     level: One of the ‘LogLevel’ values that the logger should use
 ///   </li>
 /// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
-///     <code>MediaUpgradeError.requestError</code>
-///   </li>
-/// </ul>
-- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
-
-
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// \param level One of the ‘LogLevel’ values that the logger should use
-///
 - (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
 
@@ -1163,6 +1167,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// throws:
 /// <code>ConfigurationError.invalidAppToken</code>
 - (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
+/// Deprecated.
 /// Change the apiToken used by the client library
 /// <ul>
 ///   <li>
@@ -1175,7 +1180,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 /// throws:
 /// <code>ConfigurationError.invalidApiToken</code>
-- (BOOL)configureWithApiToken:(NSString * _Nonnull)apiToken error:(NSError * _Nullable * _Nullable)error;
+- (BOOL)configureWithApiToken:(NSString * _Nonnull)apiToken error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Api token is not supported");
 @end
 
 
@@ -1264,38 +1269,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   </li>
 /// </ul>
 - (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-/// Request an Operator for an Engagement
-/// <ul>
-///   <li>
-///     parameter:
-///   </li>
-///   <li>
-///     completion: A callback that will return the ‘Operator’ list or <code>SalemoveError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-- (void)requestOperatorsWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
 /// Requests information of the Operator(s) that are currently engaged with the Visitor
 /// <ul>
 ///   <li>

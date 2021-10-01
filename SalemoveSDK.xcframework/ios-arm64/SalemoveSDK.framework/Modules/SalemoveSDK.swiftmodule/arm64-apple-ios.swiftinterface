@@ -28,7 +28,7 @@ import zlib
   public func consume()
   @objc deinit
 }
-@objc public enum AttachmentType : Swift.Int {
+@objc public enum AttachmentType : Swift.Int, Swift.Decodable {
   case files
   case singleChoice
   case singleChoiceResponse
@@ -624,7 +624,7 @@ extension Salemove {
 extension MacawDisposable {
   public func addTo(_ group: SalemoveSDK.GroupDisposable)
 }
-@_hasMissingDesignatedInitializers @objc public class Attachment : ObjectiveC.NSObject {
+@_hasMissingDesignatedInitializers @objc public class Attachment : ObjectiveC.NSObject, Swift.Decodable {
   final public let type: SalemoveSDK.AttachmentType?
   final public let selectedOption: Swift.String?
   final public let options: [SalemoveSDK.SingleChoiceOption]?
@@ -634,6 +634,7 @@ extension MacawDisposable {
   public init(files: [SalemoveSDK.EngagementFile])
   @objc override dynamic public init()
   @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
 }
 final public class URLEncodedFormEncoder {
   public enum ArrayEncoding {
@@ -1448,7 +1449,7 @@ extension Property where Value : SalemoveSDK.OptionalProtocol {
 public protocol Interpolable {
   func interpolate(_ endValue: Self, progress: Swift.Double) -> Self
 }
-@_hasMissingDesignatedInitializers @objc public class Message : ObjectiveC.NSObject {
+@_hasMissingDesignatedInitializers @objc public class Message : ObjectiveC.NSObject, Swift.Decodable {
   @objc public var id: Swift.String {
     get
   }
@@ -1463,15 +1464,16 @@ public protocol Interpolable {
   }
   @objc override dynamic public init()
   @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
 }
-public enum MessageSender {
+public enum MessageSender : Swift.String, Swift.Decodable {
   case visitor
   case `operator`
   case omniguide
   case system
-  public static func == (a: SalemoveSDK.MessageSender, b: SalemoveSDK.MessageSender) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
     get
   }
 }
@@ -2290,7 +2292,8 @@ extension Salemove {
   @objc final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, completion: @escaping SalemoveSDK.EngagementSessionBlock)
   final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions? = nil, completion: @escaping SalemoveSDK.EngagementSessionBlock)
   @objc final public func cancel(engagementRequest: SalemoveSDK.EngagementRequest, completion: @escaping SalemoveSDK.SuccessBlock)
-  @objc final public func requestOperators(completion: @escaping SalemoveSDK.OperatorBlock)
+  @available(*, deprecated, message: "Operator request has been deprecated.")
+  final public func requestOperators(completion: @escaping SalemoveSDK.OperatorBlock)
   @objc final public func requestEngagedOperator(completion: @escaping SalemoveSDK.OperatorBlock)
   @objc final public func endEngagement(completion: @escaping SalemoveSDK.SuccessBlock)
 }
@@ -3396,6 +3399,7 @@ extension Salemove {
   @objc final public func configure(environment: Swift.String) throws
   final public func configure(interactor: SalemoveSDK.Interactable)
   @objc final public func configure(appToken: Swift.String) throws
+  @available(*, deprecated, message: "Api token is not supported")
   @objc final public func configure(apiToken: Swift.String) throws
 }
 extension Salemove {
@@ -3509,12 +3513,11 @@ open class ConnectionLostRetryPolicy : SalemoveSDK.RetryPolicy {
     get
   }
 }
-@_hasMissingDesignatedInitializers @objc public class EngagementRequest : ObjectiveC.NSObject {
-  @objc public var timeout: Swift.Int {
-    get
-  }
+@objc @_hasMissingDesignatedInitializers public class EngagementRequest : ObjectiveC.NSObject, Swift.Decodable {
+  final public let timeout: Swift.Int
   @objc override dynamic public init()
   @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
 }
 @_hasMissingDesignatedInitializers open class Align {
   public static let min: SalemoveSDK.Align
@@ -3972,7 +3975,7 @@ open class Stop : Swift.Equatable {
   @objc deinit
 }
 public func == (lhs: SalemoveSDK.Stop, rhs: SalemoveSDK.Stop) -> Swift.Bool
-@objc @_hasMissingDesignatedInitializers @objcMembers public class EngagementFile : ObjectiveC.NSObject {
+@objc @_hasMissingDesignatedInitializers @objcMembers public class EngagementFile : ObjectiveC.NSObject, Swift.Decodable {
   @objc public var id: Swift.String? {
     get
   }
@@ -3991,6 +3994,7 @@ public func == (lhs: SalemoveSDK.Stop, rhs: SalemoveSDK.Stop) -> Swift.Bool
   @objc public init(id: Swift.String)
   @objc override dynamic public init()
   @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
 }
 extension Salemove {
   final public func updateVisitorInfo(_ info: SalemoveSDK.VisitorInfoUpdate, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
@@ -4870,7 +4874,9 @@ public typealias SWXMLHashXMLElement = SalemoveSDK.XMLElement
   case invalidSite
   case invalidEnvironment
   case invalidAppToken
+  @available(*, deprecated, message: "Api token is not supported by SDK.")
   case invalidApiToken
+  case apiTokenNotSupported
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public static var _nsErrorDomain: Swift.String {
@@ -5123,9 +5129,8 @@ extension URLSessionConfiguration {
   @objc final public var appToken: Swift.String {
     @objc get
   }
-  @objc final public var apiToken: Swift.String {
-    @objc get
-  }
+  @available(*, deprecated, message: "Api token is not supported.")
+  final public let apiToken: Swift.String
   final public var pushNotifications: SalemoveSDK.PushNotifications {
     get
   }
@@ -6359,6 +6364,7 @@ extension SalemoveSDK.LineJoin : Swift.Equatable {}
 extension SalemoveSDK.LineJoin : Swift.Hashable {}
 extension SalemoveSDK.MessageSender : Swift.Equatable {}
 extension SalemoveSDK.MessageSender : Swift.Hashable {}
+extension SalemoveSDK.MessageSender : Swift.RawRepresentable {}
 extension SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.Equatable {}
 extension SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.Hashable {}
 extension SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.RawRepresentable {}
