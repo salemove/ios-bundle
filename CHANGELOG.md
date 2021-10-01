@@ -2,7 +2,13 @@
 
 ## Unreleased
 
-Unreleased: https://github.com/salemove/ios-sdk/compare/0.30.2...master
+Unreleased: https://github.com/salemove/ios-sdk/compare/0.31.0...master
+
+## [0.31.0] - 2021-10-01
+
+### Deprecated
+
+- Deprecated `apiToken` usage and `requestOperators` interface
 
 ## [0.30.2] - 2021-08-27
 
