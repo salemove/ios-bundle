@@ -2,7 +2,13 @@
 
 ## Unreleased
 
-Unreleased: https://github.com/salemove/ios-sdk/compare/0.31.0...master
+Unreleased: https://github.com/salemove/ios-sdk/compare/0.32.0...master
+
+## [0.32.0] - 2021-12-23
+
+### Added
+
+- Support for configuration SDK with Site API key
 
 ## [0.31.0] - 2021-10-01
 
