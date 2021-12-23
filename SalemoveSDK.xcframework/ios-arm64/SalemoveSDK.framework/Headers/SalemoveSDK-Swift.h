@@ -189,7 +189,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import CoreGraphics;
-@import Dispatch;
 @import Foundation;
 @import ObjectiveC;
 @import UIKit;
@@ -256,9 +255,6 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15AudioStreamable_")
 @end
 
 
-
-
-
 /// Error of the configuration of the sdk
 typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
 /// The site ID is invalid.
@@ -269,8 +265,12 @@ typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
   ConfigurationErrorInvalidAppToken = 2,
 /// The api token is invalid.
   ConfigurationErrorInvalidApiToken = 3,
-/// The api token is not supported
+/// The api token is not supported.
   ConfigurationErrorApiTokenNotSupported = 4,
+/// The site Api key is invalid.
+  ConfigurationErrorInvalidSiteApiKey = 5,
+/// The region custom endpoint is invalid.
+  ConfigurationErrorInvalidRegionEndpoint = 6,
 };
 static NSString * _Nonnull const ConfigurationErrorDomain = @"SalemoveSDK.ConfigurationError";
 
@@ -281,14 +281,6 @@ typedef SWIFT_ENUM(NSInteger, ContextError, open) {
 };
 static NSString * _Nonnull const ContextErrorDomain = @"SalemoveSDK.ContextError";
 
-
-
-
-SWIFT_CLASS("_TtC11SalemoveSDK8Drawable")
-@interface Drawable : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
 
 @class NSString;
 @class Operator;
@@ -468,17 +460,10 @@ typedef SWIFT_ENUM(NSInteger, FileError, open) {
   FileErrorInvalidFileURL = 3,
 /// The file is unavailable. For example, the file might have been deleted.
   FileErrorFileUnavailable = 4,
+/// File uploading disabled. For example, the file uploading might have been disabled from the operator side.
+  FileErrorForbidden = 5,
 };
 static NSString * _Nonnull const FileErrorDomain = @"SalemoveSDK.FileError";
-
-@class NSStream;
-
-SWIFT_CLASS("_TtC11SalemoveSDK16FoundationStream")
-@interface FoundationStream : NSObject <NSStreamDelegate>
-/// Delegate for the stream methods. Processes incoming bytes
-- (void)stream:(NSStream * _Nonnull)aStream handleEvent:(NSStreamEvent)eventCode;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
 
 /// General error of the client library
 typedef SWIFT_ENUM(NSInteger, GeneralError, open) {
@@ -488,19 +473,6 @@ typedef SWIFT_ENUM(NSInteger, GeneralError, open) {
   GeneralErrorNetworkError = 1,
 };
 static NSString * _Nonnull const GeneralErrorDomain = @"SalemoveSDK.GeneralError";
-
-
-SWIFT_CLASS("_TtC11SalemoveSDK4Node")
-@interface Node : Drawable
-@property (nonatomic, readonly) NSUInteger hash;
-- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-SWIFT_CLASS("_TtC11SalemoveSDK5Group")
-@interface Group : Node
-@end
-
 
 @class StreamView;
 
@@ -531,42 +503,6 @@ typedef SWIFT_ENUM(NSInteger, LogLevel, open) {
 /// Prints all the logs
   LogLevelDebug = 4,
 };
-
-@class UITouch;
-@class UIEvent;
-@class NSCoder;
-
-SWIFT_CLASS("_TtC11SalemoveSDK5MView")
-@interface MView : UIView
-- (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (void)touchesMoved:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (void)touchesEnded:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (void)touchesCancelled:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC11SalemoveSDK10MacawImage")
-@interface MacawImage : Node
-@end
-
-@class UIGestureRecognizer;
-
-/// MacawView is a main class used to embed Macaw scene into your Cocoa UI.
-/// You could create your own view extended from MacawView with predefined scene.
-SWIFT_CLASS("_TtC11SalemoveSDK9MacawView")
-@interface MacawView : MView <UIGestureRecognizerDelegate>
-@property (nonatomic) UIViewContentMode contentMode;
-@property (nonatomic) CGRect frame;
-@property (nonatomic, readonly) CGSize intrinsicContentSize;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder;
-- (nullable instancetype)initWithNode:(Node * _Nonnull)node coder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldReceiveTouch:(UITouch * _Nonnull)touch SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer * _Nonnull)otherGestureRecognizer SWIFT_WARN_UNUSED_RESULT;
-@end
-
 
 /// Error of the media
 typedef SWIFT_ENUM(NSInteger, MediaError, open) {
@@ -631,34 +567,6 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15MessageHandling_")
 @end
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/// A class that represents an emit that will request an ack that has not yet been sent.
-/// Call <code>timingOut(after:callback:)</code> to complete the emit
-/// Example:
-/// \code
-/// socket.emitWithAck("myEvent").timingOut(after: 1) {data in
-///     ...
-/// }
-///
-/// \endcode
-SWIFT_CLASS("_TtC11SalemoveSDK13OnAckCallback")
-@interface OnAckCallback : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
 @class OperatorPicture;
 
 /// An Operator for an Engagement
@@ -671,6 +579,7 @@ SWIFT_CLASS("_TtC11SalemoveSDK8Operator")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 /// <ul>
@@ -724,6 +633,8 @@ SWIFT_CLASS("_TtC11SalemoveSDK17PushNotifications")
 
 
 
+
+
 @class UIApplication;
 @class UNUserNotificationCenter;
 @class UNNotification;
@@ -750,7 +661,7 @@ typedef SWIFT_ENUM(NSInteger, PushType, open) {
 
 @class QueueState;
 
-/// A Queue for an Engagement
+/// A queue for an Engagement
 SWIFT_CLASS("_TtC11SalemoveSDK5Queue")
 @interface Queue : NSObject
 /// Queue identifier
@@ -794,15 +705,6 @@ SWIFT_CLASS("_TtC11SalemoveSDK11QueueTicket")
 
 
 
-SWIFT_CLASS("_TtC11SalemoveSDK7SVGView")
-@interface SVGView : MacawView
-@property (nonatomic, copy) IBInspectable NSString * _Nullable fileName;
-- (nullable instancetype)initWithNode:(Node * _Nonnull)node coder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
 /// Shared instance that can be accessed across all the application
 SWIFT_CLASS("_TtC11SalemoveSDK8Salemove")
 @interface Salemove : NSObject
@@ -826,20 +728,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request media upgrade with specific offer
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     offer: The `MediaUpgradeOffer’ that is used for the request
-///   </li>
-///   <li>
-///     completion: A callback that returns the upgrade result or <code>SalemoveError</code>
-///   </li>
-/// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
 /// The Error may have one of the following causes:
 /// <ul>
@@ -865,29 +755,29 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     <code>MediaUpgradeError.requestError</code>
 ///   </li>
 /// </ul>
+/// \param offer The `MediaUpgradeOffer’ that is used for the request
+///
+/// \param completion A callback that returns the upgrade result or <code>SalemoveError</code>
+///
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-@end
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request a VisitorCode for current Visitor
-/// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code. OmniBrowse Operators use the Visitor’s code to start an OmniBrowse Engagement with the Visitor.
-/// Each Visitor code is generated on demand and is unique for every Visitor on a particular site. Upon the first time this function is called for a Visitor the code is generated and returned. For each successive call thereafter the same code will be returned as long as the code has not expired. The expiration time for Visitor codes is 3 hours. During that time the code can be used to initiate an engagement. Once Operator uses the Visitor code to initiate an engagement, the code will expire immediately. When the Visitor Code expires this function will return a new Visitor code.
-/// The expiration time is important to take note of if you plan on retrieving the code only once during the Visitor’s session. A new code should be requested once the initial one has expired. When Visitor provides an expired code to Operator the Operator will not be able to connect with the Visitor.
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     completion: A callback that will return the visitor code or <code>SalemoveError</code>
-///   </li>
-/// </ul>
+/// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code.
+/// OmniBrowse Operators use the Visitor’s code to start an OmniBrowse Engagement with the Visitor.
+/// Each Visitor code is generated on demand and is unique for every Visitor on a particular site. Upon the first time
+/// this function is called for a Visitor the code is generated and returned. For each successive call thereafter the
+/// same code will be returned as long as the code has not expired. The expiration time for Visitor codes is 3 hours.
+/// During that time the code can be used to initiate an engagement. Once Operator uses the Visitor code to initiate
+/// an engagement, the code will expire immediately. When the Visitor Code expires this function will return a new
+/// Visitor code.
+/// The expiration time is important to take note of if you plan on retrieving the code only once during the Visitor’s
+/// session. A new code should be requested once the initial one has expired. When Visitor provides an expired code
+/// to Operator the Operator will not be able to connect with the Visitor.
 /// If the request is unsuccessful for any reason then the completion will have an Error.
 /// The Error may have one of the following causes:
 /// <ul>
@@ -910,8 +800,17 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     <code>ConfigurationError.invalidApiToken</code>
 ///   </li>
 /// </ul>
+/// \param completion A callback that will return the visitor code or <code>SalemoveError</code>
+///
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
 @end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
+@end
+
 
 
 
@@ -928,6 +827,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// </ul>
 - (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
+
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -1006,15 +906,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Deprecated. Use <code>fetchFile(engagementFile:progress:completion:)</code> instead
-- (void)fetchFile:(NSString * _Nonnull)id progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use fetchFile(engagementFile:progress:completion:) instead");
-/// Deprecated. Use <code>send(selectedOptionValue:completion:)</code> instead
-- (void)sendWithSelectedOptionValue:(NSString * _Nonnull)selectedOptionValue messageId:(NSString * _Nonnull)messageId completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(selectedOptionValue:completion:) instead");
-@end
-
-
-
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Send a chat message.
@@ -1047,21 +938,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// \param completion A callback that will return the <code>Message</code> or <code>SalemoveError</code>.
 ///
 - (void)sendWithMessage:(NSString * _Nonnull)message attachment:(Attachment * _Nullable)attachment completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
-/// Send a chat message
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     message: A content of the message that should be queued
-///   </li>
-///   <li>
-///     queueID: The ID of the queue to which the message is sent
-///   </li>
-///   <li>
-///     completion: A callback that will return the <code>Message</code> or <code>SalemoveError</code>
-///   </li>
-/// </ul>
+/// Send a chat message.
 /// If the request is unsuccessful for any reason then the completion will have an Error.
 /// The Error may have one of the following causes:
 /// <ul>
@@ -1084,23 +961,18 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     <code>ConfigurationError.invalidApiToken</code>
 ///   </li>
 /// </ul>
+/// \param message A content of the message that should be queued.
+///
+/// \param queueID The ID of the queue to which the message is sent.
+///
+/// \param completion A callback that will return the <code>Message</code> or <code>SalemoveError</code>.
+///
 - (void)sendWithMessage:(NSString * _Nonnull)message queueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
 /// Send a message preview to the Operator.
 /// The latest preview message will always be visible to the Operator. This means that Operators can use the
 /// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
 /// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
 /// experience.
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     message: The content of the message preview
-///   </li>
-///   <li>
-///     completion: A callback that will return the sending result or <code>SalemoveError</code>
-///   </li>
-/// </ul>
 /// If the request is unsuccessful for any reason then the completion will have an Error.
 /// The Error may have one of the following causes:
 /// <ul>
@@ -1123,64 +995,38 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     <code>ConfigurationError.invalidApiToken</code>
 ///   </li>
 /// </ul>
+/// \param message The content of the message preview.
+///
+/// \param completion A callback that will return the sending result or <code>SalemoveError</code>.
+///
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
 
 
+
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Change the site used by the client library
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     site: The siteID that should be selected
-///   </li>
-/// </ul>
+/// Deprecated. Use <code>fetchFile(engagementFile:progress:completion:)</code> instead.
+- (void)fetchFile:(NSString * _Nonnull)id progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use fetchFile(engagementFile:progress:completion:) instead.");
+/// Deprecated. Use <code>send(selectedOptionValue:completion:)</code> instead.
+- (void)sendWithSelectedOptionValue:(NSString * _Nonnull)selectedOptionValue messageId:(NSString * _Nonnull)messageId completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(selectedOptionValue:completion:) instead.");
+/// Deprecated. Use <code>Salemove.configure(with:)</code> instead.
+- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Use `Salemove.configure(with:) throws` instead.");
+/// Change the site used by the client library.
+/// \param site The siteID that should be selected.
+///
 ///
 /// throws:
 /// <code>ConfigurationError.invalidSite</code>
-- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error;
-/// Change the environment used by the client library
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     environment: The environment baseURL that should be selected
-///   </li>
-/// </ul>
+- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Use `Salemove.configure(_ configuration: Configuration)` instead.");
+/// Change the environment used by the client library.
+/// \param environment The environment baseURL that should be selected.
+///
 ///
 /// throws:
 /// <code>ConfigurationError.invalidEnvironment</code>
-- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error;
-/// Change the appToken used by the client library
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     appToken: The token that is going to be used by the client library
-///   </li>
-/// </ul>
-///
-/// throws:
-/// <code>ConfigurationError.invalidAppToken</code>
-- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error;
+- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Use `Salemove.configure(_ configuration: Configuration)` instead.");
 /// Deprecated.
-/// Change the apiToken used by the client library
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     apiToken: The token that is going to be used by the client library
-///   </li>
-/// </ul>
-///
-/// throws:
-/// <code>ConfigurationError.invalidApiToken</code>
-- (BOOL)configureWithApiToken:(NSString * _Nonnull)apiToken error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Api token is not supported");
+- (BOOL)configureWithApiToken:(NSString * _Nonnull)apiToken error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Api token is not supported.");
 @end
 
 
@@ -1588,7 +1434,6 @@ SWIFT_CLASS("_TtC11SalemoveSDK13SalemoveError")
 @end
 
 
-
 /// List of available screen sharing statuses
 typedef SWIFT_ENUM(NSInteger, ScreenSharingStatus, open) {
 /// There is an ongoing screen sharing session
@@ -1596,60 +1441,6 @@ typedef SWIFT_ENUM(NSInteger, ScreenSharingStatus, open) {
 /// No ongoing screensharing session
   ScreenSharingStatusNotSharing = 1,
 };
-
-
-/// Class which implements the various <code>URLSessionDelegate</code> methods to connect various Alamofire features.
-SWIFT_CLASS("_TtC11SalemoveSDK15SessionDelegate")
-@interface SessionDelegate : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class NSURLSession;
-
-@interface SessionDelegate (SWIFT_EXTENSION(SalemoveSDK)) <NSURLSessionDelegate>
-- (void)URLSession:(NSURLSession * _Nonnull)session didBecomeInvalidWithError:(NSError * _Nullable)error;
-@end
-
-@class NSURLSessionDataTask;
-@class NSCachedURLResponse;
-
-@interface SessionDelegate (SWIFT_EXTENSION(SalemoveSDK)) <NSURLSessionDataDelegate>
-- (void)URLSession:(NSURLSession * _Nonnull)session dataTask:(NSURLSessionDataTask * _Nonnull)dataTask didReceiveData:(NSData * _Nonnull)data;
-- (void)URLSession:(NSURLSession * _Nonnull)session dataTask:(NSURLSessionDataTask * _Nonnull)dataTask willCacheResponse:(NSCachedURLResponse * _Nonnull)proposedResponse completionHandler:(void (^ _Nonnull)(NSCachedURLResponse * _Nullable))completionHandler;
-@end
-
-@class NSURLSessionDownloadTask;
-
-@interface SessionDelegate (SWIFT_EXTENSION(SalemoveSDK)) <NSURLSessionDownloadDelegate>
-- (void)URLSession:(NSURLSession * _Nonnull)session downloadTask:(NSURLSessionDownloadTask * _Nonnull)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes;
-- (void)URLSession:(NSURLSession * _Nonnull)session downloadTask:(NSURLSessionDownloadTask * _Nonnull)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite;
-- (void)URLSession:(NSURLSession * _Nonnull)session downloadTask:(NSURLSessionDownloadTask * _Nonnull)downloadTask didFinishDownloadingToURL:(NSURL * _Nonnull)location;
-@end
-
-@class NSURLSessionTask;
-@class NSURLAuthenticationChallenge;
-@class NSURLCredential;
-@class NSInputStream;
-@class NSHTTPURLResponse;
-@class NSURLRequest;
-@class NSURLSessionTaskMetrics;
-
-@interface SessionDelegate (SWIFT_EXTENSION(SalemoveSDK)) <NSURLSessionTaskDelegate>
-- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didReceiveChallenge:(NSURLAuthenticationChallenge * _Nonnull)challenge completionHandler:(void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
-- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend;
-- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task needNewBodyStream:(void (^ _Nonnull)(NSInputStream * _Nullable))completionHandler;
-- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task willPerformHTTPRedirection:(NSHTTPURLResponse * _Nonnull)response newRequest:(NSURLRequest * _Nonnull)request completionHandler:(void (^ _Nonnull)(NSURLRequest * _Nullable))completionHandler;
-- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didFinishCollectingMetrics:(NSURLSessionTaskMetrics * _Nonnull)metrics;
-- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didCompleteWithError:(NSError * _Nullable)error;
-- (void)URLSession:(NSURLSession * _Nonnull)session taskIsWaitingForConnectivity:(NSURLSessionTask * _Nonnull)task SWIFT_AVAILABILITY(watchos,introduced=4.0) SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(ios,introduced=11.0) SWIFT_AVAILABILITY(macos,introduced=10.13);
-@end
-
-
-SWIFT_CLASS("_TtC11SalemoveSDK5Shape")
-@interface Shape : Node
-@end
-
 
 
 /// Option for single choice messages.
@@ -1663,332 +1454,8 @@ SWIFT_CLASS("_TtC11SalemoveSDK18SingleChoiceOption")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-
-/// A class that represents a waiting ack call.
-/// <em>NOTE</em>: You should not store this beyond the life of the event handler.
-SWIFT_CLASS("_TtC11SalemoveSDK16SocketAckEmitter")
-@interface SocketAckEmitter : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-/// Represents some event that was received.
-SWIFT_CLASS("_TtC11SalemoveSDK14SocketAnyEvent")
-@interface SocketAnyEvent : NSObject
-/// The description of this event.
-@property (nonatomic, readonly, copy) NSString * _Nonnull description;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-/// Experimental socket manager.
-/// API subject to change.
-/// Can be used to persist sockets across ViewControllers.
-/// Sockets are strongly stored, so be sure to remove them once they are no
-/// longer needed.
-/// Example usage:
-/// \code
-/// let manager = SocketClientManager.sharedManager
-/// manager["room1"] = socket1
-/// manager["room2"] = socket2
-/// manager.removeSocket(socket: socket2)
-/// manager["room1"]?.emit("hello")
-///
-/// \endcode
-SWIFT_CLASS("_TtC11SalemoveSDK19SocketClientManager")
-@interface SocketClientManager : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class NSHTTPCookie;
-@class SocketIOWebSocket;
-@protocol SocketEngineClient;
-enum SocketEnginePacketType : NSInteger;
-
-/// The class that handles the engine.io protocol and transports.
-/// See <code>SocketEnginePollable</code> and <code>SocketEngineWebsocket</code> for transport specific methods.
-SWIFT_CLASS("_TtC11SalemoveSDK12SocketEngine")
-@interface SocketEngine : NSObject <NSURLSessionDelegate>
-/// The queue that all engine actions take place on.
-@property (nonatomic, readonly, strong) dispatch_queue_t _Nonnull engineQueue;
-/// The connect parameters sent during a connect.
-@property (nonatomic, copy) NSDictionary<NSString *, id> * _Nullable connectParams;
-/// <code>true</code> if this engine is closed.
-@property (nonatomic, readonly) BOOL closed;
-/// <code>true</code> if this engine is connected. Connected means that the initial poll connect has succeeded.
-@property (nonatomic, readonly) BOOL connected;
-/// An array of HTTPCookies that are sent during the connection.
-@property (nonatomic, readonly, copy) NSArray<NSHTTPCookie *> * _Nullable cookies;
-/// Set to <code>true</code> if using the node.js version of socket.io. The node.js version of socket.io
-/// handles utf8 incorrectly.
-@property (nonatomic, readonly) BOOL doubleEncodeUTF8;
-/// A dictionary of extra http headers that will be set during connection.
-@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nullable extraHeaders;
-/// When <code>true</code>, the engine is in the process of switching to WebSockets.
-/// <em>Do not touch this directly</em>
-@property (nonatomic, readonly) BOOL fastUpgrade;
-/// When <code>true</code>, the engine will only use HTTP long-polling as a transport.
-@property (nonatomic, readonly) BOOL forcePolling;
-/// When <code>true</code>, the engine will only use WebSockets as a transport.
-@property (nonatomic, readonly) BOOL forceWebsockets;
-/// If <code>true</code>, the engine is currently in HTTP long-polling mode.
-@property (nonatomic, readonly) BOOL polling;
-/// If <code>true</code>, the engine is currently seeing whether it can upgrade to WebSockets.
-@property (nonatomic, readonly) BOOL probing;
-/// The session id for this engine.
-@property (nonatomic, readonly, copy) NSString * _Nonnull sid;
-/// The path to engine.io.
-@property (nonatomic, readonly, copy) NSString * _Nonnull socketPath;
-/// The url for polling.
-@property (nonatomic, readonly, copy) NSURL * _Nonnull urlPolling;
-/// The url for WebSockets.
-@property (nonatomic, readonly, copy) NSURL * _Nonnull urlWebSocket;
-/// If <code>true</code>, then the engine is currently in WebSockets mode.
-@property (nonatomic, readonly) BOOL websocket;
-/// The SocketIOWebSocket for this engine.
-@property (nonatomic, readonly, strong) SocketIOWebSocket * _Nullable ws;
-/// The client for this engine.
-@property (nonatomic, weak) id <SocketEngineClient> _Nullable client;
-/// Creates a new engine.
-/// \param client The client for this engine.
-///
-/// \param url The url for this engine.
-///
-/// \param options The options for this engine.
-///
-- (nonnull instancetype)initWithClient:(id <SocketEngineClient> _Nonnull)client url:(NSURL * _Nonnull)url options:(NSDictionary * _Nullable)options;
-/// Starts the connection to the server.
-- (void)connect;
-/// Called when an error happens during execution. Causes a disconnection.
-- (void)didErrorWithReason:(NSString * _Nonnull)reason;
-/// Disconnects from the server.
-/// \param reason The reason for the disconnection. This is communicated up to the client.
-///
-- (void)disconnectWithReason:(NSString * _Nonnull)reason;
-/// Called to switch from HTTP long-polling to WebSockets. After calling this method the engine will be in
-/// SocketIOWebSocket mode.
-/// <em>You shouldn’t call this directly</em>
-- (void)doFastUpgrade;
-/// Causes any packets that were waiting for POSTing to be sent through the SocketIOWebSocket. This happens because when
-/// the engine is attempting to upgrade to SocketIOWebSocket it does not do any POSTing.
-/// <em>You shouldn’t call this directly</em>
-- (void)flushWaitingForPostToWebSocket;
-/// Parses raw binary received from engine.io.
-/// \param data The data to parse.
-///
-- (void)parseEngineData:(NSData * _Nonnull)data;
-/// Parses a raw engine.io packet.
-/// \param message The message to parse.
-///
-/// \param fromPolling Whether this message is from long-polling.
-/// If <code>true</code> we might have to fix utf8 encoding.
-///
-- (void)parseEngineMessage:(NSString * _Nonnull)message fromPolling:(BOOL)fromPolling;
-/// Writes a message to engine.io, independent of transport.
-/// \param msg The message to send.
-///
-/// \param withType The type of this message.
-///
-/// \param withData Any data that this message has.
-///
-- (void)write:(NSString * _Nonnull)msg withType:(enum SocketEnginePacketType)type withData:(NSArray<NSData *> * _Nonnull)data;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-
-/// Declares that a type will be a delegate to an engine.
-SWIFT_PROTOCOL("_TtP11SalemoveSDK18SocketEngineClient_")
-@protocol SocketEngineClient
-/// Called when the engine errors.
-/// \param reason The reason the engine errored.
-///
-- (void)engineDidErrorWithReason:(NSString * _Nonnull)reason;
-/// Called when the engine closes.
-/// \param reason The reason that the engine closed.
-///
-- (void)engineDidCloseWithReason:(NSString * _Nonnull)reason;
-/// Called when the engine opens.
-/// \param reason The reason the engine opened.
-///
-- (void)engineDidOpenWithReason:(NSString * _Nonnull)reason;
-/// Called when the engine has a message that must be parsed.
-/// \param msg The message that needs parsing.
-///
-- (void)parseEngineMessage:(NSString * _Nonnull)msg;
-/// Called when the engine receives binary data.
-/// \param data The data the engine received.
-///
-- (void)parseEngineBinaryData:(NSData * _Nonnull)data;
-@end
-
-/// Represents the type of engine.io packet types.
-typedef SWIFT_ENUM(NSInteger, SocketEnginePacketType, open) {
-/// Open message.
-  SocketEnginePacketTypeOpen = 0,
-/// Close message.
-  SocketEnginePacketTypeClose = 1,
-/// Ping message.
-  SocketEnginePacketTypePing = 2,
-/// Pong message.
-  SocketEnginePacketTypePong = 3,
-/// Regular message.
-  SocketEnginePacketTypeMessage = 4,
-/// Upgrade message.
-  SocketEnginePacketTypeUpgrade = 5,
-/// NOOP.
-  SocketEnginePacketTypeNoop = 6,
-};
-
-
-/// Specifies a SocketEngine.
-SWIFT_PROTOCOL("_TtP11SalemoveSDK16SocketEngineSpec_")
-@protocol SocketEngineSpec
-/// The client for this engine.
-@property (nonatomic, weak) id <SocketEngineClient> _Nullable client;
-/// <code>true</code> if this engine is closed.
-@property (nonatomic, readonly) BOOL closed;
-/// <code>true</code> if this engine is connected. Connected means that the initial poll connect has succeeded.
-@property (nonatomic, readonly) BOOL connected;
-/// The connect parameters sent during a connect.
-@property (nonatomic, copy) NSDictionary<NSString *, id> * _Nullable connectParams;
-/// Set to <code>true</code> if using the node.js version of socket.io. The node.js version of socket.io
-/// handles utf8 incorrectly.
-@property (nonatomic, readonly) BOOL doubleEncodeUTF8;
-/// An array of HTTPCookies that are sent during the connection.
-@property (nonatomic, readonly, copy) NSArray<NSHTTPCookie *> * _Nullable cookies;
-/// The queue that all engine actions take place on.
-@property (nonatomic, readonly, strong) dispatch_queue_t _Nonnull engineQueue;
-/// A dictionary of extra http headers that will be set during connection.
-@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nullable extraHeaders;
-/// When <code>true</code>, the engine is in the process of switching to WebSockets.
-@property (nonatomic, readonly) BOOL fastUpgrade;
-/// When <code>true</code>, the engine will only use HTTP long-polling as a transport.
-@property (nonatomic, readonly) BOOL forcePolling;
-/// When <code>true</code>, the engine will only use WebSockets as a transport.
-@property (nonatomic, readonly) BOOL forceWebsockets;
-/// If <code>true</code>, the engine is currently in HTTP long-polling mode.
-@property (nonatomic, readonly) BOOL polling;
-/// If <code>true</code>, the engine is currently seeing whether it can upgrade to WebSockets.
-@property (nonatomic, readonly) BOOL probing;
-/// The session id for this engine.
-@property (nonatomic, readonly, copy) NSString * _Nonnull sid;
-/// The path to engine.io.
-@property (nonatomic, readonly, copy) NSString * _Nonnull socketPath;
-/// The url for polling.
-@property (nonatomic, readonly, copy) NSURL * _Nonnull urlPolling;
-/// The url for WebSockets.
-@property (nonatomic, readonly, copy) NSURL * _Nonnull urlWebSocket;
-/// If <code>true</code>, then the engine is currently in WebSockets mode.
-@property (nonatomic, readonly) BOOL websocket;
-/// The SocketIOWebSocket for this engine.
-@property (nonatomic, readonly, strong) SocketIOWebSocket * _Nullable ws;
-/// Creates a new engine.
-/// \param client The client for this engine.
-///
-/// \param url The url for this engine.
-///
-/// \param options The options for this engine.
-///
-- (nonnull instancetype)initWithClient:(id <SocketEngineClient> _Nonnull)client url:(NSURL * _Nonnull)url options:(NSDictionary * _Nullable)options;
-/// Starts the connection to the server.
-- (void)connect;
-/// Called when an error happens during execution. Causes a disconnection.
-- (void)didErrorWithReason:(NSString * _Nonnull)reason;
-/// Disconnects from the server.
-/// \param reason The reason for the disconnection. This is communicated up to the client.
-///
-- (void)disconnectWithReason:(NSString * _Nonnull)reason;
-/// Called to switch from HTTP long-polling to WebSockets. After calling this method the engine will be in
-/// SocketIOWebSocket mode.
-/// <em>You shouldn’t call this directly</em>
-- (void)doFastUpgrade;
-/// Causes any packets that were waiting for POSTing to be sent through the SocketIOWebSocket. This happens because when
-/// the engine is attempting to upgrade to SocketIOWebSocket it does not do any POSTing.
-/// <em>You shouldn’t call this directly</em>
-- (void)flushWaitingForPostToWebSocket;
-/// Parses raw binary received from engine.io.
-/// \param data The data to parse.
-///
-- (void)parseEngineData:(NSData * _Nonnull)data;
-/// Parses a raw engine.io packet.
-/// \param message The message to parse.
-///
-/// \param fromPolling Whether this message is from long-polling.
-/// If <code>true</code> we might have to fix utf8 encoding.
-///
-- (void)parseEngineMessage:(NSString * _Nonnull)message fromPolling:(BOOL)fromPolling;
-/// Writes a message to engine.io, independent of transport.
-/// \param msg The message to send.
-///
-/// \param withType The type of this message.
-///
-/// \param withData Any data that this message has.
-///
-- (void)write:(NSString * _Nonnull)msg withType:(enum SocketEnginePacketType)type withData:(NSArray<NSData *> * _Nonnull)data;
-@end
-
-
-/// The main class for SocketIOClientSwift.
-/// Represents a socket.io-client. Most interaction with socket.io will be through this class.
-SWIFT_CLASS("_TtC11SalemoveSDK14SocketIOClient")
-@interface SocketIOClient : NSObject <SocketEngineClient>
-/// Called when the engine closes.
-/// \param reason The reason that the engine closed.
-///
-- (void)engineDidCloseWithReason:(NSString * _Nonnull)reason;
-/// Called when the engine errors.
-/// \param reason The reason the engine errored.
-///
-- (void)engineDidErrorWithReason:(NSString * _Nonnull)reason;
-/// Called when the engine opens.
-/// \param reason The reason the engine opened.
-///
-- (void)engineDidOpenWithReason:(NSString * _Nonnull)reason;
-/// Called when the engine has a message that must be parsed.
-/// \param msg The message that needs parsing.
-///
-- (void)parseEngineMessage:(NSString * _Nonnull)msg;
-/// Called when the engine receives binary data.
-/// \param data The data the engine received.
-///
-- (void)parseEngineBinaryData:(NSData * _Nonnull)data;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-/// Represents the state of the client.
-typedef SWIFT_ENUM(NSInteger, SocketIOClientStatus, open) {
-/// The client has never been connected. Or the client has been reset.
-  SocketIOClientStatusNotConnected = 0,
-/// The client was once connected, but not anymore.
-  SocketIOClientStatusDisconnected = 1,
-/// The client is in the process of connecting.
-  SocketIOClientStatusConnecting = 2,
-/// The client is currently connected.
-  SocketIOClientStatusConnected = 3,
-};
-
-
-SWIFT_CLASS("_TtC11SalemoveSDK15SocketIOSSLCert")
-@interface SocketIOSSLCert : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC11SalemoveSDK17SocketIOWebSocket")
-@interface SocketIOWebSocket : NSObject <NSStreamDelegate>
-/// Delegate for the stream methods. Processes incoming bytes
-- (void)stream:(NSStream * _Nonnull)aStream handleEvent:(NSStreamEvent)eventCode;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
 enum VideoScalingOptions : NSInteger;
+@class NSCoder;
 
 /// View that displays video stream. This can be added as a subview or insereted into a UIStackView for resizing.
 SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
@@ -2000,27 +1467,12 @@ SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
 @end
 
-
 @protocol RTCVideoRenderer;
 
 @interface StreamView (SWIFT_EXTENSION(SalemoveSDK)) <RTCVideoViewDelegate>
 /// :nodoc:
 - (void)videoView:(id <RTCVideoRenderer> _Nonnull)videoView didChangeVideoSize:(CGSize)size;
 @end
-
-
-SWIFT_CLASS("_TtC11SalemoveSDK4Text")
-@interface Text : Node
-@end
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2059,13 +1511,6 @@ SWIFT_CLASS("_TtC11SalemoveSDK25VisitorScreenSharingState")
 @property (nonatomic, readonly) enum ScreenSharingStatus status;
 /// <code>LocalScreen</code> can be used to stop screen sharing.
 @property (nonatomic, readonly, strong) LocalScreen * _Nullable localScreen;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC11SalemoveSDK9WebSocket")
-@interface WebSocket : NSObject <NSStreamDelegate>
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
