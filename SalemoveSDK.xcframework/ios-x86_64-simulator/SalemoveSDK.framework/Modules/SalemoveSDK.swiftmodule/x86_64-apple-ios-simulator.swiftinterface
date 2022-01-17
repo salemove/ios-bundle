@@ -200,7 +200,10 @@ public struct VisitorInfoUpdate : Swift.Encodable {
   public var phone: Swift.String?
   public var note: Swift.String?
   public var noteUpdateMethod: SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod?
-  public var externalID: Swift.String?
+  public var externalID: Swift.String? {
+    get
+    set
+  }
   public var customAttributes: [Swift.String : Swift.String]?
   public var customAttributesUpdateMethod: SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod?
   public init(name: Swift.String? = nil, email: Swift.String? = nil, phone: Swift.String? = nil, note: Swift.String? = nil, noteUpdateMethod: SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod? = nil, externalID: Swift.String? = nil, customAttributes: [Swift.String : Swift.String]? = nil, customAttributesUpdateMethod: SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod? = nil)

@@ -2,7 +2,13 @@
 
 ## Unreleased
 
-Unreleased: https://github.com/salemove/ios-sdk/compare/0.32.0...master
+Unreleased: https://github.com/salemove/ios-sdk/compare/0.32.1...master
+
+## [0.32.1] - 2022-01-17
+
+### Added
+
+- `external_id` support
 
 ## [0.32.0] - 2021-12-23
 
@@ -51,7 +57,7 @@ Unreleased: https://github.com/salemove/ios-sdk/compare/0.32.0...master
 - Added push notification support
 - Added possibility to fetch visitor information
 - Added possibility to start engagement with media
-  
+
 ### Fixed
 
 - Fixed media streaming on engagement transfer
@@ -59,7 +65,7 @@ Unreleased: https://github.com/salemove/ios-sdk/compare/0.32.0...master
 [0.30.0]: https://github.com/salemove/ios-sdk/compare/0.29.6...0.30.0
 
 ## [0.29.6] - 2021-07-01
-  
+
 ### Fixed
 
 - Fixed `Avoiding duplicate symbols with static libraries/frameworks` issue (Swift Package Manager)
@@ -177,7 +183,6 @@ Unreleased: https://github.com/salemove/ios-sdk/compare/0.32.0...master
 
 [0.23.0]: https://github.com/salemove/ios-bundle/compare/0.22.0...0.23.0
 
-
 ## [0.22.0] - 2020-08-18
 
 ### Changed
@@ -187,12 +192,11 @@ Unreleased: https://github.com/salemove/ios-sdk/compare/0.32.0...master
 
 [0.22.0]: https://github.com/salemove/ios-bundle/compare/0.21.1...0.22.0
 
-
 ## [0.21.1] - 2020-07-10
 
 ### Changed
 
-- Fixed the Log class access modifier 
+- Fixed the Log class access modifier
 - Fixed Keychain problem when using real devices
 
 [0.21.1]: https://github.com/salemove/ios-bundle/compare/0.21.0...0.21.1
@@ -246,7 +250,6 @@ Unreleased: https://github.com/salemove/ios-sdk/compare/0.32.0...master
 - Support for XCode 11.2 and Swift 5.1.2 (Cocoapods)
 
 [0.17.0]: https://github.com/salemove/ios-bundle/compare/0.16.3...0.17.0
-
 
 ## [0.16.3] - 2019-11-26
 
@@ -663,6 +666,7 @@ Unreleased: https://github.com/salemove/ios-sdk/compare/0.32.0...master
 ## [0.3.0] - 2017-12-18
 
 ### Added
+
 - Websockets for keeping the incoming callbacks and messaging more stable
 - applicationDidBecomeActive manageable by SDK
 - Additional server selection
@@ -670,26 +674,32 @@ Unreleased: https://github.com/salemove/ios-sdk/compare/0.32.0...master
 ## [0.2.1] - 2017-11-28
 
 ### Changed
+
 - Rename in the SDK the way to queue for an engagement
 
 ### Removed
+
 - Ability to specify the interactor directly in the SDK, now using a configurable protocol
 
 ## [0.2.0] - 2017-11-23
 
 ### Added
+
 - Ability to configure the SDK from the API
 - SDK to accept the Interactable object as part of the engagement handling
 - Ability to generate the documentation using jazzy
 
 ### Changed
+
 - SDK now is compiled as a library, so the source code is closed
 
 ### Removed
+
 - echo example query for the push notifications
 - UI code for the SDK
 
 ## [0.1.0] - 2017-11-16
 
 ### Added
+
 - Initial version of the SDK
