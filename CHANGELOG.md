@@ -2,7 +2,13 @@
 
 ## Unreleased
 
-Unreleased: https://github.com/salemove/ios-sdk/compare/0.32.1...master
+Unreleased: https://github.com/salemove/ios-sdk/compare/0.32.2...master
+
+## [0.32.1] - 2022-01-17
+
+### Fixed
+
+- Bug fix and stability improvements
 
 ## [0.32.1] - 2022-01-17
 
