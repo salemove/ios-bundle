@@ -90,11 +90,11 @@ public protocol PushNotificationsConfigurable {
   @objc override dynamic public init()
   @objc deinit
 }
-@objc public protocol EngagementHandling {
-  @objc func start()
-  @objc func end()
-  @objc var onEngagementRequest: SalemoveSDK.RequestOfferBlock { get }
-  @objc var onEngagementTransfer: SalemoveSDK.EngagementTransferBlock { get }
+public protocol EngagementHandling {
+  func start()
+  func end()
+  var onEngagementRequest: SalemoveSDK.RequestOfferBlock { get }
+  var onEngagementTransfer: SalemoveSDK.EngagementTransferBlock { get }
 }
 @objc public protocol MessageHandling {
   @objc func receive(message: SalemoveSDK.Message)
@@ -247,6 +247,153 @@ extension PushNotifications : SalemoveSDK.PushNotificationsConfigurable {
   public func enable(_ shouldEnablePushNotifications: Swift.Bool)
   public func subscribeTo(_ notifications: [SalemoveSDK.PushNotificationsType])
 }
+@dynamicMemberLookup public struct Tagged<Tag, RawValue> {
+  public var rawValue: RawValue
+  public init(rawValue: RawValue)
+  public func map<B>(_ f: (RawValue) -> B) -> SalemoveSDK.Tagged<Tag, B>
+}
+extension Tagged {
+  public subscript<T>(dynamicMember keyPath: Swift.KeyPath<RawValue, T>) -> T {
+    get
+  }
+}
+extension Tagged : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension Tagged : Swift.RawRepresentable {
+}
+extension Tagged : Swift.CustomPlaygroundDisplayConvertible {
+  public var playgroundDescription: Any {
+    get
+  }
+}
+extension Tagged : Swift.Collection where RawValue : Swift.Collection {
+  public typealias Element = RawValue.Element
+  public typealias Index = RawValue.Index
+  public func index(after i: RawValue.Index) -> RawValue.Index
+  public subscript(position: RawValue.Index) -> RawValue.Element {
+    get
+  }
+  public var startIndex: RawValue.Index {
+    get
+  }
+  public var endIndex: RawValue.Index {
+    get
+  }
+  __consuming public func makeIterator() -> RawValue.Iterator
+  public typealias Indices = Swift.DefaultIndices<SalemoveSDK.Tagged<Tag, RawValue>>
+  public typealias SubSequence = Swift.Slice<SalemoveSDK.Tagged<Tag, RawValue>>
+}
+extension Tagged : Swift.Comparable where RawValue : Swift.Comparable {
+  public static func < (lhs: SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>) -> Swift.Bool
+}
+extension Tagged : Swift.Decodable where RawValue : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension Tagged : Swift.Encodable where RawValue : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension Tagged : Swift.Equatable where RawValue : Swift.Equatable {
+}
+extension Tagged : Swift.Error where RawValue : Swift.Error {
+}
+extension Tagged : Foundation.LocalizedError where RawValue : Swift.Error {
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var failureReason: Swift.String? {
+    get
+  }
+  public var helpAnchor: Swift.String? {
+    get
+  }
+  public var recoverySuggestion: Swift.String? {
+    get
+  }
+}
+extension Tagged : Swift.ExpressibleByBooleanLiteral where RawValue : Swift.ExpressibleByBooleanLiteral {
+  public typealias BooleanLiteralType = RawValue.BooleanLiteralType
+  public init(booleanLiteral value: RawValue.BooleanLiteralType)
+}
+extension Tagged : Swift.ExpressibleByExtendedGraphemeClusterLiteral where RawValue : Swift.ExpressibleByExtendedGraphemeClusterLiteral {
+  public typealias ExtendedGraphemeClusterLiteralType = RawValue.ExtendedGraphemeClusterLiteralType
+  public init(extendedGraphemeClusterLiteral: SalemoveSDK.Tagged<Tag, RawValue>.ExtendedGraphemeClusterLiteralType)
+}
+extension Tagged : Swift.ExpressibleByFloatLiteral where RawValue : Swift.ExpressibleByFloatLiteral {
+  public typealias FloatLiteralType = RawValue.FloatLiteralType
+  public init(floatLiteral: SalemoveSDK.Tagged<Tag, RawValue>.FloatLiteralType)
+}
+extension Tagged : Swift.ExpressibleByIntegerLiteral where RawValue : Swift.ExpressibleByIntegerLiteral {
+  public typealias IntegerLiteralType = RawValue.IntegerLiteralType
+  public init(integerLiteral: SalemoveSDK.Tagged<Tag, RawValue>.IntegerLiteralType)
+}
+extension Tagged : Swift.ExpressibleByStringLiteral where RawValue : Swift.ExpressibleByStringLiteral {
+  public typealias StringLiteralType = RawValue.StringLiteralType
+  public init(stringLiteral: SalemoveSDK.Tagged<Tag, RawValue>.StringLiteralType)
+}
+extension Tagged : Swift.ExpressibleByStringInterpolation where RawValue : Swift.ExpressibleByStringInterpolation {
+  public typealias StringInterpolation = RawValue.StringInterpolation
+  public init(stringInterpolation: SalemoveSDK.Tagged<Tag, RawValue>.StringInterpolation)
+}
+extension Tagged : Swift.ExpressibleByUnicodeScalarLiteral where RawValue : Swift.ExpressibleByUnicodeScalarLiteral {
+  public typealias UnicodeScalarLiteralType = RawValue.UnicodeScalarLiteralType
+  public init(unicodeScalarLiteral: SalemoveSDK.Tagged<Tag, RawValue>.UnicodeScalarLiteralType)
+}
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+extension Tagged : Swift.Identifiable where RawValue : Swift.Identifiable {
+  public typealias ID = RawValue.ID
+  public var id: SalemoveSDK.Tagged<Tag, RawValue>.ID {
+    get
+  }
+}
+extension Tagged : Swift.LosslessStringConvertible where RawValue : Swift.LosslessStringConvertible {
+  public init?(_ description: Swift.String)
+}
+extension Tagged : Swift.AdditiveArithmetic where RawValue : Swift.AdditiveArithmetic {
+  public static var zero: SalemoveSDK.Tagged<Tag, RawValue> {
+    get
+  }
+  public static func + (lhs: SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>) -> SalemoveSDK.Tagged<Tag, RawValue>
+  public static func += (lhs: inout SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>)
+  public static func - (lhs: SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>) -> SalemoveSDK.Tagged<Tag, RawValue>
+  public static func -= (lhs: inout SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>)
+}
+extension Tagged : Swift.Numeric where RawValue : Swift.Numeric {
+  public init?<T>(exactly source: T) where T : Swift.BinaryInteger
+  public var magnitude: RawValue.Magnitude {
+    get
+  }
+  public static func * (lhs: SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>) -> SalemoveSDK.Tagged<Tag, RawValue>
+  public static func *= (lhs: inout SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>)
+  public typealias Magnitude = RawValue.Magnitude
+}
+extension Tagged : Swift.Hashable where RawValue : Swift.Hashable {
+}
+extension Tagged : Swift.SignedNumeric where RawValue : Swift.SignedNumeric {
+}
+extension Tagged : Swift.Sequence where RawValue : Swift.Sequence {
+  public typealias Iterator = RawValue.Iterator
+  __consuming public func makeIterator() -> RawValue.Iterator
+}
+extension Tagged : Swift.Strideable where RawValue : Swift.Strideable {
+  public typealias Stride = RawValue.Stride
+  public func distance(to other: SalemoveSDK.Tagged<Tag, RawValue>) -> RawValue.Stride
+  public func advanced(by n: RawValue.Stride) -> SalemoveSDK.Tagged<Tag, RawValue>
+}
+extension Tagged : Swift.ExpressibleByArrayLiteral where RawValue : Swift.ExpressibleByArrayLiteral {
+  public typealias ArrayLiteralElement = RawValue.ArrayLiteralElement
+  public init(arrayLiteral elements: SalemoveSDK.Tagged<Tag, RawValue>.ArrayLiteralElement...)
+}
+extension Tagged : Swift.ExpressibleByDictionaryLiteral where RawValue : Swift.ExpressibleByDictionaryLiteral {
+  public typealias Key = RawValue.Key
+  public typealias Value = RawValue.Value
+  public init(dictionaryLiteral elements: (SalemoveSDK.Tagged<Tag, RawValue>.Key, SalemoveSDK.Tagged<Tag, RawValue>.Value)...)
+}
+extension Tagged {
+  public func coerced<Tag2>(to type: Tag2.Type) -> SalemoveSDK.Tagged<Tag2, RawValue>
+}
 extension Salemove {
   @objc final public func requestVisitorCode(completion: @escaping SalemoveSDK.VisitorCodeBlock)
 }
@@ -296,6 +443,10 @@ extension Salemove {
 }
 extension Salemove {
   @objc final public func requestMediaUpgrade(offer: SalemoveSDK.MediaUpgradeOffer, completion: @escaping SalemoveSDK.SuccessBlock)
+}
+extension Salemove {
+  final public func getCurrentEngagement() -> SalemoveSDK.Engagement?
+  final public func submitSurveyAnswer(_ answers: [SalemoveSDK.Survey.Answer], surveyId: SalemoveSDK.Survey.Id, engagementId: Swift.String, completion: @escaping (Swift.Result<Swift.Void, SalemoveSDK.SalemoveError>) -> Swift.Void)
 }
 extension Salemove {
   @objc final public func waitForActiveEngagement(completion: @escaping SalemoveSDK.EngagementBlock)
@@ -348,6 +499,109 @@ public enum MediaType : Swift.String, Swift.Codable {
   final public let fractionCompleted: Swift.Double
   @objc override dynamic public init()
   @objc deinit
+}
+public struct Survey : Swift.Equatable {
+  public typealias Id = SalemoveSDK.Tagged<SalemoveSDK.Survey, Swift.String>
+  public let id: SalemoveSDK.Survey.Id
+  public let name: Swift.String
+  public let description: Swift.String
+  public let title: Swift.String
+  public let type: SalemoveSDK.Survey.SurveyType
+  public let isDefault: Swift.Bool?
+  public let isEnabled: Swift.Bool?
+  public let queueIds: [Swift.String]?
+  public let siteId: Swift.String
+  public let questions: [SalemoveSDK.Survey.Question]
+  public let createdAt: Foundation.Date?
+  public let updatedAt: Foundation.Date?
+  public static func == (a: SalemoveSDK.Survey, b: SalemoveSDK.Survey) -> Swift.Bool
+}
+extension Survey : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension Survey {
+  public enum SurveyType : Swift.String {
+    case `operator`
+    case visitor
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+extension Survey.SurveyType : Swift.Decodable {
+}
+extension Survey {
+  public struct Question : Swift.Equatable {
+    public typealias Id = SalemoveSDK.Tagged<SalemoveSDK.Survey.Question, Swift.String>
+    public let id: SalemoveSDK.Survey.Question.Id
+    public let name: Swift.String
+    public let text: Swift.String
+    public let type: SalemoveSDK.Survey.QuestionType
+    public let options: [SalemoveSDK.Survey.Question.Option]?
+    public let required: Swift.Bool
+    public let siteId: Swift.String
+    public let createdAt: Foundation.Date
+    public let updatedAt: Foundation.Date
+    public static func == (a: SalemoveSDK.Survey.Question, b: SalemoveSDK.Survey.Question) -> Swift.Bool
+  }
+}
+extension Survey.Question : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension Survey.Question {
+  public struct Option : Swift.Equatable {
+    public typealias Id = SalemoveSDK.Tagged<SalemoveSDK.Survey.Question.Option, Swift.String>
+    public let id: SalemoveSDK.Survey.Question.Option.Id
+    public let label: Swift.String
+    public let isDefault: Swift.Bool
+    public let position: Swift.Int
+    public static func == (a: SalemoveSDK.Survey.Question.Option, b: SalemoveSDK.Survey.Question.Option) -> Swift.Bool
+  }
+}
+extension Survey.Question.Option : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension Survey {
+  public enum QuestionType : Swift.String {
+    case text
+    case scale
+    case singleChoice
+    case boolean
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+extension Survey.QuestionType : Swift.Decodable {
+}
+extension Survey {
+  public struct Answer {
+    public let questionId: SalemoveSDK.Survey.Question.Id
+    public let response: SalemoveSDK.Survey.Answer.ValueContainer
+    public init(questionId: SalemoveSDK.Survey.Question.Id, response: SalemoveSDK.Survey.Answer.ValueContainer)
+  }
+}
+extension Survey.Answer : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension Survey.Answer {
+  public enum ValueContainer : Swift.Encodable {
+    case int(Swift.Int)
+    case string(Swift.String)
+    case boolean(Swift.Bool)
+    public func encode(to encoder: Swift.Encoder) throws
+  }
+}
+public struct SurveyResponse : Swift.Equatable {
+  public let survey: SalemoveSDK.Survey?
+  public static func == (a: SalemoveSDK.SurveyResponse, b: SalemoveSDK.SurveyResponse) -> Swift.Bool
+}
+extension SurveyResponse : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
 }
 extension Salemove {
   @objc final public func clearSession()
@@ -594,6 +848,7 @@ extension SalemoveError : Swift.Error {
   @objc final public let id: Swift.String
   @objc final public let name: Swift.String
   @objc final public let state: SalemoveSDK.QueueState
+  @objc final public let isDefault: Swift.Bool
   @objc override dynamic public init()
   @objc deinit
 }
@@ -686,6 +941,9 @@ extension Salemove {
   @objc override dynamic public init()
   @objc deinit
 }
+extension Engagement {
+  public func getSurvey(completion: @escaping (Swift.Result<SalemoveSDK.Survey?, SalemoveSDK.SalemoveError>) -> Swift.Void)
+}
 @objc public class MediaUpgradeOffer : ObjectiveC.NSObject {
   final public let type: SalemoveSDK.MediaType
   final public let direction: SalemoveSDK.MediaDirection
@@ -723,6 +981,12 @@ extension SalemoveSDK.ContextType : Swift.RawRepresentable {}
 extension SalemoveSDK.MediaType : Swift.Equatable {}
 extension SalemoveSDK.MediaType : Swift.Hashable {}
 extension SalemoveSDK.MediaType : Swift.RawRepresentable {}
+extension SalemoveSDK.Survey.SurveyType : Swift.Equatable {}
+extension SalemoveSDK.Survey.SurveyType : Swift.Hashable {}
+extension SalemoveSDK.Survey.SurveyType : Swift.RawRepresentable {}
+extension SalemoveSDK.Survey.QuestionType : Swift.Equatable {}
+extension SalemoveSDK.Survey.QuestionType : Swift.Hashable {}
+extension SalemoveSDK.Survey.QuestionType : Swift.RawRepresentable {}
 extension SalemoveSDK.PushType : Swift.Equatable {}
 extension SalemoveSDK.PushType : Swift.Hashable {}
 extension SalemoveSDK.PushType : Swift.RawRepresentable {}
