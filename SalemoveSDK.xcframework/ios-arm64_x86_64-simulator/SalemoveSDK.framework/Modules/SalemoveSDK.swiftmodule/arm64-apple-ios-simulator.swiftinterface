@@ -1,0 +1,1026 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SalemoveSDK
+import AVFoundation
+import CoreServices
+import Foundation
+import ReactiveSwift
+import ReplayKit
+@_exported import SalemoveSDK
+import Security
+import SocketIO
+import Swift
+import SwiftPhoenixClient
+import TwilioVoice
+import UIKit
+import UserNotifications
+import WebRTC
+import _Concurrency
+@objc public enum AttachmentType : Swift.Int, Swift.Decodable {
+  case files
+  case singleChoice
+  case singleChoiceResponse
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class EngagementFileData : ObjectiveC.NSObject {
+  @objc final public let data: Foundation.Data
+  @objc deinit
+}
+public struct EngagementOptions {
+  public init(mediaDirection: SalemoveSDK.MediaDirection? = nil)
+}
+public enum PushNotificationsType : Swift.Int {
+  case start
+  case end
+  case failed
+  case message
+  case transfer
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension SalemoveSDK.Salemove {
+  @objc final public func uploadFileToEngagement(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping SalemoveSDK.EngagementFileCompletionBlock)
+  @objc final public func fetchFile(engagementFile: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping SalemoveSDK.EngagementFileFetchCompletionBlock)
+}
+@_hasMissingDesignatedInitializers @objc public class Attachment : ObjectiveC.NSObject, Swift.Decodable {
+  final public let type: SalemoveSDK.AttachmentType?
+  final public let selectedOption: Swift.String?
+  final public let options: [SalemoveSDK.SingleChoiceOption]?
+  final public let imageUrl: Swift.String?
+  final public let files: [SalemoveSDK.EngagementFile]?
+  public init(file: SalemoveSDK.EngagementFile)
+  public init(files: [SalemoveSDK.EngagementFile])
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+extension SalemoveSDK.Salemove {
+  public struct VisitorInfo : Swift.Equatable, Swift.Codable {
+    public let name: Swift.String?
+    public let email: Swift.String?
+    public let phone: Swift.String?
+    public let note: Swift.String?
+    public let customAttributes: [Swift.String : Swift.String]?
+    public let banned: Swift.Bool
+    public static func == (a: SalemoveSDK.Salemove.VisitorInfo, b: SalemoveSDK.Salemove.VisitorInfo) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class SingleChoiceOption : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var text: Swift.String?
+  @objc public var value: Swift.String?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+public protocol PushNotificationsConfigurable {
+  func enable(_ shouldEnablePushNotifications: Swift.Bool)
+  func subscribeTo(_ notifications: [SalemoveSDK.PushNotificationsType])
+}
+@_hasMissingDesignatedInitializers @objc public class QueueTicket : ObjectiveC.NSObject {
+  @objc deinit
+}
+public protocol EngagementHandling {
+  func start()
+  func end()
+  var onEngagementRequest: SalemoveSDK.RequestOfferBlock { get }
+  var onEngagementTransfer: SalemoveSDK.EngagementTransferBlock { get }
+}
+@objc public protocol MessageHandling {
+  @objc func receive(message: SalemoveSDK.Message)
+  @objc var onOperatorTypingStatusUpdate: SalemoveSDK.OperatorTypingStatusUpdate { get }
+  @objc var onMessagesUpdated: SalemoveSDK.MessagesUpdateBlock { get }
+}
+public protocol MediaHandling {
+  var onMediaUpgradeOffer: SalemoveSDK.MediaUgradeOfferBlock { get }
+  var onScreenSharingOffer: SalemoveSDK.ScreenshareOfferBlock { get }
+  var onVideoStreamAdded: SalemoveSDK.VideoStreamAddedBlock { get }
+  var onAudioStreamAdded: SalemoveSDK.AudioStreamAddedBlock { get }
+  var onVisitorScreenSharingStateChange: SalemoveSDK.VisitorScreenSharingStateChange { get }
+}
+@objc public protocol ErrorHandling {
+  @objc func fail(error: SalemoveSDK.SalemoveError)
+}
+public protocol Interactable : SalemoveSDK.EngagementHandling, SalemoveSDK.ErrorHandling, SalemoveSDK.MediaHandling, SalemoveSDK.MessageHandling {
+}
+extension SalemoveSDK.Salemove {
+  final public func configure(with sdkConfiguration: SalemoveSDK.Salemove.Configuration, completion: (() -> Swift.Void)? = nil)
+  final public func configure(interactor: SalemoveSDK.Interactable)
+}
+extension SalemoveSDK.Salemove {
+  public enum AuthorizationMethod {
+    case appToken(Swift.String)
+    case siteApiKey(id: Swift.String, secret: Swift.String)
+  }
+}
+extension SalemoveSDK.Salemove {
+  public enum Region {
+    case us
+    case eu
+    case custom(Foundation.URL)
+  }
+  public struct Configuration {
+    public init(siteId: Swift.String, region: SalemoveSDK.Salemove.Region, authorizingMethod: SalemoveSDK.Salemove.AuthorizationMethod) throws
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class Message : ObjectiveC.NSObject, Swift.Decodable {
+  @objc public var id: Swift.String {
+    get
+  }
+  @objc public var content: Swift.String {
+    get
+  }
+  @objc public var attachment: SalemoveSDK.Attachment? {
+    get
+  }
+  public var sender: SalemoveSDK.MessageSender {
+    get
+  }
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+public enum MessageSender : Swift.String, Swift.Decodable {
+  case visitor
+  case `operator`
+  case omniguide
+  case system
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public typealias EngagementSessionBlock = (SalemoveSDK.EngagementRequest?, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias OperatorBlock = ([SalemoveSDK.Operator]?, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias QueueTicketBlock = (SalemoveSDK.QueueTicket?, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias QueueRequestBlock = ([SalemoveSDK.Queue]?, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias QueueUpdateBlock = (SalemoveSDK.Queue) -> Swift.Void
+public typealias MessageBlock = (SalemoveSDK.Message?, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias EngagementBlock = (SalemoveSDK.Engagement?, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias SuccessBlock = (Swift.Bool, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias AnswerBlock = (Swift.Bool) -> Swift.Void
+public typealias ErrorBlock = (SalemoveSDK.SalemoveError) -> Swift.Void
+public typealias AnswerWithSuccessBlock = (Swift.Bool, SalemoveSDK.SuccessBlock?) -> Swift.Void
+public typealias RequestAnswerBlock = (SalemoveSDK.VisitorContext, Swift.Bool, @escaping SalemoveSDK.SuccessBlock) -> Swift.Void
+public typealias VisitorCodeBlock = (Swift.String?, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias RequestOfferBlock = (@escaping SalemoveSDK.RequestAnswerBlock) -> Swift.Void
+public typealias MediaUgradeOfferBlock = (SalemoveSDK.MediaUpgradeOffer, @escaping SalemoveSDK.AnswerWithSuccessBlock) -> Swift.Void
+public typealias ScreenshareOfferBlock = (@escaping SalemoveSDK.AnswerBlock) -> Swift.Void
+public typealias VisitorScreenSharingStateChange = (SalemoveSDK.VisitorScreenSharingState, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias AudioStreamAddedBlock = (SalemoveSDK.AudioStreamable?, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias VideoStreamAddedBlock = (SalemoveSDK.VideoStreamable?, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias MessagesUpdateBlock = ([SalemoveSDK.Message]) -> Swift.Void
+public typealias EngagementTransferBlock = ([SalemoveSDK.Operator]?) -> Swift.Void
+public typealias PushActionBlock = (SalemoveSDK.Push) -> Swift.Void
+public typealias OperatorTypingStatusUpdate = (SalemoveSDK.OperatorTypingStatus) -> Swift.Void
+public typealias EngagementFileProgressBlock = (SalemoveSDK.EngagementFileProgress) -> Swift.Void
+public typealias EngagementFileCompletionBlock = (SalemoveSDK.EngagementFileInformation?, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias EngagementFileFetchCompletionBlock = (SalemoveSDK.EngagementFileData?, SalemoveSDK.SalemoveError?) -> Swift.Void
+public typealias StreamableOnHoldHandler = (_ onHold: Swift.Bool) -> Swift.Void
+public protocol PushNotificationsHandling {
+  func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+  func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
+  func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+}
+public struct VisitorInfoUpdate : Swift.Encodable {
+  public var name: Swift.String?
+  public var email: Swift.String?
+  public var phone: Swift.String?
+  public var note: Swift.String?
+  public var noteUpdateMethod: SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod?
+  public var externalID: Swift.String? {
+    get
+    set
+  }
+  public var customAttributes: [Swift.String : Swift.String]?
+  public var customAttributesUpdateMethod: SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod?
+  public init(name: Swift.String? = nil, email: Swift.String? = nil, phone: Swift.String? = nil, note: Swift.String? = nil, noteUpdateMethod: SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod? = nil, externalID: Swift.String? = nil, customAttributes: [Swift.String : Swift.String]? = nil, customAttributesUpdateMethod: SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension SalemoveSDK.VisitorInfoUpdate {
+  public enum NoteUpdateMethod : Swift.String {
+    case replace
+    case append
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum CustomAttributesUpdateMethod : Swift.String, Swift.Encodable {
+    case replace
+    case merge
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+@objc @_hasMissingDesignatedInitializers public class PushNotifications : ObjectiveC.NSObject {
+  @objc public var handler: SalemoveSDK.PushActionBlock? {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+extension SalemoveSDK.PushNotifications : SalemoveSDK.PushNotificationsHandling, UserNotifications.UNUserNotificationCenterDelegate {
+  @objc dynamic public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+  @objc dynamic public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
+  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+}
+extension SalemoveSDK.PushNotifications : SalemoveSDK.PushNotificationsConfigurable {
+  public func enable(_ shouldEnablePushNotifications: Swift.Bool)
+  public func subscribeTo(_ notifications: [SalemoveSDK.PushNotificationsType])
+}
+@dynamicMemberLookup public struct Tagged<Tag, RawValue> {
+  public var rawValue: RawValue
+  public init(rawValue: RawValue)
+  public func map<B>(_ f: (RawValue) -> B) -> SalemoveSDK.Tagged<Tag, B>
+}
+extension SalemoveSDK.Tagged {
+  public subscript<T>(dynamicMember keyPath: Swift.KeyPath<RawValue, T>) -> T {
+    get
+  }
+}
+extension SalemoveSDK.Tagged : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension SalemoveSDK.Tagged : Swift.RawRepresentable {
+}
+extension SalemoveSDK.Tagged : Swift.CustomPlaygroundDisplayConvertible {
+  public var playgroundDescription: Any {
+    get
+  }
+}
+extension SalemoveSDK.Tagged : Swift.Collection where RawValue : Swift.Collection {
+  public typealias Element = RawValue.Element
+  public typealias Index = RawValue.Index
+  public func index(after i: RawValue.Index) -> RawValue.Index
+  public subscript(position: RawValue.Index) -> RawValue.Element {
+    get
+  }
+  public var startIndex: RawValue.Index {
+    get
+  }
+  public var endIndex: RawValue.Index {
+    get
+  }
+  public __consuming func makeIterator() -> RawValue.Iterator
+  public typealias Indices = Swift.DefaultIndices<SalemoveSDK.Tagged<Tag, RawValue>>
+  public typealias SubSequence = Swift.Slice<SalemoveSDK.Tagged<Tag, RawValue>>
+}
+extension SalemoveSDK.Tagged : Swift.Comparable where RawValue : Swift.Comparable {
+  public static func < (lhs: SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>) -> Swift.Bool
+}
+extension SalemoveSDK.Tagged : Swift.Decodable where RawValue : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension SalemoveSDK.Tagged : Swift.Encodable where RawValue : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension SalemoveSDK.Tagged : Swift.Equatable where RawValue : Swift.Equatable {
+}
+extension SalemoveSDK.Tagged : Swift.Error where RawValue : Swift.Error {
+}
+extension SalemoveSDK.Tagged : Foundation.LocalizedError where RawValue : Swift.Error {
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var failureReason: Swift.String? {
+    get
+  }
+  public var helpAnchor: Swift.String? {
+    get
+  }
+  public var recoverySuggestion: Swift.String? {
+    get
+  }
+}
+extension SalemoveSDK.Tagged : Swift.ExpressibleByBooleanLiteral where RawValue : Swift.ExpressibleByBooleanLiteral {
+  public typealias BooleanLiteralType = RawValue.BooleanLiteralType
+  public init(booleanLiteral value: RawValue.BooleanLiteralType)
+}
+extension SalemoveSDK.Tagged : Swift.ExpressibleByExtendedGraphemeClusterLiteral where RawValue : Swift.ExpressibleByExtendedGraphemeClusterLiteral {
+  public typealias ExtendedGraphemeClusterLiteralType = RawValue.ExtendedGraphemeClusterLiteralType
+  public init(extendedGraphemeClusterLiteral: SalemoveSDK.Tagged<Tag, RawValue>.ExtendedGraphemeClusterLiteralType)
+}
+extension SalemoveSDK.Tagged : Swift.ExpressibleByFloatLiteral where RawValue : Swift.ExpressibleByFloatLiteral {
+  public typealias FloatLiteralType = RawValue.FloatLiteralType
+  public init(floatLiteral: SalemoveSDK.Tagged<Tag, RawValue>.FloatLiteralType)
+}
+extension SalemoveSDK.Tagged : Swift.ExpressibleByIntegerLiteral where RawValue : Swift.ExpressibleByIntegerLiteral {
+  public typealias IntegerLiteralType = RawValue.IntegerLiteralType
+  public init(integerLiteral: SalemoveSDK.Tagged<Tag, RawValue>.IntegerLiteralType)
+}
+extension SalemoveSDK.Tagged : Swift.ExpressibleByStringLiteral where RawValue : Swift.ExpressibleByStringLiteral {
+  public typealias StringLiteralType = RawValue.StringLiteralType
+  public init(stringLiteral: SalemoveSDK.Tagged<Tag, RawValue>.StringLiteralType)
+}
+extension SalemoveSDK.Tagged : Swift.ExpressibleByStringInterpolation where RawValue : Swift.ExpressibleByStringInterpolation {
+  public typealias StringInterpolation = RawValue.StringInterpolation
+  public init(stringInterpolation: SalemoveSDK.Tagged<Tag, RawValue>.StringInterpolation)
+}
+extension SalemoveSDK.Tagged : Swift.ExpressibleByUnicodeScalarLiteral where RawValue : Swift.ExpressibleByUnicodeScalarLiteral {
+  public typealias UnicodeScalarLiteralType = RawValue.UnicodeScalarLiteralType
+  public init(unicodeScalarLiteral: SalemoveSDK.Tagged<Tag, RawValue>.UnicodeScalarLiteralType)
+}
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+extension SalemoveSDK.Tagged : Swift.Identifiable where RawValue : Swift.Identifiable {
+  public typealias ID = RawValue.ID
+  public var id: SalemoveSDK.Tagged<Tag, RawValue>.ID {
+    get
+  }
+}
+extension SalemoveSDK.Tagged : Swift.LosslessStringConvertible where RawValue : Swift.LosslessStringConvertible {
+  public init?(_ description: Swift.String)
+}
+extension SalemoveSDK.Tagged : Swift.AdditiveArithmetic where RawValue : Swift.AdditiveArithmetic {
+  public static var zero: SalemoveSDK.Tagged<Tag, RawValue> {
+    get
+  }
+  public static func + (lhs: SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>) -> SalemoveSDK.Tagged<Tag, RawValue>
+  public static func += (lhs: inout SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>)
+  public static func - (lhs: SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>) -> SalemoveSDK.Tagged<Tag, RawValue>
+  public static func -= (lhs: inout SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>)
+}
+extension SalemoveSDK.Tagged : Swift.Numeric where RawValue : Swift.Numeric {
+  public init?<T>(exactly source: T) where T : Swift.BinaryInteger
+  public var magnitude: RawValue.Magnitude {
+    get
+  }
+  public static func * (lhs: SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>) -> SalemoveSDK.Tagged<Tag, RawValue>
+  public static func *= (lhs: inout SalemoveSDK.Tagged<Tag, RawValue>, rhs: SalemoveSDK.Tagged<Tag, RawValue>)
+  public typealias Magnitude = RawValue.Magnitude
+}
+extension SalemoveSDK.Tagged : Swift.Hashable where RawValue : Swift.Hashable {
+}
+extension SalemoveSDK.Tagged : Swift.SignedNumeric where RawValue : Swift.SignedNumeric {
+}
+extension SalemoveSDK.Tagged : Swift.Sequence where RawValue : Swift.Sequence {
+  public typealias Iterator = RawValue.Iterator
+  public __consuming func makeIterator() -> RawValue.Iterator
+}
+extension SalemoveSDK.Tagged : Swift.Strideable where RawValue : Swift.Strideable {
+  public typealias Stride = RawValue.Stride
+  public func distance(to other: SalemoveSDK.Tagged<Tag, RawValue>) -> RawValue.Stride
+  public func advanced(by n: RawValue.Stride) -> SalemoveSDK.Tagged<Tag, RawValue>
+}
+extension SalemoveSDK.Tagged : Swift.ExpressibleByArrayLiteral where RawValue : Swift.ExpressibleByArrayLiteral {
+  public typealias ArrayLiteralElement = RawValue.ArrayLiteralElement
+  public init(arrayLiteral elements: SalemoveSDK.Tagged<Tag, RawValue>.ArrayLiteralElement...)
+}
+extension SalemoveSDK.Tagged : Swift.ExpressibleByDictionaryLiteral where RawValue : Swift.ExpressibleByDictionaryLiteral {
+  public typealias Key = RawValue.Key
+  public typealias Value = RawValue.Value
+  public init(dictionaryLiteral elements: (SalemoveSDK.Tagged<Tag, RawValue>.Key, SalemoveSDK.Tagged<Tag, RawValue>.Value)...)
+}
+extension SalemoveSDK.Tagged {
+  public func coerced<Tag2>(to type: Tag2.Type) -> SalemoveSDK.Tagged<Tag2, RawValue>
+}
+extension SalemoveSDK.Salemove {
+  @objc final public func requestVisitorCode(completion: @escaping SalemoveSDK.VisitorCodeBlock)
+}
+@objc public protocol AudioStreamable {
+  @objc @available(iOS, obsoleted: 10.0, message: "Audio is now played automatically when media is established")
+  func playAudio()
+  @objc func mute()
+  @objc func unmute()
+  @objc var isMuted: Swift.Bool { get }
+  @objc var isRemote: Swift.Bool { get }
+  @objc var onHold: SalemoveSDK.StreamableOnHoldHandler? { get set }
+}
+public protocol VideoStreamable : AnyObject {
+  func getStreamView() -> SalemoveSDK.StreamView
+  func playVideo()
+  func pause()
+  func resume()
+  func stop()
+  var isPaused: Swift.Bool { get }
+  var isRemote: Swift.Bool { get }
+  var onHold: SalemoveSDK.StreamableOnHoldHandler? { get set }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class SalemoveAppDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
+  @discardableResult
+  @_Concurrency.MainActor(unsafe) @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func applicationDidBecomeActive(_ application: UIKit.UIApplication)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension SalemoveSDK.Salemove {
+  @available(*, deprecated, message: "Use `Salemove.send(option:completion:)` instead.")
+  final public func send(selectedOptionValue: Swift.String, completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void)
+  @available(*, deprecated, message: "Use fetchFile(engagementFile:progress:completion:) instead.")
+  @objc final public func fetchFile(_ id: Swift.String, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping SalemoveSDK.EngagementFileFetchCompletionBlock)
+  @available(*, deprecated, message: "Use updateVisitorInfo(_:completion:) instead.")
+  final public func updateInformation(name: Swift.String?, email: Swift.String?, phone: Swift.String?, externalID: Swift.String?, customAttributes: [Swift.String : Swift.String]?, completion: @escaping SalemoveSDK.SuccessBlock)
+  @available(*, deprecated, message: "Use send(selectedOptionValue:completion:) instead.")
+  @objc final public func send(selectedOptionValue: Swift.String, messageId: Swift.String, completion: @escaping SalemoveSDK.MessageBlock)
+  @available(*, deprecated, message: "Use `Salemove.configure(with:) throws` instead.")
+  @objc final public func configure(appToken: Swift.String) throws
+  @available(*, deprecated, message: "Use `Salemove.configure(_ configuration: Configuration)` instead.")
+  @objc final public func configure(site: Swift.String) throws
+  @available(*, deprecated, message: "Use `Salemove.configure(_ configuration: Configuration)` instead.")
+  @objc final public func configure(environment: Swift.String) throws
+  @available(*, deprecated, message: "Api token is not supported.")
+  @objc final public func configure(apiToken: Swift.String) throws
+}
+extension SalemoveSDK.Salemove {
+  @objc final public func requestMediaUpgrade(offer: SalemoveSDK.MediaUpgradeOffer, completion: @escaping SalemoveSDK.SuccessBlock)
+}
+extension SalemoveSDK.Salemove {
+  final public func getCurrentEngagement() -> SalemoveSDK.Engagement?
+  final public func submitSurveyAnswer(_ answers: [SalemoveSDK.Survey.Answer], surveyId: SalemoveSDK.Survey.Id, engagementId: Swift.String, completion: @escaping (Swift.Result<Swift.Void, SalemoveSDK.SalemoveError>) -> Swift.Void)
+}
+extension SalemoveSDK.Salemove {
+  @objc final public func waitForActiveEngagement(completion: @escaping SalemoveSDK.EngagementBlock)
+  @objc final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, completion: @escaping SalemoveSDK.EngagementSessionBlock)
+  final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions? = nil, completion: @escaping SalemoveSDK.EngagementSessionBlock)
+  @objc final public func cancel(engagementRequest: SalemoveSDK.EngagementRequest, completion: @escaping SalemoveSDK.SuccessBlock)
+  @available(*, deprecated, message: "Operator request has been deprecated.")
+  final public func requestOperators(completion: @escaping SalemoveSDK.OperatorBlock)
+  @objc final public func requestEngagedOperator(completion: @escaping SalemoveSDK.OperatorBlock)
+  @objc final public func endEngagement(completion: @escaping SalemoveSDK.SuccessBlock)
+}
+extension SalemoveSDK.Salemove {
+  final public func send(option: SalemoveSDK.SingleChoiceOption, completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void)
+  @objc final public func send(message: Swift.String = "", attachment: SalemoveSDK.Attachment? = nil, completion: @escaping SalemoveSDK.MessageBlock)
+  @objc final public func send(message: Swift.String, queueID: Swift.String, completion: @escaping SalemoveSDK.MessageBlock)
+  @objc final public func sendMessagePreview(message: Swift.String, completion: @escaping SalemoveSDK.SuccessBlock)
+}
+public enum ContextType : Swift.String {
+  case page
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc public class VisitorContext : ObjectiveC.NSObject {
+  public var type: SalemoveSDK.ContextType {
+    get
+  }
+  public var url: Swift.String {
+    get
+  }
+  public init(type: SalemoveSDK.ContextType, url: Swift.String)
+  @objc deinit
+}
+public enum MediaType : Swift.String, Swift.Codable {
+  case audio
+  case video
+  case text
+  case phone
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class EngagementFileProgress : ObjectiveC.NSObject {
+  final public let fractionCompleted: Swift.Double
+  @objc deinit
+}
+public struct Survey : Swift.Equatable {
+  public typealias Id = SalemoveSDK.Tagged<SalemoveSDK.Survey, Swift.String>
+  public let id: SalemoveSDK.Survey.Id
+  public let name: Swift.String
+  public let description: Swift.String
+  public let title: Swift.String
+  public let type: SalemoveSDK.Survey.SurveyType
+  public let isDefault: Swift.Bool?
+  public let isEnabled: Swift.Bool?
+  public let queueIds: [Swift.String]?
+  public let siteId: Swift.String
+  public let questions: [SalemoveSDK.Survey.Question]
+  public let createdAt: Foundation.Date?
+  public let updatedAt: Foundation.Date?
+  public static func == (a: SalemoveSDK.Survey, b: SalemoveSDK.Survey) -> Swift.Bool
+}
+extension SalemoveSDK.Survey : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension SalemoveSDK.Survey {
+  public enum SurveyType : Swift.String {
+    case `operator`
+    case visitor
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+extension SalemoveSDK.Survey.SurveyType : Swift.Decodable {
+}
+extension SalemoveSDK.Survey {
+  public struct Question : Swift.Equatable {
+    public typealias Id = SalemoveSDK.Tagged<SalemoveSDK.Survey.Question, Swift.String>
+    public let id: SalemoveSDK.Survey.Question.Id
+    public let name: Swift.String
+    public let text: Swift.String
+    public let type: SalemoveSDK.Survey.QuestionType
+    public let options: [SalemoveSDK.Survey.Question.Option]?
+    public let required: Swift.Bool
+    public let siteId: Swift.String
+    public let createdAt: Foundation.Date
+    public let updatedAt: Foundation.Date
+    public static func == (a: SalemoveSDK.Survey.Question, b: SalemoveSDK.Survey.Question) -> Swift.Bool
+  }
+}
+extension SalemoveSDK.Survey.Question : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension SalemoveSDK.Survey.Question {
+  public struct Option : Swift.Equatable {
+    public typealias Id = SalemoveSDK.Tagged<SalemoveSDK.Survey.Question.Option, Swift.String>
+    public let id: SalemoveSDK.Survey.Question.Option.Id
+    public let label: Swift.String
+    public let isDefault: Swift.Bool
+    public let position: Swift.Int
+    public static func == (a: SalemoveSDK.Survey.Question.Option, b: SalemoveSDK.Survey.Question.Option) -> Swift.Bool
+  }
+}
+extension SalemoveSDK.Survey.Question.Option : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension SalemoveSDK.Survey {
+  public enum QuestionType : Swift.String {
+    case text
+    case scale
+    case singleChoice
+    case boolean
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+extension SalemoveSDK.Survey.QuestionType : Swift.Decodable {
+}
+extension SalemoveSDK.Survey {
+  public struct Answer {
+    public let questionId: SalemoveSDK.Survey.Question.Id
+    public let response: SalemoveSDK.Survey.Answer.ValueContainer
+    public init(questionId: SalemoveSDK.Survey.Question.Id, response: SalemoveSDK.Survey.Answer.ValueContainer)
+  }
+}
+extension SalemoveSDK.Survey.Answer : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension SalemoveSDK.Survey.Answer {
+  public enum ValueContainer : Swift.Encodable {
+    case int(Swift.Int)
+    case string(Swift.String)
+    case boolean(Swift.Bool)
+    public func encode(to encoder: Swift.Encoder) throws
+  }
+}
+public struct SurveyResponse : Swift.Equatable {
+  public let survey: SalemoveSDK.Survey?
+  public static func == (a: SalemoveSDK.SurveyResponse, b: SalemoveSDK.SurveyResponse) -> Swift.Bool
+}
+extension SalemoveSDK.SurveyResponse : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension SalemoveSDK.Salemove {
+  @objc final public func clearSession()
+  final public func fetchSiteConfiguration(_ completion: @escaping (Swift.Result<SalemoveSDK.Site, Swift.Error>) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers @objc public class Push : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var actionIdentifier: Swift.String {
+    get
+  }
+  @objc public var type: SalemoveSDK.PushType {
+    get
+  }
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+@objc public enum PushType : Swift.Int {
+  case unidentified
+  case chatMessage
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_hasMissingDesignatedInitializers public class EngagementRequest : ObjectiveC.NSObject, Swift.Decodable {
+  final public let timeout: Swift.Int
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class EngagementFile : ObjectiveC.NSObject, Swift.Decodable {
+  @objc public var id: Swift.String? {
+    get
+  }
+  public var size: Swift.Double? {
+    get
+  }
+  @objc public var contentType: Swift.String? {
+    get
+  }
+  public var isDeleted: Swift.Bool? {
+    get
+  }
+  @objc final public let name: Swift.String
+  @objc final public let url: Foundation.URL?
+  @objc public init(name: Swift.String = "content", url: Foundation.URL)
+  @objc public init(id: Swift.String)
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+public struct Site : Swift.Decodable, Swift.Equatable {
+  public let id: Foundation.UUID
+  public let allowedFileSenders: SalemoveSDK.Site.AllowedFileSenders
+  public static func == (a: SalemoveSDK.Site, b: SalemoveSDK.Site) -> Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+}
+extension SalemoveSDK.Site {
+  public struct AllowedFileSenders : Swift.Decodable, Swift.Equatable {
+    public let `operator`: Swift.Bool
+    public let visitor: Swift.Bool
+    public static func == (a: SalemoveSDK.Site.AllowedFileSenders, b: SalemoveSDK.Site.AllowedFileSenders) -> Swift.Bool
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension SalemoveSDK.Salemove {
+  final public func updateVisitorInfo(_ info: SalemoveSDK.VisitorInfoUpdate, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
+  final public func fetchVisitorInfo(_ completion: @escaping (Swift.Result<SalemoveSDK.Salemove.VisitorInfo, Swift.Error>) -> Swift.Void)
+}
+@objc public class EngagementFileInformation : ObjectiveC.NSObject, Swift.Codable {
+  final public let id: Swift.String
+  final public let isSecurityScanningRequired: Swift.Bool
+  final public let url: Swift.String?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+infix operator &/ : DefaultPrecedence
+@_hasMissingDesignatedInitializers @objc public class OperatorTypingStatus : ObjectiveC.NSObject {
+  @objc public var isTyping: Swift.Bool {
+    get
+  }
+  @objc deinit
+}
+@objc public enum VideoScalingOptions : Swift.Int {
+  case fill
+  case aspectFit
+  case aspectFill
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class StreamView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) public var scale: SalemoveSDK.VideoScalingOptions {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+extension SalemoveSDK.StreamView : WebRTC.RTCVideoViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func videoView(_ videoView: WebRTC.RTCVideoRenderer, didChangeVideoSize size: CoreGraphics.CGSize)
+}
+@objc public enum LogLevel : Swift.Int {
+  case none
+  case error
+  case warning
+  case info
+  case debug
+  public static func >= (a: SalemoveSDK.LogLevel, b: SalemoveSDK.LogLevel) -> Swift.Bool
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class LocalScreen : ObjectiveC.NSObject {
+  @objc public func stopSharing()
+  @objc public func getStreamView() -> SalemoveSDK.StreamView
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class OperatorPicture : ObjectiveC.NSObject {
+  @objc final public let url: Swift.String?
+  @objc deinit
+}
+@objc public enum GeneralError : Swift.Int, Swift.Error {
+  case internalError
+  case networkError
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum ContextError : Swift.Int, Swift.Error {
+  case invalidURL
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum ConfigurationError : Swift.Int, Swift.Error {
+  case invalidSite
+  case invalidEnvironment
+  case invalidAppToken
+  @available(*, deprecated, message: "Api token is not supported by SDK.")
+  case invalidApiToken
+  @available(*, deprecated, message: "Api token is not supported by SDK.")
+  case apiTokenNotSupported
+  case invalidSiteApiKey
+  case invalidRegionEndpoint
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MediaUpgradeError : Swift.Int, Swift.Error {
+  case requestError
+  case unsupportedRequest
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum EngagementError : Swift.Int, Swift.Error {
+  case operatorUnavailable
+  case timeout
+  case rejected
+  case visitorCanceled
+  case operatorCanceled
+  case operatorLeft
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MediaError : Swift.Int, Swift.Error {
+  case permissionDenied
+  case screenSharingNotAvailable
+  case notAvailableOnIOSVersion
+  case unsupportedEngagementType
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum QueueError : Swift.Int, Swift.Error {
+  case queueClosed
+  case queueFull
+  case invalidId
+  case alreadyEnqueued
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum FileError : Swift.Int, Swift.Error {
+  case infected
+  case unsupportedFileType
+  case fileTooBig
+  case invalidFileURL
+  case fileUnavailable
+  case forbidden
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class SalemoveError : ObjectiveC.NSObject {
+  @objc public var reason: Swift.String {
+    get
+  }
+  @objc public var error: Swift.Error? {
+    get
+  }
+  @objc deinit
+}
+extension SalemoveSDK.SalemoveError : Swift.Error {
+}
+@_hasMissingDesignatedInitializers @objc public class Queue : ObjectiveC.NSObject {
+  @objc final public let id: Swift.String
+  @objc final public let name: Swift.String
+  @objc final public let state: SalemoveSDK.QueueState
+  @objc final public let isDefault: Swift.Bool
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class QueueState : ObjectiveC.NSObject, Swift.Decodable {
+  final public let status: SalemoveSDK.QueueStatus
+  final public let media: [SalemoveSDK.MediaType]
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+public enum QueueStatus : Swift.String, Swift.Codable {
+  case open
+  case closed
+  case full
+  case unstaffed
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class Salemove : ObjectiveC.NSObject {
+  @objc public static let sharedInstance: SalemoveSDK.Salemove
+  weak final public var currentInteractor: SalemoveSDK.Interactable?
+  @objc final public var environment: Swift.String {
+    @objc get
+  }
+  @objc final public var site: Swift.String {
+    @objc get
+  }
+  @objc final public var appToken: Swift.String {
+    @objc get
+  }
+  @available(*, deprecated, message: "Api token is not supported.")
+  final public let apiToken: Swift.String
+  final public var pushNotifications: SalemoveSDK.PushNotifications {
+    get
+  }
+  @objc deinit
+}
+extension SalemoveSDK.Salemove {
+  @objc final public func configureLogLevel(level: SalemoveSDK.LogLevel)
+}
+@_hasMissingDesignatedInitializers @objc public class Operator : ObjectiveC.NSObject {
+  @objc public var name: Swift.String {
+    get
+  }
+  @objc public var picture: SalemoveSDK.OperatorPicture? {
+    get
+  }
+  public var availableMedia: [SalemoveSDK.MediaType]? {
+    get
+  }
+  @objc deinit
+}
+public typealias InternalOperatorTypingStatusUpdate = (SalemoveSDK.OperatorTypingStatus) -> Swift.Void
+extension SalemoveSDK.Salemove {
+  @objc final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping SalemoveSDK.QueueTicketBlock)
+  final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext, shouldCloseAllQueues: Swift.Bool = true, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions?, completion: @escaping SalemoveSDK.QueueTicketBlock)
+  @objc final public func dequeueFromActiveTickets(completion: @escaping SalemoveSDK.SuccessBlock)
+  @objc final public func cancel(queueTicket: SalemoveSDK.QueueTicket, completion: @escaping SalemoveSDK.SuccessBlock)
+  @objc final public func listQueues(completion: @escaping SalemoveSDK.QueueRequestBlock)
+  @objc final public func subscribeForUpdates(forQueue queueIds: [Swift.String], onError: @escaping SalemoveSDK.ErrorBlock, onUpdate: @escaping SalemoveSDK.QueueUpdateBlock) -> Swift.String?
+  @objc final public func unsubscribeFromUpdates(queueCallbackId: Swift.String, onError: @escaping SalemoveSDK.ErrorBlock)
+}
+@objc public enum ScreenSharingStatus : Swift.Int {
+  case sharing
+  case notSharing
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class VisitorScreenSharingState : ObjectiveC.NSObject {
+  @objc public var status: SalemoveSDK.ScreenSharingStatus {
+    get
+  }
+  @objc public var localScreen: SalemoveSDK.LocalScreen? {
+    get
+  }
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class Engagement : ObjectiveC.NSObject {
+  @objc final public let id: Swift.String
+  @objc final public let engagedOperator: SalemoveSDK.Operator?
+  @objc deinit
+}
+extension SalemoveSDK.Engagement {
+  public func getSurvey(completion: @escaping (Swift.Result<SalemoveSDK.Survey?, SalemoveSDK.SalemoveError>) -> Swift.Void)
+}
+@objc public class MediaUpgradeOffer : ObjectiveC.NSObject {
+  final public let type: SalemoveSDK.MediaType
+  final public let direction: SalemoveSDK.MediaDirection
+  public init(type: SalemoveSDK.MediaType, direction: SalemoveSDK.MediaDirection) throws
+  @objc deinit
+}
+public enum MediaDirection : Swift.String {
+  case oneWay
+  case twoWay
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension SalemoveSDK.AttachmentType : Swift.Equatable {}
+extension SalemoveSDK.AttachmentType : Swift.Hashable {}
+extension SalemoveSDK.AttachmentType : Swift.RawRepresentable {}
+extension SalemoveSDK.PushNotificationsType : Swift.Equatable {}
+extension SalemoveSDK.PushNotificationsType : Swift.Hashable {}
+extension SalemoveSDK.PushNotificationsType : Swift.RawRepresentable {}
+extension SalemoveSDK.MessageSender : Swift.Equatable {}
+extension SalemoveSDK.MessageSender : Swift.Hashable {}
+extension SalemoveSDK.MessageSender : Swift.RawRepresentable {}
+extension SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.Equatable {}
+extension SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.Hashable {}
+extension SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.RawRepresentable {}
+extension SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.Equatable {}
+extension SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.Hashable {}
+extension SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.RawRepresentable {}
+extension SalemoveSDK.ContextType : Swift.Equatable {}
+extension SalemoveSDK.ContextType : Swift.Hashable {}
+extension SalemoveSDK.ContextType : Swift.RawRepresentable {}
+extension SalemoveSDK.MediaType : Swift.Equatable {}
+extension SalemoveSDK.MediaType : Swift.Hashable {}
+extension SalemoveSDK.MediaType : Swift.RawRepresentable {}
+extension SalemoveSDK.Survey.SurveyType : Swift.Equatable {}
+extension SalemoveSDK.Survey.SurveyType : Swift.Hashable {}
+extension SalemoveSDK.Survey.SurveyType : Swift.RawRepresentable {}
+extension SalemoveSDK.Survey.QuestionType : Swift.Equatable {}
+extension SalemoveSDK.Survey.QuestionType : Swift.Hashable {}
+extension SalemoveSDK.Survey.QuestionType : Swift.RawRepresentable {}
+extension SalemoveSDK.PushType : Swift.Equatable {}
+extension SalemoveSDK.PushType : Swift.Hashable {}
+extension SalemoveSDK.PushType : Swift.RawRepresentable {}
+extension SalemoveSDK.VideoScalingOptions : Swift.Equatable {}
+extension SalemoveSDK.VideoScalingOptions : Swift.Hashable {}
+extension SalemoveSDK.VideoScalingOptions : Swift.RawRepresentable {}
+extension SalemoveSDK.LogLevel : Swift.Equatable {}
+extension SalemoveSDK.LogLevel : Swift.Hashable {}
+extension SalemoveSDK.LogLevel : Swift.RawRepresentable {}
+extension SalemoveSDK.GeneralError : Swift.Equatable {}
+extension SalemoveSDK.GeneralError : Swift.Hashable {}
+extension SalemoveSDK.GeneralError : Swift.RawRepresentable {}
+extension SalemoveSDK.ContextError : Swift.Equatable {}
+extension SalemoveSDK.ContextError : Swift.Hashable {}
+extension SalemoveSDK.ContextError : Swift.RawRepresentable {}
+extension SalemoveSDK.ConfigurationError : Swift.Equatable {}
+extension SalemoveSDK.ConfigurationError : Swift.Hashable {}
+extension SalemoveSDK.ConfigurationError : Swift.RawRepresentable {}
+extension SalemoveSDK.MediaUpgradeError : Swift.Equatable {}
+extension SalemoveSDK.MediaUpgradeError : Swift.Hashable {}
+extension SalemoveSDK.MediaUpgradeError : Swift.RawRepresentable {}
+extension SalemoveSDK.EngagementError : Swift.Equatable {}
+extension SalemoveSDK.EngagementError : Swift.Hashable {}
+extension SalemoveSDK.EngagementError : Swift.RawRepresentable {}
+extension SalemoveSDK.MediaError : Swift.Equatable {}
+extension SalemoveSDK.MediaError : Swift.Hashable {}
+extension SalemoveSDK.MediaError : Swift.RawRepresentable {}
+extension SalemoveSDK.QueueError : Swift.Equatable {}
+extension SalemoveSDK.QueueError : Swift.Hashable {}
+extension SalemoveSDK.QueueError : Swift.RawRepresentable {}
+extension SalemoveSDK.FileError : Swift.Equatable {}
+extension SalemoveSDK.FileError : Swift.Hashable {}
+extension SalemoveSDK.FileError : Swift.RawRepresentable {}
+extension SalemoveSDK.QueueStatus : Swift.Equatable {}
+extension SalemoveSDK.QueueStatus : Swift.Hashable {}
+extension SalemoveSDK.QueueStatus : Swift.RawRepresentable {}
+extension SalemoveSDK.ScreenSharingStatus : Swift.Equatable {}
+extension SalemoveSDK.ScreenSharingStatus : Swift.Hashable {}
+extension SalemoveSDK.ScreenSharingStatus : Swift.RawRepresentable {}
+extension SalemoveSDK.MediaDirection : Swift.Equatable {}
+extension SalemoveSDK.MediaDirection : Swift.Hashable {}
+extension SalemoveSDK.MediaDirection : Swift.RawRepresentable {}
