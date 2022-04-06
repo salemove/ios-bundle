@@ -35,18 +35,18 @@ let package = Package(
         ),
         .binaryTarget(
             name: "TwilioVoice",
-            url: "https://github.com/salemove/ios-bundle/releases/download/0.27.0/TwilioVoice.xcframework.zip",
-            checksum: "039b38797721ed272abdb69780cd3239961786d94175b6846036dad4c4a5b636"
+            url: "https://github.com/salemove/ios-bundle/releases/download/0.33.0/TwilioVoice.xcframework.zip",
+            checksum: "34288e0876a8840fa51d3813046cf1f40a5939079bea23ace5afe6e752f12f9e"
         ),
         .binaryTarget(
             name: "WebRTC",
-            url: "https://github.com/salemove/ios-bundle/releases/download/0.27.0/WebRTC.xcframework.zip",
-            checksum: "996f02aff0f0ade1a16f0d8798150e58a126934ebdfd20610421931bfa459859"
+            url: "https://github.com/salemove/ios-bundle/releases/download/0.33.0/WebRTC.xcframework.zip",
+            checksum: "f76e410f608d96989ba0312e099697703a37b4414f8f46bb9e30c3d9b4291a52"
         ),
         .binaryTarget(
             name: "SalemoveSDK",
-            url: "https://github.com/salemove/ios-bundle/releases/download/0.32.3/SalemoveSDK.xcframework.zip",
-            checksum: "6c64b750b0f3750784741efd14efc03a8b15d1406ebacc2b495870b2cf17d4da"
+            url: "https://github.com/salemove/ios-bundle/releases/download/0.33.0/SalemoveSDK.xcframework.zip",
+            checksum: "d477e4fcf09fec59d9128a1bdf95d847f0338f572ca50fc8d3d15b50b89ebd19"
         ),
         .target(
             name: "GliaSDK",
