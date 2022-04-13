@@ -892,7 +892,7 @@ public enum QueueStatus : Swift.String, Swift.Codable {
 extension SalemoveSDK.Salemove {
   @objc final public func configureLogLevel(level: SalemoveSDK.LogLevel)
 }
-@_hasMissingDesignatedInitializers @objc public class Operator : ObjectiveC.NSObject {
+@objc public class Operator : ObjectiveC.NSObject {
   @objc public var name: Swift.String {
     get
   }
@@ -902,6 +902,7 @@ extension SalemoveSDK.Salemove {
   public var availableMedia: [SalemoveSDK.MediaType]? {
     get
   }
+  public init(id: Swift.String, name: Swift.String, picture: SalemoveSDK.OperatorPicture?, availableMedia: [SalemoveSDK.MediaType]?)
   @objc deinit
 }
 public typealias InternalOperatorTypingStatusUpdate = (SalemoveSDK.OperatorTypingStatus) -> Swift.Void
