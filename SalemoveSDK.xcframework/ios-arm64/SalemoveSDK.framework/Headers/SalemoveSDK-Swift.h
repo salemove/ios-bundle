@@ -537,9 +537,9 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15MessageHandling_")
 /// An Operator for an Engagement
 SWIFT_CLASS("_TtC11SalemoveSDK8Operator")
 @interface Operator : NSObject
-/// Operator name
+/// Operator name.
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
-/// Operator picture, see OperatorPicture class for more details
+/// Operator picture, see OperatorPicture class for more details.
 @property (nonatomic, readonly, strong) OperatorPicture * _Nullable picture;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
