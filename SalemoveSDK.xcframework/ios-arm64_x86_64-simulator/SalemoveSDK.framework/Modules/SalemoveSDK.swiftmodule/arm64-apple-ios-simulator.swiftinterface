@@ -92,6 +92,7 @@ public protocol EngagementHandling {
   func end()
   var onEngagementRequest: SalemoveSDK.RequestOfferBlock { get }
   var onEngagementTransfer: SalemoveSDK.EngagementTransferBlock { get }
+  var onEngagementTransferring: SalemoveSDK.EngagementTransferringBlock { get }
 }
 @objc public protocol MessageHandling {
   @objc func receive(message: SalemoveSDK.Message)
@@ -178,6 +179,7 @@ public typealias AudioStreamAddedBlock = (SalemoveSDK.AudioStreamable?, Salemove
 public typealias VideoStreamAddedBlock = (SalemoveSDK.VideoStreamable?, SalemoveSDK.SalemoveError?) -> Swift.Void
 public typealias MessagesUpdateBlock = ([SalemoveSDK.Message]) -> Swift.Void
 public typealias EngagementTransferBlock = ([SalemoveSDK.Operator]?) -> Swift.Void
+public typealias EngagementTransferringBlock = () -> Swift.Void
 public typealias PushActionBlock = (SalemoveSDK.Push) -> Swift.Void
 public typealias OperatorTypingStatusUpdate = (SalemoveSDK.OperatorTypingStatus) -> Swift.Void
 public typealias EngagementFileProgressBlock = (SalemoveSDK.EngagementFileProgress) -> Swift.Void
