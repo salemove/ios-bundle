@@ -1,0 +1,11 @@
+framework module SalemoveSDK {
+  umbrella header "SalemoveSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module SalemoveSDK.Swift {
+    header "SalemoveSDK-Swift.h"
+    requires objc
+}
