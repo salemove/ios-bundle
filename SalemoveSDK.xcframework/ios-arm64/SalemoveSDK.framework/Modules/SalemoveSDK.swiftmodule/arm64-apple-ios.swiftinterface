@@ -4,13 +4,12 @@
 import AVFoundation
 import CoreServices
 import Foundation
+import GliaCoreDependency
 import ReactiveSwift
 import ReplayKit
 @_exported import SalemoveSDK
 import Security
-import SocketIO
 import Swift
-import SwiftPhoenixClient
 import TwilioVoice
 import UIKit
 import UserNotifications
@@ -84,7 +83,8 @@ public protocol PushNotificationsConfigurable {
   func enable(_ shouldEnablePushNotifications: Swift.Bool)
   func subscribeTo(_ notifications: [SalemoveSDK.PushNotificationsType])
 }
-@_hasMissingDesignatedInitializers @objc public class QueueTicket : ObjectiveC.NSObject {
+@objc public class QueueTicket : ObjectiveC.NSObject {
+  public init(id: Swift.String)
   @objc deinit
 }
 public protocol EngagementHandling {
@@ -144,8 +144,14 @@ extension SalemoveSDK.Salemove {
   public var sender: SalemoveSDK.MessageSender {
     get
   }
-  @objc deinit
+  final public let metadata: SalemoveSDK.Message.Metadata?
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+}
+extension SalemoveSDK.Message {
+  public struct Metadata {
+    public func decode<T>(_ type: T.Type) throws -> T where T : Swift.Decodable
+  }
 }
 public enum MessageSender : Swift.String, Swift.Decodable {
   case visitor
