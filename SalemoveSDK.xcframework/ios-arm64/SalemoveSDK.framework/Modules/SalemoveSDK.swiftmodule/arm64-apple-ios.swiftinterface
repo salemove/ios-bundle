@@ -175,7 +175,7 @@ public typealias SuccessBlock = (Swift.Bool, SalemoveSDK.SalemoveError?) -> Swif
 public typealias AnswerBlock = (Swift.Bool) -> Swift.Void
 public typealias ErrorBlock = (SalemoveSDK.SalemoveError) -> Swift.Void
 public typealias AnswerWithSuccessBlock = (Swift.Bool, SalemoveSDK.SuccessBlock?) -> Swift.Void
-public typealias RequestAnswerBlock = (SalemoveSDK.VisitorContext, Swift.Bool, @escaping SalemoveSDK.SuccessBlock) -> Swift.Void
+public typealias RequestAnswerBlock = (SalemoveSDK.VisitorContext?, Swift.Bool, @escaping SalemoveSDK.SuccessBlock) -> Swift.Void
 public typealias VisitorCodeBlock = (Swift.String?, SalemoveSDK.SalemoveError?) -> Swift.Void
 public typealias RequestOfferBlock = (@escaping SalemoveSDK.RequestAnswerBlock) -> Swift.Void
 public typealias MediaUgradeOfferBlock = (SalemoveSDK.MediaUpgradeOffer, @escaping SalemoveSDK.AnswerWithSuccessBlock) -> Swift.Void
@@ -443,6 +443,14 @@ extension SalemoveSDK.Salemove {
   @objc final public func configure(environment: Swift.String) throws
   @available(*, deprecated, message: "Api token is not supported.")
   @objc final public func configure(apiToken: Swift.String) throws
+  @available(*, deprecated, message: "Use queueForEngagement(queueID:visitorContext:shouldCloseAllQueues:completion:) with Optional<VisitorContext> instead.")
+  @objc final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping SalemoveSDK.QueueTicketBlock)
+  @available(*, deprecated, message: "Use queueForEngagement(queueID:visitorContext:shouldCloseAllQueues:mediaType:options:completion:) with Optional<VisitorContext> instead.")
+  final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext, shouldCloseAllQueues: Swift.Bool = true, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions?, completion: @escaping SalemoveSDK.QueueTicketBlock)
+  @available(*, deprecated, message: "Use requestEngagementWith(selectedOperator:visitorContext:completion:) with Optional<VisitorContext> instead.")
+  @objc final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, completion: @escaping SalemoveSDK.EngagementSessionBlock)
+  @available(*, deprecated, message: "Use requestEngagementWith(selectedOperator:visitorContext:mediaType:options:completion:) with Optional<VisitorContext> instead.")
+  final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions? = nil, completion: @escaping SalemoveSDK.EngagementSessionBlock)
 }
 extension SalemoveSDK.Salemove {
   @objc final public func requestMediaUpgrade(offer: SalemoveSDK.MediaUpgradeOffer, completion: @escaping SalemoveSDK.SuccessBlock)
@@ -453,8 +461,8 @@ extension SalemoveSDK.Salemove {
 }
 extension SalemoveSDK.Salemove {
   @objc final public func waitForActiveEngagement(completion: @escaping SalemoveSDK.EngagementBlock)
-  @objc final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, completion: @escaping SalemoveSDK.EngagementSessionBlock)
-  final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions? = nil, completion: @escaping SalemoveSDK.EngagementSessionBlock)
+  final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext? = nil, completion: @escaping SalemoveSDK.EngagementSessionBlock)
+  final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext? = nil, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions? = nil, completion: @escaping SalemoveSDK.EngagementSessionBlock)
   @objc final public func cancel(engagementRequest: SalemoveSDK.EngagementRequest, completion: @escaping SalemoveSDK.SuccessBlock)
   @available(*, deprecated, message: "Operator request has been deprecated.")
   final public func requestOperators(completion: @escaping SalemoveSDK.OperatorBlock)
@@ -467,23 +475,37 @@ extension SalemoveSDK.Salemove {
   @objc final public func send(message: Swift.String, queueID: Swift.String, completion: @escaping SalemoveSDK.MessageBlock)
   @objc final public func sendMessagePreview(message: Swift.String, completion: @escaping SalemoveSDK.SuccessBlock)
 }
+@available(*, deprecated)
 public enum ContextType : Swift.String {
   case page
+  case assetId
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
 }
-@objc public class VisitorContext : ObjectiveC.NSObject {
+@_hasMissingDesignatedInitializers @objc public class VisitorContext : ObjectiveC.NSObject {
+  @available(*, deprecated)
   public var type: SalemoveSDK.ContextType {
     get
   }
+  @available(*, deprecated)
   public var url: Swift.String {
     get
   }
+  @available(*, deprecated, message: "Use init(_ contextType: VisitorContext.ContextType) instead.")
   public init(type: SalemoveSDK.ContextType, url: Swift.String)
   @objc deinit
+}
+extension SalemoveSDK.VisitorContext {
+  public typealias AssetId = SalemoveSDK.Tagged<(SalemoveSDK.VisitorContext, assetId: ()), Foundation.UUID>
+  public enum ContextType {
+    case assetId(SalemoveSDK.VisitorContext.AssetId)
+  }
+}
+extension SalemoveSDK.VisitorContext : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
 }
 public enum MediaType : Swift.String, Swift.Codable {
   case audio
@@ -740,6 +762,7 @@ extension SalemoveSDK.StreamView : WebRTC.RTCVideoViewDelegate {
     get
   }
 }
+@available(*, deprecated)
 @objc public enum ContextError : Swift.Int, Swift.Error {
   case invalidURL
   public init?(rawValue: Swift.Int)
@@ -915,8 +938,8 @@ extension SalemoveSDK.Salemove {
 }
 public typealias InternalOperatorTypingStatusUpdate = (SalemoveSDK.OperatorTypingStatus) -> Swift.Void
 extension SalemoveSDK.Salemove {
-  @objc final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping SalemoveSDK.QueueTicketBlock)
-  final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext, shouldCloseAllQueues: Swift.Bool = true, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions?, completion: @escaping SalemoveSDK.QueueTicketBlock)
+  final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping SalemoveSDK.QueueTicketBlock)
+  final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions?, completion: @escaping SalemoveSDK.QueueTicketBlock)
   @objc final public func dequeueFromActiveTickets(completion: @escaping SalemoveSDK.SuccessBlock)
   @objc final public func cancel(queueTicket: SalemoveSDK.QueueTicket, completion: @escaping SalemoveSDK.SuccessBlock)
   @objc final public func listQueues(completion: @escaping SalemoveSDK.QueueRequestBlock)
@@ -979,8 +1002,11 @@ extension SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.RawRepresentabl
 extension SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.Equatable {}
 extension SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.Hashable {}
 extension SalemoveSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.RawRepresentable {}
+@available(*, deprecated)
 extension SalemoveSDK.ContextType : Swift.Equatable {}
+@available(*, deprecated)
 extension SalemoveSDK.ContextType : Swift.Hashable {}
+@available(*, deprecated)
 extension SalemoveSDK.ContextType : Swift.RawRepresentable {}
 extension SalemoveSDK.MediaType : Swift.Equatable {}
 extension SalemoveSDK.MediaType : Swift.Hashable {}
@@ -1003,8 +1029,11 @@ extension SalemoveSDK.LogLevel : Swift.RawRepresentable {}
 extension SalemoveSDK.GeneralError : Swift.Equatable {}
 extension SalemoveSDK.GeneralError : Swift.Hashable {}
 extension SalemoveSDK.GeneralError : Swift.RawRepresentable {}
+@available(*, deprecated)
 extension SalemoveSDK.ContextError : Swift.Equatable {}
+@available(*, deprecated)
 extension SalemoveSDK.ContextError : Swift.Hashable {}
+@available(*, deprecated)
 extension SalemoveSDK.ContextError : Swift.RawRepresentable {}
 extension SalemoveSDK.ConfigurationError : Swift.Equatable {}
 extension SalemoveSDK.ConfigurationError : Swift.Hashable {}
