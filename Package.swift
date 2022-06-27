@@ -36,7 +36,7 @@ let package = Package(
         .binaryTarget(
             name: "SalemoveSDK",
             url: "https://github.com/salemove/ios-bundle/releases/download/0.34.0/SalemoveSDK.xcframework.zip",
-            checksum: "${CHECKSUM}"
+            checksum: "f1fae4fa201e034f870a0f6f0e2e9048c11da722bc0eae4688c0ff0cf967022c"
         ),
         .target(
             name: "GliaSDK",
