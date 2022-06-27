@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
 // swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SalemoveSDK
 import AVFoundation
 import CoreServices
@@ -131,7 +131,7 @@ extension SalemoveSDK.Salemove {
     public init(siteId: Swift.String, region: SalemoveSDK.Salemove.Region, authorizingMethod: SalemoveSDK.Salemove.AuthorizationMethod) throws
   }
 }
-@_hasMissingDesignatedInitializers @objc public class Message : ObjectiveC.NSObject, Swift.Decodable {
+@objc public class Message : ObjectiveC.NSObject, Swift.Decodable {
   @objc public var id: Swift.String {
     get
   }
@@ -145,6 +145,7 @@ extension SalemoveSDK.Salemove {
     get
   }
   final public let metadata: SalemoveSDK.Message.Metadata?
+  public init(id: Swift.String, content: Swift.String, sender: SalemoveSDK.MessageSender, attachment: SalemoveSDK.Attachment? = nil, metadata: SalemoveSDK.Message.Metadata?)
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
@@ -703,10 +704,11 @@ extension SalemoveSDK.Salemove {
   required public init(from decoder: Swift.Decoder) throws
 }
 infix operator &/ : DefaultPrecedence
-@_hasMissingDesignatedInitializers @objc public class OperatorTypingStatus : ObjectiveC.NSObject {
+@objc public class OperatorTypingStatus : ObjectiveC.NSObject {
   @objc public var isTyping: Swift.Bool {
     get
   }
+  public init(isTyping: Swift.Bool)
   @objc deinit
 }
 @objc public enum VideoScalingOptions : Swift.Int {
@@ -866,13 +868,14 @@ extension SalemoveSDK.StreamView : WebRTC.RTCVideoViewDelegate {
     get
   }
 }
-@_hasMissingDesignatedInitializers @objc public class SalemoveError : ObjectiveC.NSObject {
+@objc public class SalemoveError : ObjectiveC.NSObject {
   @objc public var reason: Swift.String {
     get
   }
   @objc public var error: Swift.Error? {
     get
   }
+  public init(reason: Swift.String, error: Swift.Error? = nil)
   @objc deinit
 }
 extension SalemoveSDK.SalemoveError : Swift.Error {
