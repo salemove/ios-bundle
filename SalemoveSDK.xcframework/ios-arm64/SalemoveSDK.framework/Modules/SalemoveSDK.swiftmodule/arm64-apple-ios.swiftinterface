@@ -5,6 +5,9 @@ import AVFoundation
 import CoreServices
 import Foundation
 import GliaCoreDependency
+import GliaCoreDependency/*.Defaults*/
+import GliaCoreDependency/*.Starscream*/
+import GliaCoreDependency/*.SwiftPhoenixClient*/
 import ReactiveSwift
 import ReplayKit
 @_exported import SalemoveSDK
