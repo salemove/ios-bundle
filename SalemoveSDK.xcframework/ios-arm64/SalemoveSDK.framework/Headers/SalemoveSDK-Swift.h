@@ -260,7 +260,6 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK15AudioStreamable_")
 @property (nonatomic, copy) void (^ _Nullable onHold)(BOOL);
 @end
 
-
 /// Error of the configuration of the sdk
 typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
 /// The site ID is invalid.
@@ -687,6 +686,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -1244,6 +1244,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 - (void)unsubscribeFromUpdatesWithQueueCallbackId:(NSString * _Nonnull)queueCallbackId onError:(void (^ _Nonnull)(SalemoveError * _Nonnull))onError;
 @end
 
+
 @class VisitorContext;
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -1274,7 +1275,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// Deprecated.
 - (void)requestEngagementWithSelectedOperator:(Operator * _Nonnull)selectedOperator visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use requestEngagementWith(selectedOperator:visitorContext:completion:) with Optional<VisitorContext> instead.");
 @end
-
 
 
 /// The basic gateway class that interacts with the client library through the app delegate

@@ -5,6 +5,9 @@ import AVFoundation
 import CoreServices
 import Foundation
 import GliaCoreDependency
+import GliaCoreDependency/*.Defaults*/
+import GliaCoreDependency/*.Starscream*/
+import GliaCoreDependency/*.SwiftPhoenixClient*/
 import ReactiveSwift
 import ReplayKit
 @_exported import SalemoveSDK
@@ -101,6 +104,7 @@ public protocol EngagementHandling {
 }
 public protocol MediaHandling {
   var onMediaUpgradeOffer: SalemoveSDK.MediaUgradeOfferBlock { get }
+  var onEngagementTransferMediaUpdate: SalemoveSDK.MediaUpdateBlock { get }
   var onScreenSharingOffer: SalemoveSDK.ScreenshareOfferBlock { get }
   var onVideoStreamAdded: SalemoveSDK.VideoStreamAddedBlock { get }
   var onAudioStreamAdded: SalemoveSDK.AudioStreamAddedBlock { get }
@@ -180,6 +184,7 @@ public typealias RequestAnswerBlock = (SalemoveSDK.VisitorContext?, Swift.Bool, 
 public typealias VisitorCodeBlock = (Swift.String?, SalemoveSDK.SalemoveError?) -> Swift.Void
 public typealias RequestOfferBlock = (@escaping SalemoveSDK.RequestAnswerBlock) -> Swift.Void
 public typealias MediaUgradeOfferBlock = (SalemoveSDK.MediaUpgradeOffer, @escaping SalemoveSDK.AnswerWithSuccessBlock) -> Swift.Void
+public typealias MediaUpdateBlock = (SalemoveSDK.MediaUpgradeOffer) -> Swift.Void
 public typealias ScreenshareOfferBlock = (@escaping SalemoveSDK.AnswerBlock) -> Swift.Void
 public typealias VisitorScreenSharingStateChange = (SalemoveSDK.VisitorScreenSharingState, SalemoveSDK.SalemoveError?) -> Swift.Void
 public typealias AudioStreamAddedBlock = (SalemoveSDK.AudioStreamable?, SalemoveSDK.SalemoveError?) -> Swift.Void
