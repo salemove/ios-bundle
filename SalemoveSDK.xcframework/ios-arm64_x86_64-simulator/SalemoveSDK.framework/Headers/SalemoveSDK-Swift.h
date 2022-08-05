@@ -697,43 +697,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request media upgrade with specific offer
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
-///     <code>MediaUpgradeError.requestError</code>
-///   </li>
-/// </ul>
-/// \param offer The `MediaUpgradeOffer’ that is used for the request
-///
-/// \param completion A callback that returns the upgrade result or <code>SalemoveError</code>
-///
-- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
-
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request a VisitorCode for current Visitor
 /// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code.
@@ -772,6 +735,43 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// \param completion A callback that will return the visitor code or <code>SalemoveError</code>
 ///
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
+@end
+
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request media upgrade with specific offer
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>MediaUpgradeError.requestError</code>
+///   </li>
+/// </ul>
+/// \param offer The `MediaUpgradeOffer’ that is used for the request
+///
+/// \param completion A callback that returns the upgrade result or <code>SalemoveError</code>
+///
+- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
 
 
@@ -876,7 +876,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Send a chat message.
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -971,6 +970,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
+
 
 
 
@@ -1246,7 +1246,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 - (void)unsubscribeFromUpdatesWithQueueCallbackId:(NSString * _Nonnull)queueCallbackId onError:(void (^ _Nonnull)(SalemoveError * _Nonnull))onError;
 @end
 
-
 @class VisitorContext;
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -1277,6 +1276,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// Deprecated.
 - (void)requestEngagementWithSelectedOperator:(Operator * _Nonnull)selectedOperator visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use requestEngagementWith(selectedOperator:visitorContext:completion:) with Optional<VisitorContext> instead.");
 @end
+
 
 
 /// The basic gateway class that interacts with the client library through the app delegate
@@ -1353,6 +1353,7 @@ SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
 /// :nodoc:
 - (void)videoView:(id <RTCVideoRenderer> _Nonnull)videoView didChangeVideoSize:(CGSize)size;
 @end
+
 
 
 
@@ -2102,43 +2103,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request media upgrade with specific offer
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
-///     <code>MediaUpgradeError.requestError</code>
-///   </li>
-/// </ul>
-/// \param offer The `MediaUpgradeOffer’ that is used for the request
-///
-/// \param completion A callback that returns the upgrade result or <code>SalemoveError</code>
-///
-- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
-
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request a VisitorCode for current Visitor
 /// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code.
@@ -2177,6 +2141,43 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// \param completion A callback that will return the visitor code or <code>SalemoveError</code>
 ///
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
+@end
+
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request media upgrade with specific offer
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>MediaUpgradeError.requestError</code>
+///   </li>
+/// </ul>
+/// \param offer The `MediaUpgradeOffer’ that is used for the request
+///
+/// \param completion A callback that returns the upgrade result or <code>SalemoveError</code>
+///
+- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
 
 
@@ -2281,7 +2282,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Send a chat message.
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -2376,6 +2376,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
+
 
 
 
@@ -2651,7 +2652,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 - (void)unsubscribeFromUpdatesWithQueueCallbackId:(NSString * _Nonnull)queueCallbackId onError:(void (^ _Nonnull)(SalemoveError * _Nonnull))onError;
 @end
 
-
 @class VisitorContext;
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -2682,6 +2682,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// Deprecated.
 - (void)requestEngagementWithSelectedOperator:(Operator * _Nonnull)selectedOperator visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use requestEngagementWith(selectedOperator:visitorContext:completion:) with Optional<VisitorContext> instead.");
 @end
+
 
 
 /// The basic gateway class that interacts with the client library through the app delegate
@@ -2758,6 +2759,7 @@ SWIFT_CLASS("_TtC11SalemoveSDK10StreamView")
 /// :nodoc:
 - (void)videoView:(id <RTCVideoRenderer> _Nonnull)videoView didChangeVideoSize:(CGSize)size;
 @end
+
 
 
 

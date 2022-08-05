@@ -132,7 +132,19 @@ extension SalemoveSDK.Salemove {
     case custom(Foundation.URL)
   }
   public struct Configuration {
-    public init(siteId: Swift.String, region: SalemoveSDK.Salemove.Region, authorizingMethod: SalemoveSDK.Salemove.AuthorizationMethod) throws
+    public init(siteId: Swift.String, region: SalemoveSDK.Salemove.Region, authorizingMethod: SalemoveSDK.Salemove.AuthorizationMethod, pushNotifications: SalemoveSDK.Salemove.Configuration.PushNotifications = .disabled) throws
+  }
+}
+extension SalemoveSDK.Salemove.Configuration {
+  public enum PushNotifications {
+    case disabled
+    case sandbox
+    case production
+    public static func == (a: SalemoveSDK.Salemove.Configuration.PushNotifications, b: SalemoveSDK.Salemove.Configuration.PushNotifications) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
   }
 }
 @objc public class Message : ObjectiveC.NSObject, Swift.Decodable {
@@ -253,6 +265,7 @@ extension SalemoveSDK.PushNotifications : SalemoveSDK.PushNotificationsHandling,
   @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
 }
 extension SalemoveSDK.PushNotifications : SalemoveSDK.PushNotificationsConfigurable {
+  @available(*, deprecated, message: "Use `Salemove.Configuration` to make push notifications feature enabled.")
   public func enable(_ shouldEnablePushNotifications: Swift.Bool)
   public func subscribeTo(_ notifications: [SalemoveSDK.PushNotificationsType])
 }
@@ -1002,6 +1015,8 @@ extension SalemoveSDK.AttachmentType : Swift.RawRepresentable {}
 extension SalemoveSDK.PushNotificationsType : Swift.Equatable {}
 extension SalemoveSDK.PushNotificationsType : Swift.Hashable {}
 extension SalemoveSDK.PushNotificationsType : Swift.RawRepresentable {}
+extension SalemoveSDK.Salemove.Configuration.PushNotifications : Swift.Equatable {}
+extension SalemoveSDK.Salemove.Configuration.PushNotifications : Swift.Hashable {}
 extension SalemoveSDK.MessageSender : Swift.Equatable {}
 extension SalemoveSDK.MessageSender : Swift.Hashable {}
 extension SalemoveSDK.MessageSender : Swift.RawRepresentable {}
