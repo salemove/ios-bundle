@@ -47,16 +47,30 @@ public enum PushNotificationsType : Swift.Int {
     get
   }
 }
+public enum AnyCodable : Swift.Equatable {
+  case string(Swift.String)
+  case number(Swift.Double)
+  case object([Swift.String : SalemoveSDK.AnyCodable])
+  case array([SalemoveSDK.AnyCodable])
+  case bool(Swift.Bool)
+  case null
+  public static func == (a: SalemoveSDK.AnyCodable, b: SalemoveSDK.AnyCodable) -> Swift.Bool
+}
+extension SalemoveSDK.AnyCodable : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
 extension SalemoveSDK.Salemove {
   @objc final public func uploadFileToEngagement(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping SalemoveSDK.EngagementFileCompletionBlock)
   @objc final public func fetchFile(engagementFile: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping SalemoveSDK.EngagementFileFetchCompletionBlock)
 }
-@_hasMissingDesignatedInitializers @objc public class Attachment : ObjectiveC.NSObject, Swift.Decodable {
+@objc public class Attachment : ObjectiveC.NSObject, Swift.Decodable {
   final public let type: SalemoveSDK.AttachmentType?
   final public let selectedOption: Swift.String?
   final public let options: [SalemoveSDK.SingleChoiceOption]?
   final public let imageUrl: Swift.String?
   final public let files: [SalemoveSDK.EngagementFile]?
+  public init(type: SalemoveSDK.AttachmentType?, selectedOption: Swift.String?, options: [SalemoveSDK.SingleChoiceOption]?, files: [SalemoveSDK.EngagementFile]?, imageUrl: Swift.String?)
   public init(file: SalemoveSDK.EngagementFile)
   public init(files: [SalemoveSDK.EngagementFile])
   @objc deinit
@@ -167,7 +181,24 @@ extension SalemoveSDK.Salemove.Configuration {
 }
 extension SalemoveSDK.Message {
   public struct Metadata {
+    public enum CodingKeys : Swift.String, Swift.CodingKey {
+      case metadata
+      public init?(rawValue: Swift.String)
+      public init?(stringValue: Swift.String)
+      public init?(intValue: Swift.Int)
+      public typealias RawValue = Swift.String
+      public var intValue: Swift.Int? {
+        get
+      }
+      public var rawValue: Swift.String {
+        get
+      }
+      public var stringValue: Swift.String {
+        get
+      }
+    }
     public func decode<T>(_ type: T.Type) throws -> T where T : Swift.Decodable
+    public init(container: Swift.KeyedDecodingContainer<SalemoveSDK.Message.Metadata.CodingKeys>)
   }
 }
 public enum MessageSender : Swift.String, Swift.Decodable {
@@ -489,6 +520,10 @@ extension SalemoveSDK.Salemove {
   @objc final public func endEngagement(completion: @escaping SalemoveSDK.SuccessBlock)
 }
 extension SalemoveSDK.Salemove {
+  public typealias IdToken = SalemoveSDK.Tagged<(SalemoveSDK.Salemove, idToken: ()), Swift.String>
+  final public func authentication(with behavior: SalemoveSDK.Salemove.Authentication.Behavior) throws -> SalemoveSDK.Salemove.Authentication
+}
+extension SalemoveSDK.Salemove {
   final public func send(option: SalemoveSDK.SingleChoiceOption, completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void)
   @objc final public func send(message: Swift.String = "", attachment: SalemoveSDK.Attachment? = nil, completion: @escaping SalemoveSDK.MessageBlock)
   @objc final public func send(message: Swift.String, queueID: Swift.String, completion: @escaping SalemoveSDK.MessageBlock)
@@ -729,6 +764,28 @@ infix operator &/ : DefaultPrecedence
   public init(isTyping: Swift.Bool)
   @objc deinit
 }
+extension SalemoveSDK.Salemove {
+  public struct Authentication {
+  }
+}
+extension SalemoveSDK.Salemove.Authentication {
+  public func authenticate(with idToken: SalemoveSDK.Salemove.IdToken, completion: @escaping (Swift.Result<Swift.Void, SalemoveSDK.SalemoveError>) -> Swift.Void)
+  public func deauthenticate(_ completion: @escaping (Swift.Result<Swift.Void, SalemoveSDK.SalemoveError>) -> Swift.Void)
+  public var isAuthenticated: Swift.Bool {
+    get
+  }
+  public init()
+}
+extension SalemoveSDK.Salemove.Authentication {
+  public enum Behavior {
+    case restrictedDuringEngagement
+    public static func == (a: SalemoveSDK.Salemove.Authentication.Behavior, b: SalemoveSDK.Salemove.Authentication.Behavior) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
 @objc public enum VideoScalingOptions : Swift.Int {
   case fill
   case aspectFit
@@ -769,6 +826,7 @@ extension SalemoveSDK.StreamView : WebRTC.RTCVideoViewDelegate {
 }
 @_hasMissingDesignatedInitializers @objc public class OperatorPicture : ObjectiveC.NSObject {
   @objc final public let url: Swift.String?
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   @objc deinit
 }
 @objc public enum GeneralError : Swift.Int, Swift.Error {
@@ -943,6 +1001,9 @@ public enum QueueStatus : Swift.String, Swift.Codable {
   @objc deinit
 }
 extension SalemoveSDK.Salemove {
+  final public func fetchChatTranscript(_ completion: @escaping (Swift.Result<[SalemoveSDK.Message], SalemoveSDK.SalemoveError>) -> Swift.Void)
+}
+extension SalemoveSDK.Salemove {
   @objc final public func configureLogLevel(level: SalemoveSDK.LogLevel)
 }
 @objc public class Operator : ObjectiveC.NSObject {
@@ -956,6 +1017,7 @@ extension SalemoveSDK.Salemove {
     get
   }
   public init(id: Swift.String, name: Swift.String, picture: SalemoveSDK.OperatorPicture?, availableMedia: [SalemoveSDK.MediaType]?)
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   @objc deinit
 }
 public typealias InternalOperatorTypingStatusUpdate = (SalemoveSDK.OperatorTypingStatus) -> Swift.Void
@@ -1017,6 +1079,9 @@ extension SalemoveSDK.PushNotificationsType : Swift.Hashable {}
 extension SalemoveSDK.PushNotificationsType : Swift.RawRepresentable {}
 extension SalemoveSDK.Salemove.Configuration.PushNotifications : Swift.Equatable {}
 extension SalemoveSDK.Salemove.Configuration.PushNotifications : Swift.Hashable {}
+extension SalemoveSDK.Message.Metadata.CodingKeys : Swift.Equatable {}
+extension SalemoveSDK.Message.Metadata.CodingKeys : Swift.Hashable {}
+extension SalemoveSDK.Message.Metadata.CodingKeys : Swift.RawRepresentable {}
 extension SalemoveSDK.MessageSender : Swift.Equatable {}
 extension SalemoveSDK.MessageSender : Swift.Hashable {}
 extension SalemoveSDK.MessageSender : Swift.RawRepresentable {}
@@ -1044,6 +1109,8 @@ extension SalemoveSDK.Survey.QuestionType : Swift.RawRepresentable {}
 extension SalemoveSDK.PushType : Swift.Equatable {}
 extension SalemoveSDK.PushType : Swift.Hashable {}
 extension SalemoveSDK.PushType : Swift.RawRepresentable {}
+extension SalemoveSDK.Salemove.Authentication.Behavior : Swift.Equatable {}
+extension SalemoveSDK.Salemove.Authentication.Behavior : Swift.Hashable {}
 extension SalemoveSDK.VideoScalingOptions : Swift.Equatable {}
 extension SalemoveSDK.VideoScalingOptions : Swift.Hashable {}
 extension SalemoveSDK.VideoScalingOptions : Swift.RawRepresentable {}
