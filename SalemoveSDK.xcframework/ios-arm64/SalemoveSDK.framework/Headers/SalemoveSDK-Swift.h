@@ -541,6 +541,11 @@ SWIFT_CLASS("_TtC11SalemoveSDK8Operator")
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
 /// Operator picture, see OperatorPicture class for more details.
 @property (nonatomic, readonly, strong) OperatorPicture * _Nullable picture;
+/// Overriding of isEqual is necessary in order to compare the operators in the Widget SDK.
+/// Without it, operator with the same data fields is considered different.
+/// This creates unnecessary behavior, such as generation of event,
+/// where operator becomes engaged twice, which in turn is reflected in the Widgets UI.
+- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -560,6 +565,11 @@ SWIFT_CLASS("_TtC11SalemoveSDK15OperatorPicture")
 ///   </li>
 /// </ul>
 @property (nonatomic, readonly, copy) NSString * _Nullable url;
+/// Overriding of isEqual is necessary in order to compare the operators in the Widget SDK.
+/// Without it, operator with the same data fields is considered different.
+/// This creates unnecessary behavior, such as generation of event,
+/// where operator becomes engaged twice, which in turn is reflected in the Widgets UI.
+- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -696,6 +706,43 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request media upgrade with specific offer
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>MediaUpgradeError.requestError</code>
+///   </li>
+/// </ul>
+/// \param offer The `MediaUpgradeOffer’ that is used for the request
+///
+/// \param completion A callback that returns the upgrade result or <code>SalemoveError</code>
+///
+- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
+
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request a VisitorCode for current Visitor
 /// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code.
 /// OmniBrowse Operators use the Visitor’s code to start an OmniBrowse Engagement with the Visitor.
@@ -738,49 +785,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request media upgrade with specific offer
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
-///     <code>MediaUpgradeError.requestError</code>
-///   </li>
-/// </ul>
-/// \param offer The `MediaUpgradeOffer’ that is used for the request
-///
-/// \param completion A callback that returns the upgrade result or <code>SalemoveError</code>
-///
-- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
 
 
-
-
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-@end
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -794,6 +800,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   </li>
 /// </ul>
 - (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
 @end
 
 
@@ -870,7 +882,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion;
 @end
-
 
 
 
@@ -968,6 +979,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
+
 
 
 
