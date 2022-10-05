@@ -201,15 +201,26 @@ extension SalemoveSDK.Message {
     public init(container: Swift.KeyedDecodingContainer<SalemoveSDK.Message.Metadata.CodingKeys>)
   }
 }
-public enum MessageSender : Swift.String, Swift.Decodable {
-  case visitor
-  case `operator`
-  case omniguide
-  case system
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
+public struct MessageSender : Swift.Equatable, Swift.Codable {
+  public let type: SalemoveSDK.MessageSender.SenderType
+  public static func == (a: SalemoveSDK.MessageSender, b: SalemoveSDK.MessageSender) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension SalemoveSDK.MessageSender {
+  public init(type: SalemoveSDK.MessageSender.SenderType)
+}
+extension SalemoveSDK.MessageSender {
+  public enum SenderType : Swift.String, Swift.Codable {
+    case visitor
+    case `operator`
+    case omniguide
+    case system
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
   }
 }
 public typealias EngagementSessionBlock = (SalemoveSDK.EngagementRequest?, SalemoveSDK.SalemoveError?) -> Swift.Void
@@ -778,7 +789,7 @@ extension SalemoveSDK.Salemove.Authentication {
 }
 extension SalemoveSDK.Salemove.Authentication {
   public enum Behavior {
-    case restrictedDuringEngagement
+    case forbiddenDuringEngagement
     public static func == (a: SalemoveSDK.Salemove.Authentication.Behavior, b: SalemoveSDK.Salemove.Authentication.Behavior) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
@@ -1007,9 +1018,7 @@ extension SalemoveSDK.Salemove {
   @objc final public func configureLogLevel(level: SalemoveSDK.LogLevel)
 }
 @objc public class Operator : ObjectiveC.NSObject {
-  @objc public var name: Swift.String {
-    get
-  }
+  @objc final public let name: Swift.String
   @objc public var picture: SalemoveSDK.OperatorPicture? {
     get
   }
@@ -1082,9 +1091,9 @@ extension SalemoveSDK.Salemove.Configuration.PushNotifications : Swift.Hashable 
 extension SalemoveSDK.Message.Metadata.CodingKeys : Swift.Equatable {}
 extension SalemoveSDK.Message.Metadata.CodingKeys : Swift.Hashable {}
 extension SalemoveSDK.Message.Metadata.CodingKeys : Swift.RawRepresentable {}
-extension SalemoveSDK.MessageSender : Swift.Equatable {}
-extension SalemoveSDK.MessageSender : Swift.Hashable {}
-extension SalemoveSDK.MessageSender : Swift.RawRepresentable {}
+extension SalemoveSDK.MessageSender.SenderType : Swift.Equatable {}
+extension SalemoveSDK.MessageSender.SenderType : Swift.Hashable {}
+extension SalemoveSDK.MessageSender.SenderType : Swift.RawRepresentable {}
 extension SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.Equatable {}
 extension SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.Hashable {}
 extension SalemoveSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.RawRepresentable {}
