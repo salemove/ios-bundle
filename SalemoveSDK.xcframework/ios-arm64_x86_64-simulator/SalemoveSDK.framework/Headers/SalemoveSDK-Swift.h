@@ -707,42 +707,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request media upgrade with specific offer
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
-///     <code>MediaUpgradeError.requestError</code>
-///   </li>
-/// </ul>
-/// \param offer The `MediaUpgradeOffer’ that is used for the request
-///
-/// \param completion A callback that returns the upgrade result or <code>SalemoveError</code>
-///
-- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
-
-
-
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request a VisitorCode for current Visitor
@@ -785,24 +749,45 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
-
-
-
-
-
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
+/// Request media upgrade with specific offer
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
 /// <ul>
 ///   <li>
-///     parameters:
+///     <code>GeneralError.internalError</code>
 ///   </li>
 ///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>MediaUpgradeError.requestError</code>
 ///   </li>
 /// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+/// \param offer The `MediaUpgradeOffer’ that is used for the request
+///
+/// \param completion A callback that returns the upgrade result or <code>SalemoveError</code>
+///
+- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
+
+
+
+
+
+
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -884,6 +869,23 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion;
 @end
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
+
 
 
 
@@ -2125,42 +2127,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Request media upgrade with specific offer
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
-///     <code>MediaUpgradeError.requestError</code>
-///   </li>
-/// </ul>
-/// \param offer The `MediaUpgradeOffer’ that is used for the request
-///
-/// \param completion A callback that returns the upgrade result or <code>SalemoveError</code>
-///
-- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
-@end
-
-
-
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request a VisitorCode for current Visitor
@@ -2203,24 +2169,45 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
-
-
-
-
-
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
+/// Request media upgrade with specific offer
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
 /// <ul>
 ///   <li>
-///     parameters:
+///     <code>GeneralError.internalError</code>
 ///   </li>
 ///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>MediaUpgradeError.requestError</code>
 ///   </li>
 /// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+/// \param offer The `MediaUpgradeOffer’ that is used for the request
+///
+/// \param completion A callback that returns the upgrade result or <code>SalemoveError</code>
+///
+- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
+
+
+
+
+
+
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -2302,6 +2289,23 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion;
 @end
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
+
 
 
 
