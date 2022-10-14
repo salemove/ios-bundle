@@ -22,6 +22,7 @@ import _Concurrency
   case files
   case singleChoice
   case singleChoiceResponse
+  case ssml
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
