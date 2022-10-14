@@ -236,6 +236,8 @@ typedef SWIFT_ENUM(NSInteger, AttachmentType, open) {
   AttachmentTypeSingleChoice = 1,
 /// Attachment has the response to a single choice questionnaire.
   AttachmentTypeSingleChoiceResponse = 2,
+/// Attachment is of SSML type.
+  AttachmentTypeSsml = 3,
 };
 
 
@@ -1656,6 +1658,8 @@ typedef SWIFT_ENUM(NSInteger, AttachmentType, open) {
   AttachmentTypeSingleChoice = 1,
 /// Attachment has the response to a single choice questionnaire.
   AttachmentTypeSingleChoiceResponse = 2,
+/// Attachment is of SSML type.
+  AttachmentTypeSsml = 3,
 };
 
 
