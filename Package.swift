@@ -14,14 +14,9 @@ let package = Package(
     ],
     targets: [
         .binaryTarget(
-            name: "ReactiveSwift",
-            url: "https://github.com/salemove/glia-ios-podspecs/releases/download/1.0/ReactiveSwift.xcframework.zip",
-            checksum: "f1322d3e07b01a4f2b1329b7ed43494259fba740c666231422b373ec50dc1e7d"
-        ),
-        .binaryTarget(
             name: "GliaCoreDependency",
-            url: "https://github.com/salemove/glia-ios-podspecs/releases/download/1.0/GliaCoreDependency.xcframework.zip",
-            checksum: "bc770dbc55b188884c128a77f4c8fddf6c872d24eeff274e410bd3206d125e77"
+            url: "https://github.com/salemove/ios-bundle/releases/download/0.35.0/GliaCoreDependency.xcframework.zip",
+            checksum: "8e1746da612dad8a130fd872b3058511121b7c6f29e3b0351ecbbffa96971489"
         ),
         .binaryTarget(
             name: "TwilioVoice",
@@ -35,14 +30,13 @@ let package = Package(
         ),
         .binaryTarget(
             name: "SalemoveSDK",
-            url: "https://github.com/salemove/ios-bundle/releases/download/0.35.0/SalemoveSDK.xcframework.zip",
-            checksum: "19ac85645b1a242111b7149164c1294fc302a7e65da006e1195b8451b1c83b98"
+            url: "https://github.com/salemove/ios-bundle/releases/download/0.35.1/SalemoveSDK.xcframework.zip",
+            checksum: "232b0a45357a1a472c77bd128bee9ef020a381dd9e95d2f1964d81bce0554d9b"
         ),
         .target(
             name: "GliaSDK",
             dependencies: [
                 "SalemoveSDK",
-                "ReactiveSwift",
                 "GliaCoreDependency",
                 "TwilioVoice",
                 "WebRTC"
