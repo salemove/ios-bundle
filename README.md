@@ -24,4 +24,4 @@ If you have any questions regarding our developer documentation please file a ti
 
 ### License
 
-Glia SDK (Salemove SDK) is available under the MIT license. See the [LICENSE file](LICENSE) for more info.
+Glia Core SDK is available under the MIT license. See the [LICENSE file](LICENSE) for more info.

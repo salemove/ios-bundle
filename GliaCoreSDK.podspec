@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SalemoveSDK'
-  s.version          = '0.35.0'
+  s.version          = '0.35.1'
   s.summary          = 'The Salemove iOS library'
   s.description      = 'The Salemove iOS library brings the in-person customer experience to iOS devices.'
   s.homepage         = 'https://github.com/salemove/ios-sdk'
@@ -13,8 +13,7 @@ Pod::Spec.new do |s|
   s.ios.vendored_frameworks = 'SalemoveSDK.xcframework'
   s.swift_version = '5.3'
 
-  s.dependency 'ReactiveSwift', '6.5.0-xcf'
-  s.dependency 'GliaCoreDependency', '1.0'
+  s.dependency 'GliaCoreDependency', '1.2'
   s.dependency 'WebRTC-lib', '96.0.0'
   s.dependency 'TwilioVoice', '6.3.1'
 end
