@@ -8,16 +8,12 @@ trigger_map:
 workflows:
   post-release:
     steps:
-    - set-env-var@0:
+    - activate-ssh-key@4: {}
+    - git-clone@6: {}
+    - script:
         inputs:
-        - destination_keys: NEW_VERSION
-        - value: $BITRISE_GIT_TAG
-    - trigger-bitrise-workflow@0:
-        inputs:
-        - api_token: $GLIA_IOS_PODSPECS_BUILD_TRIGGER_TOKEN
-        - workflow_id: upload_core_sdk_podspec
-        - exported_environment_variable_names: NEW_VERSION
-        - app_slug: $GLIA_IOS_PODSPECS_APP_SLUG
+        - content: |-
+            pod trunk push SalemoveSDK.podspec --verbose
 meta:
   bitrise.io:
     stack: osx-xcode-13.2.x
