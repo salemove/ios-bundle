@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name             = 'SalemoveSDK'
-  s.version          = '0.35.1'
-  s.summary          = 'The Glia Core iOS library'
-  s.description      = 'The Glia Core iOS library brings the in-person customer experience to iOS devices.'
+  s.version          = '0.35.2'
+  s.summary          = 'The Glia Core SDK'
+  s.description      = 'The Glia Core SDK brings the in-person customer experience to iOS devices.'
   s.homepage         = 'https://www.glia.com/'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Salemove' => 'support@salemove.com' }
