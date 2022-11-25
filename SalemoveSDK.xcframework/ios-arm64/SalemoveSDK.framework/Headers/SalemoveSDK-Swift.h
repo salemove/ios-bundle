@@ -382,7 +382,7 @@ SWIFT_CLASS("_TtC11SalemoveSDK17EngagementRequest")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class GliaCoreError;
+@class SalemoveError;
 
 /// Basic protocol for selecting an Operator
 SWIFT_PROTOCOL("_TtP11SalemoveSDK13ErrorHandling_")
@@ -411,7 +411,7 @@ SWIFT_PROTOCOL("_TtP11SalemoveSDK13ErrorHandling_")
 /// </ul>
 /// \param error the <code>GliaCoreError</code>
 ///
-- (void)failWithError:(GliaCoreError * _Nonnull)error;
+- (void)failWithError:(SalemoveError * _Nonnull)error;
 @end
 
 /// Error related to files.
@@ -439,637 +439,6 @@ typedef SWIFT_ENUM(NSInteger, GeneralError, open) {
   GeneralErrorNetworkError = 1,
 };
 static NSString * _Nonnull const GeneralErrorDomain = @"SalemoveSDK.GeneralError";
-
-
-/// Shared instance that can be accessed across all the application
-SWIFT_CLASS("_TtC11SalemoveSDK8GliaCore")
-@interface GliaCore : NSObject
-/// Use this to access the client library, avoid creating the instance manually
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _Nonnull sharedInstance;)
-+ (GliaCore * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
-/// The current selected environment
-@property (nonatomic, readonly, copy) NSString * _Nonnull environment;
-/// The current selected site
-@property (nonatomic, readonly, copy) NSString * _Nonnull site;
-/// The current provided app token
-@property (nonatomic, readonly, copy) NSString * _Nonnull appToken;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-
-
-
-
-
-
-
-
-@interface GliaCore (SWIFT_EXTENSION(SalemoveSDK))
-@end
-
-
-@class MediaUpgradeOffer;
-
-@interface GliaCore (SWIFT_EXTENSION(SalemoveSDK))
-/// Request media upgrade with specific offer
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
-///     <code>MediaUpgradeError.requestError</code>
-///   </li>
-/// </ul>
-/// \param offer The `MediaUpgradeOffer’ that is used for the request
-///
-/// \param completion A callback that returns the upgrade result or <code>GliaCoreError</code>
-///
-- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-
-@interface GliaCore (SWIFT_EXTENSION(SalemoveSDK))
-/// Request a VisitorCode for current Visitor
-/// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code.
-/// OmniBrowse Operators use the Visitor’s code to start an OmniBrowse Engagement with the Visitor.
-/// Each Visitor code is generated on demand and is unique for every Visitor on a particular site. Upon the first time
-/// this function is called for a Visitor the code is generated and returned. For each successive call thereafter the
-/// same code will be returned as long as the code has not expired. The expiration time for Visitor codes is 3 hours.
-/// During that time the code can be used to initiate an engagement. Once Operator uses the Visitor code to initiate
-/// an engagement, the code will expire immediately. When the Visitor Code expires this function will return a new
-/// Visitor code.
-/// The expiration time is important to take note of if you plan on retrieving the code only once during the Visitor’s
-/// session. A new code should be requested once the initial one has expired. When Visitor provides an expired code
-/// to Operator the Operator will not be able to connect with the Visitor.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-/// \param completion A callback that will return the visitor code or <code>GliaCoreError</code>
-///
-- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion;
-@end
-
-
-
-
-
-
-enum LogLevel : NSInteger;
-
-@interface GliaCore (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
-
-
-
-@interface GliaCore (SWIFT_EXTENSION(SalemoveSDK))
-/// Uploads a file to an engagement. The uploaded file can be later sent as part of a chat message attachments.
-/// If Glia’s servers require a security check for the uploaded file, then it will be triggered automatically. The completion
-/// will be called with the file information once the check succeeds and reports that the file is clean. If the security
-/// check fails, then the completion will be called with <code>FileError.infected</code>. In case the security scan is not
-/// needed, the completion will be called right after the file upload is completed.
-/// The error inside the completion may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
-///     <code>FileError.infected</code>
-///   </li>
-///   <li>
-///     <code>FileError.unsupportedFileType</code>
-///   </li>
-///   <li>
-///     <code>FileError.fileTooBig</code>
-///   </li>
-/// </ul>
-/// \param file The file that will be uploaded.
-///
-/// \param progress A callback that reports the upload progress of the file.
-///
-/// \param completion A callback that will return <code>EngagementFileInformation</code> at the end of successful upload and security scan (if needed), or <code>GliaCoreError</code>.
-///
-- (void)uploadFileToEngagement:(EngagementFile * _Nonnull)file progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileInformation * _Nullable, GliaCoreError * _Nullable))completion;
-/// Retrieves a file from Glia’s servers.
-/// The error inside the completion may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-/// \param engagementFile A instance of EngagementFile.
-///
-/// \param progress A callback that reports the upload progress of the file.
-///
-/// \param completion A callback that will return an <code>EngagementFileData</code> object if successful, or <code>InternalError</code>.
-///
-- (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, GliaCoreError * _Nullable))completion;
-@end
-
-
-
-@interface GliaCore (SWIFT_EXTENSION(SalemoveSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-@end
-
-
-
-@class Message;
-
-@interface GliaCore (SWIFT_EXTENSION(SalemoveSDK))
-/// Send a chat message.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-/// \param message The content of the message that should be sent to the operator.
-///
-/// \param attachment An optional attachment to be sent to the operator. It is <code>nil</code> by default.
-///
-/// \param completion A callback that will return the <code>Message</code> or <code>GliaCoreError</code>.
-///
-- (void)sendWithMessage:(NSString * _Nonnull)message attachment:(Attachment * _Nullable)attachment completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion;
-/// Send a chat message.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-/// \param message A content of the message that should be queued.
-///
-/// \param queueID The ID of the queue to which the message is sent.
-///
-/// \param completion A callback that will return the <code>Message</code> or <code>GliaCoreError</code>.
-///
-- (void)sendWithMessage:(NSString * _Nonnull)message queueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion;
-/// Send a message preview to the Operator.
-/// The latest preview message will always be visible to the Operator. This means that Operators can use the
-/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
-/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
-/// experience.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-/// \param message The content of the message preview.
-///
-/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
-///
-- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-
-
-
-
-@interface GliaCore (SWIFT_EXTENSION(SalemoveSDK))
-/// Waits until there is an active engagement handled by the SDK.
-/// If the SDK already has an active engagement present, then it returns information about it through
-/// the <code>completion</code> block. Otherwise, it waits until the SDK receives information about an active engagement.
-/// This method is useful to decide if touching on a push notification after the app has been force closed should open
-/// an engagement screen. If there is an engagement restored by the SDK, then this method will notify soon after the
-/// SDK is initialized, and you can show an engagement screen. Otherwise, then you should do nothing about the push
-/// notification.
-/// \param completion The closure that will be called once the SDK detects an active engagement.
-///
-- (void)waitForActiveEngagementWithCompletion:(void (^ _Nonnull)(Engagement * _Nullable, GliaCoreError * _Nullable))completion;
-/// Cancel an ongoing EngagementRequest
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     engagementRequest: The ongoing EngagementRequest to be canceled
-///   </li>
-///   <li>
-///     completion: A callback that will return the canceling result or <code>GliaCoreError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-/// Requests information of the Operator(s) that are currently engaged with the Visitor
-/// <ul>
-///   <li>
-///     parameter:
-///   </li>
-///   <li>
-///     completion: A callback that will return a list of all ‘Operator’s in engagement  or <code>GliaCoreError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-- (void)requestEngagedOperatorWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, GliaCoreError * _Nullable))completion;
-/// End an Engagement
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     completion: A callback that will return the ending result or <code>GliaCoreError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-
-@class QueueTicket;
-@class Queue;
-
-@interface GliaCore (SWIFT_EXTENSION(SalemoveSDK))
-/// Cancels all active queue tickets that the current visitor has.
-/// Use this method to avoid attempting to enter a queue while the visitor is already enqueued. If you call <code>queueForEngagement</code>
-/// with <code>shouldCloseAllQueues</code> set to <code>true</code>, this method is called for you before attempting to enqueue into a new queue.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ContextError.invalidURL</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
-///     <code>QueueError.queueClosed</code>
-///   </li>
-///   <li>
-///     <code>QueueError.queueFull</code>
-///   </li>
-///   <li>
-///     <code>QueueError.invalidId</code>
-///   </li>
-/// </ul>
-/// \param completion A callback that will return <code>true</code> if successful, or <code>false</code> and a <code>GliaCoreError</code> if it fails.
-///
-- (void)dequeueFromActiveTicketsWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-/// Cancel the Engagement queueing with specific ticket
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-/// \param queueTicket The <code>QueueTicket</code> that was used to enqueue
-///
-/// \param completion A callback that will return the dequeuing result or <code>GliaCoreError</code>
-///
-- (void)cancelWithQueueTicket:(QueueTicket * _Nonnull)queueTicket completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-/// \param completion A callback that will return the <code>Queue</code> list or <code>GliaCoreError</code>
-///
-- (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, GliaCoreError * _Nullable))completion;
-/// <hr/>
-/// Example:
-/// \code
-/// let queueUpdatesCallbackId = GliaCore.sharedInstance.subscribeForUpdates(
-///     forQueue: [QUEUE_ID_1, QUEUE_ID_2],
-///     onError: showError(gliaCoreError:),
-///     onUpdate: updateQueueInfo(newQueue:)
-/// )
-///
-/// \endcode\param for Array of strings represinting Queue IDs that you want to get updates for
-///
-/// \param onUpdate A callback that returns a new instance of <code>Queue</code> every time its info is changed
-///
-/// \param onError A callback that returns <code>GliaCoreError</code> which could have one of the reasons:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
-///     <code>QueueError.invalidId</code>
-///   </li>
-/// </ul>
-///
-///
-/// returns:
-///
-/// A unique callback ID or <code>nil</code> if callback was not registered due to error.
-/// This callback ID could be used to usubscribe from Queue updates.
-- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT;
-/// Unsubscribes from Queue updates.
-/// \param queueCallbackId ID of callback for which you would like to stop receiving updates.
-///
-/// \param onError A callback that returns <code>GliaCoreError</code> which could have one of the reasons:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-/// </ul>
-///
-- (void)unsubscribeFromUpdatesWithQueueCallbackId:(NSString * _Nonnull)queueCallbackId onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError;
-@end
-
-
-@class VisitorContext;
-
-@interface GliaCore (SWIFT_EXTENSION(SalemoveSDK))
-/// Deprecated. Use <code>GliaCore.fetchFile(engagementFile:progress:completion:)</code> instead.
-- (void)fetchFile:(NSString * _Nonnull)id progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use GliaCore.fetchFile(engagementFile:progress:completion:) instead.");
-/// Deprecated. Use <code>send(selectedOptionValue:completion:)</code> instead.
-- (void)sendWithSelectedOptionValue:(NSString * _Nonnull)selectedOptionValue messageId:(NSString * _Nonnull)messageId completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(selectedOptionValue:completion:) instead.");
-/// Deprecated. Use <code>GliaCore.configure(with:)</code> instead.
-- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Use `GliaCore.configure(with:) throws` instead.");
-/// Change the site used by the client library.
-/// \param site The siteID that should be selected.
-///
-///
-/// throws:
-/// <code>ConfigurationError.invalidSite</code>
-- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Change the environment used by the client library.
-/// \param environment The environment baseURL that should be selected.
-///
-///
-/// throws:
-/// <code>ConfigurationError.invalidEnvironment</code>
-- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Deprecated.
-- (BOOL)configureWithApiToken:(NSString * _Nonnull)apiToken error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Api token is not supported.");
-/// Deprecated.
-- (void)queueForEngagementWithQueueID:(NSString * _Nonnull)queueID visitorContext:(VisitorContext * _Nonnull)visitorContext shouldCloseAllQueues:(BOOL)shouldCloseAllQueues completion:(void (^ _Nonnull)(QueueTicket * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use queueForEngagement(queueID:visitorContext:shouldCloseAllQueues:completion:) with Optional<VisitorContext> instead.");
-/// Deprecated.
-- (void)requestEngagementWithSelectedOperator:(Operator * _Nonnull)selectedOperator visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use requestEngagementWith(selectedOperator:visitorContext:completion:) with Optional<VisitorContext> instead.");
-@end
-
-
-/// Wrapped error object.
-SWIFT_CLASS("_TtC11SalemoveSDK13GliaCoreError")
-@interface GliaCoreError : NSObject
-/// Human readable string that explains what went wrong.
-@property (nonatomic, readonly, copy) NSString * _Nonnull reason;
-/// Underlying error object.
-@property (nonatomic, readonly) NSError * _Nullable error;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
 
 @class StreamView;
 
@@ -1311,6 +680,651 @@ SWIFT_CLASS("_TtC11SalemoveSDK11QueueTicket")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+
+/// Shared instance that can be accessed across all the application
+SWIFT_CLASS("_TtC11SalemoveSDK8Salemove")
+@interface Salemove : NSObject
+/// Use this to access the client library, avoid creating the instance manually
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _Nonnull sharedInstance;)
++ (Salemove * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
+/// The current selected environment
+@property (nonatomic, readonly, copy) NSString * _Nonnull environment;
+/// The current selected site
+@property (nonatomic, readonly, copy) NSString * _Nonnull site;
+/// The current provided app token
+@property (nonatomic, readonly, copy) NSString * _Nonnull appToken;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+
+
+
+
+
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request a VisitorCode for current Visitor
+/// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code.
+/// OmniBrowse Operators use the Visitor’s code to start an OmniBrowse Engagement with the Visitor.
+/// Each Visitor code is generated on demand and is unique for every Visitor on a particular site. Upon the first time
+/// this function is called for a Visitor the code is generated and returned. For each successive call thereafter the
+/// same code will be returned as long as the code has not expired. The expiration time for Visitor codes is 3 hours.
+/// During that time the code can be used to initiate an engagement. Once Operator uses the Visitor code to initiate
+/// an engagement, the code will expire immediately. When the Visitor Code expires this function will return a new
+/// Visitor code.
+/// The expiration time is important to take note of if you plan on retrieving the code only once during the Visitor’s
+/// session. A new code should be requested once the initial one has expired. When Visitor provides an expired code
+/// to Operator the Operator will not be able to connect with the Visitor.
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+/// \param completion A callback that will return the visitor code or <code>GliaCoreError</code>
+///
+- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, SalemoveError * _Nullable))completion;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Request media upgrade with specific offer
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>MediaUpgradeError.requestError</code>
+///   </li>
+/// </ul>
+/// \param offer The `MediaUpgradeOffer’ that is used for the request
+///
+/// \param completion A callback that returns the upgrade result or <code>GliaCoreError</code>
+///
+- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
+
+
+
+
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Uploads a file to an engagement. The uploaded file can be later sent as part of a chat message attachments.
+/// If Glia’s servers require a security check for the uploaded file, then it will be triggered automatically. The completion
+/// will be called with the file information once the check succeeds and reports that the file is clean. If the security
+/// check fails, then the completion will be called with <code>FileError.infected</code>. In case the security scan is not
+/// needed, the completion will be called right after the file upload is completed.
+/// The error inside the completion may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>FileError.infected</code>
+///   </li>
+///   <li>
+///     <code>FileError.unsupportedFileType</code>
+///   </li>
+///   <li>
+///     <code>FileError.fileTooBig</code>
+///   </li>
+/// </ul>
+/// \param file The file that will be uploaded.
+///
+/// \param progress A callback that reports the upload progress of the file.
+///
+/// \param completion A callback that will return <code>EngagementFileInformation</code> at the end of successful upload and security scan (if needed), or <code>GliaCoreError</code>.
+///
+- (void)uploadFileToEngagement:(EngagementFile * _Nonnull)file progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileInformation * _Nullable, SalemoveError * _Nullable))completion;
+/// Retrieves a file from Glia’s servers.
+/// The error inside the completion may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+/// \param engagementFile A instance of EngagementFile.
+///
+/// \param progress A callback that reports the upload progress of the file.
+///
+/// \param completion A callback that will return an <code>EngagementFileData</code> object if successful, or <code>InternalError</code>.
+///
+- (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
+
+
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Send a chat message.
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+/// \param message The content of the message that should be sent to the operator.
+///
+/// \param attachment An optional attachment to be sent to the operator. It is <code>nil</code> by default.
+///
+/// \param completion A callback that will return the <code>Message</code> or <code>GliaCoreError</code>.
+///
+- (void)sendWithMessage:(NSString * _Nonnull)message attachment:(Attachment * _Nullable)attachment completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
+/// Send a chat message.
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+/// \param message A content of the message that should be queued.
+///
+/// \param queueID The ID of the queue to which the message is sent.
+///
+/// \param completion A callback that will return the <code>Message</code> or <code>GliaCoreError</code>.
+///
+- (void)sendWithMessage:(NSString * _Nonnull)message queueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion;
+/// Send a message preview to the Operator.
+/// The latest preview message will always be visible to the Operator. This means that Operators can use the
+/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
+/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
+/// experience.
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+/// \param message The content of the message preview.
+///
+/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
+///
+- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
+
+
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Waits until there is an active engagement handled by the SDK.
+/// If the SDK already has an active engagement present, then it returns information about it through
+/// the <code>completion</code> block. Otherwise, it waits until the SDK receives information about an active engagement.
+/// This method is useful to decide if touching on a push notification after the app has been force closed should open
+/// an engagement screen. If there is an engagement restored by the SDK, then this method will notify soon after the
+/// SDK is initialized, and you can show an engagement screen. Otherwise, then you should do nothing about the push
+/// notification.
+/// \param completion The closure that will be called once the SDK detects an active engagement.
+///
+- (void)waitForActiveEngagementWithCompletion:(void (^ _Nonnull)(Engagement * _Nullable, SalemoveError * _Nullable))completion;
+/// Cancel an ongoing EngagementRequest
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     engagementRequest: The ongoing EngagementRequest to be canceled
+///   </li>
+///   <li>
+///     completion: A callback that will return the canceling result or <code>GliaCoreError</code>
+///   </li>
+/// </ul>
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+/// Requests information of the Operator(s) that are currently engaged with the Visitor
+/// <ul>
+///   <li>
+///     parameter:
+///   </li>
+///   <li>
+///     completion: A callback that will return a list of all ‘Operator’s in engagement  or <code>GliaCoreError</code>
+///   </li>
+/// </ul>
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+- (void)requestEngagedOperatorWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
+/// End an Engagement
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     completion: A callback that will return the ending result or <code>GliaCoreError</code>
+///   </li>
+/// </ul>
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+@end
+
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Cancels all active queue tickets that the current visitor has.
+/// Use this method to avoid attempting to enter a queue while the visitor is already enqueued. If you call <code>queueForEngagement</code>
+/// with <code>shouldCloseAllQueues</code> set to <code>true</code>, this method is called for you before attempting to enqueue into a new queue.
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ContextError.invalidURL</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>QueueError.queueClosed</code>
+///   </li>
+///   <li>
+///     <code>QueueError.queueFull</code>
+///   </li>
+///   <li>
+///     <code>QueueError.invalidId</code>
+///   </li>
+/// </ul>
+/// \param completion A callback that will return <code>true</code> if successful, or <code>false</code> and a <code>GliaCoreError</code> if it fails.
+///
+- (void)dequeueFromActiveTicketsWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+/// Cancel the Engagement queueing with specific ticket
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+/// \param queueTicket The <code>QueueTicket</code> that was used to enqueue
+///
+/// \param completion A callback that will return the dequeuing result or <code>GliaCoreError</code>
+///
+- (void)cancelWithQueueTicket:(QueueTicket * _Nonnull)queueTicket completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+/// \param completion A callback that will return the <code>Queue</code> list or <code>GliaCoreError</code>
+///
+- (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, SalemoveError * _Nullable))completion;
+/// <hr/>
+/// Example:
+/// \code
+/// let queueUpdatesCallbackId = GliaCore.sharedInstance.subscribeForUpdates(
+///     forQueue: [QUEUE_ID_1, QUEUE_ID_2],
+///     onError: showError(gliaCoreError:),
+///     onUpdate: updateQueueInfo(newQueue:)
+/// )
+///
+/// \endcode\param for Array of strings represinting Queue IDs that you want to get updates for
+///
+/// \param onUpdate A callback that returns a new instance of <code>Queue</code> every time its info is changed
+///
+/// \param onError A callback that returns <code>GliaCoreError</code> which could have one of the reasons:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+///   <li>
+///     <code>QueueError.invalidId</code>
+///   </li>
+/// </ul>
+///
+///
+/// returns:
+///
+/// A unique callback ID or <code>nil</code> if callback was not registered due to error.
+/// This callback ID could be used to usubscribe from Queue updates.
+- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(SalemoveError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT;
+/// Unsubscribes from Queue updates.
+/// \param queueCallbackId ID of callback for which you would like to stop receiving updates.
+///
+/// \param onError A callback that returns <code>GliaCoreError</code> which could have one of the reasons:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidAppToken</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidApiToken</code>
+///   </li>
+/// </ul>
+///
+- (void)unsubscribeFromUpdatesWithQueueCallbackId:(NSString * _Nonnull)queueCallbackId onError:(void (^ _Nonnull)(SalemoveError * _Nonnull))onError;
+@end
+
+@class VisitorContext;
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Deprecated. Use <code>GliaCore.fetchFile(engagementFile:progress:completion:)</code> instead.
+- (void)fetchFile:(NSString * _Nonnull)id progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use GliaCore.fetchFile(engagementFile:progress:completion:) instead.");
+/// Deprecated. Use <code>send(selectedOptionValue:completion:)</code> instead.
+- (void)sendWithSelectedOptionValue:(NSString * _Nonnull)selectedOptionValue messageId:(NSString * _Nonnull)messageId completion:(void (^ _Nonnull)(Message * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(selectedOptionValue:completion:) instead.");
+/// Deprecated. Use <code>GliaCore.configure(with:)</code> instead.
+- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Use `GliaCore.configure(with:) throws` instead.");
+/// Change the site used by the client library.
+/// \param site The siteID that should be selected.
+///
+///
+/// throws:
+/// <code>ConfigurationError.invalidSite</code>
+- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
+/// Change the environment used by the client library.
+/// \param environment The environment baseURL that should be selected.
+///
+///
+/// throws:
+/// <code>ConfigurationError.invalidEnvironment</code>
+- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
+/// Deprecated.
+- (BOOL)configureWithApiToken:(NSString * _Nonnull)apiToken error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Api token is not supported.");
+/// Deprecated.
+- (void)queueForEngagementWithQueueID:(NSString * _Nonnull)queueID visitorContext:(VisitorContext * _Nonnull)visitorContext shouldCloseAllQueues:(BOOL)shouldCloseAllQueues completion:(void (^ _Nonnull)(QueueTicket * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use queueForEngagement(queueID:visitorContext:shouldCloseAllQueues:completion:) with Optional<VisitorContext> instead.");
+/// Deprecated.
+- (void)requestEngagementWithSelectedOperator:(Operator * _Nonnull)selectedOperator visitorContext:(VisitorContext * _Nonnull)visitorContext completion:(void (^ _Nonnull)(EngagementRequest * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use requestEngagementWith(selectedOperator:visitorContext:completion:) with Optional<VisitorContext> instead.");
+@end
+
+
+
+/// The basic gateway class that interacts with the client library through the app delegate
+SWIFT_CLASS("_TtC11SalemoveSDK19SalemoveAppDelegate")
+@interface SalemoveAppDelegate : NSObject <UIApplicationDelegate>
+/// Identify the app launch and initialize the sdk internals.
+/// \param application The current application.
+///
+/// \param launchOptions The options with which the application has been launched.
+///
+/// \param enablePushNotifications Set it to <code>true</code> if you want to enable push notifications. Otherwise, set it to <code>false</code>.
+/// The default value is <code>false</code>.
+///
+///
+/// returns:
+/// <code>true</code> if the application can be started with the specified launch options. Otherwise, it returns <code>false</code>.
+- (BOOL)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
+/// Handle the application active state and setup the internals.
+/// \param application The current application.
+///
+- (void)applicationDidBecomeActive:(UIApplication * _Nonnull)application;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Wrapped error object.
+SWIFT_CLASS("_TtC11SalemoveSDK13SalemoveError")
+@interface SalemoveError : NSObject
+/// Human readable string that explains what went wrong.
+@property (nonatomic, readonly, copy) NSString * _Nonnull reason;
+/// Underlying error object.
+@property (nonatomic, readonly) NSError * _Nullable error;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 /// List of available screen sharing statuses
 typedef SWIFT_ENUM(NSInteger, ScreenSharingStatus, open) {

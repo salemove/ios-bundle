@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SalemoveSDK'
-  s.version          = '0.35.2'
+  s.version          = '0.35.3'
   s.summary          = 'The Glia Core SDK'
   s.description      = 'The Glia Core SDK brings the in-person customer experience to iOS devices.'
   s.homepage         = 'https://www.glia.com/'
