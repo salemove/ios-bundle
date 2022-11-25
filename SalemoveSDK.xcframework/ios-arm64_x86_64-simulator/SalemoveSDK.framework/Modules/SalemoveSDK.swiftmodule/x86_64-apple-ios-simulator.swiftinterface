@@ -59,7 +59,7 @@ public enum PushNotificationsType : Swift.Int {
     get
   }
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   @objc final public func uploadFileToEngagement(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping SalemoveSDK.EngagementFileCompletionBlock)
   @objc final public func fetchFile(engagementFile: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping SalemoveSDK.EngagementFileFetchCompletionBlock)
 }
@@ -75,7 +75,7 @@ extension SalemoveSDK.GliaCore {
   @objc deinit
   required public init(from decoder: Swift.Decoder) throws
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   public struct VisitorInfo : Swift.Equatable, Swift.Codable {
     public let name: Swift.String?
     public let email: Swift.String?
@@ -83,7 +83,7 @@ extension SalemoveSDK.GliaCore {
     public let note: Swift.String?
     public let customAttributes: [Swift.String : Swift.String]?
     public let banned: Swift.Bool
-    public static func == (a: SalemoveSDK.GliaCore.VisitorInfo, b: SalemoveSDK.GliaCore.VisitorInfo) -> Swift.Bool
+    public static func == (a: SalemoveSDK.Salemove.VisitorInfo, b: SalemoveSDK.Salemove.VisitorInfo) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
     public init(from decoder: Swift.Decoder) throws
   }
@@ -133,32 +133,32 @@ public protocol MediaHandling {
 }
 public protocol Interactable : SalemoveSDK.EngagementHandling, SalemoveSDK.ErrorHandling, SalemoveSDK.MediaHandling, SalemoveSDK.MessageHandling {
 }
-extension SalemoveSDK.GliaCore {
-  final public func configure(with sdkConfiguration: SalemoveSDK.GliaCore.Configuration, completion: (() -> Swift.Void)? = nil)
+extension SalemoveSDK.Salemove {
+  final public func configure(with sdkConfiguration: SalemoveSDK.Salemove.Configuration, completion: (() -> Swift.Void)? = nil)
   final public func configure(interactor: SalemoveSDK.Interactable)
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   public enum AuthorizationMethod {
     case appToken(Swift.String)
     case siteApiKey(id: Swift.String, secret: Swift.String)
   }
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   public enum Region {
     case us
     case eu
     case custom(Foundation.URL)
   }
   public struct Configuration {
-    public init(siteId: Swift.String, region: SalemoveSDK.GliaCore.Region, authorizingMethod: SalemoveSDK.GliaCore.AuthorizationMethod, pushNotifications: SalemoveSDK.GliaCore.Configuration.PushNotifications = .disabled) throws
+    public init(siteId: Swift.String, region: SalemoveSDK.Salemove.Region, authorizingMethod: SalemoveSDK.Salemove.AuthorizationMethod, pushNotifications: SalemoveSDK.Salemove.Configuration.PushNotifications = .disabled) throws
   }
 }
-extension SalemoveSDK.GliaCore.Configuration {
+extension SalemoveSDK.Salemove.Configuration {
   public enum PushNotifications {
     case disabled
     case sandbox
     case production
-    public static func == (a: SalemoveSDK.GliaCore.Configuration.PushNotifications, b: SalemoveSDK.GliaCore.Configuration.PushNotifications) -> Swift.Bool
+    public static func == (a: SalemoveSDK.Salemove.Configuration.PushNotifications, b: SalemoveSDK.Salemove.Configuration.PushNotifications) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
@@ -462,7 +462,7 @@ extension SalemoveSDK.Tagged : Swift.ExpressibleByDictionaryLiteral where RawVal
 extension SalemoveSDK.Tagged {
   public func coerced<Tag2>(to type: Tag2.Type) -> SalemoveSDK.Tagged<Tag2, RawValue>
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   @objc final public func requestVisitorCode(completion: @escaping SalemoveSDK.VisitorCodeBlock)
 }
 @objc public protocol AudioStreamable {
@@ -484,22 +484,17 @@ public protocol VideoStreamable : AnyObject {
   var isRemote: Swift.Bool { get }
   var onHold: SalemoveSDK.StreamableOnHoldHandler? { get set }
 }
-extension SalemoveSDK.GliaCore {
-  @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class AppDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
-    @discardableResult
-    @_Concurrency.MainActor(unsafe) @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
-    @_Concurrency.MainActor(unsafe) @objc public func applicationDidBecomeActive(_ application: UIKit.UIApplication)
-    @objc override dynamic public init()
-    @objc deinit
-  }
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class SalemoveAppDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
+  @discardableResult
+  @_Concurrency.MainActor(unsafe) @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func applicationDidBecomeActive(_ application: UIKit.UIApplication)
+  @objc override dynamic public init()
+  @objc deinit
 }
-@available(*, deprecated, message: "Use GliaCore.AppDelegate instead.")
-public typealias SalemoveAppDelegate = SalemoveSDK.GliaCore.AppDelegate
-@available(*, deprecated, message: "Use `GliaCore` instead.")
-public typealias Salemove = SalemoveSDK.GliaCore
-@available(*, deprecated, message: "Use GliaCoreError instead.")
-public typealias SalemoveError = SalemoveSDK.GliaCoreError
-extension SalemoveSDK.GliaCore {
+public typealias GliaCoreAppDelegate = SalemoveSDK.SalemoveAppDelegate
+public typealias GliaCore = SalemoveSDK.Salemove
+public typealias GliaCoreError = SalemoveSDK.SalemoveError
+extension SalemoveSDK.Salemove {
   @available(*, deprecated, message: "Use `GliaCore.send(option:completion:)` instead.")
   final public func send(selectedOptionValue: Swift.String, completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void)
   @available(*, deprecated, message: "Use GliaCore.fetchFile(engagementFile:progress:completion:) instead.")
@@ -525,14 +520,14 @@ extension SalemoveSDK.GliaCore {
   @available(*, deprecated, message: "Use requestEngagementWith(selectedOperator:visitorContext:mediaType:options:completion:) with Optional<VisitorContext> instead.")
   final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions? = nil, completion: @escaping SalemoveSDK.EngagementSessionBlock)
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   @objc final public func requestMediaUpgrade(offer: SalemoveSDK.MediaUpgradeOffer, completion: @escaping SalemoveSDK.SuccessBlock)
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   final public func getCurrentEngagement() -> SalemoveSDK.Engagement?
   final public func submitSurveyAnswer(_ answers: [SalemoveSDK.Survey.Answer], surveyId: SalemoveSDK.Survey.Id, engagementId: Swift.String, completion: @escaping (Swift.Result<Swift.Void, SalemoveSDK.GliaCoreError>) -> Swift.Void)
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   @objc final public func waitForActiveEngagement(completion: @escaping SalemoveSDK.EngagementBlock)
   final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext? = nil, completion: @escaping SalemoveSDK.EngagementSessionBlock)
   final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext? = nil, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions? = nil, completion: @escaping SalemoveSDK.EngagementSessionBlock)
@@ -542,11 +537,11 @@ extension SalemoveSDK.GliaCore {
   @objc final public func requestEngagedOperator(completion: @escaping SalemoveSDK.OperatorBlock)
   @objc final public func endEngagement(completion: @escaping SalemoveSDK.SuccessBlock)
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   public typealias IdToken = SalemoveSDK.Tagged<(SalemoveSDK.GliaCore, idToken: ()), Swift.String>
-  final public func authentication(with behavior: SalemoveSDK.GliaCore.Authentication.Behavior) throws -> SalemoveSDK.GliaCore.Authentication
+  final public func authentication(with behavior: SalemoveSDK.Salemove.Authentication.Behavior) throws -> SalemoveSDK.Salemove.Authentication
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   final public func send(option: SalemoveSDK.SingleChoiceOption, completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void)
   @objc final public func send(message: Swift.String = "", attachment: SalemoveSDK.Attachment? = nil, completion: @escaping SalemoveSDK.MessageBlock)
   @objc final public func send(message: Swift.String, queueID: Swift.String, completion: @escaping SalemoveSDK.MessageBlock)
@@ -717,7 +712,7 @@ public struct SurveyResponse : Swift.Equatable {
 extension SalemoveSDK.SurveyResponse : Swift.Decodable {
   public init(from decoder: Swift.Decoder) throws
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   @objc final public func clearSession()
   final public func fetchSiteConfiguration(_ completion: @escaping (Swift.Result<SalemoveSDK.Site, Swift.Error>) -> Swift.Void)
 }
@@ -780,7 +775,7 @@ extension SalemoveSDK.Site {
     public init(from decoder: Swift.Decoder) throws
   }
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   final public func updateVisitorInfo(_ info: SalemoveSDK.VisitorInfoUpdate, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
   final public func fetchVisitorInfo(_ completion: @escaping (Swift.Result<SalemoveSDK.GliaCore.VisitorInfo, Swift.Error>) -> Swift.Void)
 }
@@ -800,11 +795,11 @@ infix operator &/ : DefaultPrecedence
   public init(isTyping: Swift.Bool)
   @objc deinit
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   public struct Authentication {
   }
 }
-extension SalemoveSDK.GliaCore.Authentication {
+extension SalemoveSDK.Salemove.Authentication {
   public func authenticate(with idToken: SalemoveSDK.GliaCore.IdToken, completion: @escaping (Swift.Result<Swift.Void, SalemoveSDK.GliaCoreError>) -> Swift.Void)
   public func deauthenticate(_ completion: @escaping (Swift.Result<Swift.Void, SalemoveSDK.GliaCoreError>) -> Swift.Void)
   public var isAuthenticated: Swift.Bool {
@@ -812,10 +807,10 @@ extension SalemoveSDK.GliaCore.Authentication {
   }
   public init()
 }
-extension SalemoveSDK.GliaCore.Authentication {
+extension SalemoveSDK.Salemove.Authentication {
   public enum Behavior {
     case forbiddenDuringEngagement
-    public static func == (a: SalemoveSDK.GliaCore.Authentication.Behavior, b: SalemoveSDK.GliaCore.Authentication.Behavior) -> Swift.Bool
+    public static func == (a: SalemoveSDK.Salemove.Authentication.Behavior, b: SalemoveSDK.Salemove.Authentication.Behavior) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
@@ -982,7 +977,7 @@ extension SalemoveSDK.StreamView : WebRTC.RTCVideoViewDelegate {
     get
   }
 }
-@objc public class GliaCoreError : ObjectiveC.NSObject, Swift.Error {
+@objc public class SalemoveError : ObjectiveC.NSObject, Swift.Error {
   @objc final public let reason: Swift.String
   @objc final public let error: Swift.Error?
   public init(reason: Swift.String, error: Swift.Error? = nil)
@@ -1013,7 +1008,7 @@ public enum QueueStatus : Swift.String, Swift.Codable {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class GliaCore : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class Salemove : ObjectiveC.NSObject {
   @objc public static let sharedInstance: SalemoveSDK.GliaCore
   weak final public var currentInteractor: SalemoveSDK.Interactable?
   @objc final public var environment: Swift.String {
@@ -1032,10 +1027,10 @@ public enum QueueStatus : Swift.String, Swift.Codable {
   }
   @objc deinit
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   final public func fetchChatTranscript(_ completion: @escaping (Swift.Result<[SalemoveSDK.Message], SalemoveSDK.GliaCoreError>) -> Swift.Void)
 }
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   @objc final public func configureLogLevel(level: SalemoveSDK.LogLevel)
 }
 @_hasMissingDesignatedInitializers @objc public class Operator : ObjectiveC.NSObject, Swift.Codable {
@@ -1053,7 +1048,7 @@ extension SalemoveSDK.GliaCore {
   @objc deinit
 }
 public typealias InternalOperatorTypingStatusUpdate = (SalemoveSDK.OperatorTypingStatus) -> Swift.Void
-extension SalemoveSDK.GliaCore {
+extension SalemoveSDK.Salemove {
   final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping SalemoveSDK.QueueTicketBlock)
   final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions?, completion: @escaping SalemoveSDK.QueueTicketBlock)
   @objc final public func dequeueFromActiveTickets(completion: @escaping SalemoveSDK.SuccessBlock)
@@ -1111,8 +1106,8 @@ extension SalemoveSDK.EngagementEndingReason : Swift.Hashable {}
 extension SalemoveSDK.PushNotificationsType : Swift.Equatable {}
 extension SalemoveSDK.PushNotificationsType : Swift.Hashable {}
 extension SalemoveSDK.PushNotificationsType : Swift.RawRepresentable {}
-extension SalemoveSDK.GliaCore.Configuration.PushNotifications : Swift.Equatable {}
-extension SalemoveSDK.GliaCore.Configuration.PushNotifications : Swift.Hashable {}
+extension SalemoveSDK.Salemove.Configuration.PushNotifications : Swift.Equatable {}
+extension SalemoveSDK.Salemove.Configuration.PushNotifications : Swift.Hashable {}
 extension SalemoveSDK.Message.Metadata.CodingKeys : Swift.Equatable {}
 extension SalemoveSDK.Message.Metadata.CodingKeys : Swift.Hashable {}
 extension SalemoveSDK.Message.Metadata.CodingKeys : Swift.RawRepresentable {}
@@ -1143,8 +1138,8 @@ extension SalemoveSDK.Survey.QuestionType : Swift.RawRepresentable {}
 extension SalemoveSDK.PushType : Swift.Equatable {}
 extension SalemoveSDK.PushType : Swift.Hashable {}
 extension SalemoveSDK.PushType : Swift.RawRepresentable {}
-extension SalemoveSDK.GliaCore.Authentication.Behavior : Swift.Equatable {}
-extension SalemoveSDK.GliaCore.Authentication.Behavior : Swift.Hashable {}
+extension SalemoveSDK.Salemove.Authentication.Behavior : Swift.Equatable {}
+extension SalemoveSDK.Salemove.Authentication.Behavior : Swift.Hashable {}
 extension SalemoveSDK.VideoScalingOptions : Swift.Equatable {}
 extension SalemoveSDK.VideoScalingOptions : Swift.Hashable {}
 extension SalemoveSDK.VideoScalingOptions : Swift.RawRepresentable {}
