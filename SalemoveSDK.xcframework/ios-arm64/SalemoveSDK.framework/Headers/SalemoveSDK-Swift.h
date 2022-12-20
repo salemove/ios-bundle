@@ -708,6 +708,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
+
+
+
+
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request a VisitorCode for current Visitor
 /// A Visitor code can be displayed to the Visitor. The Visitor can then inform OmniBrowse Operators of their code.
@@ -739,9 +743,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   <li>
 ///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
 /// </ul>
 /// \param completion A callback that will return the visitor code or <code>GliaCoreError</code>
 ///
@@ -770,9 +771,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
 ///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
 ///     <code>MediaUpgradeError.requestError</code>
 ///   </li>
 /// </ul>
@@ -787,6 +785,25 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
+
+@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
+@end
 
 
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
@@ -811,9 +828,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   </li>
 ///   <li>
 ///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
 ///   </li>
 ///   <li>
 ///     <code>FileError.infected</code>
@@ -850,9 +864,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   <li>
 ///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
 /// </ul>
 /// \param engagementFile A instance of EngagementFile.
 ///
@@ -861,26 +872,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// \param completion A callback that will return an <code>EngagementFileData</code> object if successful, or <code>InternalError</code>.
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, SalemoveError * _Nullable))completion;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-@end
-
-
-@interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
 
 
@@ -907,9 +898,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   </li>
 ///   <li>
 ///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
 ///   </li>
 /// </ul>
 /// \param message The content of the message that should be sent to the operator.
@@ -937,9 +925,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   </li>
 ///   <li>
 ///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
 ///   </li>
 /// </ul>
 /// \param message A content of the message that should be queued.
@@ -971,9 +956,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   </li>
 ///   <li>
 ///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
 ///   </li>
 /// </ul>
 /// \param message The content of the message preview.
@@ -1028,9 +1010,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   <li>
 ///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
 /// </ul>
 - (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 /// Requests information of the Operator(s) that are currently engaged with the Visitor
@@ -1060,9 +1039,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   <li>
 ///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
 /// </ul>
 - (void)requestEngagedOperatorWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, SalemoveError * _Nullable))completion;
 /// End an Engagement
@@ -1091,9 +1067,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   </li>
 ///   <li>
 ///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
 ///   </li>
 /// </ul>
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
@@ -1127,9 +1100,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
 ///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
 ///     <code>QueueError.queueClosed</code>
 ///   </li>
 ///   <li>
@@ -1161,9 +1131,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   <li>
 ///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
 /// </ul>
 /// \param queueTicket The <code>QueueTicket</code> that was used to enqueue
 ///
@@ -1185,9 +1152,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   </li>
 ///   <li>
 ///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
 ///   </li>
 /// </ul>
 /// \param completion A callback that will return the <code>Queue</code> list or <code>GliaCoreError</code>
@@ -1221,9 +1185,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
 ///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
-///   </li>
-///   <li>
 ///     <code>QueueError.invalidId</code>
 ///   </li>
 /// </ul>
@@ -1250,9 +1211,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///   </li>
 ///   <li>
 ///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidApiToken</code>
 ///   </li>
 /// </ul>
 ///
@@ -1283,7 +1241,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 /// <code>ConfigurationError.invalidEnvironment</code>
 - (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
 /// Deprecated.
-- (BOOL)configureWithApiToken:(NSString * _Nonnull)apiToken error:(NSError * _Nullable * _Nullable)error SWIFT_DEPRECATED_MSG("Api token is not supported.");
+- (BOOL)configureWithApiToken:(NSString * _Nonnull)apiToken error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Api token is not supported.");
 /// Deprecated.
 - (void)queueForEngagementWithQueueID:(NSString * _Nonnull)queueID visitorContext:(VisitorContext * _Nonnull)visitorContext shouldCloseAllQueues:(BOOL)shouldCloseAllQueues completion:(void (^ _Nonnull)(QueueTicket * _Nullable, SalemoveError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use queueForEngagement(queueID:visitorContext:shouldCloseAllQueues:completion:) with Optional<VisitorContext> instead.");
 /// Deprecated.
@@ -1292,8 +1250,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-/// The basic gateway class that interacts with the client library through the app delegate
-SWIFT_CLASS("_TtC11SalemoveSDK19SalemoveAppDelegate")
+SWIFT_CLASS("_TtC11SalemoveSDK19SalemoveAppDelegate") SWIFT_DEPRECATED_MSG("Deprecated. This class will be removed in the version 0.40.0")
 @interface SalemoveAppDelegate : NSObject <UIApplicationDelegate>
 /// Identify the app launch and initialize the sdk internals.
 /// \param application The current application.

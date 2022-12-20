@@ -166,6 +166,7 @@ extension SalemoveSDK.Salemove.Configuration {
   }
 }
 @objc public class Message : ObjectiveC.NSObject, Swift.Decodable {
+  public typealias Id = SalemoveSDK.Tagged<SalemoveSDK.Message, Swift.String>
   @objc public var id: Swift.String {
     get
   }
@@ -484,7 +485,8 @@ public protocol VideoStreamable : AnyObject {
   var isRemote: Swift.Bool { get }
   var onHold: SalemoveSDK.StreamableOnHoldHandler? { get set }
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class SalemoveAppDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
+@objc @_inheritsConvenienceInitializers @available(*, deprecated, message: "Deprecated. This class will be removed in the version 0.40.0")
+@_Concurrency.MainActor(unsafe) public class SalemoveAppDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
   @discardableResult
   @_Concurrency.MainActor(unsafe) @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
   @_Concurrency.MainActor(unsafe) @objc public func applicationDidBecomeActive(_ application: UIKit.UIApplication)
@@ -509,7 +511,7 @@ extension SalemoveSDK.Salemove {
   @objc final public func configure(site: Swift.String) throws
   @available(*, deprecated, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
   @objc final public func configure(environment: Swift.String) throws
-  @available(*, deprecated, message: "Api token is not supported.")
+  @available(*, unavailable, message: "Api token is not supported.")
   @objc final public func configure(apiToken: Swift.String) throws
   @available(*, deprecated, message: "Use queueForEngagement(queueID:visitorContext:shouldCloseAllQueues:completion:) with Optional<VisitorContext> instead.")
   @objc final public func queueForEngagement(queueID: Swift.String, visitorContext: SalemoveSDK.VisitorContext, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping SalemoveSDK.QueueTicketBlock)
@@ -540,6 +542,12 @@ extension SalemoveSDK.Salemove {
 extension SalemoveSDK.Salemove {
   public typealias IdToken = SalemoveSDK.Tagged<(SalemoveSDK.GliaCore, idToken: ()), Swift.String>
   final public func authentication(with behavior: SalemoveSDK.Salemove.Authentication.Behavior) throws -> SalemoveSDK.Salemove.Authentication
+}
+extension SalemoveSDK.Salemove {
+  @_hasMissingDesignatedInitializers final public class Cancellable {
+    final public func cancel()
+    @objc deinit
+  }
 }
 extension SalemoveSDK.Salemove {
   final public func send(option: SalemoveSDK.SingleChoiceOption, completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void)
@@ -597,6 +605,7 @@ public enum MediaType : Swift.String, Swift.Codable {
   case audio
   case video
   case text
+  case messaging
   case phone
   case unknown
   public init?(rawValue: Swift.String)
@@ -890,7 +899,7 @@ extension SalemoveSDK.StreamView : WebRTC.RTCVideoViewDelegate {
   case invalidSite
   case invalidEnvironment
   case invalidAppToken
-  @available(*, deprecated, message: "Api token is not supported by SDK.")
+  @available(*, unavailable, message: "Api token is not supported by SDK.")
   case invalidApiToken
   @available(*, deprecated, message: "Api token is not supported by SDK.")
   case apiTokenNotSupported
@@ -1020,7 +1029,11 @@ public enum QueueStatus : Swift.String, Swift.Codable {
   @objc final public var appToken: Swift.String {
     @objc get
   }
-  @available(*, deprecated, message: "Api token is not supported.")
+  final public var secureConversation: SalemoveSDK.Salemove.SecureConversations {
+    get
+    set
+  }
+  @available(*, unavailable, message: "Api token is not supported.")
   final public let apiToken: Swift.String
   final public var pushNotifications: SalemoveSDK.PushNotifications {
     get
@@ -1056,6 +1069,14 @@ extension SalemoveSDK.Salemove {
   @objc final public func listQueues(completion: @escaping SalemoveSDK.QueueRequestBlock)
   @objc final public func subscribeForUpdates(forQueue queueIds: [Swift.String], onError: @escaping SalemoveSDK.ErrorBlock, onUpdate: @escaping SalemoveSDK.QueueUpdateBlock) -> Swift.String?
   @objc final public func unsubscribeFromUpdates(queueCallbackId: Swift.String, onError: @escaping SalemoveSDK.ErrorBlock)
+}
+extension SalemoveSDK.Salemove {
+  @_hasMissingDesignatedInitializers final public class SecureConversations {
+    final public func send(secureMessage: Swift.String, attachment: SalemoveSDK.Attachment? = nil, queueIds: [Swift.String], completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
+    final public func uploadFile(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<SalemoveSDK.EngagementFileInformation, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
+    final public func downloadFile(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<SalemoveSDK.EngagementFileData, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
+    @objc deinit
+  }
 }
 @objc public enum ScreenSharingStatus : Swift.Int {
   case sharing
