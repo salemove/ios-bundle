@@ -31,6 +31,11 @@ import _Concurrency
     get
   }
 }
+public struct VisitorCode : Swift.Decodable {
+  public let code: Swift.String
+  public let expiresAt: Foundation.Date
+  public init(from decoder: Swift.Decoder) throws
+}
 @objc @_hasMissingDesignatedInitializers @objcMembers public class EngagementFileData : ObjectiveC.NSObject {
   @objc final public let data: Foundation.Data
   @objc deinit
@@ -463,9 +468,6 @@ extension SalemoveSDK.Tagged : Swift.ExpressibleByDictionaryLiteral where RawVal
 extension SalemoveSDK.Tagged {
   public func coerced<Tag2>(to type: Tag2.Type) -> SalemoveSDK.Tagged<Tag2, RawValue>
 }
-extension SalemoveSDK.Salemove {
-  @objc final public func requestVisitorCode(completion: @escaping SalemoveSDK.VisitorCodeBlock)
-}
 @objc public protocol AudioStreamable {
   @objc @available(iOS, obsoleted: 10.0, message: "Audio is now played automatically when media is established")
   func playAudio()
@@ -521,6 +523,8 @@ extension SalemoveSDK.Salemove {
   @objc final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, completion: @escaping SalemoveSDK.EngagementSessionBlock)
   @available(*, deprecated, message: "Use requestEngagementWith(selectedOperator:visitorContext:mediaType:options:completion:) with Optional<VisitorContext> instead.")
   final public func requestEngagementWith(selectedOperator: SalemoveSDK.Operator, visitorContext: SalemoveSDK.VisitorContext, mediaType: SalemoveSDK.MediaType, options: SalemoveSDK.EngagementOptions? = nil, completion: @escaping SalemoveSDK.EngagementSessionBlock)
+  @available(*, deprecated, message: "Use `GliaCore.CallVisualizer` to request visitor code.")
+  @objc final public func requestVisitorCode(completion: @escaping SalemoveSDK.VisitorCodeBlock)
 }
 extension SalemoveSDK.Salemove {
   @objc final public func requestMediaUpgrade(offer: SalemoveSDK.MediaUpgradeOffer, completion: @escaping SalemoveSDK.SuccessBlock)
@@ -788,6 +792,15 @@ extension SalemoveSDK.Salemove {
   final public func updateVisitorInfo(_ info: SalemoveSDK.VisitorInfoUpdate, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
   final public func fetchVisitorInfo(_ completion: @escaping (Swift.Result<SalemoveSDK.GliaCore.VisitorInfo, Swift.Error>) -> Swift.Void)
 }
+extension SalemoveSDK.Salemove {
+  @_hasMissingDesignatedInitializers final public class CallVisualizer {
+    @objc deinit
+  }
+}
+extension SalemoveSDK.Salemove.CallVisualizer {
+  @discardableResult
+  final public func requestVisitorCode(completion: @escaping (Swift.Result<SalemoveSDK.VisitorCode, Swift.Error>) -> Swift.Void) -> SalemoveSDK.GliaCore.Cancellable
+}
 @objc public class EngagementFileInformation : ObjectiveC.NSObject, Swift.Codable {
   final public let id: Swift.String
   final public let isSecurityScanningRequired: Swift.Bool
@@ -1029,7 +1042,11 @@ public enum QueueStatus : Swift.String, Swift.Codable {
   @objc final public var appToken: Swift.String {
     @objc get
   }
-  final public var secureConversation: SalemoveSDK.Salemove.SecureConversations {
+  final public var secureConversations: SalemoveSDK.Salemove.SecureConversations {
+    get
+    set
+  }
+  final public var callVisualizer: SalemoveSDK.Salemove.CallVisualizer {
     get
     set
   }
@@ -1075,6 +1092,8 @@ extension SalemoveSDK.Salemove {
     final public func send(secureMessage: Swift.String, attachment: SalemoveSDK.Attachment? = nil, queueIds: [Swift.String], completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
     final public func uploadFile(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<SalemoveSDK.EngagementFileInformation, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
     final public func downloadFile(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<SalemoveSDK.EngagementFileData, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
+    @discardableResult
+    final public func markMessagesAsRead(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
     @objc deinit
   }
 }
