@@ -548,7 +548,8 @@ extension SalemoveSDK.Salemove {
   final public func authentication(with behavior: SalemoveSDK.Salemove.Authentication.Behavior) throws -> SalemoveSDK.Salemove.Authentication
 }
 extension SalemoveSDK.Salemove {
-  @_hasMissingDesignatedInitializers final public class Cancellable {
+  final public class Cancellable {
+    public init(isCancelled: Swift.Bool = false, cancelOperation: (() -> Swift.Void)? = nil)
     final public func cancel()
     @objc deinit
   }
@@ -1092,10 +1093,13 @@ extension SalemoveSDK.Salemove {
     final public func send(secureMessage: Swift.String, attachment: SalemoveSDK.Attachment? = nil, queueIds: [Swift.String], completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
     final public func uploadFile(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<SalemoveSDK.EngagementFileInformation, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
     final public func downloadFile(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<SalemoveSDK.EngagementFileData, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
-    @discardableResult
-    final public func markMessagesAsRead(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
     @objc deinit
   }
+}
+extension SalemoveSDK.Salemove.SecureConversations {
+  @discardableResult
+  final public func markMessagesAsRead(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> SalemoveSDK.GliaCore.Cancellable
+  final public func getUnreadMessageCount(completion: @escaping (Swift.Result<Swift.Int, Swift.Error>) -> Swift.Void)
 }
 @objc public enum ScreenSharingStatus : Swift.Int {
   case sharing
