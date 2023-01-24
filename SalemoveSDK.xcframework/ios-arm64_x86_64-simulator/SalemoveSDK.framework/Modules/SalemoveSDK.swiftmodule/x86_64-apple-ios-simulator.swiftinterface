@@ -109,7 +109,9 @@ public protocol PushNotificationsConfigurable {
   @objc deinit
 }
 public protocol EngagementHandling {
+  @available(*, deprecated, message: "Use EngagementHandling.start(with:) instead.")
   func start()
+  func start(with source: SalemoveSDK.EngagementSource)
   @available(*, deprecated, message: "Use EngagementHandling.end(with:) instead.")
   func end()
   func end(with reason: SalemoveSDK.EngagementEndingReason)
@@ -119,6 +121,7 @@ public protocol EngagementHandling {
 }
 extension SalemoveSDK.EngagementHandling {
   public func end(with reason: SalemoveSDK.EngagementEndingReason)
+  public func start(with source: SalemoveSDK.EngagementSource)
 }
 @objc public protocol MessageHandling {
   @objc func receive(message: SalemoveSDK.Message)
@@ -542,6 +545,17 @@ extension SalemoveSDK.Salemove {
   final public func requestOperators(completion: @escaping SalemoveSDK.OperatorBlock)
   @objc final public func requestEngagedOperator(completion: @escaping SalemoveSDK.OperatorBlock)
   @objc final public func endEngagement(completion: @escaping SalemoveSDK.SuccessBlock)
+}
+public enum EngagementSource : Swift.RawRepresentable, Swift.Codable {
+  case coreEngagement
+  case callVisualizer
+  case unknown(Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public init(from decoder: Swift.Decoder) throws
+  public typealias RawValue = Swift.String
 }
 extension SalemoveSDK.Salemove {
   public typealias IdToken = SalemoveSDK.Tagged<(SalemoveSDK.GliaCore, idToken: ()), Swift.String>
