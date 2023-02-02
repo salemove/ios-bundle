@@ -111,7 +111,7 @@ public protocol PushNotificationsConfigurable {
 public protocol EngagementHandling {
   @available(*, deprecated, message: "Use EngagementHandling.start(with:) instead.")
   func start()
-  func start(with source: SalemoveSDK.EngagementSource)
+  func start(engagement: SalemoveSDK.Engagement)
   @available(*, deprecated, message: "Use EngagementHandling.end(with:) instead.")
   func end()
   func end(with reason: SalemoveSDK.EngagementEndingReason)
@@ -121,7 +121,7 @@ public protocol EngagementHandling {
 }
 extension SalemoveSDK.EngagementHandling {
   public func end(with reason: SalemoveSDK.EngagementEndingReason)
-  public func start(with source: SalemoveSDK.EngagementSource)
+  public func start(engagement: SalemoveSDK.Engagement)
 }
 @objc public protocol MessageHandling {
   @objc func receive(message: SalemoveSDK.Message)
@@ -1136,6 +1136,7 @@ extension SalemoveSDK.Salemove.SecureConversations {
 @objc @_hasMissingDesignatedInitializers @objcMembers public class Engagement : ObjectiveC.NSObject {
   @objc final public let id: Swift.String
   @objc final public let engagedOperator: SalemoveSDK.Operator?
+  final public let source: SalemoveSDK.EngagementSource
   @objc deinit
 }
 extension SalemoveSDK.Engagement {
