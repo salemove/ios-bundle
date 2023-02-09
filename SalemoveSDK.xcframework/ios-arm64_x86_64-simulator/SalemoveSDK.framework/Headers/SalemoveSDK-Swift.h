@@ -715,7 +715,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request media upgrade with specific offer
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -746,6 +745,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
+
 
 
 
@@ -2057,7 +2057,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request media upgrade with specific offer
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -2088,6 +2087,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
+
 
 
 
