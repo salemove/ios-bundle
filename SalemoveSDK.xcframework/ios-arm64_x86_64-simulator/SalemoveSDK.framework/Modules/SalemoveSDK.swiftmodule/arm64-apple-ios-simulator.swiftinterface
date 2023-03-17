@@ -1104,6 +1104,7 @@ extension SalemoveSDK.Salemove {
 }
 extension SalemoveSDK.Salemove {
   @_hasMissingDesignatedInitializers final public class SecureConversations {
+    final public func send(attachment: SalemoveSDK.Attachment, queueIds: [Swift.String], completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
     final public func send(secureMessage: Swift.String, attachment: SalemoveSDK.Attachment? = nil, queueIds: [Swift.String], completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
     final public func uploadFile(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<SalemoveSDK.EngagementFileInformation, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
     final public func downloadFile(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<SalemoveSDK.EngagementFileData, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
