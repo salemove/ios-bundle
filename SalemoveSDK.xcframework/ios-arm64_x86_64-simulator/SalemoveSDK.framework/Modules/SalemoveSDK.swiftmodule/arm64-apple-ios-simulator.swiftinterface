@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SalemoveSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
 import CoreMedia/*.CMSampleBuffer*/
 import CoreServices
@@ -20,6 +21,7 @@ import UIKit
 import UserNotifications
 import WebRTC
 import _Concurrency
+import _StringProcessing
 @objc public enum AttachmentType : Swift.Int, Swift.Decodable {
   case files
   case singleChoice
@@ -495,7 +497,7 @@ public protocol VideoStreamable : AnyObject {
   @discardableResult
   @_Concurrency.MainActor(unsafe) @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
   @_Concurrency.MainActor(unsafe) @objc public func applicationDidBecomeActive(_ application: UIKit.UIApplication)
-  @objc override dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
   @objc deinit
 }
 public typealias GliaCoreAppDelegate = SalemoveSDK.SalemoveAppDelegate
@@ -872,7 +874,7 @@ extension SalemoveSDK.Salemove.Authentication {
   @objc deinit
 }
 extension SalemoveSDK.StreamView : WebRTC.RTCVideoViewDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func videoView(_ videoView: WebRTC.RTCVideoRenderer, didChangeVideoSize size: CoreGraphics.CGSize)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func videoView(_ videoView: WebRTC.RTCVideoRenderer, didChangeVideoSize size: CoreFoundation.CGSize)
 }
 @objc public enum LogLevel : Swift.Int {
   case none
@@ -1125,13 +1127,14 @@ extension SalemoveSDK.Salemove.SecureConversations {
     get
   }
 }
-@_hasMissingDesignatedInitializers @objc public class VisitorScreenSharingState : ObjectiveC.NSObject {
+@objc public class VisitorScreenSharingState : ObjectiveC.NSObject {
   @objc public var status: SalemoveSDK.ScreenSharingStatus {
     get
   }
   @objc public var localScreen: SalemoveSDK.LocalScreen? {
     get
   }
+  public init(status: SalemoveSDK.ScreenSharingStatus, localScreen: SalemoveSDK.LocalScreen?)
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers @objcMembers public class Engagement : ObjectiveC.NSObject {
