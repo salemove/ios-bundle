@@ -6,6 +6,6 @@ framework module SalemoveSDK {
 }
 
 module SalemoveSDK.Swift {
-    header "SalemoveSDK-Swift.h"
-    requires objc
+  header "SalemoveSDK-Swift.h"
+  requires objc
 }
