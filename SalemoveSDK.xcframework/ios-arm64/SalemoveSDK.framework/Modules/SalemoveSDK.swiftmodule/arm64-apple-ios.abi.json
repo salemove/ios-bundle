@@ -35459,7 +35459,7 @@
       "kind": "StringLiteral",
       "offset": 433,
       "length": 9,
-      "value": "\"0.35.13\""
+      "value": "\"0.35.14\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Channel\/NamespacedChannel.swift",
