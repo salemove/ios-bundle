@@ -1137,13 +1137,16 @@ extension SalemoveSDK.Salemove.SecureConversations {
   public init(status: SalemoveSDK.ScreenSharingStatus, localScreen: SalemoveSDK.LocalScreen?)
   @objc deinit
 }
-@objc @_hasMissingDesignatedInitializers @objcMembers public class Engagement : ObjectiveC.NSObject {
+@objc @objcMembers public class Engagement : ObjectiveC.NSObject {
   @objc final public let id: Swift.String
   @objc final public let engagedOperator: SalemoveSDK.Operator?
   final public let source: SalemoveSDK.EngagementSource
+  public init(id: Swift.String, engagedOperator: SalemoveSDK.Operator?, source: SalemoveSDK.EngagementSource, fetchSurvey: @escaping SalemoveSDK.Engagement.FetchSurvey)
   @objc deinit
 }
 extension SalemoveSDK.Engagement {
+  public typealias FetchSurveyCallback = (Swift.Result<SalemoveSDK.Survey?, SalemoveSDK.GliaCoreError>) -> Swift.Void
+  public typealias FetchSurvey = (_ engagementId: Swift.String, _ callback: @escaping SalemoveSDK.Engagement.FetchSurveyCallback) -> Swift.Void
   public func getSurvey(completion: @escaping (Swift.Result<SalemoveSDK.Survey?, SalemoveSDK.GliaCoreError>) -> Swift.Void)
 }
 @objc public class MediaUpgradeOffer : ObjectiveC.NSObject {
