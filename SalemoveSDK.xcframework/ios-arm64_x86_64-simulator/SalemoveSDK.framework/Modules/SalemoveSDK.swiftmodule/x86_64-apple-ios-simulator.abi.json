@@ -31484,6 +31484,119 @@
           {
             "kind": "Constructor",
             "name": "init",
+            "printedName": "init(id:engagedOperator:source:fetchSurvey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Engagement",
+                "printedName": "SalemoveSDK.Engagement",
+                "usr": "c:@M@SalemoveSDK@objc(cs)Engagement"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "SalemoveSDK.Operator?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Operator",
+                    "printedName": "SalemoveSDK.Operator",
+                    "usr": "c:@M@SalemoveSDK@objc(cs)Operator"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "EngagementSource",
+                "printedName": "SalemoveSDK.EngagementSource",
+                "usr": "s:11SalemoveSDK16EngagementSourceO"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String, @escaping (Swift.Result<SalemoveSDK.Survey?, SalemoveSDK.SalemoveError>) -> ()) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.String, (Swift.Result<SalemoveSDK.Survey?, SalemoveSDK.SalemoveError>) -> ())",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Swift.Result<SalemoveSDK.Survey?, SalemoveSDK.SalemoveError>) -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Result",
+                            "printedName": "Swift.Result<SalemoveSDK.Survey?, SalemoveSDK.SalemoveError>",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Optional",
+                                "printedName": "SalemoveSDK.Survey?",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "Survey",
+                                    "printedName": "SalemoveSDK.Survey",
+                                    "usr": "s:11SalemoveSDK6SurveyV"
+                                  }
+                                ],
+                                "usr": "s:Sq"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "SalemoveError",
+                                "printedName": "SalemoveSDK.SalemoveError",
+                                "usr": "c:@M@SalemoveSDK@objc(cs)SalemoveError"
+                              }
+                            ],
+                            "usr": "s:s6ResultO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11SalemoveSDK10EngagementC2id15engagedOperator6source11fetchSurveyACSS_AA0F0CSgAA0C6SourceOySS_ys6ResultOyAA0I0VSgAA0A5ErrorCGctctcfc",
+            "mangledName": "$s11SalemoveSDK10EngagementC2id15engagedOperator6source11fetchSurveyACSS_AA0F0CSgAA0C6SourceOySS_ys6ResultOyAA0I0VSgAA0A5ErrorCGctctcfc",
+            "moduleName": "SalemoveSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
             "printedName": "init()",
             "children": [
               {
@@ -31581,7 +31694,6 @@
           "ObjC"
         ],
         "superclassUsr": "c:objc(cs)NSObject",
-        "hasMissingDesignatedInitializers": true,
         "superclassNames": [
           "ObjectiveC.NSObject"
         ],
@@ -34162,7 +34274,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/Network\/Network.ApiClient.swift",
       "kind": "Dictionary",
-      "offset": 7738,
+      "offset": 8056,
       "length": 3,
       "value": "[]"
     },
@@ -34697,6 +34809,13 @@
       "offset": 666,
       "length": 26,
       "value": "\"securityScanningRequired\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Extensions\/URLRequest.swift",
+      "kind": "BooleanLiteral",
+      "offset": 86,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Security\/Keychain.swift",
@@ -35340,7 +35459,7 @@
       "kind": "StringLiteral",
       "offset": 433,
       "length": 9,
-      "value": "\"0.35.12\""
+      "value": "\"0.35.13\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Channel\/NamespacedChannel.swift",

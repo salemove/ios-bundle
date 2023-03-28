@@ -22,43 +22,43 @@
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		Q6SiX0KSXu0tPZFqctBvNei20SI=
+		cqQSYQRniJCQUJ9KgFsSDaJ8Kdk=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		OiXA7EfWRSVx2it2QonzJRDgIrA=
+		5eMG/RMyuwuSSrNw2abVFKg8DWY=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		2KCVSAvEOIYe1VcAu/cDf6vkuS8=
+		OEqsbw0mnntEObovzqK6qUl0+f8=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		OiXA7EfWRSVx2it2QonzJRDgIrA=
+		5eMG/RMyuwuSSrNw2abVFKg8DWY=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		taiAwXt2LEMkak8zCsXwoCxEowg=
+		OElQf3RO7uzZY/RwyToC/KgpNtg=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		Q6SiX0KSXu0tPZFqctBvNei20SI=
+		cqQSYQRniJCQUJ9KgFsSDaJ8Kdk=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		8W+8hoXV0Mcj8YerjFffemaVElk=
+		d5x24+HDJACO+IPSo5cR6XzLu+Q=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		4b1Gq5DdgYP9HaJuB13sVIkchLI=
+		0VKV6sI6luJqcRY3400Z9Q//s0E=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		8W+8hoXV0Mcj8YerjFffemaVElk=
+		d5x24+HDJACO+IPSo5cR6XzLu+Q=
 		</data>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		kcUXt2k81XFWBKSRu6HjNJcGR0A=
+		PnLKY2Wt0DjSswNEYjVgx47hLdQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -92,70 +92,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FSdPSVtT8ov6/pf9GTZqwEtz9SY8tRTqUi+MkZ8LonI=
+			y7WnQn+NhElJJ0IDmMcb2KrddTZADe9ZITXn8XzpNls=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			l7brMY+q6TKxKgmWpujeXT9CNwZp6bqiP1WVeK/hICk=
+			yQtBCLLSnGMmwGS/LrSO0MX2i75vuyrCApdh6h1GIA0=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Kfhb0e5ybVY89bJGy3ZZLGAZnLQVn2j/giGStnfzgZI=
+			sZEOzmODotAKpzRx6FahTz0QPZe9Rdv6rRECoO9icLc=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			l7brMY+q6TKxKgmWpujeXT9CNwZp6bqiP1WVeK/hICk=
+			yQtBCLLSnGMmwGS/LrSO0MX2i75vuyrCApdh6h1GIA0=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CJ0aIuwzBKzPf8vDFC9XxkDHAcdmRwzfVNLbpycu7DI=
+			TFL2Lac0xmEEHS770K6513E5/Xk+d5rdo+DiiItK+/U=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FSdPSVtT8ov6/pf9GTZqwEtz9SY8tRTqUi+MkZ8LonI=
+			y7WnQn+NhElJJ0IDmMcb2KrddTZADe9ZITXn8XzpNls=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CkG6KWch2srVyzE/cov7A7cILgA4sVbSwJKM5mRgaFQ=
+			aSGsup/MhdOPvWvR6JPpTshr+ZdTPSGbYe9iAMdVgMg=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cxJhP0E6qN0f/emIs/rMTpG0C+8R0AqUVvJbXZITCJ8=
+			H6aOm4kqGBU4JHohdyjYmxtM1CPTcdw14/qXhdedNek=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CkG6KWch2srVyzE/cov7A7cILgA4sVbSwJKM5mRgaFQ=
+			aSGsup/MhdOPvWvR6JPpTshr+ZdTPSGbYe9iAMdVgMg=
 			</data>
 		</dict>
 		<key>Modules/SalemoveSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pUo/WOgdULRx9lzm6UZyEViYfQSIuXjdYG/P05LHoyo=
+			Gnp98H3CuczM9h+1k6PxOnqZq9lf/YQm6mB5EoIZRrk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
