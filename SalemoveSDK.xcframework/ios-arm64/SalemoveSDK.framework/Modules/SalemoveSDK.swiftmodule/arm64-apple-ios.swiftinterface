@@ -217,7 +217,10 @@ extension SalemoveSDK.Message {
   }
 }
 public struct MessageSender : Swift.Equatable, Swift.Codable {
+  public let name: Swift.String?
   public let type: SalemoveSDK.MessageSender.SenderType
+  public let id: Foundation.UUID?
+  public let picture: SalemoveSDK.MessageSenderPicture?
   public static func == (a: SalemoveSDK.MessageSender, b: SalemoveSDK.MessageSender) -> Swift.Bool
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
@@ -237,6 +240,12 @@ extension SalemoveSDK.MessageSender {
       get
     }
   }
+}
+public struct MessageSenderPicture : Swift.Equatable, Swift.Codable {
+  public let url: Swift.String?
+  public static func == (a: SalemoveSDK.MessageSenderPicture, b: SalemoveSDK.MessageSenderPicture) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public typealias EngagementSessionBlock = (SalemoveSDK.EngagementRequest?, SalemoveSDK.GliaCoreError?) -> Swift.Void
 public typealias OperatorBlock = ([SalemoveSDK.Operator]?, SalemoveSDK.GliaCoreError?) -> Swift.Void
@@ -496,7 +505,13 @@ public protocol VideoStreamable : AnyObject {
 @_Concurrency.MainActor(unsafe) public class SalemoveAppDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
   @discardableResult
   @_Concurrency.MainActor(unsafe) @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+  @_Concurrency.MainActor(unsafe) @objc public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
   @_Concurrency.MainActor(unsafe) @objc public func applicationDidBecomeActive(_ application: UIKit.UIApplication)
+  @_Concurrency.MainActor(unsafe) @objc public func applicationWillResignActive(_ application: UIKit.UIApplication)
+  @_Concurrency.MainActor(unsafe) @objc public func applicationDidEnterBackground(_ application: UIKit.UIApplication)
+  @_Concurrency.MainActor(unsafe) @objc public func applicationWillEnterForeground(_ application: UIKit.UIApplication)
+  @_Concurrency.MainActor(unsafe) @objc public func applicationWillTerminate(_ application: UIKit.UIApplication)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
   @objc deinit
 }
@@ -1022,11 +1037,12 @@ extension SalemoveSDK.StreamView : WebRTC.RTCVideoViewDelegate {
   public init(reason: Swift.String, error: Swift.Error? = nil)
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc public class Queue : ObjectiveC.NSObject {
+@objc public class Queue : ObjectiveC.NSObject {
   @objc final public let id: Swift.String
   @objc final public let name: Swift.String
   @objc final public let state: SalemoveSDK.QueueState
   @objc final public let isDefault: Swift.Bool
+  public init(id: Swift.String, name: Swift.String, status: SalemoveSDK.QueueStatus, isDefault: Swift.Bool, media: [SalemoveSDK.MediaType])
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class QueueState : ObjectiveC.NSObject, Swift.Decodable {
@@ -1108,15 +1124,21 @@ extension SalemoveSDK.Salemove {
   @_hasMissingDesignatedInitializers final public class SecureConversations {
     final public func send(attachment: SalemoveSDK.Attachment, queueIds: [Swift.String], completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
     final public func send(secureMessage: Swift.String, attachment: SalemoveSDK.Attachment? = nil, queueIds: [Swift.String], completion: @escaping (Swift.Result<SalemoveSDK.Message, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
-    final public func uploadFile(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<SalemoveSDK.EngagementFileInformation, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
-    final public func downloadFile(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<SalemoveSDK.EngagementFileData, Swift.Error>) -> Swift.Void) -> SalemoveSDK.Salemove.Cancellable
     @objc deinit
   }
+}
+extension SalemoveSDK.Salemove.SecureConversations {
+  final public func uploadFile(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<SalemoveSDK.EngagementFileInformation, Swift.Error>) -> Swift.Void) -> SalemoveSDK.GliaCore.Cancellable
+  final public func downloadFile(_ file: SalemoveSDK.EngagementFile, progress: SalemoveSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<SalemoveSDK.EngagementFileData, Swift.Error>) -> Swift.Void) -> SalemoveSDK.GliaCore.Cancellable
 }
 extension SalemoveSDK.Salemove.SecureConversations {
   @discardableResult
   final public func markMessagesAsRead(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> SalemoveSDK.GliaCore.Cancellable
   final public func getUnreadMessageCount(completion: @escaping (Swift.Result<Swift.Int, Swift.Error>) -> Swift.Void)
+}
+extension SalemoveSDK.Salemove {
+  final public func startSocketObservation()
+  final public func stopSocketObservation()
 }
 @objc public enum ScreenSharingStatus : Swift.Int {
   case sharing

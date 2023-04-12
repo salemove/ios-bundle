@@ -684,7 +684,7 @@ SWIFT_CLASS("_TtC11SalemoveSDK5Queue")
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
 /// Queue state
 @property (nonatomic, readonly, strong) QueueState * _Nonnull state;
-/// Indicates that queue is the default. true if Queue is default
+/// Indicates that queue is the default. <code>true</code> if Queue is default
 @property (nonatomic, readonly) BOOL isDefault;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -787,10 +787,17 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
 
 
@@ -864,18 +871,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
+
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+/// Clear the use session of the client library
+- (void)clearSession;
 @end
+
 
 
 
@@ -1267,10 +1268,30 @@ SWIFT_CLASS("_TtC11SalemoveSDK19SalemoveAppDelegate") SWIFT_DEPRECATED_MSG("Depr
 /// returns:
 /// <code>true</code> if the application can be started with the specified launch options. Otherwise, it returns <code>false</code>.
 - (BOOL)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
+/// Call this method when <code>application:didRegisterForRemoteNotificationsWithDeviceToken:</code> is called
+/// from <code>UNUserNotificationCenterDelegate</code>.
+/// Send all parameters that you receive in the delegate method as they are, without modifying them.
+/// <h1>Reference</h1>
+/// <a href="https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate">UNUserNotificationCenterDelegate</a>
+/// \param application The current application.
+///
+/// \param deviceToken The data that holds the push notification device token.
+///
+- (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
+/// Call this method if it was unable to register your app with APNs or if your app is not properly configured for remote notifications. During development, make sure your app has the proper entitlements and that its App ID is configured to support push notifications.
+/// \param application The current application.
+///
+/// \param error The error appeared during the registration device with APNs.
+///
+- (void)application:(UIApplication * _Nonnull)application didFailToRegisterForRemoteNotificationsWithError:(NSError * _Nonnull)error;
 /// Handle the application active state and setup the internals.
 /// \param application The current application.
 ///
 - (void)applicationDidBecomeActive:(UIApplication * _Nonnull)application;
+- (void)applicationWillResignActive:(UIApplication * _Nonnull)application;
+- (void)applicationDidEnterBackground:(UIApplication * _Nonnull)application;
+- (void)applicationWillEnterForeground:(UIApplication * _Nonnull)application;
+- (void)applicationWillTerminate:(UIApplication * _Nonnull)application;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2065,7 +2086,7 @@ SWIFT_CLASS("_TtC11SalemoveSDK5Queue")
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
 /// Queue state
 @property (nonatomic, readonly, strong) QueueState * _Nonnull state;
-/// Indicates that queue is the default. true if Queue is default
+/// Indicates that queue is the default. <code>true</code> if Queue is default
 @property (nonatomic, readonly) BOOL isDefault;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -2168,10 +2189,17 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
 
 
@@ -2245,18 +2273,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
+
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+/// Clear the use session of the client library
+- (void)clearSession;
 @end
+
 
 
 
@@ -2648,10 +2670,30 @@ SWIFT_CLASS("_TtC11SalemoveSDK19SalemoveAppDelegate") SWIFT_DEPRECATED_MSG("Depr
 /// returns:
 /// <code>true</code> if the application can be started with the specified launch options. Otherwise, it returns <code>false</code>.
 - (BOOL)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
+/// Call this method when <code>application:didRegisterForRemoteNotificationsWithDeviceToken:</code> is called
+/// from <code>UNUserNotificationCenterDelegate</code>.
+/// Send all parameters that you receive in the delegate method as they are, without modifying them.
+/// <h1>Reference</h1>
+/// <a href="https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate">UNUserNotificationCenterDelegate</a>
+/// \param application The current application.
+///
+/// \param deviceToken The data that holds the push notification device token.
+///
+- (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
+/// Call this method if it was unable to register your app with APNs or if your app is not properly configured for remote notifications. During development, make sure your app has the proper entitlements and that its App ID is configured to support push notifications.
+/// \param application The current application.
+///
+/// \param error The error appeared during the registration device with APNs.
+///
+- (void)application:(UIApplication * _Nonnull)application didFailToRegisterForRemoteNotificationsWithError:(NSError * _Nonnull)error;
 /// Handle the application active state and setup the internals.
 /// \param application The current application.
 ///
 - (void)applicationDidBecomeActive:(UIApplication * _Nonnull)application;
+- (void)applicationWillResignActive:(UIApplication * _Nonnull)application;
+- (void)applicationDidEnterBackground:(UIApplication * _Nonnull)application;
+- (void)applicationWillEnterForeground:(UIApplication * _Nonnull)application;
+- (void)applicationWillTerminate:(UIApplication * _Nonnull)application;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

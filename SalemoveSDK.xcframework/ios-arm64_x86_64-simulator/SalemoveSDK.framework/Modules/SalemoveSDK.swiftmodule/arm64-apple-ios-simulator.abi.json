@@ -5173,6 +5173,66 @@
         "children": [
           {
             "kind": "Var",
+            "name": "name",
+            "printedName": "name",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11SalemoveSDK13MessageSenderV4nameSSSgvp",
+            "mangledName": "$s11SalemoveSDK13MessageSenderV4nameSSSgvp",
+            "moduleName": "SalemoveSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11SalemoveSDK13MessageSenderV4nameSSSgvg",
+                "mangledName": "$s11SalemoveSDK13MessageSenderV4nameSSSgvg",
+                "moduleName": "SalemoveSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "type",
             "printedName": "type",
             "children": [
@@ -5209,6 +5269,126 @@
                 "declKind": "Accessor",
                 "usr": "s:11SalemoveSDK13MessageSenderV4typeAC0D4TypeOvg",
                 "mangledName": "$s11SalemoveSDK13MessageSenderV4typeAC0D4TypeOvg",
+                "moduleName": "SalemoveSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "id",
+            "printedName": "id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.UUID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UUID",
+                    "printedName": "Foundation.UUID",
+                    "usr": "s:10Foundation4UUIDV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11SalemoveSDK13MessageSenderV2id10Foundation4UUIDVSgvp",
+            "mangledName": "$s11SalemoveSDK13MessageSenderV2id10Foundation4UUIDVSgvp",
+            "moduleName": "SalemoveSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.UUID?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UUID",
+                        "printedName": "Foundation.UUID",
+                        "usr": "s:10Foundation4UUIDV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11SalemoveSDK13MessageSenderV2id10Foundation4UUIDVSgvg",
+                "mangledName": "$s11SalemoveSDK13MessageSenderV2id10Foundation4UUIDVSgvg",
+                "moduleName": "SalemoveSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "picture",
+            "printedName": "picture",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "SalemoveSDK.MessageSenderPicture?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MessageSenderPicture",
+                    "printedName": "SalemoveSDK.MessageSenderPicture",
+                    "usr": "s:11SalemoveSDK20MessageSenderPictureV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11SalemoveSDK13MessageSenderV7pictureAA0cD7PictureVSgvp",
+            "mangledName": "$s11SalemoveSDK13MessageSenderV7pictureAA0cD7PictureVSgvp",
+            "moduleName": "SalemoveSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "SalemoveSDK.MessageSenderPicture?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MessageSenderPicture",
+                        "printedName": "SalemoveSDK.MessageSenderPicture",
+                        "usr": "s:11SalemoveSDK20MessageSenderPictureV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11SalemoveSDK13MessageSenderV7pictureAA0cD7PictureVSgvg",
+                "mangledName": "$s11SalemoveSDK13MessageSenderV7pictureAA0cD7PictureVSgvg",
                 "moduleName": "SalemoveSDK",
                 "implicit": true,
                 "accessorKind": "get"
@@ -5635,6 +5815,186 @@
         "declAttributes": [
           "AccessControl",
           "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MessageSenderPicture",
+        "printedName": "MessageSenderPicture",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "url",
+            "printedName": "url",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11SalemoveSDK20MessageSenderPictureV3urlSSSgvp",
+            "mangledName": "$s11SalemoveSDK20MessageSenderPictureV3urlSSSgvp",
+            "moduleName": "SalemoveSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11SalemoveSDK20MessageSenderPictureV3urlSSSgvg",
+                "mangledName": "$s11SalemoveSDK20MessageSenderPictureV3urlSSSgvg",
+                "moduleName": "SalemoveSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MessageSenderPicture",
+                "printedName": "SalemoveSDK.MessageSenderPicture",
+                "usr": "s:11SalemoveSDK20MessageSenderPictureV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11SalemoveSDK20MessageSenderPictureV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s11SalemoveSDK20MessageSenderPictureV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "SalemoveSDK",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MessageSenderPicture",
+                "printedName": "SalemoveSDK.MessageSenderPicture",
+                "usr": "s:11SalemoveSDK20MessageSenderPictureV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MessageSenderPicture",
+                "printedName": "SalemoveSDK.MessageSenderPicture",
+                "usr": "s:11SalemoveSDK20MessageSenderPictureV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11SalemoveSDK20MessageSenderPictureV2eeoiySbAC_ACtFZ",
+            "mangledName": "$s11SalemoveSDK20MessageSenderPictureV2eeoiySbAC_ACtFZ",
+            "moduleName": "SalemoveSDK",
+            "static": true,
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11SalemoveSDK20MessageSenderPictureV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s11SalemoveSDK20MessageSenderPictureV6encode2toys7Encoder_p_tKF",
+            "moduleName": "SalemoveSDK",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:11SalemoveSDK20MessageSenderPictureV",
+        "mangledName": "$s11SalemoveSDK20MessageSenderPictureV",
+        "moduleName": "SalemoveSDK",
+        "declAttributes": [
+          "AccessControl"
         ],
         "conformances": [
           {
@@ -11503,6 +11863,78 @@
           },
           {
             "kind": "Function",
+            "name": "application",
+            "printedName": "application(_:didRegisterForRemoteNotificationsWithDeviceToken:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIApplication",
+                "printedName": "UIKit.UIApplication",
+                "usr": "c:objc(cs)UIApplication"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@SalemoveSDK@objc(cs)SalemoveAppDelegate(im)application:didRegisterForRemoteNotificationsWithDeviceToken:",
+            "mangledName": "$s11SalemoveSDK0A11AppDelegateC11application_48didRegisterForRemoteNotificationsWithDeviceTokenySo13UIApplicationC_10Foundation4DataVtF",
+            "moduleName": "SalemoveSDK",
+            "objc_name": "application:didRegisterForRemoteNotificationsWithDeviceToken:",
+            "declAttributes": [
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "application",
+            "printedName": "application(_:didFailToRegisterForRemoteNotificationsWithError:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIApplication",
+                "printedName": "UIKit.UIApplication",
+                "usr": "c:objc(cs)UIApplication"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Error",
+                "printedName": "Swift.Error",
+                "usr": "s:s5ErrorP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@SalemoveSDK@objc(cs)SalemoveAppDelegate(im)application:didFailToRegisterForRemoteNotificationsWithError:",
+            "mangledName": "$s11SalemoveSDK0A11AppDelegateC11application_48didFailToRegisterForRemoteNotificationsWithErrorySo13UIApplicationC_s0N0_ptF",
+            "moduleName": "SalemoveSDK",
+            "objc_name": "application:didFailToRegisterForRemoteNotificationsWithError:",
+            "declAttributes": [
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "applicationDidBecomeActive",
             "printedName": "applicationDidBecomeActive(_:)",
             "children": [
@@ -11528,6 +11960,122 @@
               "Custom",
               "AccessControl",
               "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "applicationWillResignActive",
+            "printedName": "applicationWillResignActive(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIApplication",
+                "printedName": "UIKit.UIApplication",
+                "usr": "c:objc(cs)UIApplication"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@SalemoveSDK@objc(cs)SalemoveAppDelegate(im)applicationWillResignActive:",
+            "mangledName": "$s11SalemoveSDK0A11AppDelegateC27applicationWillResignActiveyySo13UIApplicationCF",
+            "moduleName": "SalemoveSDK",
+            "objc_name": "applicationWillResignActive:",
+            "declAttributes": [
+              "ObjC",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "applicationDidEnterBackground",
+            "printedName": "applicationDidEnterBackground(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIApplication",
+                "printedName": "UIKit.UIApplication",
+                "usr": "c:objc(cs)UIApplication"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@SalemoveSDK@objc(cs)SalemoveAppDelegate(im)applicationDidEnterBackground:",
+            "mangledName": "$s11SalemoveSDK0A11AppDelegateC29applicationDidEnterBackgroundyySo13UIApplicationCF",
+            "moduleName": "SalemoveSDK",
+            "objc_name": "applicationDidEnterBackground:",
+            "declAttributes": [
+              "ObjC",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "applicationWillEnterForeground",
+            "printedName": "applicationWillEnterForeground(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIApplication",
+                "printedName": "UIKit.UIApplication",
+                "usr": "c:objc(cs)UIApplication"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@SalemoveSDK@objc(cs)SalemoveAppDelegate(im)applicationWillEnterForeground:",
+            "mangledName": "$s11SalemoveSDK0A11AppDelegateC30applicationWillEnterForegroundyySo13UIApplicationCF",
+            "moduleName": "SalemoveSDK",
+            "objc_name": "applicationWillEnterForeground:",
+            "declAttributes": [
+              "ObjC",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "applicationWillTerminate",
+            "printedName": "applicationWillTerminate(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIApplication",
+                "printedName": "UIKit.UIApplication",
+                "usr": "c:objc(cs)UIApplication"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@SalemoveSDK@objc(cs)SalemoveAppDelegate(im)applicationWillTerminate:",
+            "mangledName": "$s11SalemoveSDK0A11AppDelegateC24applicationWillTerminateyySo13UIApplicationCF",
+            "moduleName": "SalemoveSDK",
+            "objc_name": "applicationWillTerminate:",
+            "declAttributes": [
+              "ObjC",
+              "Custom",
+              "AccessControl"
             ],
             "funcSelfKind": "NonMutating"
           },
@@ -23524,6 +24072,66 @@
           {
             "kind": "Constructor",
             "name": "init",
+            "printedName": "init(id:name:status:isDefault:media:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Queue",
+                "printedName": "SalemoveSDK.Queue",
+                "usr": "c:@M@SalemoveSDK@objc(cs)Queue"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "QueueStatus",
+                "printedName": "SalemoveSDK.QueueStatus",
+                "usr": "s:11SalemoveSDK11QueueStatusO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[SalemoveSDK.MediaType]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MediaType",
+                    "printedName": "SalemoveSDK.MediaType",
+                    "usr": "s:11SalemoveSDK9MediaTypeO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11SalemoveSDK5QueueC2id4name6status9isDefault5mediaACSS_SSAA0C6StatusOSbSayAA9MediaTypeOGtcfc",
+            "mangledName": "$s11SalemoveSDK5QueueC2id4name6status9isDefault5mediaACSS_SSAA0C6StatusOSbSayAA9MediaTypeOGtcfc",
+            "moduleName": "SalemoveSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
             "printedName": "init()",
             "children": [
               {
@@ -23558,7 +24166,6 @@
           "RawDocComment"
         ],
         "superclassUsr": "c:objc(cs)NSObject",
-        "hasMissingDesignatedInitializers": true,
         "superclassNames": [
           "ObjectiveC.NSObject"
         ],
@@ -29933,6 +30540,7 @@
                   "AccessControl",
                   "RawDocComment"
                 ],
+                "isFromExtension": true,
                 "funcSelfKind": "NonMutating"
               },
               {
@@ -30020,6 +30628,7 @@
                   "AccessControl",
                   "RawDocComment"
                 ],
+                "isFromExtension": true,
                 "funcSelfKind": "NonMutating"
               },
               {
@@ -30145,6 +30754,52 @@
             ],
             "isFromExtension": true,
             "hasMissingDesignatedInitializers": true
+          },
+          {
+            "kind": "Function",
+            "name": "startSocketObservation",
+            "printedName": "startSocketObservation()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11SalemoveSDK0A0C22startSocketObservationyyF",
+            "mangledName": "$s11SalemoveSDK0A0C22startSocketObservationyyF",
+            "moduleName": "SalemoveSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stopSocketObservation",
+            "printedName": "stopSocketObservation()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11SalemoveSDK0A0C21stopSocketObservationyyF",
+            "mangledName": "$s11SalemoveSDK0A0C21stopSocketObservationyyF",
+            "moduleName": "SalemoveSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Class",
@@ -30797,6 +31452,13 @@
         "kind": "Import",
         "name": "GliaCoreDependency",
         "printedName": "GliaCoreDependency",
+        "declKind": "Import",
+        "moduleName": "SalemoveSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "SalemoveSDK"
       },
@@ -32271,6 +32933,13 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SalemoveSDK"
+      },
+      {
+        "kind": "Import",
         "name": "GliaCoreDependency",
         "printedName": "GliaCoreDependency",
         "declKind": "Import",
@@ -32748,7 +33417,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Socket\/PubsubManager.swift",
       "kind": "Dictionary",
-      "offset": 8387,
+      "offset": 8373,
       "length": 3,
       "value": "[]"
     },
@@ -33154,7 +33823,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/MessageManager\/MessageManager.swift",
       "kind": "Array",
-      "offset": 3679,
+      "offset": 3975,
       "length": 2,
       "value": "[]"
     },
@@ -33525,196 +34194,210 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4023,
+      "offset": 4008,
+      "length": 32,
+      "value": "\"engagement.chat.system_message\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
+      "kind": "StringLiteral",
+      "offset": 4083,
+      "length": 24,
+      "value": "\"queued_message.created\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
+      "kind": "StringLiteral",
+      "offset": 4158,
       "length": 5,
       "value": "\"end\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4057,
+      "offset": 4192,
       "length": 8,
       "value": "\"cancel\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4094,
+      "offset": 4229,
       "length": 8,
       "value": "\"accept\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4153,
+      "offset": 4288,
       "length": 5,
       "value": "\"sdk\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4218,
+      "offset": 4353,
       "length": 12,
       "value": "\"omnibrowse\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4306,
+      "offset": 4441,
       "length": 6,
       "value": "\"apns\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4338,
+      "offset": 4473,
       "length": 5,
       "value": "\"wss\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4379,
+      "offset": 4514,
       "length": 26,
       "value": "\"\/notifications\/websocket\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4434,
+      "offset": 4569,
       "length": 8,
       "value": "\"pubsub\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4496,
+      "offset": 4631,
       "length": 20,
       "value": "\"Engagement started\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4542,
+      "offset": 4677,
       "length": 18,
       "value": "\"Engagement ended\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4589,
+      "offset": 4724,
       "length": 19,
       "value": "\"Engagement failed\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4638,
+      "offset": 4773,
       "length": 33,
       "value": "\"You have received a new message\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4702,
+      "offset": 4837,
       "length": 21,
       "value": "\"Engagement transfer\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4785,
+      "offset": 4920,
       "length": 5,
       "value": "\"env\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4820,
+      "offset": 4955,
       "length": 19,
       "value": "\"content_available\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4869,
+      "offset": 5004,
       "length": 9,
       "value": "\"message\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4904,
+      "offset": 5039,
       "length": 5,
       "value": "\"vsn\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4943,
+      "offset": 5078,
       "length": 14,
       "value": "\"access_token\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 5018,
+      "offset": 5153,
       "length": 15,
       "value": "\"site_visitor:\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 5067,
+      "offset": 5202,
       "length": 13,
       "value": "\"queue:multi\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 5115,
+      "offset": 5250,
       "length": 16,
       "value": "\"visitor_state:\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 5169,
+      "offset": 5304,
       "length": 19,
       "value": "\"visitor_volatile:\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 5231,
+      "offset": 5366,
       "length": 25,
       "value": "\"engagement_annotations:\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 5312,
+      "offset": 5447,
       "length": 9,
       "value": "\"nothing\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 5349,
+      "offset": 5484,
       "length": 66,
       "value": "\"ade24062f6c6ab90c0ca3deeb77a8264911549229fb403761bec3081c7770663\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 5494,
+      "offset": 5629,
       "length": 17,
       "value": "\"SalemoveVisitor\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "BooleanLiteral",
-      "offset": 5651,
+      "offset": 5786,
       "length": 4,
       "value": "true"
     },
@@ -35422,21 +36105,21 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Queue.swift",
       "kind": "StringLiteral",
-      "offset": 675,
+      "offset": 972,
       "length": 10,
       "value": "\"SalemoveSDK.QueueState\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Queue.swift",
       "kind": "StringLiteral",
-      "offset": 1087,
+      "offset": 1384,
       "length": 8,
       "value": "\"opened\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Queue.swift",
       "kind": "StringLiteral",
-      "offset": 1087,
+      "offset": 1384,
       "length": 8,
       "value": "\"opened\""
     },
@@ -35459,7 +36142,7 @@
       "kind": "StringLiteral",
       "offset": 433,
       "length": 9,
-      "value": "\"0.35.13\""
+      "value": "\"0.35.14\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Channel\/NamespacedChannel.swift",
@@ -35506,28 +36189,28 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 46325,
+      "offset": 48418,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 46384,
+      "offset": 48477,
       "length": 23,
       "value": "\"capabilities:response\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 46325,
+      "offset": 48418,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 46384,
+      "offset": 48477,
       "length": 23,
       "value": "\"capabilities:response\""
     },
