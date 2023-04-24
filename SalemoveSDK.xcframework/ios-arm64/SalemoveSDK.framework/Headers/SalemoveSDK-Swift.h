@@ -787,18 +787,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
+
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+/// Clear the use session of the client library
+- (void)clearSession;
 @end
+
 
 
 
@@ -871,10 +865,17 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 @end
 
 
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
 
 
