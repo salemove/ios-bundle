@@ -624,6 +624,7 @@ SWIFT_CLASS("_TtC11SalemoveSDK20OperatorTypingStatus")
 @end
 
 enum PushType : NSInteger;
+enum PushTiming : NSInteger;
 
 /// Push object sent by the client library
 SWIFT_CLASS("_TtC11SalemoveSDK4Push")
@@ -632,6 +633,8 @@ SWIFT_CLASS("_TtC11SalemoveSDK4Push")
 @property (nonatomic, readonly, copy) NSString * _Nonnull actionIdentifier;
 /// Push type. One of <code>PushType</code> values.
 @property (nonatomic, readonly) enum PushType type;
+/// Push timing. One of <code>PushTiming</code> values.
+@property (nonatomic, readonly) enum PushTiming timing;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -665,12 +668,26 @@ SWIFT_CLASS("_TtC11SalemoveSDK17PushNotifications")
 - (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
 @end
 
+/// Push notifications can be triggered both when the visitor is on the app and
+/// when the app is on the background. This enum allows you to identify the timing
+/// of the handled push notification.
+typedef SWIFT_ENUM(NSInteger, PushTiming, open) {
+/// Push notification came while the visitor was inside the app.
+  PushTimingInApp = 0,
+/// Push notification came while the visitor had the app in the background.
+  PushTimingBackground = 1,
+/// Unknown timing.
+  PushTimingUnidentified = 2,
+};
+
 /// Available push notification types
 typedef SWIFT_ENUM(NSInteger, PushType, open) {
-/// Unknown type
+/// Unknown type.
   PushTypeUnidentified = 0,
-/// Chat type
+/// Chat message type. Sent in the context of live chat engagements.
   PushTypeChatMessage = 1,
+/// Queue message type. Sent in the content of secure conversations.
+  PushTypeQueueMessage = 2,
 };
 
 @class QueueState;
@@ -750,7 +767,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 
 
 
-
 @interface Salemove (SWIFT_EXTENSION(SalemoveSDK))
 /// Request media upgrade with specific offer
 /// If the request is unsuccessful for any reason then the completion will have an Error.
@@ -781,6 +797,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Salemove * _
 ///
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, SalemoveError * _Nullable))completion;
 @end
+
 
 
 

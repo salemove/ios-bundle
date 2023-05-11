@@ -768,6 +768,9 @@ extension SalemoveSDK.Salemove {
   @objc public var type: SalemoveSDK.PushType {
     get
   }
+  @objc public var timing: SalemoveSDK.PushTiming {
+    get
+  }
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   @objc deinit
@@ -775,6 +778,17 @@ extension SalemoveSDK.Salemove {
 @objc public enum PushType : Swift.Int {
   case unidentified
   case chatMessage
+  case queueMessage
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum PushTiming : Swift.Int, Swift.Codable {
+  case inApp
+  case background
+  case unidentified
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -1226,6 +1240,9 @@ extension SalemoveSDK.Survey.QuestionType : Swift.RawRepresentable {}
 extension SalemoveSDK.PushType : Swift.Equatable {}
 extension SalemoveSDK.PushType : Swift.Hashable {}
 extension SalemoveSDK.PushType : Swift.RawRepresentable {}
+extension SalemoveSDK.PushTiming : Swift.Equatable {}
+extension SalemoveSDK.PushTiming : Swift.Hashable {}
+extension SalemoveSDK.PushTiming : Swift.RawRepresentable {}
 extension SalemoveSDK.Salemove.Authentication.Behavior : Swift.Equatable {}
 extension SalemoveSDK.Salemove.Authentication.Behavior : Swift.Hashable {}
 extension SalemoveSDK.VideoScalingOptions : Swift.Equatable {}
