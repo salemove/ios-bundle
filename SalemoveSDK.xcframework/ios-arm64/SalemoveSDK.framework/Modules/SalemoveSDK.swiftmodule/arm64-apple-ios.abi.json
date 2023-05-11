@@ -3118,6 +3118,9 @@
             "moduleName": "SalemoveSDK",
             "genericSig": "<τ_0_0 where τ_0_0 : SalemoveSDK.EngagementHandling>",
             "sugared_genericSig": "<Self where Self : SalemoveSDK.EngagementHandling>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
             "isFromExtension": true,
             "funcSelfKind": "NonMutating"
           }
@@ -17144,6 +17147,55 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "timing",
+            "printedName": "timing",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PushTiming",
+                "printedName": "SalemoveSDK.PushTiming",
+                "usr": "c:@M@SalemoveSDK@E@PushTiming"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@SalemoveSDK@objc(cs)Push(py)timing",
+            "mangledName": "$s11SalemoveSDK4PushC6timingAA0C6TimingOvp",
+            "moduleName": "SalemoveSDK",
+            "declAttributes": [
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushTiming",
+                    "printedName": "SalemoveSDK.PushTiming",
+                    "usr": "c:@M@SalemoveSDK@E@PushTiming"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@SalemoveSDK@objc(cs)Push(im)timing",
+                "mangledName": "$s11SalemoveSDK4PushC6timingAA0C6TimingOvg",
+                "moduleName": "SalemoveSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(from:)",
@@ -17396,6 +17448,48 @@
             "fixedbinaryorder": 1
           },
           {
+            "kind": "Var",
+            "name": "queueMessage",
+            "printedName": "queueMessage",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(SalemoveSDK.PushType.Type) -> SalemoveSDK.PushType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushType",
+                    "printedName": "SalemoveSDK.PushType",
+                    "usr": "c:@M@SalemoveSDK@E@PushType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "SalemoveSDK.PushType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PushType",
+                        "printedName": "SalemoveSDK.PushType",
+                        "usr": "c:@M@SalemoveSDK@E@PushType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@SalemoveSDK@E@PushType@PushTypeQueueMessage",
+            "mangledName": "$s11SalemoveSDK8PushTypeO12queueMessageyA2CmF",
+            "moduleName": "SalemoveSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 2
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(rawValue:)",
@@ -17514,6 +17608,273 @@
             ],
             "usr": "s:SY",
             "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "PushTiming",
+        "printedName": "PushTiming",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "inApp",
+            "printedName": "inApp",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(SalemoveSDK.PushTiming.Type) -> SalemoveSDK.PushTiming",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushTiming",
+                    "printedName": "SalemoveSDK.PushTiming",
+                    "usr": "c:@M@SalemoveSDK@E@PushTiming"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "SalemoveSDK.PushTiming.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PushTiming",
+                        "printedName": "SalemoveSDK.PushTiming",
+                        "usr": "c:@M@SalemoveSDK@E@PushTiming"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@SalemoveSDK@E@PushTiming@PushTimingInApp",
+            "mangledName": "$s11SalemoveSDK10PushTimingO5inAppyA2CmF",
+            "moduleName": "SalemoveSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 0
+          },
+          {
+            "kind": "Var",
+            "name": "background",
+            "printedName": "background",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(SalemoveSDK.PushTiming.Type) -> SalemoveSDK.PushTiming",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushTiming",
+                    "printedName": "SalemoveSDK.PushTiming",
+                    "usr": "c:@M@SalemoveSDK@E@PushTiming"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "SalemoveSDK.PushTiming.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PushTiming",
+                        "printedName": "SalemoveSDK.PushTiming",
+                        "usr": "c:@M@SalemoveSDK@E@PushTiming"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@SalemoveSDK@E@PushTiming@PushTimingBackground",
+            "mangledName": "$s11SalemoveSDK10PushTimingO10backgroundyA2CmF",
+            "moduleName": "SalemoveSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 1
+          },
+          {
+            "kind": "Var",
+            "name": "unidentified",
+            "printedName": "unidentified",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(SalemoveSDK.PushTiming.Type) -> SalemoveSDK.PushTiming",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushTiming",
+                    "printedName": "SalemoveSDK.PushTiming",
+                    "usr": "c:@M@SalemoveSDK@E@PushTiming"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "SalemoveSDK.PushTiming.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PushTiming",
+                        "printedName": "SalemoveSDK.PushTiming",
+                        "usr": "c:@M@SalemoveSDK@E@PushTiming"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@SalemoveSDK@E@PushTiming@PushTimingUnidentified",
+            "mangledName": "$s11SalemoveSDK10PushTimingO12unidentifiedyA2CmF",
+            "moduleName": "SalemoveSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 2
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "SalemoveSDK.PushTiming?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushTiming",
+                    "printedName": "SalemoveSDK.PushTiming",
+                    "usr": "c:@M@SalemoveSDK@E@PushTiming"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11SalemoveSDK10PushTimingO8rawValueACSgSi_tcfc",
+            "mangledName": "$s11SalemoveSDK10PushTimingO8rawValueACSgSi_tcfc",
+            "moduleName": "SalemoveSDK",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11SalemoveSDK10PushTimingO8rawValueSivp",
+            "mangledName": "$s11SalemoveSDK10PushTimingO8rawValueSivp",
+            "moduleName": "SalemoveSDK",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11SalemoveSDK10PushTimingO8rawValueSivg",
+                "mangledName": "$s11SalemoveSDK10PushTimingO8rawValueSivg",
+                "moduleName": "SalemoveSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "c:@M@SalemoveSDK@E@PushTiming",
+        "mangledName": "$s11SalemoveSDK10PushTimingO",
+        "moduleName": "SalemoveSDK",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "Int",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
           }
         ]
       },
@@ -33620,28 +33981,28 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 1468,
+      "offset": 1526,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "Array",
-      "offset": 1545,
+      "offset": 1603,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 1746,
+      "offset": 1804,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 238,
+      "offset": 296,
       "length": 17,
       "value": "\"SalemoveSDK.PushNotifications\""
     },
@@ -34957,23 +35318,65 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
       "kind": "StringLiteral",
-      "offset": 86,
+      "offset": 81,
       "length": 4,
       "value": "\"SalemoveSDK.Push\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
       "kind": "IntegerLiteral",
-      "offset": 1405,
+      "offset": 1741,
       "length": 11,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
       "kind": "IntegerLiteral",
-      "offset": 1405,
+      "offset": 1836,
+      "length": 12,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1741,
       "length": 11,
       "value": "1"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1836,
+      "length": 12,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2578,
+      "length": 10,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2623,
+      "length": 12,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2578,
+      "length": 10,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2623,
+      "length": 12,
+      "value": "2"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Concurency\/Atomic.swift",
@@ -36184,7 +36587,7 @@
       "kind": "StringLiteral",
       "offset": 433,
       "length": 9,
-      "value": "\"0.35.15\""
+      "value": "\"0.35.16\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Channel\/NamespacedChannel.swift",
@@ -36231,28 +36634,28 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48797,
+      "offset": 48879,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48856,
+      "offset": 48938,
       "length": 23,
       "value": "\"capabilities:response\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48797,
+      "offset": 48879,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48856,
+      "offset": 48938,
       "length": 23,
       "value": "\"capabilities:response\""
     },
