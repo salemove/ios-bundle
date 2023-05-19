@@ -1,0 +1,1208 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name GliaCoreSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import CoreMedia/*.CMSampleBuffer*/
+import CoreServices
+import Foundation
+import GliaCoreDependency
+import GliaCoreDependency/*.Defaults*/
+import GliaCoreDependency/*.ReactiveSwift*/
+import GliaCoreDependency/*.Starscream*/
+import GliaCoreDependency/*.SwiftPhoenixClient*/
+@_exported import GliaCoreSDK
+import ReplayKit
+import ReplayKit/*.RPSampleBufferType*/
+import Security
+import Swift
+import TwilioVoice
+import UIKit
+import UserNotifications
+import WebRTC
+import _Concurrency
+import _StringProcessing
+@objc public enum AttachmentType : Swift.Int, Swift.Decodable {
+  case files
+  case singleChoice
+  case singleChoiceResponse
+  case ssml
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct VisitorCode : Swift.Decodable {
+  public let code: Swift.String
+  public let expiresAt: Foundation.Date
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class EngagementFileData : ObjectiveC.NSObject {
+  @objc final public let data: Foundation.Data
+  @objc deinit
+}
+public struct EngagementOptions {
+  public init(mediaDirection: GliaCoreSDK.MediaDirection? = nil)
+}
+public enum EngagementEndingReason {
+  case natural
+  case error
+  public static func == (a: GliaCoreSDK.EngagementEndingReason, b: GliaCoreSDK.EngagementEndingReason) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum PushNotificationsType : Swift.Int {
+  case start
+  case end
+  case failed
+  case message
+  case transfer
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension GliaCoreSDK.GliaCore {
+  @objc final public func uploadFileToEngagement(_ file: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping GliaCoreSDK.EngagementFileCompletionBlock)
+  @objc final public func fetchFile(engagementFile: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping GliaCoreSDK.EngagementFileFetchCompletionBlock)
+}
+@objc public class Attachment : ObjectiveC.NSObject, Swift.Decodable {
+  final public let type: GliaCoreSDK.AttachmentType?
+  final public let selectedOption: Swift.String?
+  final public let options: [GliaCoreSDK.SingleChoiceOption]?
+  final public let imageUrl: Swift.String?
+  final public let files: [GliaCoreSDK.EngagementFile]?
+  public init(type: GliaCoreSDK.AttachmentType?, selectedOption: Swift.String?, options: [GliaCoreSDK.SingleChoiceOption]?, files: [GliaCoreSDK.EngagementFile]?, imageUrl: Swift.String?)
+  public init(file: GliaCoreSDK.EngagementFile)
+  public init(files: [GliaCoreSDK.EngagementFile])
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+extension GliaCoreSDK.GliaCore {
+  public struct VisitorInfo : Swift.Equatable, Swift.Codable {
+    public let name: Swift.String?
+    public let email: Swift.String?
+    public let phone: Swift.String?
+    public let note: Swift.String?
+    public let customAttributes: [Swift.String : Swift.String]?
+    public let banned: Swift.Bool
+    public static func == (a: GliaCoreSDK.GliaCore.VisitorInfo, b: GliaCoreSDK.GliaCore.VisitorInfo) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class SingleChoiceOption : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var text: Swift.String?
+  @objc public var value: Swift.String?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+public protocol PushNotificationsConfigurable {
+  func subscribeTo(_ notifications: [GliaCoreSDK.PushNotificationsType])
+}
+@objc public class QueueTicket : ObjectiveC.NSObject {
+  public init(id: Swift.String)
+  @objc deinit
+}
+public protocol EngagementHandling {
+  func start(engagement: GliaCoreSDK.Engagement)
+  func end(with reason: GliaCoreSDK.EngagementEndingReason)
+  var onEngagementRequest: GliaCoreSDK.RequestOfferBlock { get }
+  var onEngagementTransfer: GliaCoreSDK.EngagementTransferBlock { get }
+  var onEngagementTransferring: GliaCoreSDK.EngagementTransferringBlock { get }
+}
+@objc public protocol MessageHandling {
+  @objc func receive(message: GliaCoreSDK.Message)
+  @objc var onOperatorTypingStatusUpdate: GliaCoreSDK.OperatorTypingStatusUpdate { get }
+  @objc var onMessagesUpdated: GliaCoreSDK.MessagesUpdateBlock { get }
+}
+public protocol MediaHandling {
+  var onMediaUpgradeOffer: GliaCoreSDK.MediaUgradeOfferBlock { get }
+  var onEngagementTransferMediaUpdate: GliaCoreSDK.MediaUpdateBlock { get }
+  var onScreenSharingOffer: GliaCoreSDK.ScreenshareOfferBlock { get }
+  var onVideoStreamAdded: GliaCoreSDK.VideoStreamAddedBlock { get }
+  var onAudioStreamAdded: GliaCoreSDK.AudioStreamAddedBlock { get }
+  var onVisitorScreenSharingStateChange: GliaCoreSDK.VisitorScreenSharingStateChange { get }
+}
+@objc public protocol ErrorHandling {
+  @objc func fail(error: GliaCoreSDK.GliaCoreError)
+}
+public protocol Interactable : GliaCoreSDK.EngagementHandling, GliaCoreSDK.ErrorHandling, GliaCoreSDK.MediaHandling, GliaCoreSDK.MessageHandling {
+}
+extension GliaCoreSDK.GliaCore {
+  final public func configure(with sdkConfiguration: GliaCoreSDK.GliaCore.Configuration, completion: (() -> Swift.Void)? = nil)
+  final public func configure(interactor: GliaCoreSDK.Interactable)
+}
+extension GliaCoreSDK.GliaCore {
+  public enum AuthorizationMethod {
+    case appToken(Swift.String)
+    case siteApiKey(id: Swift.String, secret: Swift.String)
+  }
+}
+extension GliaCoreSDK.GliaCore {
+  public enum Region {
+    case us
+    case eu
+    case custom(Foundation.URL)
+  }
+  public struct Configuration {
+    public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, authorizingMethod: GliaCoreSDK.GliaCore.AuthorizationMethod, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled) throws
+  }
+}
+extension GliaCoreSDK.GliaCore.Configuration {
+  public enum PushNotifications {
+    case disabled
+    case sandbox
+    case production
+    public static func == (a: GliaCoreSDK.GliaCore.Configuration.PushNotifications, b: GliaCoreSDK.GliaCore.Configuration.PushNotifications) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+@objc public class Message : ObjectiveC.NSObject, Swift.Decodable {
+  public typealias Id = GliaCoreSDK.Tagged<GliaCoreSDK.Message, Swift.String>
+  @objc public var id: Swift.String {
+    get
+  }
+  @objc public var content: Swift.String {
+    get
+  }
+  @objc public var attachment: GliaCoreSDK.Attachment? {
+    get
+  }
+  public var sender: GliaCoreSDK.MessageSender {
+    get
+  }
+  final public let metadata: GliaCoreSDK.Message.Metadata?
+  public init(id: Swift.String, content: Swift.String, sender: GliaCoreSDK.MessageSender, attachment: GliaCoreSDK.Attachment? = nil, metadata: GliaCoreSDK.Message.Metadata?)
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+}
+extension GliaCoreSDK.Message {
+  public struct Metadata {
+    public enum CodingKeys : Swift.String, Swift.CodingKey {
+      case metadata
+      public init?(rawValue: Swift.String)
+      public init?(stringValue: Swift.String)
+      public init?(intValue: Swift.Int)
+      public typealias RawValue = Swift.String
+      public var intValue: Swift.Int? {
+        get
+      }
+      public var rawValue: Swift.String {
+        get
+      }
+      public var stringValue: Swift.String {
+        get
+      }
+    }
+    public func decode<T>(_ type: T.Type) throws -> T where T : Swift.Decodable
+    public init(container: Swift.KeyedDecodingContainer<GliaCoreSDK.Message.Metadata.CodingKeys>)
+  }
+}
+public struct MessageSender : Swift.Equatable, Swift.Codable {
+  public let name: Swift.String?
+  public let type: GliaCoreSDK.MessageSender.SenderType
+  public let id: Foundation.UUID?
+  public let picture: GliaCoreSDK.MessageSenderPicture?
+  public static func == (a: GliaCoreSDK.MessageSender, b: GliaCoreSDK.MessageSender) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension GliaCoreSDK.MessageSender {
+  public init(type: GliaCoreSDK.MessageSender.SenderType)
+}
+extension GliaCoreSDK.MessageSender {
+  public enum SenderType : Swift.String, Swift.Codable {
+    case visitor
+    case `operator`
+    case omniguide
+    case system
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+public struct MessageSenderPicture : Swift.Equatable, Swift.Codable {
+  public let url: Swift.String?
+  public static func == (a: GliaCoreSDK.MessageSenderPicture, b: GliaCoreSDK.MessageSenderPicture) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public typealias EngagementSessionBlock = (GliaCoreSDK.EngagementRequest?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
+public typealias OperatorBlock = ([GliaCoreSDK.Operator]?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
+public typealias QueueTicketBlock = (GliaCoreSDK.QueueTicket?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
+public typealias QueueRequestBlock = ([GliaCoreSDK.Queue]?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
+public typealias QueueUpdateBlock = (GliaCoreSDK.Queue) -> Swift.Void
+public typealias MessageBlock = (GliaCoreSDK.Message?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
+public typealias EngagementBlock = (GliaCoreSDK.Engagement?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
+public typealias SuccessBlock = (Swift.Bool, GliaCoreSDK.GliaCoreError?) -> Swift.Void
+public typealias AnswerBlock = (Swift.Bool) -> Swift.Void
+public typealias ErrorBlock = (GliaCoreSDK.GliaCoreError) -> Swift.Void
+public typealias AnswerWithSuccessBlock = (Swift.Bool, GliaCoreSDK.SuccessBlock?) -> Swift.Void
+public typealias RequestAnswerBlock = (GliaCoreSDK.VisitorContext?, Swift.Bool, @escaping GliaCoreSDK.SuccessBlock) -> Swift.Void
+public typealias VisitorCodeBlock = (Swift.String?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
+public typealias RequestOfferBlock = (@escaping GliaCoreSDK.RequestAnswerBlock) -> Swift.Void
+public typealias MediaUgradeOfferBlock = (GliaCoreSDK.MediaUpgradeOffer, @escaping GliaCoreSDK.AnswerWithSuccessBlock) -> Swift.Void
+public typealias MediaUpdateBlock = (GliaCoreSDK.MediaUpgradeOffer) -> Swift.Void
+public typealias ScreenshareOfferBlock = (@escaping GliaCoreSDK.AnswerBlock) -> Swift.Void
+public typealias VisitorScreenSharingStateChange = (GliaCoreSDK.VisitorScreenSharingState, GliaCoreSDK.GliaCoreError?) -> Swift.Void
+public typealias AudioStreamAddedBlock = (GliaCoreSDK.AudioStreamable?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
+public typealias VideoStreamAddedBlock = (GliaCoreSDK.VideoStreamable?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
+public typealias MessagesUpdateBlock = ([GliaCoreSDK.Message]) -> Swift.Void
+public typealias EngagementTransferBlock = ([GliaCoreSDK.Operator]?) -> Swift.Void
+public typealias EngagementTransferringBlock = () -> Swift.Void
+public typealias PushActionBlock = (GliaCoreSDK.Push) -> Swift.Void
+public typealias OperatorTypingStatusUpdate = (GliaCoreSDK.OperatorTypingStatus) -> Swift.Void
+public typealias EngagementFileProgressBlock = (GliaCoreSDK.EngagementFileProgress) -> Swift.Void
+public typealias EngagementFileCompletionBlock = (GliaCoreSDK.EngagementFileInformation?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
+public typealias EngagementFileFetchCompletionBlock = (GliaCoreSDK.EngagementFileData?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
+public typealias StreamableOnHoldHandler = (_ onHold: Swift.Bool) -> Swift.Void
+public protocol PushNotificationsHandling {
+  func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+  func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
+  func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+}
+public struct VisitorInfoUpdate : Swift.Encodable {
+  public var name: Swift.String?
+  public var email: Swift.String?
+  public var phone: Swift.String?
+  public var note: Swift.String?
+  public var noteUpdateMethod: GliaCoreSDK.VisitorInfoUpdate.NoteUpdateMethod?
+  public var externalID: Swift.String? {
+    get
+    set
+  }
+  public var customAttributes: [Swift.String : Swift.String]?
+  public var customAttributesUpdateMethod: GliaCoreSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod?
+  public init(name: Swift.String? = nil, email: Swift.String? = nil, phone: Swift.String? = nil, note: Swift.String? = nil, noteUpdateMethod: GliaCoreSDK.VisitorInfoUpdate.NoteUpdateMethod? = nil, externalID: Swift.String? = nil, customAttributes: [Swift.String : Swift.String]? = nil, customAttributesUpdateMethod: GliaCoreSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension GliaCoreSDK.VisitorInfoUpdate {
+  public enum NoteUpdateMethod : Swift.String {
+    case replace
+    case append
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum CustomAttributesUpdateMethod : Swift.String, Swift.Encodable {
+    case replace
+    case merge
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+@objc @_hasMissingDesignatedInitializers public class PushNotifications : ObjectiveC.NSObject {
+  @objc public var handler: GliaCoreSDK.PushActionBlock? {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+extension GliaCoreSDK.PushNotifications : GliaCoreSDK.PushNotificationsHandling, UserNotifications.UNUserNotificationCenterDelegate {
+  @objc dynamic public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+  @objc dynamic public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
+  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+}
+extension GliaCoreSDK.PushNotifications : GliaCoreSDK.PushNotificationsConfigurable {
+  @available(*, unavailable, message: "Use `GliaCore.Configuration` to make push notifications feature enabled.")
+  public func enable(_ shouldEnablePushNotifications: Swift.Bool)
+  public func subscribeTo(_ notifications: [GliaCoreSDK.PushNotificationsType])
+}
+@dynamicMemberLookup public struct Tagged<Tag, RawValue> {
+  public var rawValue: RawValue
+  public init(rawValue: RawValue)
+  public func map<B>(_ f: (RawValue) -> B) -> GliaCoreSDK.Tagged<Tag, B>
+}
+extension GliaCoreSDK.Tagged {
+  public subscript<T>(dynamicMember keyPath: Swift.KeyPath<RawValue, T>) -> T {
+    get
+  }
+}
+extension GliaCoreSDK.Tagged : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension GliaCoreSDK.Tagged : Swift.RawRepresentable {
+}
+extension GliaCoreSDK.Tagged : Swift.CustomPlaygroundDisplayConvertible {
+  public var playgroundDescription: Any {
+    get
+  }
+}
+extension GliaCoreSDK.Tagged : Swift.Collection where RawValue : Swift.Collection {
+  public typealias Element = RawValue.Element
+  public typealias Index = RawValue.Index
+  public func index(after i: RawValue.Index) -> RawValue.Index
+  public subscript(position: RawValue.Index) -> RawValue.Element {
+    get
+  }
+  public var startIndex: RawValue.Index {
+    get
+  }
+  public var endIndex: RawValue.Index {
+    get
+  }
+  public __consuming func makeIterator() -> RawValue.Iterator
+  public typealias Indices = Swift.DefaultIndices<GliaCoreSDK.Tagged<Tag, RawValue>>
+  public typealias SubSequence = Swift.Slice<GliaCoreSDK.Tagged<Tag, RawValue>>
+}
+extension GliaCoreSDK.Tagged : Swift.Comparable where RawValue : Swift.Comparable {
+  public static func < (lhs: GliaCoreSDK.Tagged<Tag, RawValue>, rhs: GliaCoreSDK.Tagged<Tag, RawValue>) -> Swift.Bool
+}
+extension GliaCoreSDK.Tagged : Swift.Decodable where RawValue : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension GliaCoreSDK.Tagged : Swift.Encodable where RawValue : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension GliaCoreSDK.Tagged : Swift.Equatable where RawValue : Swift.Equatable {
+}
+extension GliaCoreSDK.Tagged : Swift.Error where RawValue : Swift.Error {
+}
+extension GliaCoreSDK.Tagged : Foundation.LocalizedError where RawValue : Swift.Error {
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var failureReason: Swift.String? {
+    get
+  }
+  public var helpAnchor: Swift.String? {
+    get
+  }
+  public var recoverySuggestion: Swift.String? {
+    get
+  }
+}
+extension GliaCoreSDK.Tagged : Swift.ExpressibleByBooleanLiteral where RawValue : Swift.ExpressibleByBooleanLiteral {
+  public typealias BooleanLiteralType = RawValue.BooleanLiteralType
+  public init(booleanLiteral value: RawValue.BooleanLiteralType)
+}
+extension GliaCoreSDK.Tagged : Swift.ExpressibleByExtendedGraphemeClusterLiteral where RawValue : Swift.ExpressibleByExtendedGraphemeClusterLiteral {
+  public typealias ExtendedGraphemeClusterLiteralType = RawValue.ExtendedGraphemeClusterLiteralType
+  public init(extendedGraphemeClusterLiteral: GliaCoreSDK.Tagged<Tag, RawValue>.ExtendedGraphemeClusterLiteralType)
+}
+extension GliaCoreSDK.Tagged : Swift.ExpressibleByFloatLiteral where RawValue : Swift.ExpressibleByFloatLiteral {
+  public typealias FloatLiteralType = RawValue.FloatLiteralType
+  public init(floatLiteral: GliaCoreSDK.Tagged<Tag, RawValue>.FloatLiteralType)
+}
+extension GliaCoreSDK.Tagged : Swift.ExpressibleByIntegerLiteral where RawValue : Swift.ExpressibleByIntegerLiteral {
+  public typealias IntegerLiteralType = RawValue.IntegerLiteralType
+  public init(integerLiteral: GliaCoreSDK.Tagged<Tag, RawValue>.IntegerLiteralType)
+}
+extension GliaCoreSDK.Tagged : Swift.ExpressibleByStringLiteral where RawValue : Swift.ExpressibleByStringLiteral {
+  public typealias StringLiteralType = RawValue.StringLiteralType
+  public init(stringLiteral: GliaCoreSDK.Tagged<Tag, RawValue>.StringLiteralType)
+}
+extension GliaCoreSDK.Tagged : Swift.ExpressibleByStringInterpolation where RawValue : Swift.ExpressibleByStringInterpolation {
+  public typealias StringInterpolation = RawValue.StringInterpolation
+  public init(stringInterpolation: GliaCoreSDK.Tagged<Tag, RawValue>.StringInterpolation)
+}
+extension GliaCoreSDK.Tagged : Swift.ExpressibleByUnicodeScalarLiteral where RawValue : Swift.ExpressibleByUnicodeScalarLiteral {
+  public typealias UnicodeScalarLiteralType = RawValue.UnicodeScalarLiteralType
+  public init(unicodeScalarLiteral: GliaCoreSDK.Tagged<Tag, RawValue>.UnicodeScalarLiteralType)
+}
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+extension GliaCoreSDK.Tagged : Swift.Identifiable where RawValue : Swift.Identifiable {
+  public typealias ID = RawValue.ID
+  public var id: GliaCoreSDK.Tagged<Tag, RawValue>.ID {
+    get
+  }
+}
+extension GliaCoreSDK.Tagged : Swift.LosslessStringConvertible where RawValue : Swift.LosslessStringConvertible {
+  public init?(_ description: Swift.String)
+}
+extension GliaCoreSDK.Tagged : Swift.AdditiveArithmetic where RawValue : Swift.AdditiveArithmetic {
+  public static var zero: GliaCoreSDK.Tagged<Tag, RawValue> {
+    get
+  }
+  public static func + (lhs: GliaCoreSDK.Tagged<Tag, RawValue>, rhs: GliaCoreSDK.Tagged<Tag, RawValue>) -> GliaCoreSDK.Tagged<Tag, RawValue>
+  public static func += (lhs: inout GliaCoreSDK.Tagged<Tag, RawValue>, rhs: GliaCoreSDK.Tagged<Tag, RawValue>)
+  public static func - (lhs: GliaCoreSDK.Tagged<Tag, RawValue>, rhs: GliaCoreSDK.Tagged<Tag, RawValue>) -> GliaCoreSDK.Tagged<Tag, RawValue>
+  public static func -= (lhs: inout GliaCoreSDK.Tagged<Tag, RawValue>, rhs: GliaCoreSDK.Tagged<Tag, RawValue>)
+}
+extension GliaCoreSDK.Tagged : Swift.Numeric where RawValue : Swift.Numeric {
+  public init?<T>(exactly source: T) where T : Swift.BinaryInteger
+  public var magnitude: RawValue.Magnitude {
+    get
+  }
+  public static func * (lhs: GliaCoreSDK.Tagged<Tag, RawValue>, rhs: GliaCoreSDK.Tagged<Tag, RawValue>) -> GliaCoreSDK.Tagged<Tag, RawValue>
+  public static func *= (lhs: inout GliaCoreSDK.Tagged<Tag, RawValue>, rhs: GliaCoreSDK.Tagged<Tag, RawValue>)
+  public typealias Magnitude = RawValue.Magnitude
+}
+extension GliaCoreSDK.Tagged : Swift.Hashable where RawValue : Swift.Hashable {
+}
+extension GliaCoreSDK.Tagged : Swift.SignedNumeric where RawValue : Swift.SignedNumeric {
+}
+extension GliaCoreSDK.Tagged : Swift.Sequence where RawValue : Swift.Sequence {
+  public typealias Iterator = RawValue.Iterator
+  public __consuming func makeIterator() -> RawValue.Iterator
+}
+extension GliaCoreSDK.Tagged : Swift.Strideable where RawValue : Swift.Strideable {
+  public typealias Stride = RawValue.Stride
+  public func distance(to other: GliaCoreSDK.Tagged<Tag, RawValue>) -> RawValue.Stride
+  public func advanced(by n: RawValue.Stride) -> GliaCoreSDK.Tagged<Tag, RawValue>
+}
+extension GliaCoreSDK.Tagged : Swift.ExpressibleByArrayLiteral where RawValue : Swift.ExpressibleByArrayLiteral {
+  public typealias ArrayLiteralElement = RawValue.ArrayLiteralElement
+  public init(arrayLiteral elements: GliaCoreSDK.Tagged<Tag, RawValue>.ArrayLiteralElement...)
+}
+extension GliaCoreSDK.Tagged : Swift.ExpressibleByDictionaryLiteral where RawValue : Swift.ExpressibleByDictionaryLiteral {
+  public typealias Key = RawValue.Key
+  public typealias Value = RawValue.Value
+  public init(dictionaryLiteral elements: (GliaCoreSDK.Tagged<Tag, RawValue>.Key, GliaCoreSDK.Tagged<Tag, RawValue>.Value)...)
+}
+extension GliaCoreSDK.Tagged {
+  public func coerced<Tag2>(to type: Tag2.Type) -> GliaCoreSDK.Tagged<Tag2, RawValue>
+}
+@objc public protocol AudioStreamable {
+  @objc @available(iOS, obsoleted: 10.0, message: "Audio is now played automatically when media is established")
+  func playAudio()
+  @objc func mute()
+  @objc func unmute()
+  @objc var isMuted: Swift.Bool { get }
+  @objc var isRemote: Swift.Bool { get }
+  @objc var onHold: GliaCoreSDK.StreamableOnHoldHandler? { get set }
+}
+public protocol VideoStreamable : AnyObject {
+  func getStreamView() -> GliaCoreSDK.StreamView
+  func playVideo()
+  func pause()
+  func resume()
+  func stop()
+  var isPaused: Swift.Bool { get }
+  var isRemote: Swift.Bool { get }
+  var onHold: GliaCoreSDK.StreamableOnHoldHandler? { get set }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class GliaCoreAppDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
+  @discardableResult
+  @_Concurrency.MainActor(unsafe) @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+  @_Concurrency.MainActor(unsafe) @objc public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
+  @_Concurrency.MainActor(unsafe) @objc public func applicationDidBecomeActive(_ application: UIKit.UIApplication)
+  @_Concurrency.MainActor(unsafe) @objc public func applicationWillResignActive(_ application: UIKit.UIApplication)
+  @_Concurrency.MainActor(unsafe) @objc public func applicationDidEnterBackground(_ application: UIKit.UIApplication)
+  @_Concurrency.MainActor(unsafe) @objc public func applicationWillEnterForeground(_ application: UIKit.UIApplication)
+  @_Concurrency.MainActor(unsafe) @objc public func applicationWillTerminate(_ application: UIKit.UIApplication)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
+  @objc deinit
+}
+extension GliaCoreSDK.GliaCore {
+  @available(*, unavailable, message: "Use `GliaCore.send(option:completion:)` instead.")
+  final public func send(selectedOptionValue: Swift.String, completion: @escaping (Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> Swift.Void)
+  @available(*, unavailable, message: "Use `GliaCore.configure(with:) throws` instead.")
+  @objc final public func configure(appToken: Swift.String) throws
+  @available(*, unavailable, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
+  @objc final public func configure(site: Swift.String) throws
+  @available(*, unavailable, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
+  @objc final public func configure(environment: Swift.String) throws
+  @available(*, deprecated, message: "Use `GliaCore.CallVisualizer` to request visitor code.")
+  @objc final public func requestVisitorCode(completion: @escaping GliaCoreSDK.VisitorCodeBlock)
+}
+extension GliaCoreSDK.GliaCore {
+  @objc final public func requestMediaUpgrade(offer: GliaCoreSDK.MediaUpgradeOffer, completion: @escaping GliaCoreSDK.SuccessBlock)
+}
+extension GliaCoreSDK.GliaCore {
+  final public func getCurrentEngagement() -> GliaCoreSDK.Engagement?
+  final public func submitSurveyAnswer(_ answers: [GliaCoreSDK.Survey.Answer], surveyId: GliaCoreSDK.Survey.Id, engagementId: Swift.String, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+}
+extension GliaCoreSDK.GliaCore {
+  @objc final public func waitForActiveEngagement(completion: @escaping GliaCoreSDK.EngagementBlock)
+  final public func requestEngagementWith(selectedOperator: GliaCoreSDK.Operator, visitorContext: GliaCoreSDK.VisitorContext? = nil, completion: @escaping GliaCoreSDK.EngagementSessionBlock)
+  final public func requestEngagementWith(selectedOperator: GliaCoreSDK.Operator, visitorContext: GliaCoreSDK.VisitorContext? = nil, mediaType: GliaCoreSDK.MediaType, options: GliaCoreSDK.EngagementOptions? = nil, completion: @escaping GliaCoreSDK.EngagementSessionBlock)
+  @objc final public func cancel(engagementRequest: GliaCoreSDK.EngagementRequest, completion: @escaping GliaCoreSDK.SuccessBlock)
+  @objc final public func requestEngagedOperator(completion: @escaping GliaCoreSDK.OperatorBlock)
+  @objc final public func endEngagement(completion: @escaping GliaCoreSDK.SuccessBlock)
+}
+public enum EngagementSource : Swift.RawRepresentable, Swift.Codable {
+  case coreEngagement
+  case callVisualizer
+  case unknown(Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public init(from decoder: Swift.Decoder) throws
+  public typealias RawValue = Swift.String
+}
+extension GliaCoreSDK.GliaCore {
+  public typealias IdToken = GliaCoreSDK.Tagged<(GliaCoreSDK.GliaCore, idToken: ()), Swift.String>
+  final public func authentication(with behavior: GliaCoreSDK.GliaCore.Authentication.Behavior) throws -> GliaCoreSDK.GliaCore.Authentication
+}
+extension GliaCoreSDK.GliaCore {
+  final public class Cancellable {
+    public init(isCancelled: Swift.Bool = false, cancelOperation: (() -> Swift.Void)? = nil)
+    final public func cancel()
+    @objc deinit
+  }
+}
+extension GliaCoreSDK.GliaCore {
+  final public func send(option: GliaCoreSDK.SingleChoiceOption, completion: @escaping (Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> Swift.Void)
+  @objc final public func send(message: Swift.String = "", attachment: GliaCoreSDK.Attachment? = nil, completion: @escaping GliaCoreSDK.MessageBlock)
+  @objc final public func send(message: Swift.String, queueID: Swift.String, completion: @escaping GliaCoreSDK.MessageBlock)
+  @objc final public func sendMessagePreview(message: Swift.String, completion: @escaping GliaCoreSDK.SuccessBlock)
+}
+public enum AnyCodable : Swift.Equatable {
+  case string(Swift.String)
+  case number(Swift.Double)
+  case object([Swift.String : GliaCoreSDK.AnyCodable])
+  case array([GliaCoreSDK.AnyCodable])
+  case bool(Swift.Bool)
+  case null
+  public static func == (a: GliaCoreSDK.AnyCodable, b: GliaCoreSDK.AnyCodable) -> Swift.Bool
+}
+extension GliaCoreSDK.AnyCodable : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc public class VisitorContext : ObjectiveC.NSObject {
+  public init(_ contextType: GliaCoreSDK.VisitorContext.ContextType?)
+  @objc deinit
+}
+extension GliaCoreSDK.VisitorContext {
+  public typealias AssetId = GliaCoreSDK.Tagged<(GliaCoreSDK.VisitorContext, assetId: ()), Foundation.UUID>
+  public enum ContextType {
+    case assetId(GliaCoreSDK.VisitorContext.AssetId)
+  }
+}
+extension GliaCoreSDK.VisitorContext : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public enum MediaType : Swift.String, Swift.Codable {
+  case audio
+  case video
+  case text
+  case messaging
+  case phone
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class EngagementFileProgress : ObjectiveC.NSObject {
+  final public let fractionCompleted: Swift.Double
+  @objc deinit
+}
+public struct Survey : Swift.Equatable {
+  public typealias Id = GliaCoreSDK.Tagged<GliaCoreSDK.Survey, Swift.String>
+  public let id: GliaCoreSDK.Survey.Id
+  public let name: Swift.String
+  public let description: Swift.String
+  public let title: Swift.String
+  public let type: GliaCoreSDK.Survey.SurveyType
+  public let isDefault: Swift.Bool?
+  public let isEnabled: Swift.Bool?
+  public let queueIds: [Swift.String]?
+  public let siteId: Swift.String
+  public let questions: [GliaCoreSDK.Survey.Question]
+  public let createdAt: Foundation.Date?
+  public let updatedAt: Foundation.Date?
+  public static func == (a: GliaCoreSDK.Survey, b: GliaCoreSDK.Survey) -> Swift.Bool
+}
+extension GliaCoreSDK.Survey : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension GliaCoreSDK.Survey {
+  public enum SurveyType : Swift.String {
+    case `operator`
+    case visitor
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+extension GliaCoreSDK.Survey.SurveyType : Swift.Decodable {
+}
+extension GliaCoreSDK.Survey {
+  public struct Question : Swift.Equatable {
+    public typealias Id = GliaCoreSDK.Tagged<GliaCoreSDK.Survey.Question, Swift.String>
+    public let id: GliaCoreSDK.Survey.Question.Id
+    public let name: Swift.String
+    public let text: Swift.String
+    public let type: GliaCoreSDK.Survey.QuestionType
+    public let options: [GliaCoreSDK.Survey.Question.Option]?
+    public let required: Swift.Bool
+    public let siteId: Swift.String
+    public let createdAt: Foundation.Date
+    public let updatedAt: Foundation.Date
+    public static func == (a: GliaCoreSDK.Survey.Question, b: GliaCoreSDK.Survey.Question) -> Swift.Bool
+  }
+}
+extension GliaCoreSDK.Survey.Question : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension GliaCoreSDK.Survey.Question {
+  public struct Option : Swift.Equatable {
+    public typealias Id = GliaCoreSDK.Tagged<GliaCoreSDK.Survey.Question.Option, Swift.String>
+    public let id: GliaCoreSDK.Survey.Question.Option.Id
+    public let label: Swift.String
+    public let isDefault: Swift.Bool
+    public let position: Swift.Int
+    public static func == (a: GliaCoreSDK.Survey.Question.Option, b: GliaCoreSDK.Survey.Question.Option) -> Swift.Bool
+  }
+}
+extension GliaCoreSDK.Survey.Question.Option : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension GliaCoreSDK.Survey {
+  public enum QuestionType : Swift.String {
+    case text
+    case scale
+    case singleChoice
+    case boolean
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+extension GliaCoreSDK.Survey.QuestionType : Swift.Decodable {
+}
+extension GliaCoreSDK.Survey {
+  public struct Answer {
+    public let questionId: GliaCoreSDK.Survey.Question.Id
+    public let response: GliaCoreSDK.Survey.Answer.ValueContainer
+    public init(questionId: GliaCoreSDK.Survey.Question.Id, response: GliaCoreSDK.Survey.Answer.ValueContainer)
+  }
+}
+extension GliaCoreSDK.Survey.Answer : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension GliaCoreSDK.Survey.Answer {
+  public enum ValueContainer : Swift.Encodable {
+    case int(Swift.Int)
+    case string(Swift.String)
+    case boolean(Swift.Bool)
+    public func encode(to encoder: Swift.Encoder) throws
+  }
+}
+public struct SurveyResponse : Swift.Equatable {
+  public let survey: GliaCoreSDK.Survey?
+  public static func == (a: GliaCoreSDK.SurveyResponse, b: GliaCoreSDK.SurveyResponse) -> Swift.Bool
+}
+extension GliaCoreSDK.SurveyResponse : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension GliaCoreSDK.GliaCore {
+  @objc final public func clearSession()
+  final public func fetchSiteConfiguration(_ completion: @escaping (Swift.Result<GliaCoreSDK.Site, Swift.Error>) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers @objc public class Push : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var actionIdentifier: Swift.String {
+    get
+  }
+  @objc public var type: GliaCoreSDK.PushType {
+    get
+  }
+  @objc public var timing: GliaCoreSDK.PushTiming {
+    get
+  }
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+@objc public enum PushType : Swift.Int {
+  case unidentified
+  case chatMessage
+  case queueMessage
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum PushTiming : Swift.Int, Swift.Codable {
+  case inApp
+  case background
+  case unidentified
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_hasMissingDesignatedInitializers public class EngagementRequest : ObjectiveC.NSObject, Swift.Decodable {
+  final public let timeout: Swift.Int
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class EngagementFile : ObjectiveC.NSObject, Swift.Decodable {
+  @objc public var id: Swift.String? {
+    get
+  }
+  public var size: Swift.Double? {
+    get
+  }
+  @objc public var contentType: Swift.String? {
+    get
+  }
+  public var isDeleted: Swift.Bool? {
+    get
+  }
+  @objc final public let name: Swift.String
+  @objc final public let url: Foundation.URL?
+  @objc public init(name: Swift.String = "content", url: Foundation.URL)
+  @objc public init(id: Swift.String)
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+public struct Site : Swift.Decodable, Swift.Equatable {
+  public let id: Foundation.UUID
+  public let allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders
+  public static func == (a: GliaCoreSDK.Site, b: GliaCoreSDK.Site) -> Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+}
+extension GliaCoreSDK.Site {
+  public struct AllowedFileSenders : Swift.Decodable, Swift.Equatable {
+    public let `operator`: Swift.Bool
+    public let visitor: Swift.Bool
+    public static func == (a: GliaCoreSDK.Site.AllowedFileSenders, b: GliaCoreSDK.Site.AllowedFileSenders) -> Swift.Bool
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension GliaCoreSDK.GliaCore {
+  final public func updateVisitorInfo(_ info: GliaCoreSDK.VisitorInfoUpdate, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
+  final public func fetchVisitorInfo(_ completion: @escaping (Swift.Result<GliaCoreSDK.GliaCore.VisitorInfo, Swift.Error>) -> Swift.Void)
+}
+extension GliaCoreSDK.GliaCore {
+  @_hasMissingDesignatedInitializers final public class CallVisualizer {
+    @objc deinit
+  }
+}
+extension GliaCoreSDK.GliaCore.CallVisualizer {
+  @discardableResult
+  final public func requestVisitorCode(completion: @escaping (Swift.Result<GliaCoreSDK.VisitorCode, Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+}
+@objc public class EngagementFileInformation : ObjectiveC.NSObject, Swift.Codable {
+  final public let id: Swift.String
+  final public let isSecurityScanningRequired: Swift.Bool
+  final public let url: Swift.String?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+infix operator &/ : DefaultPrecedence
+@objc public class OperatorTypingStatus : ObjectiveC.NSObject {
+  @objc public var isTyping: Swift.Bool {
+    get
+  }
+  public init(isTyping: Swift.Bool)
+  @objc deinit
+}
+extension GliaCoreSDK.GliaCore {
+  public struct Authentication {
+  }
+}
+extension GliaCoreSDK.GliaCore.Authentication {
+  public func authenticate(with idToken: GliaCoreSDK.GliaCore.IdToken, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  public func deauthenticate(_ completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  public var isAuthenticated: Swift.Bool {
+    get
+  }
+  public init()
+}
+extension GliaCoreSDK.GliaCore.Authentication {
+  public enum Behavior {
+    case forbiddenDuringEngagement
+    public static func == (a: GliaCoreSDK.GliaCore.Authentication.Behavior, b: GliaCoreSDK.GliaCore.Authentication.Behavior) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+@objc public enum VideoScalingOptions : Swift.Int {
+  case fill
+  case aspectFit
+  case aspectFill
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class StreamView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) public var scale: GliaCoreSDK.VideoScalingOptions {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func videoView(_ videoView: WebRTC.RTCVideoRenderer, didChangeVideoSize size: CoreFoundation.CGSize)
+}
+@objc public enum LogLevel : Swift.Int {
+  case none
+  case error
+  case warning
+  case info
+  case debug
+  public static func >= (a: GliaCoreSDK.LogLevel, b: GliaCoreSDK.LogLevel) -> Swift.Bool
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class LocalScreen : ObjectiveC.NSObject {
+  @objc public func stopSharing()
+  @objc public func getStreamView() -> GliaCoreSDK.StreamView
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class OperatorPicture : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let url: Swift.String?
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc public enum GeneralError : Swift.Int, Swift.Error {
+  case internalError
+  case networkError
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum ConfigurationError : Swift.Int, Swift.Error {
+  case invalidSite
+  case invalidEnvironment
+  case invalidAppToken
+  case invalidSiteApiKey
+  case invalidRegionEndpoint
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MediaUpgradeError : Swift.Int, Swift.Error {
+  case requestError
+  case unsupportedRequest
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum EngagementError : Swift.Int, Swift.Error {
+  case operatorUnavailable
+  case timeout
+  case rejected
+  case visitorCanceled
+  case operatorCanceled
+  case operatorLeft
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MediaError : Swift.Int, Swift.Error {
+  case permissionDenied
+  case screenSharingNotAvailable
+  case notAvailableOnIOSVersion
+  case unsupportedEngagementType
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum QueueError : Swift.Int, Swift.Error {
+  case queueClosed
+  case queueFull
+  case invalidId
+  case alreadyEnqueued
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum FileError : Swift.Int, Swift.Error {
+  case infected
+  case unsupportedFileType
+  case fileTooBig
+  case invalidFileURL
+  case fileUnavailable
+  case forbidden
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public class GliaCoreError : ObjectiveC.NSObject, Swift.Error {
+  @objc final public let reason: Swift.String
+  @objc final public let error: Swift.Error?
+  public init(reason: Swift.String, error: Swift.Error? = nil)
+  @objc deinit
+}
+@objc public class Queue : ObjectiveC.NSObject {
+  @objc final public let id: Swift.String
+  @objc final public let name: Swift.String
+  @objc final public let state: GliaCoreSDK.QueueState
+  @objc final public let isDefault: Swift.Bool
+  public init(id: Swift.String, name: Swift.String, status: GliaCoreSDK.QueueStatus, isDefault: Swift.Bool, media: [GliaCoreSDK.MediaType])
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class QueueState : ObjectiveC.NSObject, Swift.Decodable {
+  final public let status: GliaCoreSDK.QueueStatus
+  final public let media: [GliaCoreSDK.MediaType]
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+public enum QueueStatus : Swift.String, Swift.Codable {
+  case open
+  case closed
+  case full
+  case unstaffed
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class GliaCore : ObjectiveC.NSObject {
+  @objc public static let sharedInstance: GliaCoreSDK.GliaCore
+  weak final public var currentInteractor: GliaCoreSDK.Interactable?
+  @objc final public var environment: Swift.String {
+    @objc get
+  }
+  @objc final public var site: Swift.String {
+    @objc get
+  }
+  @objc final public var appToken: Swift.String {
+    @objc get
+  }
+  final public var secureConversations: GliaCoreSDK.GliaCore.SecureConversations {
+    get
+    set
+  }
+  final public var callVisualizer: GliaCoreSDK.GliaCore.CallVisualizer {
+    get
+    set
+  }
+  final public var pushNotifications: GliaCoreSDK.PushNotifications {
+    get
+  }
+  @objc deinit
+}
+extension GliaCoreSDK.GliaCore {
+  final public func fetchChatTranscript(_ completion: @escaping (Swift.Result<[GliaCoreSDK.Message], GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+}
+extension GliaCoreSDK.GliaCore {
+  @objc final public func configureLogLevel(level: GliaCoreSDK.LogLevel)
+}
+@_hasMissingDesignatedInitializers @objc public class Operator : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let name: Swift.String
+  @objc public var picture: GliaCoreSDK.OperatorPicture? {
+    get
+  }
+  public var availableMedia: [GliaCoreSDK.MediaType]? {
+    get
+  }
+  public init(id: Swift.String, name: Swift.String, picture: GliaCoreSDK.OperatorPicture?, availableMedia: [GliaCoreSDK.MediaType]?)
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+}
+public typealias InternalOperatorTypingStatusUpdate = (GliaCoreSDK.OperatorTypingStatus) -> Swift.Void
+extension GliaCoreSDK.GliaCore {
+  final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping GliaCoreSDK.QueueTicketBlock)
+  final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, options: GliaCoreSDK.EngagementOptions?, completion: @escaping GliaCoreSDK.QueueTicketBlock)
+  @objc final public func dequeueFromActiveTickets(completion: @escaping GliaCoreSDK.SuccessBlock)
+  @objc final public func cancel(queueTicket: GliaCoreSDK.QueueTicket, completion: @escaping GliaCoreSDK.SuccessBlock)
+  @objc final public func listQueues(completion: @escaping GliaCoreSDK.QueueRequestBlock)
+  @objc final public func subscribeForUpdates(forQueue queueIds: [Swift.String], onError: @escaping GliaCoreSDK.ErrorBlock, onUpdate: @escaping GliaCoreSDK.QueueUpdateBlock) -> Swift.String?
+  @objc final public func unsubscribeFromUpdates(queueCallbackId: Swift.String, onError: @escaping GliaCoreSDK.ErrorBlock)
+}
+extension GliaCoreSDK.GliaCore {
+  @_hasMissingDesignatedInitializers final public class SecureConversations {
+    final public func send(attachment: GliaCoreSDK.Attachment, queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+    final public func send(secureMessage: Swift.String, attachment: GliaCoreSDK.Attachment? = nil, queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+    @objc deinit
+  }
+}
+extension GliaCoreSDK.GliaCore.SecureConversations {
+  final public func uploadFile(_ file: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<GliaCoreSDK.EngagementFileInformation, Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+  final public func downloadFile(_ file: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<GliaCoreSDK.EngagementFileData, Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+}
+extension GliaCoreSDK.GliaCore.SecureConversations {
+  @discardableResult
+  final public func markMessagesAsRead(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+  final public func getUnreadMessageCount(completion: @escaping (Swift.Result<Swift.Int, Swift.Error>) -> Swift.Void)
+}
+extension GliaCoreSDK.GliaCore {
+  final public func startSocketObservation()
+  final public func stopSocketObservation()
+}
+@objc public enum ScreenSharingStatus : Swift.Int {
+  case sharing
+  case notSharing
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public class VisitorScreenSharingState : ObjectiveC.NSObject {
+  @objc public var status: GliaCoreSDK.ScreenSharingStatus {
+    get
+  }
+  @objc public var localScreen: GliaCoreSDK.LocalScreen? {
+    get
+  }
+  public init(status: GliaCoreSDK.ScreenSharingStatus, localScreen: GliaCoreSDK.LocalScreen?)
+  @objc deinit
+}
+@objc @objcMembers public class Engagement : ObjectiveC.NSObject {
+  @objc final public let id: Swift.String
+  @objc final public let engagedOperator: GliaCoreSDK.Operator?
+  final public let source: GliaCoreSDK.EngagementSource
+  public init(id: Swift.String, engagedOperator: GliaCoreSDK.Operator?, source: GliaCoreSDK.EngagementSource, fetchSurvey: @escaping GliaCoreSDK.Engagement.FetchSurvey)
+  @objc deinit
+}
+extension GliaCoreSDK.Engagement {
+  public typealias FetchSurveyCallback = (Swift.Result<GliaCoreSDK.Survey?, GliaCoreSDK.GliaCoreError>) -> Swift.Void
+  public typealias FetchSurvey = (_ engagementId: Swift.String, _ callback: @escaping GliaCoreSDK.Engagement.FetchSurveyCallback) -> Swift.Void
+  public func getSurvey(completion: @escaping (Swift.Result<GliaCoreSDK.Survey?, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+}
+@objc public class MediaUpgradeOffer : ObjectiveC.NSObject {
+  final public let type: GliaCoreSDK.MediaType
+  final public let direction: GliaCoreSDK.MediaDirection
+  public init(type: GliaCoreSDK.MediaType, direction: GliaCoreSDK.MediaDirection) throws
+  @objc deinit
+}
+public enum MediaDirection : Swift.String {
+  case oneWay
+  case twoWay
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension GliaCoreSDK.AttachmentType : Swift.Equatable {}
+extension GliaCoreSDK.AttachmentType : Swift.Hashable {}
+extension GliaCoreSDK.AttachmentType : Swift.RawRepresentable {}
+extension GliaCoreSDK.EngagementEndingReason : Swift.Equatable {}
+extension GliaCoreSDK.EngagementEndingReason : Swift.Hashable {}
+extension GliaCoreSDK.PushNotificationsType : Swift.Equatable {}
+extension GliaCoreSDK.PushNotificationsType : Swift.Hashable {}
+extension GliaCoreSDK.PushNotificationsType : Swift.RawRepresentable {}
+extension GliaCoreSDK.GliaCore.Configuration.PushNotifications : Swift.Equatable {}
+extension GliaCoreSDK.GliaCore.Configuration.PushNotifications : Swift.Hashable {}
+extension GliaCoreSDK.Message.Metadata.CodingKeys : Swift.Equatable {}
+extension GliaCoreSDK.Message.Metadata.CodingKeys : Swift.Hashable {}
+extension GliaCoreSDK.Message.Metadata.CodingKeys : Swift.RawRepresentable {}
+extension GliaCoreSDK.MessageSender.SenderType : Swift.Equatable {}
+extension GliaCoreSDK.MessageSender.SenderType : Swift.Hashable {}
+extension GliaCoreSDK.MessageSender.SenderType : Swift.RawRepresentable {}
+extension GliaCoreSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.Equatable {}
+extension GliaCoreSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.Hashable {}
+extension GliaCoreSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.RawRepresentable {}
+extension GliaCoreSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.Equatable {}
+extension GliaCoreSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.Hashable {}
+extension GliaCoreSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.RawRepresentable {}
+extension GliaCoreSDK.MediaType : Swift.Equatable {}
+extension GliaCoreSDK.MediaType : Swift.Hashable {}
+extension GliaCoreSDK.MediaType : Swift.RawRepresentable {}
+extension GliaCoreSDK.Survey.SurveyType : Swift.Equatable {}
+extension GliaCoreSDK.Survey.SurveyType : Swift.Hashable {}
+extension GliaCoreSDK.Survey.SurveyType : Swift.RawRepresentable {}
+extension GliaCoreSDK.Survey.QuestionType : Swift.Equatable {}
+extension GliaCoreSDK.Survey.QuestionType : Swift.Hashable {}
+extension GliaCoreSDK.Survey.QuestionType : Swift.RawRepresentable {}
+extension GliaCoreSDK.PushType : Swift.Equatable {}
+extension GliaCoreSDK.PushType : Swift.Hashable {}
+extension GliaCoreSDK.PushType : Swift.RawRepresentable {}
+extension GliaCoreSDK.PushTiming : Swift.Equatable {}
+extension GliaCoreSDK.PushTiming : Swift.Hashable {}
+extension GliaCoreSDK.PushTiming : Swift.RawRepresentable {}
+extension GliaCoreSDK.GliaCore.Authentication.Behavior : Swift.Equatable {}
+extension GliaCoreSDK.GliaCore.Authentication.Behavior : Swift.Hashable {}
+extension GliaCoreSDK.VideoScalingOptions : Swift.Equatable {}
+extension GliaCoreSDK.VideoScalingOptions : Swift.Hashable {}
+extension GliaCoreSDK.VideoScalingOptions : Swift.RawRepresentable {}
+extension GliaCoreSDK.LogLevel : Swift.Equatable {}
+extension GliaCoreSDK.LogLevel : Swift.Hashable {}
+extension GliaCoreSDK.LogLevel : Swift.RawRepresentable {}
+extension GliaCoreSDK.GeneralError : Swift.Equatable {}
+extension GliaCoreSDK.GeneralError : Swift.Hashable {}
+extension GliaCoreSDK.GeneralError : Swift.RawRepresentable {}
+extension GliaCoreSDK.ConfigurationError : Swift.Equatable {}
+extension GliaCoreSDK.ConfigurationError : Swift.Hashable {}
+extension GliaCoreSDK.ConfigurationError : Swift.RawRepresentable {}
+extension GliaCoreSDK.MediaUpgradeError : Swift.Equatable {}
+extension GliaCoreSDK.MediaUpgradeError : Swift.Hashable {}
+extension GliaCoreSDK.MediaUpgradeError : Swift.RawRepresentable {}
+extension GliaCoreSDK.EngagementError : Swift.Equatable {}
+extension GliaCoreSDK.EngagementError : Swift.Hashable {}
+extension GliaCoreSDK.EngagementError : Swift.RawRepresentable {}
+extension GliaCoreSDK.MediaError : Swift.Equatable {}
+extension GliaCoreSDK.MediaError : Swift.Hashable {}
+extension GliaCoreSDK.MediaError : Swift.RawRepresentable {}
+extension GliaCoreSDK.QueueError : Swift.Equatable {}
+extension GliaCoreSDK.QueueError : Swift.Hashable {}
+extension GliaCoreSDK.QueueError : Swift.RawRepresentable {}
+extension GliaCoreSDK.FileError : Swift.Equatable {}
+extension GliaCoreSDK.FileError : Swift.Hashable {}
+extension GliaCoreSDK.FileError : Swift.RawRepresentable {}
+extension GliaCoreSDK.QueueStatus : Swift.Equatable {}
+extension GliaCoreSDK.QueueStatus : Swift.Hashable {}
+extension GliaCoreSDK.QueueStatus : Swift.RawRepresentable {}
+extension GliaCoreSDK.ScreenSharingStatus : Swift.Equatable {}
+extension GliaCoreSDK.ScreenSharingStatus : Swift.Hashable {}
+extension GliaCoreSDK.ScreenSharingStatus : Swift.RawRepresentable {}
+extension GliaCoreSDK.MediaDirection : Swift.Equatable {}
+extension GliaCoreSDK.MediaDirection : Swift.Hashable {}
+extension GliaCoreSDK.MediaDirection : Swift.RawRepresentable {}

@@ -29,14 +29,14 @@ let package = Package(
             checksum: "f76e410f608d96989ba0312e099697703a37b4414f8f46bb9e30c3d9b4291a52"
         ),
         .binaryTarget(
-            name: "SalemoveSDK",
-            url: "https://github.com/salemove/ios-bundle/releases/download/0.35.16/SalemoveSDK.xcframework.zip",
-            checksum: "fe624dac2a5094d3c83a8222290c81fba47527a24029ed338739498584f2305b"
+            name: "GliaCoreSDK",
+            url: "https://github.com/salemove/ios-bundle/releases/download/1.0.0/GliaCoreSDK.xcframework.zip",
+            checksum: "64b3ee71ba9bc6885ebbb7320733bb0e062b10793e222887a596519eed468383"
         ),
         .target(
             name: "GliaSDK",
             dependencies: [
-                "SalemoveSDK",
+                "GliaCoreSDK",
                 "GliaCoreDependency",
                 "TwilioVoice",
                 "WebRTC"
