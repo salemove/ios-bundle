@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "GliaSDK",
     platforms: [
-        .iOS(.v12)
+        .iOS(.v13)
     ],
     products: [
         .library(
@@ -29,14 +29,14 @@ let package = Package(
             checksum: "f76e410f608d96989ba0312e099697703a37b4414f8f46bb9e30c3d9b4291a52"
         ),
         .binaryTarget(
-            name: "SalemoveSDK",
-            url: "https://github.com/salemove/ios-bundle/releases/download/0.35.16/SalemoveSDK.xcframework.zip",
-            checksum: "fe624dac2a5094d3c83a8222290c81fba47527a24029ed338739498584f2305b"
+            name: "GliaCoreSDK",
+            url: "https://github.com/salemove/ios-bundle/releases/download/1.0.0/GliaCoreSDK.xcframework.zip",
+            checksum: "cccd15149930f113624ee8e05f5f165572f13103f69fb3dc7078de83e9065fc0"
         ),
         .target(
             name: "GliaSDK",
             dependencies: [
-                "SalemoveSDK",
+                "GliaCoreSDK",
                 "GliaCoreDependency",
                 "TwilioVoice",
                 "WebRTC"
