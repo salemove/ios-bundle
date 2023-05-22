@@ -13,7 +13,7 @@ workflows:
     - script:
         inputs:
         - content: |-
-            pod trunk push SalemoveSDK.podspec --verbose
+            pod trunk push GliaCoreSDK.podspec --verbose
 meta:
   bitrise.io:
     stack: osx-xcode-13.2.x
