@@ -517,6 +517,10 @@ extension GliaCoreSDK.GliaCore {
   @available(*, deprecated, message: "Use `GliaCore.CallVisualizer` to request visitor code.")
   @objc final public func requestVisitorCode(completion: @escaping GliaCoreSDK.VisitorCodeBlock)
 }
+extension GliaCoreSDK.GliaCore.Authentication {
+  @available(*, deprecated, message: "Use `GliaCore.Authentication` to authenticate visitor.")
+  public func authenticate(with idToken: GliaCoreSDK.GliaCore.IdToken, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+}
 extension GliaCoreSDK.GliaCore {
   @objc final public func requestMediaUpgrade(offer: GliaCoreSDK.MediaUpgradeOffer, completion: @escaping GliaCoreSDK.SuccessBlock)
 }
@@ -545,6 +549,7 @@ public enum EngagementSource : Swift.RawRepresentable, Swift.Codable {
 }
 extension GliaCoreSDK.GliaCore {
   public typealias IdToken = GliaCoreSDK.Tagged<(GliaCoreSDK.GliaCore, idToken: ()), Swift.String>
+  public typealias ExternalAccessToken = GliaCoreSDK.Tagged<(GliaCoreSDK.GliaCore, externalAccessToken: ()), Swift.String>
   final public func authentication(with behavior: GliaCoreSDK.GliaCore.Authentication.Behavior) throws -> GliaCoreSDK.GliaCore.Authentication
 }
 extension GliaCoreSDK.GliaCore {
@@ -817,7 +822,7 @@ extension GliaCoreSDK.GliaCore {
   }
 }
 extension GliaCoreSDK.GliaCore.Authentication {
-  public func authenticate(with idToken: GliaCoreSDK.GliaCore.IdToken, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  public func authenticate(with idToken: GliaCoreSDK.GliaCore.IdToken, externalAccessToken: GliaCoreSDK.GliaCore.ExternalAccessToken?, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
   public func deauthenticate(_ completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
   public var isAuthenticated: Swift.Bool {
     get

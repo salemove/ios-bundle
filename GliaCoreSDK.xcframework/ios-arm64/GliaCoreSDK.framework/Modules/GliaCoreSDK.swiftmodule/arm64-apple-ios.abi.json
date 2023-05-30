@@ -12341,6 +12341,13 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "AVFoundation",
         "printedName": "AVFoundation",
         "declKind": "Import",
@@ -13562,6 +13569,13 @@
         "kind": "Import",
         "name": "AVFoundation",
         "printedName": "AVFoundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "GliaCoreSDK"
       },
@@ -27823,7 +27837,7 @@
               {
                 "kind": "Function",
                 "name": "authenticate",
-                "printedName": "authenticate(with:completion:)",
+                "printedName": "authenticate(with:externalAccessToken:completion:)",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27863,6 +27877,46 @@
                     "usr": "s:11GliaCoreSDK6TaggedV"
                   },
                   {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GliaCoreSDK.Tagged<(GliaCoreSDK.GliaCore, externalAccessToken: ()), Swift.String>?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tagged",
+                        "printedName": "GliaCoreSDK.Tagged<(GliaCoreSDK.GliaCore, externalAccessToken: ()), Swift.String>",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Tuple",
+                            "printedName": "(GliaCoreSDK.GliaCore, externalAccessToken: ())",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "GliaCore",
+                                "printedName": "GliaCoreSDK.GliaCore",
+                                "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCore"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Void",
+                                "printedName": "()"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:11GliaCoreSDK6TaggedV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  },
+                  {
                     "kind": "TypeFunc",
                     "name": "Function",
                     "printedName": "(Swift.Result<(), GliaCoreSDK.GliaCoreError>) -> ()",
@@ -27895,8 +27949,8 @@
                   }
                 ],
                 "declKind": "Func",
-                "usr": "s:11GliaCoreSDK0aB0C14AuthenticationV12authenticate4with10completionyAA6TaggedVyAC_yt7idTokentSSG_ys6ResultOyytAA0aB5ErrorCGctF",
-                "mangledName": "$s11GliaCoreSDK0aB0C14AuthenticationV12authenticate4with10completionyAA6TaggedVyAC_yt7idTokentSSG_ys6ResultOyytAA0aB5ErrorCGctF",
+                "usr": "s:11GliaCoreSDK0aB0C14AuthenticationV12authenticate4with19externalAccessToken10completionyAA6TaggedVyAC_yt02idI0tSSG_AKyAC_ytAHtSSGSgys6ResultOyytAA0aB5ErrorCGctF",
+                "mangledName": "$s11GliaCoreSDK0aB0C14AuthenticationV12authenticate4with19externalAccessToken10completionyAA6TaggedVyAC_yt02idI0tSSG_AKyAC_ytAHtSSGSgys6ResultOyytAA0aB5ErrorCGctF",
                 "moduleName": "GliaCoreSDK",
                 "declAttributes": [
                   "AccessControl",
@@ -28191,6 +28245,93 @@
                     "mangledName": "$sSH"
                   }
                 ]
+              },
+              {
+                "kind": "Function",
+                "name": "authenticate",
+                "printedName": "authenticate(with:completion:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tagged",
+                    "printedName": "GliaCoreSDK.Tagged<(GliaCoreSDK.GliaCore, idToken: ()), Swift.String>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(GliaCoreSDK.GliaCore, idToken: ())",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaCore",
+                            "printedName": "GliaCoreSDK.GliaCore",
+                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCore"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:11GliaCoreSDK6TaggedV"
+                  },
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Result<(), GliaCoreSDK.GliaCoreError>) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Result",
+                        "printedName": "Swift.Result<(), GliaCoreSDK.GliaCoreError>",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaCoreError",
+                            "printedName": "GliaCoreSDK.GliaCoreError",
+                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
+                          }
+                        ],
+                        "usr": "s:s6ResultO"
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:11GliaCoreSDK0aB0C14AuthenticationV12authenticate4with10completionyAA6TaggedVyAC_yt7idTokentSSG_ys6ResultOyytAA0aB5ErrorCGctF",
+                "mangledName": "$s11GliaCoreSDK0aB0C14AuthenticationV12authenticate4with10completionyAA6TaggedVyAC_yt7idTokentSSG_ys6ResultOyytAA0aB5ErrorCGctF",
+                "moduleName": "GliaCoreSDK",
+                "deprecated": true,
+                "declAttributes": [
+                  "AccessControl",
+                  "Available",
+                  "RawDocComment"
+                ],
+                "isFromExtension": true,
+                "funcSelfKind": "NonMutating"
               }
             ],
             "declKind": "Struct",
@@ -30027,6 +30168,13 @@
         "kind": "Import",
         "name": "GliaCoreDependency",
         "printedName": "GliaCoreDependency",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "GliaCoreSDK"
       },
@@ -31971,35 +32119,35 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Socket\/PubsubManager.swift",
       "kind": "StringLiteral",
-      "offset": 845,
+      "offset": 993,
       "length": 18,
       "value": "\"Audio conference\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Socket\/PubsubManager.swift",
       "kind": "StringLiteral",
-      "offset": 910,
+      "offset": 1058,
       "length": 8,
       "value": "\"change\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Socket\/PubsubManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 1382,
+      "offset": 1530,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Socket\/PubsubManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 2019,
+      "offset": 2167,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Socket\/PubsubManager.swift",
       "kind": "Dictionary",
-      "offset": 8373,
+      "offset": 9319,
       "length": 3,
       "value": "[]"
     },
@@ -32174,21 +32322,21 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 1526,
+      "offset": 1551,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "Array",
-      "offset": 1603,
+      "offset": 1628,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 1804,
+      "offset": 1829,
       "length": 5,
       "value": "false"
     },
@@ -32415,6 +32563,27 @@
       "offset": 3201,
       "length": 2,
       "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/UserDefaultsClient\/UserDefaultsClient.Mock.swift",
+      "kind": "BooleanLiteral",
+      "offset": 105,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/UserDefaultsClient\/UserDefaultsClient.Mock.swift",
+      "kind": "IntegerLiteral",
+      "offset": 177,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/UserDefaultsClient\/UserDefaultsClient.Mock.swift",
+      "kind": "IntegerLiteral",
+      "offset": 212,
+      "length": 1,
+      "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/VisitorContext.swift",
@@ -33504,56 +33673,56 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
       "kind": "IntegerLiteral",
-      "offset": 1741,
+      "offset": 2087,
       "length": 11,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
       "kind": "IntegerLiteral",
-      "offset": 1836,
+      "offset": 2182,
       "length": 12,
       "value": "2"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
       "kind": "IntegerLiteral",
-      "offset": 1741,
+      "offset": 2087,
       "length": 11,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
       "kind": "IntegerLiteral",
-      "offset": 1836,
+      "offset": 2182,
       "length": 12,
       "value": "2"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
       "kind": "IntegerLiteral",
-      "offset": 2578,
+      "offset": 2924,
       "length": 10,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
       "kind": "IntegerLiteral",
-      "offset": 2623,
+      "offset": 2969,
       "length": 12,
       "value": "2"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
       "kind": "IntegerLiteral",
-      "offset": 2578,
+      "offset": 2924,
       "length": 10,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
       "kind": "IntegerLiteral",
-      "offset": 2623,
+      "offset": 2969,
       "length": 12,
       "value": "2"
     },
@@ -34745,7 +34914,7 @@
       "kind": "StringLiteral",
       "offset": 433,
       "length": 7,
-      "value": "\"1.0.0\""
+      "value": "\"1.0.1\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Channel\/NamespacedChannel.swift",
@@ -34778,35 +34947,35 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 15264,
+      "offset": 16189,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48306,
+      "offset": 49229,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48365,
+      "offset": 49288,
       "length": 23,
       "value": "\"capabilities:response\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48306,
+      "offset": 49229,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48365,
+      "offset": 49288,
       "length": 23,
       "value": "\"capabilities:response\""
     },
