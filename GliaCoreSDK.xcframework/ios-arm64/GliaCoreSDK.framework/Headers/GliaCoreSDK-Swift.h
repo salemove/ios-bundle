@@ -1226,6 +1226,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK17PushNotifications")
 
 
 
+
 @class UNUserNotificationCenter;
 @class UNNotification;
 @class UNNotificationResponse;

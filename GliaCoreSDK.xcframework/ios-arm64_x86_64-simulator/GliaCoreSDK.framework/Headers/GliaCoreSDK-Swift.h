@@ -1226,6 +1226,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK17PushNotifications")
 
 
 
+
 @class UNUserNotificationCenter;
 @class UNNotification;
 @class UNNotificationResponse;
@@ -2624,6 +2625,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK17PushNotifications")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
