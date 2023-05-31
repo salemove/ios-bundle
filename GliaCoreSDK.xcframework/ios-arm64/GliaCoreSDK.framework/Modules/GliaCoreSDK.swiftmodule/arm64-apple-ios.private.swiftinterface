@@ -140,7 +140,6 @@ extension GliaCoreSDK.GliaCore {
 }
 extension GliaCoreSDK.GliaCore {
   public enum AuthorizationMethod {
-    case appToken(Swift.String)
     case siteApiKey(id: Swift.String, secret: Swift.String)
   }
 }
@@ -322,8 +321,6 @@ extension GliaCoreSDK.PushNotifications : GliaCoreSDK.PushNotificationsHandling,
   @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
 }
 extension GliaCoreSDK.PushNotifications : GliaCoreSDK.PushNotificationsConfigurable {
-  @available(*, unavailable, message: "Use `GliaCore.Configuration` to make push notifications feature enabled.")
-  public func enable(_ shouldEnablePushNotifications: Swift.Bool)
   public func subscribeTo(_ notifications: [GliaCoreSDK.PushNotificationsType])
 }
 @dynamicMemberLookup public struct Tagged<Tag, RawValue> {
@@ -508,8 +505,6 @@ public protocol VideoStreamable : AnyObject {
 extension GliaCoreSDK.GliaCore {
   @available(*, unavailable, message: "Use `GliaCore.send(option:completion:)` instead.")
   final public func send(selectedOptionValue: Swift.String, completion: @escaping (Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> Swift.Void)
-  @available(*, unavailable, message: "Use `GliaCore.configure(with:) throws` instead.")
-  @objc final public func configure(appToken: Swift.String) throws
   @available(*, unavailable, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
   @objc final public func configure(site: Swift.String) throws
   @available(*, unavailable, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
@@ -899,7 +894,6 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
 @objc public enum ConfigurationError : Swift.Int, Swift.Error {
   case invalidSite
   case invalidEnvironment
-  case invalidAppToken
   case invalidSiteApiKey
   case invalidRegionEndpoint
   public init?(rawValue: Swift.Int)
@@ -1024,9 +1018,6 @@ public enum QueueStatus : Swift.String, Swift.Codable {
   @objc final public var site: Swift.String {
     @objc get
   }
-  @objc final public var appToken: Swift.String {
-    @objc get
-  }
   final public var secureConversations: GliaCoreSDK.GliaCore.SecureConversations {
     get
     set
@@ -1059,6 +1050,10 @@ extension GliaCoreSDK.GliaCore {
   public func encode(to encoder: Swift.Encoder) throws
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   @objc deinit
+}
+extension GliaCoreSDK.PushNotifications {
+  @available(*, unavailable, message: "Use `GliaCore.Configuration` to make push notifications feature enabled.")
+  public func enable(_ shouldEnablePushNotifications: Swift.Bool)
 }
 public typealias InternalOperatorTypingStatusUpdate = (GliaCoreSDK.OperatorTypingStatus) -> Swift.Void
 extension GliaCoreSDK.GliaCore {
