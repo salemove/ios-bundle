@@ -306,12 +306,10 @@ typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
   ConfigurationErrorInvalidSite = 0,
 /// The environemnt is invalid.
   ConfigurationErrorInvalidEnvironment = 1,
-/// The app token is invalid.
-  ConfigurationErrorInvalidAppToken = 2,
 /// The site Api key is invalid.
-  ConfigurationErrorInvalidSiteApiKey = 3,
+  ConfigurationErrorInvalidSiteApiKey = 2,
 /// The region custom endpoint is invalid.
-  ConfigurationErrorInvalidRegionEndpoint = 4,
+  ConfigurationErrorInvalidRegionEndpoint = 3,
 };
 static NSString * _Nonnull const ConfigurationErrorDomain = @"GliaCoreSDK.ConfigurationError";
 
@@ -478,12 +476,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 @property (nonatomic, readonly, copy) NSString * _Nonnull environment;
 /// The current selected site
 @property (nonatomic, readonly, copy) NSString * _Nonnull site;
-/// The current provided app token
-@property (nonatomic, readonly, copy) NSString * _Nonnull appToken;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
 
 
 
@@ -518,9 +513,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 ///     <code>ConfigurationError.invalidEnvironment</code>
 ///   </li>
 ///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
 ///     <code>MediaUpgradeError.requestError</code>
 ///   </li>
 /// </ul>
@@ -536,6 +528,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
+@end
+
+
 enum LogLevel : NSInteger;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -549,12 +548,6 @@ enum LogLevel : NSInteger;
 ///   </li>
 /// </ul>
 - (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
-
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
 @end
 
 
@@ -579,9 +572,6 @@ enum LogLevel : NSInteger;
 ///   </li>
 ///   <li>
 ///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
 ///   <li>
 ///     <code>FileError.infected</code>
@@ -615,9 +605,6 @@ enum LogLevel : NSInteger;
 ///   <li>
 ///     <code>ConfigurationError.invalidEnvironment</code>
 ///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
 /// </ul>
 /// \param engagementFile A instance of EngagementFile.
 ///
@@ -630,6 +617,26 @@ enum LogLevel : NSInteger;
 
 
 
+
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Change the site used by the client library.
+/// \param site The siteID that should be selected.
+///
+///
+/// throws:
+/// <code>ConfigurationError.invalidSite</code>
+- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
+/// Change the environment used by the client library.
+/// \param environment The environment baseURL that should be selected.
+///
+///
+/// throws:
+/// <code>ConfigurationError.invalidEnvironment</code>
+- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
+/// Deprecated.
+- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
+@end
 
 @class Message;
 
@@ -649,9 +656,6 @@ enum LogLevel : NSInteger;
 ///   </li>
 ///   <li>
 ///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
 /// </ul>
 /// \param message The content of the message that should be sent to the operator.
@@ -676,9 +680,6 @@ enum LogLevel : NSInteger;
 ///   </li>
 ///   <li>
 ///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
 /// </ul>
 /// \param message A content of the message that should be queued.
@@ -708,37 +709,12 @@ enum LogLevel : NSInteger;
 ///   <li>
 ///     <code>ConfigurationError.invalidEnvironment</code>
 ///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
 /// </ul>
 /// \param message The content of the message preview.
 ///
 /// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
 ///
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated. Use <code>GliaCore.configure(with:)</code> instead.
-- (BOOL)configureWithAppToken:(NSString * _Nonnull)appToken error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(with:) throws` instead.");
-/// Change the site used by the client library.
-/// \param site The siteID that should be selected.
-///
-///
-/// throws:
-/// <code>ConfigurationError.invalidSite</code>
-- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Change the environment used by the client library.
-/// \param environment The environment baseURL that should be selected.
-///
-///
-/// throws:
-/// <code>ConfigurationError.invalidEnvironment</code>
-- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Deprecated.
-- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
 @end
 
 
@@ -782,9 +758,6 @@ enum LogLevel : NSInteger;
 ///   <li>
 ///     <code>ConfigurationError.invalidEnvironment</code>
 ///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
 /// </ul>
 - (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 /// Requests information of the Operator(s) that are currently engaged with the Visitor
@@ -811,9 +784,6 @@ enum LogLevel : NSInteger;
 ///   <li>
 ///     <code>ConfigurationError.invalidEnvironment</code>
 ///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
 /// </ul>
 - (void)requestEngagedOperatorWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, GliaCoreError * _Nullable))completion;
 /// End an Engagement
@@ -839,9 +809,6 @@ enum LogLevel : NSInteger;
 ///   </li>
 ///   <li>
 ///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
 /// </ul>
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
@@ -875,9 +842,6 @@ enum LogLevel : NSInteger;
 ///     <code>ConfigurationError.invalidEnvironment</code>
 ///   </li>
 ///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
 ///     <code>QueueError.queueClosed</code>
 ///   </li>
 ///   <li>
@@ -906,9 +870,6 @@ enum LogLevel : NSInteger;
 ///   <li>
 ///     <code>ConfigurationError.invalidEnvironment</code>
 ///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
 /// </ul>
 /// \param queueTicket The <code>QueueTicket</code> that was used to enqueue
 ///
@@ -927,9 +888,6 @@ enum LogLevel : NSInteger;
 ///   </li>
 ///   <li>
 ///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
 /// </ul>
 /// \param completion A callback that will return the <code>Queue</code> list or <code>GliaCoreError</code>
@@ -960,9 +918,6 @@ enum LogLevel : NSInteger;
 ///     <code>ConfigurationError.invalidEnvironment</code>
 ///   </li>
 ///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
-///   </li>
-///   <li>
 ///     <code>QueueError.invalidId</code>
 ///   </li>
 /// </ul>
@@ -986,9 +941,6 @@ enum LogLevel : NSInteger;
 ///   </li>
 ///   <li>
 ///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidAppToken</code>
 ///   </li>
 /// </ul>
 ///
@@ -1221,6 +1173,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK17PushNotifications")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
