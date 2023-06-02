@@ -1,19 +1,41 @@
----
-format_version: '6'
-default_step_lib_source: 'https://github.com/bitrise-io/bitrise-steplib.git'
+format_version: "6"
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: ios
 trigger_map:
 - tag: '*.*.*'
-  workflow: post-release
+  workflow: release-to-cocoapods
 workflows:
   post-release:
+    steps:
+    - activate-ssh-key@4: {}
+    - script@1:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # make pipelines' return status equal the last command to exit with a non-zero status, or zero if all commands exit successfully
+            set -o pipefail
+            # debug log
+            set -x
+
+            curl --fail -X POST -H "Authorization: $IOS_SDK_WIDGETS_BUILD_TRIGGER_TOKEN" "https://app.bitrise.io/app/$IOS_SDK_WIDGETS_APP_SLUG/build/start.json" -d \
+            '{
+                "hook_info": {
+                    "type": "bitrise"
+                },
+                "build_params": {
+                    "branch": "development",
+                    "workflow_id": "update_dependencies"
+                }
+            }'
+  release-to-cocoapods:
     steps:
     - activate-ssh-key@4: {}
     - git-clone@6: {}
     - script:
         inputs:
-        - content: |-
-            pod trunk push GliaCoreSDK.podspec --verbose
+        - content: pod trunk push GliaCoreSDK.podspec --verbose
 meta:
   bitrise.io:
     stack: osx-xcode-13.2.x
