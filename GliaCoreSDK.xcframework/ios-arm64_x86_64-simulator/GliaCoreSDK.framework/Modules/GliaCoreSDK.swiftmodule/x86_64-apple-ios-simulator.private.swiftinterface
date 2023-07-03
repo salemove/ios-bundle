@@ -144,10 +144,10 @@ extension GliaCoreSDK.GliaCore {
   }
 }
 extension GliaCoreSDK.GliaCore {
-  public enum Region {
-    case us
-    case eu
-    case custom(Foundation.URL)
+  public struct Region {
+    public static let us: GliaCoreSDK.GliaCore.Region
+    public static let eu: GliaCoreSDK.GliaCore.Region
+    public static func custom(_ host: Foundation.URL) -> GliaCoreSDK.GliaCore.Region
   }
   public struct Configuration {
     public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, authorizingMethod: GliaCoreSDK.GliaCore.AuthorizationMethod, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled) throws
