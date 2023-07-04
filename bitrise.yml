@@ -8,6 +8,7 @@ workflows:
   post-release:
     steps:
     - activate-ssh-key@4: {}
+    - git-clone@8: {}
     - script@1:
         inputs:
         - content: |-
@@ -19,15 +20,79 @@ workflows:
             # debug log
             set -x
 
-            curl --fail -X POST -H "Authorization: $IOS_SDK_WIDGETS_BUILD_TRIGGER_TOKEN" "https://app.bitrise.io/app/$IOS_SDK_WIDGETS_APP_SLUG/build/start.json" -d \
+            should_check_checksum=false
+            checksum=""
+            version=""
+
+            while IFS= read -r line; do
+                if [[ $line == *"GliaCoreSDK.xcframework.zip"* ]]; then
+                    should_check_checksum=true
+
+                    search_string="releases/download/"
+
+                    # Get the string after the search string
+                    trailing_string=${line#*$search_string}
+
+                    # Splice the string to get the version number
+                    version=${trailing_string:0:5}
+                fi
+
+                if [[ $line == *"checksum:"* ]] && [ $should_check_checksum == true ]; then
+                    separator=': "'
+
+                    # Because the string has spaces, the separator must be set to IFS.
+                    IFS=$separator
+
+                    # Split the string into a list.
+                    split_string=(${line//$separator/ })
+
+                    # Get the second value, in this case, the checksum.
+                    checksum=${split_string[1]}
+
+                    should_check_checksum=false
+
+                    unset IFS
+
+                    # Nothing else is needed, so the while is broken.
+                    break
+                fi
+            done < "Package.swift"
+
+            envman add --key NEW_VERSION --value "$version"
+            envman add --key NEW_CHECKSUM --value "$checksum"
+
+            echo "New version will be $version and checksum $checksum"
+    - script@1:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # make pipelines' return status equal the last command to exit with a non-zero status, or zero if all commands exit successfully
+            set -o pipefail
+            # debug log
+            set -x
+
+            curl https://app.bitrise.io/app/$IOS_SDK_WIDGETS_APP_SLUG/build/start.json -L --data \
             '{
                 "hook_info": {
-                    "type": "bitrise"
+                    "type": "bitrise",
+                    "build_trigger_token": "'"$IOS_SDK_WIDGETS_BUILD_TRIGGER_TOKEN"'"
                 },
                 "build_params": {
                     "branch": "development",
-                    "workflow_id": "update_dependencies"
-                }
+                    "workflow_id": "update_dependencies",
+                    "environments": [{
+                        "mapped_to": "CHECKSUM",
+                        "value": "'"$NEW_CHECKSUM"'",
+                        "is_expand": false
+                    }, {
+                        "mapped_to": "VERSION",
+                        "value": "'"$NEW_VERSION"'",
+                        "is_expand": false
+                    }]
+                },
+                "triggered_by":"curl"
             }'
   release-to-cocoapods:
     steps:
