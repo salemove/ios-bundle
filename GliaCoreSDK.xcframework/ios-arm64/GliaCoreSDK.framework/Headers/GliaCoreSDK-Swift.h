@@ -1279,6 +1279,12 @@ SWIFT_CLASS("_TtC11GliaCoreSDK18SingleChoiceOption")
 @property (nonatomic, copy) NSString * _Nullable text;
 /// Value of the choice sent as a response on user interaction.
 @property (nonatomic, copy) NSString * _Nullable value;
+/// Initializes SingleChoiceOption instance
+/// \param text Text displayed to the user as a choice label.
+///
+/// \param value Value of the choice sent as a response on user interaction.
+///
+- (nonnull instancetype)initWithText:(NSString * _Nullable)text value:(NSString * _Nullable)value OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
