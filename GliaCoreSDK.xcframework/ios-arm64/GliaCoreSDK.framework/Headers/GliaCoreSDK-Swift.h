@@ -528,12 +528,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Clear the use session of the client library
 - (void)clearSession;
 @end
-
 
 enum LogLevel : NSInteger;
 
@@ -549,6 +547,7 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
+
 
 
 
@@ -614,6 +613,7 @@ enum LogLevel : NSInteger;
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, GliaCoreError * _Nullable))completion;
 @end
+
 
 
 
