@@ -27036,6 +27036,224 @@
           },
           {
             "kind": "Function",
+            "name": "queueForEngagement",
+            "printedName": "queueForEngagement(queueID:visitorContext:shouldCloseAllQueues:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.VisitorContext?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VisitorContext",
+                    "printedName": "GliaCoreSDK.VisitorContext",
+                    "usr": "c:@M@GliaCoreSDK@objc(cs)VisitorContext"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaCoreSDK.QueueTicket?, GliaCoreSDK.GliaCoreError?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(GliaCoreSDK.QueueTicket?, GliaCoreSDK.GliaCoreError?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "GliaCoreSDK.QueueTicket?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "QueueTicket",
+                            "printedName": "GliaCoreSDK.QueueTicket",
+                            "usr": "c:@M@GliaCoreSDK@objc(cs)QueueTicket"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "GliaCoreSDK.GliaCoreError?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaCoreError",
+                            "printedName": "GliaCoreSDK.GliaCoreError",
+                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK0aB0C18queueForEngagement0D2ID14visitorContext20shouldCloseAllQueues10completionySS_AA07VisitorI0CSgSbyAA11QueueTicketCSg_AA0aB5ErrorCSgtctF",
+            "mangledName": "$s11GliaCoreSDK0aB0C18queueForEngagement0D2ID14visitorContext20shouldCloseAllQueues10completionySS_AA07VisitorI0CSgSbyAA11QueueTicketCSg_AA0aB5ErrorCSgtctF",
+            "moduleName": "GliaCoreSDK",
+            "deprecated": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "Available"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "queueForEngagement",
+            "printedName": "queueForEngagement(queueID:visitorContext:shouldCloseAllQueues:mediaType:options:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.VisitorContext?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VisitorContext",
+                    "printedName": "GliaCoreSDK.VisitorContext",
+                    "usr": "c:@M@GliaCoreSDK@objc(cs)VisitorContext"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MediaType",
+                "printedName": "GliaCoreSDK.MediaType",
+                "usr": "s:11GliaCoreSDK9MediaTypeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.EngagementOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EngagementOptions",
+                    "printedName": "GliaCoreSDK.EngagementOptions",
+                    "usr": "s:11GliaCoreSDK17EngagementOptionsV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaCoreSDK.QueueTicket?, GliaCoreSDK.GliaCoreError?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(GliaCoreSDK.QueueTicket?, GliaCoreSDK.GliaCoreError?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "GliaCoreSDK.QueueTicket?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "QueueTicket",
+                            "printedName": "GliaCoreSDK.QueueTicket",
+                            "usr": "c:@M@GliaCoreSDK@objc(cs)QueueTicket"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "GliaCoreSDK.GliaCoreError?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaCoreError",
+                            "printedName": "GliaCoreSDK.GliaCoreError",
+                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK0aB0C18queueForEngagement0D2ID14visitorContext20shouldCloseAllQueues9mediaType7options10completionySS_AA07VisitorI0CSgSbAA05MediaO0OAA0F7OptionsVSgyAA11QueueTicketCSg_AA0aB5ErrorCSgtctF",
+            "mangledName": "$s11GliaCoreSDK0aB0C18queueForEngagement0D2ID14visitorContext20shouldCloseAllQueues9mediaType7options10completionySS_AA07VisitorI0CSgSbAA05MediaO0OAA0F7OptionsVSgyAA11QueueTicketCSg_AA0aB5ErrorCSgtctF",
+            "moduleName": "GliaCoreSDK",
+            "deprecated": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "Available"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "requestMediaUpgrade",
             "printedName": "requestMediaUpgrade(offer:completion:)",
             "children": [
@@ -29034,7 +29252,7 @@
           {
             "kind": "Function",
             "name": "queueForEngagement",
-            "printedName": "queueForEngagement(queueID:visitorContext:shouldCloseAllQueues:completion:)",
+            "printedName": "queueForEngagement(using:completion:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -29043,36 +29261,14 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "GliaCoreSDK.VisitorContext?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "VisitorContext",
-                    "printedName": "GliaCoreSDK.VisitorContext",
-                    "usr": "c:@M@GliaCoreSDK@objc(cs)VisitorContext"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "hasDefaultArg": true,
-                "usr": "s:Sb"
+                "name": "QueueForEngagementOptions",
+                "printedName": "GliaCoreSDK.QueueForEngagementOptions",
+                "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV"
               },
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(GliaCoreSDK.QueueTicket?, GliaCoreSDK.GliaCoreError?) -> ()",
+                "printedName": "(Swift.Result<GliaCoreSDK.QueueTicket, GliaCoreSDK.GliaCoreError>) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -29081,163 +29277,30 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "Tuple",
-                    "printedName": "(GliaCoreSDK.QueueTicket?, GliaCoreSDK.GliaCoreError?)",
+                    "name": "Result",
+                    "printedName": "Swift.Result<GliaCoreSDK.QueueTicket, GliaCoreSDK.GliaCoreError>",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.QueueTicket?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "QueueTicket",
-                            "printedName": "GliaCoreSDK.QueueTicket",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)QueueTicket"
-                          }
-                        ],
-                        "usr": "s:Sq"
+                        "name": "QueueTicket",
+                        "printedName": "GliaCoreSDK.QueueTicket",
+                        "usr": "c:@M@GliaCoreSDK@objc(cs)QueueTicket"
                       },
                       {
                         "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.GliaCoreError?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "GliaCoreError",
-                            "printedName": "GliaCoreSDK.GliaCoreError",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
-                          }
-                        ],
-                        "usr": "s:Sq"
+                        "name": "GliaCoreError",
+                        "printedName": "GliaCoreSDK.GliaCoreError",
+                        "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
                       }
-                    ]
+                    ],
+                    "usr": "s:s6ResultO"
                   }
                 ]
               }
             ],
             "declKind": "Func",
-            "usr": "s:11GliaCoreSDK0aB0C18queueForEngagement0D2ID14visitorContext20shouldCloseAllQueues10completionySS_AA07VisitorI0CSgSbyAA11QueueTicketCSg_AA0aB5ErrorCSgtctF",
-            "mangledName": "$s11GliaCoreSDK0aB0C18queueForEngagement0D2ID14visitorContext20shouldCloseAllQueues10completionySS_AA07VisitorI0CSgSbyAA11QueueTicketCSg_AA0aB5ErrorCSgtctF",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "Final",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "queueForEngagement",
-            "printedName": "queueForEngagement(queueID:visitorContext:shouldCloseAllQueues:mediaType:options:completion:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "GliaCoreSDK.VisitorContext?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "VisitorContext",
-                    "printedName": "GliaCoreSDK.VisitorContext",
-                    "usr": "c:@M@GliaCoreSDK@objc(cs)VisitorContext"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "hasDefaultArg": true,
-                "usr": "s:Sb"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "MediaType",
-                "printedName": "GliaCoreSDK.MediaType",
-                "usr": "s:11GliaCoreSDK9MediaTypeO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "GliaCoreSDK.EngagementOptions?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "EngagementOptions",
-                    "printedName": "GliaCoreSDK.EngagementOptions",
-                    "usr": "s:11GliaCoreSDK17EngagementOptionsV"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(GliaCoreSDK.QueueTicket?, GliaCoreSDK.GliaCoreError?) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Tuple",
-                    "printedName": "(GliaCoreSDK.QueueTicket?, GliaCoreSDK.GliaCoreError?)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.QueueTicket?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "QueueTicket",
-                            "printedName": "GliaCoreSDK.QueueTicket",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)QueueTicket"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.GliaCoreError?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "GliaCoreError",
-                            "printedName": "GliaCoreSDK.GliaCoreError",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:11GliaCoreSDK0aB0C18queueForEngagement0D2ID14visitorContext20shouldCloseAllQueues9mediaType7options10completionySS_AA07VisitorI0CSgSbAA05MediaO0OAA0F7OptionsVSgyAA11QueueTicketCSg_AA0aB5ErrorCSgtctF",
-            "mangledName": "$s11GliaCoreSDK0aB0C18queueForEngagement0D2ID14visitorContext20shouldCloseAllQueues9mediaType7options10completionySS_AA07VisitorI0CSgSbAA05MediaO0OAA0F7OptionsVSgyAA11QueueTicketCSg_AA0aB5ErrorCSgtctF",
+            "usr": "s:11GliaCoreSDK0aB0C18queueForEngagement5using10completionyAA05QueueeF7OptionsV_ys6ResultOyAA0I6TicketCAA0aB5ErrorCGctF",
+            "mangledName": "$s11GliaCoreSDK0aB0C18queueForEngagement5using10completionyAA05QueueeF7OptionsV_ys6ResultOyAA0I6TicketCAA0aB5ErrorCGctF",
             "moduleName": "GliaCoreSDK",
             "declAttributes": [
               "Final",
@@ -31401,6 +31464,380 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "QueueForEngagementOptions",
+        "printedName": "QueueForEngagementOptions",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "queueIds",
+            "printedName": "queueIds",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV8queueIdsSaySSGvp",
+            "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV8queueIdsSaySSGvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV8queueIdsSaySSGvg",
+                "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV8queueIdsSaySSGvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "visitorContext",
+            "printedName": "visitorContext",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.VisitorContext?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VisitorContext",
+                    "printedName": "GliaCoreSDK.VisitorContext",
+                    "usr": "c:@M@GliaCoreSDK@objc(cs)VisitorContext"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV14visitorContextAA07VisitorI0CSgvp",
+            "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV14visitorContextAA07VisitorI0CSgvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GliaCoreSDK.VisitorContext?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "VisitorContext",
+                        "printedName": "GliaCoreSDK.VisitorContext",
+                        "usr": "c:@M@GliaCoreSDK@objc(cs)VisitorContext"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV14visitorContextAA07VisitorI0CSgvg",
+                "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV14visitorContextAA07VisitorI0CSgvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "shouldCloseAllQueues",
+            "printedName": "shouldCloseAllQueues",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV20shouldCloseAllQueuesSbvp",
+            "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV20shouldCloseAllQueuesSbvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV20shouldCloseAllQueuesSbvg",
+                "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV20shouldCloseAllQueuesSbvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "mediaType",
+            "printedName": "mediaType",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MediaType",
+                "printedName": "GliaCoreSDK.MediaType",
+                "usr": "s:11GliaCoreSDK9MediaTypeO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV9mediaTypeAA05MediaI0Ovp",
+            "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV9mediaTypeAA05MediaI0Ovp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MediaType",
+                    "printedName": "GliaCoreSDK.MediaType",
+                    "usr": "s:11GliaCoreSDK9MediaTypeO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV9mediaTypeAA05MediaI0Ovg",
+                "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV9mediaTypeAA05MediaI0Ovg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "engagementOptions",
+            "printedName": "engagementOptions",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.EngagementOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EngagementOptions",
+                    "printedName": "GliaCoreSDK.EngagementOptions",
+                    "usr": "s:11GliaCoreSDK17EngagementOptionsV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV010engagementG0AA0fG0VSgvp",
+            "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV010engagementG0AA0fG0VSgvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GliaCoreSDK.EngagementOptions?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EngagementOptions",
+                        "printedName": "GliaCoreSDK.EngagementOptions",
+                        "usr": "s:11GliaCoreSDK17EngagementOptionsV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV010engagementG0AA0fG0VSgvg",
+                "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV010engagementG0AA0fG0VSgvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(queueIds:visitorContext:shouldCloseAllQueues:mediaType:engagementOptions:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "QueueForEngagementOptions",
+                "printedName": "GliaCoreSDK.QueueForEngagementOptions",
+                "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.VisitorContext?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VisitorContext",
+                    "printedName": "GliaCoreSDK.VisitorContext",
+                    "usr": "c:@M@GliaCoreSDK@objc(cs)VisitorContext"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MediaType",
+                "printedName": "GliaCoreSDK.MediaType",
+                "usr": "s:11GliaCoreSDK9MediaTypeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.EngagementOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EngagementOptions",
+                    "printedName": "GliaCoreSDK.EngagementOptions",
+                    "usr": "s:11GliaCoreSDK17EngagementOptionsV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV8queueIds14visitorContext20shouldCloseAllQueues9mediaType010engagementG0ACSaySSG_AA07VisitorK0CSgSbAA05MediaQ0OAA0fG0VSgtcfc",
+            "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV8queueIds14visitorContext20shouldCloseAllQueues9mediaType010engagementG0ACSaySSG_AA07VisitorK0CSgSbAA05MediaQ0OAA0fG0VSgtcfc",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV",
+        "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "TypeDecl",
         "name": "Engagement",
         "printedName": "Engagement",
         "children": [
@@ -32915,7 +33352,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Socket\/PubsubManager.swift",
       "kind": "Dictionary",
-      "offset": 9573,
+      "offset": 10013,
       "length": 3,
       "value": "[]"
     },
@@ -32992,14 +33429,14 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Configurable.swift",
       "kind": "StringLiteral",
-      "offset": 5432,
+      "offset": 6768,
       "length": 18,
       "value": "\"https:\/\/glia.com\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Configurable.swift",
       "kind": "StringLiteral",
-      "offset": 5536,
+      "offset": 6872,
       "length": 17,
       "value": "\"https:\/\/glia.eu\""
     },
@@ -33254,6 +33691,20 @@
       "offset": 501,
       "length": 8,
       "value": "\"secret\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/Deprecated.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4218,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/Deprecated.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4809,
+      "length": 4,
+      "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/StreamBuilder.swift",
@@ -35591,7 +36042,7 @@
       "kind": "StringLiteral",
       "offset": 433,
       "length": 7,
-      "value": "\"1.0.7\""
+      "value": "\"1.1.0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Channel\/NamespacedChannel.swift",
@@ -35645,28 +36096,28 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 51092,
+      "offset": 51282,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 51151,
+      "offset": 51341,
       "length": 23,
       "value": "\"capabilities:response\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 51092,
+      "offset": 51282,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 51151,
+      "offset": 51341,
       "length": 23,
       "value": "\"capabilities:response\""
     },
@@ -35805,22 +36256,8 @@
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
-      "kind": "BooleanLiteral",
-      "offset": 1614,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
-      "kind": "BooleanLiteral",
-      "offset": 3544,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "Dictionary",
-      "offset": 19583,
+      "offset": 17688,
       "length": 3,
       "value": "[]"
     },
@@ -35886,6 +36323,13 @@
       "offset": 318,
       "length": 11,
       "value": "\"candidate\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/QueueForEngagementOptions.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1439,
+      "length": 4,
+      "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Engagement.swift",
