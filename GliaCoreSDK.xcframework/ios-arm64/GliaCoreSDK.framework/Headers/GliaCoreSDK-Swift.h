@@ -528,28 +528,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-@end
-
-enum LogLevel : NSInteger;
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
-
-
-
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -612,6 +590,29 @@ enum LogLevel : NSInteger;
 /// \param completion A callback that will return an <code>EngagementFileData</code> object if successful, or <code>InternalError</code>.
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, GliaCoreError * _Nullable))completion;
+@end
+
+
+enum LogLevel : NSInteger;
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
+
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
 @end
 
 
@@ -815,7 +816,6 @@ enum LogLevel : NSInteger;
 @end
 
 
-
 @class QueueTicket;
 @class Queue;
 
@@ -946,6 +946,7 @@ enum LogLevel : NSInteger;
 ///
 - (void)unsubscribeFromUpdatesWithQueueCallbackId:(NSString * _Nonnull)queueCallbackId onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError;
 @end
+
 
 
 @class UIApplication;

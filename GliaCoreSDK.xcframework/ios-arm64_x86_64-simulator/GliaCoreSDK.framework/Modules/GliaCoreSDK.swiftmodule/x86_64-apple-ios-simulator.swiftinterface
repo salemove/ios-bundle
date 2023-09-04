@@ -518,6 +518,12 @@ extension GliaCoreSDK.GliaCore.Authentication {
   public func authenticate(with idToken: GliaCoreSDK.GliaCore.IdToken, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
 }
 extension GliaCoreSDK.GliaCore {
+  @available(*, deprecated, message: "Use queueForEngagement(using:completion: instead.")
+  final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping GliaCoreSDK.QueueTicketBlock)
+  @available(*, deprecated, message: "Use queueForEngagement(using:completion: instead.")
+  final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, options: GliaCoreSDK.EngagementOptions?, completion: @escaping GliaCoreSDK.QueueTicketBlock)
+}
+extension GliaCoreSDK.GliaCore {
   @objc final public func requestMediaUpgrade(offer: GliaCoreSDK.MediaUpgradeOffer, completion: @escaping GliaCoreSDK.SuccessBlock)
 }
 extension GliaCoreSDK.GliaCore {
@@ -1058,8 +1064,7 @@ extension GliaCoreSDK.PushNotifications {
 }
 public typealias InternalOperatorTypingStatusUpdate = (GliaCoreSDK.OperatorTypingStatus) -> Swift.Void
 extension GliaCoreSDK.GliaCore {
-  final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping GliaCoreSDK.QueueTicketBlock)
-  final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, options: GliaCoreSDK.EngagementOptions?, completion: @escaping GliaCoreSDK.QueueTicketBlock)
+  final public func queueForEngagement(using options: GliaCoreSDK.QueueForEngagementOptions, completion: @escaping (Swift.Result<GliaCoreSDK.QueueTicket, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
   @objc final public func dequeueFromActiveTickets(completion: @escaping GliaCoreSDK.SuccessBlock)
   @objc final public func cancel(queueTicket: GliaCoreSDK.QueueTicket, completion: @escaping GliaCoreSDK.SuccessBlock)
   @objc final public func listQueues(completion: @escaping GliaCoreSDK.QueueRequestBlock)
@@ -1104,6 +1109,14 @@ extension GliaCoreSDK.GliaCore {
   }
   public init(status: GliaCoreSDK.ScreenSharingStatus, localScreen: GliaCoreSDK.LocalScreen?)
   @objc deinit
+}
+public struct QueueForEngagementOptions {
+  public let queueIds: [Swift.String]
+  public let visitorContext: GliaCoreSDK.VisitorContext?
+  public let shouldCloseAllQueues: Swift.Bool
+  public let mediaType: GliaCoreSDK.MediaType
+  public let engagementOptions: GliaCoreSDK.EngagementOptions?
+  public init(queueIds: [Swift.String], visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, engagementOptions: GliaCoreSDK.EngagementOptions? = nil)
 }
 @objc @objcMembers public class Engagement : ObjectiveC.NSObject {
   @objc final public let id: Swift.String
