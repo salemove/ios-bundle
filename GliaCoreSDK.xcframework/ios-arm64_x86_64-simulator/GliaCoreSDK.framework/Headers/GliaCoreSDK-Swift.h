@@ -639,6 +639,7 @@ enum LogLevel : NSInteger;
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
 @end
 
+
 @class Message;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -717,7 +718,6 @@ enum LogLevel : NSInteger;
 ///
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
-
 
 
 
@@ -2003,6 +2003,7 @@ enum LogLevel : NSInteger;
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
 @end
 
+
 @class Message;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -2081,7 +2082,6 @@ enum LogLevel : NSInteger;
 ///
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
-
 
 
 

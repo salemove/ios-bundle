@@ -12727,6 +12727,530 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SendMessagePayload",
+        "printedName": "SendMessagePayload",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "messageId",
+            "printedName": "messageId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "GliaCoreSDK.Tagged<GliaCoreSDK.SendMessagePayload, Swift.String>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SendMessagePayload",
+                    "printedName": "GliaCoreSDK.SendMessagePayload",
+                    "usr": "s:11GliaCoreSDK18SendMessagePayloadV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:11GliaCoreSDK6TaggedV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK18SendMessagePayloadV9messageIdAA6TaggedVyACSSGvp",
+            "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV9messageIdAA6TaggedVyACSSGvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tagged",
+                    "printedName": "GliaCoreSDK.Tagged<GliaCoreSDK.SendMessagePayload, Swift.String>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SendMessagePayload",
+                        "printedName": "GliaCoreSDK.SendMessagePayload",
+                        "usr": "s:11GliaCoreSDK18SendMessagePayloadV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:11GliaCoreSDK6TaggedV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK18SendMessagePayloadV9messageIdAA6TaggedVyACSSGvg",
+                "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV9messageIdAA6TaggedVyACSSGvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "content",
+            "printedName": "content",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK18SendMessagePayloadV7contentSSvp",
+            "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV7contentSSvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK18SendMessagePayloadV7contentSSvg",
+                "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV7contentSSvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK18SendMessagePayloadV7contentSSvs",
+                "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV7contentSSvs",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK18SendMessagePayloadV7contentSSvM",
+                "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV7contentSSvM",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "attachment",
+            "printedName": "attachment",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.Attachment?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Attachment",
+                    "printedName": "GliaCoreSDK.Attachment",
+                    "usr": "c:@M@GliaCoreSDK@objc(cs)Attachment"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK18SendMessagePayloadV10attachmentAA10AttachmentCSgvp",
+            "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV10attachmentAA10AttachmentCSgvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GliaCoreSDK.Attachment?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Attachment",
+                        "printedName": "GliaCoreSDK.Attachment",
+                        "usr": "c:@M@GliaCoreSDK@objc(cs)Attachment"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK18SendMessagePayloadV10attachmentAA10AttachmentCSgvg",
+                "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV10attachmentAA10AttachmentCSgvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GliaCoreSDK.Attachment?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Attachment",
+                        "printedName": "GliaCoreSDK.Attachment",
+                        "usr": "c:@M@GliaCoreSDK@objc(cs)Attachment"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK18SendMessagePayloadV10attachmentAA10AttachmentCSgvs",
+                "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV10attachmentAA10AttachmentCSgvs",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK18SendMessagePayloadV10attachmentAA10AttachmentCSgvM",
+                "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV10attachmentAA10AttachmentCSgvM",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SendMessagePayload",
+                "printedName": "GliaCoreSDK.SendMessagePayload",
+                "usr": "s:11GliaCoreSDK18SendMessagePayloadV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SendMessagePayload",
+                "printedName": "GliaCoreSDK.SendMessagePayload",
+                "usr": "s:11GliaCoreSDK18SendMessagePayloadV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK18SendMessagePayloadV2eeoiySbAC_ACtFZ",
+            "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV2eeoiySbAC_ACtFZ",
+            "moduleName": "GliaCoreSDK",
+            "static": true,
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(content:attachment:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SendMessagePayload",
+                "printedName": "GliaCoreSDK.SendMessagePayload",
+                "usr": "s:11GliaCoreSDK18SendMessagePayloadV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.Attachment?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Attachment",
+                    "printedName": "GliaCoreSDK.Attachment",
+                    "usr": "c:@M@GliaCoreSDK@objc(cs)Attachment"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11GliaCoreSDK18SendMessagePayloadV7content10attachmentACSS_AA10AttachmentCSgtcfc",
+            "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV7content10attachmentACSS_AA10AttachmentCSgtcfc",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(stringLiteral:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SendMessagePayload",
+                "printedName": "GliaCoreSDK.SendMessagePayload",
+                "usr": "s:11GliaCoreSDK18SendMessagePayloadV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11GliaCoreSDK18SendMessagePayloadV13stringLiteralACSS_tcfc",
+            "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV13stringLiteralACSS_tcfc",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "mock",
+            "printedName": "mock(messageIdSuffix:content:attachment:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SendMessagePayload",
+                "printedName": "GliaCoreSDK.SendMessagePayload",
+                "usr": "s:11GliaCoreSDK18SendMessagePayloadV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.Attachment?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Attachment",
+                    "printedName": "GliaCoreSDK.Attachment",
+                    "usr": "c:@M@GliaCoreSDK@objc(cs)Attachment"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK18SendMessagePayloadV4mock15messageIdSuffix7content10attachmentACSS_SSAA10AttachmentCSgtFZ",
+            "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV4mock15messageIdSuffix7content10attachmentACSS_SSAA10AttachmentCSgtFZ",
+            "moduleName": "GliaCoreSDK",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:11GliaCoreSDK18SendMessagePayloadV",
+        "mangledName": "$s11GliaCoreSDK18SendMessagePayloadV",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByStringLiteral",
+            "printedName": "ExpressibleByStringLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "StringLiteralType",
+                "printedName": "StringLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s26ExpressibleByStringLiteralP",
+            "mangledName": "$ss26ExpressibleByStringLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByExtendedGraphemeClusterLiteral",
+            "printedName": "ExpressibleByExtendedGraphemeClusterLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ExtendedGraphemeClusterLiteralType",
+                "printedName": "ExtendedGraphemeClusterLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s43ExpressibleByExtendedGraphemeClusterLiteralP",
+            "mangledName": "$ss43ExpressibleByExtendedGraphemeClusterLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByUnicodeScalarLiteral",
+            "printedName": "ExpressibleByUnicodeScalarLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "UnicodeScalarLiteralType",
+                "printedName": "UnicodeScalarLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s33ExpressibleByUnicodeScalarLiteralP",
+            "mangledName": "$ss33ExpressibleByUnicodeScalarLiteralP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -28373,6 +28897,67 @@
           },
           {
             "kind": "Function",
+            "name": "send",
+            "printedName": "send(messagePayload:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SendMessagePayload",
+                "printedName": "GliaCoreSDK.SendMessagePayload",
+                "usr": "s:11GliaCoreSDK18SendMessagePayloadV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<GliaCoreSDK.Message, GliaCoreSDK.GliaCoreError>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<GliaCoreSDK.Message, GliaCoreSDK.GliaCoreError>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Message",
+                        "printedName": "GliaCoreSDK.Message",
+                        "usr": "c:@M@GliaCoreSDK@objc(cs)Message"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GliaCoreError",
+                        "printedName": "GliaCoreSDK.GliaCoreError",
+                        "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK0aB0C4send14messagePayload10completionyAA011SendMessageF0V_ys6ResultOyAA0I0CAA0aB5ErrorCGctF",
+            "mangledName": "$s11GliaCoreSDK0aB0C4send14messagePayload10completionyAA011SendMessageF0V_ys6ResultOyAA0I0CAA0aB5ErrorCGctF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "clearSession",
             "printedName": "clearSession()",
             "children": [
@@ -29819,6 +30404,81 @@
                 "declKind": "Func",
                 "usr": "s:11GliaCoreSDK0aB0C19SecureConversationsC4send13secureMessage10attachment8queueIds10completionAC11CancellableCSS_AA10AttachmentCSgSaySSGys6ResultOyAA0H0Cs5Error_pGctF",
                 "mangledName": "$s11GliaCoreSDK0aB0C19SecureConversationsC4send13secureMessage10attachment8queueIds10completionAC11CancellableCSS_AA10AttachmentCSgSaySSGys6ResultOyAA0H0Cs5Error_pGctF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "Final",
+                  "AccessControl",
+                  "RawDocComment"
+                ],
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Function",
+                "name": "send",
+                "printedName": "send(secureMessagePayload:queueIds:completion:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Cancellable",
+                    "printedName": "GliaCoreSDK.GliaCore.Cancellable",
+                    "usr": "s:11GliaCoreSDK0aB0C11CancellableC"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SendMessagePayload",
+                    "printedName": "GliaCoreSDK.SendMessagePayload",
+                    "usr": "s:11GliaCoreSDK18SendMessagePayloadV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  },
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Result",
+                        "printedName": "Swift.Result<GliaCoreSDK.Message, Swift.Error>",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Message",
+                            "printedName": "GliaCoreSDK.Message",
+                            "usr": "c:@M@GliaCoreSDK@objc(cs)Message"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:s6ResultO"
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:11GliaCoreSDK0aB0C19SecureConversationsC4send20secureMessagePayload8queueIds10completionAC11CancellableCAA04SendhI0V_SaySSGys6ResultOyAA0H0Cs5Error_pGctF",
+                "mangledName": "$s11GliaCoreSDK0aB0C19SecureConversationsC4send20secureMessagePayload8queueIds10completionAC11CancellableCAA04SendhI0V_SaySSGys6ResultOyAA0H0Cs5Error_pGctF",
                 "moduleName": "GliaCoreSDK",
                 "declAttributes": [
                   "Final",
@@ -33800,7 +34460,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Messageable.swift",
       "kind": "StringLiteral",
-      "offset": 3128,
+      "offset": 3478,
       "length": 2,
       "value": "\"\""
     },
@@ -33824,6 +34484,20 @@
       "offset": 212,
       "length": 1,
       "value": "0"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/SendMessagePayload.swift",
+      "kind": "StringLiteral",
+      "offset": 1675,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/SendMessagePayload.swift",
+      "kind": "StringLiteral",
+      "offset": 1705,
+      "length": 2,
+      "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/VisitorContext.swift",
@@ -34892,7 +35566,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/Network\/Network.ApiClient.swift",
       "kind": "Dictionary",
-      "offset": 8056,
+      "offset": 8491,
       "length": 3,
       "value": "[]"
     },
@@ -36042,7 +36716,7 @@
       "kind": "StringLiteral",
       "offset": 433,
       "length": 7,
-      "value": "\"1.1.0\""
+      "value": "\"1.1.1\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Channel\/NamespacedChannel.swift",
