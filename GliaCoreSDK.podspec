@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'GliaCoreSDK'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'The Glia Core SDK'
   s.description      = 'The Glia Core SDK brings the in-person customer experience to iOS devices.'
   s.homepage         = 'https://www.glia.com/'

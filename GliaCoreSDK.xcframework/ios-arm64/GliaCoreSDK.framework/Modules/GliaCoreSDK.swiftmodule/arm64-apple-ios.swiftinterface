@@ -566,6 +566,26 @@ extension GliaCoreSDK.GliaCore {
   @objc final public func send(message: Swift.String = "", attachment: GliaCoreSDK.Attachment? = nil, completion: @escaping GliaCoreSDK.MessageBlock)
   @objc final public func send(message: Swift.String, queueID: Swift.String, completion: @escaping GliaCoreSDK.MessageBlock)
   @objc final public func sendMessagePreview(message: Swift.String, completion: @escaping GliaCoreSDK.SuccessBlock)
+  final public func send(messagePayload: GliaCoreSDK.SendMessagePayload, completion: @escaping (Swift.Result<GliaCoreSDK.Message, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+}
+public struct SendMessagePayload : Swift.Equatable {
+  public typealias MessageId = GliaCoreSDK.Tagged<GliaCoreSDK.SendMessagePayload, Swift.String>
+  public let messageId: GliaCoreSDK.SendMessagePayload.MessageId
+  public var content: Swift.String
+  public var attachment: GliaCoreSDK.Attachment?
+  public static func == (a: GliaCoreSDK.SendMessagePayload, b: GliaCoreSDK.SendMessagePayload) -> Swift.Bool
+}
+extension GliaCoreSDK.SendMessagePayload {
+  public init(content: Swift.String, attachment: GliaCoreSDK.Attachment?)
+}
+extension GliaCoreSDK.SendMessagePayload : Swift.ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift.String)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+extension GliaCoreSDK.SendMessagePayload {
+  public static func mock(messageIdSuffix: Swift.String = "", content: Swift.String = "", attachment: GliaCoreSDK.Attachment? = nil) -> GliaCoreSDK.SendMessagePayload
 }
 public enum AnyCodable : Swift.Equatable {
   case string(Swift.String)
@@ -1075,6 +1095,7 @@ extension GliaCoreSDK.GliaCore {
   @_hasMissingDesignatedInitializers final public class SecureConversations {
     final public func send(attachment: GliaCoreSDK.Attachment, queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
     final public func send(secureMessage: Swift.String, attachment: GliaCoreSDK.Attachment? = nil, queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+    final public func send(secureMessagePayload: GliaCoreSDK.SendMessagePayload, queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
     @objc deinit
   }
 }
