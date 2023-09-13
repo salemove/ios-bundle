@@ -504,12 +504,6 @@ public protocol VideoStreamable : AnyObject {
   @objc deinit
 }
 extension GliaCoreSDK.GliaCore {
-  @available(*, unavailable, message: "Use `GliaCore.send(option:completion:)` instead.")
-  final public func send(selectedOptionValue: Swift.String, completion: @escaping (Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> Swift.Void)
-  @available(*, unavailable, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
-  @objc final public func configure(site: Swift.String) throws
-  @available(*, unavailable, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
-  @objc final public func configure(environment: Swift.String) throws
   @available(*, deprecated, message: "Use `GliaCore.CallVisualizer` to request visitor code.")
   @objc final public func requestVisitorCode(completion: @escaping GliaCoreSDK.VisitorCodeBlock)
 }
@@ -522,6 +516,8 @@ extension GliaCoreSDK.GliaCore {
   final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping GliaCoreSDK.QueueTicketBlock)
   @available(*, deprecated, message: "Use queueForEngagement(using:completion: instead.")
   final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, options: GliaCoreSDK.EngagementOptions?, completion: @escaping GliaCoreSDK.QueueTicketBlock)
+  @available(*, deprecated, message: "Use send(messagePayload:completion:) instead.")
+  final public func send(option: GliaCoreSDK.SingleChoiceOption, completion: @escaping (Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> Swift.Void)
 }
 extension GliaCoreSDK.GliaCore {
   @objc final public func requestMediaUpgrade(offer: GliaCoreSDK.MediaUpgradeOffer, completion: @escaping GliaCoreSDK.SuccessBlock)
@@ -562,7 +558,6 @@ extension GliaCoreSDK.GliaCore {
   }
 }
 extension GliaCoreSDK.GliaCore {
-  final public func send(option: GliaCoreSDK.SingleChoiceOption, completion: @escaping (Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> Swift.Void)
   @objc final public func send(message: Swift.String = "", attachment: GliaCoreSDK.Attachment? = nil, completion: @escaping GliaCoreSDK.MessageBlock)
   @objc final public func send(message: Swift.String, queueID: Swift.String, completion: @escaping GliaCoreSDK.MessageBlock)
   @objc final public func sendMessagePreview(message: Swift.String, completion: @escaping GliaCoreSDK.SuccessBlock)
@@ -1081,6 +1076,14 @@ extension GliaCoreSDK.GliaCore {
 extension GliaCoreSDK.PushNotifications {
   @available(*, unavailable, message: "Use `GliaCore.Configuration` to make push notifications feature enabled.")
   public func enable(_ shouldEnablePushNotifications: Swift.Bool)
+}
+extension GliaCoreSDK.GliaCore {
+  @available(*, unavailable, message: "Use `GliaCore.send(option:completion:)` instead.")
+  final public func send(selectedOptionValue: Swift.String, completion: @escaping (Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> Swift.Void)
+  @available(*, unavailable, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
+  @objc final public func configure(site: Swift.String) throws
+  @available(*, unavailable, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
+  @objc final public func configure(environment: Swift.String) throws
 }
 public typealias InternalOperatorTypingStatusUpdate = (GliaCoreSDK.OperatorTypingStatus) -> Swift.Void
 extension GliaCoreSDK.GliaCore {

@@ -485,6 +485,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Deprecated.
+- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
+@end
+
+
 
 
 
@@ -609,35 +615,22 @@ enum LogLevel : NSInteger;
 @end
 
 
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Clear the use session of the client library
 - (void)clearSession;
 @end
 
 
-
-
-
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Change the site used by the client library.
-/// \param site The siteID that should be selected.
-///
-///
-/// throws:
-/// <code>ConfigurationError.invalidSite</code>
+/// Unavailable.
 - (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Change the environment used by the client library.
-/// \param environment The environment baseURL that should be selected.
-///
-///
-/// throws:
-/// <code>ConfigurationError.invalidEnvironment</code>
+/// Unavailable.
 - (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Deprecated.
-- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
 @end
+
+
+
+
 
 
 @class Message;
@@ -718,6 +711,7 @@ enum LogLevel : NSInteger;
 ///
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
+
 
 
 
@@ -814,6 +808,7 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
+
 
 
 @class QueueTicket;
@@ -946,7 +941,6 @@ enum LogLevel : NSInteger;
 ///
 - (void)unsubscribeFromUpdatesWithQueueCallbackId:(NSString * _Nonnull)queueCallbackId onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError;
 @end
-
 
 
 @class UIApplication;
