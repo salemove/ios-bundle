@@ -1051,6 +1051,10 @@ public enum QueueStatus : Swift.String, Swift.Codable {
   final public var pushNotifications: GliaCoreSDK.PushNotifications {
     get
   }
+  final public var localeProvider: GliaCoreSDK.GliaCore.LocaleProvider {
+    get
+    set
+  }
   @objc deinit
 }
 extension GliaCoreSDK.GliaCore {
@@ -1133,6 +1137,14 @@ extension GliaCoreSDK.GliaCore {
   }
   public init(status: GliaCoreSDK.ScreenSharingStatus, localScreen: GliaCoreSDK.LocalScreen?)
   @objc deinit
+}
+extension GliaCoreSDK.GliaCore {
+  @_hasMissingDesignatedInitializers final public class LocaleProvider {
+    @objc deinit
+  }
+}
+extension GliaCoreSDK.GliaCore.LocaleProvider {
+  final public func getRemoteString(_ key: Swift.String) -> Swift.String?
 }
 public struct QueueForEngagementOptions {
   public let queueIds: [Swift.String]
