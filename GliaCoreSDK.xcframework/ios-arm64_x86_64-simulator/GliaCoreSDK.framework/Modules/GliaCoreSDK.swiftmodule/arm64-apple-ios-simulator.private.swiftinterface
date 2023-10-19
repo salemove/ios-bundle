@@ -794,14 +794,24 @@ extension GliaCoreSDK.GliaCore {
 public struct Site : Swift.Decodable, Swift.Equatable {
   public let id: Foundation.UUID
   public let allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders
-  public static func == (a: GliaCoreSDK.Site, b: GliaCoreSDK.Site) -> Swift.Bool
+  public let mobileConfirmDialog: Swift.Bool
+  public let observationIndication: Swift.Bool
+  public let observationVideoFps: GliaCoreSDK.Site.VideoFps
+  public init(id: Foundation.UUID, defaultOperatorPicture: GliaCoreSDK.OperatorPicture?, alwaysUseDefaultOperatorPicture: Swift.Bool?, allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders, maskingRegularExpressions: [Swift.String], visitorAppDefaultLocale: Swift.String, mobileConfirmDialog: Swift.Bool, observationIndication: Swift.Bool, observationVideoFps: GliaCoreSDK.Site.VideoFps)
   public init(from decoder: Swift.Decoder) throws
+  public static func == (a: GliaCoreSDK.Site, b: GliaCoreSDK.Site) -> Swift.Bool
 }
 extension GliaCoreSDK.Site {
   public struct AllowedFileSenders : Swift.Decodable, Swift.Equatable {
     public let `operator`: Swift.Bool
     public let visitor: Swift.Bool
     public static func == (a: GliaCoreSDK.Site.AllowedFileSenders, b: GliaCoreSDK.Site.AllowedFileSenders) -> Swift.Bool
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct VideoFps : Swift.Decodable, Swift.Equatable {
+    public let unlimited: Swift.Int
+    public let metered: Swift.Int
+    public static func == (a: GliaCoreSDK.Site.VideoFps, b: GliaCoreSDK.Site.VideoFps) -> Swift.Bool
     public init(from decoder: Swift.Decoder) throws
   }
 }
