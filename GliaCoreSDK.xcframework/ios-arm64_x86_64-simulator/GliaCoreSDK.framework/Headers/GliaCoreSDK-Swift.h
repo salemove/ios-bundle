@@ -482,14 +482,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+
+
+
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Deprecated.
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
 @end
-
-
-
-
 
 
 
@@ -534,6 +533,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+
+
 enum LogLevel : NSInteger;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -550,11 +551,12 @@ enum LogLevel : NSInteger;
 @end
 
 
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Clear the use session of the client library
 - (void)clearSession;
 @end
+
+
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -621,15 +623,14 @@ enum LogLevel : NSInteger;
 
 
 
-
-
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Unavailable.
 - (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
 /// Unavailable.
 - (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
 @end
+
+
 
 
 
@@ -1842,14 +1843,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+
+
+
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Deprecated.
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
 @end
-
-
-
-
 
 
 
@@ -1894,6 +1894,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+
+
 enum LogLevel : NSInteger;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -1910,11 +1912,12 @@ enum LogLevel : NSInteger;
 @end
 
 
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Clear the use session of the client library
 - (void)clearSession;
 @end
+
+
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -1981,15 +1984,14 @@ enum LogLevel : NSInteger;
 
 
 
-
-
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Unavailable.
 - (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
 /// Unavailable.
 - (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
 @end
+
+
 
 
 
