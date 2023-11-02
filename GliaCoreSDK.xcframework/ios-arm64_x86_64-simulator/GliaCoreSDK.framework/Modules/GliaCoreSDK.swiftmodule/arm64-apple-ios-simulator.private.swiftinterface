@@ -46,7 +46,8 @@ public struct EngagementOptions {
   public init(mediaDirection: GliaCoreSDK.MediaDirection? = nil)
 }
 public enum EngagementEndingReason {
-  case natural
+  case visitorHungUp
+  case operatorHungUp
   case error
   public static func == (a: GliaCoreSDK.EngagementEndingReason, b: GliaCoreSDK.EngagementEndingReason) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
@@ -136,7 +137,20 @@ public protocol MediaHandling {
 public protocol Interactable : GliaCoreSDK.EngagementHandling, GliaCoreSDK.ErrorHandling, GliaCoreSDK.MediaHandling, GliaCoreSDK.MessageHandling {
 }
 extension GliaCoreSDK.GliaCore {
+  public enum ConfigurationProcessError : Swift.Error {
+    case invalidSiteApiKeyCredentials
+    case siteSettingsRetrieval
+    case localeRetrieval
+    public static func == (a: GliaCoreSDK.GliaCore.ConfigurationProcessError, b: GliaCoreSDK.GliaCore.ConfigurationProcessError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public typealias ConfigureCompletion = ((Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  @available(*, deprecated, message: "Use the `configure` method that provides a `Result` in its completion.")
   final public func configure(with sdkConfiguration: GliaCoreSDK.GliaCore.Configuration, completion: (() -> Swift.Void)? = nil)
+  final public func configure(with sdkConfiguration: GliaCoreSDK.GliaCore.Configuration, completion: @escaping GliaCoreSDK.GliaCore.ConfigureCompletion)
   final public func configure(interactor: GliaCoreSDK.Interactable)
 }
 extension GliaCoreSDK.GliaCore {
@@ -151,7 +165,7 @@ extension GliaCoreSDK.GliaCore {
     public static func custom(_ host: Foundation.URL) -> GliaCoreSDK.GliaCore.Region
   }
   public struct Configuration {
-    public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, authorizingMethod: GliaCoreSDK.GliaCore.AuthorizationMethod, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled) throws
+    public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, authorizingMethod: GliaCoreSDK.GliaCore.AuthorizationMethod, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled, manualLocaleOverride: Swift.String? = nil) throws
   }
 }
 extension GliaCoreSDK.GliaCore.Configuration {
@@ -1199,6 +1213,8 @@ extension GliaCoreSDK.EngagementEndingReason : Swift.Hashable {}
 extension GliaCoreSDK.PushNotificationsType : Swift.Equatable {}
 extension GliaCoreSDK.PushNotificationsType : Swift.Hashable {}
 extension GliaCoreSDK.PushNotificationsType : Swift.RawRepresentable {}
+extension GliaCoreSDK.GliaCore.ConfigurationProcessError : Swift.Equatable {}
+extension GliaCoreSDK.GliaCore.ConfigurationProcessError : Swift.Hashable {}
 extension GliaCoreSDK.GliaCore.Configuration.PushNotifications : Swift.Equatable {}
 extension GliaCoreSDK.GliaCore.Configuration.PushNotifications : Swift.Hashable {}
 extension GliaCoreSDK.Message.Metadata.CodingKeys : Swift.Equatable {}
