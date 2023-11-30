@@ -500,6 +500,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+
 @class MediaUpgradeOffer;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -530,11 +531,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
-
-
-
-
-
 enum LogLevel : NSInteger;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -549,6 +545,10 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
+
+
+
+
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -1178,6 +1178,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK17PushNotifications")
 
 
 
+
 @class UNUserNotificationCenter;
 @class UNNotification;
 @class UNNotificationResponse;
@@ -1299,6 +1300,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10StreamView")
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
 @end
+
 
 @protocol RTCVideoRenderer;
 
@@ -1861,6 +1863,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+
 @class MediaUpgradeOffer;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -1891,11 +1894,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
-
-
-
-
-
 enum LogLevel : NSInteger;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -1910,6 +1908,10 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
+
+
+
+
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -2539,6 +2541,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK17PushNotifications")
 
 
 
+
 @class UNUserNotificationCenter;
 @class UNNotification;
 @class UNNotificationResponse;
@@ -2660,6 +2663,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10StreamView")
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
 @end
+
 
 @protocol RTCVideoRenderer;
 
