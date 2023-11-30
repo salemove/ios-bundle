@@ -746,6 +746,36 @@ extension GliaCoreSDK.GliaCore {
   @objc final public func clearSession()
   final public func fetchSiteConfiguration(_ completion: @escaping (Swift.Result<GliaCoreSDK.Site, Swift.Error>) -> Swift.Void)
 }
+@_spi(GliaWidgets) public protocol Logging {
+  @_spi(GliaWidgets) func error(_ object: @autoclosure () -> Any, file: Swift.String, function: Swift.String, line: Swift.Int)
+  @_spi(GliaWidgets) func warning(_ object: @autoclosure () -> Any, file: Swift.String, function: Swift.String, line: Swift.Int)
+  @_spi(GliaWidgets) func info(_ object: @autoclosure () -> Any, file: Swift.String, function: Swift.String, line: Swift.Int)
+  @_spi(GliaWidgets) func debug(_ object: @autoclosure () -> Any, file: Swift.String, function: Swift.String, line: Swift.Int)
+  @_spi(GliaWidgets) var localLogger: GliaCoreSDK.Logging? { get }
+  @_spi(GliaWidgets) var remoteLogger: GliaCoreSDK.Logging? { get }
+  @_spi(GliaWidgets) var oneTime: GliaCoreSDK.Logging { get }
+  @_spi(GliaWidgets) func prefixed(_ prefix: Swift.String) -> GliaCoreSDK.Logging
+  @_spi(GliaWidgets) func prefixed<TypeAsPrefix>(_ prefix: TypeAsPrefix.Type) -> GliaCoreSDK.Logging
+}
+@_spi(GliaWidgets) extension GliaCoreSDK.Logging {
+  @_spi(GliaWidgets) public func error(_ object: @autoclosure () -> Any, file: Swift.String = #fileID, function: Swift.String = #function, line: Swift.Int = #line)
+  @_spi(GliaWidgets) public func warning(_ object: @autoclosure () -> Any, file: Swift.String = #fileID, function: Swift.String = #function, line: Swift.Int = #line)
+  @_spi(GliaWidgets) public func info(_ object: @autoclosure () -> Any, file: Swift.String = #fileID, function: Swift.String = #function, line: Swift.Int = #line)
+  @_spi(GliaWidgets) public func debug(_ object: @autoclosure () -> Any, file: Swift.String = #fileID, function: Swift.String = #function, line: Swift.Int = #line)
+  @_spi(GliaWidgets) public func prefixed<TypeAsPrefix>(_ prefix: TypeAsPrefix.Type) -> GliaCoreSDK.Logging
+}
+@_spi(GliaWidgets) public struct LoggingError : Swift.Error {
+  @_spi(GliaWidgets) public var reason: Swift.String
+}
+@_spi(GliaWidgets) public protocol LogConfigurable {
+  @_spi(GliaWidgets) func configureLocalLogLevel(_ level: GliaCoreSDK.LogLevel)
+  @_spi(GliaWidgets) func configureRemoteLogLevel(_ level: GliaCoreSDK.LogLevel)
+}
+@_spi(GliaWidgets) extension GliaCoreSDK.Logging {
+  @_spi(GliaWidgets) public func reportDeprecatedMethod(context: Swift.String, file: Swift.String = #fileID, function: Swift.String = #function, line: Swift.Int = #line)
+  @_spi(GliaWidgets) public func reportDeprecatedMethod<T>(context: T.Type, file: Swift.String = #fileID, function: Swift.String = #function, line: Swift.Int = #line)
+  @_spi(GliaWidgets) public func reportDeprecatedType<T>(context: T.Type, file: Swift.String = #fileID, function: Swift.String = #function, line: Swift.Int = #line)
+}
 @_hasMissingDesignatedInitializers @objc public class Push : ObjectiveC.NSObject, Swift.Codable {
   @objc public var actionIdentifier: Swift.String {
     get
@@ -1080,6 +1110,7 @@ public enum QueueStatus : Swift.String, Swift.Codable {
     set
   }
   @objc deinit
+  @_spi(GliaWidgets) final public func createLogger(externalParameters: [Swift.String : Swift.String]) throws -> GliaCoreSDK.LogConfigurable & GliaCoreSDK.Logging
 }
 extension GliaCoreSDK.GliaCore {
   final public func fetchChatTranscript(_ completion: @escaping (Swift.Result<[GliaCoreSDK.Message], GliaCoreSDK.GliaCoreError>) -> Swift.Void)
