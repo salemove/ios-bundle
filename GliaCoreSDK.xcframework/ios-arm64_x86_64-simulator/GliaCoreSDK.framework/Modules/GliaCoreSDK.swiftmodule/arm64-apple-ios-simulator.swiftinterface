@@ -3,6 +3,7 @@
 // swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name GliaCoreSDK
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
+import Combine
 import CoreMedia/*.CMSampleBuffer*/
 import CoreServices
 import Foundation
@@ -12,6 +13,7 @@ import GliaCoreDependency/*.ReactiveSwift*/
 import GliaCoreDependency/*.Starscream*/
 import GliaCoreDependency/*.SwiftPhoenixClient*/
 @_exported import GliaCoreSDK
+import Network
 import ReplayKit
 import ReplayKit/*.RPSampleBufferType*/
 import Security
@@ -70,6 +72,15 @@ public enum PushNotificationsType : Swift.Int {
 extension GliaCoreSDK.GliaCore {
   @objc final public func uploadFileToEngagement(_ file: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping GliaCoreSDK.EngagementFileCompletionBlock)
   @objc final public func fetchFile(engagementFile: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping GliaCoreSDK.EngagementFileFetchCompletionBlock)
+}
+public protocol LiveObservation {
+  func pause()
+  func resume()
+}
+extension GliaCoreSDK.GliaCore {
+  final public var liveObservation: GliaCoreSDK.LiveObservation {
+    get
+  }
 }
 @objc public class Attachment : ObjectiveC.NSObject, Swift.Decodable {
   final public let type: GliaCoreSDK.AttachmentType?
@@ -141,6 +152,7 @@ extension GliaCoreSDK.GliaCore {
     case invalidSiteApiKeyCredentials
     case siteSettingsRetrieval
     case localeRetrieval
+    case emptyLocale
     public static func == (a: GliaCoreSDK.GliaCore.ConfigurationProcessError, b: GliaCoreSDK.GliaCore.ConfigurationProcessError) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
@@ -148,8 +160,6 @@ extension GliaCoreSDK.GliaCore {
     }
   }
   public typealias ConfigureCompletion = ((Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  @available(*, deprecated, message: "Use the `configure` method that provides a `Result` in its completion.")
-  final public func configure(with sdkConfiguration: GliaCoreSDK.GliaCore.Configuration, completion: (() -> Swift.Void)? = nil)
   final public func configure(with sdkConfiguration: GliaCoreSDK.GliaCore.Configuration, completion: @escaping GliaCoreSDK.GliaCore.ConfigureCompletion)
   final public func configure(interactor: GliaCoreSDK.Interactable)
 }
@@ -321,6 +331,12 @@ extension GliaCoreSDK.VisitorInfoUpdate {
       get
     }
   }
+}
+public struct NetworkPath {
+  public var status: Network.NWPath.Status
+  public var interfaceType: Network.NWInterface.InterfaceType
+  public init(status: Network.NWPath.Status, interfaceType: Network.NWInterface.InterfaceType)
+  public init(rawValue: Network.NWPath)
 }
 @objc @_hasMissingDesignatedInitializers public class PushNotifications : ObjectiveC.NSObject {
   @objc public var handler: GliaCoreSDK.PushActionBlock? {
@@ -532,6 +548,10 @@ extension GliaCoreSDK.GliaCore {
   final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, options: GliaCoreSDK.EngagementOptions?, completion: @escaping GliaCoreSDK.QueueTicketBlock)
   @available(*, deprecated, message: "Use send(messagePayload:completion:) instead.")
   final public func send(option: GliaCoreSDK.SingleChoiceOption, completion: @escaping (Swift.Result<GliaCoreSDK.Message, Swift.Error>) -> Swift.Void)
+}
+extension GliaCoreSDK.GliaCore {
+  @available(*, deprecated, message: "Use the `configure` method that provides a `Result` in its completion.")
+  final public func configure(with sdkConfiguration: GliaCoreSDK.GliaCore.Configuration, completion: (() -> Swift.Void)? = nil)
 }
 extension GliaCoreSDK.GliaCore {
   @objc final public func requestMediaUpgrade(offer: GliaCoreSDK.MediaUpgradeOffer, completion: @escaping GliaCoreSDK.SuccessBlock)
@@ -808,10 +828,11 @@ extension GliaCoreSDK.GliaCore {
 public struct Site : Swift.Decodable, Swift.Equatable {
   public let id: Foundation.UUID
   public let allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders
-  public let mobileConfirmDialog: Swift.Bool
-  public let observationIndication: Swift.Bool
-  public let observationVideoFps: GliaCoreSDK.Site.VideoFps
-  public init(id: Foundation.UUID, defaultOperatorPicture: GliaCoreSDK.OperatorPicture?, alwaysUseDefaultOperatorPicture: Swift.Bool?, allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders, maskingRegularExpressions: [Swift.String], visitorAppDefaultLocale: Swift.String, mobileConfirmDialog: Swift.Bool, observationIndication: Swift.Bool, observationVideoFps: GliaCoreSDK.Site.VideoFps)
+  public let mobileObservationEnabled: Swift.Bool
+  public let mobileConfirmDialogEnabled: Swift.Bool
+  public let mobileObservationIndicationEnabled: Swift.Bool
+  public let mobileObservationVideoFps: GliaCoreSDK.Site.VideoFps
+  public init(id: Foundation.UUID, defaultOperatorPicture: GliaCoreSDK.OperatorPicture?, alwaysUseDefaultOperatorPicture: Swift.Bool?, allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders, maskingRegularExpressions: [Swift.String], visitorAppDefaultLocale: Swift.String, mobileConfirmDialogEnabled: Swift.Bool, mobileObservationIndicationEnabled: Swift.Bool, mobileObservationVideoFps: GliaCoreSDK.Site.VideoFps, mobileObservationEnabled: Swift.Bool)
   public init(from decoder: Swift.Decoder) throws
   public static func == (a: GliaCoreSDK.Site, b: GliaCoreSDK.Site) -> Swift.Bool
 }
@@ -1114,6 +1135,10 @@ extension GliaCoreSDK.GliaCore {
   @objc final public func configure(environment: Swift.String) throws
 }
 public typealias InternalOperatorTypingStatusUpdate = (GliaCoreSDK.OperatorTypingStatus) -> Swift.Void
+public struct PathMonitorClient {
+  public let networkPathPublisher: Combine.AnyPublisher<GliaCoreSDK.NetworkPath, Swift.Never>
+  public init(networkPathPublisher: Combine.AnyPublisher<GliaCoreSDK.NetworkPath, Swift.Never>)
+}
 extension GliaCoreSDK.GliaCore {
   final public func queueForEngagement(using options: GliaCoreSDK.QueueForEngagementOptions, completion: @escaping (Swift.Result<GliaCoreSDK.QueueTicket, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
   @objc final public func dequeueFromActiveTickets(completion: @escaping GliaCoreSDK.SuccessBlock)
