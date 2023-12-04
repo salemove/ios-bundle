@@ -25,13 +25,13 @@ let package = Package(
         ),
         .binaryTarget(
             name: "WebRTC",
-            url: "https://github.com/salemove/ios-bundle/releases/download/0.33.0/WebRTC.xcframework.zip",
-            checksum: "f76e410f608d96989ba0312e099697703a37b4414f8f46bb9e30c3d9b4291a52"
+            url: "https://github.com/stasel/WebRTC/releases/download/119.0.0/WebRTC-M119.xcframework.zip",
+            checksum: "60737020738e76f2200f3f2c12a32f260d116f858a2e1ff33c48973ddd3e1c97"
         ),
         .binaryTarget(
             name: "GliaCoreSDK",
-            url: "https://github.com/salemove/ios-bundle/releases/download/1.1.7/GliaCoreSDK.xcframework.zip",
-            checksum: "aabcb3f26a4c4c306c64ed1b97e11858356feb49a320c81114c0e0599bb8a11e"
+            url: "https://github.com/salemove/ios-bundle/releases/download/1.1.8/GliaCoreSDK.xcframework.zip",
+            checksum: "7c996566c3391347754d70f69f1d277a2f967cae5b23ffbfdca66bbb39b70c32"
         ),
         .target(
             name: "GliaSDK",
