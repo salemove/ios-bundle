@@ -9,8 +9,8 @@ Glia Technologies
 
 ### Requirements
 
-- iOS 12+
-- Xcode 12+
+- iOS 13+
+- Xcode 15.1+
 - Swift 5.3
 
 ### Getting Started
