@@ -38198,64 +38198,71 @@
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+Capturer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1431,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+Capturer.swift",
       "kind": "StringLiteral",
-      "offset": 1943,
+      "offset": 2629,
       "length": 70,
       "value": "\"Creation pixel buffer for image failed with status code='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+Capturer.swift",
       "kind": "StringLiteral",
-      "offset": 2010,
+      "offset": 2696,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+Capturer.swift",
       "kind": "StringLiteral",
-      "offset": 2123,
+      "offset": 2809,
       "length": 46,
       "value": "\"Pixel buffer for image has not been created.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+Capturer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2837,
+      "offset": 3523,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+Capturer.swift",
       "kind": "IntegerLiteral",
-      "offset": 3094,
+      "offset": 3780,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+Capturer.swift",
       "kind": "FloatLiteral",
-      "offset": 3145,
+      "offset": 3831,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+Capturer.swift",
       "kind": "FloatLiteral",
-      "offset": 3153,
+      "offset": 3839,
       "length": 4,
       "value": "-1.0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+Capturer.swift",
       "kind": "IntegerLiteral",
-      "offset": 3231,
+      "offset": 3917,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+Capturer.swift",
       "kind": "IntegerLiteral",
-      "offset": 3237,
+      "offset": 3923,
       "length": 1,
       "value": "0"
     },
@@ -48008,7 +48015,7 @@
       "kind": "StringLiteral",
       "offset": 433,
       "length": 7,
-      "value": "\"1.3.3\""
+      "value": "\"1.3.4\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
