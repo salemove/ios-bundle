@@ -8,9 +8,7 @@ import CoreMedia/*.CMSampleBuffer*/
 import CoreServices
 import Foundation
 import GliaCoreDependency
-import GliaCoreDependency/*.Defaults*/
 import GliaCoreDependency/*.ReactiveSwift*/
-import GliaCoreDependency/*.Starscream*/
 import GliaCoreDependency/*.SwiftPhoenixClient*/
 @_exported import GliaCoreSDK
 import Network

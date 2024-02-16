@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'GliaCoreSDK'
-  s.version          = '1.3.5'
+  s.version          = '1.3.6'
   s.summary          = 'The Glia Core SDK'
   s.description      = 'The Glia Core SDK brings the in-person customer experience to iOS devices.'
   s.homepage         = 'https://www.glia.com/'
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.ios.vendored_frameworks = 'GliaCoreSDK.xcframework'
   s.swift_version = '5.3'
 
-  s.dependency 'GliaCoreDependency', '1.2'
+  s.dependency 'GliaCoreDependency', '2.3.0'
   s.dependency 'WebRTC-lib', '96.0.0'
   s.dependency 'TwilioVoice', '6.3.1'
 end
