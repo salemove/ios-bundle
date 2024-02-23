@@ -6,6 +6,7 @@ import AVFoundation
 import Combine
 import CoreMedia/*.CMSampleBuffer*/
 import CoreServices
+import Dispatch
 import Foundation
 import GliaCoreDependency
 import GliaCoreDependency/*.ReactiveSwift*/
@@ -615,6 +616,9 @@ extension GliaCoreSDK.SendMessagePayload : Swift.ExpressibleByStringLiteral {
 }
 extension GliaCoreSDK.SendMessagePayload {
   public static func mock(messageIdSuffix: Swift.String = "", content: Swift.String = "", attachment: GliaCoreSDK.Attachment? = nil) -> GliaCoreSDK.SendMessagePayload
+}
+extension UIKit.UIWindow {
+  @_Concurrency.MainActor(unsafe) public func topMostViewController() -> UIKit.UIViewController?
 }
 public enum AnyCodable : Swift.Equatable {
   case string(Swift.String)
