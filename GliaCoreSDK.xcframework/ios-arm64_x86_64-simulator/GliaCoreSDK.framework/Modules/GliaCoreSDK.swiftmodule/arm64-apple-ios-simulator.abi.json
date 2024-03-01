@@ -48174,7 +48174,7 @@
       "kind": "StringLiteral",
       "offset": 433,
       "length": 7,
-      "value": "\"1.3.7\""
+      "value": "\"1.3.8\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -51196,77 +51196,77 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+SetupAccount.swift",
       "kind": "StringLiteral",
-      "offset": 1021,
+      "offset": 1035,
       "length": 55,
       "value": "\"Creating visitor has been completed from '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+SetupAccount.swift",
       "kind": "StringLiteral",
-      "offset": 1073,
+      "offset": 1087,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+SetupAccount.swift",
       "kind": "BooleanLiteral",
-      "offset": 1741,
+      "offset": 1854,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+SetupAccount.swift",
       "kind": "BooleanLiteral",
-      "offset": 2092,
+      "offset": 2205,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+SetupAccount.swift",
       "kind": "IntegerLiteral",
-      "offset": 3973,
+      "offset": 4086,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+SetupAccount.swift",
       "kind": "IntegerLiteral",
-      "offset": 5481,
+      "offset": 5594,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+SetupAccount.swift",
       "kind": "BooleanLiteral",
-      "offset": 7418,
+      "offset": 7531,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+SetupAccount.swift",
       "kind": "StringLiteral",
-      "offset": 7485,
+      "offset": 7598,
       "length": 53,
       "value": "\"Skipping setting up the visitor, reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+SetupAccount.swift",
       "kind": "StringLiteral",
-      "offset": 7535,
+      "offset": 7648,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+SetupAccount.swift",
       "kind": "BooleanLiteral",
-      "offset": 7559,
+      "offset": 7672,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+SetupAccount.swift",
       "kind": "StringLiteral",
-      "offset": 7802,
+      "offset": 7915,
       "length": 14,
       "value": "\"SetupAccount\""
     }
