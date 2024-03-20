@@ -40822,29 +40822,78 @@
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+OpaqueAuthentication.swift",
+      "kind": "StringLiteral",
+      "offset": 3571,
+      "length": 62,
+      "value": "\"New visitor created with ID \""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+OpaqueAuthentication.swift",
+      "kind": "StringLiteral",
+      "offset": 3613,
+      "length": 13,
+      "value": "\" authenticated:true\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+OpaqueAuthentication.swift",
+      "kind": "StringLiteral",
+      "offset": 3757,
+      "length": 64,
+      "value": "\"Backend returned unauthenticated visitor during authentication\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+OpaqueAuthentication.swift",
+      "kind": "StringLiteral",
+      "offset": 3866,
+      "length": 63,
+      "value": "\"New visitor created with ID \""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+OpaqueAuthentication.swift",
+      "kind": "StringLiteral",
+      "offset": 3908,
+      "length": 13,
+      "value": "\" authenticated:false\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+OpaqueAuthentication.swift",
+      "kind": "StringLiteral",
+      "offset": 5483,
+      "length": 52,
+      "value": "\"Unauthenticating visitor during ongoing engagement\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+OpaqueAuthentication.swift",
+      "kind": "StringLiteral",
+      "offset": 8152,
+      "length": 53,
+      "value": "\"Visitor creation (authentication) during engagement\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+OpaqueAuthentication.swift",
       "kind": "BooleanLiteral",
-      "offset": 8590,
+      "offset": 9211,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+OpaqueAuthentication.swift",
       "kind": "BooleanLiteral",
-      "offset": 8889,
+      "offset": 9510,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+OpaqueAuthentication.swift",
       "kind": "StringLiteral",
-      "offset": 9341,
+      "offset": 9962,
       "length": 132,
       "value": "\"'\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+OpaqueAuthentication.swift",
       "kind": "StringLiteral",
-      "offset": 9380,
+      "offset": 10001,
       "length": 66,
       "value": "\"' does not allow authentication changes during ongoing engagement.\""
     },
@@ -48805,7 +48854,7 @@
       "kind": "StringLiteral",
       "offset": 433,
       "length": 7,
-      "value": "\"1.4.0\""
+      "value": "\"1.4.1\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
