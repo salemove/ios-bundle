@@ -893,11 +893,12 @@ extension GliaCoreSDK.GliaCore.Authentication {
   public var isAuthenticated: Swift.Bool {
     get
   }
-  public init()
+  public init(authenticateWithIdToken: @escaping (Swift.String, Swift.String?, @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> Swift.Void = { _, _, _ in }, deauthenticateWithCallback: @escaping (@escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> Swift.Void = { _ in }, isAuthenticatedClosure: @escaping () -> Swift.Bool = { false })
 }
 extension GliaCoreSDK.GliaCore.Authentication {
   public enum Behavior {
     case forbiddenDuringEngagement
+    case allowedDuringEngagement
     public static func == (a: GliaCoreSDK.GliaCore.Authentication.Behavior, b: GliaCoreSDK.GliaCore.Authentication.Behavior) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
@@ -1212,13 +1213,22 @@ public struct QueueForEngagementOptions {
   @objc final public let id: Swift.String
   @objc final public let engagedOperator: GliaCoreSDK.Operator?
   final public let source: GliaCoreSDK.EngagementSource
-  public init(id: Swift.String, engagedOperator: GliaCoreSDK.Operator?, source: GliaCoreSDK.EngagementSource, fetchSurvey: @escaping GliaCoreSDK.Engagement.FetchSurvey)
+  @objc public var restartedFromEngagementId: Swift.String?
+  public var mediaStreams: GliaCoreSDK.Engagement.Media
+  public init(id: Swift.String, engagedOperator: GliaCoreSDK.Operator?, source: GliaCoreSDK.EngagementSource, fetchSurvey: @escaping GliaCoreSDK.Engagement.FetchSurvey, restartedFromEngagementId: Swift.String? = nil, mediaStreams: GliaCoreSDK.Engagement.Media)
   @objc deinit
 }
 extension GliaCoreSDK.Engagement {
   public typealias FetchSurveyCallback = (Swift.Result<GliaCoreSDK.Survey?, GliaCoreSDK.GliaCoreError>) -> Swift.Void
   public typealias FetchSurvey = (_ engagementId: Swift.String, _ callback: @escaping GliaCoreSDK.Engagement.FetchSurveyCallback) -> Swift.Void
   public func getSurvey(completion: @escaping (Swift.Result<GliaCoreSDK.Survey?, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+}
+extension GliaCoreSDK.Engagement {
+  public struct Media {
+    public let audio: GliaCoreSDK.MediaDirection?
+    public let video: GliaCoreSDK.MediaDirection?
+    public init(audio: GliaCoreSDK.MediaDirection?, video: GliaCoreSDK.MediaDirection?)
+  }
 }
 @objc public class MediaUpgradeOffer : ObjectiveC.NSObject {
   final public let type: GliaCoreSDK.MediaType

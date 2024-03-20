@@ -371,9 +371,13 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
 /// The operator that is currently engaged with the visitor.
 @property (nonatomic, readonly, strong) Operator * _Nullable engagedOperator;
+/// The engagement identifier from which this has been
+/// restarted.
+@property (nonatomic, copy) NSString * _Nullable restartedFromEngagementId;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 /// Error of the Engagement
@@ -530,16 +534,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-
-
-
-
-
-
-
-
-
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Deprecated.
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
@@ -547,6 +541,31 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+enum LogLevel : NSInteger;
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
 
 
 @class MediaUpgradeOffer;
@@ -577,21 +596,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 /// \param completion A callback that returns the upgrade result or <code>GliaCoreError</code>
 ///
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-enum LogLevel : NSInteger;
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
 
 
@@ -766,7 +770,6 @@ enum LogLevel : NSInteger;
 
 
 
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Waits until there is an active engagement handled by the SDK.
 /// If the SDK already has an active engagement present, then it returns information about it through
@@ -860,6 +863,7 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
+
 
 
 
@@ -1787,9 +1791,13 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
 /// The operator that is currently engaged with the visitor.
 @property (nonatomic, readonly, strong) Operator * _Nullable engagedOperator;
+/// The engagement identifier from which this has been
+/// restarted.
+@property (nonatomic, copy) NSString * _Nullable restartedFromEngagementId;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 /// Error of the Engagement
@@ -1946,16 +1954,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-
-
-
-
-
-
-
-
-
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Deprecated.
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
@@ -1963,6 +1961,31 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+enum LogLevel : NSInteger;
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
 
 
 @class MediaUpgradeOffer;
@@ -1993,21 +2016,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 /// \param completion A callback that returns the upgrade result or <code>GliaCoreError</code>
 ///
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-enum LogLevel : NSInteger;
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
 
 
@@ -2182,7 +2190,6 @@ enum LogLevel : NSInteger;
 
 
 
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Waits until there is an active engagement handled by the SDK.
 /// If the SDK already has an active engagement present, then it returns information about it through
@@ -2276,6 +2283,7 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
+
 
 
 
