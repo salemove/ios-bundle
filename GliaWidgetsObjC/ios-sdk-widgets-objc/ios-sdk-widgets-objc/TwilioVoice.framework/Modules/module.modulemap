@@ -1,0 +1,32 @@
+framework module TwilioVoice {
+  umbrella header "TwilioVoice.h"
+
+  header "TVOAcceptOptions.h"
+  header "TVOAudioCodec.h"
+  header "TVOAudioDevice.h"
+  header "TVOAudioFormat.h"
+  header "TVOBaseTrackStats.h"
+  header "TVOCall.h"
+  header "TVOCallDelegate.h"
+  header "TVOCallerInfo.h"
+  header "TVOCallInvite.h"
+  header "TVOCallOptions.h"
+  header "TVOCancelledCallInvite.h"
+  header "TVOConnectOptions.h"
+  header "TVODefaultAudioDevice.h"
+  header "TVOError.h"
+  header "TVOIceCandidatePairStats.h"
+  header "TVOIceCandidateStats.h"
+  header "TVOIceOptions.h"
+  header "TVOLocalAudioTrackStats.h"
+  header "TVOLocalTrackStats.h"
+  header "TVONotificationDelegate.h"
+  header "TVOOpusCodec.h"
+  header "TVOPcmuCodec.h"
+  header "TVORemoteAudioTrackStats.h"
+  header "TVORemoteTrackStats.h"
+  header "TVOStatsReport.h"
+
+  export *
+  module * { export * }
+}

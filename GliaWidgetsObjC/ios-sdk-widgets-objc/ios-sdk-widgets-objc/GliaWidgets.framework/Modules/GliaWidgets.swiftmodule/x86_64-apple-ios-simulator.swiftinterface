@@ -1,0 +1,2944 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name GliaWidgets
+import AVFoundation
+import Combine
+import DeveloperToolsSupport
+import Dispatch
+import Foundation
+import GliaCoreDependency
+import GliaCoreSDK
+@_exported import GliaWidgets
+import MobileCoreServices
+import QuickLook
+import QuickLookThumbnailing
+import SafariServices
+import Swift
+import SwiftUI
+import UIKit.UIContentSizeCategory
+import UIKit.UIImage
+import UIKit
+import WebKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public class OperatorTypingIndicatorStyle {
+  public var color: UIKit.UIColor
+  public var accessibility: GliaWidgets.OperatorTypingIndicatorStyle.Accessibility
+  public init(color: UIKit.UIColor, accessibility: GliaWidgets.OperatorTypingIndicatorStyle.Accessibility = .unsupported)
+  @objc deinit
+}
+extension GliaWidgets.AttachmentSourceItemStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.AttachmentSourceItemStyle.Accessibility, b: GliaWidgets.AttachmentSourceItemStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.AttachmentSourceItemStyle.Accessibility {
+  public static let unsupported: GliaWidgets.AttachmentSourceItemStyle.Accessibility
+}
+extension GliaWidgets.Theme {
+  public struct ChoiceCardStyle {
+    public var text: GliaWidgets.Theme.Text
+    public var background: GliaWidgets.Theme.Layer
+    public var imageFile: GliaWidgets.ChatImageFileContentStyle
+    public var fileDownload: GliaWidgets.ChatFileDownloadStyle
+    public var operatorImage: GliaWidgets.UserImageStyle
+    public var choiceOption: GliaWidgets.Theme.ChoiceCardStyle.Option
+    public var accessibility: GliaWidgets.Theme.ChoiceCardStyle.Accessibility
+    public init(text: GliaWidgets.Theme.Text, background: GliaWidgets.Theme.Layer, imageFile: GliaWidgets.ChatImageFileContentStyle, fileDownload: GliaWidgets.ChatFileDownloadStyle, operatorImage: GliaWidgets.UserImageStyle, choiceOption: GliaWidgets.Theme.ChoiceCardStyle.Option, accessibility: GliaWidgets.Theme.ChoiceCardStyle.Accessibility = .unsupported)
+  }
+}
+public struct CallButtonStyle : Swift.Equatable {
+  public var active: GliaWidgets.CallButtonStyle.StateStyle
+  public var inactive: GliaWidgets.CallButtonStyle.StateStyle
+  public var selected: GliaWidgets.CallButtonStyle.StateStyle
+  public var accessibility: GliaWidgets.CallButtonStyle.Accessibility
+  public static func == (a: GliaWidgets.CallButtonStyle, b: GliaWidgets.CallButtonStyle) -> Swift.Bool
+}
+public struct UserImageStyle : Swift.Equatable {
+  public var placeholderImage: UIKit.UIImage?
+  public var placeholderColor: UIKit.UIColor
+  public var placeholderBackgroundColor: GliaWidgets.ColorType
+  public var imageBackgroundColor: GliaWidgets.ColorType
+  public var transferringImage: UIKit.UIImage?
+  public init(placeholderImage: UIKit.UIImage?, placeholderColor: UIKit.UIColor, placeholderBackgroundColor: GliaWidgets.ColorType, imageBackgroundColor: GliaWidgets.ColorType, transferringImage: UIKit.UIImage? = nil)
+  public static func == (a: GliaWidgets.UserImageStyle, b: GliaWidgets.UserImageStyle) -> Swift.Bool
+}
+extension GliaWidgets.MessageRenderer {
+  public static let webRenderer: GliaWidgets.MessageRenderer
+}
+public struct MessageAlertConfiguration {
+  public var title: Swift.String?
+  public var message: Swift.String?
+  public var shouldShowCloseButton: Swift.Bool
+  public init(title: Swift.String?, message: Swift.String?, shouldShowCloseButton: Swift.Bool = true)
+}
+extension GliaWidgets.Glia {
+  @available(*, deprecated, message: "Use clearVisitorSession(_:) instead.")
+  public func clearVisitorSession()
+  @available(*, deprecated, message: "Deprecated, use ``CallVisualizer.showVisitorCodeViewController`` instead.")
+  public func requestVisitorCode(completion: @escaping (Swift.Result<GliaCoreSDK.VisitorCode, any Swift.Error>) -> Swift.Void)
+  @available(*, deprecated, message: "Deprecated, use ``Glia.configure(with:uiConfig:assetsBuilder:completion:)`` instead.")
+  public func configure(with configuration: GliaWidgets.Configuration, queueId: Swift.String, uiConfig: GliaWidgets.RemoteConfiguration? = nil, assetsBuilder: GliaWidgets.RemoteConfiguration.AssetsBuilder = .standard, completion: (() -> Swift.Void)? = nil) throws
+  @available(*, deprecated, message: "Deprecated, use ``Glia.startEngagement(engagementKind:in:theme:features:sceneProvider:)`` instead.")
+  public func startEngagement(engagementKind: GliaWidgets.EngagementKind, theme: GliaWidgets.Theme = Theme(), features: GliaWidgets.Features = .all, sceneProvider: (any GliaWidgets.SceneProvider)? = nil) throws
+  @available(*, deprecated, message: "Deprecated, use ``Glia.configure(with:uiConfig:assetsBuilder:completion:)`` and ``Glia.startEngagement(engagementKind:in:theme:features:sceneProvider:)`` instead.")
+  public func start(_ engagementKind: GliaWidgets.EngagementKind, configuration: GliaWidgets.Configuration, queueID: Swift.String, theme: GliaWidgets.Theme = Theme(), features: GliaWidgets.Features = .all, sceneProvider: (any GliaWidgets.SceneProvider)? = nil) throws
+  @available(*, deprecated, message: "Deprecated, use ``Glia.startEngagementWithConfig(engagement:in:uiConfig:assetsBuilder:features:sceneProvider:)`` instead.")
+  public func startEngagementWithConfig(engagement: GliaWidgets.EngagementKind, uiConfig: GliaWidgets.RemoteConfiguration, assetsBuilder: GliaWidgets.RemoteConfiguration.AssetsBuilder = .standard, features: GliaWidgets.Features = .all, sceneProvider: (any GliaWidgets.SceneProvider)? = nil) throws
+  @available(*, deprecated, message: "Use the `configure` method that provides a `Result` in its completion instead.")
+  public func configure(with configuration: GliaWidgets.Configuration, uiConfig: GliaWidgets.RemoteConfiguration? = nil, assetsBuilder: GliaWidgets.RemoteConfiguration.AssetsBuilder = .standard, completion: (() -> Swift.Void)? = nil) throws
+  @available(*, deprecated, message: "    Deprecated, use ``Glia.startEngagement(engagementKind:in queueIds:features:sceneProvider:)`` instead.\n    Use ``configure(with configuration:uiConfig:assetsBuilder:completion:)`` to pass in ``RemoteConfiguration``.")
+  public func startEngagementWithConfig(engagement: GliaWidgets.EngagementKind, in queueIds: [Swift.String], uiConfig: GliaWidgets.RemoteConfiguration, assetsBuilder: GliaWidgets.RemoteConfiguration.AssetsBuilder = .standard, features: GliaWidgets.Features = .all, sceneProvider: (any GliaWidgets.SceneProvider)? = nil) throws
+  @available(*, deprecated, message: "    Deprecated, use ``Glia.startEngagement(engagementKind:in queueIds:features:sceneProvider:)`` instead.\n    Use ``configure(with configuration:uiConfig:theme:assetsBuilder:completion:)`` to pass in ``RemoteConfiguration``.")
+  public func startEngagement(engagementKind: GliaWidgets.EngagementKind, in queueIds: [Swift.String], theme: GliaWidgets.Theme = Theme(), features: GliaWidgets.Features = .all, sceneProvider: (any GliaWidgets.SceneProvider)? = nil) throws
+  @available(*, deprecated, message: "    Deprecated, use ``configure(with configuration:theme:uiConfig:assetsBuilder:completion:)`` instead.")
+  public func configure(with configuration: GliaWidgets.Configuration, uiConfig: GliaWidgets.RemoteConfiguration? = nil, assetsBuilder: GliaWidgets.RemoteConfiguration.AssetsBuilder = .standard, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) throws
+}
+extension GliaWidgets.Glia.Authentication {
+  @available(*, deprecated, message: "Use Glia.Authentication.authenticate(with:accessToken:completion:) instead.")
+  public func authenticate(with idToken: GliaWidgets.Glia.Authentication.IdToken, completion: @escaping (Swift.Result<Swift.Void, GliaWidgets.Glia.Authentication.Error>) -> Swift.Void)
+}
+extension GliaWidgets.Theme.SurveyStyle {
+  public struct InputQuestion {
+    public var title: GliaWidgets.Theme.Text
+    public var option: GliaWidgets.Theme.SurveyStyle.OptionButton
+    public var text: GliaWidgets.Theme.Text
+    public var error: GliaWidgets.Theme.SurveyStyle.ValidationError
+    public var accessibility: GliaWidgets.Theme.SurveyStyle.InputQuestion.Accessibility
+  }
+}
+public struct GvaGalleryListViewStyle {
+  public var operatorImage: GliaWidgets.UserImageStyle
+  public var cardStyle: GliaWidgets.GvaGalleryCardStyle
+  public init(operatorImage: GliaWidgets.UserImageStyle, cardStyle: GliaWidgets.GvaGalleryCardStyle)
+}
+extension GliaWidgets.Theme.SurveyStyle.Checkbox {
+  public struct Accessibility {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+  }
+}
+extension GliaWidgets.CallStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var operatorNameHint: Swift.String
+    public var durationHint: Swift.String
+    public var localVideoLabel: Swift.String
+    public var remoteVideoLabel: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(operatorNameHint: Swift.String, durationHint: Swift.String, localVideoLabel: Swift.String, remoteVideoLabel: Swift.String, isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.CallStyle.Accessibility, b: GliaWidgets.CallStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.CallStyle.Accessibility {
+  public static let unsupported: GliaWidgets.CallStyle.Accessibility
+}
+public class ChatFileContentStyle {
+  public var backgroundColor: UIKit.UIColor
+  public var accessibility: GliaWidgets.ChatFileContentStyle.Accessibility
+  public init(backgroundColor: UIKit.UIColor, accessibility: GliaWidgets.ChatFileContentStyle.Accessibility = .unsupported)
+  @objc deinit
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.TitleImageStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.TitleImageStyle.Accessibility, b: GliaWidgets.SecureConversations.WelcomeStyle.TitleImageStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.TitleImageStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.WelcomeStyle.TitleImageStyle.Accessibility
+}
+@available(*, deprecated, message: "Deprecated, use ``Theme.OperatorMessageStyle`` instead.")
+public class OperatorChatMessageStyle : GliaWidgets.ChatMessageStyle {
+  public var operatorImage: GliaWidgets.UserImageStyle
+  public init(text: GliaWidgets.ChatTextContentStyle, imageFile: GliaWidgets.ChatImageFileContentStyle, fileDownload: GliaWidgets.ChatFileDownloadStyle, operatorImage: GliaWidgets.UserImageStyle)
+  @objc deinit
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct MessageTextViewActiveStyle : Swift.Equatable {
+    public var placeholderText: Swift.String
+    public var placeholderFont: UIKit.UIFont
+    public var placeholderColor: UIKit.UIColor
+    public var textFont: UIKit.UIFont
+    public var textFontStyle: UIKit.UIFont.TextStyle
+    public var textColor: UIKit.UIColor
+    public var borderColor: UIKit.UIColor
+    public var borderWidth: Swift.Double
+    public var cornerRadius: Swift.Double
+    public var backgroundColor: UIKit.UIColor
+    public var accessibility: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewActiveStyle.Accessibility
+    public init(placeholderText: Swift.String, placeholderFont: UIKit.UIFont, placeholderColor: UIKit.UIColor, textFont: UIKit.UIFont, textFontStyle: UIKit.UIFont.TextStyle, textColor: UIKit.UIColor, borderColor: UIKit.UIColor, borderWidth: Swift.Double, cornerRadius: Swift.Double, backgroundColor: UIKit.UIColor, accessibility: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewActiveStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewActiveStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewActiveStyle) -> Swift.Bool
+  }
+}
+@_hasMissingDesignatedInitializers final public class CallVisualizer {
+  final public func showVisitorCodeViewController(from source: UIKit.UIViewController)
+  final public func embedVisitorCodeView(into container: UIKit.UIView, onEngagementAccepted: @escaping () -> Swift.Void)
+  @objc deinit
+}
+extension GliaWidgets.Theme {
+  public struct SystemMessageStyle {
+    public var text: GliaWidgets.Theme.Text
+    public var background: GliaWidgets.Theme.Layer
+    public var imageFile: GliaWidgets.ChatImageFileContentStyle
+    public var fileDownload: GliaWidgets.ChatFileDownloadStyle
+    public var accessibility: GliaWidgets.Theme.SystemMessageStyle.Accessibility
+    public init(text: GliaWidgets.Theme.Text, background: GliaWidgets.Theme.Layer, imageFile: GliaWidgets.ChatImageFileContentStyle, fileDownload: GliaWidgets.ChatFileDownloadStyle, accessibility: GliaWidgets.Theme.SystemMessageStyle.Accessibility = .unsupported)
+  }
+}
+public class ChatFileDownloadStateStyle {
+  public var text: Swift.String
+  public var font: UIKit.UIFont
+  public var textColor: UIKit.UIColor
+  public var textStyle: UIKit.UIFont.TextStyle
+  public var infoFont: UIKit.UIFont
+  public var infoColor: UIKit.UIColor
+  public var infoTextStyle: UIKit.UIFont.TextStyle
+  public init(text: Swift.String, font: UIKit.UIFont, textColor: UIKit.UIColor, textStyle: UIKit.UIFont.TextStyle = .subheadline, infoFont: UIKit.UIFont, infoColor: UIKit.UIColor, infoTextStyle: UIKit.UIFont.TextStyle = .caption1)
+  @objc deinit
+}
+extension GliaWidgets.Theme.ChatTextContentStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var value: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(value: Swift.String = "", isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.Theme.ChatTextContentStyle.Accessibility, b: GliaWidgets.Theme.ChatTextContentStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.Theme.ChatTextContentStyle.Accessibility {
+  public static let unsupported: GliaWidgets.Theme.ChatTextContentStyle.Accessibility
+}
+public struct ThemeColor {
+  public var primary: UIKit.UIColor
+  public var secondary: UIKit.UIColor
+  public var baseNormal: UIKit.UIColor
+  public var baseLight: UIKit.UIColor
+  public var baseDark: UIKit.UIColor
+  public var baseShade: UIKit.UIColor
+  public var systemNegative: UIKit.UIColor
+  public var baseNeutral: UIKit.UIColor
+  public init(primary: UIKit.UIColor? = nil, secondary: UIKit.UIColor? = nil, baseNormal: UIKit.UIColor? = nil, baseLight: UIKit.UIColor? = nil, baseDark: UIKit.UIColor? = nil, baseShade: UIKit.UIColor? = nil, systemNegative: UIKit.UIColor? = nil, baseNeutral: UIKit.UIColor? = nil)
+}
+public struct UnreadMessageIndicatorStyle {
+  public var badge: GliaWidgets.BadgeStyle
+  public var userImage: GliaWidgets.UserImageStyle
+  public var indicatorImageTintColor: UIKit.UIColor
+  public var accessibility: GliaWidgets.UnreadMessageIndicatorStyle.Accessibility
+  public init(badgeFont: UIKit.UIFont, badgeTextColor: UIKit.UIColor, badgeColor: GliaWidgets.ColorType, placeholderImage: UIKit.UIImage?, placeholderColor: UIKit.UIColor, placeholderBackgroundColor: GliaWidgets.ColorType, imageBackgroundColor: GliaWidgets.ColorType, transferringImage: UIKit.UIImage, indicatorImageTintColor: UIKit.UIColor = .white, accessibility: GliaWidgets.UnreadMessageIndicatorStyle.Accessibility = .unsupported)
+}
+public enum GliaViewControllerEvent {
+  case minimized
+  case maximized
+  public static func == (a: GliaWidgets.GliaViewControllerEvent, b: GliaWidgets.GliaViewControllerEvent) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol GliaViewControllerDelegate : AnyObject {
+  func event(_ event: GliaWidgets.GliaViewControllerEvent)
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct TitleImageStyle : Swift.Equatable {
+    public var color: UIKit.UIColor
+    public var accessibility: GliaWidgets.SecureConversations.WelcomeStyle.TitleImageStyle.Accessibility
+    public init(color: UIKit.UIColor, accessibility: GliaWidgets.SecureConversations.WelcomeStyle.TitleImageStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.TitleImageStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.TitleImageStyle) -> Swift.Bool
+  }
+}
+extension GliaWidgets.ChatStyle {
+  @available(*, deprecated, message: "Deprecated, use ``ChatStyle.operatorMessageStyle`` instead.")
+  public var operatorMessage: GliaWidgets.OperatorChatMessageStyle {
+    get
+    set
+  }
+  @available(*, deprecated, message: "Deprecated, use ``ChatStyle.systemMessageStyle`` instead.")
+  public var systemMessage: GliaWidgets.SystemMessageStyle {
+    get
+    set
+  }
+  @available(*, deprecated, message: "Deprecated, use ``ChatStyle.visitorMessageStyle`` instead.")
+  public var visitorMessage: GliaWidgets.VisitorChatMessageStyle {
+    get
+    set
+  }
+  @available(*, deprecated, message: "Deprecated, use ``ChatStyle.choiceCardStyle`` instead.")
+  public var choiceCard: GliaWidgets.ChoiceCardStyle {
+    get
+    set
+  }
+  @available(*, deprecated, message: "Deprecated, use designated initializer instead.")
+  convenience public init(header: GliaWidgets.HeaderStyle, connect: GliaWidgets.ConnectStyle, backgroundColor: GliaWidgets.ColorType, preferredStatusBarStyle: UIKit.UIStatusBarStyle, title: Swift.String, visitorMessage: GliaWidgets.VisitorChatMessageStyle, operatorMessage: GliaWidgets.OperatorChatMessageStyle, choiceCard: GliaWidgets.ChoiceCardStyle, messageEntry: GliaWidgets.ChatMessageEntryStyle, audioUpgrade: GliaWidgets.ChatCallUpgradeStyle, videoUpgrade: GliaWidgets.ChatCallUpgradeStyle, callBubble: GliaWidgets.BubbleStyle, pickMedia: GliaWidgets.AttachmentSourceListStyle, unreadMessageIndicator: GliaWidgets.UnreadMessageIndicatorStyle, operatorTypingIndicator: GliaWidgets.OperatorTypingIndicatorStyle, accessibility: GliaWidgets.ChatStyle.Accessibility = .unsupported, secureTranscriptTitle: Swift.String, secureTranscriptHeader: GliaWidgets.HeaderStyle, unreadMessageDivider: GliaWidgets.UnreadMessageDividerStyle, systemMessage: GliaWidgets.SystemMessageStyle, gliaVirtualAssistant: GliaWidgets.GliaVirtualAssistantStyle)
+}
+public class ChatTextContentStyle {
+  public var textFont: UIKit.UIFont
+  public var textColor: UIKit.UIColor
+  public var textStyle: UIKit.UIFont.TextStyle
+  public var backgroundColor: UIKit.UIColor
+  public var cornerRadius: CoreFoundation.CGFloat
+  public var accessibility: GliaWidgets.ChatTextContentStyle.Accessibility
+  public init(textFont: UIKit.UIFont, textColor: UIKit.UIColor, textStyle: UIKit.UIFont.TextStyle, backgroundColor: UIKit.UIColor, cornerRadius: CoreFoundation.CGFloat = 8.49, accessibility: GliaWidgets.ChatTextContentStyle.Accessibility)
+  @objc deinit
+}
+public enum EngagementKind : Swift.Equatable {
+  case none
+  case chat
+  case audioCall
+  case videoCall
+  case messaging(_: GliaWidgets.SecureConversations.InitialScreen = .welcome)
+  public static func == (a: GliaWidgets.EngagementKind, b: GliaWidgets.EngagementKind) -> Swift.Bool
+}
+extension GliaWidgets.SecureConversations {
+  public enum InitialScreen : Swift.Equatable {
+    case welcome
+    case chatTranscript
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: GliaWidgets.SecureConversations.InitialScreen, b: GliaWidgets.SecureConversations.InitialScreen) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public enum GliaEvent : Swift.Equatable {
+  case started
+  case engagementChanged(GliaWidgets.EngagementKind)
+  case ended
+  case minimized
+  case maximized
+  public static func == (a: GliaWidgets.GliaEvent, b: GliaWidgets.GliaEvent) -> Swift.Bool
+}
+public protocol SceneProvider : AnyObject {
+  func windowScene() -> UIKit.UIWindowScene?
+}
+@_hasMissingDesignatedInitializers public class Glia {
+  public static let sharedInstance: GliaWidgets.Glia
+  public var engagement: GliaWidgets.EngagementKind {
+    get
+  }
+  public var onEvent: ((GliaWidgets.GliaEvent) -> Swift.Void)?
+  public var callVisualizer: GliaWidgets.CallVisualizer {
+    get
+    set
+  }
+  public func configure(with configuration: GliaWidgets.Configuration, theme: GliaWidgets.Theme = Theme(), uiConfig: GliaWidgets.RemoteConfiguration? = nil, assetsBuilder: GliaWidgets.RemoteConfiguration.AssetsBuilder = .standard, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) throws
+  public func minimize()
+  public func resume() throws
+  public func setChatMessageRenderer(messageRenderer: GliaWidgets.MessageRenderer?)
+  public func clearVisitorSession(_ completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func fetchVisitorInfo(completion: @escaping (Swift.Result<GliaCoreSDK.GliaCore.VisitorInfo, any Swift.Error>) -> Swift.Void)
+  public func updateVisitorInfo(_ info: GliaCoreSDK.VisitorInfoUpdate, completion: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void)
+  public func endEngagement(_ completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public func listQueues(_ completion: @escaping (Swift.Result<[GliaCoreSDK.Queue], any Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct CheckMessagesButtonStyle : Swift.Equatable {
+    public var title: Swift.String
+    public var font: UIKit.UIFont
+    public var textStyle: UIKit.UIFont.TextStyle
+    public var color: UIKit.UIColor
+    public var accessibility: GliaWidgets.SecureConversations.WelcomeStyle.CheckMessagesButtonStyle.Accessibility
+    public init(title: Swift.String, font: UIKit.UIFont, textStyle: UIKit.UIFont.TextStyle, color: UIKit.UIColor, accessibility: GliaWidgets.SecureConversations.WelcomeStyle.CheckMessagesButtonStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.CheckMessagesButtonStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.CheckMessagesButtonStyle) -> Swift.Bool
+  }
+}
+extension GliaWidgets.Theme {
+  public struct Layer {
+    public var background: GliaWidgets.ColorType?
+    public var borderColor: CoreGraphics.CGColor
+    public var borderWidth: CoreFoundation.CGFloat
+    public var cornerRadius: CoreFoundation.CGFloat
+    public init(background: GliaWidgets.ColorType? = nil, borderColor: CoreGraphics.CGColor, borderWidth: CoreFoundation.CGFloat = 0, cornerRadius: CoreFoundation.CGFloat = 0)
+  }
+}
+extension GliaWidgets.CallButtonStyle {
+  public struct StateStyle : Swift.Equatable {
+    public var backgroundColor: GliaWidgets.ColorType
+    public var image: UIKit.UIImage
+    public var imageColor: GliaWidgets.ColorType
+    public var title: Swift.String
+    public var titleFont: UIKit.UIFont
+    public var titleColor: UIKit.UIColor
+    public var textStyle: UIKit.UIFont.TextStyle
+    public var accessibility: GliaWidgets.CallButtonStyle.StateStyle.Accessibility
+    public static func == (a: GliaWidgets.CallButtonStyle.StateStyle, b: GliaWidgets.CallButtonStyle.StateStyle) -> Swift.Bool
+  }
+}
+extension GliaWidgets.Theme.SurveyStyle.OptionButton {
+  public struct Accessibility {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+  }
+}
+public typealias MessageMetadata = GliaCoreSDK.Message.Metadata
+@_inheritsConvenienceInitializers @available(*, deprecated, message: "Deprecated, use ``Theme.SystemMessageStyle`` instead.")
+final public class SystemMessageStyle : GliaWidgets.ChatMessageStyle {
+  override public init(text: GliaWidgets.ChatTextContentStyle, imageFile: GliaWidgets.ChatImageFileContentStyle, fileDownload: GliaWidgets.ChatFileDownloadStyle)
+  @objc deinit
+}
+extension GliaWidgets.FileUploadStyle {
+  public static func == (lhs: GliaWidgets.FileUploadStyle, rhs: GliaWidgets.FileUploadStyle) -> Swift.Bool
+}
+public class MessageCenterFileUploadStyle : Swift.Equatable {
+  public var filePreview: GliaWidgets.FilePreviewStyle
+  public var uploading: GliaWidgets.FileUploadStateStyle
+  public var uploaded: GliaWidgets.FileUploadStateStyle
+  public var error: GliaWidgets.FileUploadErrorStateStyle
+  public var progressColor: UIKit.UIColor
+  public var errorProgressColor: UIKit.UIColor
+  public var progressBackgroundColor: UIKit.UIColor
+  public var removeButtonImage: UIKit.UIImage
+  public var removeButtonColor: UIKit.UIColor
+  public var backgroundColor: UIKit.UIColor
+  public var accessibility: GliaWidgets.MessageCenterFileUploadStyle.Accessibility
+  public init(filePreview: GliaWidgets.FilePreviewStyle, uploading: GliaWidgets.FileUploadStateStyle, uploaded: GliaWidgets.FileUploadStateStyle, error: GliaWidgets.FileUploadErrorStateStyle, progressColor: UIKit.UIColor, errorProgressColor: UIKit.UIColor, progressBackgroundColor: UIKit.UIColor, removeButtonImage: UIKit.UIImage, removeButtonColor: UIKit.UIColor, backgroundColor: UIKit.UIColor, accessibility: GliaWidgets.MessageCenterFileUploadStyle.Accessibility = .unsupported)
+  @objc deinit
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.SendButtonDisabledStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public var label: Swift.String
+    public var hint: Swift.String
+    public init(isFontScalingEnabled: Swift.Bool, label: Swift.String, hint: Swift.String)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonDisabledStyle.Accessibility, b: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonDisabledStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.SendButtonDisabledStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonDisabledStyle.Accessibility
+}
+extension GliaWidgets.SecureConversations {
+  public struct ConfirmationStyle : Swift.Equatable {
+    public var header: GliaWidgets.HeaderStyle
+    public var headerTitle: Swift.String
+    public var confirmationImage: UIKit.UIImage
+    public var confirmationImageTint: UIKit.UIColor
+    public var titleStyle: GliaWidgets.SecureConversations.ConfirmationStyle.TitleStyle
+    public var subtitleStyle: GliaWidgets.SecureConversations.ConfirmationStyle.SubtitleStyle
+    public var checkMessagesButtonStyle: GliaWidgets.SecureConversations.ConfirmationStyle.CheckMessagesButtonStyle
+    public var backgroundColor: UIKit.UIColor
+    public init(header: GliaWidgets.HeaderStyle, headerTitle: Swift.String, confirmationImage: UIKit.UIImage, confirmationImageTint: UIKit.UIColor, titleStyle: GliaWidgets.SecureConversations.ConfirmationStyle.TitleStyle, subtitleStyle: GliaWidgets.SecureConversations.ConfirmationStyle.SubtitleStyle, checkMessagesButtonStyle: GliaWidgets.SecureConversations.ConfirmationStyle.CheckMessagesButtonStyle, backgroundColor: UIKit.UIColor)
+    public static func == (a: GliaWidgets.SecureConversations.ConfirmationStyle, b: GliaWidgets.SecureConversations.ConfirmationStyle) -> Swift.Bool
+  }
+}
+extension GliaWidgets.EngagementStyle {
+  public static func == (lhs: GliaWidgets.EngagementStyle, rhs: GliaWidgets.EngagementStyle) -> Swift.Bool
+}
+extension GliaWidgets.Theme {
+  public struct OperatorMessageStyle {
+    public var text: GliaWidgets.Theme.Text
+    public var background: GliaWidgets.Theme.Layer
+    public var imageFile: GliaWidgets.ChatImageFileContentStyle
+    public var fileDownload: GliaWidgets.ChatFileDownloadStyle
+    public var operatorImage: GliaWidgets.UserImageStyle
+    public var accessibility: GliaWidgets.Theme.OperatorMessageStyle.Accessibility
+    public init(text: GliaWidgets.Theme.Text, background: GliaWidgets.Theme.Layer, imageFile: GliaWidgets.ChatImageFileContentStyle, fileDownload: GliaWidgets.ChatFileDownloadStyle, operatorImage: GliaWidgets.UserImageStyle, accessibility: GliaWidgets.Theme.OperatorMessageStyle.Accessibility = .unsupported)
+  }
+}
+extension GliaWidgets.Theme.SurveyStyle {
+  public struct Accessibility {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+  }
+}
+public struct AlertConfiguration {
+  public var leaveQueue: GliaWidgets.ConfirmationAlertConfiguration
+  public var endEngagement: GliaWidgets.ConfirmationAlertConfiguration
+  public var operatorEndedEngagement: GliaWidgets.SingleActionAlertConfiguration
+  public var operatorsUnavailable: GliaWidgets.MessageAlertConfiguration
+  public var mediaUpgrade: GliaWidgets.MultipleMediaUpgradeAlertConfiguration
+  public var audioUpgrade: GliaWidgets.SingleMediaUpgradeAlertConfiguration
+  public var oneWayVideoUpgrade: GliaWidgets.SingleMediaUpgradeAlertConfiguration
+  public var twoWayVideoUpgrade: GliaWidgets.SingleMediaUpgradeAlertConfiguration
+  public var screenShareOffer: GliaWidgets.ScreenShareOfferAlertConfiguration
+  public var endScreenShare: GliaWidgets.ConfirmationAlertConfiguration
+  public var microphoneSettings: GliaWidgets.SettingsAlertConfiguration
+  public var cameraSettings: GliaWidgets.SettingsAlertConfiguration
+  public var mediaSourceNotAvailable: GliaWidgets.MessageAlertConfiguration
+  public var unexpectedError: GliaWidgets.MessageAlertConfiguration
+  public var apiError: GliaWidgets.MessageAlertConfiguration
+  public var unavailableMessageCenter: GliaWidgets.MessageAlertConfiguration
+  public var unavailableMessageCenterForBeingUnauthenticated: GliaWidgets.MessageAlertConfiguration
+  public var unsupportedGvaBroadcastError: GliaWidgets.MessageAlertConfiguration
+  public var liveObservationConfirmation: GliaWidgets.ConfirmationAlertConfiguration
+  public init(leaveQueue: GliaWidgets.ConfirmationAlertConfiguration, endEngagement: GliaWidgets.ConfirmationAlertConfiguration, operatorEndedEngagement: GliaWidgets.SingleActionAlertConfiguration, operatorsUnavailable: GliaWidgets.MessageAlertConfiguration, mediaUpgrade: GliaWidgets.MultipleMediaUpgradeAlertConfiguration, audioUpgrade: GliaWidgets.SingleMediaUpgradeAlertConfiguration, oneWayVideoUpgrade: GliaWidgets.SingleMediaUpgradeAlertConfiguration, twoWayVideoUpgrade: GliaWidgets.SingleMediaUpgradeAlertConfiguration, screenShareOffer: GliaWidgets.ScreenShareOfferAlertConfiguration, endScreenShare: GliaWidgets.ConfirmationAlertConfiguration, microphoneSettings: GliaWidgets.SettingsAlertConfiguration, cameraSettings: GliaWidgets.SettingsAlertConfiguration, mediaSourceNotAvailable: GliaWidgets.MessageAlertConfiguration, unexpectedError: GliaWidgets.MessageAlertConfiguration, apiError: GliaWidgets.MessageAlertConfiguration, unavailableMessageCenter: GliaWidgets.MessageAlertConfiguration, unavailableMessageCenterForBeingUnauthenticated: GliaWidgets.MessageAlertConfiguration, unsupportedGvaBroadcastError: GliaWidgets.MessageAlertConfiguration, liveObservationConfirmation: GliaWidgets.ConfirmationAlertConfiguration)
+}
+extension GliaWidgets.VisitorCodeStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.VisitorCodeStyle.Accessibility, b: GliaWidgets.VisitorCodeStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.VisitorCodeStyle.Accessibility {
+  public static let unsupported: GliaWidgets.VisitorCodeStyle.Accessibility
+}
+extension GliaWidgets.ChatFileContentStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var contentAccessibilityLabel: Swift.String
+    public var youAccessibilityPlaceholder: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(contentAccessibilityLabel: Swift.String, youAccessibilityPlaceholder: Swift.String, isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.ChatFileContentStyle.Accessibility, b: GliaWidgets.ChatFileContentStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.ChatFileContentStyle.Accessibility {
+  public static let unsupported: GliaWidgets.ChatFileContentStyle.Accessibility
+}
+extension GliaWidgets.Theme.ChoiceCardStyle {
+  public struct Option {
+    public var normal: GliaWidgets.Theme.Button
+    public var selected: GliaWidgets.Theme.Button
+    public var disabled: GliaWidgets.Theme.Button
+    public init(normal: GliaWidgets.Theme.Button, selected: GliaWidgets.Theme.Button, disabled: GliaWidgets.Theme.Button)
+  }
+}
+public enum Environment {
+  case europe
+  case usa
+  case beta
+  case custom(Foundation.URL)
+}
+public struct ConnectOperatorStyle : Swift.Equatable {
+  public var operatorImage: GliaWidgets.UserImageStyle
+  public var animationColor: UIKit.UIColor
+  public var accessibility: GliaWidgets.ConnectOperatorStyle.Accessibility
+  public var onHoldOverlay: GliaWidgets.OnHoldOverlayStyle
+  public init(operatorImage: GliaWidgets.UserImageStyle, animationColor: UIKit.UIColor, onHoldOverlay: GliaWidgets.OnHoldOverlayStyle = .engagement, accessibility: GliaWidgets.ConnectOperatorStyle.Accessibility = .unsupported)
+  public static func == (a: GliaWidgets.ConnectOperatorStyle, b: GliaWidgets.ConnectOperatorStyle) -> Swift.Bool
+}
+public struct VisitorCodeStyle : Swift.Equatable {
+  public var titleColor: UIKit.UIColor
+  public var titleFont: UIKit.UIFont
+  public var titleTextStyle: UIKit.UIFont.TextStyle
+  public var poweredBy: GliaWidgets.PoweredByStyle
+  public var numberSlot: GliaWidgets.NumberSlotStyle
+  public var actionButton: GliaWidgets.ActionButtonStyle
+  public var backgroundColor: GliaWidgets.ColorType
+  public var cornerRadius: CoreFoundation.CGFloat
+  public var borderWidth: CoreFoundation.CGFloat
+  public var borderColor: UIKit.UIColor
+  public var closeButtonColor: GliaWidgets.ColorType
+  public var loadingProgressColor: UIKit.UIColor
+  public var accessibility: GliaWidgets.VisitorCodeStyle.Accessibility
+  public init(titleFont: UIKit.UIFont, titleColor: UIKit.UIColor, titleTextStyle: UIKit.UIFont.TextStyle = .title2, poweredBy: GliaWidgets.PoweredByStyle, numberSlot: GliaWidgets.NumberSlotStyle, actionButton: GliaWidgets.ActionButtonStyle, backgroundColor: GliaWidgets.ColorType, cornerRadius: CoreFoundation.CGFloat, borderWidth: CoreFoundation.CGFloat = 0, borderColor: UIKit.UIColor = .clear, closeButtonColor: GliaWidgets.ColorType, loadingProgressColor: UIKit.UIColor, accessibility: GliaWidgets.VisitorCodeStyle.Accessibility = .unsupported)
+  public static func == (a: GliaWidgets.VisitorCodeStyle, b: GliaWidgets.VisitorCodeStyle) -> Swift.Bool
+}
+extension GliaWidgets.Theme {
+  public struct Text : Swift.Equatable {
+    public var color: Swift.String
+    public var font: UIKit.UIFont
+    public var textStyle: UIKit.UIFont.TextStyle
+    public var alignment: UIKit.NSTextAlignment
+    public var accessibility: GliaWidgets.Theme.Text.Accessibility
+    public init(color: Swift.String, font: UIKit.UIFont, textStyle: UIKit.UIFont.TextStyle, alignment: UIKit.NSTextAlignment = .center, accessibility: GliaWidgets.Theme.Text.Accessibility)
+    public static func == (a: GliaWidgets.Theme.Text, b: GliaWidgets.Theme.Text) -> Swift.Bool
+  }
+}
+extension GliaWidgets.GvaGalleryCardStyle {
+  public struct ButtonStyle {
+    public var title: GliaWidgets.GvaGalleryCardStyle.TextStyle
+    public var background: GliaWidgets.GvaGalleryCardStyle.ViewStyle
+    public init(title: GliaWidgets.GvaGalleryCardStyle.TextStyle, background: GliaWidgets.GvaGalleryCardStyle.ViewStyle)
+  }
+}
+public class AttachmentSourceListStyle : Swift.Equatable {
+  public var items: [GliaWidgets.AttachmentSourceItemStyle]
+  public var separatorColor: UIKit.UIColor
+  public var backgroundColor: UIKit.UIColor
+  public init(items: [GliaWidgets.AttachmentSourceItemStyle], separatorColor: UIKit.UIColor, backgroundColor: UIKit.UIColor)
+  @objc deinit
+}
+extension GliaWidgets.Theme.SystemMessageStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var value: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(value: Swift.String = "", isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.Theme.SystemMessageStyle.Accessibility, b: GliaWidgets.Theme.SystemMessageStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.Theme.SystemMessageStyle.Accessibility {
+  public static let unsupported: GliaWidgets.Theme.SystemMessageStyle.Accessibility
+}
+extension GliaWidgets.Glia {
+  public struct Authentication {
+  }
+}
+extension GliaWidgets.Glia.Authentication {
+  public enum Behavior {
+    case forbiddenDuringEngagement
+    case allowedDuringEngagement
+    public static func == (a: GliaWidgets.Glia.Authentication.Behavior, b: GliaWidgets.Glia.Authentication.Behavior) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension GliaWidgets.Glia {
+  public func authentication(with behavior: GliaWidgets.Glia.Authentication.Behavior) throws -> GliaWidgets.Glia.Authentication
+}
+extension GliaWidgets.Glia.Authentication {
+  public typealias IdToken = Swift.String
+  public typealias AccessToken = Swift.String
+  public func authenticate(with idToken: GliaWidgets.Glia.Authentication.IdToken, accessToken: GliaWidgets.Glia.Authentication.AccessToken?, completion: @escaping (Swift.Result<Swift.Void, GliaWidgets.Glia.Authentication.Error>) -> Swift.Void)
+  public func deauthenticate(completion: @escaping (Swift.Result<Swift.Void, GliaWidgets.Glia.Authentication.Error>) -> Swift.Void)
+  public var isAuthenticated: Swift.Bool {
+    get
+  }
+}
+extension GliaWidgets.Glia.Authentication {
+  public struct Error : Swift.Error {
+    public var reason: Swift.String
+  }
+}
+extension GliaWidgets.Theme.SurveyStyle.InputQuestion {
+  public struct Accessibility {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+  }
+}
+public class FileUploadListStyle : Swift.Equatable {
+  public var item: GliaWidgets.FileUploadStyle
+  public init(item: GliaWidgets.FileUploadStyle)
+  @objc deinit
+}
+extension GliaWidgets.Theme.Text {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.Theme.Text.Accessibility, b: GliaWidgets.Theme.Text.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.Theme.Text.Accessibility {
+  public static let unsupported: GliaWidgets.Theme.Text.Accessibility
+}
+public class ChatFileDownloadStyle : GliaWidgets.ChatFileContentStyle {
+  public var filePreview: GliaWidgets.FilePreviewStyle
+  public var download: GliaWidgets.ChatFileDownloadStateStyle
+  public var downloading: GliaWidgets.ChatFileDownloadStateStyle
+  public var open: GliaWidgets.ChatFileDownloadStateStyle
+  public var error: GliaWidgets.ChatFileDownloadErrorStateStyle
+  public var progressColor: UIKit.UIColor
+  public var errorProgressColor: UIKit.UIColor
+  public var progressBackgroundColor: UIKit.UIColor
+  public var borderColor: UIKit.UIColor
+  public var stateAccessibility: GliaWidgets.ChatFileDownloadStyle.StateAccessibility
+  public init(filePreview: GliaWidgets.FilePreviewStyle, download: GliaWidgets.ChatFileDownloadStateStyle, downloading: GliaWidgets.ChatFileDownloadStateStyle, open: GliaWidgets.ChatFileDownloadStateStyle, error: GliaWidgets.ChatFileDownloadErrorStateStyle, progressColor: UIKit.UIColor, errorProgressColor: UIKit.UIColor, progressBackgroundColor: UIKit.UIColor, backgroundColor: UIKit.UIColor, borderColor: UIKit.UIColor, accessibility: GliaWidgets.ChatFileContentStyle.Accessibility = .unsupported, downloadAccessibility: GliaWidgets.ChatFileDownloadStyle.StateAccessibility = .unsupported)
+  @objc deinit
+}
+public struct ScreenSharingViewStyle : Swift.Equatable {
+  public var title: Swift.String
+  public var header: GliaWidgets.HeaderStyle
+  public var messageText: Swift.String
+  public var messageTextFont: UIKit.UIFont
+  public var messageTextColor: UIKit.UIColor
+  public var messageTextStyle: UIKit.UIFont.TextStyle
+  public var buttonStyle: GliaWidgets.ActionButtonStyle
+  public var buttonIcon: UIKit.UIImage
+  public var backgroundColor: GliaWidgets.ColorType
+  public var accessibility: GliaWidgets.ScreenSharingViewStyle.Accessibility
+  public init(title: Swift.String, header: GliaWidgets.HeaderStyle, messageText: Swift.String, messageTextFont: UIKit.UIFont, messageTextColor: UIKit.UIColor, messageTextStyle: UIKit.UIFont.TextStyle = .title2, buttonStyle: GliaWidgets.ActionButtonStyle, buttonIcon: UIKit.UIImage, backgroundColor: GliaWidgets.ColorType, accessibility: GliaWidgets.ScreenSharingViewStyle.Accessibility)
+  public static func == (a: GliaWidgets.ScreenSharingViewStyle, b: GliaWidgets.ScreenSharingViewStyle) -> Swift.Bool
+}
+extension GliaWidgets.ScreenSharingViewStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.ScreenSharingViewStyle.Accessibility, b: GliaWidgets.ScreenSharingViewStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.ScreenSharingViewStyle.Accessibility {
+  public static let unsupported: GliaWidgets.ScreenSharingViewStyle.Accessibility
+}
+extension GliaWidgets.UnreadMessageDividerStyle {
+  public static func == (lhs: GliaWidgets.UnreadMessageDividerStyle, rhs: GliaWidgets.UnreadMessageDividerStyle) -> Swift.Bool
+}
+extension GliaWidgets.Theme {
+  public struct Button : Swift.Equatable {
+    public var background: GliaWidgets.ColorType
+    public var title: GliaWidgets.Theme.Text
+    public var cornerRadius: CoreFoundation.CGFloat
+    public var borderWidth: CoreFoundation.CGFloat
+    public var borderColor: Swift.String?
+    public var shadow: GliaWidgets.Theme.Shadow
+    public var accessibility: GliaWidgets.Theme.Button.Accessibility
+    public init(background: GliaWidgets.ColorType, title: GliaWidgets.Theme.Text, cornerRadius: CoreFoundation.CGFloat, borderWidth: CoreFoundation.CGFloat = 0, borderColor: Swift.String? = nil, shadow: GliaWidgets.Theme.Shadow = .standard, accessibility: GliaWidgets.Theme.Button.Accessibility = .unsupported)
+    public init(actionButtonStyle: GliaWidgets.ActionButtonStyle, accessibility: GliaWidgets.Theme.Button.Accessibility)
+    public static func == (a: GliaWidgets.Theme.Button, b: GliaWidgets.Theme.Button) -> Swift.Bool
+  }
+}
+extension GliaWidgets.ChoiceCardStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var imageLabel: Swift.String
+    public init(imageLabel: Swift.String)
+    public static let unsupported: GliaWidgets.ChoiceCardStyle.Accessibility
+    public static func == (a: GliaWidgets.ChoiceCardStyle.Accessibility, b: GliaWidgets.ChoiceCardStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.OperatorTypingIndicatorStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var label: Swift.String
+    public init(label: Swift.String)
+    public static func == (a: GliaWidgets.OperatorTypingIndicatorStyle.Accessibility, b: GliaWidgets.OperatorTypingIndicatorStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.OperatorTypingIndicatorStyle.Accessibility {
+  public static let unsupported: GliaWidgets.OperatorTypingIndicatorStyle.Accessibility
+}
+public struct HeaderButtonStyle : Swift.Equatable {
+  public var image: UIKit.UIImage
+  public var color: UIKit.UIColor
+  public var accessibility: GliaWidgets.HeaderButtonStyle.Accessibility
+  public init(image: UIKit.UIImage, color: UIKit.UIColor, accessibility: GliaWidgets.HeaderButtonStyle.Accessibility = .unsupported)
+  public static func == (a: GliaWidgets.HeaderButtonStyle, b: GliaWidgets.HeaderButtonStyle) -> Swift.Bool
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct SendButtonLoadingStyle : Swift.Equatable {
+    public var title: Swift.String
+    public var font: UIKit.UIFont
+    public var textStyle: UIKit.UIFont.TextStyle
+    public var textColor: UIKit.UIColor
+    public var backgroundColor: UIKit.UIColor
+    public var borderColor: UIKit.UIColor
+    public var borderWidth: Swift.Double
+    public var activityIndicatorColor: UIKit.UIColor
+    public var cornerRadius: Swift.Double
+    public var accessibility: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonLoadingStyle.Accessibility
+    public init(title: Swift.String, font: UIKit.UIFont, textStyle: UIKit.UIFont.TextStyle, textColor: UIKit.UIColor, backgroundColor: UIKit.UIColor, borderColor: UIKit.UIColor, borderWidth: Swift.Double, activityIndicatorColor: UIKit.UIColor, cornerRadius: Swift.Double, accessibility: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonLoadingStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonLoadingStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonLoadingStyle) -> Swift.Bool
+  }
+}
+extension GliaWidgets.GvaPersistentButtonStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var value: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(value: Swift.String = "", isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.GvaPersistentButtonStyle.Accessibility, b: GliaWidgets.GvaPersistentButtonStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.GvaPersistentButtonStyle.Accessibility {
+  public static let unsupported: GliaWidgets.GvaPersistentButtonStyle.Accessibility
+}
+public struct MessageButtonStyle {
+  public var image: UIKit.UIImage
+  public var color: UIKit.UIColor
+  public var accessibility: GliaWidgets.MessageButtonStyle.Accessibility
+  public init(image: UIKit.UIImage, color: UIKit.UIColor, accessibility: GliaWidgets.MessageButtonStyle.Accessibility = .unsupported)
+}
+public struct OnHoldOverlayStyle : Swift.Equatable {
+  public var image: UIKit.UIImage
+  public var imageColor: GliaWidgets.ColorType
+  public var imageSize: CoreFoundation.CGSize
+  public var backgroundColor: GliaWidgets.ColorType
+  public init(image: UIKit.UIImage, imageColor: GliaWidgets.ColorType, imageSize: CoreFoundation.CGSize, backgroundColor: GliaWidgets.ColorType = .fill(color: .clear))
+  public static func == (a: GliaWidgets.OnHoldOverlayStyle, b: GliaWidgets.OnHoldOverlayStyle) -> Swift.Bool
+}
+extension GliaWidgets.OnHoldOverlayStyle {
+  public static var bubble: GliaWidgets.OnHoldOverlayStyle
+  public static var engagement: GliaWidgets.OnHoldOverlayStyle
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.SubtitleStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.SubtitleStyle.Accessibility, b: GliaWidgets.SecureConversations.WelcomeStyle.SubtitleStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.SubtitleStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.WelcomeStyle.SubtitleStyle.Accessibility
+}
+public enum SecureConversations {
+}
+extension GliaWidgets.VisitorChatMessageStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static let unsupported: GliaWidgets.VisitorChatMessageStyle.Accessibility
+    public static func == (a: GliaWidgets.VisitorChatMessageStyle.Accessibility, b: GliaWidgets.VisitorChatMessageStyle.Accessibility) -> Swift.Bool
+  }
+}
+public struct GvaGalleryCardStyle {
+  public var cardContainer: GliaWidgets.GvaGalleryCardStyle.ViewStyle
+  public var imageView: GliaWidgets.GvaGalleryCardStyle.ViewStyle
+  public var title: GliaWidgets.GvaGalleryCardStyle.TextStyle
+  public var subtitle: GliaWidgets.GvaGalleryCardStyle.TextStyle
+  public var button: GliaWidgets.GvaGalleryCardStyle.ButtonStyle
+  public init(cardContainer: GliaWidgets.GvaGalleryCardStyle.ViewStyle, imageView: GliaWidgets.GvaGalleryCardStyle.ViewStyle, title: GliaWidgets.GvaGalleryCardStyle.TextStyle, subtitle: GliaWidgets.GvaGalleryCardStyle.TextStyle, button: GliaWidgets.GvaGalleryCardStyle.ButtonStyle)
+}
+extension GliaWidgets.FileUploadListStyle {
+  public static func == (lhs: GliaWidgets.FileUploadListStyle, rhs: GliaWidgets.FileUploadListStyle) -> Swift.Bool
+}
+extension GliaWidgets.HeaderStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.HeaderStyle.Accessibility, b: GliaWidgets.HeaderStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.HeaderStyle.Accessibility {
+  public static let unsupported: GliaWidgets.HeaderStyle.Accessibility
+}
+@_inheritsConvenienceInitializers public class ChatImageFileContentStyle : GliaWidgets.ChatFileContentStyle {
+  override public init(backgroundColor: UIKit.UIColor, accessibility: GliaWidgets.ChatFileContentStyle.Accessibility = super)
+  @objc deinit
+}
+extension GliaWidgets.SecureConversations.ConfirmationStyle.SubtitleStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.SecureConversations.ConfirmationStyle.SubtitleStyle.Accessibility, b: GliaWidgets.SecureConversations.ConfirmationStyle.SubtitleStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.ConfirmationStyle.SubtitleStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.ConfirmationStyle.SubtitleStyle.Accessibility
+}
+extension GliaWidgets.Theme {
+  public struct Shadow : Swift.Equatable {
+    public var color: Swift.String
+    public var offset: CoreFoundation.CGSize
+    public var opacity: Swift.Float
+    public var radius: CoreFoundation.CGFloat
+    public init(color: Swift.String, offset: CoreFoundation.CGSize, opacity: Swift.Float, radius: CoreFoundation.CGFloat)
+    public static func == (a: GliaWidgets.Theme.Shadow, b: GliaWidgets.Theme.Shadow) -> Swift.Bool
+  }
+}
+extension GliaWidgets.Theme.Shadow {
+  public static let standard: GliaWidgets.Theme.Shadow
+}
+extension GliaWidgets.SecureConversations.ConfirmationStyle {
+  public struct CheckMessagesButtonStyle : Swift.Equatable {
+    public var title: Swift.String
+    public var font: UIKit.UIFont
+    public var textColor: UIKit.UIColor
+    public var backgroundColor: UIKit.UIColor
+    public var accessibility: GliaWidgets.SecureConversations.ConfirmationStyle.CheckMessagesButtonStyle.Accessibility
+    public init(title: Swift.String, font: UIKit.UIFont, textColor: UIKit.UIColor, backgroundColor: UIKit.UIColor, accessibility: GliaWidgets.SecureConversations.ConfirmationStyle.CheckMessagesButtonStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.ConfirmationStyle.CheckMessagesButtonStyle, b: GliaWidgets.SecureConversations.ConfirmationStyle.CheckMessagesButtonStyle) -> Swift.Bool
+  }
+}
+public enum ThemeFontStyle {
+  case `default`
+  case defaultLarge
+  case custom(GliaWidgets.ThemeFont)
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct MessageTextViewStyle : Swift.Equatable {
+    public var normalStyle: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewNormalStyle
+    public var disabledStyle: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewDisabledStyle
+    public var activeStyle: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewActiveStyle
+    public init(normalStyle: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewNormalStyle, disabledStyle: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewDisabledStyle, activeStyle: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewActiveStyle)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewStyle) -> Swift.Bool
+  }
+}
+extension GliaWidgets.Theme.SurveyStyle.SingleQuestion {
+  public struct Accessibility {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+  }
+}
+@available(*, deprecated, message: "Deprecated, use\n``Theme.VisitorMessageStyle``,\n``Theme.OperatorMessageStyle`` and\n``Theme.SystemMessageStyle`` instead.")
+public class ChatMessageStyle {
+  public var text: GliaWidgets.ChatTextContentStyle
+  public var imageFile: GliaWidgets.ChatImageFileContentStyle
+  public var fileDownload: GliaWidgets.ChatFileDownloadStyle
+  public init(text: GliaWidgets.ChatTextContentStyle, imageFile: GliaWidgets.ChatImageFileContentStyle, fileDownload: GliaWidgets.ChatFileDownloadStyle)
+  @objc deinit
+}
+public struct GvaPersistentButtonStyle {
+  public var title: GliaWidgets.Theme.ChatTextContentStyle
+  public var backgroundColor: GliaWidgets.ColorType
+  public var cornerRadius: CoreFoundation.CGFloat
+  public var borderWidth: CoreFoundation.CGFloat
+  public var borderColor: UIKit.UIColor
+  public var button: GliaWidgets.GvaPersistentButtonStyle.ButtonStyle
+  public init(title: GliaWidgets.Theme.ChatTextContentStyle, backgroundColor: GliaWidgets.ColorType, cornerRadius: CoreFoundation.CGFloat, borderWidth: CoreFoundation.CGFloat, borderColor: UIKit.UIColor, button: GliaWidgets.GvaPersistentButtonStyle.ButtonStyle)
+}
+@available(*, deprecated)
+public enum L10n {
+  public static let gvaNotSupported: Swift.String
+  public static let `operator`: Swift.String
+  public static let poweredBy: Swift.String
+  public enum Alert {
+    public enum Accessibility {
+      public enum Action {
+        public static let accept: Swift.String
+        public static let cancel: Swift.String
+        public static let decline: Swift.String
+        public static let no: Swift.String
+        public static let ok: Swift.String
+        public static let settings: Swift.String
+        public static let yes: Swift.String
+      }
+    }
+    public enum Action {
+      public static let accept: Swift.String
+      public static let cancel: Swift.String
+      public static let decline: Swift.String
+      public static let no: Swift.String
+      public static let ok: Swift.String
+      public static let settings: Swift.String
+      public static let yes: Swift.String
+    }
+    public enum ApiError {
+      public static let message: Swift.String
+      public static let title: Swift.String
+    }
+    public enum AudioUpgrade {
+      public static let title: Swift.String
+    }
+    public enum CameraPermission {
+      public static let message: Swift.String
+      public static let title: Swift.String
+    }
+    public enum EndEngagement {
+      public static let message: Swift.String
+      public static let title: Swift.String
+    }
+    public enum LeaveQueue {
+      public static let message: Swift.String
+      public static let title: Swift.String
+    }
+    public enum MediaSourceNotAvailable {
+      public static let message: Swift.String
+      public static let title: Swift.String
+    }
+    public enum MediaUpgrade {
+      public static let title: Swift.String
+      public enum Audio {
+        public static let info: Swift.String
+        public static let title: Swift.String
+      }
+      public enum Phone {
+        public static let info: Swift.String
+        public static let title: Swift.String
+      }
+    }
+    public enum MicrophonePermission {
+      public static let message: Swift.String
+      public static let title: Swift.String
+    }
+    public enum OperatorEndedEngagement {
+      public static let message: Swift.String
+      public static let title: Swift.String
+    }
+    public enum OperatorsUnavailable {
+      public static let message: Swift.String
+      public static let title: Swift.String
+    }
+    public enum ScreenSharing {
+      public enum Start {
+        public static let message: Swift.String
+        public static let title: Swift.String
+      }
+      public enum Stop {
+        public static let message: Swift.String
+        public static let title: Swift.String
+      }
+    }
+    public enum UnavailableMessageCenter {
+      public static let message: Swift.String
+      public static let notAuthenticatedMessage: Swift.String
+      public static let title: Swift.String
+    }
+    public enum Unexpected {
+      public static let message: Swift.String
+      public static let title: Swift.String
+    }
+    public enum VideoUpgrade {
+      public enum OneWay {
+        public static let title: Swift.String
+      }
+      public enum TwoWay {
+        public static let title: Swift.String
+      }
+    }
+    public enum VisitorCode {
+      public static let title: Swift.String
+    }
+  }
+  public enum Call {
+    public static let bottomText: Swift.String
+    public static let topText: Swift.String
+    public enum Accessibility {
+      public enum Bubble {
+        public static let hint: Swift.String
+        public static let label: Swift.String
+      }
+      public enum Buttons {
+        public enum Chat {
+          public static let titleAndBadgeValue: Swift.String
+          public enum Active {
+            public static let label: Swift.String
+          }
+          public enum BadgeValue {
+            public static let multipleItems: Swift.String
+            public static let singleItem: Swift.String
+          }
+          public enum Inactive {
+            public static let label: Swift.String
+          }
+        }
+        public enum Minimize {
+          public static let titleAndBadgeValue: Swift.String
+          public enum Active {
+            public static let label: Swift.String
+          }
+          public enum BadgeValue {
+            public static let multipleItems: Swift.String
+            public static let singleItem: Swift.String
+          }
+          public enum Inactive {
+            public static let label: Swift.String
+          }
+        }
+        public enum Mute {
+          public static let titleAndBadgeValue: Swift.String
+          public enum Active {
+            public static let label: Swift.String
+          }
+          public enum BadgeValue {
+            public static let multipleItems: Swift.String
+            public static let singleItem: Swift.String
+          }
+          public enum Inactive {
+            public static let label: Swift.String
+          }
+        }
+        public enum Speaker {
+          public static let titleAndBadgeValue: Swift.String
+          public enum Active {
+            public static let label: Swift.String
+          }
+          public enum BadgeValue {
+            public static let multipleItems: Swift.String
+            public static let singleItem: Swift.String
+          }
+          public enum Inactive {
+            public static let label: Swift.String
+          }
+        }
+        public enum Video {
+          public static let titleAndBadgeValue: Swift.String
+          public enum Active {
+            public static let label: Swift.String
+          }
+          public enum BadgeValue {
+            public static let multipleItems: Swift.String
+            public static let singleItem: Swift.String
+          }
+          public enum Inactive {
+            public static let label: Swift.String
+          }
+        }
+      }
+      public enum CallDuration {
+        public static let hint: Swift.String
+      }
+      public enum Connect {
+        public enum Connected {
+          public enum FirstText {
+            public static let hint: Swift.String
+          }
+          public enum SecondText {
+            public static let hint: Swift.String
+          }
+        }
+        public enum Connecting {
+          public enum FirstText {
+            public static let hint: Swift.String
+          }
+          public enum SecondText {
+            public static let hint: Swift.String
+          }
+        }
+        public enum Queue {
+          public enum FirstText {
+            public static let hint: Swift.String
+          }
+          public enum SecondText {
+            public static let hint: Swift.String
+          }
+        }
+      }
+      public enum Header {
+        public enum BackButton {
+          public static let hint: Swift.String
+          public static let label: Swift.String
+        }
+        public enum CloseButton {
+          public static let hint: Swift.String
+          public static let label: Swift.String
+        }
+        public enum EndButton {
+          public static let label: Swift.String
+        }
+        public enum EndScreenShareButton {
+          public static let hint: Swift.String
+          public static let label: Swift.String
+        }
+      }
+      public enum Operator {
+        public enum Avatar {
+          public static let hint: Swift.String
+          public static let label: Swift.String
+        }
+      }
+      public enum OperatorName {
+        public static let hint: Swift.String
+      }
+      public enum Video {
+        public enum Operator {
+          public static let label: Swift.String
+        }
+        public enum Visitor {
+          public static let label: Swift.String
+        }
+      }
+    }
+    public enum Audio {
+      public static let title: Swift.String
+    }
+    public enum Buttons {
+      public enum Chat {
+        public static let title: Swift.String
+      }
+      public enum Minimize {
+        public static let title: Swift.String
+      }
+      public enum Mute {
+        public enum Active {
+          public static let title: Swift.String
+        }
+        public enum Inactive {
+          public static let title: Swift.String
+        }
+      }
+      public enum Speaker {
+        public static let title: Swift.String
+      }
+      public enum Video {
+        public static let title: Swift.String
+      }
+    }
+    public enum Connect {
+      public enum Connected {
+        public static let firstText: Swift.String
+        public static let secondText: Swift.String
+      }
+      public enum Connecting {
+        public static let firstText: Swift.String
+        public static let secondText: Swift.String
+      }
+      public enum Queue {
+        public static let firstText: Swift.String
+        public static let secondText: Swift.String
+      }
+      public enum Transferring {
+        public static let firstText: Swift.String
+      }
+    }
+    public enum EndButton {
+      public static let title: Swift.String
+    }
+    public enum OnHold {
+      public static let bottomText: Swift.String
+      public static let localVideoStreamLabelText: Swift.String
+      public static let topText: Swift.String
+    }
+    public enum Operator {
+      public static let name: Swift.String
+    }
+    public enum Video {
+      public static let title: Swift.String
+    }
+  }
+  public enum CallVisualizer {
+    public enum ScreenSharing {
+      public static let message: Swift.String
+      public static let title: Swift.String
+      public enum Accessibility {
+        public static let buttonHint: Swift.String
+        public static let buttonLabel: Swift.String
+        public static let messageHint: Swift.String
+      }
+      public enum Button {
+        public static let title: Swift.String
+      }
+    }
+    public enum VisitorCode {
+      public enum Accessibility {
+        public static let closeHint: Swift.String
+        public static let closeLabel: Swift.String
+        public static let refreshHint: Swift.String
+        public static let refreshLabel: Swift.String
+        public static let titleHint: Swift.String
+      }
+      public enum Action {
+        public static let close: Swift.String
+        public static let refresh: Swift.String
+      }
+      public enum Title {
+        public static let error: Swift.String
+        public static let standard: Swift.String
+      }
+    }
+  }
+  public enum Chat {
+    public static let title: Swift.String
+    public enum Accessibility {
+      public static let visitorName: Swift.String
+      public enum ChatCallUpgrade {
+        public enum Audio {
+          public enum Duration {
+            public static let hint: Swift.String
+          }
+        }
+        public enum Video {
+          public enum Duration {
+            public static let hint: Swift.String
+          }
+        }
+      }
+      public enum Connect {
+        public enum Connected {
+          public enum FirstText {
+            public static let hint: Swift.String
+          }
+          public enum SecondText {
+            public static let hint: Swift.String
+          }
+        }
+        public enum Connecting {
+          public enum FirstText {
+            public static let hint: Swift.String
+          }
+          public enum SecondText {
+            public static let hint: Swift.String
+          }
+        }
+        public enum Queue {
+          public enum FirstText {
+            public static let hint: Swift.String
+          }
+          public enum SecondText {
+            public static let hint: Swift.String
+          }
+        }
+      }
+      public enum Download {
+        public enum State {
+          public static let downloaded: Swift.String
+          public static let downloading: Swift.String
+          public static let error: Swift.String
+          public static let none: Swift.String
+        }
+      }
+      public enum Header {
+        public enum BackButton {
+          public static let hint: Swift.String
+          public static let label: Swift.String
+        }
+        public enum CloseButton {
+          public static let hint: Swift.String
+          public static let label: Swift.String
+        }
+        public enum EndButton {
+          public static let label: Swift.String
+        }
+        public enum EndScreenShareButton {
+          public static let hint: Swift.String
+          public static let label: Swift.String
+        }
+      }
+      public enum Message {
+        public static let attachmentMessageLabel: Swift.String
+        public static let you: Swift.String
+        public enum ChoiceCard {
+          public enum ButtonState {
+            public static let disabled: Swift.String
+            public static let normal: Swift.String
+            public static let selected: Swift.String
+          }
+          public enum Image {
+            public static let label: Swift.String
+          }
+        }
+        public enum MessageInput {
+          public static let label: Swift.String
+        }
+        public enum Operator {
+          public enum TypingIndicator {
+            public static let label: Swift.String
+          }
+        }
+        public enum SendButton {
+          public static let label: Swift.String
+        }
+        public enum UnreadMessagesIndicator {
+          public static let label: Swift.String
+        }
+      }
+      public enum Operator {
+        public enum Avatar {
+          public static let hint: Swift.String
+          public static let label: Swift.String
+        }
+      }
+      public enum PickMedia {
+        public enum PickAttachmentButton {
+          public static let label: Swift.String
+        }
+      }
+      public enum Upload {
+        public enum Progress {
+          public static let fileNameWithProgressValue: Swift.String
+          public static let percentValue: Swift.String
+        }
+        public enum RemoveUpload {
+          public static let label: Swift.String
+        }
+      }
+    }
+    public enum Connect {
+      public enum Connected {
+        public static let firstText: Swift.String
+        public static let secondText: Swift.String
+      }
+      public enum Connecting {
+        public static let firstText: Swift.String
+        public static let secondText: Swift.String
+      }
+      public enum Queue {
+        public static let firstText: Swift.String
+        public static let secondText: Swift.String
+      }
+      public enum Transferring {
+        public static let firstText: Swift.String
+      }
+    }
+    public enum Download {
+      public static let download: Swift.String
+      public static let downloading: Swift.String
+      public static let failed: Swift.String
+      public static let open: Swift.String
+      public enum Failed {
+        public static let retry: Swift.String
+        public static let separator: Swift.String
+      }
+    }
+    public enum EndButton {
+      public static let title: Swift.String
+    }
+    public enum File {
+      public enum Upload {
+        public static let scanning: Swift.String
+      }
+    }
+    public enum Input {
+      public static let send: Swift.String
+    }
+    public enum Message {
+      public static let choiceCardPlaceholder: Swift.String
+      public static let enterMessagePlaceholder: Swift.String
+      public static let startEngagementPlaceholder: Swift.String
+      public enum Status {
+        public static let delivered: Swift.String
+      }
+    }
+    public enum PickMedia {
+      public static let browse: Swift.String
+      public static let photo: Swift.String
+      public static let takePhoto: Swift.String
+    }
+    public enum SecureTranscript {
+      public static let headerTitle: Swift.String
+      public static let unreadMessageDividerTitle: Swift.String
+    }
+    public enum Status {
+      public static let typing: Swift.String
+    }
+    public enum Upgrade {
+      public enum Audio {
+        public static let text: Swift.String
+      }
+      public enum Video {
+        public static let text: Swift.String
+      }
+    }
+    public enum Upload {
+      public static let failed: Swift.String
+      public static let uploaded: Swift.String
+      public static let uploading: Swift.String
+      public enum Error {
+        public static let fileTooBig: Swift.String
+        public static let generic: Swift.String
+        public static let network: Swift.String
+        public static let safetyCheckFailed: Swift.String
+        public static let unsupportedFileType: Swift.String
+      }
+    }
+  }
+  public enum MessageCenter {
+    public enum Confirmation {
+      public static let checkMessages: Swift.String
+      public static let header: Swift.String
+      public static let subtitle: Swift.String
+      public static let title: Swift.String
+      public enum Accessibility {
+        public static let checkMessagesHint: Swift.String
+        public static let checkMessagesLabel: Swift.String
+      }
+    }
+    public enum Welcome {
+      public static let checkMessages: Swift.String
+      public static let header: Swift.String
+      public static let messageLengthWarning: Swift.String
+      public static let messageTextViewActive: Swift.String
+      public static let messageTextViewDisabled: Swift.String
+      public static let messageTextViewNormal: Swift.String
+      public static let messageTitle: Swift.String
+      public static let sendDisabled: Swift.String
+      public static let sendEnabled: Swift.String
+      public static let sendLoading: Swift.String
+      public static let subtitle: Swift.String
+      public static let title: Swift.String
+      public enum Accessibility {
+        public static let checkMessagesHint: Swift.String
+        public static let checkMessagesLabel: Swift.String
+        public static let filePickerHint: Swift.String
+        public static let filePickerLabel: Swift.String
+        public static let sendHint: Swift.String
+        public static let sendLabel: Swift.String
+      }
+    }
+  }
+  public enum Screensharing {
+    public enum VisitorScreen {
+      public enum Disclaimer {
+        public static let info: Swift.String
+      }
+    }
+  }
+  public enum SendMessage {
+    public static let send: Swift.String
+    public static let sending: Swift.String
+  }
+  public enum Survey {
+    public enum Accessibility {
+      public enum Footer {
+        public enum CancelButton {
+          public static let label: Swift.String
+        }
+        public enum SubmitButton {
+          public static let label: Swift.String
+        }
+      }
+      public enum Question {
+        public enum OptionButton {
+          public enum Selected {
+            public static let label: Swift.String
+          }
+          public enum Unselected {
+            public static let label: Swift.String
+          }
+        }
+        public enum TextField {
+          public static let hint: Swift.String
+        }
+        public enum Title {
+          public static let value: Swift.String
+        }
+      }
+      public enum Validation {
+        public enum Title {
+          public static let label: Swift.String
+        }
+      }
+    }
+    public enum Action {
+      public static let cancel: Swift.String
+      public static let no: Swift.String
+      public static let submit: Swift.String
+      public static let validationError: Swift.String
+      public static let yes: Swift.String
+    }
+    public enum Question {
+      public enum Title {
+        public static let asterisk: Swift.String
+      }
+    }
+  }
+}
+extension GliaWidgets.Theme.SurveyStyle {
+  public struct Checkbox {
+    public var title: GliaWidgets.Theme.Text
+    public var accessibility: GliaWidgets.Theme.SurveyStyle.Checkbox.Accessibility
+    public init(title: GliaWidgets.Theme.Text, accessibility: GliaWidgets.Theme.SurveyStyle.Checkbox.Accessibility = .init(isFontScalingEnabled: true))
+  }
+}
+extension GliaWidgets.Glia {
+  public func startEngagement(engagementKind: GliaWidgets.EngagementKind, in queueIds: [Swift.String], features: GliaWidgets.Features = .all, sceneProvider: (any GliaWidgets.SceneProvider)? = nil) throws
+}
+extension GliaWidgets.SecureConversations.ConfirmationStyle.TitleStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.SecureConversations.ConfirmationStyle.TitleStyle.Accessibility, b: GliaWidgets.SecureConversations.ConfirmationStyle.TitleStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.ConfirmationStyle.TitleStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.ConfirmationStyle.TitleStyle.Accessibility
+}
+extension GliaWidgets.GvaGalleryCardStyle {
+  public struct ViewStyle {
+    public var backgroundColor: GliaWidgets.ColorType
+    public var cornerRadius: CoreFoundation.CGFloat
+    public var borderColor: UIKit.UIColor
+    public var borderWidth: CoreFoundation.CGFloat
+    public init(backgroundColor: GliaWidgets.ColorType, cornerRadius: CoreFoundation.CGFloat, borderColor: UIKit.UIColor, borderWidth: CoreFoundation.CGFloat)
+  }
+}
+extension GliaWidgets.SecureConversations {
+  public struct WelcomeStyle : Swift.Equatable {
+    public var header: GliaWidgets.HeaderStyle
+    public var headerTitle: Swift.String
+    public var welcomeTitleStyle: GliaWidgets.SecureConversations.WelcomeStyle.TitleStyle
+    public var titleImageStyle: GliaWidgets.SecureConversations.WelcomeStyle.TitleImageStyle
+    public var welcomeSubtitleStyle: GliaWidgets.SecureConversations.WelcomeStyle.SubtitleStyle
+    public var checkMessagesButtonStyle: GliaWidgets.SecureConversations.WelcomeStyle.CheckMessagesButtonStyle
+    public var messageTitleStyle: GliaWidgets.SecureConversations.WelcomeStyle.MessageTitleStyle?
+    public var messageTextViewStyle: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewStyle
+    public var sendButtonStyle: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonStyle
+    public var messageWarningStyle: GliaWidgets.SecureConversations.WelcomeStyle.MessageWarningStyle
+    public var filePickerButtonStyle: GliaWidgets.SecureConversations.WelcomeStyle.FilePickerButtonStyle
+    public var attachmentListStyle: GliaWidgets.MessageCenterFileUploadListStyle
+    public var pickMediaStyle: GliaWidgets.AttachmentSourceListStyle
+    public var backgroundColor: UIKit.UIColor
+    public init(header: GliaWidgets.HeaderStyle, headerTitle: Swift.String, welcomeTitleStyle: GliaWidgets.SecureConversations.WelcomeStyle.TitleStyle, titleImageStyle: GliaWidgets.SecureConversations.WelcomeStyle.TitleImageStyle, welcomeSubtitleStyle: GliaWidgets.SecureConversations.WelcomeStyle.SubtitleStyle, checkMessagesButtonStyle: GliaWidgets.SecureConversations.WelcomeStyle.CheckMessagesButtonStyle, messageTitleStyle: GliaWidgets.SecureConversations.WelcomeStyle.MessageTitleStyle, messageTextViewStyle: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewStyle, sendButtonStyle: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonStyle, messageWarningStyle: GliaWidgets.SecureConversations.WelcomeStyle.MessageWarningStyle, filePickerButtonStyle: GliaWidgets.SecureConversations.WelcomeStyle.FilePickerButtonStyle, attachmentListStyle: GliaWidgets.MessageCenterFileUploadListStyle, pickMediaStyle: GliaWidgets.AttachmentSourceListStyle, backgroundColor: UIKit.UIColor)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle, b: GliaWidgets.SecureConversations.WelcomeStyle) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct MessageWarningStyle : Swift.Equatable {
+    public var textColor: UIKit.UIColor
+    public var textFont: UIKit.UIFont
+    public var textStyle: UIKit.UIFont.TextStyle
+    public var iconColor: UIKit.UIColor
+    public var messageLengthLimitText: Swift.String
+    public var accessibility: GliaWidgets.SecureConversations.WelcomeStyle.MessageWarningStyle.Accessibility
+    public init(textColor: UIKit.UIColor, textFont: UIKit.UIFont, textStyle: UIKit.UIFont.TextStyle, iconColor: UIKit.UIColor, messageLengthLimitText: Swift.String, accessibility: GliaWidgets.SecureConversations.WelcomeStyle.MessageWarningStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.MessageWarningStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.MessageWarningStyle) -> Swift.Bool
+  }
+}
+final public class ChoiceCardOptionStateStyle : GliaWidgets.ChatTextContentStyle {
+  final public var borderColor: UIKit.UIColor?
+  final public var borderWidth: CoreFoundation.CGFloat
+  public init(textFont: UIKit.UIFont, textColor: UIKit.UIColor, textStyle: UIKit.UIFont.TextStyle, backgroundColor: UIKit.UIColor, borderColor: UIKit.UIColor?, borderWidth: CoreFoundation.CGFloat = 1, accessibility: GliaWidgets.ChatTextContentStyle.Accessibility = .unsupported)
+  @objc deinit
+}
+public struct PoweredByStyle : Swift.Equatable {
+  public var text: Swift.String
+  public var font: UIKit.UIFont
+  public var accessibility: GliaWidgets.PoweredByStyle.Accessibility
+  public init(text: Swift.String, font: UIKit.UIFont, accessibility: GliaWidgets.PoweredByStyle.Accessibility = .init(isFontScalingEnabled: true))
+  public static func == (a: GliaWidgets.PoweredByStyle, b: GliaWidgets.PoweredByStyle) -> Swift.Bool
+}
+extension GliaWidgets.Theme.SurveyStyle {
+  public struct ValidationError {
+    public var message: Swift.String
+    public var color: Swift.String
+    public var font: UIKit.UIFont
+    public var accessibility: GliaWidgets.Theme.SurveyStyle.ValidationError.Accessibility
+  }
+}
+public struct ChatMessageEntryStyle {
+  public var messageFont: UIKit.UIFont
+  public var messageColor: UIKit.UIColor
+  public var messageTextStyle: UIKit.UIFont.TextStyle
+  public var enterMessagePlaceholder: Swift.String
+  public var startEngagementPlaceholder: Swift.String
+  public var choiceCardPlaceholder: Swift.String
+  public var placeholderFont: UIKit.UIFont
+  public var placeholderColor: UIKit.UIColor
+  public var placeholderTextStyle: UIKit.UIFont.TextStyle
+  public var separatorColor: UIKit.UIColor
+  public var backgroundColor: UIKit.UIColor
+  public var mediaButton: GliaWidgets.MessageButtonStyle
+  public var sendButton: GliaWidgets.MessageButtonStyle
+  public var uploadList: GliaWidgets.FileUploadListStyle
+  public var accessibility: GliaWidgets.ChatMessageEntryStyle.Accessibility
+  public init(messageFont: UIKit.UIFont, messageColor: UIKit.UIColor, messageTextStyle: UIKit.UIFont.TextStyle = .body, enterMessagePlaceholder: Swift.String, startEngagementPlaceholder: Swift.String, choiceCardPlaceholder: Swift.String, placeholderFont: UIKit.UIFont, placeholderColor: UIKit.UIColor, placeholderTextStyle: UIKit.UIFont.TextStyle = .body, separatorColor: UIKit.UIColor, backgroundColor: UIKit.UIColor, mediaButton: GliaWidgets.MessageButtonStyle, sendButton: GliaWidgets.MessageButtonStyle, uploadList: GliaWidgets.FileUploadListStyle, accessibility: GliaWidgets.ChatMessageEntryStyle.Accessibility = .unsupported)
+}
+public struct GliaVirtualAssistantStyle {
+  public var persistentButton: GliaWidgets.GvaPersistentButtonStyle
+  public var quickReplyButton: GliaWidgets.GvaQuickReplyButtonStyle
+  public var galleryList: GliaWidgets.GvaGalleryListViewStyle
+  public init(persistentButton: GliaWidgets.GvaPersistentButtonStyle, quickReplyButton: GliaWidgets.GvaQuickReplyButtonStyle, galleryList: GliaWidgets.GvaGalleryListViewStyle)
+}
+public class ChatCallUpgradeStyle {
+  public var icon: UIKit.UIImage
+  public var iconColor: UIKit.UIColor
+  public var text: Swift.String
+  public var textFont: UIKit.UIFont
+  public var textColor: UIKit.UIColor
+  public var textStyle: UIKit.UIFont.TextStyle
+  public var durationFont: UIKit.UIFont
+  public var durationColor: UIKit.UIColor
+  public var durationTextStyle: UIKit.UIFont.TextStyle
+  public var borderColor: UIKit.UIColor
+  public var borderWidth: CoreFoundation.CGFloat
+  public var cornerRadius: CoreFoundation.CGFloat
+  public var accessibility: GliaWidgets.ChatCallUpgradeStyle.Accessibility
+  public init(icon: UIKit.UIImage, iconColor: UIKit.UIColor, text: Swift.String, textFont: UIKit.UIFont, textColor: UIKit.UIColor, textStyle: UIKit.UIFont.TextStyle = .body, durationFont: UIKit.UIFont, durationColor: UIKit.UIColor, durationTextStyle: UIKit.UIFont.TextStyle = .body, borderColor: UIKit.UIColor, borderWidth: CoreFoundation.CGFloat = 1, cornerRadius: CoreFoundation.CGFloat = 8, accessibility: GliaWidgets.ChatCallUpgradeStyle.Accessibility = .unsupported)
+  @objc deinit
+}
+extension GliaWidgets.SecureConversations.ConfirmationStyle.CheckMessagesButtonStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public var label: Swift.String
+    public var hint: Swift.String
+    public init(isFontScalingEnabled: Swift.Bool, label: Swift.String, hint: Swift.String)
+    public static func == (a: GliaWidgets.SecureConversations.ConfirmationStyle.CheckMessagesButtonStyle.Accessibility, b: GliaWidgets.SecureConversations.ConfirmationStyle.CheckMessagesButtonStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.ConfirmationStyle.CheckMessagesButtonStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.ConfirmationStyle.CheckMessagesButtonStyle.Accessibility
+}
+extension GliaWidgets.Theme.SurveyStyle.ValidationError {
+  public struct Accessibility {
+    public var label: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(label: Swift.String, isFontScalingEnabled: Swift.Bool)
+  }
+}
+extension GliaWidgets.ChatCallUpgradeStyle {
+  public struct Accessibility {
+    public var durationTextHint: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(durationTextHint: Swift.String, isFontScalingEnabled: Swift.Bool)
+  }
+}
+extension GliaWidgets.ChatCallUpgradeStyle.Accessibility {
+  public static let unsupported: GliaWidgets.ChatCallUpgradeStyle.Accessibility
+}
+public class Theme {
+  public var color: GliaWidgets.ThemeColor
+  public var font: GliaWidgets.ThemeFont
+  public var chat: GliaWidgets.ChatStyle {
+    get
+    set
+  }
+  public var call: GliaWidgets.CallStyle {
+    get
+    set
+  }
+  public var secureConversationsWelcome: GliaWidgets.SecureConversations.WelcomeStyle {
+    get
+    set
+  }
+  public var alert: GliaWidgets.AlertStyle {
+    get
+    set
+  }
+  public var alertConfiguration: GliaWidgets.AlertConfiguration {
+    get
+    set
+  }
+  public var minimizedBubble: GliaWidgets.BubbleStyle {
+    get
+    set
+  }
+  public var survey: GliaWidgets.Theme.SurveyStyle {
+    get
+    set
+  }
+  public var visitorCode: GliaWidgets.VisitorCodeStyle {
+    get
+    set
+  }
+  public var screenSharing: GliaWidgets.ScreenSharingViewStyle {
+    get
+    set
+  }
+  public var secureConversationsConfirmation: GliaWidgets.SecureConversations.ConfirmationStyle {
+    get
+    set
+  }
+  public var showsPoweredBy: Swift.Bool
+  public var snackBar: GliaWidgets.Theme.SnackBarStyle {
+    get
+    set
+  }
+  public var invertedSnackBar: GliaWidgets.Theme.SnackBarStyle {
+    get
+    set
+  }
+  public var webView: GliaWidgets.WebViewStyle {
+    get
+    set
+  }
+  public init(colorStyle: GliaWidgets.ThemeColorStyle = .default, fontStyle: GliaWidgets.ThemeFontStyle = .default, showsPoweredBy: Swift.Bool = true)
+  @objc deinit
+}
+extension GliaWidgets.Theme.Button {
+  public struct Accessibility : Swift.Equatable {
+    public var label: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(label: Swift.String, isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.Theme.Button.Accessibility, b: GliaWidgets.Theme.Button.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.Theme.Button.Accessibility {
+  public static let unsupported: GliaWidgets.Theme.Button.Accessibility
+}
+public struct BadgeStyle : Swift.Equatable {
+  public var font: UIKit.UIFont
+  public var fontColor: UIKit.UIColor
+  public var textStyle: UIKit.UIFont.TextStyle
+  public var backgroundColor: GliaWidgets.ColorType
+  public var borderColor: GliaWidgets.ColorType
+  public var borderWidth: CoreFoundation.CGFloat
+  public init(font: UIKit.UIFont, fontColor: UIKit.UIColor, textStyle: UIKit.UIFont.TextStyle = .caption1, backgroundColor: GliaWidgets.ColorType, borderColor: GliaWidgets.ColorType = .fill(color: .clear), borderWidth: CoreFoundation.CGFloat = .zero)
+  public static func == (a: GliaWidgets.BadgeStyle, b: GliaWidgets.BadgeStyle) -> Swift.Bool
+}
+extension GliaWidgets.UnreadMessageDividerStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.UnreadMessageDividerStyle.Accessibility, b: GliaWidgets.UnreadMessageDividerStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.UnreadMessageDividerStyle.Accessibility {
+  public static let unsupported: GliaWidgets.UnreadMessageDividerStyle.Accessibility
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct SendButtonEnabledStyle : Swift.Equatable {
+    public var title: Swift.String
+    public var font: UIKit.UIFont
+    public var textStyle: UIKit.UIFont.TextStyle
+    public var textColor: UIKit.UIColor
+    public var backgroundColor: UIKit.UIColor
+    public var borderColor: UIKit.UIColor
+    public var borderWidth: Swift.Double
+    public var cornerRadius: Swift.Double
+    public var accessibility: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonEnabledStyle.Accessibility
+    public init(title: Swift.String, font: UIKit.UIFont, textStyle: UIKit.UIFont.TextStyle, textColor: UIKit.UIColor, backgroundColor: UIKit.UIColor, borderColor: UIKit.UIColor, borderWidth: Swift.Double, cornerRadius: Swift.Double, accessibility: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonEnabledStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonEnabledStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonEnabledStyle) -> Swift.Bool
+  }
+}
+extension GliaWidgets.MessageCenterFileUploadListStyle {
+  public static func == (lhs: GliaWidgets.MessageCenterFileUploadListStyle, rhs: GliaWidgets.MessageCenterFileUploadListStyle) -> Swift.Bool
+}
+extension GliaWidgets.FileUploadStateStyle {
+  public static func == (lhs: GliaWidgets.FileUploadStateStyle, rhs: GliaWidgets.FileUploadStateStyle) -> Swift.Bool
+}
+@available(*, deprecated, message: "Deprecated, use ``Theme.VisitorMessageStyle`` instead.")
+public class VisitorChatMessageStyle : GliaWidgets.ChatMessageStyle {
+  public var statusFont: UIKit.UIFont
+  public var statusColor: UIKit.UIColor
+  public var statusTextStyle: UIKit.UIFont.TextStyle
+  public var delivered: Swift.String
+  public var accessibility: GliaWidgets.VisitorChatMessageStyle.Accessibility
+  public init(text: GliaWidgets.ChatTextContentStyle, imageFile: GliaWidgets.ChatImageFileContentStyle, fileDownload: GliaWidgets.ChatFileDownloadStyle, statusFont: UIKit.UIFont, statusColor: UIKit.UIColor, statusTextStyle: UIKit.UIFont.TextStyle, delivered: Swift.String, accessibility: GliaWidgets.VisitorChatMessageStyle.Accessibility = .unsupported)
+  @objc deinit
+}
+extension GliaWidgets.Theme.SurveyStyle {
+  public struct OptionButton {
+    public var normalText: GliaWidgets.Theme.Text
+    public var normalLayer: GliaWidgets.Theme.Layer
+    public var selectedText: GliaWidgets.Theme.Text
+    public var selectedLayer: GliaWidgets.Theme.Layer
+    public var highlightedText: GliaWidgets.Theme.Text
+    public var highlightedLayer: GliaWidgets.Theme.Layer
+    public var font: UIKit.UIFont
+    public var textStyle: UIKit.UIFont.TextStyle
+    public var accessibility: GliaWidgets.Theme.SurveyStyle.OptionButton.Accessibility
+    public init(normalText: GliaWidgets.Theme.Text, normalLayer: GliaWidgets.Theme.Layer, selectedText: GliaWidgets.Theme.Text, selectedLayer: GliaWidgets.Theme.Layer, highlightedText: GliaWidgets.Theme.Text, highlightedLayer: GliaWidgets.Theme.Layer, font: UIKit.UIFont, textStyle: UIKit.UIFont.TextStyle = .body, accessibility: GliaWidgets.Theme.SurveyStyle.OptionButton.Accessibility = .init(isFontScalingEnabled: true))
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct SubtitleStyle : Swift.Equatable {
+    public var text: Swift.String
+    public var font: UIKit.UIFont
+    public var textStyle: UIKit.UIFont.TextStyle
+    public var color: UIKit.UIColor
+    public var accessibility: GliaWidgets.SecureConversations.WelcomeStyle.SubtitleStyle.Accessibility
+    public init(text: Swift.String, font: UIKit.UIFont, textStyle: UIKit.UIFont.TextStyle, color: UIKit.UIColor, accessibility: GliaWidgets.SecureConversations.WelcomeStyle.SubtitleStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.SubtitleStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.SubtitleStyle) -> Swift.Bool
+  }
+}
+public struct MessageRenderer {
+  public var render: (GliaWidgets.MessageRenderer.Message) -> UIKit.UIView?
+  public var isInteractable: (GliaWidgets.MessageRenderer.Message) -> Swift.Bool
+  public var shouldShowCard: (GliaWidgets.MessageRenderer.Message) -> Swift.Bool
+  public var callMobileActionHandler: (Swift.String) -> Swift.Void
+  public init(render: @escaping (GliaWidgets.MessageRenderer.Message) -> UIKit.UIView?, isInteractable: @escaping (GliaWidgets.MessageRenderer.Message) -> Swift.Bool = { _ in false }, shouldShowCard: @escaping (GliaWidgets.MessageRenderer.Message) -> Swift.Bool = { _ in true }, callMobileActionHandler: @escaping (Swift.String) -> Swift.Void = { _ in })
+}
+extension GliaWidgets.ChatStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var `operator`: Swift.String
+    public var visitor: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(operator: Swift.String, visitor: Swift.String, isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.ChatStyle.Accessibility, b: GliaWidgets.ChatStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.ChatStyle.Accessibility {
+  public static let unsupported: GliaWidgets.ChatStyle.Accessibility
+}
+extension GliaWidgets.AlertStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.AlertStyle.Accessibility, b: GliaWidgets.AlertStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.AlertStyle.Accessibility {
+  public static let unsupported: GliaWidgets.AlertStyle.Accessibility
+}
+public struct HeaderStyle : Swift.Equatable {
+  public var titleFont: UIKit.UIFont
+  public var titleColor: UIKit.UIColor
+  public var textStyle: UIKit.UIFont.TextStyle
+  public var backgroundColor: GliaWidgets.ColorType
+  public var backButton: GliaWidgets.HeaderButtonStyle?
+  public var closeButton: GliaWidgets.HeaderButtonStyle
+  public var endButton: GliaWidgets.ActionButtonStyle
+  public var endScreenShareButton: GliaWidgets.HeaderButtonStyle
+  public var accessibility: GliaWidgets.HeaderStyle.Accessibility
+  public init(titleFont: UIKit.UIFont, titleColor: UIKit.UIColor, textStyle: UIKit.UIFont.TextStyle = .title2, backgroundColor: GliaWidgets.ColorType, backButton: GliaWidgets.HeaderButtonStyle?, closeButton: GliaWidgets.HeaderButtonStyle, endButton: GliaWidgets.ActionButtonStyle, endScreenShareButton: GliaWidgets.HeaderButtonStyle, accessibility: GliaWidgets.HeaderStyle.Accessibility = .unsupported)
+  public static func == (a: GliaWidgets.HeaderStyle, b: GliaWidgets.HeaderStyle) -> Swift.Bool
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct SendButtonDisabledStyle : Swift.Equatable {
+    public var title: Swift.String
+    public var font: UIKit.UIFont
+    public var textStyle: UIKit.UIFont.TextStyle
+    public var textColor: UIKit.UIColor
+    public var backgroundColor: UIKit.UIColor
+    public var borderColor: UIKit.UIColor
+    public var borderWidth: Swift.Double
+    public var cornerRadius: Swift.Double
+    public var accessibility: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonDisabledStyle.Accessibility
+    public init(title: Swift.String, font: UIKit.UIFont, textStyle: UIKit.UIFont.TextStyle, textColor: UIKit.UIColor, backgroundColor: UIKit.UIColor, borderColor: UIKit.UIColor, borderWidth: Swift.Double, cornerRadius: Swift.Double, accessibility: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonDisabledStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonDisabledStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonDisabledStyle) -> Swift.Bool
+  }
+}
+public class FileUploadStyle : Swift.Equatable {
+  public var filePreview: GliaWidgets.FilePreviewStyle
+  public var uploading: GliaWidgets.FileUploadStateStyle
+  public var uploaded: GliaWidgets.FileUploadStateStyle
+  public var error: GliaWidgets.FileUploadErrorStateStyle
+  public var progressColor: UIKit.UIColor
+  public var errorProgressColor: UIKit.UIColor
+  public var progressBackgroundColor: UIKit.UIColor
+  public var removeButtonImage: UIKit.UIImage
+  public var removeButtonColor: UIKit.UIColor
+  public var accessibility: GliaWidgets.FileUploadStyle.Accessibility
+  public init(filePreview: GliaWidgets.FilePreviewStyle, uploading: GliaWidgets.FileUploadStateStyle, uploaded: GliaWidgets.FileUploadStateStyle, error: GliaWidgets.FileUploadErrorStateStyle, progressColor: UIKit.UIColor, errorProgressColor: UIKit.UIColor, progressBackgroundColor: UIKit.UIColor, removeButtonImage: UIKit.UIImage, removeButtonColor: UIKit.UIColor, accessibility: GliaWidgets.FileUploadStyle.Accessibility = .unsupported)
+  @objc deinit
+}
+public struct RemoteConfiguration : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension GliaWidgets.RemoteConfiguration {
+  public struct Font : Swift.Codable {
+    public let size: Swift.Double?
+    public let style: GliaWidgets.RemoteConfiguration.FontStyle?
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public enum FontStyle : Swift.String, Swift.Codable {
+    case bold, italic, regular, thin
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+public struct ActionButtonStyle : Swift.Equatable {
+  public var title: Swift.String
+  public var titleFont: UIKit.UIFont
+  public var titleColor: UIKit.UIColor
+  public var textStyle: UIKit.UIFont.TextStyle
+  public var backgroundColor: GliaWidgets.ColorType
+  public var cornerRaidus: CoreFoundation.CGFloat?
+  public var shadowOffset: CoreFoundation.CGSize?
+  public var shadowColor: UIKit.UIColor?
+  public var shadowRadius: CoreFoundation.CGFloat?
+  public var shadowOpacity: Swift.Float?
+  public var borderWidth: CoreFoundation.CGFloat?
+  public var borderColor: UIKit.UIColor?
+  public var accessibility: GliaWidgets.ActionButtonStyle.Accessibility
+  public init(title: Swift.String, titleFont: UIKit.UIFont, titleColor: UIKit.UIColor, textStyle: UIKit.UIFont.TextStyle = .body, backgroundColor: GliaWidgets.ColorType, cornerRaidus: CoreFoundation.CGFloat? = 4.0, shadowOffset: CoreFoundation.CGSize = CGSize(width: 0.0, height: 2.0), shadowColor: UIKit.UIColor = UIColor.black, shadowRadius: CoreFoundation.CGFloat = 2.0, shadowOpacity: Swift.Float? = nil, borderWidth: CoreFoundation.CGFloat? = nil, borderColor: UIKit.UIColor? = nil, accessibility: GliaWidgets.ActionButtonStyle.Accessibility = .unsupported)
+  public static func == (a: GliaWidgets.ActionButtonStyle, b: GliaWidgets.ActionButtonStyle) -> Swift.Bool
+}
+public struct NumberSlotStyle : Swift.Equatable {
+  public var backgroundColor: GliaWidgets.ColorType
+  public var borderColor: UIKit.UIColor
+  public var borderWidth: CoreFoundation.CGFloat
+  public var cornerRadius: CoreFoundation.CGFloat
+  public var numberFont: UIKit.UIFont
+  public var numberColor: UIKit.UIColor
+  public var numberStyle: UIKit.UIFont.TextStyle
+  public var accessibility: GliaWidgets.NumberSlotStyle.Accessibility
+  public init(backgroundColor: GliaWidgets.ColorType, borderColor: UIKit.UIColor, borderWidth: CoreFoundation.CGFloat, cornerRadius: CoreFoundation.CGFloat, numberFont: UIKit.UIFont, numberColor: UIKit.UIColor, numberStyle: UIKit.UIFont.TextStyle = .largeTitle, accessibility: GliaWidgets.NumberSlotStyle.Accessibility)
+  public static func == (a: GliaWidgets.NumberSlotStyle, b: GliaWidgets.NumberSlotStyle) -> Swift.Bool
+}
+extension GliaWidgets.MessageRenderer {
+  public struct Message {
+    public typealias Identifier = GliaCoreSDK.Tagged<GliaWidgets.MessageRenderer.Message, Swift.String>
+    public let id: GliaWidgets.MessageRenderer.Message.Identifier
+    public let metadata: GliaWidgets.MessageMetadata?
+    public let selectedOption: Swift.String?
+  }
+}
+extension GliaWidgets.Theme.SurveyStyle {
+  public struct ScaleQuestion {
+    public var title: GliaWidgets.Theme.Text
+    public var option: GliaWidgets.Theme.SurveyStyle.OptionButton
+    public var error: GliaWidgets.Theme.SurveyStyle.ValidationError
+    public var accessibility: GliaWidgets.Theme.SurveyStyle.ScaleQuestion.Accessibility
+  }
+}
+public class BubbleStyle {
+  public var userImage: GliaWidgets.UserImageStyle
+  public var badge: GliaWidgets.BadgeStyle?
+  public var onHoldOverlay: GliaWidgets.OnHoldOverlayStyle
+  public var accessibility: GliaWidgets.BubbleStyle.Accessibility
+  public init(userImage: GliaWidgets.UserImageStyle, badge: GliaWidgets.BadgeStyle? = nil, onHoldOverlay: GliaWidgets.OnHoldOverlayStyle = .bubble, accessibility: GliaWidgets.BubbleStyle.Accessibility = .unsupported)
+  @objc deinit
+}
+public class UnreadMessageDividerStyle : Swift.Equatable {
+  public var title: Swift.String
+  public var titleColor: UIKit.UIColor
+  public var titleFont: UIKit.UIFont
+  public var lineColor: UIKit.UIColor
+  public var accessibility: GliaWidgets.UnreadMessageDividerStyle.Accessibility
+  public init(title: Swift.String, titleColor: UIKit.UIColor, titleFont: UIKit.UIFont, lineColor: UIKit.UIColor, accessibility: GliaWidgets.UnreadMessageDividerStyle.Accessibility)
+  @objc deinit
+}
+extension GliaWidgets.BubbleStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var label: Swift.String
+    public var hint: Swift.String
+    public init(label: Swift.String, hint: Swift.String)
+    public static func == (a: GliaWidgets.BubbleStyle.Accessibility, b: GliaWidgets.BubbleStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.BubbleStyle.Accessibility {
+  public static let unsupported: GliaWidgets.BubbleStyle.Accessibility
+}
+public struct MediaUpgradeActionStyle {
+  public var title: Swift.String
+  public var titleFont: UIKit.UIFont
+  public var titleColor: UIKit.UIColor
+  public var info: Swift.String
+  public var infoFont: UIKit.UIFont
+  public var infoColor: UIKit.UIColor
+  public var borderColor: UIKit.UIColor
+  public var backgroundColor: UIKit.UIColor
+  public var icon: UIKit.UIImage
+  public var iconColor: UIKit.UIColor
+  public init(title: Swift.String, titleFont: UIKit.UIFont, titleColor: UIKit.UIColor, info: Swift.String, infoFont: UIKit.UIFont, infoColor: UIKit.UIColor, borderColor: UIKit.UIColor, backgroundColor: UIKit.UIColor, icon: UIKit.UIImage, iconColor: UIKit.UIColor)
+}
+extension GliaWidgets.UnreadMessageIndicatorStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var label: Swift.String
+    public init(label: Swift.String)
+    public static func == (a: GliaWidgets.UnreadMessageIndicatorStyle.Accessibility, b: GliaWidgets.UnreadMessageIndicatorStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.UnreadMessageIndicatorStyle.Accessibility {
+  public static let unsupported: GliaWidgets.UnreadMessageIndicatorStyle.Accessibility
+}
+extension GliaWidgets.AttachmentSourceListStyle {
+  public static func == (lhs: GliaWidgets.AttachmentSourceListStyle, rhs: GliaWidgets.AttachmentSourceListStyle) -> Swift.Bool
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct MessageTextViewNormalStyle : Swift.Equatable {
+    public var placeholderText: Swift.String
+    public var placeholderFont: UIKit.UIFont
+    public var placeholderColor: UIKit.UIColor
+    public var textFont: UIKit.UIFont
+    public var textFontStyle: UIKit.UIFont.TextStyle
+    public var textColor: UIKit.UIColor
+    public var borderColor: UIKit.UIColor
+    public var borderWidth: Swift.Double
+    public var cornerRadius: Swift.Double
+    public var backgroundColor: UIKit.UIColor
+    public var accessibility: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewNormalStyle.Accessibility
+    public init(placeholderText: Swift.String, placeholderFont: UIKit.UIFont, placeholderColor: UIKit.UIColor, textFont: UIKit.UIFont, textFontStyle: UIKit.UIFont.TextStyle, textColor: UIKit.UIColor, borderColor: UIKit.UIColor, borderWidth: Swift.Double, cornerRadius: Swift.Double, backgroundColor: UIKit.UIColor, accessibility: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewNormalStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewNormalStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewNormalStyle) -> Swift.Bool
+  }
+}
+public struct GvaQuickReplyButtonStyle {
+  public var textFont: UIKit.UIFont
+  public var textColor: UIKit.UIColor
+  public var textStyle: UIKit.UIFont.TextStyle
+  public var backgroundColor: GliaWidgets.ColorType
+  public var cornerRadius: CoreFoundation.CGFloat
+  public var borderColor: UIKit.UIColor
+  public var borderWidth: CoreFoundation.CGFloat
+}
+public enum ThemeColorStyle {
+  case `default`
+  case custom(GliaWidgets.ThemeColor)
+}
+public struct WebViewStyle {
+  public var header: GliaWidgets.HeaderStyle
+  public init(header: GliaWidgets.HeaderStyle)
+}
+public class EngagementStyle : Swift.Equatable {
+  public var header: GliaWidgets.HeaderStyle
+  public var connect: GliaWidgets.ConnectStyle
+  public var backgroundColor: GliaWidgets.ColorType
+  public var preferredStatusBarStyle: UIKit.UIStatusBarStyle
+  public init(header: GliaWidgets.HeaderStyle, connect: GliaWidgets.ConnectStyle, backgroundColor: GliaWidgets.ColorType, preferredStatusBarStyle: UIKit.UIStatusBarStyle)
+  @objc deinit
+}
+extension GliaWidgets.ChatMessageEntryStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var messageInputAccessibilityLabel: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(messageInputAccessibilityLabel: Swift.String, isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.ChatMessageEntryStyle.Accessibility, b: GliaWidgets.ChatMessageEntryStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.ChatMessageEntryStyle.Accessibility {
+  public static let unsupported: GliaWidgets.ChatMessageEntryStyle.Accessibility
+}
+extension GliaWidgets.ChatFileDownloadStyle {
+  public struct StateAccessibility {
+    public var noneState: Swift.String
+    public var downloadingState: Swift.String
+    public var downloadedState: Swift.String
+    public var errorState: Swift.String
+    public init(noneState: Swift.String, downloadingState: Swift.String, downloadedState: Swift.String, errorState: Swift.String)
+  }
+}
+extension GliaWidgets.ChatFileDownloadStyle.StateAccessibility {
+  public static let unsupported: GliaWidgets.ChatFileDownloadStyle.StateAccessibility
+}
+public class FileUploadErrorStateStyle : Swift.Equatable {
+  public var text: Swift.String
+  public var font: UIKit.UIFont
+  public var textColor: UIKit.UIColor
+  public var textStyle: UIKit.UIFont.TextStyle
+  public var infoFont: UIKit.UIFont
+  public var infoColor: UIKit.UIColor
+  public var infoTextStyle: UIKit.UIFont.TextStyle
+  public var infoFileTooBig: Swift.String
+  public var infoUnsupportedFileType: Swift.String
+  public var infoSafetyCheckFailed: Swift.String
+  public var infoNetworkError: Swift.String
+  public var infoGenericError: Swift.String
+  public init(text: Swift.String, font: UIKit.UIFont, textColor: UIKit.UIColor, textStyle: UIKit.UIFont.TextStyle = .subheadline, infoFont: UIKit.UIFont, infoColor: UIKit.UIColor, infoTextStyle: UIKit.UIFont.TextStyle = .caption1, infoFileTooBig: Swift.String, infoUnsupportedFileType: Swift.String, infoSafetyCheckFailed: Swift.String, infoNetworkError: Swift.String, infoGenericError: Swift.String)
+  @objc deinit
+}
+public struct ConnectStyle : Swift.Equatable {
+  public var connectOperator: GliaWidgets.ConnectOperatorStyle
+  public var queue: GliaWidgets.ConnectStatusStyle
+  public var connecting: GliaWidgets.ConnectStatusStyle
+  public var connected: GliaWidgets.ConnectStatusStyle
+  public var transferring: GliaWidgets.ConnectStatusStyle
+  public var onHold: GliaWidgets.ConnectStatusStyle
+  public init(queueOperator: GliaWidgets.ConnectOperatorStyle, queue: GliaWidgets.ConnectStatusStyle, connecting: GliaWidgets.ConnectStatusStyle, connected: GliaWidgets.ConnectStatusStyle, transferring: GliaWidgets.ConnectStatusStyle, onHold: GliaWidgets.ConnectStatusStyle)
+  public static func == (a: GliaWidgets.ConnectStyle, b: GliaWidgets.ConnectStyle) -> Swift.Bool
+}
+extension GliaWidgets.ConnectStatusStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var firstTextHint: Swift.String
+    public var secondTextHint: Swift.String?
+    public var isFontScalingEnabled: Swift.Bool
+    public init(firstTextHint: Swift.String, secondTextHint: Swift.String?, isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.ConnectStatusStyle.Accessibility, b: GliaWidgets.ConnectStatusStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.ConnectStatusStyle.Accessibility {
+  public static let unsupported: GliaWidgets.ConnectStatusStyle.Accessibility
+}
+public struct Configuration {
+  public let authorizationMethod: GliaWidgets.Configuration.AuthorizationMethod
+  public let environment: GliaWidgets.Environment
+  public let site: Swift.String
+  public let visitorContext: GliaWidgets.Configuration.VisitorContext?
+  public var pushNotifications: GliaWidgets.Configuration.PushNotifications
+  public let isWhiteLabelApp: Swift.Bool
+  public let companyName: Swift.String
+  public var manualLocaleOverride: Swift.String?
+  public init(authorizationMethod: GliaWidgets.Configuration.AuthorizationMethod, environment: GliaWidgets.Environment, site: Swift.String, visitorContext: GliaWidgets.Configuration.VisitorContext? = nil, pushNotifications: GliaWidgets.Configuration.PushNotifications = .disabled, isWhiteLabelApp: Swift.Bool = false, companyName: Swift.String = "", manualLocaleOverride: Swift.String? = nil)
+}
+extension GliaWidgets.Configuration {
+  public enum AuthorizationMethod {
+    case siteApiKey(id: Swift.String, secret: Swift.String)
+  }
+}
+extension GliaWidgets.Configuration {
+  public struct VisitorContext {
+    public let assetId: Foundation.UUID
+    public init(assetId: Foundation.UUID)
+  }
+}
+extension GliaWidgets.Configuration {
+  public enum PushNotifications {
+    case disabled
+    case sandbox
+    case production
+    public static func == (a: GliaWidgets.Configuration.PushNotifications, b: GliaWidgets.Configuration.PushNotifications) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.TitleStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.TitleStyle.Accessibility, b: GliaWidgets.SecureConversations.WelcomeStyle.TitleStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.TitleStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.WelcomeStyle.TitleStyle.Accessibility
+}
+extension GliaWidgets.FilePreviewStyle {
+  public static func == (lhs: GliaWidgets.FilePreviewStyle, rhs: GliaWidgets.FilePreviewStyle) -> Swift.Bool
+}
+public class MessageCenterFileUploadListStyle : Swift.Equatable {
+  public var item: GliaWidgets.MessageCenterFileUploadStyle
+  public init(item: GliaWidgets.MessageCenterFileUploadStyle)
+  @objc deinit
+}
+extension GliaWidgets.GvaPersistentButtonStyle {
+  public struct ButtonStyle {
+    public var textFont: UIKit.UIFont
+    public var textColor: UIKit.UIColor
+    public var textStyle: UIKit.UIFont.TextStyle
+    public var backgroundColor: GliaWidgets.ColorType
+    public var cornerRadius: CoreFoundation.CGFloat
+    public var borderColor: UIKit.UIColor
+    public var borderWidth: CoreFoundation.CGFloat
+    public var accessibility: GliaWidgets.GvaPersistentButtonStyle.Accessibility
+    public init(textFont: UIKit.UIFont, textColor: UIKit.UIColor, textStyle: UIKit.UIFont.TextStyle = .title2, backgroundColor: GliaWidgets.ColorType, cornerRadius: CoreFoundation.CGFloat, borderColor: UIKit.UIColor, borderWidth: CoreFoundation.CGFloat, accessibility: GliaWidgets.GvaPersistentButtonStyle.Accessibility = .unsupported)
+  }
+}
+public class AttachmentSourceItemStyle : Swift.Equatable {
+  public var kind: GliaWidgets.AttachmentSourceItemKind
+  public var title: Swift.String
+  public var titleFont: UIKit.UIFont
+  public var titleColor: UIKit.UIColor
+  public var titleTextStyle: UIKit.UIFont.TextStyle
+  public var icon: UIKit.UIImage?
+  public var iconColor: UIKit.UIColor?
+  public var accessibility: GliaWidgets.AttachmentSourceItemStyle.Accessibility
+  public init(kind: GliaWidgets.AttachmentSourceItemKind, title: Swift.String, titleFont: UIKit.UIFont, titleColor: UIKit.UIColor, titleTextStyle: UIKit.UIFont.TextStyle = .body, icon: UIKit.UIImage?, iconColor: UIKit.UIColor?, accessibility: GliaWidgets.AttachmentSourceItemStyle.Accessibility = .unsupported)
+  @objc deinit
+}
+extension GliaWidgets.SecureConversations.ConfirmationStyle {
+  public struct TitleStyle : Swift.Equatable {
+    public var text: Swift.String
+    public var font: UIKit.UIFont
+    public var color: UIKit.UIColor
+    public var accessibility: GliaWidgets.SecureConversations.ConfirmationStyle.TitleStyle.Accessibility
+    public init(text: Swift.String, font: UIKit.UIFont, color: UIKit.UIColor, accessibility: GliaWidgets.SecureConversations.ConfirmationStyle.TitleStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.ConfirmationStyle.TitleStyle, b: GliaWidgets.SecureConversations.ConfirmationStyle.TitleStyle) -> Swift.Bool
+  }
+}
+public struct ConnectStatusStyle : Swift.Equatable {
+  public var firstText: Swift.String?
+  public var firstTextFont: UIKit.UIFont
+  public var firstTextFontColor: UIKit.UIColor
+  public var firstTextStyle: UIKit.UIFont.TextStyle
+  public var secondText: Swift.String?
+  public var secondTextFont: UIKit.UIFont
+  public var secondTextFontColor: UIKit.UIColor
+  public var secondTextStyle: UIKit.UIFont.TextStyle
+  public var accessibility: GliaWidgets.ConnectStatusStyle.Accessibility
+  public init(firstText: Swift.String?, firstTextFont: UIKit.UIFont, firstTextFontColor: UIKit.UIColor, firstTextStyle: UIKit.UIFont.TextStyle, secondText: Swift.String?, secondTextFont: UIKit.UIFont, secondTextFontColor: UIKit.UIColor, secondTextStyle: UIKit.UIFont.TextStyle, accessibility: GliaWidgets.ConnectStatusStyle.Accessibility = .unsupported)
+  public static func == (a: GliaWidgets.ConnectStatusStyle, b: GliaWidgets.ConnectStatusStyle) -> Swift.Bool
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct TitleStyle : Swift.Equatable {
+    public var text: Swift.String
+    public var font: UIKit.UIFont
+    public var textStyle: UIKit.UIFont.TextStyle
+    public var color: UIKit.UIColor
+    public var accessibility: GliaWidgets.SecureConversations.WelcomeStyle.TitleStyle.Accessibility
+    public init(text: Swift.String, font: UIKit.UIFont, textStyle: UIKit.UIFont.TextStyle, color: UIKit.UIColor, accessibility: GliaWidgets.SecureConversations.WelcomeStyle.TitleStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.TitleStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.TitleStyle) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct FilePickerButtonStyle : Swift.Equatable {
+    public var color: UIKit.UIColor
+    public var disabledColor: UIKit.UIColor
+    public var accessibility: GliaWidgets.SecureConversations.WelcomeStyle.FilePickerButtonStyle.Accessibility
+    public init(color: UIKit.UIColor, disabledColor: UIKit.UIColor, accessibility: GliaWidgets.SecureConversations.WelcomeStyle.FilePickerButtonStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.FilePickerButtonStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.FilePickerButtonStyle) -> Swift.Bool
+  }
+}
+extension GliaWidgets.Theme.SurveyStyle {
+  public struct SingleQuestion {
+    public var title: GliaWidgets.Theme.Text
+    public var tintColor: Swift.String
+    public var option: GliaWidgets.Theme.SurveyStyle.Checkbox
+    public var error: GliaWidgets.Theme.SurveyStyle.ValidationError
+    public var accessibility: GliaWidgets.Theme.SurveyStyle.SingleQuestion.Accessibility
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewDisabledStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewDisabledStyle.Accessibility, b: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewDisabledStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewDisabledStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewDisabledStyle.Accessibility
+}
+extension GliaWidgets.Theme.ChoiceCardStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var imageLabel: Swift.String
+    public init(imageLabel: Swift.String)
+    public static func == (a: GliaWidgets.Theme.ChoiceCardStyle.Accessibility, b: GliaWidgets.Theme.ChoiceCardStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.Theme.ChoiceCardStyle.Accessibility {
+  public static let unsupported: GliaWidgets.Theme.ChoiceCardStyle.Accessibility
+}
+extension GliaWidgets.Theme {
+  public struct VisitorMessageStyle {
+    public var text: GliaWidgets.Theme.Text
+    public var background: GliaWidgets.Theme.Layer
+    public var imageFile: GliaWidgets.ChatImageFileContentStyle
+    public var fileDownload: GliaWidgets.ChatFileDownloadStyle
+    public var status: GliaWidgets.Theme.Text
+    public var delivered: Swift.String
+    public var accessibility: GliaWidgets.Theme.VisitorMessageStyle.Accessibility
+    public init(text: GliaWidgets.Theme.Text, background: GliaWidgets.Theme.Layer, imageFile: GliaWidgets.ChatImageFileContentStyle, fileDownload: GliaWidgets.ChatFileDownloadStyle, status: GliaWidgets.Theme.Text, delivered: Swift.String, accessibility: GliaWidgets.Theme.VisitorMessageStyle.Accessibility = .unsupported)
+  }
+}
+extension GliaWidgets.CallButtonStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var singleItemBadgeValue: Swift.String
+    public var multipleItemsBadgeValue: Swift.String
+    public var titleAndBadgeValue: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public static func == (a: GliaWidgets.CallButtonStyle.Accessibility, b: GliaWidgets.CallButtonStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.CallButtonStyle.Accessibility {
+  public static let unsupported: GliaWidgets.CallButtonStyle.Accessibility
+}
+extension GliaWidgets.AttachmentSourceItemStyle {
+  public static func == (lhs: GliaWidgets.AttachmentSourceItemStyle, rhs: GliaWidgets.AttachmentSourceItemStyle) -> Swift.Bool
+}
+extension GliaWidgets.Theme.SurveyStyle.BooleanQuestion {
+  public struct Accessibility {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+  }
+}
+extension GliaWidgets.NumberSlotStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.NumberSlotStyle.Accessibility, b: GliaWidgets.NumberSlotStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.NumberSlotStyle.Accessibility {
+  public static let unsupported: GliaWidgets.NumberSlotStyle.Accessibility
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct MessageTextViewDisabledStyle : Swift.Equatable {
+    public var placeholderText: Swift.String
+    public var placeholderFont: UIKit.UIFont
+    public var placeholderColor: UIKit.UIColor
+    public var textFont: UIKit.UIFont
+    public var textFontStyle: UIKit.UIFont.TextStyle
+    public var textColor: UIKit.UIColor
+    public var borderColor: UIKit.UIColor
+    public var borderWidth: Swift.Double
+    public var cornerRadius: Swift.Double
+    public var backgroundColor: UIKit.UIColor
+    public var accessibility: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewDisabledStyle.Accessibility
+    public init(placeholderText: Swift.String, placeholderFont: UIKit.UIFont, placeholderColor: UIKit.UIColor, textFont: UIKit.UIFont, textFontStyle: UIKit.UIFont.TextStyle, textColor: UIKit.UIColor, borderColor: UIKit.UIColor, borderWidth: Swift.Double, cornerRadius: Swift.Double, backgroundColor: UIKit.UIColor, accessibility: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewDisabledStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewDisabledStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewDisabledStyle) -> Swift.Bool
+  }
+}
+public struct MultipleMediaUpgradeAlertConfiguration {
+  public var title: Swift.String
+  public var audioUpgradeAction: GliaWidgets.MediaUpgradeActionStyle
+  public var phoneUpgradeAction: GliaWidgets.MediaUpgradeActionStyle
+  public var showsPoweredBy: Swift.Bool
+}
+extension GliaWidgets.FilePreviewStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.FilePreviewStyle.Accessibility, b: GliaWidgets.FilePreviewStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.FilePreviewStyle.Accessibility {
+  public static let unsupported: GliaWidgets.FilePreviewStyle.Accessibility
+}
+public enum GliaError : Swift.Error {
+  case engagementExists
+  case engagementNotExist
+  case sdkIsNotConfigured
+  case callVisualizerEngagementExists
+  case configuringDuringEngagementIsNotAllowed
+  case clearingVisitorSessionDuringEngagementIsNotAllowed
+  case startingEngagementWithNoQueueIdsIsNotAllowed
+  case invalidSiteApiKeyCredentials
+  case invalidLocale
+  case internalError
+  public static func == (a: GliaWidgets.GliaError, b: GliaWidgets.GliaError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension GliaWidgets.ChatTextContentStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var value: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(value: Swift.String = "", isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.ChatTextContentStyle.Accessibility, b: GliaWidgets.ChatTextContentStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.ChatTextContentStyle.Accessibility {
+  public static let unsupported: GliaWidgets.ChatTextContentStyle.Accessibility
+}
+extension GliaWidgets.ActionButtonStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var label: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(label: Swift.String, isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.ActionButtonStyle.Accessibility, b: GliaWidgets.ActionButtonStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.ActionButtonStyle.Accessibility {
+  public static let unsupported: GliaWidgets.ActionButtonStyle.Accessibility
+}
+extension GliaWidgets.Theme.SurveyStyle.ScaleQuestion {
+  public struct Accessibility {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+  }
+}
+extension GliaWidgets.SecureConversations.ConfirmationStyle {
+  public struct SubtitleStyle : Swift.Equatable {
+    public var text: Swift.String
+    public var font: UIKit.UIFont
+    public var color: UIKit.UIColor
+    public var accessibility: GliaWidgets.SecureConversations.ConfirmationStyle.SubtitleStyle.Accessibility
+    public init(text: Swift.String, font: UIKit.UIFont, color: UIKit.UIColor, accessibility: GliaWidgets.SecureConversations.ConfirmationStyle.SubtitleStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.ConfirmationStyle.SubtitleStyle, b: GliaWidgets.SecureConversations.ConfirmationStyle.SubtitleStyle) -> Swift.Bool
+  }
+}
+public struct Features : Swift.OptionSet {
+  public let rawValue: Swift.Int
+  public init(rawValue: Swift.Int)
+  public static let bubbleView: GliaWidgets.Features
+  public static let all: GliaWidgets.Features
+  public typealias ArrayLiteralElement = GliaWidgets.Features
+  public typealias Element = GliaWidgets.Features
+  public typealias RawValue = Swift.Int
+}
+extension GliaWidgets.Theme.OperatorMessageStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var value: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(value: Swift.String = "", isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.Theme.OperatorMessageStyle.Accessibility, b: GliaWidgets.Theme.OperatorMessageStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.Theme.OperatorMessageStyle.Accessibility {
+  public static let unsupported: GliaWidgets.Theme.OperatorMessageStyle.Accessibility
+}
+public class ChatFileDownloadErrorStateStyle {
+  public var text: Swift.String
+  public var font: UIKit.UIFont
+  public var textColor: UIKit.UIColor
+  public var textStyle: UIKit.UIFont.TextStyle
+  public var infoFont: UIKit.UIFont
+  public var infoColor: UIKit.UIColor
+  public var infoTextStyle: UIKit.UIFont.TextStyle
+  public var separatorText: Swift.String
+  public var separatorFont: UIKit.UIFont
+  public var separatorTextColor: UIKit.UIColor
+  public var separatorTextStyle: UIKit.UIFont.TextStyle
+  public var retryText: Swift.String
+  public var retryFont: UIKit.UIFont
+  public var retryTextColor: UIKit.UIColor
+  public var retryTextStyle: UIKit.UIFont.TextStyle
+  public init(text: Swift.String, font: UIKit.UIFont, textColor: UIKit.UIColor, textStyle: UIKit.UIFont.TextStyle = .subheadline, infoFont: UIKit.UIFont, infoColor: UIKit.UIColor, infoTextStyle: UIKit.UIFont.TextStyle = .caption1, separatorText: Swift.String, separatorFont: UIKit.UIFont, separatorTextColor: UIKit.UIColor, separatorTextStyle: UIKit.UIFont.TextStyle = .footnote, retryText: Swift.String, retryFont: UIKit.UIFont, retryTextColor: UIKit.UIColor, retryTextStyle: UIKit.UIFont.TextStyle = .subheadline)
+  @objc deinit
+}
+extension GliaWidgets.Theme {
+  public struct SnackBarStyle : Swift.Equatable {
+    public var text: Swift.String
+    public var background: UIKit.UIColor
+    public var textColor: UIKit.UIColor
+    public var textFont: UIKit.UIFont
+    public var accessibility: GliaWidgets.Theme.SnackBarStyle.Accessibility
+    public init(text: Swift.String, background: UIKit.UIColor, textColor: UIKit.UIColor, textFont: UIKit.UIFont, accessibility: GliaWidgets.Theme.SnackBarStyle.Accessibility)
+    public static func == (a: GliaWidgets.Theme.SnackBarStyle, b: GliaWidgets.Theme.SnackBarStyle) -> Swift.Bool
+  }
+}
+public protocol Layoutable {
+  var leadingAnchor: UIKit.NSLayoutXAxisAnchor { get }
+  var trailingAnchor: UIKit.NSLayoutXAxisAnchor { get }
+  var leftAnchor: UIKit.NSLayoutXAxisAnchor { get }
+  var rightAnchor: UIKit.NSLayoutXAxisAnchor { get }
+  var bottomAnchor: UIKit.NSLayoutYAxisAnchor { get }
+  var topAnchor: UIKit.NSLayoutYAxisAnchor { get }
+  var heightAnchor: UIKit.NSLayoutDimension { get }
+  var widthAnchor: UIKit.NSLayoutDimension { get }
+  var centerXAnchor: UIKit.NSLayoutXAxisAnchor { get }
+  var centerYAnchor: UIKit.NSLayoutYAxisAnchor { get }
+}
+extension UIKit.UIView : GliaWidgets.Layoutable {
+}
+extension UIKit.UILayoutGuide : GliaWidgets.Layoutable {
+}
+extension GliaWidgets.CallButtonStyle.StateStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var label: Swift.String
+    public init(label: Swift.String)
+    public static func == (a: GliaWidgets.CallButtonStyle.StateStyle.Accessibility, b: GliaWidgets.CallButtonStyle.StateStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.CallButtonStyle.StateStyle.Accessibility {
+  public static let unsupported: GliaWidgets.CallButtonStyle.StateStyle.Accessibility
+}
+extension GliaWidgets.Theme {
+  public struct ChatTextContentStyle {
+    public var text: GliaWidgets.Theme.Text
+    public var background: GliaWidgets.Theme.Layer
+    public var accessibility: GliaWidgets.Theme.ChatTextContentStyle.Accessibility
+    public init(text: GliaWidgets.Theme.Text, background: GliaWidgets.Theme.Layer, accessibility: GliaWidgets.Theme.ChatTextContentStyle.Accessibility = .unsupported)
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewActiveStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewActiveStyle.Accessibility, b: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewActiveStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewActiveStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewActiveStyle.Accessibility
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct MessageTitleStyle : Swift.Equatable {
+    public var title: Swift.String
+    public var font: UIKit.UIFont
+    public var textStyle: UIKit.UIFont.TextStyle
+    public var color: UIKit.UIColor
+    public var accessibility: GliaWidgets.SecureConversations.WelcomeStyle.MessageTitleStyle.Accessibility
+    public init(title: Swift.String, font: UIKit.UIFont, textStyle: UIKit.UIFont.TextStyle, color: UIKit.UIColor, accessibility: GliaWidgets.SecureConversations.WelcomeStyle.MessageTitleStyle.Accessibility)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.MessageTitleStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.MessageTitleStyle) -> Swift.Bool
+  }
+}
+extension GliaWidgets.FileUploadStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var removeButtonAccessibilityLabel: Swift.String
+    public var progressPercentValue: Swift.String
+    public var fileNameWithProgressValue: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(removeButtonAccessibilityLabel: Swift.String, progressPercentValue: Swift.String, fileNameWithProgressValue: Swift.String, isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.FileUploadStyle.Accessibility, b: GliaWidgets.FileUploadStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.FileUploadStyle.Accessibility {
+  public static let unsupported: GliaWidgets.FileUploadStyle.Accessibility
+}
+extension GliaWidgets.MessageCenterFileUploadStyle {
+  public typealias Accessibility = GliaWidgets.FileUploadStyle.Accessibility
+}
+public struct ConfirmationAlertConfiguration {
+  public var title: Swift.String?
+  public var message: Swift.String?
+  public var firstLinkButtonUrl: Swift.String?
+  public var secondLinkButtonUrl: Swift.String?
+  public var negativeTitle: Swift.String?
+  public var positiveTitle: Swift.String?
+  public var switchButtonBackgroundColors: Swift.Bool
+  public var showsPoweredBy: Swift.Bool
+}
+final public class ChoiceCardOptionStyle {
+  final public var normal: GliaWidgets.ChoiceCardOptionStateStyle
+  final public var selected: GliaWidgets.ChoiceCardOptionStateStyle
+  final public var disabled: GliaWidgets.ChoiceCardOptionStateStyle
+  public init(normal: GliaWidgets.ChoiceCardOptionStateStyle, selected: GliaWidgets.ChoiceCardOptionStateStyle, disabled: GliaWidgets.ChoiceCardOptionStateStyle)
+  @objc deinit
+}
+@available(*, deprecated, message: "Deprecated, use ``Theme.ChoiceCardStyle`` instead.")
+final public class ChoiceCardStyle : GliaWidgets.OperatorChatMessageStyle {
+  final public var frameColor: UIKit.UIColor
+  final public var borderWidth: CoreFoundation.CGFloat
+  final public var cornerRadius: CoreFoundation.CGFloat
+  final public var backgroundColor: UIKit.UIColor
+  final public var choiceOption: GliaWidgets.ChoiceCardOptionStyle
+  final public var accessibility: GliaWidgets.ChoiceCardStyle.Accessibility
+  public init(mainText: GliaWidgets.ChatTextContentStyle, frameColor: UIKit.UIColor, borderWidth: CoreFoundation.CGFloat = 1, cornerRadius: CoreFoundation.CGFloat = 8, backgroundColor: UIKit.UIColor, imageFile: GliaWidgets.ChatImageFileContentStyle, fileDownload: GliaWidgets.ChatFileDownloadStyle, operatorImage: GliaWidgets.UserImageStyle, choiceOption: GliaWidgets.ChoiceCardOptionStyle, accessibility: GliaWidgets.ChoiceCardStyle.Accessibility)
+  @objc deinit
+}
+extension GliaWidgets.HeaderButtonStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var label: Swift.String
+    public var hint: Swift.String
+    public init(label: Swift.String, hint: Swift.String)
+    public static func == (a: GliaWidgets.HeaderButtonStyle.Accessibility, b: GliaWidgets.HeaderButtonStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.HeaderButtonStyle.Accessibility {
+  public static let unsupported: GliaWidgets.HeaderButtonStyle.Accessibility
+}
+extension GliaWidgets.CallVisualizer {
+  public struct Presenter {
+  }
+}
+extension GliaWidgets.Theme.SnackBarStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.Theme.SnackBarStyle.Accessibility, b: GliaWidgets.Theme.SnackBarStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.Theme.SnackBarStyle.Accessibility {
+  public static let unsupported: GliaWidgets.Theme.SnackBarStyle.Accessibility
+}
+public typealias AssetColorTypeAlias = UIKit.UIColor
+public typealias Image = UIKit.UIImage
+@available(*, deprecated, renamed: "ImageAsset")
+public typealias AssetType = GliaWidgets.ImageAsset
+public struct ImageAsset {
+  public var name: Swift.String {
+    get
+  }
+  public var image: GliaWidgets.Image {
+    get
+  }
+}
+public struct ColorAsset {
+  public var name: Swift.String {
+    get
+  }
+  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, *)
+  public var color: GliaWidgets.AssetColorTypeAlias {
+    get
+  }
+}
+public enum Asset {
+  public static let alertClose: GliaWidgets.ImageAsset
+  public static let callChat: GliaWidgets.ImageAsset
+  public static let callMiminize: GliaWidgets.ImageAsset
+  public static let callMuteActive: GliaWidgets.ImageAsset
+  public static let callMuteInactive: GliaWidgets.ImageAsset
+  public static let callSpeakerActive: GliaWidgets.ImageAsset
+  public static let callSpeakerInactive: GliaWidgets.ImageAsset
+  public static let callVideoActive: GliaWidgets.ImageAsset
+  public static let callVideoInactive: GliaWidgets.ImageAsset
+  public static let callOnHold: GliaWidgets.ImageAsset
+  public static let screensharing: GliaWidgets.ImageAsset
+  public static let uploadError: GliaWidgets.ImageAsset
+  public static let uploadRemove: GliaWidgets.ImageAsset
+  public static let chatPickMedia: GliaWidgets.ImageAsset
+  public static let chatSend: GliaWidgets.ImageAsset
+  public static let unreadMessageIndicator: GliaWidgets.ImageAsset
+  public static let back: GliaWidgets.ImageAsset
+  public static let close: GliaWidgets.ImageAsset
+  public static let browseIcon: GliaWidgets.ImageAsset
+  public static let cameraIcon: GliaWidgets.ImageAsset
+  public static let photoLibraryIcon: GliaWidgets.ImageAsset
+  public static let gliaLogo: GliaWidgets.ImageAsset
+  public static let startScreenShare: GliaWidgets.ImageAsset
+  public static let upgradeAudio: GliaWidgets.ImageAsset
+  public static let upgradePhone: GliaWidgets.ImageAsset
+  public static let upgradeVideo: GliaWidgets.ImageAsset
+  public static let mcRemoveUpload: GliaWidgets.ImageAsset
+  public static let mcConfirmation: GliaWidgets.ImageAsset
+  public static let mcEnvelope: GliaWidgets.ImageAsset
+  public static let mcPickMedia: GliaWidgets.ImageAsset
+  public static let mcWarningIcon: GliaWidgets.ImageAsset
+  public static let mockImage: GliaWidgets.ImageAsset
+  public static let operatorPlaceholder: GliaWidgets.ImageAsset
+  public static let operatorTransferring: GliaWidgets.ImageAsset
+  public static let surveyCheckboxChecked: GliaWidgets.ImageAsset
+  public static let surveyCheckbox: GliaWidgets.ImageAsset
+  public static let surveyValidationError: GliaWidgets.ImageAsset
+  public static let spinner: GliaWidgets.ImageAsset
+  public static let allColors: [GliaWidgets.ColorAsset]
+  public static let allImages: [GliaWidgets.ImageAsset]
+  @available(*, deprecated, renamed: "allImages")
+  public static let allValues: [GliaWidgets.ImageAsset]
+}
+extension UIKit.UIImage {
+  @available(macOS, unavailable, message: "This initializer is unsafe on macOS, please use the ImageAsset.image property")
+  convenience public init!(asset: GliaWidgets.ImageAsset)
+}
+extension UIKit.UIColor {
+  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, *)
+  convenience public init!(asset: GliaWidgets.ColorAsset)
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.MessageWarningStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.MessageWarningStyle.Accessibility, b: GliaWidgets.SecureConversations.WelcomeStyle.MessageWarningStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.MessageWarningStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.WelcomeStyle.MessageWarningStyle.Accessibility
+}
+extension GliaWidgets.MessageCenterFileUploadStyle {
+  public static func == (lhs: GliaWidgets.MessageCenterFileUploadStyle, rhs: GliaWidgets.MessageCenterFileUploadStyle) -> Swift.Bool
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewNormalStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewNormalStyle.Accessibility, b: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewNormalStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewNormalStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.WelcomeStyle.MessageTextViewNormalStyle.Accessibility
+}
+extension GliaWidgets.Theme.SurveyStyle {
+  public struct BooleanQuestion {
+    public var title: GliaWidgets.Theme.Text
+    public var option: GliaWidgets.Theme.SurveyStyle.OptionButton
+    public var error: GliaWidgets.Theme.SurveyStyle.ValidationError
+    public var accessibility: GliaWidgets.Theme.SurveyStyle.BooleanQuestion.Accessibility
+  }
+}
+public struct SingleActionAlertConfiguration {
+  public var title: Swift.String?
+  public var message: Swift.String?
+  public var buttonTitle: Swift.String?
+}
+public class FilePreviewStyle : Swift.Equatable {
+  public var fileFont: UIKit.UIFont
+  public var fileColor: UIKit.UIColor
+  public var fileTextStyle: UIKit.UIFont.TextStyle
+  public var errorIcon: UIKit.UIImage
+  public var errorIconColor: UIKit.UIColor
+  public var backgroundColor: UIKit.UIColor
+  public var errorBackgroundColor: UIKit.UIColor
+  public var cornerRadius: CoreFoundation.CGFloat
+  public var accessibility: GliaWidgets.FilePreviewStyle.Accessibility
+  public init(fileFont: UIKit.UIFont, fileColor: UIKit.UIColor, fileTextStyle: UIKit.UIFont.TextStyle = .footnote, errorIcon: UIKit.UIImage, errorIconColor: UIKit.UIColor, backgroundColor: UIKit.UIColor, errorBackgroundColor: UIKit.UIColor, cornerRadius: CoreFoundation.CGFloat = 4, accessibility: GliaWidgets.FilePreviewStyle.Accessibility = .unsupported)
+  @objc deinit
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.SendButtonLoadingStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public var label: Swift.String
+    public var hint: Swift.String
+    public init(isFontScalingEnabled: Swift.Bool, label: Swift.String, hint: Swift.String)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonLoadingStyle.Accessibility, b: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonLoadingStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.SendButtonLoadingStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonLoadingStyle.Accessibility
+}
+public class FileUploadStateStyle : Swift.Equatable {
+  public var text: Swift.String
+  public var font: UIKit.UIFont
+  public var textColor: UIKit.UIColor
+  public var textStyle: UIKit.UIFont.TextStyle
+  public var infoFont: UIKit.UIFont
+  public var infoColor: UIKit.UIColor
+  public var infoTextStyle: UIKit.UIFont.TextStyle
+  public init(text: Swift.String, font: UIKit.UIFont, textColor: UIKit.UIColor, textStyle: UIKit.UIFont.TextStyle = .subheadline, infoFont: UIKit.UIFont, infoColor: UIKit.UIColor, infoTextStyle: UIKit.UIFont.TextStyle = .caption1)
+  @objc deinit
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.FilePickerButtonStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public var label: Swift.String
+    public var hint: Swift.String
+    public init(isFontScalingEnabled: Swift.Bool, accessibilityLabel: Swift.String, accessibilityHint: Swift.String)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.FilePickerButtonStyle.Accessibility, b: GliaWidgets.SecureConversations.WelcomeStyle.FilePickerButtonStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.FilePickerButtonStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.WelcomeStyle.FilePickerButtonStyle.Accessibility
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.CheckMessagesButtonStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public var label: Swift.String
+    public var hint: Swift.String
+    public init(isFontScalingEnabled: Swift.Bool, label: Swift.String, hint: Swift.String)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.CheckMessagesButtonStyle.Accessibility, b: GliaWidgets.SecureConversations.WelcomeStyle.CheckMessagesButtonStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.CheckMessagesButtonStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.WelcomeStyle.CheckMessagesButtonStyle.Accessibility
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle {
+  public struct SendButtonStyle : Swift.Equatable {
+    public var enabledStyle: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonEnabledStyle
+    public var disabledStyle: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonDisabledStyle
+    public var loadingStyle: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonLoadingStyle
+    public init(enabledStyle: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonEnabledStyle, disabledStyle: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonDisabledStyle, loadingStyle: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonLoadingStyle)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonStyle, b: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonStyle) -> Swift.Bool
+  }
+}
+extension GliaWidgets.FileUploadErrorStateStyle {
+  public static func == (lhs: GliaWidgets.FileUploadErrorStateStyle, rhs: GliaWidgets.FileUploadErrorStateStyle) -> Swift.Bool
+}
+extension GliaWidgets.CallStyle {
+  public struct OnHoldStyle : Swift.Equatable {
+    public var onHoldText: Swift.String
+    public var descriptionText: Swift.String
+    public var localVideoStreamLabelText: Swift.String
+    public var localVideoStreamLabelFont: UIKit.UIFont
+    public var localVideoStreamLabelColor: UIKit.UIColor
+    public init(onHoldText: Swift.String, descriptionText: Swift.String, localVideoStreamLabelText: Swift.String, localVideoStreamLabelFont: UIKit.UIFont, localVideoStreamLabelColor: UIKit.UIColor)
+    public static func == (a: GliaWidgets.CallStyle.OnHoldStyle, b: GliaWidgets.CallStyle.OnHoldStyle) -> Swift.Bool
+  }
+}
+public enum AttachmentSourceItemKind : Swift.String, Swift.Equatable {
+  case photoLibrary
+  case takePhoto
+  case browse
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct CallButtonBarStyle : Swift.Equatable {
+  public var chatButton: GliaWidgets.CallButtonStyle
+  public var videoButton: GliaWidgets.CallButtonStyle
+  public var muteButton: GliaWidgets.CallButtonStyle
+  public var speakerButton: GliaWidgets.CallButtonStyle
+  public var minimizeButton: GliaWidgets.CallButtonStyle
+  public var badge: GliaWidgets.BadgeStyle
+  public static func == (a: GliaWidgets.CallButtonBarStyle, b: GliaWidgets.CallButtonBarStyle) -> Swift.Bool
+}
+public struct AlertStyle : Swift.Equatable {
+  public var titleFont: UIKit.UIFont
+  public var titleColor: UIKit.UIColor
+  public var titleTextStyle: UIKit.UIFont.TextStyle
+  public var titleImageColor: UIKit.UIColor
+  public var messageFont: UIKit.UIFont
+  public var messageColor: UIKit.UIColor
+  public var messageTextStyle: UIKit.UIFont.TextStyle
+  public var backgroundColor: GliaWidgets.ColorType
+  public var closeButtonColor: GliaWidgets.ColorType
+  public var firstLinkAction: GliaWidgets.ActionButtonStyle
+  public var secondLinkAction: GliaWidgets.ActionButtonStyle
+  public var actionAxis: UIKit.NSLayoutConstraint.Axis
+  public var positiveAction: GliaWidgets.ActionButtonStyle
+  public var negativeAction: GliaWidgets.ActionButtonStyle
+  public var poweredBy: GliaWidgets.PoweredByStyle
+  public var accessibility: GliaWidgets.AlertStyle.Accessibility
+  public init(titleFont: UIKit.UIFont, titleColor: UIKit.UIColor, titleTextStyle: UIKit.UIFont.TextStyle = .title2, titleImageColor: UIKit.UIColor, messageFont: UIKit.UIFont, messageColor: UIKit.UIColor, messageTextStyle: UIKit.UIFont.TextStyle = .body, backgroundColor: GliaWidgets.ColorType, closeButtonColor: GliaWidgets.ColorType, firstLinkAction: GliaWidgets.ActionButtonStyle, secondLinkAction: GliaWidgets.ActionButtonStyle, actionAxis: UIKit.NSLayoutConstraint.Axis, positiveAction: GliaWidgets.ActionButtonStyle, negativeAction: GliaWidgets.ActionButtonStyle, poweredBy: GliaWidgets.PoweredByStyle, accessibility: GliaWidgets.AlertStyle.Accessibility = .unsupported)
+  public static func == (a: GliaWidgets.AlertStyle, b: GliaWidgets.AlertStyle) -> Swift.Bool
+}
+public struct ThemeFont {
+  public var header1: UIKit.UIFont
+  public var header2: UIKit.UIFont
+  public var header3: UIKit.UIFont
+  public var bodyText: UIKit.UIFont
+  public var subtitle: UIKit.UIFont
+  public var mediumSubtitle1: UIKit.UIFont
+  public var mediumSubtitle2: UIKit.UIFont
+  public var caption: UIKit.UIFont
+  public var buttonLabel: UIKit.UIFont
+  public init(header1: UIKit.UIFont? = nil, header2: UIKit.UIFont? = nil, header3: UIKit.UIFont? = nil, bodyText: UIKit.UIFont? = nil, subtitle: UIKit.UIFont? = nil, mediumSubtitle1: UIKit.UIFont? = nil, mediumSubtitle2: UIKit.UIFont? = nil, caption: UIKit.UIFont? = nil, buttonLabel: UIKit.UIFont? = nil)
+}
+public struct SettingsAlertConfiguration {
+  public var title: Swift.String
+  public var message: Swift.String
+  public var settingsTitle: Swift.String?
+  public var cancelTitle: Swift.String?
+}
+extension GliaWidgets.GvaGalleryCardStyle {
+  public struct TextStyle {
+    public var font: UIKit.UIFont
+    public var textColor: UIKit.UIColor
+    public var textStyle: UIKit.UIFont.TextStyle
+    public init(font: UIKit.UIFont, textColor: UIKit.UIColor, textStyle: UIKit.UIFont.TextStyle)
+  }
+}
+public enum ColorType : Swift.Equatable {
+  case fill(color: UIKit.UIColor)
+  case gradient(colors: [CoreGraphics.CGColor])
+  public static func == (a: GliaWidgets.ColorType, b: GliaWidgets.ColorType) -> Swift.Bool
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.MessageTitleStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.MessageTitleStyle.Accessibility, b: GliaWidgets.SecureConversations.WelcomeStyle.MessageTitleStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.MessageTitleStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.WelcomeStyle.MessageTitleStyle.Accessibility
+}
+extension GliaWidgets.ConnectOperatorStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var label: Swift.String
+    public var hint: Swift.String
+    public init(label: Swift.String, hint: Swift.String)
+    public static func == (a: GliaWidgets.ConnectOperatorStyle.Accessibility, b: GliaWidgets.ConnectOperatorStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.ConnectOperatorStyle.Accessibility {
+  public static let unsupported: GliaWidgets.ConnectOperatorStyle.Accessibility
+}
+public struct SingleMediaUpgradeAlertConfiguration {
+  public var title: Swift.String
+  public var titleImage: UIKit.UIImage?
+  public var decline: Swift.String
+  public var accept: Swift.String
+  public var showsPoweredBy: Swift.Bool
+}
+public struct ScreenShareOfferAlertConfiguration {
+  public var title: Swift.String
+  public var message: Swift.String
+  public var titleImage: UIKit.UIImage?
+  public var decline: Swift.String
+  public var accept: Swift.String
+  public var showsPoweredBy: Swift.Bool
+}
+public class CallStyle : GliaWidgets.EngagementStyle {
+  public var audioTitle: Swift.String
+  public var videoTitle: Swift.String
+  public var operatorName: Swift.String
+  public var operatorNameFont: UIKit.UIFont
+  public var operatorNameColor: UIKit.UIColor
+  public var operatorNameTextStyle: UIKit.UIFont.TextStyle
+  public var durationFont: UIKit.UIFont
+  public var durationColor: UIKit.UIColor
+  public var durationTextStyle: UIKit.UIFont.TextStyle
+  public var topText: Swift.String
+  public var topTextFont: UIKit.UIFont
+  public var topTextColor: UIKit.UIColor
+  public var topTextStyle: UIKit.UIFont.TextStyle
+  public var bottomText: Swift.String
+  public var bottomTextFont: UIKit.UIFont
+  public var bottomTextColor: UIKit.UIColor
+  public var bottomTextStyle: UIKit.UIFont.TextStyle
+  public var buttonBar: GliaWidgets.CallButtonBarStyle
+  public var onHoldStyle: GliaWidgets.CallStyle.OnHoldStyle
+  public var accessibility: GliaWidgets.CallStyle.Accessibility
+  public init(header: GliaWidgets.HeaderStyle, connect: GliaWidgets.ConnectStyle, backgroundColor: GliaWidgets.ColorType, preferredStatusBarStyle: UIKit.UIStatusBarStyle, audioTitle: Swift.String, videoTitle: Swift.String, operatorName: Swift.String, operatorNameFont: UIKit.UIFont, operatorNameColor: UIKit.UIColor, operatorNameTextStyle: UIKit.UIFont.TextStyle = .title1, durationFont: UIKit.UIFont, durationColor: UIKit.UIColor, durationTextStyle: UIKit.UIFont.TextStyle = .body, topText: Swift.String, topTextFont: UIKit.UIFont, topTextColor: UIKit.UIColor, topTextStyle: UIKit.UIFont.TextStyle = .footnote, bottomText: Swift.String, bottomTextFont: UIKit.UIFont, bottomTextColor: UIKit.UIColor, bottomTextStyle: UIKit.UIFont.TextStyle = .body, buttonBar: GliaWidgets.CallButtonBarStyle, onHoldStyle: GliaWidgets.CallStyle.OnHoldStyle, accessibility: GliaWidgets.CallStyle.Accessibility = .unsupported)
+  @objc deinit
+}
+extension GliaWidgets.RemoteConfiguration {
+  public struct AssetsBuilder {
+    public var fontBuilder: (GliaWidgets.RemoteConfiguration.Font?) -> UIKit.UIFont?
+    public static let standard: GliaWidgets.RemoteConfiguration.AssetsBuilder
+    public init(fontBuilder: @escaping (GliaWidgets.RemoteConfiguration.Font?) -> UIKit.UIFont?)
+  }
+}
+extension GliaWidgets.Theme {
+  public struct SurveyStyle {
+    public var layer: GliaWidgets.Theme.Layer
+    public var title: GliaWidgets.Theme.Text
+    public var submitButton: GliaWidgets.Theme.Button
+    public var cancelButton: GliaWidgets.Theme.Button
+    @available(*, deprecated, message: "Use ``cancelButton`` instead")
+    public var cancellButton: GliaWidgets.Theme.Button {
+      get
+    }
+    public var booleanQuestion: GliaWidgets.Theme.SurveyStyle.BooleanQuestion
+    public var scaleQuestion: GliaWidgets.Theme.SurveyStyle.ScaleQuestion
+    public var singleQuestion: GliaWidgets.Theme.SurveyStyle.SingleQuestion
+    public var inputQuestion: GliaWidgets.Theme.SurveyStyle.InputQuestion
+    public var accessibility: GliaWidgets.Theme.SurveyStyle.Accessibility
+    public init(layer: GliaWidgets.Theme.Layer, title: GliaWidgets.Theme.Text, submitButton: GliaWidgets.Theme.Button, cancelButton: GliaWidgets.Theme.Button, booleanQuestion: GliaWidgets.Theme.SurveyStyle.BooleanQuestion, scaleQuestion: GliaWidgets.Theme.SurveyStyle.ScaleQuestion, singleQuestion: GliaWidgets.Theme.SurveyStyle.SingleQuestion, inputQuestion: GliaWidgets.Theme.SurveyStyle.InputQuestion, accessibility: GliaWidgets.Theme.SurveyStyle.Accessibility)
+  }
+}
+extension GliaWidgets.Theme.SurveyStyle {
+  public static func `default`(color: GliaWidgets.ThemeColor, font: GliaWidgets.ThemeFont, alertStyle: GliaWidgets.AlertStyle) -> GliaWidgets.Theme.SurveyStyle
+}
+public class ChatStyle : GliaWidgets.EngagementStyle {
+  public var title: Swift.String
+  public var visitorMessageStyle: GliaWidgets.Theme.VisitorMessageStyle
+  public var operatorMessageStyle: GliaWidgets.Theme.OperatorMessageStyle
+  public var choiceCardStyle: GliaWidgets.Theme.ChoiceCardStyle
+  public var messageEntry: GliaWidgets.ChatMessageEntryStyle
+  public var audioUpgrade: GliaWidgets.ChatCallUpgradeStyle
+  public var videoUpgrade: GliaWidgets.ChatCallUpgradeStyle
+  public var callBubble: GliaWidgets.BubbleStyle
+  public var pickMedia: GliaWidgets.AttachmentSourceListStyle
+  public var unreadMessageIndicator: GliaWidgets.UnreadMessageIndicatorStyle
+  public var operatorTypingIndicator: GliaWidgets.OperatorTypingIndicatorStyle
+  public var accessibility: GliaWidgets.ChatStyle.Accessibility
+  public var secureTranscriptTitle: Swift.String
+  public var secureTranscriptHeader: GliaWidgets.HeaderStyle
+  public var unreadMessageDivider: GliaWidgets.UnreadMessageDividerStyle
+  public var systemMessageStyle: GliaWidgets.Theme.SystemMessageStyle
+  public var gliaVirtualAssistant: GliaWidgets.GliaVirtualAssistantStyle
+  public init(header: GliaWidgets.HeaderStyle, connect: GliaWidgets.ConnectStyle, backgroundColor: GliaWidgets.ColorType, preferredStatusBarStyle: UIKit.UIStatusBarStyle, title: Swift.String, visitorMessageStyle: GliaWidgets.Theme.VisitorMessageStyle, operatorMessageStyle: GliaWidgets.Theme.OperatorMessageStyle, choiceCardStyle: GliaWidgets.Theme.ChoiceCardStyle, messageEntry: GliaWidgets.ChatMessageEntryStyle, audioUpgrade: GliaWidgets.ChatCallUpgradeStyle, videoUpgrade: GliaWidgets.ChatCallUpgradeStyle, callBubble: GliaWidgets.BubbleStyle, pickMedia: GliaWidgets.AttachmentSourceListStyle, unreadMessageIndicator: GliaWidgets.UnreadMessageIndicatorStyle, operatorTypingIndicator: GliaWidgets.OperatorTypingIndicatorStyle, accessibility: GliaWidgets.ChatStyle.Accessibility = .unsupported, secureTranscriptTitle: Swift.String, secureTranscriptHeader: GliaWidgets.HeaderStyle, unreadMessageDivider: GliaWidgets.UnreadMessageDividerStyle, systemMessageStyle: GliaWidgets.Theme.SystemMessageStyle, gliaVirtualAssistant: GliaWidgets.GliaVirtualAssistantStyle)
+  @objc deinit
+}
+extension GliaWidgets.PoweredByStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public init(isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.PoweredByStyle.Accessibility, b: GliaWidgets.PoweredByStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.MessageButtonStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var accessibilityLabel: Swift.String
+    public init(accessibilityLabel: Swift.String)
+    public static func == (a: GliaWidgets.MessageButtonStyle.Accessibility, b: GliaWidgets.MessageButtonStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.MessageButtonStyle.Accessibility {
+  public static let unsupported: GliaWidgets.MessageButtonStyle.Accessibility
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.SendButtonEnabledStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var isFontScalingEnabled: Swift.Bool
+    public var label: Swift.String
+    public var hint: Swift.String
+    public init(isFontScalingEnabled: Swift.Bool, label: Swift.String, hint: Swift.String)
+    public static func == (a: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonEnabledStyle.Accessibility, b: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonEnabledStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.SecureConversations.WelcomeStyle.SendButtonEnabledStyle.Accessibility {
+  public static let unsupported: GliaWidgets.SecureConversations.WelcomeStyle.SendButtonEnabledStyle.Accessibility
+}
+extension GliaWidgets.Theme.VisitorMessageStyle {
+  public struct Accessibility : Swift.Equatable {
+    public var value: Swift.String
+    public var isFontScalingEnabled: Swift.Bool
+    public init(value: Swift.String = "", isFontScalingEnabled: Swift.Bool)
+    public static func == (a: GliaWidgets.Theme.VisitorMessageStyle.Accessibility, b: GliaWidgets.Theme.VisitorMessageStyle.Accessibility) -> Swift.Bool
+  }
+}
+extension GliaWidgets.Theme.VisitorMessageStyle.Accessibility {
+  public static let unsupported: GliaWidgets.Theme.VisitorMessageStyle.Accessibility
+}
+extension GliaWidgets.GliaViewControllerEvent : Swift.Equatable {}
+extension GliaWidgets.GliaViewControllerEvent : Swift.Hashable {}
+extension GliaWidgets.SecureConversations.InitialScreen : Swift.Hashable {}
+extension GliaWidgets.Glia.Authentication.Behavior : Swift.Equatable {}
+extension GliaWidgets.Glia.Authentication.Behavior : Swift.Hashable {}
+extension GliaWidgets.RemoteConfiguration.FontStyle : Swift.Equatable {}
+extension GliaWidgets.RemoteConfiguration.FontStyle : Swift.Hashable {}
+extension GliaWidgets.RemoteConfiguration.FontStyle : Swift.RawRepresentable {}
+extension GliaWidgets.Configuration.PushNotifications : Swift.Equatable {}
+extension GliaWidgets.Configuration.PushNotifications : Swift.Hashable {}
+extension GliaWidgets.GliaError : Swift.Equatable {}
+extension GliaWidgets.GliaError : Swift.Hashable {}
+extension GliaWidgets.AttachmentSourceItemKind : Swift.Hashable {}
+extension GliaWidgets.AttachmentSourceItemKind : Swift.RawRepresentable {}

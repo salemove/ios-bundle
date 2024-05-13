@@ -1,0 +1,11 @@
+framework module GliaCoreDependency {
+  umbrella header "GliaCoreDependency.h"
+
+  export *
+  module * { export * }
+}
+
+module GliaCoreDependency.Swift {
+  header "GliaCoreDependency-Swift.h"
+  requires objc
+}
