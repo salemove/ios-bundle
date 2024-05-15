@@ -333,15 +333,9 @@ SWIFT_PROTOCOL("_TtP11GliaCoreSDK15AudioStreamable_")
 - (void)mute;
 /// Unmute the outgoing audio stream
 - (void)unmute;
-/// State of the audio stream
-///
-/// returns:
-/// bool indicating if the stream is muted or not
+/// State of the audio stream. Indicating if the stream is muted or not
 @property (nonatomic, readonly) BOOL isMuted;
-/// Source of the audio stream
-///
-/// returns:
-/// bool indicating if the stream is local or remote
+/// Source of the audio stream. Indicating if the stream is local or remote
 @property (nonatomic, readonly) BOOL isRemote;
 /// Handler used to detect if Visitor stream is put on hold or resumed from being put on hold by Operator
 @property (nonatomic, copy) void (^ _Nullable onHold)(BOOL);
@@ -464,6 +458,14 @@ SWIFT_CLASS("_TtC11GliaCoreSDK17EngagementRequest")
 SWIFT_PROTOCOL("_TtP11GliaCoreSDK13ErrorHandling_")
 @protocol ErrorHandling
 /// Called when there is a failure in the client library or in the Engagement flow
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     error: the <code>GliaCoreError</code>
+///   </li>
+/// </ul>
 /// The Error may have one of the following causes:
 /// <ul>
 ///   <li>
@@ -485,8 +487,6 @@ SWIFT_PROTOCOL("_TtP11GliaCoreSDK13ErrorHandling_")
 ///     <code>EngagementError.operatorLeft</code> - in the case when Operator leaves an active Engagement
 ///   </li>
 /// </ul>
-/// \param error the <code>GliaCoreError</code>
-///
 - (void)failWithError:(GliaCoreError * _Nonnull)error;
 @end
 
@@ -1169,18 +1169,10 @@ SWIFT_CLASS("_TtC11GliaCoreSDK8Operator")
 
 
 
-/// <ul>
-///   <li>
-///     Operator picture information
-///   </li>
-/// </ul>
+/// Operator picture information
 SWIFT_CLASS("_TtC11GliaCoreSDK15OperatorPicture")
 @interface OperatorPicture : NSObject
-/// <ul>
-///   <li>
-///     Returns The Operator picture URL if exists
-///   </li>
-/// </ul>
+/// Returns The Operator picture URL if exists
 @property (nonatomic, readonly, copy) NSString * _Nullable url;
 /// Overriding of isEqual is necessary in order to compare the operators in the Widget SDK.
 /// Without it, operator with the same data fields is considered different.
@@ -1753,15 +1745,9 @@ SWIFT_PROTOCOL("_TtP11GliaCoreSDK15AudioStreamable_")
 - (void)mute;
 /// Unmute the outgoing audio stream
 - (void)unmute;
-/// State of the audio stream
-///
-/// returns:
-/// bool indicating if the stream is muted or not
+/// State of the audio stream. Indicating if the stream is muted or not
 @property (nonatomic, readonly) BOOL isMuted;
-/// Source of the audio stream
-///
-/// returns:
-/// bool indicating if the stream is local or remote
+/// Source of the audio stream. Indicating if the stream is local or remote
 @property (nonatomic, readonly) BOOL isRemote;
 /// Handler used to detect if Visitor stream is put on hold or resumed from being put on hold by Operator
 @property (nonatomic, copy) void (^ _Nullable onHold)(BOOL);
@@ -1884,6 +1870,14 @@ SWIFT_CLASS("_TtC11GliaCoreSDK17EngagementRequest")
 SWIFT_PROTOCOL("_TtP11GliaCoreSDK13ErrorHandling_")
 @protocol ErrorHandling
 /// Called when there is a failure in the client library or in the Engagement flow
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     error: the <code>GliaCoreError</code>
+///   </li>
+/// </ul>
 /// The Error may have one of the following causes:
 /// <ul>
 ///   <li>
@@ -1905,8 +1899,6 @@ SWIFT_PROTOCOL("_TtP11GliaCoreSDK13ErrorHandling_")
 ///     <code>EngagementError.operatorLeft</code> - in the case when Operator leaves an active Engagement
 ///   </li>
 /// </ul>
-/// \param error the <code>GliaCoreError</code>
-///
 - (void)failWithError:(GliaCoreError * _Nonnull)error;
 @end
 
@@ -2589,18 +2581,10 @@ SWIFT_CLASS("_TtC11GliaCoreSDK8Operator")
 
 
 
-/// <ul>
-///   <li>
-///     Operator picture information
-///   </li>
-/// </ul>
+/// Operator picture information
 SWIFT_CLASS("_TtC11GliaCoreSDK15OperatorPicture")
 @interface OperatorPicture : NSObject
-/// <ul>
-///   <li>
-///     Returns The Operator picture URL if exists
-///   </li>
-/// </ul>
+/// Returns The Operator picture URL if exists
 @property (nonatomic, readonly, copy) NSString * _Nullable url;
 /// Overriding of isEqual is necessary in order to compare the operators in the Widget SDK.
 /// Without it, operator with the same data fields is considered different.
