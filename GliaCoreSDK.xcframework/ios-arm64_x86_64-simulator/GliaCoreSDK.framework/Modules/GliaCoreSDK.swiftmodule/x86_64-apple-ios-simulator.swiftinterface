@@ -888,12 +888,21 @@ extension GliaCoreSDK.GliaCore {
   }
 }
 extension GliaCoreSDK.GliaCore.Authentication {
+  public func refresh(with idToken: GliaCoreSDK.GliaCore.IdToken, externalAccessToken: GliaCoreSDK.GliaCore.ExternalAccessToken?, _ completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
   public func authenticate(with idToken: GliaCoreSDK.GliaCore.IdToken, externalAccessToken: GliaCoreSDK.GliaCore.ExternalAccessToken?, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
   public func deauthenticate(_ completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
   public var isAuthenticated: Swift.Bool {
     get
   }
-  public init(authenticateWithIdToken: @escaping (Swift.String, Swift.String?, @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> Swift.Void = { _, _, _ in }, deauthenticateWithCallback: @escaping (@escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> Swift.Void = { _ in }, isAuthenticatedClosure: @escaping () -> Swift.Bool = { false })
+  public init(authenticateWithIdToken: @escaping (Swift.String, Swift.String?, @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> Swift.Void = { _, _, _ in }, deauthenticateWithCallback: @escaping (@escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> Swift.Void = { _ in }, isAuthenticatedClosure: @escaping () -> Swift.Bool = { false }, refresh: @escaping (Swift.String, Swift.String?, @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void) -> Swift.Void = { _, _, _ in })
+}
+extension GliaCoreSDK.GliaCore.Authentication {
+  public enum Error : Swift.Error {
+    case failedToAuthenticatWithIdToken
+    case notAuthenticated
+    case visitorMissing
+    case expiredAccessToken(message: Swift.String)
+  }
 }
 extension GliaCoreSDK.GliaCore.Authentication {
   public enum Behavior {
