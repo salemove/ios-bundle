@@ -617,9 +617,6 @@ extension GliaCoreSDK.SendMessagePayload : Swift.ExpressibleByStringLiteral {
 extension GliaCoreSDK.SendMessagePayload {
   public static func mock(messageIdSuffix: Swift.String = "", content: Swift.String = "", attachment: GliaCoreSDK.Attachment? = nil) -> GliaCoreSDK.SendMessagePayload
 }
-extension UIKit.UIWindow {
-  @_Concurrency.MainActor(unsafe) public func topMostViewController() -> UIKit.UIViewController?
-}
 public enum AnyCodable : Swift.Equatable {
   case string(Swift.String)
   case number(Swift.Double)
@@ -901,7 +898,12 @@ extension GliaCoreSDK.GliaCore.Authentication {
     case failedToAuthenticatWithIdToken
     case notAuthenticated
     case visitorMissing
-    case expiredAccessToken(message: Swift.String)
+    case expiredAccessToken
+    public static func == (a: GliaCoreSDK.GliaCore.Authentication.Error, b: GliaCoreSDK.GliaCore.Authentication.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
   }
 }
 extension GliaCoreSDK.GliaCore.Authentication {
@@ -1149,6 +1151,19 @@ extension GliaCoreSDK.GliaCore {
   @objc final public func configure(environment: Swift.String) throws
 }
 public typealias InternalOperatorTypingStatusUpdate = (GliaCoreSDK.OperatorTypingStatus) -> Swift.Void
+extension GliaCoreSDK.GliaCore {
+  final public func cameraDeviceManageable() throws -> any GliaCoreSDK.CameraDeviceManageable
+}
+extension GliaCoreSDK.CameraDevice {
+  public enum Error : Swift.Error {
+    case cameraIsNotAccessibleOnStream
+    public static func == (a: GliaCoreSDK.CameraDevice.Error, b: GliaCoreSDK.CameraDevice.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
 public struct PathMonitorClient {
   public let networkPathPublisher: Combine.AnyPublisher<GliaCoreSDK.NetworkPath, Swift.Never>
   public init(networkPathPublisher: Combine.AnyPublisher<GliaCoreSDK.NetworkPath, Swift.Never>)
@@ -1160,6 +1175,31 @@ extension GliaCoreSDK.GliaCore {
   @objc final public func listQueues(completion: @escaping GliaCoreSDK.QueueRequestBlock)
   @objc final public func subscribeForUpdates(forQueue queueIds: [Swift.String], onError: @escaping GliaCoreSDK.ErrorBlock, onUpdate: @escaping GliaCoreSDK.QueueUpdateBlock) -> Swift.String?
   @objc final public func unsubscribeFromUpdates(queueCallbackId: Swift.String, onError: @escaping GliaCoreSDK.ErrorBlock)
+}
+public struct CameraDevice : Swift.Equatable {
+  public let name: Swift.String
+  public let facing: GliaCoreSDK.CameraDevice.Facing
+  public static func == (a: GliaCoreSDK.CameraDevice, b: GliaCoreSDK.CameraDevice) -> Swift.Bool
+}
+extension GliaCoreSDK.CameraDevice {
+  public init(mockName: Swift.String = "testCamera", mockFacing: GliaCoreSDK.CameraDevice.Facing = .unspecified)
+}
+extension GliaCoreSDK.CameraDevice {
+  public enum Facing {
+    case front
+    case back
+    case unspecified
+    public static func == (a: GliaCoreSDK.CameraDevice.Facing, b: GliaCoreSDK.CameraDevice.Facing) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public protocol CameraDeviceManageable {
+  func setCameraDevice(_ cameraDevice: GliaCoreSDK.CameraDevice)
+  func cameraDevices() -> [GliaCoreSDK.CameraDevice]
+  func currentCameraDevice() -> GliaCoreSDK.CameraDevice?
 }
 extension GliaCoreSDK.GliaCore {
   @_hasMissingDesignatedInitializers final public class SecureConversations {
@@ -1293,6 +1333,8 @@ extension GliaCoreSDK.PushType : Swift.RawRepresentable {}
 extension GliaCoreSDK.PushTiming : Swift.Equatable {}
 extension GliaCoreSDK.PushTiming : Swift.Hashable {}
 extension GliaCoreSDK.PushTiming : Swift.RawRepresentable {}
+extension GliaCoreSDK.GliaCore.Authentication.Error : Swift.Equatable {}
+extension GliaCoreSDK.GliaCore.Authentication.Error : Swift.Hashable {}
 extension GliaCoreSDK.GliaCore.Authentication.Behavior : Swift.Equatable {}
 extension GliaCoreSDK.GliaCore.Authentication.Behavior : Swift.Hashable {}
 extension GliaCoreSDK.VideoScalingOptions : Swift.Equatable {}
@@ -1325,6 +1367,10 @@ extension GliaCoreSDK.FileError : Swift.RawRepresentable {}
 extension GliaCoreSDK.QueueStatus : Swift.Equatable {}
 extension GliaCoreSDK.QueueStatus : Swift.Hashable {}
 extension GliaCoreSDK.QueueStatus : Swift.RawRepresentable {}
+extension GliaCoreSDK.CameraDevice.Error : Swift.Equatable {}
+extension GliaCoreSDK.CameraDevice.Error : Swift.Hashable {}
+extension GliaCoreSDK.CameraDevice.Facing : Swift.Equatable {}
+extension GliaCoreSDK.CameraDevice.Facing : Swift.Hashable {}
 extension GliaCoreSDK.ScreenSharingStatus : Swift.Equatable {}
 extension GliaCoreSDK.ScreenSharingStatus : Swift.Hashable {}
 extension GliaCoreSDK.ScreenSharingStatus : Swift.RawRepresentable {}
