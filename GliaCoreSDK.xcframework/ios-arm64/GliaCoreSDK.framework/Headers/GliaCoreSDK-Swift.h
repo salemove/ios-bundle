@@ -536,14 +536,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-
-
-
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Deprecated.
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
 @end
+
+
+
+
 
 
 
@@ -606,11 +606,6 @@ enum LogLevel : NSInteger;
 
 
 
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-@end
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -678,6 +673,12 @@ enum LogLevel : NSInteger;
 
 
 
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
+@end
+
+
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Unavailable.
@@ -685,7 +686,6 @@ enum LogLevel : NSInteger;
 /// Unavailable.
 - (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
 @end
-
 
 @class Message;
 
@@ -868,6 +868,7 @@ enum LogLevel : NSInteger;
 
 
 
+
 @class QueueTicket;
 @class Queue;
 
@@ -998,7 +999,6 @@ enum LogLevel : NSInteger;
 ///
 - (void)unsubscribeFromUpdatesWithQueueCallbackId:(NSString * _Nonnull)queueCallbackId onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError;
 @end
-
 
 @class UIApplication;
 
@@ -1393,7 +1393,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK14VisitorContext")
 
 
 
-SWIFT_CLASS("_TtC11GliaCoreSDK25VisitorScreenSharingState")
+SWIFT_CLASS("_TtC11GliaCoreSDK25VisitorScreenSharingState") SWIFT_DEPRECATED_MSG("Screen sharing feature will replaced with Live Observations")
 @interface VisitorScreenSharingState : NSObject
 /// ScreenSharing status, which is one of <code>ScreenSharingStatus</code>
 @property (nonatomic, readonly) enum ScreenSharingStatus status;
