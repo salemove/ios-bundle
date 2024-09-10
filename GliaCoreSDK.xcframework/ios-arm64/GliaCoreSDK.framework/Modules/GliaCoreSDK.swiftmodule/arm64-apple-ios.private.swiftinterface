@@ -276,8 +276,7 @@ public typealias AnswerBlock = (Swift.Bool) -> Swift.Void
 public typealias ErrorBlock = (GliaCoreSDK.GliaCoreError) -> Swift.Void
 public typealias AnswerWithSuccessBlock = (Swift.Bool, GliaCoreSDK.SuccessBlock?) -> Swift.Void
 public typealias RequestAnswerBlock = (GliaCoreSDK.VisitorContext?, Swift.Bool, @escaping GliaCoreSDK.SuccessBlock) -> Swift.Void
-public typealias VisitorCodeBlock = (Swift.String?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
-public typealias RequestOfferBlock = (@escaping GliaCoreSDK.RequestAnswerBlock) -> Swift.Void
+public typealias RequestOfferBlock = (GliaCoreSDK.Request, @escaping GliaCoreSDK.RequestAnswerBlock) -> Swift.Void
 public typealias MediaUgradeOfferBlock = (GliaCoreSDK.MediaUpgradeOffer, @escaping GliaCoreSDK.AnswerWithSuccessBlock) -> Swift.Void
 public typealias MediaUpdateBlock = (GliaCoreSDK.MediaUpgradeOffer) -> Swift.Void
 public typealias AudioStreamAddedBlock = ((any GliaCoreSDK.AudioStreamable)?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
@@ -533,10 +532,6 @@ public protocol VideoStreamable : AnyObject {
   @_Concurrency.MainActor(unsafe) @objc public func applicationWillTerminate(_ application: UIKit.UIApplication)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
   @objc deinit
-}
-extension GliaCoreSDK.GliaCore {
-  @available(*, deprecated, message: "Use `GliaCore.CallVisualizer` to request visitor code.")
-  @objc final public func requestVisitorCode(completion: @escaping GliaCoreSDK.VisitorCodeBlock)
 }
 extension GliaCoreSDK.GliaCore.Authentication {
   @available(*, deprecated, message: "Use `GliaCore.Authentication` to authenticate visitor.")
@@ -886,7 +881,8 @@ public struct Site : Swift.Decodable, Swift.Equatable {
   public let mobileConfirmDialogEnabled: Swift.Bool?
   public let mobileObservationIndicationEnabled: Swift.Bool?
   public let mobileObservationVideoFps: GliaCoreSDK.Site.VideoFps?
-  public init(id: Foundation.UUID, defaultOperatorPicture: GliaCoreSDK.OperatorPicture?, alwaysUseDefaultOperatorPicture: Swift.Bool?, allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders, maskingRegularExpressions: [Swift.String], visitorAppDefaultLocale: Swift.String, mobileConfirmDialogEnabled: Swift.Bool, mobileObservationIndicationEnabled: Swift.Bool, mobileObservationVideoFps: GliaCoreSDK.Site.VideoFps, mobileObservationEnabled: Swift.Bool)
+  public let readOnlySettings: GliaCoreSDK.Site.ReadOnlySettings?
+  public init(id: Foundation.UUID, defaultOperatorPicture: GliaCoreSDK.OperatorPicture?, alwaysUseDefaultOperatorPicture: Swift.Bool?, allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders, maskingRegularExpressions: [Swift.String], visitorAppDefaultLocale: Swift.String, mobileConfirmDialogEnabled: Swift.Bool, mobileObservationIndicationEnabled: Swift.Bool, mobileObservationVideoFps: GliaCoreSDK.Site.VideoFps, mobileObservationEnabled: Swift.Bool, readOnlySettings: GliaCoreSDK.Site.ReadOnlySettings?)
   public init(from decoder: any Swift.Decoder) throws
   public static func == (a: GliaCoreSDK.Site, b: GliaCoreSDK.Site) -> Swift.Bool
 }
@@ -903,10 +899,24 @@ extension GliaCoreSDK.Site {
     public static func == (a: GliaCoreSDK.Site.VideoFps, b: GliaCoreSDK.Site.VideoFps) -> Swift.Bool
     public init(from decoder: any Swift.Decoder) throws
   }
+  public struct ReadOnlySettings : Swift.Decodable, Swift.Equatable {
+    public let disableGliaPiiMasking: Swift.String?
+    public static func == (a: GliaCoreSDK.Site.ReadOnlySettings, b: GliaCoreSDK.Site.ReadOnlySettings) -> Swift.Bool
+    public init(from decoder: any Swift.Decoder) throws
+  }
 }
 extension GliaCoreSDK.GliaCore {
   final public func updateVisitorInfo(_ info: GliaCoreSDK.VisitorInfoUpdate, completion: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void)
   final public func fetchVisitorInfo(_ completion: @escaping (Swift.Result<GliaCoreSDK.GliaCore.VisitorInfo, any Swift.Error>) -> Swift.Void)
+}
+public struct Request : Swift.Equatable, Swift.Codable {
+  public let id: Swift.String
+  public let outcome: Swift.String?
+  public let platform: Swift.String?
+  public init(id: Swift.String, outcome: Swift.String?, platform: Swift.String?)
+  public static func == (a: GliaCoreSDK.Request, b: GliaCoreSDK.Request) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 extension GliaCoreSDK.GliaCore {
   @_hasMissingDesignatedInitializers final public class CallVisualizer {
@@ -1032,6 +1042,7 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
   case invalidEnvironment
   case invalidSiteApiKey
   case invalidRegionEndpoint
+  case invalidConfiguration
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public static var _nsErrorDomain: Swift.String {
@@ -1117,6 +1128,9 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
   @objc final public let reason: Swift.String
   @objc final public let error: (any Swift.Error)?
   public init(reason: Swift.String, error: (any Swift.Error)? = nil)
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
   @objc deinit
 }
 @objc public class Queue : ObjectiveC.NSObject {
@@ -1205,7 +1219,11 @@ extension GliaCoreSDK.GliaCore {
   @objc final public func configure(site: Swift.String) throws
   @available(*, unavailable, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
   @objc final public func configure(environment: Swift.String) throws
+  @available(*, unavailable, message: "Use `GliaCore.CallVisualizer` to request visitor code.")
+  @objc final public func requestVisitorCode(completion: @escaping GliaCoreSDK.VisitorCodeBlock)
 }
+@available(*, deprecated)
+public typealias VisitorCodeBlock = (Swift.String?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
 public typealias InternalOperatorTypingStatusUpdate = (GliaCoreSDK.OperatorTypingStatus) -> Swift.Void
 extension GliaCoreSDK.GliaCore {
   final public func cameraDeviceManageable() throws -> any GliaCoreSDK.CameraDeviceManageable
