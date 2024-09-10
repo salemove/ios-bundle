@@ -351,6 +351,8 @@ typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
   ConfigurationErrorInvalidSiteApiKey = 2,
 /// The region custom endpoint is invalid.
   ConfigurationErrorInvalidRegionEndpoint = 3,
+/// The region custom endpoint is invalid.
+  ConfigurationErrorInvalidConfiguration = 4,
 };
 static NSString * _Nonnull const ConfigurationErrorDomain = @"GliaCoreSDK.ConfigurationError";
 
@@ -536,11 +538,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated.
-- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
-@end
-
 
 
 
@@ -679,14 +676,6 @@ enum LogLevel : NSInteger;
 @end
 
 
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Unavailable.
-- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Unavailable.
-- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-@end
-
 @class Message;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -766,6 +755,16 @@ enum LogLevel : NSInteger;
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
+
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Unavailable.
+- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
+/// Unavailable.
+- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
+/// Unavailable.
+- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_UNAVAILABLE_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
+@end
 
 
 
@@ -1052,6 +1051,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK13GliaCoreError")
 @property (nonatomic, readonly, copy) NSString * _Nonnull reason;
 /// Underlying error object.
 @property (nonatomic, readonly) NSError * _Nullable error;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1764,6 +1764,8 @@ typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
   ConfigurationErrorInvalidSiteApiKey = 2,
 /// The region custom endpoint is invalid.
   ConfigurationErrorInvalidRegionEndpoint = 3,
+/// The region custom endpoint is invalid.
+  ConfigurationErrorInvalidConfiguration = 4,
 };
 static NSString * _Nonnull const ConfigurationErrorDomain = @"GliaCoreSDK.ConfigurationError";
 
@@ -1949,11 +1951,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated.
-- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
-@end
-
 
 
 
@@ -2092,14 +2089,6 @@ enum LogLevel : NSInteger;
 @end
 
 
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Unavailable.
-- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Unavailable.
-- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-@end
-
 @class Message;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -2179,6 +2168,16 @@ enum LogLevel : NSInteger;
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
+
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Unavailable.
+- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
+/// Unavailable.
+- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
+/// Unavailable.
+- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_UNAVAILABLE_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
+@end
 
 
 
@@ -2465,6 +2464,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK13GliaCoreError")
 @property (nonatomic, readonly, copy) NSString * _Nonnull reason;
 /// Underlying error object.
 @property (nonatomic, readonly) NSError * _Nullable error;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
