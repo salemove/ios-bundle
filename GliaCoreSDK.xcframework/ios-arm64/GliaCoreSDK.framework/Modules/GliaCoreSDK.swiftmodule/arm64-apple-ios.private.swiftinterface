@@ -911,12 +911,23 @@ extension GliaCoreSDK.GliaCore {
 }
 public struct Request : Swift.Equatable, Swift.Codable {
   public let id: Swift.String
-  public let outcome: Swift.String?
+  public let outcome: GliaCoreSDK.Request.Outcome
   public let platform: Swift.String?
-  public init(id: Swift.String, outcome: Swift.String?, platform: Swift.String?)
+  public init(id: Swift.String, outcome: GliaCoreSDK.Request.Outcome, platform: Swift.String?)
   public static func == (a: GliaCoreSDK.Request, b: GliaCoreSDK.Request) -> Swift.Bool
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
+}
+extension GliaCoreSDK.Request {
+  public enum Outcome : Swift.Equatable, Swift.Codable {
+    case request
+    case timedOut
+    case accepted
+    case unknown(Swift.String?)
+    public init(from decoder: any Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public static func == (a: GliaCoreSDK.Request.Outcome, b: GliaCoreSDK.Request.Outcome) -> Swift.Bool
+  }
 }
 extension GliaCoreSDK.GliaCore {
   @_hasMissingDesignatedInitializers final public class CallVisualizer {
