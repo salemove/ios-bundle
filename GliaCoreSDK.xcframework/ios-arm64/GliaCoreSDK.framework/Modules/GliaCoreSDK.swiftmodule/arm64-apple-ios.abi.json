@@ -23012,22 +23012,14 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sq"
+                "name": "Outcome",
+                "printedName": "GliaCoreSDK.Request.Outcome",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
               }
             ],
             "declKind": "Var",
-            "usr": "s:11GliaCoreSDK7RequestV7outcomeSSSgvp",
-            "mangledName": "$s11GliaCoreSDK7RequestV7outcomeSSSgvp",
+            "usr": "s:11GliaCoreSDK7RequestV7outcomeAC7OutcomeOvp",
+            "mangledName": "$s11GliaCoreSDK7RequestV7outcomeAC7OutcomeOvp",
             "moduleName": "GliaCoreSDK",
             "declAttributes": [
               "HasStorage",
@@ -23044,22 +23036,14 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "usr": "s:Sq"
+                    "name": "Outcome",
+                    "printedName": "GliaCoreSDK.Request.Outcome",
+                    "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:11GliaCoreSDK7RequestV7outcomeSSSgvg",
-                "mangledName": "$s11GliaCoreSDK7RequestV7outcomeSSSgvg",
+                "usr": "s:11GliaCoreSDK7RequestV7outcomeAC7OutcomeOvg",
+                "mangledName": "$s11GliaCoreSDK7RequestV7outcomeAC7OutcomeOvg",
                 "moduleName": "GliaCoreSDK",
                 "implicit": true,
                 "accessorKind": "get"
@@ -23146,17 +23130,9 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sq"
+                "name": "Outcome",
+                "printedName": "GliaCoreSDK.Request.Outcome",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
               },
               {
                 "kind": "TypeNominal",
@@ -23174,8 +23150,8 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:11GliaCoreSDK7RequestV2id7outcome8platformACSS_SSSgAGtcfc",
-            "mangledName": "$s11GliaCoreSDK7RequestV2id7outcome8platformACSS_SSSgAGtcfc",
+            "usr": "s:11GliaCoreSDK7RequestV2id7outcome8platformACSS_AC7OutcomeOSSSgtcfc",
+            "mangledName": "$s11GliaCoreSDK7RequestV2id7outcome8platformACSS_AC7OutcomeOSSSgtcfc",
             "moduleName": "GliaCoreSDK",
             "declAttributes": [
               "AccessControl",
@@ -23265,6 +23241,315 @@
             "implicit": true,
             "throwing": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "Outcome",
+            "printedName": "Outcome",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "request",
+                "printedName": "request",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.Request.Outcome.Type) -> GliaCoreSDK.Request.Outcome",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Outcome",
+                        "printedName": "GliaCoreSDK.Request.Outcome",
+                        "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.Request.Outcome.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Outcome",
+                            "printedName": "GliaCoreSDK.Request.Outcome",
+                            "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO7requestyA2EmF",
+                "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO7requestyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "timedOut",
+                "printedName": "timedOut",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.Request.Outcome.Type) -> GliaCoreSDK.Request.Outcome",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Outcome",
+                        "printedName": "GliaCoreSDK.Request.Outcome",
+                        "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.Request.Outcome.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Outcome",
+                            "printedName": "GliaCoreSDK.Request.Outcome",
+                            "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO8timedOutyA2EmF",
+                "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO8timedOutyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "accepted",
+                "printedName": "accepted",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.Request.Outcome.Type) -> GliaCoreSDK.Request.Outcome",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Outcome",
+                        "printedName": "GliaCoreSDK.Request.Outcome",
+                        "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.Request.Outcome.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Outcome",
+                            "printedName": "GliaCoreSDK.Request.Outcome",
+                            "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO8acceptedyA2EmF",
+                "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO8acceptedyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "unknown",
+                "printedName": "unknown",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.Request.Outcome.Type) -> (Swift.String?) -> GliaCoreSDK.Request.Outcome",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Swift.String?) -> GliaCoreSDK.Request.Outcome",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Outcome",
+                            "printedName": "GliaCoreSDK.Request.Outcome",
+                            "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.String?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.Request.Outcome.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Outcome",
+                            "printedName": "GliaCoreSDK.Request.Outcome",
+                            "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO7unknownyAESSSgcAEmF",
+                "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO7unknownyAESSSgcAEmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Constructor",
+                "name": "init",
+                "printedName": "init(from:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Outcome",
+                    "printedName": "GliaCoreSDK.Request.Outcome",
+                    "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Decoder",
+                    "printedName": "Swift.Decoder",
+                    "usr": "s:s7DecoderP"
+                  }
+                ],
+                "declKind": "Constructor",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO4fromAEs7Decoder_p_tKcfc",
+                "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO4fromAEs7Decoder_p_tKcfc",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "AccessControl",
+                  "RawDocComment"
+                ],
+                "throwing": true,
+                "init_kind": "Designated"
+              },
+              {
+                "kind": "Function",
+                "name": "encode",
+                "printedName": "encode(to:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Encoder",
+                    "printedName": "Swift.Encoder",
+                    "usr": "s:s7EncoderP"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO6encode2toys7Encoder_p_tKF",
+                "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO6encode2toys7Encoder_p_tKF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "AccessControl",
+                  "RawDocComment"
+                ],
+                "throwing": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Outcome",
+                    "printedName": "GliaCoreSDK.Request.Outcome",
+                    "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Outcome",
+                    "printedName": "GliaCoreSDK.Request.Outcome",
+                    "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO2eeoiySbAE_AEtFZ",
+                "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO2eeoiySbAE_AEtFZ",
+                "moduleName": "GliaCoreSDK",
+                "static": true,
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:11GliaCoreSDK7RequestV7OutcomeO",
+            "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Decodable",
+                "printedName": "Decodable",
+                "usr": "s:Se",
+                "mangledName": "$sSe"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Encodable",
+                "printedName": "Encodable",
+                "usr": "s:SE",
+                "mangledName": "$sSE"
+              }
+            ]
           }
         ],
         "declKind": "Struct",
@@ -48458,6 +48743,34 @@
       "value": "\"\""
     },
     {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
+      "kind": "StringLiteral",
+      "offset": 10591,
+      "length": 11,
+      "value": "\"timed_out\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
+      "kind": "StringLiteral",
+      "offset": 10654,
+      "length": 10,
+      "value": "\"accepted\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
+      "kind": "StringLiteral",
+      "offset": 11525,
+      "length": 11,
+      "value": "\"timed_out\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
+      "kind": "StringLiteral",
+      "offset": 11603,
+      "length": 10,
+      "value": "\"accepted\""
+    },
+    {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.CallVisualizer.swift",
       "kind": "StringLiteral",
       "offset": 2940,
@@ -51129,7 +51442,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"1.5.2\""
+      "value": "\"1.5.3\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -51610,273 +51923,273 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 53538,
+      "offset": 53714,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 54207,
+      "offset": 54383,
       "length": 83,
       "value": "\"Engagement (id: '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 54241,
+      "offset": 54417,
       "length": 12,
       "value": "\"', status: '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 54273,
+      "offset": 54449,
       "length": 18,
       "value": "\"') is recovered.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 54401,
+      "offset": 54577,
       "length": 82,
       "value": "\"Engagement (id: '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 54435,
+      "offset": 54611,
       "length": 12,
       "value": "\"', status: '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 54467,
+      "offset": 54643,
       "length": 17,
       "value": "\"') is accepted.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 55361,
+      "offset": 55537,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56000,
+      "offset": 56176,
       "length": 300,
       "value": "\"engagement_id='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56058,
+      "offset": 56234,
       "length": 8,
       "value": "\"', sdk='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56092,
+      "offset": 56268,
       "length": 8,
       "value": "\"', iOS='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56127,
+      "offset": 56303,
       "length": 4,
       "value": "\"', device='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56179,
+      "offset": 56355,
       "length": 22,
       "value": "\"', pushNotifications='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56231,
+      "offset": 56407,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56273,
+      "offset": 56449,
       "length": 3,
       "value": "\"'.\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 57188,
+      "offset": 57364,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 58893,
+      "offset": 59069,
       "length": 63,
       "value": "\"Can't set up media for engagement because visitor is missing.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 62359,
+      "offset": 62535,
       "length": 19,
       "value": "\"Engagement ended.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 66747,
+      "offset": 66923,
       "length": 77,
       "value": "\"Media upgrade has been successful. engagement_id='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 66821,
+      "offset": 66997,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 66915,
+      "offset": 67091,
       "length": 89,
       "value": "\"Error posting media upgrade of type '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 66981,
+      "offset": 67157,
       "length": 10,
       "value": "\"'. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 67001,
+      "offset": 67177,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 67280,
+      "offset": 67456,
       "length": 41,
       "value": "\"Media upgrade failed. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 67318,
+      "offset": 67494,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 67487,
+      "offset": 67663,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 67546,
+      "offset": 67722,
       "length": 23,
       "value": "\"capabilities:response\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 67487,
+      "offset": 67663,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 67546,
+      "offset": 67722,
       "length": 23,
       "value": "\"capabilities:response\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69457,
+      "offset": 69633,
       "length": 94,
       "value": "\"Screen sharing failed with error 'screenSharingNotAvailable'. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69548,
+      "offset": 69724,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69792,
+      "offset": 69968,
       "length": 93,
       "value": "\"Screen sharing failed with error 'notAvailableOnIOSVersion'. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69882,
+      "offset": 70058,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 70112,
+      "offset": 70288,
       "length": 78,
       "value": "\"Connection failed with error 'proposalError'. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 70187,
+      "offset": 70363,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 70405,
+      "offset": 70581,
       "length": 76,
       "value": "\"RTCClient failed with error 'noConnection'. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 70478,
+      "offset": 70654,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 70691,
+      "offset": 70867,
       "length": 72,
       "value": "\"Medra failed with error 'networkError'. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 70760,
+      "offset": 70936,
       "length": 4,
       "value": "\"'.\""
     },
