@@ -540,6 +540,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+@class Queue;
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Deprecated.
+- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.");
+@end
 
 
 
@@ -595,6 +601,8 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
+
+
 
 
 
@@ -666,7 +674,6 @@ enum LogLevel : NSInteger;
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, GliaCoreError * _Nullable))completion;
 @end
-
 
 
 
@@ -869,7 +876,6 @@ enum LogLevel : NSInteger;
 
 
 @class QueueTicket;
-@class Queue;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Cancels all active queue tickets that the current visitor has.
@@ -945,41 +951,6 @@ enum LogLevel : NSInteger;
 /// \param completion A callback that will return the <code>Queue</code> list or <code>GliaCoreError</code>
 ///
 - (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, GliaCoreError * _Nullable))completion;
-/// <hr/>
-/// Example:
-/// \code
-/// let queueUpdatesCallbackId = GliaCore.sharedInstance.subscribeForUpdates(
-///     forQueue: [QUEUE_ID_1, QUEUE_ID_2],
-///     onError: showError(gliaCoreError:),
-///     onUpdate: updateQueueInfo(newQueue:)
-/// )
-///
-/// \endcode\param for Array of strings represinting Queue IDs that you want to get updates for
-///
-/// \param onUpdate A callback that returns a new instance of <code>Queue</code> every time its info is changed
-///
-/// \param onError A callback that returns <code>GliaCoreError</code> which could have one of the reasons:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>QueueError.invalidId</code>
-///   </li>
-/// </ul>
-///
-///
-/// returns:
-///
-/// A unique callback ID or <code>nil</code> if callback was not registered due to error.
-/// This callback ID could be used to usubscribe from Queue updates.
-- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT;
 /// Unsubscribes from Queue updates.
 /// \param queueCallbackId ID of callback for which you would like to stop receiving updates.
 ///
@@ -1953,6 +1924,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+@class Queue;
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Deprecated.
+- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.");
+@end
 
 
 
@@ -2008,6 +1985,8 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
+
+
 
 
 
@@ -2079,7 +2058,6 @@ enum LogLevel : NSInteger;
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, GliaCoreError * _Nullable))completion;
 @end
-
 
 
 
@@ -2282,7 +2260,6 @@ enum LogLevel : NSInteger;
 
 
 @class QueueTicket;
-@class Queue;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Cancels all active queue tickets that the current visitor has.
@@ -2358,41 +2335,6 @@ enum LogLevel : NSInteger;
 /// \param completion A callback that will return the <code>Queue</code> list or <code>GliaCoreError</code>
 ///
 - (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, GliaCoreError * _Nullable))completion;
-/// <hr/>
-/// Example:
-/// \code
-/// let queueUpdatesCallbackId = GliaCore.sharedInstance.subscribeForUpdates(
-///     forQueue: [QUEUE_ID_1, QUEUE_ID_2],
-///     onError: showError(gliaCoreError:),
-///     onUpdate: updateQueueInfo(newQueue:)
-/// )
-///
-/// \endcode\param for Array of strings represinting Queue IDs that you want to get updates for
-///
-/// \param onUpdate A callback that returns a new instance of <code>Queue</code> every time its info is changed
-///
-/// \param onError A callback that returns <code>GliaCoreError</code> which could have one of the reasons:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>QueueError.invalidId</code>
-///   </li>
-/// </ul>
-///
-///
-/// returns:
-///
-/// A unique callback ID or <code>nil</code> if callback was not registered due to error.
-/// This callback ID could be used to usubscribe from Queue updates.
-- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT;
 /// Unsubscribes from Queue updates.
 /// \param queueCallbackId ID of callback for which you would like to stop receiving updates.
 ///

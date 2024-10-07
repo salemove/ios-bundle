@@ -557,6 +557,10 @@ extension GliaCoreSDK.GliaCore {
     get
   }
 }
+extension GliaCoreSDK.GliaCore {
+  @available(*, deprecated, message: "Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.")
+  @objc final public func subscribeForUpdates(forQueue queueIds: [Swift.String], onError: @escaping GliaCoreSDK.ErrorBlock, onUpdate: @escaping GliaCoreSDK.QueueUpdateBlock) -> Swift.String?
+}
 @available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
 @objc public class VisitorScreenSharingState : ObjectiveC.NSObject {
   @objc public var status: GliaCoreSDK.ScreenSharingStatus {
@@ -1227,7 +1231,9 @@ extension GliaCoreSDK.GliaCore {
   @objc final public func dequeueFromActiveTickets(completion: @escaping GliaCoreSDK.SuccessBlock)
   @objc final public func cancel(queueTicket: GliaCoreSDK.QueueTicket, completion: @escaping GliaCoreSDK.SuccessBlock)
   @objc final public func listQueues(completion: @escaping GliaCoreSDK.QueueRequestBlock)
-  @objc final public func subscribeForUpdates(forQueue queueIds: [Swift.String], onError: @escaping GliaCoreSDK.ErrorBlock, onUpdate: @escaping GliaCoreSDK.QueueUpdateBlock) -> Swift.String?
+  public typealias SubscribeForQueuesUpdatesCompletion = ((Swift.Result<GliaCoreSDK.Queue, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  @discardableResult
+  final public func subscribeForQueuesUpdates(forQueues queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Queue, GliaCoreSDK.GliaCoreError>) -> Swift.Void) -> Swift.String?
   @objc final public func unsubscribeFromUpdates(queueCallbackId: Swift.String, onError: @escaping GliaCoreSDK.ErrorBlock)
 }
 public struct CameraDevice : Swift.Equatable {
