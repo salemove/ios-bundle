@@ -41896,77 +41896,77 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 5258,
+      "offset": 5109,
       "length": 4,
       "value": "\"%@\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 5996,
+      "offset": 5847,
       "length": 4,
       "value": "\"%@\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 7611,
+      "offset": 7462,
       "length": 72,
       "value": "\"User Notification permission request has failed with error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 7680,
+      "offset": 7531,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 7766,
+      "offset": 7617,
       "length": 56,
       "value": "\"User Notification permission request has been granted.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 8187,
+      "offset": 8038,
       "length": 81,
       "value": "\"User Notification permission request has been denied continue with normal flow.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 8639,
+      "offset": 8490,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 9022,
+      "offset": 8873,
       "length": 156,
       "value": "\"Note: Instance of '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 9067,
+      "offset": 8918,
       "length": 21,
       "value": "\"' will use instance '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 9101,
+      "offset": 8952,
       "length": 47,
       "value": "\"' to delegate expected methods to instance of '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 9164,
+      "offset": 9015,
       "length": 2,
       "value": "\"'.\""
     },
@@ -41980,77 +41980,77 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 9693,
+      "offset": 9544,
       "length": 97,
       "value": "\"The push notification message='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 9761,
+      "offset": 9612,
       "length": 1,
       "value": "\":\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 9770,
+      "offset": 9621,
       "length": 6,
       "value": "\"' can't be handled.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 10362,
+      "offset": 10213,
       "length": 81,
       "value": "\"An error has occurred in handling push notifications, reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 10440,
+      "offset": 10291,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 11342,
+      "offset": 11193,
       "length": 69,
       "value": "\"Registration for remote notifications failed with error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 11408,
+      "offset": 11259,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 12051,
+      "offset": 11902,
       "length": 12,
       "value": "\"event_type\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "StringLiteral",
-      "offset": 12903,
+      "offset": 12754,
       "length": 12,
       "value": "\"event_type\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 15106,
+      "offset": 14957,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 15264,
+      "offset": 15115,
       "length": 4,
       "value": "true"
     },
@@ -51642,7 +51642,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"1.5.4\""
+      "value": "\"1.5.5\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
