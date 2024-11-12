@@ -38983,20 +38983,30 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Capabilities",
-                "printedName": "GliaCoreSDK.Engagement.Capabilities",
-                "usr": "s:11GliaCoreSDK10EngagementC12CapabilitiesV"
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.Engagement.Capabilities?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Capabilities",
+                    "printedName": "GliaCoreSDK.Engagement.Capabilities",
+                    "usr": "s:11GliaCoreSDK10EngagementC12CapabilitiesV"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Var",
-            "usr": "s:11GliaCoreSDK10EngagementC12capabilitiesAC12CapabilitiesVvp",
-            "mangledName": "$s11GliaCoreSDK10EngagementC12capabilitiesAC12CapabilitiesVvp",
+            "usr": "s:11GliaCoreSDK10EngagementC12capabilitiesAC12CapabilitiesVSgvp",
+            "mangledName": "$s11GliaCoreSDK10EngagementC12capabilitiesAC12CapabilitiesVSgvp",
             "moduleName": "GliaCoreSDK",
             "declAttributes": [
+              "Final",
               "HasStorage",
               "AccessControl",
               "RawDocComment"
             ],
+            "isLet": true,
             "hasStorage": true,
             "accessors": [
               {
@@ -39006,59 +39016,28 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Capabilities",
-                    "printedName": "GliaCoreSDK.Engagement.Capabilities",
-                    "usr": "s:11GliaCoreSDK10EngagementC12CapabilitiesV"
+                    "name": "Optional",
+                    "printedName": "GliaCoreSDK.Engagement.Capabilities?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Capabilities",
+                        "printedName": "GliaCoreSDK.Engagement.Capabilities",
+                        "usr": "s:11GliaCoreSDK10EngagementC12CapabilitiesV"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:11GliaCoreSDK10EngagementC12capabilitiesAC12CapabilitiesVvg",
-                "mangledName": "$s11GliaCoreSDK10EngagementC12capabilitiesAC12CapabilitiesVvg",
+                "usr": "s:11GliaCoreSDK10EngagementC12capabilitiesAC12CapabilitiesVSgvg",
+                "mangledName": "$s11GliaCoreSDK10EngagementC12capabilitiesAC12CapabilitiesVSgvg",
                 "moduleName": "GliaCoreSDK",
                 "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
                 "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Capabilities",
-                    "printedName": "GliaCoreSDK.Engagement.Capabilities",
-                    "usr": "s:11GliaCoreSDK10EngagementC12CapabilitiesV"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:11GliaCoreSDK10EngagementC12capabilitiesAC12CapabilitiesVvs",
-                "mangledName": "$s11GliaCoreSDK10EngagementC12capabilitiesAC12CapabilitiesVvs",
-                "moduleName": "GliaCoreSDK",
-                "implicit": true,
-                "accessorKind": "set"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Modify",
-                "printedName": "Modify()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:11GliaCoreSDK10EngagementC12capabilitiesAC12CapabilitiesVvM",
-                "mangledName": "$s11GliaCoreSDK10EngagementC12capabilitiesAC12CapabilitiesVvM",
-                "moduleName": "GliaCoreSDK",
-                "implicit": true,
-                "accessorKind": "_modify"
               }
             ]
           },
@@ -39193,14 +39172,22 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "Capabilities",
-                "printedName": "GliaCoreSDK.Engagement.Capabilities",
-                "usr": "s:11GliaCoreSDK10EngagementC12CapabilitiesV"
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.Engagement.Capabilities?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Capabilities",
+                    "printedName": "GliaCoreSDK.Engagement.Capabilities",
+                    "usr": "s:11GliaCoreSDK10EngagementC12CapabilitiesV"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:11GliaCoreSDK10EngagementC2id15engagedOperator6source11fetchSurvey013restartedFromD2Id12mediaStreams6status12capabilitiesACSS_AA0G0CSgAA0D6SourceOySS_ys6ResultOyAA0J0VSgAA0aB5ErrorCGctcSSSgAC5MediaVAC6StatusOAC12CapabilitiesVtcfc",
-            "mangledName": "$s11GliaCoreSDK10EngagementC2id15engagedOperator6source11fetchSurvey013restartedFromD2Id12mediaStreams6status12capabilitiesACSS_AA0G0CSgAA0D6SourceOySS_ys6ResultOyAA0J0VSgAA0aB5ErrorCGctcSSSgAC5MediaVAC6StatusOAC12CapabilitiesVtcfc",
+            "usr": "s:11GliaCoreSDK10EngagementC2id15engagedOperator6source11fetchSurvey013restartedFromD2Id12mediaStreams6status12capabilitiesACSS_AA0G0CSgAA0D6SourceOySS_ys6ResultOyAA0J0VSgAA0aB5ErrorCGctcSSSgAC5MediaVAC6StatusOAC12CapabilitiesVSgtcfc",
+            "mangledName": "$s11GliaCoreSDK10EngagementC2id15engagedOperator6source11fetchSurvey013restartedFromD2Id12mediaStreams6status12capabilitiesACSS_AA0G0CSgAA0D6SourceOySS_ys6ResultOyAA0J0VSgAA0aB5ErrorCGctcSSSgAC5MediaVAC6StatusOAC12CapabilitiesVSgtcfc",
             "moduleName": "GliaCoreSDK",
             "declAttributes": [
               "AccessControl",
@@ -44049,7 +44036,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/VisitorState.swift",
       "kind": "BooleanLiteral",
-      "offset": 3414,
+      "offset": 3415,
       "length": 4,
       "value": "true"
     },
@@ -49649,91 +49636,91 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 3492,
+      "offset": 3493,
       "length": 10,
       "value": "\"platform\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 3534,
+      "offset": 3535,
       "length": 10,
       "value": "\"operator\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 3492,
+      "offset": 3493,
       "length": 10,
       "value": "\"platform\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 3534,
+      "offset": 3535,
       "length": 10,
       "value": "\"operator\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 4335,
+      "offset": 4336,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 4455,
+      "offset": 4456,
       "length": 4,
       "value": "\"%@\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 4461,
+      "offset": 4462,
       "length": 34,
       "value": "\"SubEngagement: empty operator ID\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 4600,
+      "offset": 4601,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 4756,
+      "offset": 4757,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 10927,
+      "offset": 10938,
       "length": 11,
       "value": "\"timed_out\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 10990,
+      "offset": 11001,
       "length": 10,
       "value": "\"accepted\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 11861,
+      "offset": 11872,
       "length": 11,
       "value": "\"timed_out\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 11939,
+      "offset": 11950,
       "length": 10,
       "value": "\"accepted\""
     },
@@ -52388,7 +52375,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.0.0\""
+      "value": "\"2.0.1\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -54871,14 +54858,14 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Engagement.swift",
       "kind": "StringLiteral",
-      "offset": 2913,
+      "offset": 2915,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Engagement.swift",
       "kind": "StringLiteral",
-      "offset": 3005,
+      "offset": 3007,
       "length": 2,
       "value": "\"\""
     },
