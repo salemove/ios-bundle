@@ -1310,9 +1310,15 @@ extension GliaCoreSDK.GliaCore.SecureConversations {
   final public func markMessagesAsRead(completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
   final public func getUnreadMessageCount(completion: @escaping (Swift.Result<Swift.Int, any Swift.Error>) -> Swift.Void)
   final public func subscribeToUnreadMessageCount(completion: @escaping (Swift.Result<Swift.Int?, any Swift.Error>) -> Swift.Void) -> Swift.String?
+  final public func unsubscribeFromUnreadMessageCount(_ subscriptionToken: Swift.String)
 }
 extension GliaCoreSDK.GliaCore.SecureConversations {
-  final public func pendingSecureConversationStatus(_ callback: @escaping (_ hasPendingSecureConversations: Swift.Bool) -> Swift.Void)
+  final public func pendingSecureConversationStatus(_ callback: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void)
+  final public func subscribeToPendingSecureConversationStatus(_ callback: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void) -> Swift.String?
+  final public func unsubscribeFromPendingSecureConversationStatus(_ subscriptionToken: Swift.String)
+}
+extension GliaCoreSDK.GliaCore.SecureConversations {
+  #warning("Remove this feature flag once 'follow up' API is stable")
 }
 extension GliaCoreSDK.GliaCore {
   final public func startSocketObservation()
@@ -1365,8 +1371,8 @@ extension GliaCoreSDK.Engagement {
       get
     }
     public init(text: Swift.Bool)
-    public func encode(to encoder: any Swift.Encoder) throws
     public init(from decoder: any Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
   }
 }
 extension GliaCoreSDK.Engagement {
