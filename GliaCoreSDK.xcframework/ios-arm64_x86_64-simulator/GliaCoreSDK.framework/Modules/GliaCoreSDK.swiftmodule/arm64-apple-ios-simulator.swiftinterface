@@ -128,7 +128,6 @@ public protocol EngagementHandling {
   var onEngagementRequest: GliaCoreSDK.RequestOfferBlock { get }
   var onEngagementTransfer: GliaCoreSDK.EngagementTransferBlock { get }
   var onEngagementTransferring: GliaCoreSDK.EngagementTransferringBlock { get }
-  var onLiveToSecureConversationsEngagementTransferring: GliaCoreSDK.EngagementTransferringBlock { get }
 }
 @objc public protocol MessageHandling {
   @objc func receive(message: GliaCoreSDK.Message)
@@ -1278,16 +1277,6 @@ extension GliaCoreSDK.GliaCore.SecureConversations {
   @discardableResult
   final public func markMessagesAsRead(completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
   final public func getUnreadMessageCount(completion: @escaping (Swift.Result<Swift.Int, any Swift.Error>) -> Swift.Void)
-  final public func subscribeToUnreadMessageCount(completion: @escaping (Swift.Result<Swift.Int?, any Swift.Error>) -> Swift.Void) -> Swift.String?
-  final public func unsubscribeFromUnreadMessageCount(_ subscriptionToken: Swift.String)
-}
-extension GliaCoreSDK.GliaCore.SecureConversations {
-  final public func pendingSecureConversationStatus(_ callback: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void)
-  final public func subscribeToPendingSecureConversationStatus(_ callback: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void) -> Swift.String?
-  final public func unsubscribeFromPendingSecureConversationStatus(_ subscriptionToken: Swift.String)
-}
-extension GliaCoreSDK.GliaCore.SecureConversations {
-  #warning("Remove this feature flag once 'follow up' API is stable")
 }
 extension GliaCoreSDK.GliaCore {
   final public func startSocketObservation()
@@ -1316,9 +1305,7 @@ public struct QueueForEngagementOptions {
   final public let source: GliaCoreSDK.EngagementSource
   @objc public var restartedFromEngagementId: Swift.String?
   public var mediaStreams: GliaCoreSDK.Engagement.Media
-  public var status: GliaCoreSDK.Engagement.Status
-  final public let capabilities: GliaCoreSDK.Engagement.Capabilities?
-  public init(id: Swift.String, engagedOperator: GliaCoreSDK.Operator?, source: GliaCoreSDK.EngagementSource, fetchSurvey: @escaping GliaCoreSDK.Engagement.FetchSurvey, restartedFromEngagementId: Swift.String? = nil, mediaStreams: GliaCoreSDK.Engagement.Media, status: GliaCoreSDK.Engagement.Status, capabilities: GliaCoreSDK.Engagement.Capabilities?)
+  public init(id: Swift.String, engagedOperator: GliaCoreSDK.Operator?, source: GliaCoreSDK.EngagementSource, fetchSurvey: @escaping GliaCoreSDK.Engagement.FetchSurvey, restartedFromEngagementId: Swift.String? = nil, mediaStreams: GliaCoreSDK.Engagement.Media)
   @objc deinit
 }
 extension GliaCoreSDK.Engagement {
@@ -1331,23 +1318,6 @@ extension GliaCoreSDK.Engagement {
     public let audio: GliaCoreSDK.MediaDirection?
     public let video: GliaCoreSDK.MediaDirection?
     public init(audio: GliaCoreSDK.MediaDirection?, video: GliaCoreSDK.MediaDirection?)
-  }
-}
-extension GliaCoreSDK.Engagement {
-  public struct Capabilities : Swift.Codable {
-    public let text: Swift.Bool
-    public var isTextMessageAllowed: Swift.Bool {
-      get
-    }
-    public init(text: Swift.Bool)
-    public init(from decoder: any Swift.Decoder) throws
-    public func encode(to encoder: any Swift.Encoder) throws
-  }
-}
-extension GliaCoreSDK.Engagement {
-  public enum Status : Swift.Equatable {
-    case engaged, transferring, unknown(Swift.String)
-    public static func == (a: GliaCoreSDK.Engagement.Status, b: GliaCoreSDK.Engagement.Status) -> Swift.Bool
   }
 }
 @objc public class MediaUpgradeOffer : ObjectiveC.NSObject {
