@@ -376,8 +376,6 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 
 
 
-
-
 /// Error of the Engagement
 typedef SWIFT_ENUM(NSInteger, EngagementError, open) {
 /// The Operator is unavailable for an Engagement.
@@ -559,22 +557,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-
-enum LogLevel : NSInteger;
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
-
 @class MediaUpgradeOffer;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -604,6 +586,22 @@ enum LogLevel : NSInteger;
 ///
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
+
+enum LogLevel : NSInteger;
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
 
 
 
