@@ -51,6 +51,7 @@ public enum EngagementEndingReason {
   case visitorHungUp
   case operatorHungUp
   case error
+  case followUp
   public static func == (a: GliaCoreSDK.EngagementEndingReason, b: GliaCoreSDK.EngagementEndingReason) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
@@ -129,6 +130,7 @@ public protocol EngagementHandling {
   var onEngagementTransfer: GliaCoreSDK.EngagementTransferBlock { get }
   var onEngagementTransferring: GliaCoreSDK.EngagementTransferringBlock { get }
   var onLiveToSecureConversationsEngagementTransferring: GliaCoreSDK.EngagementTransferringBlock { get }
+  var onEngagementChanged: GliaCoreSDK.EngagementChangedBlock { get }
 }
 @objc public protocol MessageHandling {
   @objc func receive(message: GliaCoreSDK.Message)
@@ -291,6 +293,7 @@ public typealias EngagementFileProgressBlock = (GliaCoreSDK.EngagementFileProgre
 public typealias EngagementFileCompletionBlock = (GliaCoreSDK.EngagementFileInformation?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
 public typealias EngagementFileFetchCompletionBlock = (GliaCoreSDK.EngagementFileData?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
 public typealias StreamableOnHoldHandler = (_ onHold: Swift.Bool) -> Swift.Void
+public typealias EngagementChangedBlock = (GliaCoreSDK.Engagement?) -> Swift.Void
 public protocol PushNotificationsHandling {
   func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
   func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
@@ -1338,8 +1341,7 @@ public struct QueueForEngagementOptions {
   public let shouldCloseAllQueues: Swift.Bool
   public let mediaType: GliaCoreSDK.MediaType
   public let engagementOptions: GliaCoreSDK.EngagementOptions?
-  public let shouldPauseSecureConversationsMessages: Swift.Bool?
-  public init(queueIds: [Swift.String], visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, engagementOptions: GliaCoreSDK.EngagementOptions? = nil, shouldPauseSecureConversationsMessages: Swift.Bool? = nil)
+  public init(queueIds: [Swift.String], visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, engagementOptions: GliaCoreSDK.EngagementOptions? = nil)
 }
 @objc @objcMembers public class Engagement : ObjectiveC.NSObject {
   @objc final public let id: Swift.String
