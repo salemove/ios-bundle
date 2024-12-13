@@ -898,6 +898,46 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "followUp",
+            "printedName": "followUp",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaCoreSDK.EngagementEndingReason.Type) -> GliaCoreSDK.EngagementEndingReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EngagementEndingReason",
+                    "printedName": "GliaCoreSDK.EngagementEndingReason",
+                    "usr": "s:11GliaCoreSDK22EngagementEndingReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "GliaCoreSDK.EngagementEndingReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EngagementEndingReason",
+                        "printedName": "GliaCoreSDK.EngagementEndingReason",
+                        "usr": "s:11GliaCoreSDK22EngagementEndingReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11GliaCoreSDK22EngagementEndingReasonO8followUpyA2CmF",
+            "mangledName": "$s11GliaCoreSDK22EngagementEndingReasonO8followUpyA2CmF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
             "kind": "Function",
             "name": "==",
             "printedName": "==(_:_:)",
@@ -3415,6 +3455,9 @@
             "mangledName": "$s11GliaCoreSDK18EngagementHandlingP027onLiveToSecureConversationsD12Transferringyycvp",
             "moduleName": "GliaCoreSDK",
             "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
             "accessors": [
               {
                 "kind": "Accessor",
@@ -3442,6 +3485,91 @@
                 "declKind": "Accessor",
                 "usr": "s:11GliaCoreSDK18EngagementHandlingP027onLiveToSecureConversationsD12Transferringyycvg",
                 "mangledName": "$s11GliaCoreSDK18EngagementHandlingP027onLiveToSecureConversationsD12Transferringyycvg",
+                "moduleName": "GliaCoreSDK",
+                "genericSig": "<τ_0_0 where τ_0_0 : GliaCoreSDK.EngagementHandling>",
+                "sugared_genericSig": "<Self where Self : GliaCoreSDK.EngagementHandling>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "onEngagementChanged",
+            "printedName": "onEngagementChanged",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaCoreSDK.Engagement?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GliaCoreSDK.Engagement?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Engagement",
+                        "printedName": "GliaCoreSDK.Engagement",
+                        "usr": "c:@M@GliaCoreSDK@objc(cs)Engagement"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK18EngagementHandlingP02onD7ChangedyyAA0D0CSgcvp",
+            "mangledName": "$s11GliaCoreSDK18EngagementHandlingP02onD7ChangedyyAA0D0CSgcvp",
+            "moduleName": "GliaCoreSDK",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.Engagement?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "GliaCoreSDK.Engagement?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Engagement",
+                            "printedName": "GliaCoreSDK.Engagement",
+                            "usr": "c:@M@GliaCoreSDK@objc(cs)Engagement"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK18EngagementHandlingP02onD7ChangedyyAA0D0CSgcvg",
+                "mangledName": "$s11GliaCoreSDK18EngagementHandlingP02onD7ChangedyyAA0D0CSgcvg",
                 "moduleName": "GliaCoreSDK",
                 "genericSig": "<τ_0_0 where τ_0_0 : GliaCoreSDK.EngagementHandling>",
                 "sugared_genericSig": "<Self where Self : GliaCoreSDK.EngagementHandling>",
@@ -38479,70 +38607,9 @@
             ]
           },
           {
-            "kind": "Var",
-            "name": "shouldPauseSecureConversationsMessages",
-            "printedName": "shouldPauseSecureConversationsMessages",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.Bool?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV38shouldPauseSecureConversationsMessagesSbSgvp",
-            "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV38shouldPauseSecureConversationsMessagesSbSgvp",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "HasStorage",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.Bool?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Bool",
-                        "printedName": "Swift.Bool",
-                        "usr": "s:Sb"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV38shouldPauseSecureConversationsMessagesSbSgvg",
-                "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV38shouldPauseSecureConversationsMessagesSbSgvg",
-                "moduleName": "GliaCoreSDK",
-                "implicit": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(queueIds:visitorContext:shouldCloseAllQueues:mediaType:engagementOptions:shouldPauseSecureConversationsMessages:)",
+            "printedName": "init(queueIds:visitorContext:shouldCloseAllQueues:mediaType:engagementOptions:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -38606,26 +38673,11 @@
                 ],
                 "hasDefaultArg": true,
                 "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.Bool?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV8queueIds14visitorContext20shouldCloseAllQueues9mediaType010engagementG00L32PauseSecureConversationsMessagesACSaySSG_AA07VisitorK0CSgSbAA05MediaQ0OAA0fG0VSgSbSgtcfc",
-            "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV8queueIds14visitorContext20shouldCloseAllQueues9mediaType010engagementG00L32PauseSecureConversationsMessagesACSaySSG_AA07VisitorK0CSgSbAA05MediaQ0OAA0fG0VSgSbSgtcfc",
+            "usr": "s:11GliaCoreSDK25QueueForEngagementOptionsV8queueIds14visitorContext20shouldCloseAllQueues9mediaType010engagementG0ACSaySSG_AA07VisitorK0CSgSbAA05MediaQ0OAA0fG0VSgtcfc",
+            "mangledName": "$s11GliaCoreSDK25QueueForEngagementOptionsV8queueIds14visitorContext20shouldCloseAllQueues9mediaType010engagementG0ACSaySSG_AA07VisitorK0CSgSbAA05MediaQ0OAA0fG0VSgtcfc",
             "moduleName": "GliaCoreSDK",
             "declAttributes": [
               "AccessControl",
@@ -43803,49 +43855,49 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Engageable.swift",
       "kind": "BooleanLiteral",
-      "offset": 13590,
+      "offset": 13648,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Engageable.swift",
       "kind": "StringLiteral",
-      "offset": 13816,
+      "offset": 13874,
       "length": 66,
       "value": "\"Failed to create UUID with engagement request ID='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Engageable.swift",
       "kind": "StringLiteral",
-      "offset": 13879,
+      "offset": 13937,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Engageable.swift",
       "kind": "BooleanLiteral",
-      "offset": 14017,
+      "offset": 14075,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Engageable.swift",
       "kind": "BooleanLiteral",
-      "offset": 14839,
+      "offset": 14896,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Engageable.swift",
       "kind": "BooleanLiteral",
-      "offset": 15759,
+      "offset": 15816,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Engageable.swift",
       "kind": "BooleanLiteral",
-      "offset": 16333,
+      "offset": 16390,
       "length": 5,
       "value": "false"
     },
@@ -44720,28 +44772,28 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "IntegerLiteral",
-      "offset": 2686,
+      "offset": 2737,
       "length": 2,
       "value": "25"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "StringLiteral",
-      "offset": 2790,
+      "offset": 2841,
       "length": 39,
       "value": "\"gliaCore.liveObservation.captureQueue\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "StringLiteral",
-      "offset": 3069,
+      "offset": 3120,
       "length": 13,
       "value": "\"GliaWidgets\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "StringLiteral",
-      "offset": 3106,
+      "offset": 3157,
       "length": 13,
       "value": "\"GliaCoreSDK\""
     },
@@ -47723,70 +47775,70 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.swift",
       "kind": "StringLiteral",
-      "offset": 2189,
+      "offset": 2079,
       "length": 52,
       "value": "\"Site API should not return nil in Enqueuer.siteApi\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.swift",
       "kind": "StringLiteral",
-      "offset": 2881,
+      "offset": 2771,
       "length": 50,
       "value": "\"Unable to fetch site with id \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.swift",
       "kind": "StringLiteral",
-      "offset": 2920,
+      "offset": 2810,
       "length": 1,
       "value": "\": \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.swift",
       "kind": "StringLiteral",
-      "offset": 2930,
+      "offset": 2820,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.swift",
       "kind": "BooleanLiteral",
-      "offset": 5032,
+      "offset": 4679,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.swift",
       "kind": "BooleanLiteral",
-      "offset": 5272,
+      "offset": 4919,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.swift",
       "kind": "StringLiteral",
-      "offset": 5433,
+      "offset": 5080,
       "length": 60,
       "value": "\"Queue ticket creation failed with statusCode \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.swift",
       "kind": "StringLiteral",
-      "offset": 5492,
+      "offset": 5139,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.swift",
       "kind": "BooleanLiteral",
-      "offset": 7462,
+      "offset": 7109,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.swift",
       "kind": "BooleanLiteral",
-      "offset": 7504,
+      "offset": 7151,
       "length": 4,
       "value": "true"
     },
@@ -48899,35 +48951,35 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 3467,
+      "offset": 3466,
       "length": 22,
       "value": "\"DtlsSrtpKeyAgreement\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 6030,
+      "offset": 6505,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 6406,
+      "offset": 6881,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 6468,
+      "offset": 6943,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 7177,
+      "offset": 7652,
       "length": 5,
       "value": "false"
     },
@@ -48941,434 +48993,434 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "IntegerLiteral",
-      "offset": 12023,
+      "offset": 12498,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 12735,
+      "offset": 13210,
       "length": 44,
       "value": "\"Received unsupported stream='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 12776,
+      "offset": 13251,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 13573,
+      "offset": 14048,
       "length": 49,
       "value": "\"Add ICE candidate failed with error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 13619,
+      "offset": 14094,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 13651,
+      "offset": 14126,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 13677,
+      "offset": 14152,
       "length": 26,
       "value": "\"ICE candidate not added.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 13792,
+      "offset": 14267,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 16387,
+      "offset": 16862,
       "length": 111,
       "value": "\"Stream added='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 16411,
+      "offset": 16886,
       "length": 16,
       "value": "\"', audioTracks='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 16448,
+      "offset": 16923,
       "length": 17,
       "value": "\"', localStreams='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 16495,
+      "offset": 16970,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 17654,
+      "offset": 18129,
       "length": 38,
       "value": "\"Stream removed \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 17691,
+      "offset": 18166,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 17809,
+      "offset": 18284,
       "length": 48,
       "value": "\"Should negotiate \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 17856,
+      "offset": 18331,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 18069,
+      "offset": 18544,
       "length": 21,
       "value": "\"Candidate generated\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 18269,
+      "offset": 18744,
       "length": 90,
       "value": "\"Ice candidate did fail to gather ice candidate. Event='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 18343,
+      "offset": 18818,
       "length": 16,
       "value": "\"', \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 18358,
+      "offset": 18833,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 18487,
+      "offset": 18962,
       "length": 19,
       "value": "\"Candidate removed\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 18630,
+      "offset": 19105,
       "length": 43,
       "value": "\"Channel opened \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 18672,
+      "offset": 19147,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 18802,
+      "offset": 19277,
       "length": 59,
       "value": "\"Gatheting state changed '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 18859,
+      "offset": 19334,
       "length": 3,
       "value": "\"'\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 18991,
+      "offset": 19466,
       "length": 66,
       "value": "\"Signaling state changed to '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 19055,
+      "offset": 19530,
       "length": 3,
       "value": "\"'\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 19187,
+      "offset": 19662,
       "length": 67,
       "value": "\"Ice Connection state changed to '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 19252,
+      "offset": 19727,
       "length": 3,
       "value": "\"'\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 19430,
+      "offset": 19905,
       "length": 63,
       "value": "\"Connection state changed to '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 19491,
+      "offset": 19966,
       "length": 3,
       "value": "\"'\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 19637,
+      "offset": 20112,
       "length": 5,
       "value": "\"new\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 19686,
+      "offset": 20161,
       "length": 10,
       "value": "\"checking\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 19741,
+      "offset": 20216,
       "length": 11,
       "value": "\"connected\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 19797,
+      "offset": 20272,
       "length": 11,
       "value": "\"completed\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 19850,
+      "offset": 20325,
       "length": 8,
       "value": "\"failed\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 19906,
+      "offset": 20381,
       "length": 14,
       "value": "\"disconnected\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 19962,
+      "offset": 20437,
       "length": 8,
       "value": "\"closed\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20011,
+      "offset": 20486,
       "length": 7,
       "value": "\"count\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20064,
+      "offset": 20539,
       "length": 38,
       "value": "\"@unknown default '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20100,
+      "offset": 20575,
       "length": 2,
       "value": "\"'\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20256,
+      "offset": 20731,
       "length": 5,
       "value": "\"new\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20307,
+      "offset": 20782,
       "length": 12,
       "value": "\"connecting\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20364,
+      "offset": 20839,
       "length": 11,
       "value": "\"connected\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20423,
+      "offset": 20898,
       "length": 14,
       "value": "\"disconnected\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20479,
+      "offset": 20954,
       "length": 8,
       "value": "\"failed\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20529,
+      "offset": 21004,
       "length": 8,
       "value": "\"closed\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20583,
+      "offset": 21058,
       "length": 38,
       "value": "\"@unknown default '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20619,
+      "offset": 21094,
       "length": 2,
       "value": "\"'\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20773,
+      "offset": 21248,
       "length": 8,
       "value": "\"stable\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20831,
+      "offset": 21306,
       "length": 16,
       "value": "\"haveLocalOffer\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20900,
+      "offset": 21375,
       "length": 19,
       "value": "\"haveLocalPrAnswer\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 20970,
+      "offset": 21445,
       "length": 17,
       "value": "\"haveRemoteOffer\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 21041,
+      "offset": 21516,
       "length": 20,
       "value": "\"haveRemotePrAnswer\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 21103,
+      "offset": 21578,
       "length": 8,
       "value": "\"closed\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 21157,
+      "offset": 21632,
       "length": 38,
       "value": "\"@unknown default '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 21193,
+      "offset": 21668,
       "length": 2,
       "value": "\"'\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 21347,
+      "offset": 21822,
       "length": 5,
       "value": "\"new\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 21397,
+      "offset": 21872,
       "length": 11,
       "value": "\"gathering\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 21452,
+      "offset": 21927,
       "length": 10,
       "value": "\"complete\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 21508,
+      "offset": 21983,
       "length": 38,
       "value": "\"@unknown default '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 21544,
+      "offset": 22019,
       "length": 2,
       "value": "\"'\""
     },
@@ -49690,6 +49742,13 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
+      "offset": 1541,
+      "length": 11,
+      "value": "\"follow_up\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
+      "kind": "StringLiteral",
       "offset": 1071,
       "length": 17,
       "value": "\"visitor_hung_up\""
@@ -49753,154 +49812,161 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 1753,
+      "offset": 1541,
+      "length": 11,
+      "value": "\"follow_up\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
+      "kind": "StringLiteral",
+      "offset": 1785,
       "length": 9,
       "value": "\"engaged\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 1811,
+      "offset": 1843,
       "length": 14,
       "value": "\"transferring\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 1874,
+      "offset": 1906,
       "length": 22,
       "value": "\"unknown(\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 1894,
+      "offset": 1926,
       "length": 1,
       "value": "\")\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 2003,
+      "offset": 2035,
       "length": 9,
       "value": "\"engaged\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 2063,
+      "offset": 2095,
       "length": 14,
       "value": "\"transferring\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 3493,
+      "offset": 3525,
       "length": 10,
       "value": "\"platform\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 3535,
+      "offset": 3567,
       "length": 10,
       "value": "\"operator\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 3493,
+      "offset": 3525,
       "length": 10,
       "value": "\"platform\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 3535,
+      "offset": 3567,
       "length": 10,
       "value": "\"operator\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 4336,
+      "offset": 4368,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 4456,
+      "offset": 4488,
       "length": 4,
       "value": "\"%@\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 4462,
+      "offset": 4494,
       "length": 34,
       "value": "\"SubEngagement: empty operator ID\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 4601,
+      "offset": 4633,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 4757,
+      "offset": 4789,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 11013,
+      "offset": 11045,
       "length": 11,
       "value": "\"timed_out\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 11076,
+      "offset": 11108,
       "length": 10,
       "value": "\"accepted\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 11947,
+      "offset": 11979,
       "length": 11,
       "value": "\"timed_out\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "StringLiteral",
-      "offset": 12025,
+      "offset": 12057,
       "length": 10,
       "value": "\"accepted\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "BooleanLiteral",
-      "offset": 12321,
+      "offset": 12353,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "BooleanLiteral",
-      "offset": 12519,
+      "offset": 12551,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Model\/JSON\/EngagementInternal.swift",
       "kind": "BooleanLiteral",
-      "offset": 12550,
+      "offset": 12582,
       "length": 5,
       "value": "false"
     },
@@ -51503,77 +51569,84 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Connections\/PeerConnection.swift",
       "kind": "StringLiteral",
-      "offset": 620,
+      "offset": 95,
+      "length": 10,
+      "value": "\"typ host\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Connections\/PeerConnection.swift",
+      "kind": "StringLiteral",
+      "offset": 696,
       "length": 40,
       "value": "\"Self has been unexpectedly deallocated\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Connections\/PeerConnection.swift",
       "kind": "StringLiteral",
-      "offset": 1799,
+      "offset": 1875,
       "length": 64,
       "value": "\"PeerConnection hasn't created offer. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Connections\/PeerConnection.swift",
       "kind": "StringLiteral",
-      "offset": 1860,
+      "offset": 1936,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Connections\/PeerConnection.swift",
       "kind": "StringLiteral",
-      "offset": 2636,
+      "offset": 2712,
       "length": 64,
       "value": "\"PeerConnection hasn't handled offer. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Connections\/PeerConnection.swift",
       "kind": "StringLiteral",
-      "offset": 2697,
+      "offset": 2773,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Connections\/PeerConnection.swift",
       "kind": "StringLiteral",
-      "offset": 3378,
+      "offset": 3454,
       "length": 65,
       "value": "\"PeerConnection hasn't handled answer. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Connections\/PeerConnection.swift",
       "kind": "StringLiteral",
-      "offset": 3440,
+      "offset": 3516,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Connections\/PeerConnection.swift",
       "kind": "StringLiteral",
-      "offset": 3515,
+      "offset": 3591,
       "length": 19,
       "value": "\"Created an answer\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Connections\/PeerConnection.swift",
       "kind": "StringLiteral",
-      "offset": 3953,
+      "offset": 4538,
       "length": 70,
       "value": "\"PeerConnection hasn't added ice candidate. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Connections\/PeerConnection.swift",
       "kind": "StringLiteral",
-      "offset": 4020,
+      "offset": 4605,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Connections\/PeerConnection.swift",
       "kind": "StringLiteral",
-      "offset": 4095,
+      "offset": 4680,
       "length": 24,
       "value": "\"Added an ice candidate\""
     },
@@ -52562,7 +52635,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.0.2\""
+      "value": "\"2.0.4\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -52616,707 +52689,707 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 2381,
+      "offset": 2464,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2541,
+      "offset": 2624,
       "length": 93,
       "value": "\"Remote string could not be fetched because self was unexpectedly deallocated, key='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2631,
+      "offset": 2714,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2812,
+      "offset": 2895,
       "length": 46,
       "value": "\"Custom locale not initialized, key='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2855,
+      "offset": 2938,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 2916,
+      "offset": 2999,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 3067,
+      "offset": 3150,
       "length": 53,
       "value": "\"Key does not exist in remote strings, key='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 3117,
+      "offset": 3200,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 4841,
+      "offset": 4965,
       "length": 93,
       "value": "\"Setting 'activeEngagement' from '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 4893,
+      "offset": 5017,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 4896,
+      "offset": 5020,
       "length": 6,
       "value": "\"' to '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 4928,
+      "offset": 5052,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 4931,
+      "offset": 5055,
       "length": 3,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "Dictionary",
-      "offset": 6444,
+      "offset": 6568,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 8432,
+      "offset": 8556,
       "length": 197,
       "value": "\"Unable to return 'SiteManaging' instance because SDK is not configured using `GliaCore.sharedInstance.configure(with:)` method.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "Array",
-      "offset": 9684,
+      "offset": 9808,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 11804,
+      "offset": 11928,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 11831,
+      "offset": 11955,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 15458,
+      "offset": 15582,
       "length": 108,
       "value": "\"Request for authenticated visitor failed. Access token is expired: \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 15552,
+      "offset": 15676,
       "length": 6,
       "value": "\" status code.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 16137,
+      "offset": 16261,
       "length": 49,
       "value": "\"Register Remote Logging failed: \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 16185,
+      "offset": 16309,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 16248,
+      "offset": 16372,
       "length": 76,
       "value": "\"Register Remote Logging failed: \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 16323,
+      "offset": 16447,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 16727,
+      "offset": 16851,
       "length": 118,
       "value": "\"Socket connection has been established after connection state changing (to='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 16821,
+      "offset": 16945,
       "length": 16,
       "value": "\"') with result='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 16842,
+      "offset": 16966,
       "length": 3,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 23775,
+      "offset": 23899,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 23810,
+      "offset": 23934,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 25799,
+      "offset": 25923,
       "length": 79,
       "value": "\"Unable to add remote logger to \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 25837,
+      "offset": 25961,
       "length": 7,
       "value": "\" because it is not \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 25867,
+      "offset": 25991,
       "length": 8,
       "value": "\" instance.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 27065,
+      "offset": 27189,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 28735,
+      "offset": 28859,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 29101,
+      "offset": 29225,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 30929,
+      "offset": 31053,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 31107,
+      "offset": 31231,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 38068,
+      "offset": 38192,
       "length": 48,
       "value": "\"Engagement has failed with reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 38113,
+      "offset": 38237,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 38772,
+      "offset": 38896,
       "length": 83,
       "value": "\"Engagement failed with no error. engagement_id='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 38850,
+      "offset": 38974,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 38853,
+      "offset": 38977,
       "length": 3,
       "value": "\"'\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 40772,
+      "offset": 40896,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 40804,
+      "offset": 40928,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 42223,
+      "offset": 42347,
       "length": 78,
       "value": "\"Socket connection has been established after background with result='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 42298,
+      "offset": 42422,
       "length": 5,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 43256,
+      "offset": 43380,
       "length": 72,
       "value": "\"Channel connection has not been established. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 43325,
+      "offset": 43449,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 46504,
+      "offset": 46628,
       "length": 64,
       "value": "\"Channel connection has not been established. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 46565,
+      "offset": 46689,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 47131,
+      "offset": 47255,
       "length": 64,
       "value": "\"SiteManaging not available. Can't initialize live observation.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 47352,
+      "offset": 47476,
       "length": 61,
       "value": "\"Channel is nil. Aborting setting up live observation medra.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 47861,
+      "offset": 47985,
       "length": 61,
       "value": "\"Channel is nil. Aborting setting up live observation medra.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48143,
+      "offset": 48267,
       "length": 83,
       "value": "\"Site not available. Aborting setting up live observation medra. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48223,
+      "offset": 48347,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 48708,
+      "offset": 48832,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 52201,
+      "offset": 52325,
       "length": 22,
       "value": "\"cleanedOnFirstLaunch\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 52252,
+      "offset": 52376,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 52423,
+      "offset": 52547,
       "length": 63,
       "value": "\"Cleaning keychain because of '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 52460,
+      "offset": 52584,
       "length": 6,
       "value": "\"' is '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 52483,
+      "offset": 52607,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 53928,
+      "offset": 54052,
       "length": 56,
       "value": "\"Skipping handling visitor state update as it is 'nil'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 55690,
+      "offset": 56216,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56511,
+      "offset": 57037,
       "length": 83,
       "value": "\"Engagement (id: '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56545,
+      "offset": 57071,
       "length": 12,
       "value": "\"', status: '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56577,
+      "offset": 57103,
       "length": 18,
       "value": "\"') is recovered.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56705,
+      "offset": 57231,
       "length": 82,
       "value": "\"Engagement (id: '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56739,
+      "offset": 57265,
       "length": 12,
       "value": "\"', status: '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56771,
+      "offset": 57297,
       "length": 17,
       "value": "\"') is accepted.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 57665,
+      "offset": 58191,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 58304,
+      "offset": 58830,
       "length": 300,
       "value": "\"engagement_id='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 58362,
+      "offset": 58888,
       "length": 8,
       "value": "\"', sdk='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 58396,
+      "offset": 58922,
       "length": 8,
       "value": "\"', iOS='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 58431,
+      "offset": 58957,
       "length": 4,
       "value": "\"', device='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 58483,
+      "offset": 59009,
       "length": 22,
       "value": "\"', pushNotifications='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 58535,
+      "offset": 59061,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 58577,
+      "offset": 59103,
       "length": 3,
       "value": "\"'.\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 59492,
+      "offset": 60018,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 61197,
+      "offset": 61723,
       "length": 63,
       "value": "\"Can't set up media for engagement because visitor is missing.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 64663,
+      "offset": 65172,
       "length": 19,
       "value": "\"Engagement ended.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69051,
+      "offset": 69560,
       "length": 77,
       "value": "\"Media upgrade has been successful. engagement_id='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69125,
+      "offset": 69634,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69219,
+      "offset": 69728,
       "length": 89,
       "value": "\"Error posting media upgrade of type '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69285,
+      "offset": 69794,
       "length": 10,
       "value": "\"'. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69305,
+      "offset": 69814,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69584,
+      "offset": 70093,
       "length": 41,
       "value": "\"Media upgrade failed. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69622,
+      "offset": 70131,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69791,
+      "offset": 70843,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69850,
+      "offset": 70902,
       "length": 23,
       "value": "\"capabilities:response\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69791,
+      "offset": 70843,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69850,
+      "offset": 70902,
       "length": 23,
       "value": "\"capabilities:response\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 71761,
+      "offset": 72813,
       "length": 94,
       "value": "\"Screen sharing failed with error 'screenSharingNotAvailable'. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 71852,
+      "offset": 72904,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 72096,
+      "offset": 73148,
       "length": 93,
       "value": "\"Screen sharing failed with error 'notAvailableOnIOSVersion'. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 72186,
+      "offset": 73238,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 72416,
+      "offset": 73468,
       "length": 78,
       "value": "\"Connection failed with error 'proposalError'. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 72491,
+      "offset": 73543,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 72709,
+      "offset": 73761,
       "length": 76,
       "value": "\"RTCClient failed with error 'noConnection'. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 72782,
+      "offset": 73834,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 72995,
+      "offset": 74047,
       "length": 72,
       "value": "\"Medra failed with error 'networkError'. Reason='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 73064,
+      "offset": 74116,
       "length": 4,
       "value": "\"'.\""
     },
@@ -54324,168 +54397,168 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 2591,
+      "offset": 2487,
       "length": 58,
       "value": "\"Queue ID array contains invalid Queue IDs: \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 2648,
+      "offset": 2544,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 5682,
+      "offset": 5315,
       "length": 18,
       "value": "\"Unexpected error\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 6602,
+      "offset": 6235,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 8196,
+      "offset": 7676,
       "length": 18,
       "value": "\"Unexpected error\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 11260,
+      "offset": 10589,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 11632,
+      "offset": 10961,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 12023,
+      "offset": 11352,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 12798,
+      "offset": 12127,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 13770,
+      "offset": 13099,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 13882,
+      "offset": 13211,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 14669,
+      "offset": 13998,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 14907,
+      "offset": 14236,
       "length": 69,
       "value": "\"Failed to create UUID with queue ticket ID. id='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 14973,
+      "offset": 14302,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 15005,
+      "offset": 14334,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 15034,
+      "offset": 14363,
       "length": 40,
       "value": "\"The queue ticket ID is not valid UUID.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 15455,
+      "offset": 14784,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 15646,
+      "offset": 14975,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "Array",
-      "offset": 17831,
+      "offset": 17160,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 19764,
+      "offset": 19093,
       "length": 52,
       "value": "\"Subscribing failed. Queue identifiers are missing.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 19912,
+      "offset": 19241,
       "length": 7,
       "value": "\"watch\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 19931,
+      "offset": 19260,
       "length": 8,
       "value": "\"topics\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 19956,
+      "offset": 19285,
       "length": 13,
       "value": "\"queue:\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 19968,
+      "offset": 19297,
       "length": 5,
       "value": "\"\""
     },
@@ -54793,42 +54866,42 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.SecureConversations.swift",
       "kind": "BooleanLiteral",
-      "offset": 25248,
+      "offset": 25243,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.SecureConversations.swift",
       "kind": "BooleanLiteral",
-      "offset": 25502,
+      "offset": 25497,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.SecureConversations.swift",
       "kind": "IntegerLiteral",
-      "offset": 25930,
+      "offset": 25925,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.SecureConversations.swift",
       "kind": "BooleanLiteral",
-      "offset": 26811,
+      "offset": 26806,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.SecureConversations.swift",
       "kind": "BooleanLiteral",
-      "offset": 27069,
+      "offset": 27064,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.SecureConversations.swift",
       "kind": "BooleanLiteral",
-      "offset": 28213,
+      "offset": 28208,
       "length": 4,
       "value": "true"
     },
@@ -55052,7 +55125,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/QueueForEngagementOptions.swift",
       "kind": "BooleanLiteral",
-      "offset": 2298,
+      "offset": 1574,
       "length": 4,
       "value": "true"
     },
@@ -55409,70 +55482,70 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.ApiRequestBuilder.swift",
       "kind": "StringLiteral",
-      "offset": 1343,
+      "offset": 1284,
       "length": 5,
       "value": "\"sdk\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.ApiRequestBuilder.swift",
       "kind": "StringLiteral",
-      "offset": 1616,
+      "offset": 1489,
       "length": 16,
       "value": "\"\/queue_tickets\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.ApiRequestBuilder.swift",
       "kind": "StringLiteral",
-      "offset": 1670,
+      "offset": 1543,
       "length": 12,
       "value": "\"site_ids[]\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.ApiRequestBuilder.swift",
       "kind": "StringLiteral",
-      "offset": 2123,
+      "offset": 1996,
       "length": 9,
       "value": "\"\/queues\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.ApiRequestBuilder.swift",
       "kind": "StringLiteral",
-      "offset": 2170,
+      "offset": 2043,
       "length": 12,
       "value": "\"site_ids[]\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.ApiRequestBuilder.swift",
       "kind": "StringLiteral",
-      "offset": 2542,
+      "offset": 2415,
       "length": 52,
       "value": "\"\/queue_tickets\/\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.ApiRequestBuilder.swift",
       "kind": "StringLiteral",
-      "offset": 2593,
+      "offset": 2466,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.ApiRequestBuilder.swift",
       "kind": "StringLiteral",
-      "offset": 2632,
+      "offset": 2505,
       "length": 12,
       "value": "\"site_ids[]\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.ApiRequestBuilder.swift",
       "kind": "IntegerLiteral",
-      "offset": 2858,
+      "offset": 2731,
       "length": 3,
       "value": "204"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/Enqueuer\/Enqueuer.ApiRequestBuilder.swift",
       "kind": "Dictionary",
-      "offset": 4686,
+      "offset": 4435,
       "length": 17,
       "value": "[(\"one_way\", true)]"
     },
