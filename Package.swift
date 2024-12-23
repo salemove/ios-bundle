@@ -31,8 +31,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "GliaCoreSDK",
-            url: "https://github.com/salemove/ios-bundle/releases/download/2.0.4/GliaCoreSDK.xcframework.zip",
-            checksum: "67eea14b995b29df2fffaedcb6a043f12a0f43ab27e8655b96f596cb4b3c6992"
+            url: "https://github.com/salemove/ios-bundle/releases/download/1.5.9/GliaCoreSDK.xcframework.zip",
+            checksum: "0db24656c38c3d33ba27bc7fed984687b444527ef63aef8d800dc8e87b72ec1e"
         ),
         .target(
             name: "GliaSDK",
