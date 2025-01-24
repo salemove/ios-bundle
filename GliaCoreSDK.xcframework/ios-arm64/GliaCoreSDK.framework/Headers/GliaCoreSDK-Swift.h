@@ -378,6 +378,18 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 
 
 
+
+@interface Engagement (SWIFT_EXTENSION(GliaCoreSDK))
+/// Calculates if engagement is transferred Secure Conversation.
+/// \param engagement. 
+///
+///
+/// returns:
+/// Boolean value indicating whether it’s transferred Secure Conversation.
++ (BOOL)isTransferredSecureConversation:(Engagement * _Nonnull)engagement SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 /// Error of the Engagement
 typedef SWIFT_ENUM(NSInteger, EngagementError, open) {
 /// The Operator is unavailable for an Engagement.
@@ -542,16 +554,15 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+
+
+
 @class Queue;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Deprecated.
 - (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.");
 @end
-
-
-
-
 
 
 
@@ -615,6 +626,13 @@ enum LogLevel : NSInteger;
 
 
 
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
+@end
+
+
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Uploads a file to an engagement. The uploaded file can be later sent as part of a chat message attachments.
 /// If Glia’s servers require a security check for the uploaded file, then it will be triggered automatically. The completion
@@ -675,13 +693,6 @@ enum LogLevel : NSInteger;
 /// \param completion A callback that will return an <code>EngagementFileData</code> object if successful, or <code>InternalError</code>.
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, GliaCoreError * _Nullable))completion;
-@end
-
-
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
 @end
 
 

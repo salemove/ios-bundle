@@ -537,19 +537,11 @@ public protocol VideoStreamable : AnyObject {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
   @objc deinit
 }
-extension GliaCoreSDK.GliaCore.Authentication {
-  @available(*, deprecated, message: "Use `GliaCore.Authentication` to authenticate visitor.")
-  public func authenticate(with idToken: GliaCoreSDK.GliaCore.IdToken, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
-}
 extension GliaCoreSDK.GliaCore {
   @available(*, deprecated, message: "Use queueForEngagement(using:completion: instead.")
   final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping GliaCoreSDK.QueueTicketBlock)
   @available(*, deprecated, message: "Use queueForEngagement(using:completion: instead.")
   final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, options: GliaCoreSDK.EngagementOptions?, completion: @escaping GliaCoreSDK.QueueTicketBlock)
-}
-extension GliaCoreSDK.GliaCore {
-  @available(*, deprecated, message: "Use the `configure` method that provides a `Result` in its completion.")
-  final public func configure(with sdkConfiguration: GliaCoreSDK.GliaCore.Configuration, completion: (() -> Swift.Void)? = nil)
 }
 @available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
 @objc public enum ScreenSharingStatus : Swift.Int {
@@ -977,7 +969,7 @@ extension GliaCoreSDK.GliaCore.Authentication {
 }
 extension GliaCoreSDK.GliaCore.Authentication {
   public enum Error : Swift.Error {
-    case failedToAuthenticatWithIdToken
+    case failedToAuthenticateWithIdToken
     case notAuthenticated
     case visitorMissing
     case expiredAccessToken
@@ -1351,8 +1343,12 @@ public struct QueueForEngagementOptions {
   public var mediaStreams: GliaCoreSDK.Engagement.Media
   public var status: GliaCoreSDK.Engagement.Status
   final public let capabilities: GliaCoreSDK.Engagement.Capabilities?
-  public init(id: Swift.String, engagedOperator: GliaCoreSDK.Operator?, source: GliaCoreSDK.EngagementSource, fetchSurvey: @escaping GliaCoreSDK.Engagement.FetchSurvey, restartedFromEngagementId: Swift.String? = nil, mediaStreams: GliaCoreSDK.Engagement.Media, status: GliaCoreSDK.Engagement.Status, capabilities: GliaCoreSDK.Engagement.Capabilities?)
+  final public let actionOnEnd: GliaCoreSDK.Engagement.ActionOnEnd
+  public init(id: Swift.String, engagedOperator: GliaCoreSDK.Operator?, source: GliaCoreSDK.EngagementSource, fetchSurvey: @escaping GliaCoreSDK.Engagement.FetchSurvey, restartedFromEngagementId: Swift.String? = nil, mediaStreams: GliaCoreSDK.Engagement.Media, status: GliaCoreSDK.Engagement.Status, capabilities: GliaCoreSDK.Engagement.Capabilities?, actionOnEnd: GliaCoreSDK.Engagement.ActionOnEnd)
   @objc deinit
+}
+extension GliaCoreSDK.Engagement {
+  @objc public static func isTransferredSecureConversation(_ engagement: GliaCoreSDK.Engagement) -> Swift.Bool
 }
 extension GliaCoreSDK.Engagement {
   public typealias FetchSurveyCallback = (Swift.Result<GliaCoreSDK.Survey?, GliaCoreSDK.GliaCoreError>) -> Swift.Void
@@ -1381,6 +1377,15 @@ extension GliaCoreSDK.Engagement {
   public enum Status : Swift.Equatable {
     case engaged, transferring, unknown(Swift.String)
     public static func == (a: GliaCoreSDK.Engagement.Status, b: GliaCoreSDK.Engagement.Status) -> Swift.Bool
+  }
+}
+extension GliaCoreSDK.Engagement {
+  public enum ActionOnEnd : Swift.Equatable {
+    case retain
+    case showSurvey
+    case showEndedNotification
+    case unknown(Swift.String)
+    public static func == (a: GliaCoreSDK.Engagement.ActionOnEnd, b: GliaCoreSDK.Engagement.ActionOnEnd) -> Swift.Bool
   }
 }
 @objc public class MediaUpgradeOffer : ObjectiveC.NSObject {
