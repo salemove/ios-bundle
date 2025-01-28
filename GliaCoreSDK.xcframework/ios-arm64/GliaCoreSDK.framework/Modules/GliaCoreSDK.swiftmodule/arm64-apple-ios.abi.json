@@ -52828,7 +52828,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.0.5\""
+      "value": "\"2.0.6\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -54625,140 +54625,140 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 7761,
+      "offset": 7813,
       "length": 18,
       "value": "\"Unexpected error\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 10674,
+      "offset": 10726,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 11046,
+      "offset": 11098,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 11437,
+      "offset": 11489,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 12212,
+      "offset": 12264,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 13184,
+      "offset": 13236,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 13296,
+      "offset": 13348,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 14083,
+      "offset": 14135,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 14321,
+      "offset": 14373,
       "length": 69,
       "value": "\"Failed to create UUID with queue ticket ID. id='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 14387,
+      "offset": 14439,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 14419,
+      "offset": 14471,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 14448,
+      "offset": 14500,
       "length": 40,
       "value": "\"The queue ticket ID is not valid UUID.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 14869,
+      "offset": 14921,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "BooleanLiteral",
-      "offset": 15060,
+      "offset": 15112,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "Array",
-      "offset": 17245,
+      "offset": 17297,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 19178,
+      "offset": 19230,
       "length": 52,
       "value": "\"Subscribing failed. Queue identifiers are missing.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 19326,
+      "offset": 19378,
       "length": 7,
       "value": "\"watch\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 19345,
+      "offset": 19397,
       "length": 8,
       "value": "\"topics\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 19370,
+      "offset": 19422,
       "length": 13,
       "value": "\"queue:\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 19382,
+      "offset": 19434,
       "length": 5,
       "value": "\"\""
     },
