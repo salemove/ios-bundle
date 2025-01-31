@@ -47261,42 +47261,28 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/MessageManager\/MessageManager+SecureConversations.swift",
       "kind": "StringLiteral",
-      "offset": 4131,
-      "length": 20,
-      "value": "\"visitor_integrator\""
+      "offset": 4160,
+      "length": 43,
+      "value": "\"\/messaging\/messages\/\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/MessageManager\/MessageManager+SecureConversations.swift",
       "kind": "StringLiteral",
-      "offset": 4288,
-      "length": 54,
-      "value": "\"\/alpha\/messaging\/chat_messages\/\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/MessageManager\/MessageManager+SecureConversations.swift",
-      "kind": "StringLiteral",
-      "offset": 4341,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/MessageManager\/MessageManager+SecureConversations.swift",
-      "kind": "StringLiteral",
-      "offset": 4357,
-      "length": 48,
-      "value": "\"\/messaging\/chat_messages\/\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/MessageManager\/MessageManager+SecureConversations.swift",
-      "kind": "StringLiteral",
-      "offset": 4404,
+      "offset": 4202,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/MessageManager\/MessageManager+SecureConversations.swift",
       "kind": "StringLiteral",
-      "offset": 5039,
+      "offset": 4553,
+      "length": 21,
+      "value": "\"secure_conversation\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/MessageManager\/MessageManager+SecureConversations.swift",
+      "kind": "StringLiteral",
+      "offset": 4854,
       "length": 36,
       "value": "\"\/messaging\/mark_chat_messages_read\""
     },
@@ -52828,7 +52814,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.0.6\""
+      "value": "\"2.0.7\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -55097,13 +55083,6 @@
       "offset": 27164,
       "length": 5,
       "value": "false"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.SecureConversations.swift",
-      "kind": "BooleanLiteral",
-      "offset": 28308,
-      "length": 4,
-      "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Extensions\/UIView.swift",
