@@ -1312,9 +1312,6 @@ extension GliaCoreSDK.GliaCore.SecureConversations {
   final public func subscribeToPendingSecureConversationStatus(_ callback: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void) -> Swift.String?
   final public func unsubscribeFromPendingSecureConversationStatus(_ subscriptionToken: Swift.String)
 }
-extension GliaCoreSDK.GliaCore.SecureConversations {
-  #warning("Remove this feature flag once 'follow up' API is stable")
-}
 extension GliaCoreSDK.GliaCore {
   final public func startSocketObservation()
   final public func stopSocketObservation()
