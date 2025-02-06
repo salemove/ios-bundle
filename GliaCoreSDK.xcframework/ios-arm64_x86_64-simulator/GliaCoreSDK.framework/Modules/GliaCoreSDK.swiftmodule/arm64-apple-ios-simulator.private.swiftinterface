@@ -538,10 +538,10 @@ public protocol VideoStreamable : AnyObject {
   @objc deinit
 }
 extension GliaCoreSDK.GliaCore {
+  @available(*, deprecated, message: "Use queueForEngagement(using:replaceExisting:completion:) instead.")
+  final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, replaceExisting: Swift.Bool, completion: @escaping GliaCoreSDK.QueueTicketBlock)
   @available(*, deprecated, message: "Use queueForEngagement(using:completion: instead.")
-  final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, completion: @escaping GliaCoreSDK.QueueTicketBlock)
-  @available(*, deprecated, message: "Use queueForEngagement(using:completion: instead.")
-  final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, options: GliaCoreSDK.EngagementOptions?, completion: @escaping GliaCoreSDK.QueueTicketBlock)
+  final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, options: GliaCoreSDK.EngagementOptions?, replaceExisting: Swift.Bool, completion: @escaping GliaCoreSDK.QueueTicketBlock)
 }
 @available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
 @objc public enum ScreenSharingStatus : Swift.Int {
@@ -1254,7 +1254,7 @@ public struct PathMonitorClient {
   public init(networkPathPublisher: Combine.AnyPublisher<GliaCoreSDK.NetworkPath, Swift.Never>)
 }
 extension GliaCoreSDK.GliaCore {
-  final public func queueForEngagement(using options: GliaCoreSDK.QueueForEngagementOptions, completion: @escaping (Swift.Result<GliaCoreSDK.QueueTicket, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  final public func queueForEngagement(using options: GliaCoreSDK.QueueForEngagementOptions, replaceExisting: Swift.Bool, completion: @escaping (Swift.Result<GliaCoreSDK.QueueTicket, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
   @objc final public func dequeueFromActiveTickets(completion: @escaping GliaCoreSDK.SuccessBlock)
   @objc final public func cancel(queueTicket: GliaCoreSDK.QueueTicket, completion: @escaping GliaCoreSDK.SuccessBlock)
   @objc final public func listQueues(completion: @escaping GliaCoreSDK.QueueRequestBlock)
