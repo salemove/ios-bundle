@@ -42715,14 +42715,14 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Data\/StateRepository.swift",
       "kind": "BooleanLiteral",
-      "offset": 1214,
+      "offset": 1330,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Data\/StateRepository.swift",
       "kind": "BooleanLiteral",
-      "offset": 1556,
+      "offset": 1680,
       "length": 5,
       "value": "false"
     },
@@ -52832,7 +52832,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.0.8\""
+      "value": "\"2.0.9\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -55077,35 +55077,35 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.SecureConversations.swift",
       "kind": "BooleanLiteral",
-      "offset": 25343,
+      "offset": 25408,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.SecureConversations.swift",
       "kind": "BooleanLiteral",
-      "offset": 25597,
+      "offset": 25662,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.SecureConversations.swift",
       "kind": "IntegerLiteral",
-      "offset": 26025,
+      "offset": 26090,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.SecureConversations.swift",
       "kind": "BooleanLiteral",
-      "offset": 26906,
+      "offset": 26971,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.SecureConversations.swift",
       "kind": "BooleanLiteral",
-      "offset": 27164,
+      "offset": 27229,
       "length": 5,
       "value": "false"
     },
