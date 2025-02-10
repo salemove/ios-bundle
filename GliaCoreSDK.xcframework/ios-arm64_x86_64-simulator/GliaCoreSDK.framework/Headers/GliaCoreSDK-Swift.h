@@ -1249,6 +1249,7 @@ typedef SWIFT_ENUM(NSInteger, PushType, open) {
 };
 
 @class QueueState;
+@class NSDate;
 
 /// A queue for an Engagement
 SWIFT_CLASS("_TtC11GliaCoreSDK5Queue")
@@ -1261,6 +1262,8 @@ SWIFT_CLASS("_TtC11GliaCoreSDK5Queue")
 @property (nonatomic, readonly, strong) QueueState * _Nonnull state;
 /// Indicates that queue is the default. <code>true</code> if Queue is default
 @property (nonatomic, readonly) BOOL isDefault;
+/// Queue dispatch time
+@property (nonatomic, readonly, copy) NSDate * _Nonnull lastUpdated;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2646,6 +2649,7 @@ typedef SWIFT_ENUM(NSInteger, PushType, open) {
 };
 
 @class QueueState;
+@class NSDate;
 
 /// A queue for an Engagement
 SWIFT_CLASS("_TtC11GliaCoreSDK5Queue")
@@ -2658,6 +2662,8 @@ SWIFT_CLASS("_TtC11GliaCoreSDK5Queue")
 @property (nonatomic, readonly, strong) QueueState * _Nonnull state;
 /// Indicates that queue is the default. <code>true</code> if Queue is default
 @property (nonatomic, readonly) BOOL isDefault;
+/// Queue dispatch time
+@property (nonatomic, readonly, copy) NSDate * _Nonnull lastUpdated;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

@@ -1149,7 +1149,8 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
   @objc final public let name: Swift.String
   @objc final public let state: GliaCoreSDK.QueueState
   @objc final public let isDefault: Swift.Bool
-  public init(id: Swift.String, name: Swift.String, status: GliaCoreSDK.QueueStatus, isDefault: Swift.Bool, media: [GliaCoreSDK.MediaType])
+  @objc final public let lastUpdated: Foundation.Date
+  public init(id: Swift.String, name: Swift.String, status: GliaCoreSDK.QueueStatus, isDefault: Swift.Bool, media: [GliaCoreSDK.MediaType], lastUpdated: Foundation.Date)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class QueueState : ObjectiveC.NSObject, Swift.Decodable {
