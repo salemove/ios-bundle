@@ -125,7 +125,7 @@ public protocol PushNotificationsConfigurable {
 }
 public protocol EngagementHandling {
   func start(engagement: GliaCoreSDK.Engagement)
-  func end(engagement: GliaCoreSDK.Engagement?, with reason: GliaCoreSDK.EngagementEndingReason)
+  func end(with reason: GliaCoreSDK.EngagementEndingReason)
   var onEngagementRequest: GliaCoreSDK.RequestOfferBlock { get }
   var onEngagementTransfer: GliaCoreSDK.EngagementTransferBlock { get }
   var onEngagementTransferring: GliaCoreSDK.EngagementTransferringBlock { get }
