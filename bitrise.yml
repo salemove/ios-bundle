@@ -34,7 +34,7 @@ workflows:
                     trailing_string=${line#*$search_string}
 
                     # Splice the string to get the version number
-                    version=${trailing_string:0:5}
+                    version=${trailing_string%%/*}
                 fi
 
                 if [[ $line == *"checksum:"* ]] && [ $should_check_checksum == true ]; then
