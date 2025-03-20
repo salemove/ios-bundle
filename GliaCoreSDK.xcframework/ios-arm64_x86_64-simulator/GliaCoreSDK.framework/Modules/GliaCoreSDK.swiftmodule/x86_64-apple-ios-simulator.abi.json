@@ -6268,6 +6268,39 @@
             "funcSelfKind": "NonMutating"
           },
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(type:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MessageSender",
+                "printedName": "GliaCoreSDK.MessageSender",
+                "usr": "s:11GliaCoreSDK13MessageSenderV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SenderType",
+                "printedName": "GliaCoreSDK.MessageSender.SenderType",
+                "usr": "s:11GliaCoreSDK13MessageSenderV0E4TypeO"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11GliaCoreSDK13MessageSenderV4typeA2C0E4TypeO_tcfc",
+            "mangledName": "$s11GliaCoreSDK13MessageSenderV4typeA2C0E4TypeO_tcfc",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "SPIAccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "TypeDecl",
             "name": "SenderType",
             "printedName": "SenderType",
@@ -45781,7 +45814,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 8,
-      "value": "\"2.0.14\""
+      "value": "\"2.0.15\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
