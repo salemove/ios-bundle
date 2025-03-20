@@ -244,6 +244,9 @@ public struct MessageSender : Swift.Equatable, Swift.Decodable {
   public init(from decoder: any Swift.Decoder) throws
 }
 extension GliaCoreSDK.MessageSender {
+  @_spi(GliaWidgets) public init(type: GliaCoreSDK.MessageSender.SenderType)
+}
+extension GliaCoreSDK.MessageSender {
   public enum SenderType : Swift.Decodable, Swift.RawRepresentable, Swift.Equatable {
     case visitor
     case `operator`
