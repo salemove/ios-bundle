@@ -922,6 +922,12 @@ extension GliaCoreSDK.Request {
     case request
     case timedOut
     case accepted
+    case rejected
+    case visitorCancel
+    case operatorCancel
+    case visitorLeft
+    case operatorLeft
+    case error
     case unknown(Swift.String?)
     public init(from decoder: any Swift.Decoder) throws
     public static func == (a: GliaCoreSDK.Request.Outcome, b: GliaCoreSDK.Request.Outcome) -> Swift.Bool

@@ -24513,6 +24513,246 @@
               },
               {
                 "kind": "Var",
+                "name": "rejected",
+                "printedName": "rejected",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.Request.Outcome.Type) -> GliaCoreSDK.Request.Outcome",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Outcome",
+                        "printedName": "GliaCoreSDK.Request.Outcome",
+                        "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.Request.Outcome.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Outcome",
+                            "printedName": "GliaCoreSDK.Request.Outcome",
+                            "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO8rejectedyA2EmF",
+                "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO8rejectedyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "visitorCancel",
+                "printedName": "visitorCancel",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.Request.Outcome.Type) -> GliaCoreSDK.Request.Outcome",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Outcome",
+                        "printedName": "GliaCoreSDK.Request.Outcome",
+                        "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.Request.Outcome.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Outcome",
+                            "printedName": "GliaCoreSDK.Request.Outcome",
+                            "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO13visitorCancelyA2EmF",
+                "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO13visitorCancelyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "operatorCancel",
+                "printedName": "operatorCancel",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.Request.Outcome.Type) -> GliaCoreSDK.Request.Outcome",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Outcome",
+                        "printedName": "GliaCoreSDK.Request.Outcome",
+                        "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.Request.Outcome.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Outcome",
+                            "printedName": "GliaCoreSDK.Request.Outcome",
+                            "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO14operatorCancelyA2EmF",
+                "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO14operatorCancelyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "visitorLeft",
+                "printedName": "visitorLeft",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.Request.Outcome.Type) -> GliaCoreSDK.Request.Outcome",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Outcome",
+                        "printedName": "GliaCoreSDK.Request.Outcome",
+                        "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.Request.Outcome.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Outcome",
+                            "printedName": "GliaCoreSDK.Request.Outcome",
+                            "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO11visitorLeftyA2EmF",
+                "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO11visitorLeftyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "operatorLeft",
+                "printedName": "operatorLeft",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.Request.Outcome.Type) -> GliaCoreSDK.Request.Outcome",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Outcome",
+                        "printedName": "GliaCoreSDK.Request.Outcome",
+                        "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.Request.Outcome.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Outcome",
+                            "printedName": "GliaCoreSDK.Request.Outcome",
+                            "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO12operatorLeftyA2EmF",
+                "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO12operatorLeftyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "error",
+                "printedName": "error",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.Request.Outcome.Type) -> GliaCoreSDK.Request.Outcome",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Outcome",
+                        "printedName": "GliaCoreSDK.Request.Outcome",
+                        "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.Request.Outcome.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Outcome",
+                            "printedName": "GliaCoreSDK.Request.Outcome",
+                            "usr": "s:11GliaCoreSDK7RequestV7OutcomeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK7RequestV7OutcomeO5erroryA2EmF",
+                "mangledName": "$s11GliaCoreSDK7RequestV7OutcomeO5erroryA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
                 "name": "unknown",
                 "printedName": "unknown",
                 "children": [
@@ -45814,7 +46054,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 8,
-      "value": "\"2.0.15\""
+      "value": "\"2.0.16\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
