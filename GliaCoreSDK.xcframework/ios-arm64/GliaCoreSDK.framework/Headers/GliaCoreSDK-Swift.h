@@ -380,6 +380,9 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 
 
 
+
+
+
 @interface Engagement (SWIFT_EXTENSION(GliaCoreSDK))
 /// Calculates if engagement is transferred Secure Conversation.
 /// \param engagement. 
@@ -389,9 +392,6 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 /// Boolean value indicating whether it’s transferred Secure Conversation.
 + (BOOL)isTransferredSecureConversation:(Engagement * _Nonnull)engagement SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
-
 
 
 /// Error of the Engagement
@@ -555,13 +555,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-
-
-
-
-
-
-
 @class Queue;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -574,20 +567,19 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-enum LogLevel : NSInteger;
+
+
+
+
+
+
+
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+/// Deprecated.
+- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use cancel(queueTicket:completion:) instead.");
 @end
+
 
 @class MediaUpgradeOffer;
 
@@ -619,6 +611,21 @@ enum LogLevel : NSInteger;
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
+enum LogLevel : NSInteger;
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
 
 
 
@@ -630,10 +637,39 @@ enum LogLevel : NSInteger;
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Send a message preview to the Operator.
+/// The latest preview message will always be visible to the Operator. This means that Operators can use the
+/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
+/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
+/// experience.
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+/// </ul>
+/// \param message The content of the message preview.
+///
+/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
+///
+- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
+@end
+
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Clear the use session of the client library
 - (void)clearSession;
 @end
-
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -699,141 +735,17 @@ enum LogLevel : NSInteger;
 @end
 
 
-
-
 @class Message;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Send a chat message.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param message The content of the message that should be sent to the operator.
-///
-/// \param attachment An optional attachment to be sent to the operator. It is <code>nil</code> by default.
-///
-/// \param completion A callback that will return the <code>Message</code> or <code>GliaCoreError</code>.
-///
-- (void)sendWithMessage:(NSString * _Nonnull)message attachment:(Attachment * _Nullable)attachment completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion;
-/// Send a chat message.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param message A content of the message that should be queued.
-///
-/// \param queueID The ID of the queue to which the message is sent.
-///
-/// \param completion A callback that will return the <code>Message</code> or <code>GliaCoreError</code>.
-///
-- (void)sendWithMessage:(NSString * _Nonnull)message queueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion;
-/// Send a message preview to the Operator.
-/// The latest preview message will always be visible to the Operator. This means that Operators can use the
-/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
-/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
-/// experience.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param message The content of the message preview.
-///
-/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
-///
-- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
+/// Deprecated.
+- (void)sendWithMessage:(NSString * _Nonnull)message queueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(messagePayload:completion:)");
+/// Deprecated.
+- (void)sendWithMessage:(NSString * _Nonnull)message attachment:(Attachment * _Nullable)attachment completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(messagePayload:completion:)");
 @end
 
 
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Unavailable.
-- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Unavailable.
-- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Unavailable.
-- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_UNAVAILABLE_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
-@end
-
-
-
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Waits until there is an active engagement handled by the SDK.
-/// If the SDK already has an active engagement present, then it returns information about it through
-/// the <code>completion</code> block. Otherwise, it waits until the SDK receives information about an active engagement.
-/// This method is useful to decide if touching on a push notification after the app has been force closed should open
-/// an engagement screen. If there is an engagement restored by the SDK, then this method will notify soon after the
-/// SDK is initialized, and you can show an engagement screen. Otherwise, then you should do nothing about the push
-/// notification.
-/// \param completion The closure that will be called once the SDK detects an active engagement.
-///
-- (void)waitForActiveEngagementWithCompletion:(void (^ _Nonnull)(Engagement * _Nullable, GliaCoreError * _Nullable))completion;
-/// Cancel an ongoing EngagementRequest
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     engagementRequest: The ongoing EngagementRequest to be canceled
-///   </li>
-///   <li>
-///     completion: A callback that will return the canceling result or <code>GliaCoreError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 /// Requests information of the Operator(s) that are currently engaged with the Visitor
 /// <ul>
 ///   <li>
@@ -891,44 +803,24 @@ enum LogLevel : NSInteger;
 
 
 
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Unavailable.
+- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
+/// Unavailable.
+- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
+/// Unavailable.
+- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_UNAVAILABLE_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
+@end
+
+
+
+
+
+
 
 @class QueueTicket;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Cancels all active queue tickets that the current visitor has.
-/// Use this method to avoid attempting to enter a queue while the visitor is already enqueued. If you call <code>queueForEngagement</code>
-/// with <code>shouldCloseAllQueues</code> set to <code>true</code>, this method is called for you before attempting to enqueue into a new queue.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ContextError.invalidURL</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>QueueError.queueClosed</code>
-///   </li>
-///   <li>
-///     <code>QueueError.queueFull</code>
-///   </li>
-///   <li>
-///     <code>QueueError.invalidId</code>
-///   </li>
-/// </ul>
-/// \param completion A callback that will return <code>true</code> if successful, or <code>false</code> and a <code>GliaCoreError</code> if it fails.
-///
-- (void)dequeueFromActiveTicketsWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 /// Cancel the Engagement queueing with specific ticket
 /// If the request is unsuccessful for any reason then the completion will have an Error.
 /// The Error may have one of the following causes:
