@@ -32542,6 +32542,250 @@
                 ]
               },
               {
+                "kind": "Var",
+                "name": "generatedName",
+                "printedName": "generatedName",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:11GliaCoreSDK0aB0C11VisitorInfoV13generatedNameSSSgvp",
+                "mangledName": "$s11GliaCoreSDK0aB0C11VisitorInfoV13generatedNameSSSgvp",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl",
+                  "RawDocComment"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK0aB0C11VisitorInfoV13generatedNameSSSgvg",
+                    "mangledName": "$s11GliaCoreSDK0aB0C11VisitorInfoV13generatedNameSSSgvg",
+                    "moduleName": "GliaCoreSDK",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "href",
+                "printedName": "href",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:11GliaCoreSDK0aB0C11VisitorInfoV4hrefSSSgvp",
+                "mangledName": "$s11GliaCoreSDK0aB0C11VisitorInfoV4hrefSSSgvp",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl",
+                  "RawDocComment"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK0aB0C11VisitorInfoV4hrefSSSgvg",
+                    "mangledName": "$s11GliaCoreSDK0aB0C11VisitorInfoV4hrefSSSgvg",
+                    "moduleName": "GliaCoreSDK",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "id",
+                "printedName": "id",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:11GliaCoreSDK0aB0C11VisitorInfoV2idSSSgvp",
+                "mangledName": "$s11GliaCoreSDK0aB0C11VisitorInfoV2idSSSgvp",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl",
+                  "RawDocComment"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK0aB0C11VisitorInfoV2idSSSgvg",
+                    "mangledName": "$s11GliaCoreSDK0aB0C11VisitorInfoV2idSSSgvg",
+                    "moduleName": "GliaCoreSDK",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "externalId",
+                "printedName": "externalId",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:11GliaCoreSDK0aB0C11VisitorInfoV10externalIdSSSgvp",
+                "mangledName": "$s11GliaCoreSDK0aB0C11VisitorInfoV10externalIdSSSgvp",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "HasStorage",
+                  "AccessControl",
+                  "RawDocComment"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK0aB0C11VisitorInfoV10externalIdSSSgvg",
+                    "mangledName": "$s11GliaCoreSDK0aB0C11VisitorInfoV10externalIdSSSgvg",
+                    "moduleName": "GliaCoreSDK",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
                 "kind": "Constructor",
                 "name": "init",
                 "printedName": "init(from:)",
@@ -33656,6 +33900,188 @@
           },
           {
             "kind": "Function",
+            "name": "send",
+            "printedName": "send(message:queueID:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaCoreSDK.Message?, GliaCoreSDK.GliaCoreError?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(GliaCoreSDK.Message?, GliaCoreSDK.GliaCoreError?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "GliaCoreSDK.Message?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Message",
+                            "printedName": "GliaCoreSDK.Message",
+                            "usr": "c:@M@GliaCoreSDK@objc(cs)Message"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "GliaCoreSDK.GliaCoreError?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaCoreError",
+                            "printedName": "GliaCoreSDK.GliaCoreError",
+                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@GliaCoreSDK@objc(cs)GliaCore(im)sendWithMessage:queueID:completion:",
+            "mangledName": "$s11GliaCoreSDK0aB0C4send7message7queueID10completionySS_SSyAA7MessageCSg_AA0aB5ErrorCSgtctF",
+            "moduleName": "GliaCoreSDK",
+            "deprecated": true,
+            "objc_name": "sendWithMessage:queueID:completion:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "Available",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "send",
+            "printedName": "send(message:attachment:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.Attachment?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Attachment",
+                    "printedName": "GliaCoreSDK.Attachment",
+                    "usr": "c:@M@GliaCoreSDK@objc(cs)Attachment"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaCoreSDK.Message?, GliaCoreSDK.GliaCoreError?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(GliaCoreSDK.Message?, GliaCoreSDK.GliaCoreError?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "GliaCoreSDK.Message?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Message",
+                            "printedName": "GliaCoreSDK.Message",
+                            "usr": "c:@M@GliaCoreSDK@objc(cs)Message"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "GliaCoreSDK.GliaCoreError?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaCoreError",
+                            "printedName": "GliaCoreSDK.GliaCoreError",
+                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@GliaCoreSDK@objc(cs)GliaCore(im)sendWithMessage:attachment:completion:",
+            "mangledName": "$s11GliaCoreSDK0aB0C4send7message10attachment10completionySS_AA10AttachmentCSgyAA7MessageCSg_AA0aB5ErrorCSgtctF",
+            "moduleName": "GliaCoreSDK",
+            "deprecated": true,
+            "objc_name": "sendWithMessage:attachment:completion:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "Available",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "queueForEngagement",
             "printedName": "queueForEngagement(queueID:visitorContext:shouldCloseAllQueues:replaceExisting:completion:)",
             "children": [
@@ -33974,6 +34400,78 @@
           },
           {
             "kind": "Function",
+            "name": "cancel",
+            "printedName": "cancel(engagementRequest:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "EngagementRequest",
+                "printedName": "GliaCoreSDK.EngagementRequest",
+                "usr": "c:@M@GliaCoreSDK@objc(cs)EngagementRequest"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Bool, GliaCoreSDK.GliaCoreError?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.Bool, GliaCoreSDK.GliaCoreError?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "GliaCoreSDK.GliaCoreError?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaCoreError",
+                            "printedName": "GliaCoreSDK.GliaCoreError",
+                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@GliaCoreSDK@objc(cs)GliaCore(im)cancelWithEngagementRequest:completion:",
+            "mangledName": "$s11GliaCoreSDK0aB0C6cancel17engagementRequest10completionyAA010EngagementF0C_ySb_AA0aB5ErrorCSgtctF",
+            "moduleName": "GliaCoreSDK",
+            "deprecated": true,
+            "objc_name": "cancelWithEngagementRequest:completion:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "Available",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "requestMediaUpgrade",
             "printedName": "requestMediaUpgrade(offer:completion:)",
             "children": [
@@ -34227,290 +34725,19 @@
               }
             ],
             "declKind": "Func",
-            "usr": "c:@CM@GliaCoreSDK@objc(cs)GliaCore(im)waitForActiveEngagementWithCompletion:",
+            "usr": "s:11GliaCoreSDK0aB0C23waitForActiveEngagement10completionyyAA0G0CSg_AA0aB5ErrorCSgtc_tF",
             "mangledName": "$s11GliaCoreSDK0aB0C23waitForActiveEngagement10completionyyAA0G0CSg_AA0aB5ErrorCSgtc_tF",
             "moduleName": "GliaCoreSDK",
-            "objc_name": "waitForActiveEngagementWithCompletion:",
             "declAttributes": [
               "Final",
               "AccessControl",
-              "ObjC",
+              "SPIAccessControl",
               "RawDocComment"
             ],
             "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "requestEngagementWith",
-            "printedName": "requestEngagementWith(selectedOperator:visitorContext:completion:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Operator",
-                "printedName": "GliaCoreSDK.Operator",
-                "usr": "c:@M@GliaCoreSDK@objc(cs)Operator"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "GliaCoreSDK.VisitorContext?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "VisitorContext",
-                    "printedName": "GliaCoreSDK.VisitorContext",
-                    "usr": "c:@M@GliaCoreSDK@objc(cs)VisitorContext"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(GliaCoreSDK.EngagementRequest?, GliaCoreSDK.GliaCoreError?) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Tuple",
-                    "printedName": "(GliaCoreSDK.EngagementRequest?, GliaCoreSDK.GliaCoreError?)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.EngagementRequest?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "EngagementRequest",
-                            "printedName": "GliaCoreSDK.EngagementRequest",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)EngagementRequest"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.GliaCoreError?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "GliaCoreError",
-                            "printedName": "GliaCoreSDK.GliaCoreError",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ]
-                  }
-                ]
-              }
+            "spi_group_names": [
+              "TestingApp"
             ],
-            "declKind": "Func",
-            "usr": "s:11GliaCoreSDK0aB0C21requestEngagementWith16selectedOperator14visitorContext10completionyAA0H0C_AA07VisitorJ0CSgyAA0E7RequestCSg_AA0aB5ErrorCSgtctF",
-            "mangledName": "$s11GliaCoreSDK0aB0C21requestEngagementWith16selectedOperator14visitorContext10completionyAA0H0C_AA07VisitorJ0CSgyAA0E7RequestCSg_AA0aB5ErrorCSgtctF",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "Final",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "requestEngagementWith",
-            "printedName": "requestEngagementWith(selectedOperator:visitorContext:mediaType:options:completion:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Operator",
-                "printedName": "GliaCoreSDK.Operator",
-                "usr": "c:@M@GliaCoreSDK@objc(cs)Operator"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "GliaCoreSDK.VisitorContext?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "VisitorContext",
-                    "printedName": "GliaCoreSDK.VisitorContext",
-                    "usr": "c:@M@GliaCoreSDK@objc(cs)VisitorContext"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "MediaType",
-                "printedName": "GliaCoreSDK.MediaType",
-                "usr": "s:11GliaCoreSDK9MediaTypeO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "GliaCoreSDK.EngagementOptions?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "EngagementOptions",
-                    "printedName": "GliaCoreSDK.EngagementOptions",
-                    "usr": "s:11GliaCoreSDK17EngagementOptionsV"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(GliaCoreSDK.EngagementRequest?, GliaCoreSDK.GliaCoreError?) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Tuple",
-                    "printedName": "(GliaCoreSDK.EngagementRequest?, GliaCoreSDK.GliaCoreError?)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.EngagementRequest?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "EngagementRequest",
-                            "printedName": "GliaCoreSDK.EngagementRequest",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)EngagementRequest"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.GliaCoreError?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "GliaCoreError",
-                            "printedName": "GliaCoreSDK.GliaCoreError",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:11GliaCoreSDK0aB0C21requestEngagementWith16selectedOperator14visitorContext9mediaType7options10completionyAA0H0C_AA07VisitorJ0CSgAA05MediaL0OAA0E7OptionsVSgyAA0E7RequestCSg_AA0aB5ErrorCSgtctF",
-            "mangledName": "$s11GliaCoreSDK0aB0C21requestEngagementWith16selectedOperator14visitorContext9mediaType7options10completionyAA0H0C_AA07VisitorJ0CSgAA05MediaL0OAA0E7OptionsVSgyAA0E7RequestCSg_AA0aB5ErrorCSgtctF",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "Final",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "cancel",
-            "printedName": "cancel(engagementRequest:completion:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "EngagementRequest",
-                "printedName": "GliaCoreSDK.EngagementRequest",
-                "usr": "c:@M@GliaCoreSDK@objc(cs)EngagementRequest"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(Swift.Bool, GliaCoreSDK.GliaCoreError?) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Tuple",
-                    "printedName": "(Swift.Bool, GliaCoreSDK.GliaCoreError?)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Bool",
-                        "printedName": "Swift.Bool",
-                        "usr": "s:Sb"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.GliaCoreError?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "GliaCoreError",
-                            "printedName": "GliaCoreSDK.GliaCoreError",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@CM@GliaCoreSDK@objc(cs)GliaCore(im)cancelWithEngagementRequest:completion:",
-            "mangledName": "$s11GliaCoreSDK0aB0C6cancel17engagementRequest10completionyAA010EngagementF0C_ySb_AA0aB5ErrorCSgtctF",
-            "moduleName": "GliaCoreSDK",
-            "objc_name": "cancelWithEngagementRequest:completion:",
-            "declAttributes": [
-              "Final",
-              "AccessControl",
-              "ObjC",
-              "RawDocComment"
-            ],
-            "isFromExtension": true,
             "funcSelfKind": "NonMutating"
           },
           {
@@ -34797,184 +35024,6 @@
                 "mangledName": "$ss9EscapableP"
               }
             ]
-          },
-          {
-            "kind": "Function",
-            "name": "send",
-            "printedName": "send(message:attachment:completion:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "hasDefaultArg": true,
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "GliaCoreSDK.Attachment?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Attachment",
-                    "printedName": "GliaCoreSDK.Attachment",
-                    "usr": "c:@M@GliaCoreSDK@objc(cs)Attachment"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(GliaCoreSDK.Message?, GliaCoreSDK.GliaCoreError?) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Tuple",
-                    "printedName": "(GliaCoreSDK.Message?, GliaCoreSDK.GliaCoreError?)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.Message?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Message",
-                            "printedName": "GliaCoreSDK.Message",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)Message"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.GliaCoreError?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "GliaCoreError",
-                            "printedName": "GliaCoreSDK.GliaCoreError",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@CM@GliaCoreSDK@objc(cs)GliaCore(im)sendWithMessage:attachment:completion:",
-            "mangledName": "$s11GliaCoreSDK0aB0C4send7message10attachment10completionySS_AA10AttachmentCSgyAA7MessageCSg_AA0aB5ErrorCSgtctF",
-            "moduleName": "GliaCoreSDK",
-            "objc_name": "sendWithMessage:attachment:completion:",
-            "declAttributes": [
-              "Final",
-              "AccessControl",
-              "ObjC",
-              "RawDocComment"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "send",
-            "printedName": "send(message:queueID:completion:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(GliaCoreSDK.Message?, GliaCoreSDK.GliaCoreError?) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Tuple",
-                    "printedName": "(GliaCoreSDK.Message?, GliaCoreSDK.GliaCoreError?)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.Message?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Message",
-                            "printedName": "GliaCoreSDK.Message",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)Message"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.GliaCoreError?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "GliaCoreError",
-                            "printedName": "GliaCoreSDK.GliaCoreError",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@CM@GliaCoreSDK@objc(cs)GliaCore(im)sendWithMessage:queueID:completion:",
-            "mangledName": "$s11GliaCoreSDK0aB0C4send7message7queueID10completionySS_SSyAA7MessageCSg_AA0aB5ErrorCSgtctF",
-            "moduleName": "GliaCoreSDK",
-            "objc_name": "sendWithMessage:queueID:completion:",
-            "declAttributes": [
-              "Final",
-              "AccessControl",
-              "ObjC",
-              "RawDocComment"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
           },
           {
             "kind": "Function",
@@ -36717,70 +36766,6 @@
             "declAttributes": [
               "Final",
               "AccessControl",
-              "RawDocComment"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "dequeueFromActiveTickets",
-            "printedName": "dequeueFromActiveTickets(completion:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(Swift.Bool, GliaCoreSDK.GliaCoreError?) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Tuple",
-                    "printedName": "(Swift.Bool, GliaCoreSDK.GliaCoreError?)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Bool",
-                        "printedName": "Swift.Bool",
-                        "usr": "s:Sb"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "GliaCoreSDK.GliaCoreError?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "GliaCoreError",
-                            "printedName": "GliaCoreSDK.GliaCoreError",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@CM@GliaCoreSDK@objc(cs)GliaCore(im)dequeueFromActiveTicketsWithCompletion:",
-            "mangledName": "$s11GliaCoreSDK0aB0C24dequeueFromActiveTickets10completionyySb_AA0aB5ErrorCSgtc_tF",
-            "moduleName": "GliaCoreSDK",
-            "objc_name": "dequeueFromActiveTicketsWithCompletion:",
-            "declAttributes": [
-              "Final",
-              "AccessControl",
-              "ObjC",
               "RawDocComment"
             ],
             "isFromExtension": true,
@@ -43755,22 +43740,29 @@
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/Deprecated.swift",
+      "kind": "StringLiteral",
+      "offset": 3168,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/Deprecated.swift",
       "kind": "BooleanLiteral",
-      "offset": 400,
+      "offset": 3971,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/Deprecated.swift",
       "kind": "BooleanLiteral",
-      "offset": 1213,
+      "offset": 4784,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/Deprecated.swift",
       "kind": "IntegerLiteral",
-      "offset": 2417,
+      "offset": 5988,
       "length": 10,
       "value": "1"
     },
@@ -43871,13 +43863,6 @@
       "offset": 314,
       "length": 5,
       "value": "false"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Messageable.swift",
-      "kind": "StringLiteral",
-      "offset": 794,
-      "length": 2,
-      "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/UserDefaultsClient\/UserDefaultsClient.Mock.swift",
@@ -46053,8 +46038,8 @@
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/StaticValues.swift",
       "kind": "StringLiteral",
       "offset": 426,
-      "length": 8,
-      "value": "\"2.0.16\""
+      "length": 7,
+      "value": "\"2.1.0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",

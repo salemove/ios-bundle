@@ -103,6 +103,10 @@ extension GliaCoreSDK.GliaCore {
     public let note: Swift.String?
     public let customAttributes: [Swift.String : Swift.String]?
     public let banned: Swift.Bool
+    public let generatedName: Swift.String?
+    public let href: Swift.String?
+    public let id: Swift.String?
+    public let externalId: Swift.String?
     public static func == (a: GliaCoreSDK.GliaCore.VisitorInfo, b: GliaCoreSDK.GliaCore.VisitorInfo) -> Swift.Bool
     public init(from decoder: any Swift.Decoder) throws
   }
@@ -534,6 +538,10 @@ public protocol VideoStreamable : AnyObject {
   @objc deinit
 }
 extension GliaCoreSDK.GliaCore {
+  @available(*, deprecated, message: "Use send(messagePayload:completion:)")
+  @objc final public func send(message: Swift.String, queueID: Swift.String, completion: @escaping GliaCoreSDK.MessageBlock)
+  @available(*, deprecated, message: "Use send(messagePayload:completion:)")
+  @objc final public func send(message: Swift.String = "", attachment: GliaCoreSDK.Attachment? = nil, completion: @escaping GliaCoreSDK.MessageBlock)
   @available(*, deprecated, message: "Use queueForEngagement(using:replaceExisting:completion:) instead.")
   final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, replaceExisting: Swift.Bool, completion: @escaping GliaCoreSDK.QueueTicketBlock)
   @available(*, deprecated, message: "Use queueForEngagement(using:completion: instead.")
@@ -553,6 +561,10 @@ extension GliaCoreSDK.GliaCore {
 extension GliaCoreSDK.GliaCore {
   @available(*, deprecated, message: "Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.")
   @objc final public func subscribeForUpdates(forQueue queueIds: [Swift.String], onError: @escaping GliaCoreSDK.ErrorBlock, onUpdate: @escaping GliaCoreSDK.QueueUpdateBlock) -> Swift.String?
+}
+extension GliaCoreSDK.GliaCore {
+  @available(*, deprecated, message: "Use cancel(queueTicket:completion:) instead.")
+  @objc final public func cancel(engagementRequest: GliaCoreSDK.EngagementRequest, completion: @escaping GliaCoreSDK.SuccessBlock)
 }
 @available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
 @objc public class VisitorScreenSharingState : ObjectiveC.NSObject {
@@ -577,10 +589,6 @@ extension GliaCoreSDK.GliaCore {
   final public func submitSurveyAnswer(_ answers: [GliaCoreSDK.Survey.Answer], surveyId: GliaCoreSDK.Survey.Id, engagementId: Swift.String, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
 }
 extension GliaCoreSDK.GliaCore {
-  @objc final public func waitForActiveEngagement(completion: @escaping GliaCoreSDK.EngagementBlock)
-  final public func requestEngagementWith(selectedOperator: GliaCoreSDK.Operator, visitorContext: GliaCoreSDK.VisitorContext? = nil, completion: @escaping GliaCoreSDK.EngagementSessionBlock)
-  final public func requestEngagementWith(selectedOperator: GliaCoreSDK.Operator, visitorContext: GliaCoreSDK.VisitorContext? = nil, mediaType: GliaCoreSDK.MediaType, options: GliaCoreSDK.EngagementOptions? = nil, completion: @escaping GliaCoreSDK.EngagementSessionBlock)
-  @objc final public func cancel(engagementRequest: GliaCoreSDK.EngagementRequest, completion: @escaping GliaCoreSDK.SuccessBlock)
   @objc final public func requestEngagedOperator(completion: @escaping GliaCoreSDK.OperatorBlock)
   @objc final public func endEngagement(completion: @escaping GliaCoreSDK.SuccessBlock)
 }
@@ -608,8 +616,6 @@ extension GliaCoreSDK.GliaCore {
   }
 }
 extension GliaCoreSDK.GliaCore {
-  @objc final public func send(message: Swift.String = "", attachment: GliaCoreSDK.Attachment? = nil, completion: @escaping GliaCoreSDK.MessageBlock)
-  @objc final public func send(message: Swift.String, queueID: Swift.String, completion: @escaping GliaCoreSDK.MessageBlock)
   @objc final public func sendMessagePreview(message: Swift.String, completion: @escaping GliaCoreSDK.SuccessBlock)
   final public func send(messagePayload: GliaCoreSDK.SendMessagePayload, completion: @escaping (Swift.Result<GliaCoreSDK.Message, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
 }
@@ -1224,7 +1230,6 @@ public struct PathMonitorClient {
 }
 extension GliaCoreSDK.GliaCore {
   final public func queueForEngagement(using options: GliaCoreSDK.QueueForEngagementOptions, replaceExisting: Swift.Bool, completion: @escaping (Swift.Result<GliaCoreSDK.QueueTicket, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
-  @objc final public func dequeueFromActiveTickets(completion: @escaping GliaCoreSDK.SuccessBlock)
   @objc final public func cancel(queueTicket: GliaCoreSDK.QueueTicket, completion: @escaping GliaCoreSDK.SuccessBlock)
   @objc final public func listQueues(completion: @escaping GliaCoreSDK.QueueRequestBlock)
   public typealias SubscribeForQueuesUpdatesCompletion = ((Swift.Result<GliaCoreSDK.Queue, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
