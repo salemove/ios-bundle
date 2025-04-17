@@ -4949,6 +4949,13 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "WebRTC",
         "printedName": "WebRTC",
         "declKind": "Import",
@@ -5002,6 +5009,284 @@
         "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "PushType",
+        "printedName": "PushType",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "unidentified",
+            "printedName": "unidentified",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaCoreSDK.PushType.Type) -> (Swift.String) -> GliaCoreSDK.PushType",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> GliaCoreSDK.PushType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PushType",
+                        "printedName": "GliaCoreSDK.PushType",
+                        "usr": "s:11GliaCoreSDK8PushTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "GliaCoreSDK.PushType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PushType",
+                        "printedName": "GliaCoreSDK.PushType",
+                        "usr": "s:11GliaCoreSDK8PushTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11GliaCoreSDK8PushTypeO12unidentifiedyACSScACmF",
+            "mangledName": "$s11GliaCoreSDK8PushTypeO12unidentifiedyACSScACmF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "chatMessage",
+            "printedName": "chatMessage",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaCoreSDK.PushType.Type) -> GliaCoreSDK.PushType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushType",
+                    "printedName": "GliaCoreSDK.PushType",
+                    "usr": "s:11GliaCoreSDK8PushTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "GliaCoreSDK.PushType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PushType",
+                        "printedName": "GliaCoreSDK.PushType",
+                        "usr": "s:11GliaCoreSDK8PushTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11GliaCoreSDK8PushTypeO11chatMessageyA2CmF",
+            "mangledName": "$s11GliaCoreSDK8PushTypeO11chatMessageyA2CmF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "queueMessage",
+            "printedName": "queueMessage",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaCoreSDK.PushType.Type) -> GliaCoreSDK.PushType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushType",
+                    "printedName": "GliaCoreSDK.PushType",
+                    "usr": "s:11GliaCoreSDK8PushTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "GliaCoreSDK.PushType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PushType",
+                        "printedName": "GliaCoreSDK.PushType",
+                        "usr": "s:11GliaCoreSDK8PushTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11GliaCoreSDK8PushTypeO12queueMessageyA2CmF",
+            "mangledName": "$s11GliaCoreSDK8PushTypeO12queueMessageyA2CmF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.PushType?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushType",
+                    "printedName": "GliaCoreSDK.PushType",
+                    "usr": "s:11GliaCoreSDK8PushTypeO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11GliaCoreSDK8PushTypeO8rawValueACSgSS_tcfc",
+            "mangledName": "$s11GliaCoreSDK8PushTypeO8rawValueACSgSS_tcfc",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK8PushTypeO8rawValueSSvp",
+            "mangledName": "$s11GliaCoreSDK8PushTypeO8rawValueSSvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK8PushTypeO8rawValueSSvg",
+                "mangledName": "$s11GliaCoreSDK8PushTypeO8rawValueSSvg",
+                "moduleName": "GliaCoreSDK",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:11GliaCoreSDK8PushTypeO",
+        "mangledName": "$s11GliaCoreSDK8PushTypeO",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          }
+        ]
       },
       {
         "kind": "Import",
@@ -9055,6 +9340,13 @@
       },
       {
         "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "UserNotifications",
         "printedName": "UserNotifications",
         "declKind": "Import",
@@ -9103,7 +9395,7 @@
                         "kind": "TypeNominal",
                         "name": "Push",
                         "printedName": "GliaCoreSDK.Push",
-                        "usr": "c:@M@GliaCoreSDK@objc(cs)Push"
+                        "usr": "s:11GliaCoreSDK4PushC"
                       }
                     ]
                   }
@@ -9112,14 +9404,13 @@
               }
             ],
             "declKind": "Var",
-            "usr": "c:@M@GliaCoreSDK@objc(cs)PushNotifications(py)handler",
+            "usr": "s:11GliaCoreSDK17PushNotificationsC7handleryAA0D0CcSgvp",
             "mangledName": "$s11GliaCoreSDK17PushNotificationsC7handleryAA0D0CcSgvp",
             "moduleName": "GliaCoreSDK",
             "declAttributes": [
               "HasInitialValue",
               "HasStorage",
               "AccessControl",
-              "ObjC",
               "RawDocComment"
             ],
             "hasStorage": true,
@@ -9148,7 +9439,7 @@
                             "kind": "TypeNominal",
                             "name": "Push",
                             "printedName": "GliaCoreSDK.Push",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)Push"
+                            "usr": "s:11GliaCoreSDK4PushC"
                           }
                         ]
                       }
@@ -9157,13 +9448,10 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "c:@M@GliaCoreSDK@objc(cs)PushNotifications(im)handler",
+                "usr": "s:11GliaCoreSDK17PushNotificationsC7handleryAA0D0CcSgvg",
                 "mangledName": "$s11GliaCoreSDK17PushNotificationsC7handleryAA0D0CcSgvg",
                 "moduleName": "GliaCoreSDK",
                 "implicit": true,
-                "declAttributes": [
-                  "ObjC"
-                ],
                 "accessorKind": "get"
               },
               {
@@ -9195,7 +9483,7 @@
                             "kind": "TypeNominal",
                             "name": "Push",
                             "printedName": "GliaCoreSDK.Push",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)Push"
+                            "usr": "s:11GliaCoreSDK4PushC"
                           }
                         ]
                       }
@@ -9204,13 +9492,10 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "c:@M@GliaCoreSDK@objc(cs)PushNotifications(im)setHandler:",
+                "usr": "s:11GliaCoreSDK17PushNotificationsC7handleryAA0D0CcSgvs",
                 "mangledName": "$s11GliaCoreSDK17PushNotificationsC7handleryAA0D0CcSgvs",
                 "moduleName": "GliaCoreSDK",
                 "implicit": true,
-                "declAttributes": [
-                  "ObjC"
-                ],
                 "accessorKind": "set"
               },
               {
@@ -12312,6 +12597,13 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "CoreServices",
         "printedName": "CoreServices",
         "declKind": "Import",
@@ -14470,6 +14762,13 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -15031,6 +15330,13 @@
         "kind": "Import",
         "name": "AVFoundation",
         "printedName": "AVFoundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "GliaCoreSDK"
       },
@@ -16294,6 +16600,13 @@
         "kind": "Import",
         "name": "Combine",
         "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "GliaCoreSDK"
       },
@@ -21059,883 +21372,6 @@
         "moduleName": "GliaCoreSDK"
       },
       {
-        "kind": "TypeDecl",
-        "name": "Push",
-        "printedName": "Push",
-        "children": [
-          {
-            "kind": "Var",
-            "name": "actionIdentifier",
-            "printedName": "actionIdentifier",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@M@GliaCoreSDK@objc(cs)Push(py)actionIdentifier",
-            "mangledName": "$s11GliaCoreSDK4PushC16actionIdentifierSSvp",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "HasStorage",
-              "SetterAccess",
-              "AccessControl",
-              "ObjC",
-              "RawDocComment"
-            ],
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@M@GliaCoreSDK@objc(cs)Push(im)actionIdentifier",
-                "mangledName": "$s11GliaCoreSDK4PushC16actionIdentifierSSvg",
-                "moduleName": "GliaCoreSDK",
-                "implicit": true,
-                "declAttributes": [
-                  "ObjC"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "type",
-            "printedName": "type",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "PushType",
-                "printedName": "GliaCoreSDK.PushType",
-                "usr": "c:@M@GliaCoreSDK@E@PushType"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@M@GliaCoreSDK@objc(cs)Push(py)type",
-            "mangledName": "$s11GliaCoreSDK4PushC4typeAA0D4TypeOvp",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "HasStorage",
-              "SetterAccess",
-              "AccessControl",
-              "ObjC",
-              "RawDocComment"
-            ],
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "PushType",
-                    "printedName": "GliaCoreSDK.PushType",
-                    "usr": "c:@M@GliaCoreSDK@E@PushType"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@M@GliaCoreSDK@objc(cs)Push(im)type",
-                "mangledName": "$s11GliaCoreSDK4PushC4typeAA0D4TypeOvg",
-                "moduleName": "GliaCoreSDK",
-                "implicit": true,
-                "declAttributes": [
-                  "ObjC"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "timing",
-            "printedName": "timing",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "PushTiming",
-                "printedName": "GliaCoreSDK.PushTiming",
-                "usr": "c:@M@GliaCoreSDK@E@PushTiming"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@M@GliaCoreSDK@objc(cs)Push(py)timing",
-            "mangledName": "$s11GliaCoreSDK4PushC6timingAA0D6TimingOvp",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "HasStorage",
-              "SetterAccess",
-              "AccessControl",
-              "ObjC",
-              "RawDocComment"
-            ],
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "PushTiming",
-                    "printedName": "GliaCoreSDK.PushTiming",
-                    "usr": "c:@M@GliaCoreSDK@E@PushTiming"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@M@GliaCoreSDK@objc(cs)Push(im)timing",
-                "mangledName": "$s11GliaCoreSDK4PushC6timingAA0D6TimingOvg",
-                "moduleName": "GliaCoreSDK",
-                "implicit": true,
-                "declAttributes": [
-                  "ObjC"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(from:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Push",
-                "printedName": "GliaCoreSDK.Push",
-                "usr": "c:@M@GliaCoreSDK@objc(cs)Push"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Decoder",
-                "printedName": "any Swift.Decoder",
-                "usr": "s:s7DecoderP"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:11GliaCoreSDK4PushC4fromACs7Decoder_p_tKcfc",
-            "mangledName": "$s11GliaCoreSDK4PushC4fromACs7Decoder_p_tKcfc",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "Required",
-              "AccessControl"
-            ],
-            "throwing": true,
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Function",
-            "name": "encode",
-            "printedName": "encode(to:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Encoder",
-                "printedName": "any Swift.Encoder",
-                "usr": "s:s7EncoderP"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:11GliaCoreSDK4PushC6encode2toys7Encoder_p_tKF",
-            "mangledName": "$s11GliaCoreSDK4PushC6encode2toys7Encoder_p_tKF",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "throwing": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Push",
-                "printedName": "GliaCoreSDK.Push",
-                "usr": "c:@M@GliaCoreSDK@objc(cs)Push"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "c:@M@GliaCoreSDK@objc(cs)Push(im)init",
-            "mangledName": "$s11GliaCoreSDK4PushCACycfc",
-            "moduleName": "GliaCoreSDK",
-            "overriding": true,
-            "implicit": true,
-            "objc_name": "init",
-            "declAttributes": [
-              "Dynamic",
-              "ObjC",
-              "Override"
-            ],
-            "init_kind": "Designated"
-          }
-        ],
-        "declKind": "Class",
-        "usr": "c:@M@GliaCoreSDK@objc(cs)Push",
-        "mangledName": "$s11GliaCoreSDK4PushC",
-        "moduleName": "GliaCoreSDK",
-        "declAttributes": [
-          "AccessControl",
-          "ObjC",
-          "RawDocComment"
-        ],
-        "superclassUsr": "c:objc(cs)NSObject",
-        "hasMissingDesignatedInitializers": true,
-        "superclassNames": [
-          "ObjectiveC.NSObject"
-        ],
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "Decodable",
-            "printedName": "Decodable",
-            "usr": "s:Se",
-            "mangledName": "$sSe"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Encodable",
-            "printedName": "Encodable",
-            "usr": "s:SE",
-            "mangledName": "$sSE"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Copyable",
-            "printedName": "Copyable",
-            "usr": "s:s8CopyableP",
-            "mangledName": "$ss8CopyableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_KeyValueCodingAndObservingPublishing",
-            "printedName": "_KeyValueCodingAndObservingPublishing",
-            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
-            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_KeyValueCodingAndObserving",
-            "printedName": "_KeyValueCodingAndObserving",
-            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
-            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CustomStringConvertible",
-            "printedName": "CustomStringConvertible",
-            "usr": "s:s23CustomStringConvertibleP",
-            "mangledName": "$ss23CustomStringConvertibleP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CustomDebugStringConvertible",
-            "printedName": "CustomDebugStringConvertible",
-            "usr": "s:s28CustomDebugStringConvertibleP",
-            "mangledName": "$ss28CustomDebugStringConvertibleP"
-          }
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "PushType",
-        "printedName": "PushType",
-        "children": [
-          {
-            "kind": "Var",
-            "name": "unidentified",
-            "printedName": "unidentified",
-            "children": [
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(GliaCoreSDK.PushType.Type) -> GliaCoreSDK.PushType",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "PushType",
-                    "printedName": "GliaCoreSDK.PushType",
-                    "usr": "c:@M@GliaCoreSDK@E@PushType"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Metatype",
-                    "printedName": "GliaCoreSDK.PushType.Type",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "PushType",
-                        "printedName": "GliaCoreSDK.PushType",
-                        "usr": "c:@M@GliaCoreSDK@E@PushType"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "EnumElement",
-            "usr": "c:@M@GliaCoreSDK@E@PushType@PushTypeUnidentified",
-            "mangledName": "$s11GliaCoreSDK8PushTypeO12unidentifiedyA2CmF",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "RawDocComment",
-              "ObjC"
-            ],
-            "fixedbinaryorder": 0
-          },
-          {
-            "kind": "Var",
-            "name": "chatMessage",
-            "printedName": "chatMessage",
-            "children": [
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(GliaCoreSDK.PushType.Type) -> GliaCoreSDK.PushType",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "PushType",
-                    "printedName": "GliaCoreSDK.PushType",
-                    "usr": "c:@M@GliaCoreSDK@E@PushType"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Metatype",
-                    "printedName": "GliaCoreSDK.PushType.Type",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "PushType",
-                        "printedName": "GliaCoreSDK.PushType",
-                        "usr": "c:@M@GliaCoreSDK@E@PushType"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "EnumElement",
-            "usr": "c:@M@GliaCoreSDK@E@PushType@PushTypeChatMessage",
-            "mangledName": "$s11GliaCoreSDK8PushTypeO11chatMessageyA2CmF",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "RawDocComment",
-              "ObjC"
-            ],
-            "fixedbinaryorder": 1
-          },
-          {
-            "kind": "Var",
-            "name": "queueMessage",
-            "printedName": "queueMessage",
-            "children": [
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(GliaCoreSDK.PushType.Type) -> GliaCoreSDK.PushType",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "PushType",
-                    "printedName": "GliaCoreSDK.PushType",
-                    "usr": "c:@M@GliaCoreSDK@E@PushType"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Metatype",
-                    "printedName": "GliaCoreSDK.PushType.Type",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "PushType",
-                        "printedName": "GliaCoreSDK.PushType",
-                        "usr": "c:@M@GliaCoreSDK@E@PushType"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "EnumElement",
-            "usr": "c:@M@GliaCoreSDK@E@PushType@PushTypeQueueMessage",
-            "mangledName": "$s11GliaCoreSDK8PushTypeO12queueMessageyA2CmF",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "RawDocComment",
-              "ObjC"
-            ],
-            "fixedbinaryorder": 2
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(rawValue:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "GliaCoreSDK.PushType?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "PushType",
-                    "printedName": "GliaCoreSDK.PushType",
-                    "usr": "c:@M@GliaCoreSDK@E@PushType"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:11GliaCoreSDK8PushTypeO8rawValueACSgSi_tcfc",
-            "mangledName": "$s11GliaCoreSDK8PushTypeO8rawValueACSgSi_tcfc",
-            "moduleName": "GliaCoreSDK",
-            "implicit": true,
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Var",
-            "name": "rawValue",
-            "printedName": "rawValue",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:11GliaCoreSDK8PushTypeO8rawValueSivp",
-            "mangledName": "$s11GliaCoreSDK8PushTypeO8rawValueSivp",
-            "moduleName": "GliaCoreSDK",
-            "implicit": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:11GliaCoreSDK8PushTypeO8rawValueSivg",
-                "mangledName": "$s11GliaCoreSDK8PushTypeO8rawValueSivg",
-                "moduleName": "GliaCoreSDK",
-                "implicit": true,
-                "accessorKind": "get"
-              }
-            ]
-          }
-        ],
-        "declKind": "Enum",
-        "usr": "c:@M@GliaCoreSDK@E@PushType",
-        "mangledName": "$s11GliaCoreSDK8PushTypeO",
-        "moduleName": "GliaCoreSDK",
-        "declAttributes": [
-          "AccessControl",
-          "ObjC",
-          "RawDocComment"
-        ],
-        "enumRawTypeName": "Int",
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "Copyable",
-            "printedName": "Copyable",
-            "usr": "s:s8CopyableP",
-            "mangledName": "$ss8CopyableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "RawRepresentable",
-            "printedName": "RawRepresentable",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "RawValue",
-                "printedName": "RawValue",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:SY",
-            "mangledName": "$sSY"
-          }
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "PushTiming",
-        "printedName": "PushTiming",
-        "children": [
-          {
-            "kind": "Var",
-            "name": "inApp",
-            "printedName": "inApp",
-            "children": [
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(GliaCoreSDK.PushTiming.Type) -> GliaCoreSDK.PushTiming",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "PushTiming",
-                    "printedName": "GliaCoreSDK.PushTiming",
-                    "usr": "c:@M@GliaCoreSDK@E@PushTiming"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Metatype",
-                    "printedName": "GliaCoreSDK.PushTiming.Type",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "PushTiming",
-                        "printedName": "GliaCoreSDK.PushTiming",
-                        "usr": "c:@M@GliaCoreSDK@E@PushTiming"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "EnumElement",
-            "usr": "c:@M@GliaCoreSDK@E@PushTiming@PushTimingInApp",
-            "mangledName": "$s11GliaCoreSDK10PushTimingO5inAppyA2CmF",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "RawDocComment",
-              "ObjC"
-            ],
-            "fixedbinaryorder": 0
-          },
-          {
-            "kind": "Var",
-            "name": "background",
-            "printedName": "background",
-            "children": [
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(GliaCoreSDK.PushTiming.Type) -> GliaCoreSDK.PushTiming",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "PushTiming",
-                    "printedName": "GliaCoreSDK.PushTiming",
-                    "usr": "c:@M@GliaCoreSDK@E@PushTiming"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Metatype",
-                    "printedName": "GliaCoreSDK.PushTiming.Type",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "PushTiming",
-                        "printedName": "GliaCoreSDK.PushTiming",
-                        "usr": "c:@M@GliaCoreSDK@E@PushTiming"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "EnumElement",
-            "usr": "c:@M@GliaCoreSDK@E@PushTiming@PushTimingBackground",
-            "mangledName": "$s11GliaCoreSDK10PushTimingO10backgroundyA2CmF",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "RawDocComment",
-              "ObjC"
-            ],
-            "fixedbinaryorder": 1
-          },
-          {
-            "kind": "Var",
-            "name": "unidentified",
-            "printedName": "unidentified",
-            "children": [
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(GliaCoreSDK.PushTiming.Type) -> GliaCoreSDK.PushTiming",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "PushTiming",
-                    "printedName": "GliaCoreSDK.PushTiming",
-                    "usr": "c:@M@GliaCoreSDK@E@PushTiming"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Metatype",
-                    "printedName": "GliaCoreSDK.PushTiming.Type",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "PushTiming",
-                        "printedName": "GliaCoreSDK.PushTiming",
-                        "usr": "c:@M@GliaCoreSDK@E@PushTiming"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "EnumElement",
-            "usr": "c:@M@GliaCoreSDK@E@PushTiming@PushTimingUnidentified",
-            "mangledName": "$s11GliaCoreSDK10PushTimingO12unidentifiedyA2CmF",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "RawDocComment",
-              "ObjC"
-            ],
-            "fixedbinaryorder": 2
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(rawValue:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "GliaCoreSDK.PushTiming?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "PushTiming",
-                    "printedName": "GliaCoreSDK.PushTiming",
-                    "usr": "c:@M@GliaCoreSDK@E@PushTiming"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:11GliaCoreSDK10PushTimingO8rawValueACSgSi_tcfc",
-            "mangledName": "$s11GliaCoreSDK10PushTimingO8rawValueACSgSi_tcfc",
-            "moduleName": "GliaCoreSDK",
-            "implicit": true,
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Var",
-            "name": "rawValue",
-            "printedName": "rawValue",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:11GliaCoreSDK10PushTimingO8rawValueSivp",
-            "mangledName": "$s11GliaCoreSDK10PushTimingO8rawValueSivp",
-            "moduleName": "GliaCoreSDK",
-            "implicit": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:11GliaCoreSDK10PushTimingO8rawValueSivg",
-                "mangledName": "$s11GliaCoreSDK10PushTimingO8rawValueSivg",
-                "moduleName": "GliaCoreSDK",
-                "implicit": true,
-                "accessorKind": "get"
-              }
-            ]
-          }
-        ],
-        "declKind": "Enum",
-        "usr": "c:@M@GliaCoreSDK@E@PushTiming",
-        "mangledName": "$s11GliaCoreSDK10PushTimingO",
-        "moduleName": "GliaCoreSDK",
-        "declAttributes": [
-          "AccessControl",
-          "ObjC",
-          "RawDocComment"
-        ],
-        "enumRawTypeName": "Int",
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "Copyable",
-            "printedName": "Copyable",
-            "usr": "s:s8CopyableP",
-            "mangledName": "$ss8CopyableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "RawRepresentable",
-            "printedName": "RawRepresentable",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "RawValue",
-                "printedName": "RawValue",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:SY",
-            "mangledName": "$sSY"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Decodable",
-            "printedName": "Decodable",
-            "usr": "s:Se",
-            "mangledName": "$sSe"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Encodable",
-            "printedName": "Encodable",
-            "usr": "s:SE",
-            "mangledName": "$sSE"
-          }
-        ]
-      },
-      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -22199,6 +21635,13 @@
         "kind": "Import",
         "name": "Combine",
         "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "GliaCoreSDK"
       },
@@ -22908,6 +22351,176 @@
         "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "PushNotificationsActionProcessor",
+        "printedName": "PushNotificationsActionProcessor",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "secureMessagePushNotificationAction",
+            "printedName": "secureMessagePushNotificationAction",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvp",
+            "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "SPIAccessControl",
+              "RawDocComment"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvg",
+                "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvs",
+                "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvs",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvM",
+                "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvM",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC",
+        "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
       },
       {
         "kind": "Import",
@@ -31717,54 +31330,6 @@
           },
           {
             "kind": "Var",
-            "name": "pushNotifications",
-            "printedName": "pushNotifications",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "PushNotifications",
-                "printedName": "GliaCoreSDK.PushNotifications",
-                "usr": "c:@M@GliaCoreSDK@objc(cs)PushNotifications"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:11GliaCoreSDK0aB0C17pushNotificationsAA04PushE0Cvp",
-            "mangledName": "$s11GliaCoreSDK0aB0C17pushNotificationsAA04PushE0Cvp",
-            "moduleName": "GliaCoreSDK",
-            "declAttributes": [
-              "Final",
-              "HasStorage",
-              "SetterAccess",
-              "AccessControl"
-            ],
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "PushNotifications",
-                    "printedName": "GliaCoreSDK.PushNotifications",
-                    "usr": "c:@M@GliaCoreSDK@objc(cs)PushNotifications"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:11GliaCoreSDK0aB0C17pushNotificationsAA04PushE0Cvg",
-                "mangledName": "$s11GliaCoreSDK0aB0C17pushNotificationsAA04PushE0Cvg",
-                "moduleName": "GliaCoreSDK",
-                "implicit": true,
-                "declAttributes": [
-                  "Final"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
             "name": "localeProvider",
             "printedName": "localeProvider",
             "children": [
@@ -31854,6 +31419,102 @@
                   "Final"
                 ],
                 "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "pushNotifications",
+            "printedName": "pushNotifications",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PushNotifications",
+                "printedName": "GliaCoreSDK.PushNotifications",
+                "usr": "c:@M@GliaCoreSDK@objc(cs)PushNotifications"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK0aB0C17pushNotificationsAA04PushE0Cvp",
+            "mangledName": "$s11GliaCoreSDK0aB0C17pushNotificationsAA04PushE0Cvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushNotifications",
+                    "printedName": "GliaCoreSDK.PushNotifications",
+                    "usr": "c:@M@GliaCoreSDK@objc(cs)PushNotifications"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK0aB0C17pushNotificationsAA04PushE0Cvg",
+                "mangledName": "$s11GliaCoreSDK0aB0C17pushNotificationsAA04PushE0Cvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "pushNotificationsActionProcessor",
+            "printedName": "pushNotificationsActionProcessor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PushNotificationsActionProcessor",
+                "printedName": "GliaCoreSDK.PushNotificationsActionProcessor",
+                "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK0aB0C32pushNotificationsActionProcessorAA04PushefG0Cvp",
+            "mangledName": "$s11GliaCoreSDK0aB0C32pushNotificationsActionProcessorAA04PushefG0Cvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushNotificationsActionProcessor",
+                    "printedName": "GliaCoreSDK.PushNotificationsActionProcessor",
+                    "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK0aB0C32pushNotificationsActionProcessorAA04PushefG0Cvg",
+                "mangledName": "$s11GliaCoreSDK0aB0C32pushNotificationsActionProcessorAA04PushefG0Cvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
               }
             ]
           },
@@ -35574,7 +35235,7 @@
               {
                 "kind": "Function",
                 "name": "authenticate",
-                "printedName": "authenticate(with:externalAccessToken:completion:)",
+                "printedName": "authenticate(with:externalAccessToken:shouldRequestPushNotificationSystemPermission:completion:)",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -35656,6 +35317,36 @@
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
+                    "printedName": "(@escaping (Swift.Bool) -> ()) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Swift.Bool) -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Bool",
+                            "printedName": "Swift.Bool",
+                            "usr": "s:Sb"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
                     "printedName": "(Swift.Result<(), GliaCoreSDK.GliaCoreError>) -> ()",
                     "children": [
                       {
@@ -35686,8 +35377,8 @@
                   }
                 ],
                 "declKind": "Func",
-                "usr": "s:11GliaCoreSDK0aB0C14AuthenticationV12authenticate4with19externalAccessToken10completionyAA6TaggedVyAC_yt02idI0tSSG_AKyAC_ytAHtSSGSgys6ResultOyytAA0aB5ErrorCGctF",
-                "mangledName": "$s11GliaCoreSDK0aB0C14AuthenticationV12authenticate4with19externalAccessToken10completionyAA6TaggedVyAC_yt02idI0tSSG_AKyAC_ytAHtSSGSgys6ResultOyytAA0aB5ErrorCGctF",
+                "usr": "s:11GliaCoreSDK0aB0C14AuthenticationV12authenticate4with19externalAccessToken45shouldRequestPushNotificationSystemPermission10completionyAA6TaggedVyAC_yt02idI0tSSG_ALyAC_ytAHtSSGSgyySbccys6ResultOyytAA0aB5ErrorCGctF",
+                "mangledName": "$s11GliaCoreSDK0aB0C14AuthenticationV12authenticate4with19externalAccessToken45shouldRequestPushNotificationSystemPermission10completionyAA6TaggedVyAC_yt02idI0tSSG_ALyAC_ytAHtSSGSgyySbccys6ResultOyytAA0aB5ErrorCGctF",
                 "moduleName": "GliaCoreSDK",
                 "declAttributes": [
                   "AccessControl",
@@ -35806,7 +35497,7 @@
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
-                    "printedName": "(Swift.String, Swift.String?, @escaping (Swift.Result<(), any Swift.Error>) -> ()) -> ()",
+                    "printedName": "(Swift.String, Swift.String?, @escaping (@escaping (Swift.Bool) -> ()) -> (), @escaping (Swift.Result<(), any Swift.Error>) -> ()) -> ()",
                     "children": [
                       {
                         "kind": "TypeNominal",
@@ -35816,7 +35507,7 @@
                       {
                         "kind": "TypeNominal",
                         "name": "Tuple",
-                        "printedName": "(Swift.String, Swift.String?, (Swift.Result<(), any Swift.Error>) -> ())",
+                        "printedName": "(Swift.String, Swift.String?, (@escaping (Swift.Bool) -> ()) -> (), (Swift.Result<(), any Swift.Error>) -> ())",
                         "children": [
                           {
                             "kind": "TypeNominal",
@@ -35837,6 +35528,36 @@
                               }
                             ],
                             "usr": "s:Sq"
+                          },
+                          {
+                            "kind": "TypeFunc",
+                            "name": "Function",
+                            "printedName": "(@escaping (Swift.Bool) -> ()) -> ()",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Void",
+                                "printedName": "()"
+                              },
+                              {
+                                "kind": "TypeFunc",
+                                "name": "Function",
+                                "printedName": "(Swift.Bool) -> ()",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "Void",
+                                    "printedName": "()"
+                                  },
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "Bool",
+                                    "printedName": "Swift.Bool",
+                                    "usr": "s:Sb"
+                                  }
+                                ]
+                              }
+                            ]
                           },
                           {
                             "kind": "TypeFunc",
@@ -36010,8 +35731,8 @@
                   }
                 ],
                 "declKind": "Constructor",
-                "usr": "s:11GliaCoreSDK0aB0C14AuthenticationV23authenticateWithIdToken014deauthenticateF8Callback22isAuthenticatedClosure7refreshAEySS_SSSgys6ResultOyyts5Error_pGctc_yyANccSbycySS_AJyALyytAA0abP0CGctctcfc",
-                "mangledName": "$s11GliaCoreSDK0aB0C14AuthenticationV23authenticateWithIdToken014deauthenticateF8Callback22isAuthenticatedClosure7refreshAEySS_SSSgys6ResultOyyts5Error_pGctc_yyANccSbycySS_AJyALyytAA0abP0CGctctcfc",
+                "usr": "s:11GliaCoreSDK0aB0C14AuthenticationV23authenticateWithIdToken014deauthenticateF8Callback22isAuthenticatedClosure7refreshAEySS_SSSgyySbccys6ResultOyyts5Error_pGctc_yyANccSbycySS_AJyALyytAA0abP0CGctctcfc",
+                "mangledName": "$s11GliaCoreSDK0aB0C14AuthenticationV23authenticateWithIdToken014deauthenticateF8Callback22isAuthenticatedClosure7refreshAEySS_SSSgyySbccys6ResultOyyts5Error_pGctc_yyANccSbycySS_AJyALyytAA0abP0CGctctcfc",
                 "moduleName": "GliaCoreSDK",
                 "declAttributes": [
                   "AccessControl",
@@ -39737,6 +39458,13 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "AVFoundation",
         "printedName": "AVFoundation",
         "declKind": "Import",
@@ -42170,6 +41898,636 @@
         "moduleName": "GliaCoreSDK"
       },
       {
+        "kind": "TypeDecl",
+        "name": "Push",
+        "printedName": "Push",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "actionIdentifier",
+            "printedName": "actionIdentifier",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK4PushC16actionIdentifierSSvp",
+            "mangledName": "$s11GliaCoreSDK4PushC16actionIdentifierSSvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK4PushC16actionIdentifierSSvg",
+                "mangledName": "$s11GliaCoreSDK4PushC16actionIdentifierSSvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "type",
+            "printedName": "type",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PushType",
+                "printedName": "GliaCoreSDK.PushType",
+                "usr": "s:11GliaCoreSDK8PushTypeO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK4PushC4typeAA0D4TypeOvp",
+            "mangledName": "$s11GliaCoreSDK4PushC4typeAA0D4TypeOvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushType",
+                    "printedName": "GliaCoreSDK.PushType",
+                    "usr": "s:11GliaCoreSDK8PushTypeO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK4PushC4typeAA0D4TypeOvg",
+                "mangledName": "$s11GliaCoreSDK4PushC4typeAA0D4TypeOvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "timing",
+            "printedName": "timing",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PushTiming",
+                "printedName": "GliaCoreSDK.PushTiming",
+                "usr": "c:@M@GliaCoreSDK@E@PushTiming"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK4PushC6timingAA0D6TimingOvp",
+            "mangledName": "$s11GliaCoreSDK4PushC6timingAA0D6TimingOvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushTiming",
+                    "printedName": "GliaCoreSDK.PushTiming",
+                    "usr": "c:@M@GliaCoreSDK@E@PushTiming"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK4PushC6timingAA0D6TimingOvg",
+                "mangledName": "$s11GliaCoreSDK4PushC6timingAA0D6TimingOvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "visitorId",
+            "printedName": "visitorId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK4PushC9visitorIdSSSgvp",
+            "mangledName": "$s11GliaCoreSDK4PushC9visitorIdSSSgvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK4PushC9visitorIdSSSgvg",
+                "mangledName": "$s11GliaCoreSDK4PushC9visitorIdSSSgvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Push",
+                "printedName": "GliaCoreSDK.Push",
+                "usr": "s:11GliaCoreSDK4PushC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11GliaCoreSDK4PushC4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s11GliaCoreSDK4PushC4fromACs7Decoder_p_tKcfc",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Required",
+              "AccessControl"
+            ],
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK4PushC6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s11GliaCoreSDK4PushC6encode2toys7Encoder_p_tKF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Push",
+                "printedName": "GliaCoreSDK.Push",
+                "usr": "s:11GliaCoreSDK4PushC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Push",
+                "printedName": "GliaCoreSDK.Push",
+                "usr": "s:11GliaCoreSDK4PushC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK4PushC2eeoiySbAC_ACtFZ",
+            "mangledName": "$s11GliaCoreSDK4PushC2eeoiySbAC_ACtFZ",
+            "moduleName": "GliaCoreSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:11GliaCoreSDK4PushC",
+        "mangledName": "$s11GliaCoreSDK4PushC",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "PushTiming",
+        "printedName": "PushTiming",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "inApp",
+            "printedName": "inApp",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaCoreSDK.PushTiming.Type) -> GliaCoreSDK.PushTiming",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushTiming",
+                    "printedName": "GliaCoreSDK.PushTiming",
+                    "usr": "c:@M@GliaCoreSDK@E@PushTiming"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "GliaCoreSDK.PushTiming.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PushTiming",
+                        "printedName": "GliaCoreSDK.PushTiming",
+                        "usr": "c:@M@GliaCoreSDK@E@PushTiming"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@GliaCoreSDK@E@PushTiming@PushTimingInApp",
+            "mangledName": "$s11GliaCoreSDK10PushTimingO5inAppyA2CmF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 0
+          },
+          {
+            "kind": "Var",
+            "name": "background",
+            "printedName": "background",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaCoreSDK.PushTiming.Type) -> GliaCoreSDK.PushTiming",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushTiming",
+                    "printedName": "GliaCoreSDK.PushTiming",
+                    "usr": "c:@M@GliaCoreSDK@E@PushTiming"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "GliaCoreSDK.PushTiming.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PushTiming",
+                        "printedName": "GliaCoreSDK.PushTiming",
+                        "usr": "c:@M@GliaCoreSDK@E@PushTiming"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@GliaCoreSDK@E@PushTiming@PushTimingBackground",
+            "mangledName": "$s11GliaCoreSDK10PushTimingO10backgroundyA2CmF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 1
+          },
+          {
+            "kind": "Var",
+            "name": "unidentified",
+            "printedName": "unidentified",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaCoreSDK.PushTiming.Type) -> GliaCoreSDK.PushTiming",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushTiming",
+                    "printedName": "GliaCoreSDK.PushTiming",
+                    "usr": "c:@M@GliaCoreSDK@E@PushTiming"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "GliaCoreSDK.PushTiming.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PushTiming",
+                        "printedName": "GliaCoreSDK.PushTiming",
+                        "usr": "c:@M@GliaCoreSDK@E@PushTiming"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@GliaCoreSDK@E@PushTiming@PushTimingUnidentified",
+            "mangledName": "$s11GliaCoreSDK10PushTimingO12unidentifiedyA2CmF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 2
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.PushTiming?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PushTiming",
+                    "printedName": "GliaCoreSDK.PushTiming",
+                    "usr": "c:@M@GliaCoreSDK@E@PushTiming"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11GliaCoreSDK10PushTimingO8rawValueACSgSi_tcfc",
+            "mangledName": "$s11GliaCoreSDK10PushTimingO8rawValueACSgSi_tcfc",
+            "moduleName": "GliaCoreSDK",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK10PushTimingO8rawValueSivp",
+            "mangledName": "$s11GliaCoreSDK10PushTimingO8rawValueSivp",
+            "moduleName": "GliaCoreSDK",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK10PushTimingO8rawValueSivg",
+                "mangledName": "$s11GliaCoreSDK10PushTimingO8rawValueSivg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "c:@M@GliaCoreSDK@E@PushTiming",
+        "mangledName": "$s11GliaCoreSDK10PushTimingO",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "Int",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -43370,14 +43728,14 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Configurable.swift",
       "kind": "StringLiteral",
-      "offset": 13124,
+      "offset": 13154,
       "length": 18,
       "value": "\"https:\/\/glia.com\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Configurable.swift",
       "kind": "StringLiteral",
-      "offset": 13228,
+      "offset": 13258,
       "length": 17,
       "value": "\"https:\/\/glia.eu\""
     },
@@ -43447,14 +43805,14 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "Array",
-      "offset": 1843,
+      "offset": 1819,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 2044,
+      "offset": 2020,
       "length": 5,
       "value": "false"
     },
@@ -43907,30 +44265,51 @@
       "value": "\"\""
     },
     {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotificationManaging\/PushNotifications.Payload.swift",
+      "kind": "StringLiteral",
+      "offset": 143,
+      "length": 29,
+      "value": "\"secure_conversation_message\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotificationManaging\/PushNotifications.Payload.swift",
+      "kind": "StringLiteral",
+      "offset": 847,
+      "length": 16,
+      "value": "\"iosEnvironment\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotificationManaging\/PushNotifications.Payload.swift",
+      "kind": "StringLiteral",
+      "offset": 892,
+      "length": 16,
+      "value": "\"iosAppBundleId\""
+    },
+    {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "IntegerLiteral",
-      "offset": 2737,
+      "offset": 2802,
       "length": 2,
       "value": "25"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "StringLiteral",
-      "offset": 2841,
+      "offset": 2906,
       "length": 39,
       "value": "\"gliaCore.liveObservation.captureQueue\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "StringLiteral",
-      "offset": 3120,
+      "offset": 3185,
       "length": 13,
       "value": "\"GliaWidgets\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "StringLiteral",
-      "offset": 3157,
+      "offset": 3222,
       "length": 13,
       "value": "\"GliaCoreSDK\""
     },
@@ -44154,231 +44533,259 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2438,
+      "offset": 2428,
+      "length": 40,
+      "value": "\"engagement.secure_conversation.message\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
+      "kind": "StringLiteral",
+      "offset": 2514,
       "length": 43,
       "value": "\"engagement.chat.typing_indicator.operator\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2522,
+      "offset": 2598,
       "length": 39,
       "value": "\"engagement.files.security_scan_result\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2592,
+      "offset": 2668,
       "length": 21,
       "value": "\"engagement.transfer\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2649,
+      "offset": 2725,
       "length": 32,
       "value": "\"engagement.chat.system_message\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2724,
+      "offset": 2800,
       "length": 24,
       "value": "\"queued_message.created\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2799,
+      "offset": 2875,
       "length": 5,
       "value": "\"end\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2833,
+      "offset": 2909,
       "length": 8,
       "value": "\"cancel\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2870,
+      "offset": 2946,
       "length": 8,
       "value": "\"accept\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2929,
+      "offset": 3005,
       "length": 5,
       "value": "\"sdk\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2994,
+      "offset": 3070,
       "length": 12,
       "value": "\"omnibrowse\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3082,
+      "offset": 3174,
+      "length": 25,
+      "value": "\"engagement.chat.message\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
+      "kind": "StringLiteral",
+      "offset": 3235,
+      "length": 40,
+      "value": "\"engagement.secure_conversation.message\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
+      "kind": "StringLiteral",
+      "offset": 3318,
+      "length": 24,
+      "value": "\"queued_message.created\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
+      "kind": "StringLiteral",
+      "offset": 3418,
       "length": 6,
       "value": "\"apns\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3114,
+      "offset": 3450,
       "length": 5,
       "value": "\"wss\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3155,
+      "offset": 3491,
       "length": 26,
       "value": "\"\/notifications\/websocket\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3210,
+      "offset": 3546,
       "length": 8,
       "value": "\"pubsub\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3272,
+      "offset": 3608,
       "length": 20,
       "value": "\"Engagement started\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3318,
+      "offset": 3654,
       "length": 18,
       "value": "\"Engagement ended\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3365,
+      "offset": 3701,
       "length": 19,
       "value": "\"Engagement failed\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3414,
+      "offset": 3750,
       "length": 33,
       "value": "\"You have received a new message\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3478,
+      "offset": 3814,
       "length": 21,
       "value": "\"Engagement transfer\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3561,
+      "offset": 3897,
       "length": 5,
       "value": "\"env\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3596,
+      "offset": 3932,
       "length": 19,
       "value": "\"content_available\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3645,
+      "offset": 3981,
       "length": 9,
       "value": "\"message\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3680,
+      "offset": 4016,
       "length": 5,
       "value": "\"vsn\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3719,
+      "offset": 4055,
       "length": 14,
       "value": "\"access_token\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3794,
+      "offset": 4130,
       "length": 15,
       "value": "\"site_visitor:\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3843,
+      "offset": 4179,
       "length": 13,
       "value": "\"queue:multi\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3891,
+      "offset": 4227,
       "length": 16,
       "value": "\"visitor_state:\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3945,
+      "offset": 4281,
       "length": 19,
       "value": "\"visitor_volatile:\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4007,
+      "offset": 4343,
       "length": 25,
       "value": "\"engagement_annotations:\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4088,
+      "offset": 4424,
       "length": 9,
       "value": "\"nothing\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4125,
+      "offset": 4461,
       "length": 66,
       "value": "\"ade24062f6c6ab90c0ca3deeb77a8264911549229fb403761bec3081c7770663\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4270,
+      "offset": 4606,
       "length": 17,
       "value": "\"SalemoveVisitor\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "BooleanLiteral",
-      "offset": 4463,
+      "offset": 4799,
       "length": 5,
       "value": "false"
     },
@@ -44735,7 +45142,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/MessageManager\/MessageManager+SecureConversations.swift",
       "kind": "StringLiteral",
-      "offset": 4553,
+      "offset": 4265,
       "length": 21,
       "value": "\"secure_conversation\""
     },
@@ -44878,34 +45285,6 @@
       "offset": 1148,
       "length": 29,
       "value": "\"liveobservation-video-state\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2087,
-      "length": 11,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2182,
-      "length": 12,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2924,
-      "length": 10,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2969,
-      "length": 12,
-      "value": "2"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Concurency\/Atomic.swift",
@@ -45186,6 +45565,13 @@
       "offset": 621,
       "length": 4,
       "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/AppInstallationUUID\/AppInstallationUUID.swift",
+      "kind": "StringLiteral",
+      "offset": 74,
+      "length": 21,
+      "value": "\"AppInstallationUUID\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/EngagementFile.swift",
@@ -45533,7 +45919,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/OpaqueAuth\/Authentication.Interface.swift",
       "kind": "BooleanLiteral",
-      "offset": 6409,
+      "offset": 6993,
       "length": 5,
       "value": "false"
     },
@@ -46039,7 +46425,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.1.0\""
+      "value": "\"2.1.1\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -46072,175 +46458,175 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 2464,
+      "offset": 2174,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2624,
+      "offset": 2334,
       "length": 93,
       "value": "\"Remote string could not be fetched because self was unexpectedly deallocated, key='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2714,
+      "offset": 2424,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2895,
+      "offset": 2613,
       "length": 46,
       "value": "\"Custom locale not initialized, key='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2938,
+      "offset": 2656,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 2999,
+      "offset": 2717,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 3150,
+      "offset": 2868,
       "length": 53,
       "value": "\"Key does not exist in remote strings, key='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 3200,
+      "offset": 2918,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5541,
+      "offset": 5419,
       "length": 93,
       "value": "\"Setting 'activeEngagement' from '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5593,
+      "offset": 5471,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5596,
+      "offset": 5474,
       "length": 6,
       "value": "\"' to '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5628,
+      "offset": 5506,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5631,
+      "offset": 5509,
       "length": 3,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "Dictionary",
-      "offset": 7144,
+      "offset": 7221,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 29732,
+      "offset": 30241,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 30098,
+      "offset": 30607,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 47501,
+      "offset": 47545,
       "length": 64,
       "value": "\"Channel connection has not been established. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 47562,
+      "offset": 47606,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 71777,
+      "offset": 71821,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 71836,
+      "offset": 71880,
       "length": 23,
       "value": "\"capabilities:response\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.UserNotificationCenterDelegatesProxy.swift",
       "kind": "Array",
-      "offset": 250,
+      "offset": 249,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.UserNotificationCenterDelegatesProxy.swift",
       "kind": "StringLiteral",
-      "offset": 3971,
+      "offset": 3970,
       "length": 120,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.UserNotificationCenterDelegatesProxy.swift",
       "kind": "StringLiteral",
-      "offset": 3993,
+      "offset": 3992,
       "length": 2,
       "value": "\" is delegating to [\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.UserNotificationCenterDelegatesProxy.swift",
       "kind": "StringLiteral",
-      "offset": 4083,
+      "offset": 4082,
       "length": 4,
       "value": "\", \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.UserNotificationCenterDelegatesProxy.swift",
       "kind": "StringLiteral",
-      "offset": 4089,
+      "offset": 4088,
       "length": 1,
       "value": "\"]\""
     },
@@ -46501,6 +46887,20 @@
       "kind": "IntegerLiteral",
       "offset": 1792,
       "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2890,
+      "length": 10,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/Push.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2935,
+      "length": 12,
       "value": "2"
     },
     {
