@@ -382,7 +382,6 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 
 
 
-
 @interface Engagement (SWIFT_EXTENSION(GliaCoreSDK))
 /// Calculates if engagement is transferred Secure Conversation.
 /// \param engagement. 
@@ -392,6 +391,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 /// Boolean value indicating whether it’s transferred Secure Conversation.
 + (BOOL)isTransferredSecureConversation:(Engagement * _Nonnull)engagement SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 /// Error of the Engagement
@@ -552,9 +552,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 @end
 
 
-
-
-
 @class Queue;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -573,13 +570,31 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Deprecated.
 - (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use cancel(queueTicket:completion:) instead.");
 @end
 
+
+
+
+
+
+
+enum LogLevel : NSInteger;
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
 
 @class MediaUpgradeOffer;
 
@@ -611,28 +626,19 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
-enum LogLevel : NSInteger;
+
+
+
+
+
+
+
+
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+/// Clear the use session of the client library
+- (void)clearSession;
 @end
-
-
-
-
-
-
-
-
 
 
 
@@ -663,12 +669,6 @@ enum LogLevel : NSInteger;
 /// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
 ///
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
 @end
 
 
@@ -735,6 +735,7 @@ enum LogLevel : NSInteger;
 @end
 
 
+
 @class Message;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -743,6 +744,7 @@ enum LogLevel : NSInteger;
 /// Deprecated.
 - (void)sendWithMessage:(NSString * _Nonnull)message attachment:(Attachment * _Nullable)attachment completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(messagePayload:completion:)");
 @end
+
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -799,7 +801,6 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
-
 
 
 
@@ -1075,30 +1076,16 @@ SWIFT_CLASS("_TtC11GliaCoreSDK20OperatorTypingStatus")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-enum PushType : NSInteger;
-enum PushTiming : NSInteger;
-
-/// Push object sent by the client library
-SWIFT_CLASS("_TtC11GliaCoreSDK4Push")
-@interface Push : NSObject
-/// UNNotificationResponse.actionIdentifier that is returned by the system
-@property (nonatomic, readonly, copy) NSString * _Nonnull actionIdentifier;
-/// Push type. One of <code>PushType</code> values.
-@property (nonatomic, readonly) enum PushType type;
-/// Push timing. One of <code>PushTiming</code> values.
-@property (nonatomic, readonly) enum PushTiming timing;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
 
 SWIFT_CLASS("_TtC11GliaCoreSDK17PushNotifications")
 @interface PushNotifications : NSObject
-/// The current handler that the SDK is forwarding the UNNotificationResponse.actionIdentifier to.
-@property (nonatomic, copy) void (^ _Nullable handler)(Push * _Nonnull);
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+
+
+
 
 
 
@@ -1133,16 +1120,6 @@ typedef SWIFT_ENUM(NSInteger, PushTiming, open) {
   PushTimingBackground = 1,
 /// Unknown timing.
   PushTimingUnidentified = 2,
-};
-
-/// Available push notification types
-typedef SWIFT_ENUM(NSInteger, PushType, open) {
-/// Unknown type.
-  PushTypeUnidentified = 0,
-/// Chat message type. Sent in the context of live chat engagements.
-  PushTypeChatMessage = 1,
-/// Queue message type. Sent in the content of secure conversations.
-  PushTypeQueueMessage = 2,
 };
 
 @class QueueState;

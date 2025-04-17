@@ -198,6 +198,18 @@ extension GliaCoreSDK.GliaCore.Configuration {
     }
   }
 }
+public enum PushType {
+  case unidentified(Swift.String)
+  case chatMessage
+  case queueMessage
+}
+extension GliaCoreSDK.PushType : Swift.RawRepresentable, Swift.Equatable {
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
 @objc public class Message : ObjectiveC.NSObject, Swift.Decodable {
   public typealias Id = GliaCoreSDK.Tagged<GliaCoreSDK.Message, Swift.String>
   @objc public var id: Swift.String {
@@ -345,9 +357,9 @@ public struct NetworkPath {
   public init(rawValue: Network.NWPath)
 }
 @objc @_hasMissingDesignatedInitializers public class PushNotifications : ObjectiveC.NSObject {
-  @objc public var handler: GliaCoreSDK.PushActionBlock? {
-    @objc get
-    @objc set
+  public var handler: GliaCoreSDK.PushActionBlock? {
+    get
+    set
   }
   @objc deinit
 }
@@ -822,40 +834,6 @@ extension GliaCoreSDK.GliaCore {
   @_spi(GliaWidgets) public func reportDeprecatedMethod<T>(context: T.Type, file: Swift.String = #fileID, function: Swift.String = #function, line: Swift.Int = #line)
   @_spi(GliaWidgets) public func reportDeprecatedType<T>(context: T.Type, file: Swift.String = #fileID, function: Swift.String = #function, line: Swift.Int = #line)
 }
-@_hasMissingDesignatedInitializers @objc public class Push : ObjectiveC.NSObject, Swift.Codable {
-  @objc public var actionIdentifier: Swift.String {
-    get
-  }
-  @objc public var type: GliaCoreSDK.PushType {
-    get
-  }
-  @objc public var timing: GliaCoreSDK.PushTiming {
-    get
-  }
-  required public init(from decoder: any Swift.Decoder) throws
-  public func encode(to encoder: any Swift.Encoder) throws
-  @objc deinit
-}
-@objc public enum PushType : Swift.Int {
-  case unidentified
-  case chatMessage
-  case queueMessage
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-@objc public enum PushTiming : Swift.Int, Swift.Codable {
-  case inApp
-  case background
-  case unidentified
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
 @objc @_hasMissingDesignatedInitializers public class EngagementRequest : ObjectiveC.NSObject, Swift.Decodable {
   final public let timeout: Swift.Int
   @objc deinit
@@ -880,6 +858,10 @@ extension GliaCoreSDK.GliaCore {
   @objc public init(id: Swift.String)
   @objc deinit
   required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class PushNotificationsActionProcessor {
+  @_spi(GliaWidgets) public var secureMessagePushNotificationAction: () -> Swift.Void
+  @objc deinit
 }
 public struct Site : Swift.Decodable, Swift.Equatable {
   public let id: Foundation.UUID
@@ -970,12 +952,12 @@ extension GliaCoreSDK.GliaCore {
 }
 extension GliaCoreSDK.GliaCore.Authentication {
   public func refresh(with idToken: GliaCoreSDK.GliaCore.IdToken, externalAccessToken: GliaCoreSDK.GliaCore.ExternalAccessToken?, _ completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
-  public func authenticate(with idToken: GliaCoreSDK.GliaCore.IdToken, externalAccessToken: GliaCoreSDK.GliaCore.ExternalAccessToken?, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  public func authenticate(with idToken: GliaCoreSDK.GliaCore.IdToken, externalAccessToken: GliaCoreSDK.GliaCore.ExternalAccessToken?, shouldRequestPushNotificationSystemPermission: @escaping (@escaping (Swift.Bool) -> Swift.Void) -> Swift.Void, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
   public func deauthenticate(_ completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
   public var isAuthenticated: Swift.Bool {
     get
   }
-  public init(authenticateWithIdToken: @escaping (Swift.String, Swift.String?, @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> Swift.Void = { _, _, _ in }, deauthenticateWithCallback: @escaping (@escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> Swift.Void = { _ in }, isAuthenticatedClosure: @escaping () -> Swift.Bool = { false }, refresh: @escaping (Swift.String, Swift.String?, @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void) -> Swift.Void = { _, _, _ in })
+  public init(authenticateWithIdToken: @escaping (Swift.String, Swift.String?, @escaping (@escaping (Swift.Bool) -> Swift.Void) -> Swift.Void, @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> Swift.Void = { _, _, _, _ in }, deauthenticateWithCallback: @escaping (@escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> Swift.Void = { _ in }, isAuthenticatedClosure: @escaping () -> Swift.Bool = { false }, refresh: @escaping (Swift.String, Swift.String?, @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void) -> Swift.Void = { _, _, _ in })
 }
 extension GliaCoreSDK.GliaCore.Authentication {
   public enum Error : Swift.Error {
@@ -1198,12 +1180,15 @@ public enum QueueStatus : Swift.Decodable, Swift.RawRepresentable, Swift.Equatab
     get
     set
   }
-  final public var pushNotifications: GliaCoreSDK.PushNotifications {
-    get
-  }
   final public var localeProvider: GliaCoreSDK.GliaCore.LocaleProvider {
     get
     set
+  }
+  final public var pushNotifications: GliaCoreSDK.PushNotifications {
+    get
+  }
+  final public var pushNotificationsActionProcessor: GliaCoreSDK.PushNotificationsActionProcessor {
+    get
   }
   @objc deinit
   @_spi(GliaWidgets) final public func createLogger(externalParameters: [Swift.String : Swift.String]) throws -> any GliaCoreSDK.LogConfigurable & GliaCoreSDK.Logging
@@ -1397,6 +1382,36 @@ extension GliaCoreSDK.Engagement {
 extension GliaCoreSDK.Engagement.ActionOnEnd {
   public init(from decoder: any Swift.Decoder) throws
 }
+@_hasMissingDesignatedInitializers public class Push : Swift.Codable {
+  public var actionIdentifier: Swift.String {
+    get
+  }
+  public var type: GliaCoreSDK.PushType {
+    get
+  }
+  public var timing: GliaCoreSDK.PushTiming {
+    get
+  }
+  public var visitorId: Swift.String? {
+    get
+  }
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+extension GliaCoreSDK.Push : Swift.Equatable {
+  public static func == (lhs: GliaCoreSDK.Push, rhs: GliaCoreSDK.Push) -> Swift.Bool
+}
+@objc public enum PushTiming : Swift.Int, Swift.Codable {
+  case inApp
+  case background
+  case unidentified
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 @objc public class MediaUpgradeOffer : ObjectiveC.NSObject {
   final public let type: GliaCoreSDK.MediaType
   final public let direction: GliaCoreSDK.MediaDirection
@@ -1443,12 +1458,6 @@ extension GliaCoreSDK.ScreenSharingStatus : Swift.RawRepresentable {}
 extension GliaCoreSDK.MediaType : Swift.Equatable {}
 extension GliaCoreSDK.MediaType : Swift.Hashable {}
 extension GliaCoreSDK.MediaType : Swift.RawRepresentable {}
-extension GliaCoreSDK.PushType : Swift.Equatable {}
-extension GliaCoreSDK.PushType : Swift.Hashable {}
-extension GliaCoreSDK.PushType : Swift.RawRepresentable {}
-extension GliaCoreSDK.PushTiming : Swift.Equatable {}
-extension GliaCoreSDK.PushTiming : Swift.Hashable {}
-extension GliaCoreSDK.PushTiming : Swift.RawRepresentable {}
 extension GliaCoreSDK.GliaCore.Authentication.Error : Swift.Equatable {}
 extension GliaCoreSDK.GliaCore.Authentication.Error : Swift.Hashable {}
 extension GliaCoreSDK.GliaCore.Authentication.Behavior : Swift.Equatable {}
@@ -1485,6 +1494,9 @@ extension GliaCoreSDK.CameraDevice.Error : Swift.Hashable {}
 extension GliaCoreSDK.CameraDevice.Facing : Swift.Equatable {}
 extension GliaCoreSDK.CameraDevice.Facing : Swift.Hashable {}
 extension GliaCoreSDK.Engagement.ActionOnEnd : Swift.Decodable {}
+extension GliaCoreSDK.PushTiming : Swift.Equatable {}
+extension GliaCoreSDK.PushTiming : Swift.Hashable {}
+extension GliaCoreSDK.PushTiming : Swift.RawRepresentable {}
 extension GliaCoreSDK.MediaDirection : Swift.Equatable {}
 extension GliaCoreSDK.MediaDirection : Swift.Hashable {}
 extension GliaCoreSDK.MediaDirection : Swift.RawRepresentable {}
