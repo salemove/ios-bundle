@@ -310,8 +310,6 @@ public typealias EngagementFileFetchCompletionBlock = (GliaCoreSDK.EngagementFil
 public typealias StreamableOnHoldHandler = (_ onHold: Swift.Bool) -> Swift.Void
 public typealias EngagementChangedBlock = (GliaCoreSDK.Engagement?) -> Swift.Void
 public protocol PushNotificationsHandling {
-  func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
-  func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
   func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: any Swift.Error)
   func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
 }

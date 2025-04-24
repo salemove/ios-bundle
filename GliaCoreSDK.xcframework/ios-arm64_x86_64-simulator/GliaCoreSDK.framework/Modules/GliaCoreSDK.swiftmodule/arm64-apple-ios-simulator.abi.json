@@ -7261,113 +7261,6 @@
         "children": [
           {
             "kind": "Function",
-            "name": "userNotificationCenter",
-            "printedName": "userNotificationCenter(_:willPresent:withCompletionHandler:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "UNUserNotificationCenter",
-                "printedName": "UserNotifications.UNUserNotificationCenter",
-                "usr": "c:objc(cs)UNUserNotificationCenter"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "UNNotification",
-                "printedName": "UserNotifications.UNNotification",
-                "usr": "c:objc(cs)UNNotification"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(UserNotifications.UNNotificationPresentationOptions) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "UNNotificationPresentationOptions",
-                    "printedName": "UserNotifications.UNNotificationPresentationOptions",
-                    "usr": "c:@E@UNNotificationPresentationOptions"
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:11GliaCoreSDK25PushNotificationsHandlingP22userNotificationCenter_11willPresent21withCompletionHandlerySo06UNUserhI0C_So14UNNotificationCySo0P19PresentationOptionsVctF",
-            "mangledName": "$s11GliaCoreSDK25PushNotificationsHandlingP22userNotificationCenter_11willPresent21withCompletionHandlerySo06UNUserhI0C_So14UNNotificationCySo0P19PresentationOptionsVctF",
-            "moduleName": "GliaCoreSDK",
-            "genericSig": "<τ_0_0 where τ_0_0 : GliaCoreSDK.PushNotificationsHandling>",
-            "sugared_genericSig": "<Self where Self : GliaCoreSDK.PushNotificationsHandling>",
-            "protocolReq": true,
-            "declAttributes": [
-              "RawDocComment"
-            ],
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "userNotificationCenter",
-            "printedName": "userNotificationCenter(_:didReceive:withCompletionHandler:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "UNUserNotificationCenter",
-                "printedName": "UserNotifications.UNUserNotificationCenter",
-                "usr": "c:objc(cs)UNUserNotificationCenter"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "UNNotificationResponse",
-                "printedName": "UserNotifications.UNNotificationResponse",
-                "usr": "c:objc(cs)UNNotificationResponse"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "() -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:11GliaCoreSDK25PushNotificationsHandlingP22userNotificationCenter_10didReceive21withCompletionHandlerySo06UNUserhI0C_So22UNNotificationResponseCyyctF",
-            "mangledName": "$s11GliaCoreSDK25PushNotificationsHandlingP22userNotificationCenter_10didReceive21withCompletionHandlerySo06UNUserhI0C_So22UNNotificationResponseCyyctF",
-            "moduleName": "GliaCoreSDK",
-            "genericSig": "<τ_0_0 where τ_0_0 : GliaCoreSDK.PushNotificationsHandling>",
-            "sugared_genericSig": "<Self where Self : GliaCoreSDK.PushNotificationsHandling>",
-            "protocolReq": true,
-            "declAttributes": [
-              "RawDocComment"
-            ],
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
             "name": "application",
             "printedName": "application(_:didFailToRegisterForRemoteNotificationsWithError:)",
             "children": [
@@ -19876,6 +19769,13 @@
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
         "declKind": "Import",
         "moduleName": "GliaCoreSDK"
       },
@@ -41843,6 +41743,13 @@
       },
       {
         "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -43798,21 +43705,21 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 1474,
+      "offset": 1562,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "Array",
-      "offset": 1819,
+      "offset": 1907,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 2020,
+      "offset": 2108,
       "length": 5,
       "value": "false"
     },
@@ -46425,7 +46332,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.1.1\""
+      "value": "\"2.1.2\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
