@@ -183,7 +183,7 @@ extension GliaCoreSDK.GliaCore {
     public static func custom(_ host: Foundation.URL) -> GliaCoreSDK.GliaCore.Region
   }
   public struct Configuration {
-    public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, authorizingMethod: GliaCoreSDK.GliaCore.AuthorizationMethod, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled, manualLocaleOverride: Swift.String? = nil) throws
+    public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, authorizingMethod: GliaCoreSDK.GliaCore.AuthorizationMethod, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled, manualLocaleOverride: Swift.String? = nil, suppressPushNotificationsPermissionRequestDuringAuthentication: Swift.Bool) throws
   }
 }
 extension GliaCoreSDK.GliaCore.Configuration {
@@ -831,6 +831,47 @@ extension GliaCoreSDK.GliaCore {
   @_spi(GliaWidgets) public func reportDeprecatedMethod(context: Swift.String, file: Swift.String = #fileID, function: Swift.String = #function, line: Swift.Int = #line)
   @_spi(GliaWidgets) public func reportDeprecatedMethod<T>(context: T.Type, file: Swift.String = #fileID, function: Swift.String = #function, line: Swift.Int = #line)
   @_spi(GliaWidgets) public func reportDeprecatedType<T>(context: T.Type, file: Swift.String = #fileID, function: Swift.String = #function, line: Swift.Int = #line)
+}
+@_spi(GliaWidgets) extension Combine.AnyPublisher {
+  @_spi(GliaWidgets) public static func mock<T>() -> Combine.AnyPublisher<T, Swift.Never>
+  @_spi(GliaWidgets) public static func mock<T>(_ value: T) -> Combine.AnyPublisher<T, Swift.Never>
+}
+@_spi(GliaWidgets) extension GliaCoreSDK.AnyCombineScheduler {
+  @_spi(GliaWidgets) public static let live: GliaCoreSDK.AnyCombineScheduler
+}
+@_spi(GliaWidgets) extension GliaCoreSDK.AnyCombineScheduler {
+  @_spi(GliaWidgets) public static let mock: GliaCoreSDK.AnyCombineScheduler
+}
+@_spi(GliaWidgets) public struct AnyScheduler : Combine.Scheduler {
+  @_spi(GliaWidgets) public typealias SchedulerTimeType = Dispatch.DispatchQueue.SchedulerTimeType
+  @_spi(GliaWidgets) public typealias SchedulerOptions = Dispatch.DispatchQueue.SchedulerOptions
+  @_spi(GliaWidgets) public var now: GliaCoreSDK.AnyScheduler.SchedulerTimeType {
+    @_spi(GliaWidgets) get
+  }
+  @_spi(GliaWidgets) public var minimumTolerance: GliaCoreSDK.AnyScheduler.SchedulerTimeType.Stride {
+    @_spi(GliaWidgets) get
+  }
+  @_spi(GliaWidgets) public func schedule(options: GliaCoreSDK.AnyScheduler.SchedulerOptions?, _ action: @escaping () -> Swift.Void)
+  @_spi(GliaWidgets) public func schedule(after date: GliaCoreSDK.AnyScheduler.SchedulerTimeType, tolerance: GliaCoreSDK.AnyScheduler.SchedulerTimeType.Stride, options: GliaCoreSDK.AnyScheduler.SchedulerOptions?, _ action: @escaping () -> Swift.Void)
+  @_spi(GliaWidgets) public func schedule(after date: GliaCoreSDK.AnyScheduler.SchedulerTimeType, interval: GliaCoreSDK.AnyScheduler.SchedulerTimeType.Stride, tolerance: GliaCoreSDK.AnyScheduler.SchedulerTimeType.Stride, options: GliaCoreSDK.AnyScheduler.SchedulerOptions?, _ action: @escaping () -> Swift.Void) -> any Combine.Cancellable
+}
+@_spi(GliaWidgets) public struct ImmediateScheduler : Combine.Scheduler {
+  @_spi(GliaWidgets) public typealias SchedulerTimeType = Dispatch.DispatchQueue.SchedulerTimeType
+  @_spi(GliaWidgets) public typealias SchedulerOptions = Dispatch.DispatchQueue.SchedulerOptions
+  @_spi(GliaWidgets) public var now: GliaCoreSDK.ImmediateScheduler.SchedulerTimeType {
+    @_spi(GliaWidgets) get
+  }
+  @_spi(GliaWidgets) public var minimumTolerance: GliaCoreSDK.ImmediateScheduler.SchedulerTimeType.Stride {
+    @_spi(GliaWidgets) get
+  }
+  @_spi(GliaWidgets) public func schedule(options: GliaCoreSDK.ImmediateScheduler.SchedulerOptions?, _ action: @escaping () -> Swift.Void)
+  @_spi(GliaWidgets) public func schedule(after date: GliaCoreSDK.ImmediateScheduler.SchedulerTimeType, tolerance: GliaCoreSDK.ImmediateScheduler.SchedulerTimeType.Stride, options: GliaCoreSDK.ImmediateScheduler.SchedulerOptions?, _ action: @escaping () -> Swift.Void)
+  @_spi(GliaWidgets) public func schedule(after date: GliaCoreSDK.ImmediateScheduler.SchedulerTimeType, interval: GliaCoreSDK.ImmediateScheduler.SchedulerTimeType.Stride, tolerance: GliaCoreSDK.ImmediateScheduler.SchedulerTimeType.Stride, options: GliaCoreSDK.ImmediateScheduler.SchedulerOptions?, _ action: @escaping () -> Swift.Void) -> any Combine.Cancellable
+  @_spi(GliaWidgets) public init()
+}
+@_spi(GliaWidgets) public struct AnyCombineScheduler {
+  @_spi(GliaWidgets) public let mainScheduler: GliaCoreSDK.AnyScheduler
+  @_spi(GliaWidgets) public let globalScheduler: GliaCoreSDK.AnyScheduler
 }
 @objc @_hasMissingDesignatedInitializers public class EngagementRequest : ObjectiveC.NSObject, Swift.Decodable {
   final public let timeout: Swift.Int

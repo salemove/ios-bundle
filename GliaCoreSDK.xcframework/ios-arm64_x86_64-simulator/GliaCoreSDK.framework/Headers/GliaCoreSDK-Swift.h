@@ -552,12 +552,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 @end
 
 
-@class Queue;
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated.
-- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.");
-@end
 
 
 
@@ -580,20 +574,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-
-enum LogLevel : NSInteger;
+@class Queue;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+/// Deprecated.
+- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.");
 @end
 
 @class MediaUpgradeOffer;
@@ -626,6 +611,21 @@ enum LogLevel : NSInteger;
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
+
+enum LogLevel : NSInteger;
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
 
 
 
@@ -746,7 +746,6 @@ enum LogLevel : NSInteger;
 @end
 
 
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Requests information of the Operator(s) that are currently engaged with the Visitor
 /// <ul>
@@ -801,6 +800,7 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
+
 
 
 
@@ -1827,12 +1827,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 @end
 
 
-@class Queue;
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated.
-- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.");
-@end
 
 
 
@@ -1855,20 +1849,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-
-enum LogLevel : NSInteger;
+@class Queue;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+/// Deprecated.
+- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.");
 @end
 
 @class MediaUpgradeOffer;
@@ -1901,6 +1886,21 @@ enum LogLevel : NSInteger;
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
+
+enum LogLevel : NSInteger;
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
 
 
 
@@ -2021,7 +2021,6 @@ enum LogLevel : NSInteger;
 @end
 
 
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Requests information of the Operator(s) that are currently engaged with the Visitor
 /// <ul>
@@ -2076,6 +2075,7 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
+
 
 
 
