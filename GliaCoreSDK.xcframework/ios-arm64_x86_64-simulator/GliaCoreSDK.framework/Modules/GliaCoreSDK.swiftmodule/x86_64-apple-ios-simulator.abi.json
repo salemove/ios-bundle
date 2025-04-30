@@ -21252,6 +21252,1034 @@
       },
       {
         "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AnyScheduler",
+        "printedName": "AnyScheduler",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "now",
+            "printedName": "now",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SchedulerTimeType",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK12AnySchedulerV3nowSo17OS_dispatch_queueC8DispatchE0E8TimeTypeVvp",
+            "mangledName": "$s11GliaCoreSDK12AnySchedulerV3nowSo17OS_dispatch_queueC8DispatchE0E8TimeTypeVvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SchedulerTimeType",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerTimeType",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK12AnySchedulerV3nowSo17OS_dispatch_queueC8DispatchE0E8TimeTypeVvg",
+                "mangledName": "$s11GliaCoreSDK12AnySchedulerV3nowSo17OS_dispatch_queueC8DispatchE0E8TimeTypeVvg",
+                "moduleName": "GliaCoreSDK",
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "minimumTolerance",
+            "printedName": "minimumTolerance",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Stride",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType.Stride",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV6StrideV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK12AnySchedulerV16minimumToleranceSo17OS_dispatch_queueC8DispatchE0E8TimeTypeV6StrideVvp",
+            "mangledName": "$s11GliaCoreSDK12AnySchedulerV16minimumToleranceSo17OS_dispatch_queueC8DispatchE0E8TimeTypeV6StrideVvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Stride",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerTimeType.Stride",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV6StrideV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK12AnySchedulerV16minimumToleranceSo17OS_dispatch_queueC8DispatchE0E8TimeTypeV6StrideVvg",
+                "mangledName": "$s11GliaCoreSDK12AnySchedulerV16minimumToleranceSo17OS_dispatch_queueC8DispatchE0E8TimeTypeV6StrideVvg",
+                "moduleName": "GliaCoreSDK",
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "schedule",
+            "printedName": "schedule(options:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Dispatch.DispatchQueue.SchedulerOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SchedulerOptions",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerOptions",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE16SchedulerOptionsV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK12AnySchedulerV8schedule7options_ySo17OS_dispatch_queueC8DispatchE0E7OptionsVSg_yyctF",
+            "mangledName": "$s11GliaCoreSDK12AnySchedulerV8schedule7options_ySo17OS_dispatch_queueC8DispatchE0E7OptionsVSg_yyctF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "schedule",
+            "printedName": "schedule(after:tolerance:options:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SchedulerTimeType",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Stride",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType.Stride",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV6StrideV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Dispatch.DispatchQueue.SchedulerOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SchedulerOptions",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerOptions",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE16SchedulerOptionsV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK12AnySchedulerV8schedule5after9tolerance7options_ySo17OS_dispatch_queueC8DispatchE0E8TimeTypeV_AL6StrideVAiJE0E7OptionsVSgyyctF",
+            "mangledName": "$s11GliaCoreSDK12AnySchedulerV8schedule5after9tolerance7options_ySo17OS_dispatch_queueC8DispatchE0E8TimeTypeV_AL6StrideVAiJE0E7OptionsVSgyyctF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "schedule",
+            "printedName": "schedule(after:interval:tolerance:options:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Cancellable",
+                "printedName": "any Combine.Cancellable",
+                "usr": "s:7Combine11CancellableP"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SchedulerTimeType",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Stride",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType.Stride",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV6StrideV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Stride",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType.Stride",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV6StrideV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Dispatch.DispatchQueue.SchedulerOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SchedulerOptions",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerOptions",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE16SchedulerOptionsV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK12AnySchedulerV8schedule5after8interval9tolerance7options_7Combine11Cancellable_pSo17OS_dispatch_queueC8DispatchE0E8TimeTypeV_AO6StrideVAqlME0E7OptionsVSgyyctF",
+            "mangledName": "$s11GliaCoreSDK12AnySchedulerV8schedule5after8interval9tolerance7options_7Combine11Cancellable_pSo17OS_dispatch_queueC8DispatchE0E8TimeTypeV_AO6StrideVAqlME0E7OptionsVSgyyctF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:11GliaCoreSDK12AnySchedulerV",
+        "mangledName": "$s11GliaCoreSDK12AnySchedulerV",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "SPIAccessControl",
+          "RawDocComment"
+        ],
+        "spi_group_names": [
+          "GliaWidgets"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Scheduler",
+            "printedName": "Scheduler",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "SchedulerTimeType",
+                "printedName": "SchedulerTimeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SchedulerTimeType",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerTimeType",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "SchedulerOptions",
+                "printedName": "SchedulerOptions",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SchedulerOptions",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerOptions",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE16SchedulerOptionsV"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:7Combine9SchedulerP",
+            "mangledName": "$s7Combine9SchedulerP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ImmediateScheduler",
+        "printedName": "ImmediateScheduler",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "now",
+            "printedName": "now",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SchedulerTimeType",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK18ImmediateSchedulerV3nowSo17OS_dispatch_queueC8DispatchE0E8TimeTypeVvp",
+            "mangledName": "$s11GliaCoreSDK18ImmediateSchedulerV3nowSo17OS_dispatch_queueC8DispatchE0E8TimeTypeVvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SchedulerTimeType",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerTimeType",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK18ImmediateSchedulerV3nowSo17OS_dispatch_queueC8DispatchE0E8TimeTypeVvg",
+                "mangledName": "$s11GliaCoreSDK18ImmediateSchedulerV3nowSo17OS_dispatch_queueC8DispatchE0E8TimeTypeVvg",
+                "moduleName": "GliaCoreSDK",
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "minimumTolerance",
+            "printedName": "minimumTolerance",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Stride",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType.Stride",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV6StrideV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK18ImmediateSchedulerV16minimumToleranceSo17OS_dispatch_queueC8DispatchE0E8TimeTypeV6StrideVvp",
+            "mangledName": "$s11GliaCoreSDK18ImmediateSchedulerV16minimumToleranceSo17OS_dispatch_queueC8DispatchE0E8TimeTypeV6StrideVvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Stride",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerTimeType.Stride",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV6StrideV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK18ImmediateSchedulerV16minimumToleranceSo17OS_dispatch_queueC8DispatchE0E8TimeTypeV6StrideVvg",
+                "mangledName": "$s11GliaCoreSDK18ImmediateSchedulerV16minimumToleranceSo17OS_dispatch_queueC8DispatchE0E8TimeTypeV6StrideVvg",
+                "moduleName": "GliaCoreSDK",
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "schedule",
+            "printedName": "schedule(options:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Dispatch.DispatchQueue.SchedulerOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SchedulerOptions",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerOptions",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE16SchedulerOptionsV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK18ImmediateSchedulerV8schedule7options_ySo17OS_dispatch_queueC8DispatchE0E7OptionsVSg_yyctF",
+            "mangledName": "$s11GliaCoreSDK18ImmediateSchedulerV8schedule7options_ySo17OS_dispatch_queueC8DispatchE0E7OptionsVSg_yyctF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "schedule",
+            "printedName": "schedule(after:tolerance:options:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SchedulerTimeType",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Stride",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType.Stride",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV6StrideV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Dispatch.DispatchQueue.SchedulerOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SchedulerOptions",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerOptions",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE16SchedulerOptionsV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK18ImmediateSchedulerV8schedule5after9tolerance7options_ySo17OS_dispatch_queueC8DispatchE0E8TimeTypeV_AL6StrideVAiJE0E7OptionsVSgyyctF",
+            "mangledName": "$s11GliaCoreSDK18ImmediateSchedulerV8schedule5after9tolerance7options_ySo17OS_dispatch_queueC8DispatchE0E8TimeTypeV_AL6StrideVAiJE0E7OptionsVSgyyctF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "schedule",
+            "printedName": "schedule(after:interval:tolerance:options:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Cancellable",
+                "printedName": "any Combine.Cancellable",
+                "usr": "s:7Combine11CancellableP"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SchedulerTimeType",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Stride",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType.Stride",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV6StrideV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Stride",
+                "printedName": "Dispatch.DispatchQueue.SchedulerTimeType.Stride",
+                "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV6StrideV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Dispatch.DispatchQueue.SchedulerOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SchedulerOptions",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerOptions",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE16SchedulerOptionsV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK18ImmediateSchedulerV8schedule5after8interval9tolerance7options_7Combine11Cancellable_pSo17OS_dispatch_queueC8DispatchE0E8TimeTypeV_AO6StrideVAqlME0E7OptionsVSgyyctF",
+            "mangledName": "$s11GliaCoreSDK18ImmediateSchedulerV8schedule5after8interval9tolerance7options_7Combine11Cancellable_pSo17OS_dispatch_queueC8DispatchE0E8TimeTypeV_AO6StrideVAqlME0E7OptionsVSgyyctF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ImmediateScheduler",
+                "printedName": "GliaCoreSDK.ImmediateScheduler",
+                "usr": "s:11GliaCoreSDK18ImmediateSchedulerV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11GliaCoreSDK18ImmediateSchedulerVACycfc",
+            "mangledName": "$s11GliaCoreSDK18ImmediateSchedulerVACycfc",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:11GliaCoreSDK18ImmediateSchedulerV",
+        "mangledName": "$s11GliaCoreSDK18ImmediateSchedulerV",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "SPIAccessControl",
+          "RawDocComment"
+        ],
+        "spi_group_names": [
+          "GliaWidgets"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Scheduler",
+            "printedName": "Scheduler",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "SchedulerTimeType",
+                "printedName": "SchedulerTimeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SchedulerTimeType",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerTimeType",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE17SchedulerTimeTypeV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "SchedulerOptions",
+                "printedName": "SchedulerOptions",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SchedulerOptions",
+                    "printedName": "Dispatch.DispatchQueue.SchedulerOptions",
+                    "usr": "s:So17OS_dispatch_queueC8DispatchE16SchedulerOptionsV"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:7Combine9SchedulerP",
+            "mangledName": "$s7Combine9SchedulerP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AnyCombineScheduler",
+        "printedName": "AnyCombineScheduler",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "mainScheduler",
+            "printedName": "mainScheduler",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AnyScheduler",
+                "printedName": "GliaCoreSDK.AnyScheduler",
+                "usr": "s:11GliaCoreSDK12AnySchedulerV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK19AnyCombineSchedulerV04mainF0AA0dF0Vvp",
+            "mangledName": "$s11GliaCoreSDK19AnyCombineSchedulerV04mainF0AA0dF0Vvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AnyScheduler",
+                    "printedName": "GliaCoreSDK.AnyScheduler",
+                    "usr": "s:11GliaCoreSDK12AnySchedulerV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK19AnyCombineSchedulerV04mainF0AA0dF0Vvg",
+                "mangledName": "$s11GliaCoreSDK19AnyCombineSchedulerV04mainF0AA0dF0Vvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "globalScheduler",
+            "printedName": "globalScheduler",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AnyScheduler",
+                "printedName": "GliaCoreSDK.AnyScheduler",
+                "usr": "s:11GliaCoreSDK12AnySchedulerV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK19AnyCombineSchedulerV06globalF0AA0dF0Vvp",
+            "mangledName": "$s11GliaCoreSDK19AnyCombineSchedulerV06globalF0AA0dF0Vvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AnyScheduler",
+                    "printedName": "GliaCoreSDK.AnyScheduler",
+                    "usr": "s:11GliaCoreSDK12AnySchedulerV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK19AnyCombineSchedulerV06globalF0AA0dF0Vvg",
+                "mangledName": "$s11GliaCoreSDK19AnyCombineSchedulerV06globalF0AA0dF0Vvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "live",
+            "printedName": "live",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AnyCombineScheduler",
+                "printedName": "GliaCoreSDK.AnyCombineScheduler",
+                "usr": "s:11GliaCoreSDK19AnyCombineSchedulerV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK19AnyCombineSchedulerV4liveACvpZ",
+            "mangledName": "$s11GliaCoreSDK19AnyCombineSchedulerV4liveACvpZ",
+            "moduleName": "GliaCoreSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AnyCombineScheduler",
+                    "printedName": "GliaCoreSDK.AnyCombineScheduler",
+                    "usr": "s:11GliaCoreSDK19AnyCombineSchedulerV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK19AnyCombineSchedulerV4liveACvgZ",
+                "mangledName": "$s11GliaCoreSDK19AnyCombineSchedulerV4liveACvgZ",
+                "moduleName": "GliaCoreSDK",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "mock",
+            "printedName": "mock",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AnyCombineScheduler",
+                "printedName": "GliaCoreSDK.AnyCombineScheduler",
+                "usr": "s:11GliaCoreSDK19AnyCombineSchedulerV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK19AnyCombineSchedulerV4mockACvpZ",
+            "mangledName": "$s11GliaCoreSDK19AnyCombineSchedulerV4mockACvpZ",
+            "moduleName": "GliaCoreSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "SPIAccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AnyCombineScheduler",
+                    "printedName": "GliaCoreSDK.AnyCombineScheduler",
+                    "usr": "s:11GliaCoreSDK19AnyCombineSchedulerV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK19AnyCombineSchedulerV4mockACvgZ",
+                "mangledName": "$s11GliaCoreSDK19AnyCombineSchedulerV4mockACvgZ",
+                "moduleName": "GliaCoreSDK",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:11GliaCoreSDK19AnyCombineSchedulerV",
+        "mangledName": "$s11GliaCoreSDK19AnyCombineSchedulerV",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "SPIAccessControl",
+          "RawDocComment"
+        ],
+        "spi_group_names": [
+          "GliaWidgets"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -33111,7 +34139,7 @@
               {
                 "kind": "Constructor",
                 "name": "init",
-                "printedName": "init(siteId:region:authorizingMethod:pushNotifications:manualLocaleOverride:)",
+                "printedName": "init(siteId:region:authorizingMethod:pushNotifications:manualLocaleOverride:suppressPushNotificationsPermissionRequestDuringAuthentication:)",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -33158,11 +34186,17 @@
                     ],
                     "hasDefaultArg": true,
                     "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
                   }
                 ],
                 "declKind": "Constructor",
-                "usr": "s:11GliaCoreSDK0aB0C13ConfigurationV6siteId6region17authorizingMethod17pushNotifications20manualLocaleOverrideAESS_AC6RegionVAC013AuthorizationI0OAE04PushK0OSSSgtKcfc",
-                "mangledName": "$s11GliaCoreSDK0aB0C13ConfigurationV6siteId6region17authorizingMethod17pushNotifications20manualLocaleOverrideAESS_AC6RegionVAC013AuthorizationI0OAE04PushK0OSSSgtKcfc",
+                "usr": "s:11GliaCoreSDK0aB0C13ConfigurationV6siteId6region17authorizingMethod17pushNotifications20manualLocaleOverride012suppressPushK37PermissionRequestDuringAuthenticationAESS_AC6RegionVAC013AuthorizationI0OAE0pK0OSSSgSbtKcfc",
+                "mangledName": "$s11GliaCoreSDK0aB0C13ConfigurationV6siteId6region17authorizingMethod17pushNotifications20manualLocaleOverride012suppressPushK37PermissionRequestDuringAuthenticationAESS_AC6RegionVAC013AuthorizationI0OAE0pK0OSSSgSbtKcfc",
                 "moduleName": "GliaCoreSDK",
                 "declAttributes": [
                   "AccessControl",
@@ -43314,6 +44348,181 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "AnyPublisher",
+        "printedName": "AnyPublisher",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "mock",
+            "printedName": "mock()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AnyPublisher",
+                "printedName": "Combine.AnyPublisher<τ_1_0, Swift.Never>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Never",
+                    "printedName": "Swift.Never",
+                    "usr": "s:s5NeverO"
+                  }
+                ],
+                "usr": "s:7Combine12AnyPublisherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7Combine12AnyPublisherV11GliaCoreSDKE4mockACyqd__s5NeverOGylFZ",
+            "mangledName": "$s7Combine12AnyPublisherV11GliaCoreSDKE4mockACyqd__s5NeverOGylFZ",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0, τ_0_1, τ_1_0 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Output, Failure, T where Failure : Swift.Error>",
+            "static": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "mock",
+            "printedName": "mock(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AnyPublisher",
+                "printedName": "Combine.AnyPublisher<τ_1_0, Swift.Never>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Never",
+                    "printedName": "Swift.Never",
+                    "usr": "s:s5NeverO"
+                  }
+                ],
+                "usr": "s:7Combine12AnyPublisherV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_1_0"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7Combine12AnyPublisherV11GliaCoreSDKE4mockyACyqd__s5NeverOGqd__lFZ",
+            "mangledName": "$s7Combine12AnyPublisherV11GliaCoreSDKE4mockyACyqd__s5NeverOGqd__lFZ",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0, τ_0_1, τ_1_0 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Output, Failure, T where Failure : Swift.Error>",
+            "static": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:7Combine12AnyPublisherV",
+        "mangledName": "$s7Combine12AnyPublisherV",
+        "moduleName": "Combine",
+        "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+        "sugared_genericSig": "<Output, Failure where Failure : Swift.Error>",
+        "intro_Macosx": "10.15",
+        "intro_iOS": "13.0",
+        "intro_tvOS": "13.0",
+        "intro_watchOS": "6.0",
+        "declAttributes": [
+          "Frozen",
+          "Available",
+          "Available",
+          "Available",
+          "Available"
+        ],
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomPlaygroundDisplayConvertible",
+            "printedName": "CustomPlaygroundDisplayConvertible",
+            "usr": "s:s34CustomPlaygroundDisplayConvertibleP",
+            "mangledName": "$ss34CustomPlaygroundDisplayConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Publisher",
+            "printedName": "Publisher",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Output",
+                "printedName": "Output",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Failure",
+                "printedName": "Failure",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:7Combine9PublisherP",
+            "mangledName": "$s7Combine9PublisherP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "RTCPeerConnectionFactory",
         "printedName": "RTCPeerConnectionFactory",
         "declKind": "Class",
@@ -43535,6 +44744,13 @@
       "value": "\"\""
     },
     {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Configuration\/AppConfiguration.swift",
+      "kind": "BooleanLiteral",
+      "offset": 330,
+      "length": 5,
+      "value": "false"
+    },
+    {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/Remote\/RemoteLogClient.swift",
       "kind": "IntegerLiteral",
       "offset": 245,
@@ -43635,14 +44851,14 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Configurable.swift",
       "kind": "StringLiteral",
-      "offset": 13154,
+      "offset": 13357,
       "length": 18,
       "value": "\"https:\/\/glia.com\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Configurable.swift",
       "kind": "StringLiteral",
-      "offset": 13258,
+      "offset": 13461,
       "length": 17,
       "value": "\"https:\/\/glia.eu\""
     },
@@ -43705,21 +44921,21 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 1562,
+      "offset": 1556,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "Array",
-      "offset": 1907,
+      "offset": 1901,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 2108,
+      "offset": 2102,
       "length": 5,
       "value": "false"
     },
@@ -44195,28 +45411,28 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "IntegerLiteral",
-      "offset": 2802,
+      "offset": 2808,
       "length": 2,
       "value": "25"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "StringLiteral",
-      "offset": 2906,
+      "offset": 2912,
       "length": 39,
       "value": "\"gliaCore.liveObservation.captureQueue\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "StringLiteral",
-      "offset": 3185,
+      "offset": 3191,
       "length": 13,
       "value": "\"GliaWidgets\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "StringLiteral",
-      "offset": 3222,
+      "offset": 3228,
       "length": 13,
       "value": "\"GliaCoreSDK\""
     },
@@ -46332,7 +47548,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.1.2\""
+      "value": "\"2.1.3\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -46365,140 +47581,140 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 2174,
+      "offset": 2348,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2334,
+      "offset": 2508,
       "length": 93,
       "value": "\"Remote string could not be fetched because self was unexpectedly deallocated, key='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2424,
+      "offset": 2598,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2613,
+      "offset": 2787,
       "length": 46,
       "value": "\"Custom locale not initialized, key='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2656,
+      "offset": 2830,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 2717,
+      "offset": 2891,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2868,
+      "offset": 3042,
       "length": 53,
       "value": "\"Key does not exist in remote strings, key='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2918,
+      "offset": 3092,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5419,
+      "offset": 5594,
       "length": 93,
       "value": "\"Setting 'activeEngagement' from '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5471,
+      "offset": 5646,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5474,
+      "offset": 5649,
       "length": 6,
       "value": "\"' to '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5506,
+      "offset": 5681,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5509,
+      "offset": 5684,
       "length": 3,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "Dictionary",
-      "offset": 7221,
+      "offset": 7393,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 30241,
+      "offset": 30880,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 30607,
+      "offset": 31246,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 47545,
+      "offset": 49247,
       "length": 64,
       "value": "\"Channel connection has not been established. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 47606,
+      "offset": 49308,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 71821,
+      "offset": 73523,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 71880,
+      "offset": 73582,
       "length": 23,
       "value": "\"capabilities:response\""
     },
@@ -46624,7 +47840,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
-      "offset": 6592,
+      "offset": 6586,
       "length": 2,
       "value": "\"\""
     },
