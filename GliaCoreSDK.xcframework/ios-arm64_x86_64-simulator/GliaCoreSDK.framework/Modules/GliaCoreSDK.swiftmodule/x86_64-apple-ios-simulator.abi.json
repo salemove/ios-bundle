@@ -23307,7 +23307,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "() -> ()",
+                "printedName": "(Swift.String?) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -23316,15 +23316,24 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ]
               }
             ],
             "declKind": "Var",
-            "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvp",
-            "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvp",
+            "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yySSSgcvp",
+            "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yySSSgcvp",
             "moduleName": "GliaCoreSDK",
             "declAttributes": [
               "HasInitialValue",
@@ -23346,7 +23355,7 @@
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
-                    "printedName": "() -> ()",
+                    "printedName": "(Swift.String?) -> ()",
                     "children": [
                       {
                         "kind": "TypeNominal",
@@ -23355,15 +23364,24 @@
                       },
                       {
                         "kind": "TypeNominal",
-                        "name": "Void",
-                        "printedName": "()"
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
                       }
                     ]
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvg",
-                "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvg",
+                "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yySSSgcvg",
+                "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yySSSgcvg",
                 "moduleName": "GliaCoreSDK",
                 "implicit": true,
                 "accessorKind": "get"
@@ -23381,7 +23399,7 @@
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
-                    "printedName": "() -> ()",
+                    "printedName": "(Swift.String?) -> ()",
                     "children": [
                       {
                         "kind": "TypeNominal",
@@ -23390,15 +23408,24 @@
                       },
                       {
                         "kind": "TypeNominal",
-                        "name": "Void",
-                        "printedName": "()"
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
                       }
                     ]
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvs",
-                "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvs",
+                "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yySSSgcvs",
+                "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yySSSgcvs",
                 "moduleName": "GliaCoreSDK",
                 "implicit": true,
                 "accessorKind": "set"
@@ -23415,8 +23442,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvM",
-                "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yycvM",
+                "usr": "s:11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yySSSgcvM",
+                "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yySSSgcvM",
                 "moduleName": "GliaCoreSDK",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -36324,12 +36351,19 @@
               {
                 "kind": "Function",
                 "name": "deauthenticate",
-                "printedName": "deauthenticate(_:)",
+                "printedName": "deauthenticate(shouldStopPushNotifications:_:)",
                 "children": [
                   {
                     "kind": "TypeNominal",
                     "name": "Void",
                     "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "hasDefaultArg": true,
+                    "usr": "s:Sb"
                   },
                   {
                     "kind": "TypeFunc",
@@ -36364,8 +36398,8 @@
                   }
                 ],
                 "declKind": "Func",
-                "usr": "s:11GliaCoreSDK0aB0C14AuthenticationV14deauthenticateyyys6ResultOyytAA0aB5ErrorCGcF",
-                "mangledName": "$s11GliaCoreSDK0aB0C14AuthenticationV14deauthenticateyyys6ResultOyytAA0aB5ErrorCGcF",
+                "usr": "s:11GliaCoreSDK0aB0C14AuthenticationV14deauthenticate27shouldStopPushNotifications_ySb_ys6ResultOyytAA0aB5ErrorCGctF",
+                "mangledName": "$s11GliaCoreSDK0aB0C14AuthenticationV14deauthenticate27shouldStopPushNotifications_ySb_ys6ResultOyytAA0aB5ErrorCGctF",
                 "moduleName": "GliaCoreSDK",
                 "declAttributes": [
                   "AccessControl",
@@ -36532,7 +36566,7 @@
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
-                    "printedName": "(@escaping (Swift.Result<(), any Swift.Error>) -> ()) -> ()",
+                    "printedName": "(Swift.Bool, @escaping (Swift.Result<(), any Swift.Error>) -> ()) -> ()",
                     "children": [
                       {
                         "kind": "TypeNominal",
@@ -36540,19 +36574,20 @@
                         "printedName": "()"
                       },
                       {
-                        "kind": "TypeFunc",
-                        "name": "Function",
-                        "printedName": "(Swift.Result<(), any Swift.Error>) -> ()",
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(Swift.Bool, (Swift.Result<(), any Swift.Error>) -> ())",
                         "children": [
                           {
                             "kind": "TypeNominal",
-                            "name": "Void",
-                            "printedName": "()"
+                            "name": "Bool",
+                            "printedName": "Swift.Bool",
+                            "usr": "s:Sb"
                           },
                           {
-                            "kind": "TypeNominal",
-                            "name": "Result",
-                            "printedName": "Swift.Result<(), any Swift.Error>",
+                            "kind": "TypeFunc",
+                            "name": "Function",
+                            "printedName": "(Swift.Result<(), any Swift.Error>) -> ()",
                             "children": [
                               {
                                 "kind": "TypeNominal",
@@ -36561,12 +36596,24 @@
                               },
                               {
                                 "kind": "TypeNominal",
-                                "name": "Error",
-                                "printedName": "any Swift.Error",
-                                "usr": "s:s5ErrorP"
+                                "name": "Result",
+                                "printedName": "Swift.Result<(), any Swift.Error>",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "Void",
+                                    "printedName": "()"
+                                  },
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "Error",
+                                    "printedName": "any Swift.Error",
+                                    "usr": "s:s5ErrorP"
+                                  }
+                                ],
+                                "usr": "s:s6ResultO"
                               }
-                            ],
-                            "usr": "s:s6ResultO"
+                            ]
                           }
                         ]
                       }
@@ -36665,8 +36712,8 @@
                   }
                 ],
                 "declKind": "Constructor",
-                "usr": "s:11GliaCoreSDK0aB0C14AuthenticationV23authenticateWithIdToken014deauthenticateF8Callback22isAuthenticatedClosure7refreshAEySS_SSSgyySbccys6ResultOyyts5Error_pGctc_yyANccSbycySS_AJyALyytAA0abP0CGctctcfc",
-                "mangledName": "$s11GliaCoreSDK0aB0C14AuthenticationV23authenticateWithIdToken014deauthenticateF8Callback22isAuthenticatedClosure7refreshAEySS_SSSgyySbccys6ResultOyyts5Error_pGctc_yyANccSbycySS_AJyALyytAA0abP0CGctctcfc",
+                "usr": "s:11GliaCoreSDK0aB0C14AuthenticationV23authenticateWithIdToken014deauthenticateF8Callback22isAuthenticatedClosure7refreshAEySS_SSSgyySbccys6ResultOyyts5Error_pGctc_ySb_yANctcSbycySS_AJyALyytAA0abP0CGctctcfc",
+                "mangledName": "$s11GliaCoreSDK0aB0C14AuthenticationV23authenticateWithIdToken014deauthenticateF8Callback22isAuthenticatedClosure7refreshAEySS_SSSgyySbccys6ResultOyyts5Error_pGctc_ySb_yANctcSbycySS_AJyALyytAA0abP0CGctctcfc",
                 "moduleName": "GliaCoreSDK",
                 "declAttributes": [
                   "AccessControl",
@@ -44921,21 +44968,21 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 1556,
+      "offset": 1590,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "Array",
-      "offset": 1901,
+      "offset": 1935,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Push\/PushNotifications.swift",
       "kind": "BooleanLiteral",
-      "offset": 2102,
+      "offset": 2136,
       "length": 5,
       "value": "false"
     },
@@ -47042,7 +47089,14 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/OpaqueAuth\/Authentication.Interface.swift",
       "kind": "BooleanLiteral",
-      "offset": 6993,
+      "offset": 5733,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/OpaqueAuth\/Authentication.Interface.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7197,
       "length": 5,
       "value": "false"
     },
@@ -47548,7 +47602,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.1.3\""
+      "value": "\"2.1.4\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -47707,14 +47761,14 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 73523,
+      "offset": 73522,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 73582,
+      "offset": 73581,
       "length": 23,
       "value": "\"capabilities:response\""
     },
