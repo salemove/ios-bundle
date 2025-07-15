@@ -143,12 +143,8 @@ public protocol EngagementHandling {
 public protocol MediaHandling {
   var onMediaUpgradeOffer: GliaCoreSDK.MediaUgradeOfferBlock { get }
   var onEngagementTransferMediaUpdate: GliaCoreSDK.MediaUpdateBlock { get }
-  @available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
-  var onScreenSharingOffer: GliaCoreSDK.ScreenshareOfferBlock { get }
   var onVideoStreamAdded: GliaCoreSDK.VideoStreamAddedBlock { get }
   var onAudioStreamAdded: GliaCoreSDK.AudioStreamAddedBlock { get }
-  @available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
-  var onVisitorScreenSharingStateChange: GliaCoreSDK.VisitorScreenSharingStateChange { get }
 }
 @objc public protocol ErrorHandling {
   @objc func fail(error: GliaCoreSDK.GliaCoreError)
@@ -183,7 +179,7 @@ extension GliaCoreSDK.GliaCore {
     public static func custom(_ host: Foundation.URL) -> GliaCoreSDK.GliaCore.Region
   }
   public struct Configuration {
-    public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, authorizingMethod: GliaCoreSDK.GliaCore.AuthorizationMethod, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled, manualLocaleOverride: Swift.String? = nil, suppressPushNotificationsPermissionRequestDuringAuthentication: Swift.Bool) throws
+    public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, authorizingMethod: GliaCoreSDK.GliaCore.AuthorizationMethod, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled, manualLocaleOverride: Swift.String? = nil, suppressPushNotificationsPermissionRequestDuringAuthentication: Swift.Bool, isPushNotificationProxyEnabled: Swift.Bool = true) throws
   }
 }
 extension GliaCoreSDK.GliaCore.Configuration {
@@ -366,6 +362,8 @@ extension GliaCoreSDK.PushNotifications : GliaCoreSDK.PushNotificationsHandling,
   @objc dynamic public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: any Swift.Error)
   @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
   @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+  public func widgetsNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  public func widgetsNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
 }
 extension GliaCoreSDK.PushNotifications : GliaCoreSDK.PushNotificationsConfigurable {
   public func subscribeTo(_ notifications: [GliaCoreSDK.PushNotificationsType])
@@ -560,17 +558,6 @@ extension GliaCoreSDK.GliaCore {
   @available(*, deprecated, message: "Use queueForEngagement(using:completion: instead.")
   final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, options: GliaCoreSDK.EngagementOptions?, replaceExisting: Swift.Bool, completion: @escaping GliaCoreSDK.QueueTicketBlock)
 }
-@available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
-@objc public enum ScreenSharingStatus : Swift.Int {
-  case sharing
-  case notSharing
-  public init?(rawValue: Swift.Int)
-  @available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
 extension GliaCoreSDK.GliaCore {
   @available(*, deprecated, message: "Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.")
   @objc final public func subscribeForUpdates(forQueue queueIds: [Swift.String], onError: @escaping GliaCoreSDK.ErrorBlock, onUpdate: @escaping GliaCoreSDK.QueueUpdateBlock) -> Swift.String?
@@ -579,21 +566,6 @@ extension GliaCoreSDK.GliaCore {
   @available(*, deprecated, message: "Use cancel(queueTicket:completion:) instead.")
   @objc final public func cancel(engagementRequest: GliaCoreSDK.EngagementRequest, completion: @escaping GliaCoreSDK.SuccessBlock)
 }
-@available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
-@objc public class VisitorScreenSharingState : ObjectiveC.NSObject {
-  @objc public var status: GliaCoreSDK.ScreenSharingStatus {
-    get
-  }
-  @objc public var localScreen: GliaCoreSDK.LocalScreen? {
-    get
-  }
-  public init(status: GliaCoreSDK.ScreenSharingStatus, localScreen: GliaCoreSDK.LocalScreen?)
-  @objc deinit
-}
-@available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
-public typealias ScreenshareOfferBlock = (@escaping GliaCoreSDK.AnswerBlock) -> Swift.Void
-@available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
-public typealias VisitorScreenSharingStateChange = (GliaCoreSDK.VisitorScreenSharingState, GliaCoreSDK.GliaCoreError?) -> Swift.Void
 extension GliaCoreSDK.GliaCore {
   @objc final public func requestMediaUpgrade(offer: GliaCoreSDK.MediaUpgradeOffer, completion: @escaping GliaCoreSDK.SuccessBlock)
 }
@@ -1123,8 +1095,6 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
 }
 @objc public enum MediaError : Swift.Int, Swift.Error {
   case permissionDenied
-  case screenSharingNotAvailable
-  case notAvailableOnIOSVersion
   case unsupportedEngagementType
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
@@ -1345,6 +1315,39 @@ extension GliaCoreSDK.GliaCore.SecureConversations {
   final public func subscribeToPendingSecureConversationStatus(_ callback: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void) -> Swift.String?
   final public func unsubscribeFromPendingSecureConversationStatus(_ subscriptionToken: Swift.String)
 }
+final public class TestCombineScheduler<SchedulerTimeType, SchedulerOptions> : Combine.Scheduler, @unchecked Swift.Sendable where SchedulerTimeType : Swift.Strideable, SchedulerTimeType.Stride : Combine.SchedulerTimeIntervalConvertible {
+  final public let minimumTolerance: SchedulerTimeType.Stride
+  final public var now: SchedulerTimeType {
+    get
+  }
+  public init(now: SchedulerTimeType)
+  final public func advance(by duration: SchedulerTimeType.Stride = .zero)
+  @_Concurrency.MainActor final public func advance(by duration: SchedulerTimeType.Stride = .zero) async
+  final public func advance(to instant: SchedulerTimeType)
+  @_Concurrency.MainActor final public func advance(to instant: SchedulerTimeType) async
+  final public func run()
+  @_Concurrency.MainActor final public func run() async
+  final public func schedule(after date: SchedulerTimeType, interval: SchedulerTimeType.Stride, tolerance _: SchedulerTimeType.Stride, options _: SchedulerOptions?, _ action: @escaping () -> Swift.Void) -> any Combine.Cancellable
+  final public func schedule(after date: SchedulerTimeType, tolerance _: SchedulerTimeType.Stride, options _: SchedulerOptions?, _ action: @escaping () -> Swift.Void)
+  final public func schedule(options _: SchedulerOptions?, _ action: @escaping () -> Swift.Void)
+  @objc deinit
+}
+extension Dispatch.DispatchQueue {
+  public static var test: GliaCoreSDK.TestSchedulerOf<Dispatch.DispatchQueue> {
+    get
+  }
+}
+extension Foundation.OperationQueue {
+  public static var test: GliaCoreSDK.TestSchedulerOf<Foundation.OperationQueue> {
+    get
+  }
+}
+extension Foundation.RunLoop {
+  public static var test: GliaCoreSDK.TestSchedulerOf<Foundation.RunLoop> {
+    get
+  }
+}
+public typealias TestSchedulerOf<Scheduler> = GliaCoreSDK.TestCombineScheduler<Scheduler.SchedulerTimeType, Scheduler.SchedulerOptions> where Scheduler : Combine.Scheduler
 extension GliaCoreSDK.GliaCore {
   final public func startSocketObservation()
   final public func stopSocketObservation()
@@ -1488,12 +1491,6 @@ extension GliaCoreSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.Equ
 extension GliaCoreSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.Hashable {}
 extension GliaCoreSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.RawRepresentable {}
 extension GliaCoreSDK.GliaCoreAppDelegate : Swift.Sendable {}
-@available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
-extension GliaCoreSDK.ScreenSharingStatus : Swift.Equatable {}
-@available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
-extension GliaCoreSDK.ScreenSharingStatus : Swift.Hashable {}
-@available(*, deprecated, message: "Screen sharing feature will replaced with Live Observations")
-extension GliaCoreSDK.ScreenSharingStatus : Swift.RawRepresentable {}
 extension GliaCoreSDK.MediaType : Swift.Equatable {}
 extension GliaCoreSDK.MediaType : Swift.Hashable {}
 extension GliaCoreSDK.MediaType : Swift.RawRepresentable {}
