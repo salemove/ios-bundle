@@ -361,6 +361,7 @@ typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
 static NSString * _Nonnull const ConfigurationErrorDomain = @"GliaCoreSDK.ConfigurationError";
 
 
+
 @class NSString;
 @class Operator;
 
@@ -379,9 +380,6 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 @end
 
 
-
-
-
 @interface Engagement (SWIFT_EXTENSION(GliaCoreSDK))
 /// Calculates if engagement is transferred Secure Conversation.
 /// \param engagement. 
@@ -391,6 +389,9 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 /// Boolean value indicating whether it’s transferred Secure Conversation.
 + (BOOL)isTransferredSecureConversation:(Engagement * _Nonnull)engagement SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
+
 
 
 
@@ -561,6 +562,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+@class Queue;
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Deprecated.
+- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.");
+@end
 
 
 
@@ -574,12 +581,22 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-@class Queue;
+
+enum LogLevel : NSInteger;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated.
-- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.");
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
+
 
 @class MediaUpgradeOffer;
 
@@ -612,33 +629,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 @end
 
 
-enum LogLevel : NSInteger;
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
 
 
 
-
-
-
-
-
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-@end
 
 
 
@@ -669,6 +662,14 @@ enum LogLevel : NSInteger;
 /// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
 ///
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
+@end
+
+
+
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
 @end
 
 
@@ -736,6 +737,7 @@ enum LogLevel : NSInteger;
 
 
 
+
 @class Message;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -744,6 +746,7 @@ enum LogLevel : NSInteger;
 /// Deprecated.
 - (void)sendWithMessage:(NSString * _Nonnull)message attachment:(Attachment * _Nullable)attachment completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(messagePayload:completion:)");
 @end
+
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -812,8 +815,6 @@ enum LogLevel : NSInteger;
 /// Unavailable.
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_UNAVAILABLE_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
 @end
-
-
 
 
 
@@ -970,12 +971,8 @@ typedef SWIFT_ENUM(NSInteger, LogLevel, open) {
 typedef SWIFT_ENUM(NSInteger, MediaError, open) {
 /// When the user has explicitly denied the permission to work with the media
   MediaErrorPermissionDenied = 0,
-/// When there is an active screensharing session but does not allow screensharing to start
-  MediaErrorScreenSharingNotAvailable = 1,
-/// When the Visitor is using an older iOS version that 11.0
-  MediaErrorNotAvailableOnIOSVersion = 2,
 /// The SDK does not support the specified engagement type.
-  MediaErrorUnsupportedEngagementType = 3,
+  MediaErrorUnsupportedEngagementType = 1,
 };
 static NSString * _Nonnull const MediaErrorDomain = @"GliaCoreSDK.MediaError";
 
@@ -1029,6 +1026,8 @@ SWIFT_PROTOCOL("_TtP11GliaCoreSDK15MessageHandling_")
 /// the client library fetches new information on ‘UIApplicationDidBecomeActive’
 @property (nonatomic, readonly, copy) void (^ _Nonnull onMessagesUpdated)(NSArray<Message *> * _Nonnull);
 @end
+
+
 
 
 
@@ -1172,13 +1171,6 @@ SWIFT_CLASS("_TtC11GliaCoreSDK11QueueTicket")
 @end
 
 
-/// List of available screen sharing statuses
-typedef SWIFT_ENUM(NSInteger, ScreenSharingStatus, open) {
-/// There is an ongoing screen sharing session
-  ScreenSharingStatusSharing = 0,
-/// No ongoing screensharing session
-  ScreenSharingStatusNotSharing = 1,
-};
 
 
 /// Option for single choice messages.
@@ -1253,17 +1245,6 @@ SWIFT_CLASS("_TtC11GliaCoreSDK14VisitorContext")
 @end
 
 
-
-
-SWIFT_CLASS("_TtC11GliaCoreSDK25VisitorScreenSharingState") SWIFT_DEPRECATED_MSG("Screen sharing feature will replaced with Live Observations")
-@interface VisitorScreenSharingState : NSObject
-/// ScreenSharing status, which is one of <code>ScreenSharingStatus</code>
-@property (nonatomic, readonly) enum ScreenSharingStatus status;
-/// <code>LocalScreen</code> can be used to stop screen sharing.
-@property (nonatomic, readonly, strong) LocalScreen * _Nullable localScreen;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
 
 #endif
 #if __has_attribute(external_source_symbol)
