@@ -345,6 +345,7 @@ SWIFT_PROTOCOL("_TtP11GliaCoreSDK15AudioStreamable_")
 @property (nonatomic, copy) void (^ _Nullable onHold)(BOOL);
 @end
 
+
 /// Error of the configuration of the sdk
 typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
 /// The site ID is invalid.
@@ -380,6 +381,8 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 @end
 
 
+
+
 @interface Engagement (SWIFT_EXTENSION(GliaCoreSDK))
 /// Calculates if engagement is transferred Secure Conversation.
 /// \param engagement. 
@@ -389,8 +392,6 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 /// Boolean value indicating whether it’s transferred Secure Conversation.
 + (BOOL)isTransferredSecureConversation:(Engagement * _Nonnull)engagement SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 
 
@@ -562,6 +563,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Deprecated.
+- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use cancel(queueTicket:completion:) instead.");
+@end
+
+
+
+
 @class Queue;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -571,31 +580,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated.
-- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use cancel(queueTicket:completion:) instead.");
-@end
 
 
-
-
-
-
-
-enum LogLevel : NSInteger;
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
 
 
 @class MediaUpgradeOffer;
@@ -628,41 +614,25 @@ enum LogLevel : NSInteger;
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
-
-
-
-
-
-
+enum LogLevel : NSInteger;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Send a message preview to the Operator.
-/// The latest preview message will always be visible to the Operator. This means that Operators can use the
-/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
-/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
-/// experience.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
+/// Configure log level
 /// <ul>
 ///   <li>
-///     <code>GeneralError.internalError</code>
+///     parameters:
 ///   </li>
 ///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
+///     level: One of the ‘LogLevel’ values that the logger should use
 ///   </li>
 /// </ul>
-/// \param message The content of the message preview.
-///
-/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
-///
-- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
+
+
+
+
+
 
 
 
@@ -737,6 +707,37 @@ enum LogLevel : NSInteger;
 
 
 
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Send a message preview to the Operator.
+/// The latest preview message will always be visible to the Operator. This means that Operators can use the
+/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
+/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
+/// experience.
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+/// </ul>
+/// \param message The content of the message preview.
+///
+/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
+///
+- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
+@end
+
+
+
 
 @class Message;
 
@@ -746,7 +747,6 @@ enum LogLevel : NSInteger;
 /// Deprecated.
 - (void)sendWithMessage:(NSString * _Nonnull)message attachment:(Attachment * _Nullable)attachment completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(messagePayload:completion:)");
 @end
-
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -803,6 +803,7 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
+
 
 
 
@@ -1601,6 +1602,7 @@ SWIFT_PROTOCOL("_TtP11GliaCoreSDK15AudioStreamable_")
 @property (nonatomic, copy) void (^ _Nullable onHold)(BOOL);
 @end
 
+
 /// Error of the configuration of the sdk
 typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
 /// The site ID is invalid.
@@ -1636,6 +1638,8 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 @end
 
 
+
+
 @interface Engagement (SWIFT_EXTENSION(GliaCoreSDK))
 /// Calculates if engagement is transferred Secure Conversation.
 /// \param engagement. 
@@ -1645,8 +1649,6 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 /// Boolean value indicating whether it’s transferred Secure Conversation.
 + (BOOL)isTransferredSecureConversation:(Engagement * _Nonnull)engagement SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 
 
@@ -1818,6 +1820,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Deprecated.
+- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use cancel(queueTicket:completion:) instead.");
+@end
+
+
+
+
 @class Queue;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -1827,31 +1837,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated.
-- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use cancel(queueTicket:completion:) instead.");
-@end
 
 
-
-
-
-
-
-enum LogLevel : NSInteger;
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
 
 
 @class MediaUpgradeOffer;
@@ -1884,41 +1871,25 @@ enum LogLevel : NSInteger;
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
-
-
-
-
-
-
+enum LogLevel : NSInteger;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Send a message preview to the Operator.
-/// The latest preview message will always be visible to the Operator. This means that Operators can use the
-/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
-/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
-/// experience.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
+/// Configure log level
 /// <ul>
 ///   <li>
-///     <code>GeneralError.internalError</code>
+///     parameters:
 ///   </li>
 ///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
+///     level: One of the ‘LogLevel’ values that the logger should use
 ///   </li>
 /// </ul>
-/// \param message The content of the message preview.
-///
-/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
-///
-- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
+
+
+
+
+
 
 
 
@@ -1993,6 +1964,37 @@ enum LogLevel : NSInteger;
 
 
 
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Send a message preview to the Operator.
+/// The latest preview message will always be visible to the Operator. This means that Operators can use the
+/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
+/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
+/// experience.
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+/// </ul>
+/// \param message The content of the message preview.
+///
+/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
+///
+- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
+@end
+
+
+
 
 @class Message;
 
@@ -2002,7 +2004,6 @@ enum LogLevel : NSInteger;
 /// Deprecated.
 - (void)sendWithMessage:(NSString * _Nonnull)message attachment:(Attachment * _Nullable)attachment completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(messagePayload:completion:)");
 @end
-
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -2059,6 +2060,7 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
+
 
 
 

@@ -933,6 +933,39 @@ extension GliaCoreSDK.Request {
     public static func == (a: GliaCoreSDK.Request.Outcome, b: GliaCoreSDK.Request.Outcome) -> Swift.Bool
   }
 }
+@_spi(GliaWidgets) public struct DependencyContainer {
+  @_spi(GliaWidgets) public enum Environment {
+    @_spi(GliaWidgets) case live
+    @_spi(GliaWidgets) case test
+    @_spi(GliaWidgets) public static func == (a: GliaCoreSDK.DependencyContainer.Environment, b: GliaCoreSDK.DependencyContainer.Environment) -> Swift.Bool
+    @_spi(GliaWidgets) public func hash(into hasher: inout Swift.Hasher)
+    @_spi(GliaWidgets) public var hashValue: Swift.Int {
+      @_spi(GliaWidgets) get
+    }
+  }
+  @_spi(GliaWidgets) public static let $current: _Concurrency.TaskLocal<GliaCoreSDK.DependencyContainer>
+  @_spi(GliaWidgets) public static var current: GliaCoreSDK.DependencyContainer {
+    @_spi(GliaWidgets) get
+  }
+  @_spi(GliaWidgets) public init(environment: GliaCoreSDK.DependencyContainer.Environment)
+}
+#if compiler(>=5.3) && $PrimaryAssociatedTypes2
+@_spi(GliaWidgets) public protocol DependencyKey<Value> {
+  associatedtype Value = Self
+  @_spi(GliaWidgets) static var live: Self.Value { get }
+}
+#else
+@_spi(GliaWidgets) public protocol DependencyKey {
+  associatedtype Value = Self
+  @_spi(GliaWidgets) static var live: Self.Value { get }
+}
+#endif
+@_spi(GliaWidgets) @propertyWrapper public struct Dependency<Value> {
+  @_spi(GliaWidgets) public var wrappedValue: Value {
+    @_spi(GliaWidgets) get
+  }
+  @_spi(GliaWidgets) public init(_ keyPath: Swift.KeyPath<GliaCoreSDK.DependencyContainer, Value>)
+}
 extension GliaCoreSDK.GliaCore {
   @_hasMissingDesignatedInitializers final public class CallVisualizer {
     @objc deinit
@@ -949,7 +982,6 @@ extension GliaCoreSDK.GliaCore.CallVisualizer {
   @objc deinit
   required public init(from decoder: any Swift.Decoder) throws
 }
-infix operator &/ : DefaultPrecedence
 @objc public class OperatorTypingStatus : ObjectiveC.NSObject {
   @objc public var isTyping: Swift.Bool {
     get
@@ -1494,6 +1526,8 @@ extension GliaCoreSDK.GliaCoreAppDelegate : Swift.Sendable {}
 extension GliaCoreSDK.MediaType : Swift.Equatable {}
 extension GliaCoreSDK.MediaType : Swift.Hashable {}
 extension GliaCoreSDK.MediaType : Swift.RawRepresentable {}
+@_spi(GliaWidgets) extension GliaCoreSDK.DependencyContainer.Environment : Swift.Equatable {}
+@_spi(GliaWidgets) extension GliaCoreSDK.DependencyContainer.Environment : Swift.Hashable {}
 extension GliaCoreSDK.GliaCore.Authentication.Error : Swift.Equatable {}
 extension GliaCoreSDK.GliaCore.Authentication.Error : Swift.Hashable {}
 extension GliaCoreSDK.GliaCore.Authentication.Behavior : Swift.Equatable {}
