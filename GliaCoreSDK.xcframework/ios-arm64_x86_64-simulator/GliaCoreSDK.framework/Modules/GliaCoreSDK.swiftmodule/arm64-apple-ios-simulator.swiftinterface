@@ -873,7 +873,6 @@ extension GliaCoreSDK.GliaCore.CallVisualizer {
   @objc deinit
   required public init(from decoder: any Swift.Decoder) throws
 }
-infix operator &/ : DefaultPrecedence
 @objc public class OperatorTypingStatus : ObjectiveC.NSObject {
   @objc public var isTyping: Swift.Bool {
     get
