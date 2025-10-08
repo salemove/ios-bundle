@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/GliaCoreSDK-Swift.h</key>
 		<data>
-		CmI6/DA0LSDmmPH6pPH8kb/EsLI=
+		To2dOuN63N+v5m54ZMq4pYzv74A=
 		</data>
 		<key>Headers/GliaCoreSDK.h</key>
 		<data>
@@ -26,43 +26,43 @@
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		tLFgpvUkF/XJEzP/Iwh78XkN/SA=
+		OMs5AgMwCR+5vdKWyOs3Z4I5UPc=
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		akFu76Pw/plmFIoRCttzKRAfumM=
+		OPCIPEkkk75dHsS5zn7i1pEMCkY=
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		yjrE8lBKNfCF/LjuZtTcu6W5DZU=
+		JhmD3+GV+YCgvwePf+HA8RE53hU=
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		meYCQ5VaGKA5eCRM4mKnsL7UzIw=
+		VHzrNHXo3ctPdlniM2gnuraGURg=
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		byqbdounZfeAhihtJuUkd1vCXw8=
+		G8i89R6V2hK6wB/PQLYHhs14hOU=
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		tLFgpvUkF/XJEzP/Iwh78XkN/SA=
+		OMs5AgMwCR+5vdKWyOs3Z4I5UPc=
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		7PeIUBQX+pll4CfBIxnUfK1PLoQ=
+		0qCKGiAYPOvvH1c6175EJuaLprk=
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		SH0PzFK3UnHjIrh5G9VBUnkFC80=
+		8Xgzp2LNKpeh2nTSsXPm35GfTkU=
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		pfoprihMpDFae9akjPd5cxh/Gfc=
+		uNkESnhhURayMQFkT7VrhoWH0sk=
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		SoHUb41j9lfynFvAv0oCrJpo3h0=
+		7G/AwCRvKE7uIxHwAIjhSrclG3w=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -86,7 +86,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hp0lYbEx0JKPsPKsEFpd9+dw3ytSoY3ZviAGb+qu3XI=
+			WvK3aqmIVk99zUljYK1XPJo5Bs8rLXYGNFLpE/ceYr4=
 			</data>
 		</dict>
 		<key>Headers/GliaCoreSDK.h</key>
@@ -107,70 +107,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			DYRhenQ63vG4jEV5s1Pn19dLj5MgxV6GQuxxKgLLFpQ=
+			3dNu6y/HwD7jzI1ZJ7ItYKsEZbO5kDvNhJeaWZjRcbA=
 			</data>
 		</dict>
 		<key>Modules/GliaCoreSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			75j27msqMWo9wsO6iurBS8EPWJzl4dCZh+zsXNNSMNk=
+			Dfu9nSATB8+b9q+w05D7AFO3VoXbRKQm7/NlZZrsTwI=
 			</data>
 		</dict>
 		<key>Modules/GliaCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ima3K6VjsTNRemSM/c6VKo6aY393+UmiZgNYrvu9XFg=
+			uvCL4MTyvVjJHH22SK8EJk3LmOOpWgXIzamgQ5QY7eg=
 			</data>
 		</dict>
 		<key>Modules/GliaCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/+c0afOCLPlh/D5WdD2Jq5QTzBDOBr/t5t6F0DpeU+M=
+			tWPhm/oFvPkM2z0Be2lnTmImRCnhGeSyqdpV0sYpEZw=
 			</data>
 		</dict>
 		<key>Modules/GliaCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7sYO1oQ/WwLnkgpQ4tO0Ie2XmmcMVXZoyQW28mE7YxI=
+			7sEdsvhSxHJcJs5Jm1nQqSgS9tRxwpza3J93V27eHKk=
 			</data>
 		</dict>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DYRhenQ63vG4jEV5s1Pn19dLj5MgxV6GQuxxKgLLFpQ=
+			3dNu6y/HwD7jzI1ZJ7ItYKsEZbO5kDvNhJeaWZjRcbA=
 			</data>
 		</dict>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rB1ySuAnd4eVPaoyLfFu8f5Tp5HjIIV8iFggUIzUv6U=
+			RLrdVrlURqXgMO1VcODB2564R/4/blgyO3nakMZ4/+k=
 			</data>
 		</dict>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			U9zr6t/qgFmQ+6gAADpJya+Ihrdrwy4G35y02ywVhaw=
+			//T9FADL47ysuKoTxqHS1aRvslRC24g7aUF/3RWTTuI=
 			</data>
 		</dict>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZmkSYc/dzpHpcElmuMKoy8r0SOPYQcjXjTqj6Iy0eLE=
+			SUI4eLQiXoWW4Gqk2iOUUXEr2ox/rNC4cVDLgr2ToPU=
 			</data>
 		</dict>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mc5691hFf+R8GZGR0+OFFlJcqbjAEhZT4KA42Gcx8P8=
+			0KHApIJOBBDUtjYDQoqgSK3E3MQPGJTnpdC/noipt14=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

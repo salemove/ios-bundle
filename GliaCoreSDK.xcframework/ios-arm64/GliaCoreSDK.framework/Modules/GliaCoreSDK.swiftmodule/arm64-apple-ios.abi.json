@@ -40,6 +40,13 @@
         "moduleName": "GliaCoreSDK"
       },
       {
+        "kind": "Import",
+        "name": "PhoenixChannelsClient",
+        "printedName": "PhoenixChannelsClient",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
         "kind": "TypeDecl",
         "name": "AttachmentType",
         "printedName": "AttachmentType",
@@ -996,52 +1003,53 @@
             ]
           },
           {
-            "kind": "Function",
-            "name": "==",
-            "printedName": "==(_:_:)",
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.EngagementEndingReason?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EngagementEndingReason",
+                    "printedName": "GliaCoreSDK.EngagementEndingReason",
+                    "usr": "s:11GliaCoreSDK22EngagementEndingReasonO"
+                  }
+                ],
+                "usr": "s:Sq"
               },
               {
                 "kind": "TypeNominal",
-                "name": "EngagementEndingReason",
-                "printedName": "GliaCoreSDK.EngagementEndingReason",
-                "usr": "s:11GliaCoreSDK22EngagementEndingReasonO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "EngagementEndingReason",
-                "printedName": "GliaCoreSDK.EngagementEndingReason",
-                "usr": "s:11GliaCoreSDK22EngagementEndingReasonO"
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
               }
             ],
-            "declKind": "Func",
-            "usr": "s:11GliaCoreSDK22EngagementEndingReasonO2eeoiySbAC_ACtFZ",
-            "mangledName": "$s11GliaCoreSDK22EngagementEndingReasonO2eeoiySbAC_ACtFZ",
+            "declKind": "Constructor",
+            "usr": "s:11GliaCoreSDK22EngagementEndingReasonO8rawValueACSgSS_tcfc",
+            "mangledName": "$s11GliaCoreSDK22EngagementEndingReasonO8rawValueACSgSS_tcfc",
             "moduleName": "GliaCoreSDK",
-            "static": true,
             "implicit": true,
-            "funcSelfKind": "NonMutating"
+            "init_kind": "Designated"
           },
           {
             "kind": "Var",
-            "name": "hashValue",
-            "printedName": "hashValue",
+            "name": "rawValue",
+            "printedName": "rawValue",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
               }
             ],
             "declKind": "Var",
-            "usr": "s:11GliaCoreSDK22EngagementEndingReasonO9hashValueSivp",
-            "mangledName": "$s11GliaCoreSDK22EngagementEndingReasonO9hashValueSivp",
+            "usr": "s:11GliaCoreSDK22EngagementEndingReasonO8rawValueSSvp",
+            "mangledName": "$s11GliaCoreSDK22EngagementEndingReasonO8rawValueSSvp",
             "moduleName": "GliaCoreSDK",
             "implicit": true,
             "accessors": [
@@ -1052,44 +1060,19 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:11GliaCoreSDK22EngagementEndingReasonO9hashValueSivg",
-                "mangledName": "$s11GliaCoreSDK22EngagementEndingReasonO9hashValueSivg",
+                "usr": "s:11GliaCoreSDK22EngagementEndingReasonO8rawValueSSvg",
+                "mangledName": "$s11GliaCoreSDK22EngagementEndingReasonO8rawValueSSvg",
                 "moduleName": "GliaCoreSDK",
                 "implicit": true,
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Function",
-            "name": "hash",
-            "printedName": "hash(into:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Hasher",
-                "printedName": "Swift.Hasher",
-                "paramValueOwnership": "InOut",
-                "usr": "s:s6HasherV"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:11GliaCoreSDK22EngagementEndingReasonO4hash4intoys6HasherVz_tF",
-            "mangledName": "$s11GliaCoreSDK22EngagementEndingReasonO4hash4intoys6HasherVz_tF",
-            "moduleName": "GliaCoreSDK",
-            "implicit": true,
-            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Enum",
@@ -1100,6 +1083,7 @@
           "AccessControl",
           "RawDocComment"
         ],
+        "enumRawTypeName": "String",
         "conformances": [
           {
             "kind": "Conformance",
@@ -1128,6 +1112,28 @@
             "printedName": "Hashable",
             "usr": "s:SH",
             "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
           }
         ]
       },
@@ -4724,6 +4730,761 @@
         "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "GliaOpenTelemetry",
+        "printedName": "GliaOpenTelemetry",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "OtelTracer",
+        "printedName": "OtelTracer",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "startSpan",
+            "printedName": "startSpan(event:attributesBuilder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogEvents",
+                "printedName": "GliaOpenTelemetry.LogEvents",
+                "usr": "s:17GliaOpenTelemetry9LogEventsO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaAttributes",
+                            "printedName": "GliaOpenTelemetry.GliaAttributes",
+                            "usr": "s:17GliaOpenTelemetry0A10AttributesO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaAttributeValue",
+                            "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                            "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelTracerV9startSpan5event17attributesBuildery0A13OpenTelemetry9LogEventsO_ySDyAG0A10AttributesOAG0A14AttributeValueOGzcSgtF",
+            "mangledName": "$s11GliaCoreSDK10OtelTracerV9startSpan5event17attributesBuildery0A13OpenTelemetry9LogEventsO_ySDyAG0A10AttributesOAG0A14AttributeValueOGzcSgtF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "endSpan",
+            "printedName": "endSpan(event:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogEvents",
+                "printedName": "GliaOpenTelemetry.LogEvents",
+                "usr": "s:17GliaOpenTelemetry9LogEventsO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelTracerV7endSpan5eventy0A13OpenTelemetry9LogEventsO_tF",
+            "mangledName": "$s11GliaCoreSDK10OtelTracerV7endSpan5eventy0A13OpenTelemetry9LogEventsO_tF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "recordException",
+            "printedName": "recordException(for:exception:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogEvents",
+                "printedName": "GliaOpenTelemetry.LogEvents",
+                "usr": "s:17GliaOpenTelemetry9LogEventsO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Error",
+                "printedName": "any Swift.Error",
+                "usr": "s:s5ErrorP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelTracerV15recordException3for9exceptiony0A13OpenTelemetry9LogEventsO_s5Error_ptF",
+            "mangledName": "$s11GliaCoreSDK10OtelTracerV15recordException3for9exceptiony0A13OpenTelemetry9LogEventsO_s5Error_ptF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addEvent",
+            "printedName": "addEvent(for:event:attributesBuilder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogEvents",
+                "printedName": "GliaOpenTelemetry.LogEvents",
+                "usr": "s:17GliaOpenTelemetry9LogEventsO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogEvents",
+                "printedName": "GliaOpenTelemetry.LogEvents",
+                "usr": "s:17GliaOpenTelemetry9LogEventsO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaAttributes",
+                            "printedName": "GliaOpenTelemetry.GliaAttributes",
+                            "usr": "s:17GliaOpenTelemetry0A10AttributesO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaAttributeValue",
+                            "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                            "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelTracerV8addEvent3for5event17attributesBuildery0A13OpenTelemetry9LogEventsO_AJySDyAH0A10AttributesOAH0A14AttributeValueOGzcSgtF",
+            "mangledName": "$s11GliaCoreSDK10OtelTracerV8addEvent3for5event17attributesBuildery0A13OpenTelemetry9LogEventsO_AJySDyAH0A10AttributesOAH0A14AttributeValueOGzcSgtF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "live",
+            "printedName": "live(telemetry:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OtelTracer",
+                "printedName": "GliaCoreSDK.OtelTracer",
+                "usr": "s:11GliaCoreSDK10OtelTracerV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GliaTelemetry",
+                "printedName": "GliaOpenTelemetry.GliaTelemetry",
+                "usr": "s:17GliaOpenTelemetry0aC0C"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelTracerV4live9telemetryAC0A13OpenTelemetry0aI0C_tFZ",
+            "mangledName": "$s11GliaCoreSDK10OtelTracerV4live9telemetryAC0A13OpenTelemetry0aI0C_tFZ",
+            "moduleName": "GliaCoreSDK",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "mock",
+            "printedName": "mock(startSpan:endSpan:recordException:addEvent:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OtelTracer",
+                "printedName": "GliaCoreSDK.OtelTracer",
+                "usr": "s:11GliaCoreSDK10OtelTracerV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaOpenTelemetry.LogEvents, ((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(GliaOpenTelemetry.LogEvents, ((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogEvents",
+                        "printedName": "GliaOpenTelemetry.LogEvents",
+                        "usr": "s:17GliaOpenTelemetry9LogEventsO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?",
+                        "children": [
+                          {
+                            "kind": "TypeFunc",
+                            "name": "Function",
+                            "printedName": "(inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ()",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Void",
+                                "printedName": "()"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Dictionary",
+                                "printedName": "[GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "GliaAttributes",
+                                    "printedName": "GliaOpenTelemetry.GliaAttributes",
+                                    "usr": "s:17GliaOpenTelemetry0A10AttributesO"
+                                  },
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "GliaAttributeValue",
+                                    "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                                    "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                                  }
+                                ],
+                                "usr": "s:SD"
+                              }
+                            ]
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaOpenTelemetry.LogEvents) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogEvents",
+                    "printedName": "GliaOpenTelemetry.LogEvents",
+                    "usr": "s:17GliaOpenTelemetry9LogEventsO"
+                  }
+                ],
+                "hasDefaultArg": true
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaOpenTelemetry.LogEvents, any Swift.Error) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(GliaOpenTelemetry.LogEvents, any Swift.Error)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogEvents",
+                        "printedName": "GliaOpenTelemetry.LogEvents",
+                        "usr": "s:17GliaOpenTelemetry9LogEventsO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Error",
+                        "printedName": "any Swift.Error",
+                        "usr": "s:s5ErrorP"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaOpenTelemetry.LogEvents, GliaOpenTelemetry.LogEvents, ((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(GliaOpenTelemetry.LogEvents, GliaOpenTelemetry.LogEvents, ((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogEvents",
+                        "printedName": "GliaOpenTelemetry.LogEvents",
+                        "usr": "s:17GliaOpenTelemetry9LogEventsO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogEvents",
+                        "printedName": "GliaOpenTelemetry.LogEvents",
+                        "usr": "s:17GliaOpenTelemetry9LogEventsO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?",
+                        "children": [
+                          {
+                            "kind": "TypeFunc",
+                            "name": "Function",
+                            "printedName": "(inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ()",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Void",
+                                "printedName": "()"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Dictionary",
+                                "printedName": "[GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "GliaAttributes",
+                                    "printedName": "GliaOpenTelemetry.GliaAttributes",
+                                    "usr": "s:17GliaOpenTelemetry0A10AttributesO"
+                                  },
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "GliaAttributeValue",
+                                    "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                                    "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                                  }
+                                ],
+                                "usr": "s:SD"
+                              }
+                            ]
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelTracerV4mock9startSpan03endH015recordException8addEventACy0A13OpenTelemetry9LogEventsO_ySDyAI0A10AttributesOAI0A14AttributeValueOGzcSgtc_yAKcyAK_s5Error_ptcyAK_AkQtctFZ",
+            "mangledName": "$s11GliaCoreSDK10OtelTracerV4mock9startSpan03endH015recordException8addEventACy0A13OpenTelemetry9LogEventsO_ySDyAI0A10AttributesOAI0A14AttributeValueOGzcSgtc_yAKcyAK_s5Error_ptcyAK_AkQtctFZ",
+            "moduleName": "GliaCoreSDK",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:11GliaCoreSDK10OtelTracerV",
+        "mangledName": "$s11GliaCoreSDK10OtelTracerV",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GliaOpenTelemetry",
+        "printedName": "GliaOpenTelemetry",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "OpenTelemetry",
+        "printedName": "OpenTelemetry",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "logger",
+            "printedName": "logger",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OtelLogger",
+                "printedName": "GliaCoreSDK.OtelLogger",
+                "usr": "s:11GliaCoreSDK10OtelLoggerV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK13OpenTelemetryC6loggerAA10OtelLoggerVvp",
+            "mangledName": "$s11GliaCoreSDK13OpenTelemetryC6loggerAA10OtelLoggerVvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Lazy",
+              "SetterAccess",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OtelLogger",
+                    "printedName": "GliaCoreSDK.OtelLogger",
+                    "usr": "s:11GliaCoreSDK10OtelLoggerV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK13OpenTelemetryC6loggerAA10OtelLoggerVvg",
+                "mangledName": "$s11GliaCoreSDK13OpenTelemetryC6loggerAA10OtelLoggerVvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "tracer",
+            "printedName": "tracer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OtelTracer",
+                "printedName": "GliaCoreSDK.OtelTracer",
+                "usr": "s:11GliaCoreSDK10OtelTracerV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK13OpenTelemetryC6tracerAA10OtelTracerVvp",
+            "mangledName": "$s11GliaCoreSDK13OpenTelemetryC6tracerAA10OtelTracerVvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Lazy",
+              "SetterAccess",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OtelTracer",
+                    "printedName": "GliaCoreSDK.OtelTracer",
+                    "usr": "s:11GliaCoreSDK10OtelTracerV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK13OpenTelemetryC6tracerAA10OtelTracerVvg",
+                "mangledName": "$s11GliaCoreSDK13OpenTelemetryC6tracerAA10OtelTracerVvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "setGlobalAttribute",
+            "printedName": "setGlobalAttribute(_:forKey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaOpenTelemetry.GliaAttributeValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GliaAttributeValue",
+                    "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                    "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GliaAttributes",
+                "printedName": "GliaOpenTelemetry.GliaAttributes",
+                "usr": "s:17GliaOpenTelemetry0A10AttributesO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK13OpenTelemetryC18setGlobalAttribute_6forKeyy0adE00aH5ValueOSg_AF0A10AttributesOtF",
+            "mangledName": "$s11GliaCoreSDK13OpenTelemetryC18setGlobalAttribute_6forKeyy0adE00aH5ValueOSg_AF0A10AttributesOtF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "configure",
+            "printedName": "configure(urlString:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK13OpenTelemetryC9configure9urlStringySS_tF",
+            "mangledName": "$s11GliaCoreSDK13OpenTelemetryC9configure9urlStringySS_tF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "live",
+            "printedName": "live(configuration:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OpenTelemetry",
+                "printedName": "GliaCoreSDK.OpenTelemetry",
+                "usr": "s:11GliaCoreSDK13OpenTelemetryC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TelemetryConfiguration",
+                "printedName": "GliaOpenTelemetry.TelemetryConfiguration",
+                "hasDefaultArg": true,
+                "usr": "s:17GliaOpenTelemetry0C13ConfigurationV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK13OpenTelemetryC4live13configurationAC0adE00E13ConfigurationV_tFZ",
+            "mangledName": "$s11GliaCoreSDK13OpenTelemetryC4live13configurationAC0adE00E13ConfigurationV_tFZ",
+            "moduleName": "GliaCoreSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "mock",
+            "printedName": "mock(configuration:logger:tracer:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OpenTelemetry",
+                "printedName": "GliaCoreSDK.OpenTelemetry",
+                "usr": "s:11GliaCoreSDK13OpenTelemetryC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TelemetryConfiguration",
+                "printedName": "GliaOpenTelemetry.TelemetryConfiguration",
+                "usr": "s:17GliaOpenTelemetry0C13ConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "OtelLogger",
+                "printedName": "GliaCoreSDK.OtelLogger",
+                "hasDefaultArg": true,
+                "usr": "s:11GliaCoreSDK10OtelLoggerV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "OtelTracer",
+                "printedName": "GliaCoreSDK.OtelTracer",
+                "hasDefaultArg": true,
+                "usr": "s:11GliaCoreSDK10OtelTracerV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK13OpenTelemetryC4mock13configuration6logger6tracerAC0adE00E13ConfigurationV_AA10OtelLoggerVAA0K6TracerVtFZ",
+            "mangledName": "$s11GliaCoreSDK13OpenTelemetryC4mock13configuration6logger6tracerAC0adE00E13ConfigurationV_AA10OtelLoggerVAA0K6TracerVtFZ",
+            "moduleName": "GliaCoreSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:11GliaCoreSDK13OpenTelemetryC",
+        "mangledName": "$s11GliaCoreSDK13OpenTelemetryC",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
       },
       {
         "kind": "Import",
@@ -13933,6 +14694,13 @@
       },
       {
         "kind": "Import",
+        "name": "PhoenixChannelsClient",
+        "printedName": "PhoenixChannelsClient",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -15273,6 +16041,64 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "assetContextId",
+            "printedName": "assetContextId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.UUID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UUID",
+                    "printedName": "Foundation.UUID",
+                    "usr": "s:10Foundation4UUIDV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK14VisitorContextC05assetE2Id10Foundation4UUIDVSgvp",
+            "mangledName": "$s11GliaCoreSDK14VisitorContextC05assetE2Id10Foundation4UUIDVSgvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.UUID?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UUID",
+                        "printedName": "Foundation.UUID",
+                        "usr": "s:10Foundation4UUIDV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK14VisitorContextC05assetE2Id10Foundation4UUIDVSgvg",
+                "mangledName": "$s11GliaCoreSDK14VisitorContextC05assetE2Id10Foundation4UUIDVSgvg",
+                "moduleName": "GliaCoreSDK",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "encode",
             "printedName": "encode(to:)",
@@ -16060,6 +16886,1078 @@
         "printedName": "TwilioVoice",
         "declKind": "Import",
         "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "GliaOpenTelemetry",
+        "printedName": "GliaOpenTelemetry",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "OtelLogger",
+        "printedName": "OtelLogger",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "setLogLevel",
+            "printedName": "setLogLevel(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogLevel",
+                "printedName": "GliaOpenTelemetry.GliaLogger.LogLevel",
+                "usr": "s:17GliaOpenTelemetry0A6LoggerC8LogLevelO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelLoggerV11setLogLevelyy0A13OpenTelemetry0aE0C0gH0OF",
+            "mangledName": "$s11GliaCoreSDK10OtelLoggerV11setLogLevelyy0A13OpenTelemetry0aE0C0gH0OF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "e",
+            "printedName": "e(_:message:error:attributesBuilder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogEvents",
+                "printedName": "GliaOpenTelemetry.LogEvents",
+                "usr": "s:17GliaOpenTelemetry9LogEventsO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(any Swift.Error)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaAttributes",
+                            "printedName": "GliaOpenTelemetry.GliaAttributes",
+                            "usr": "s:17GliaOpenTelemetry0A10AttributesO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaAttributeValue",
+                            "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                            "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelLoggerV1e_7message5error17attributesBuildery0A13OpenTelemetry9LogEventsO_SSSgs5Error_pSgySDyAH0A10AttributesOAH0A14AttributeValueOGzcSgtF",
+            "mangledName": "$s11GliaCoreSDK10OtelLoggerV1e_7message5error17attributesBuildery0A13OpenTelemetry9LogEventsO_SSSgs5Error_pSgySDyAH0A10AttributesOAH0A14AttributeValueOGzcSgtF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "w",
+            "printedName": "w(_:message:attributesBuilder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogEvents",
+                "printedName": "GliaOpenTelemetry.LogEvents",
+                "usr": "s:17GliaOpenTelemetry9LogEventsO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaAttributes",
+                            "printedName": "GliaOpenTelemetry.GliaAttributes",
+                            "usr": "s:17GliaOpenTelemetry0A10AttributesO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaAttributeValue",
+                            "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                            "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelLoggerV1w_7message17attributesBuildery0A13OpenTelemetry9LogEventsO_SSSgySDyAG0A10AttributesOAG0A14AttributeValueOGzcSgtF",
+            "mangledName": "$s11GliaCoreSDK10OtelLoggerV1w_7message17attributesBuildery0A13OpenTelemetry9LogEventsO_SSSgySDyAG0A10AttributesOAG0A14AttributeValueOGzcSgtF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "i",
+            "printedName": "i(_:message:attributesBuilder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogEvents",
+                "printedName": "GliaOpenTelemetry.LogEvents",
+                "usr": "s:17GliaOpenTelemetry9LogEventsO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaAttributes",
+                            "printedName": "GliaOpenTelemetry.GliaAttributes",
+                            "usr": "s:17GliaOpenTelemetry0A10AttributesO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaAttributeValue",
+                            "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                            "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelLoggerV1i_7message17attributesBuildery0A13OpenTelemetry9LogEventsO_SSSgySDyAG0A10AttributesOAG0A14AttributeValueOGzcSgtF",
+            "mangledName": "$s11GliaCoreSDK10OtelLoggerV1i_7message17attributesBuildery0A13OpenTelemetry9LogEventsO_SSSgySDyAG0A10AttributesOAG0A14AttributeValueOGzcSgtF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "d",
+            "printedName": "d(_:message:attributesBuilder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogEvents",
+                "printedName": "GliaOpenTelemetry.LogEvents",
+                "usr": "s:17GliaOpenTelemetry9LogEventsO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaAttributes",
+                            "printedName": "GliaOpenTelemetry.GliaAttributes",
+                            "usr": "s:17GliaOpenTelemetry0A10AttributesO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GliaAttributeValue",
+                            "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                            "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelLoggerV1d_7message17attributesBuildery0A13OpenTelemetry9LogEventsO_SSSgySDyAG0A10AttributesOAG0A14AttributeValueOGzcSgtF",
+            "mangledName": "$s11GliaCoreSDK10OtelLoggerV1d_7message17attributesBuildery0A13OpenTelemetry9LogEventsO_SSSgySDyAG0A10AttributesOAG0A14AttributeValueOGzcSgtF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "logDeprecatedApiUse",
+            "printedName": "logDeprecatedApiUse(sdkType:className:methodName:methodParams:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SdkType",
+                "printedName": "GliaOpenTelemetry.SdkType",
+                "usr": "s:17GliaOpenTelemetry7SdkTypeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ExistentialMetatype",
+                "printedName": "any Any.Type",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelLoggerV19logDeprecatedApiUse7sdkType9className06methodM00N6Paramsy0A13OpenTelemetry03SdkK0O_ypXpSSSgSaySSGtF",
+            "mangledName": "$s11GliaCoreSDK10OtelLoggerV19logDeprecatedApiUse7sdkType9className06methodM00N6Paramsy0A13OpenTelemetry03SdkK0O_ypXpSSSgSaySSGtF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "logMethodUse",
+            "printedName": "logMethodUse(sdkType:className:methodName:methodParams:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SdkType",
+                "printedName": "GliaOpenTelemetry.SdkType",
+                "usr": "s:17GliaOpenTelemetry7SdkTypeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ExistentialMetatype",
+                "printedName": "any Any.Type",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelLoggerV12logMethodUse7sdkType9className06methodL00M6Paramsy0A13OpenTelemetry03SdkJ0O_ypXpSSSaySSGtF",
+            "mangledName": "$s11GliaCoreSDK10OtelLoggerV12logMethodUse7sdkType9className06methodL00M6Paramsy0A13OpenTelemetry03SdkJ0O_ypXpSSSaySSGtF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "live",
+            "printedName": "live(telemetry:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OtelLogger",
+                "printedName": "GliaCoreSDK.OtelLogger",
+                "usr": "s:11GliaCoreSDK10OtelLoggerV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GliaTelemetry",
+                "printedName": "GliaOpenTelemetry.GliaTelemetry",
+                "usr": "s:17GliaOpenTelemetry0aC0C"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelLoggerV4live9telemetryAC0A13OpenTelemetry0aI0C_tFZ",
+            "mangledName": "$s11GliaCoreSDK10OtelLoggerV4live9telemetryAC0A13OpenTelemetry0aI0C_tFZ",
+            "moduleName": "GliaCoreSDK",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "mock",
+            "printedName": "mock(setLogLevel:e:w:i:d:logDeprecatedApiUse:logMethodUse:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OtelLogger",
+                "printedName": "GliaCoreSDK.OtelLogger",
+                "usr": "s:11GliaCoreSDK10OtelLoggerV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaOpenTelemetry.GliaLogger.LogLevel) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "GliaOpenTelemetry.GliaLogger.LogLevel",
+                    "usr": "s:17GliaOpenTelemetry0A6LoggerC8LogLevelO"
+                  }
+                ],
+                "hasDefaultArg": true
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaOpenTelemetry.LogEvents, Swift.String?, (any Swift.Error)?, ((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(GliaOpenTelemetry.LogEvents, Swift.String?, (any Swift.Error)?, ((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogEvents",
+                        "printedName": "GliaOpenTelemetry.LogEvents",
+                        "usr": "s:17GliaOpenTelemetry9LogEventsO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?",
+                        "children": [
+                          {
+                            "kind": "TypeFunc",
+                            "name": "Function",
+                            "printedName": "(inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ()",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Void",
+                                "printedName": "()"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Dictionary",
+                                "printedName": "[GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "GliaAttributes",
+                                    "printedName": "GliaOpenTelemetry.GliaAttributes",
+                                    "usr": "s:17GliaOpenTelemetry0A10AttributesO"
+                                  },
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "GliaAttributeValue",
+                                    "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                                    "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                                  }
+                                ],
+                                "usr": "s:SD"
+                              }
+                            ]
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaOpenTelemetry.LogEvents, Swift.String?, ((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(GliaOpenTelemetry.LogEvents, Swift.String?, ((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogEvents",
+                        "printedName": "GliaOpenTelemetry.LogEvents",
+                        "usr": "s:17GliaOpenTelemetry9LogEventsO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?",
+                        "children": [
+                          {
+                            "kind": "TypeFunc",
+                            "name": "Function",
+                            "printedName": "(inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ()",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Void",
+                                "printedName": "()"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Dictionary",
+                                "printedName": "[GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "GliaAttributes",
+                                    "printedName": "GliaOpenTelemetry.GliaAttributes",
+                                    "usr": "s:17GliaOpenTelemetry0A10AttributesO"
+                                  },
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "GliaAttributeValue",
+                                    "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                                    "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                                  }
+                                ],
+                                "usr": "s:SD"
+                              }
+                            ]
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaOpenTelemetry.LogEvents, Swift.String?, ((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(GliaOpenTelemetry.LogEvents, Swift.String?, ((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogEvents",
+                        "printedName": "GliaOpenTelemetry.LogEvents",
+                        "usr": "s:17GliaOpenTelemetry9LogEventsO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?",
+                        "children": [
+                          {
+                            "kind": "TypeFunc",
+                            "name": "Function",
+                            "printedName": "(inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ()",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Void",
+                                "printedName": "()"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Dictionary",
+                                "printedName": "[GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "GliaAttributes",
+                                    "printedName": "GliaOpenTelemetry.GliaAttributes",
+                                    "usr": "s:17GliaOpenTelemetry0A10AttributesO"
+                                  },
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "GliaAttributeValue",
+                                    "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                                    "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                                  }
+                                ],
+                                "usr": "s:SD"
+                              }
+                            ]
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaOpenTelemetry.LogEvents, Swift.String?, ((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(GliaOpenTelemetry.LogEvents, Swift.String?, ((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogEvents",
+                        "printedName": "GliaOpenTelemetry.LogEvents",
+                        "usr": "s:17GliaOpenTelemetry9LogEventsO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "((inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ())?",
+                        "children": [
+                          {
+                            "kind": "TypeFunc",
+                            "name": "Function",
+                            "printedName": "(inout [GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]) -> ()",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Void",
+                                "printedName": "()"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Dictionary",
+                                "printedName": "[GliaOpenTelemetry.GliaAttributes : GliaOpenTelemetry.GliaAttributeValue]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "GliaAttributes",
+                                    "printedName": "GliaOpenTelemetry.GliaAttributes",
+                                    "usr": "s:17GliaOpenTelemetry0A10AttributesO"
+                                  },
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "GliaAttributeValue",
+                                    "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                                    "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                                  }
+                                ],
+                                "usr": "s:SD"
+                              }
+                            ]
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaOpenTelemetry.SdkType, any Any.Type, Swift.String?, [Swift.String]) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(GliaOpenTelemetry.SdkType, any Any.Type, Swift.String?, [Swift.String])",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SdkType",
+                        "printedName": "GliaOpenTelemetry.SdkType",
+                        "usr": "s:17GliaOpenTelemetry7SdkTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ExistentialMetatype",
+                        "printedName": "any Any.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[Swift.String]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(GliaOpenTelemetry.SdkType, any Any.Type, Swift.String, [Swift.String]) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(GliaOpenTelemetry.SdkType, any Any.Type, Swift.String, [Swift.String])",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SdkType",
+                        "printedName": "GliaOpenTelemetry.SdkType",
+                        "usr": "s:17GliaOpenTelemetry7SdkTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ExistentialMetatype",
+                        "printedName": "any Any.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[Swift.String]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10OtelLoggerV4mock11setLogLevel1e1w1i1d19logDeprecatedApiUse0j6MethodM0ACy0A13OpenTelemetry0aE0C0hI0Oc_yAL0H6EventsO_SSSgs5Error_pSgySDyAL0A10AttributesOAL0A14AttributeValueOGzcSgtcyAR_ASA_tcyAR_ASA_tcyAR_ASA_tcyAL7SdkTypeO_ypXpASSaySSGtcyA1__ypXpSSA2_tctFZ",
+            "mangledName": "$s11GliaCoreSDK10OtelLoggerV4mock11setLogLevel1e1w1i1d19logDeprecatedApiUse0j6MethodM0ACy0A13OpenTelemetry0aE0C0hI0Oc_yAL0H6EventsO_SSSgs5Error_pSgySDyAL0A10AttributesOAL0A14AttributeValueOGzcSgtcyAR_ASA_tcyAR_ASA_tcyAR_ASA_tcyAL7SdkTypeO_ypXpASSaySSGtcyA1__ypXpSSA2_tctFZ",
+            "moduleName": "GliaCoreSDK",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:11GliaCoreSDK10OtelLoggerV",
+        "mangledName": "$s11GliaCoreSDK10OtelLoggerV",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
       },
       {
         "kind": "Import",
@@ -24869,35 +26767,35 @@
         "children": [
           {
             "kind": "TypeDecl",
-            "name": "Environment",
-            "printedName": "Environment",
+            "name": "Module",
+            "printedName": "Module",
             "children": [
               {
                 "kind": "Var",
-                "name": "live",
-                "printedName": "live",
+                "name": "core",
+                "printedName": "core",
                 "children": [
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
-                    "printedName": "(GliaCoreSDK.DependencyContainer.Environment.Type) -> GliaCoreSDK.DependencyContainer.Environment",
+                    "printedName": "(GliaCoreSDK.DependencyContainer.Module.Type) -> GliaCoreSDK.DependencyContainer.Module",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "Environment",
-                        "printedName": "GliaCoreSDK.DependencyContainer.Environment",
-                        "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO"
+                        "name": "Module",
+                        "printedName": "GliaCoreSDK.DependencyContainer.Module",
+                        "usr": "s:11GliaCoreSDK19DependencyContainerC6ModuleO"
                       },
                       {
                         "kind": "TypeNominal",
                         "name": "Metatype",
-                        "printedName": "GliaCoreSDK.DependencyContainer.Environment.Type",
+                        "printedName": "GliaCoreSDK.DependencyContainer.Module.Type",
                         "children": [
                           {
                             "kind": "TypeNominal",
-                            "name": "Environment",
-                            "printedName": "GliaCoreSDK.DependencyContainer.Environment",
-                            "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO"
+                            "name": "Module",
+                            "printedName": "GliaCoreSDK.DependencyContainer.Module",
+                            "usr": "s:11GliaCoreSDK19DependencyContainerC6ModuleO"
                           }
                         ]
                       }
@@ -24905,42 +26803,36 @@
                   }
                 ],
                 "declKind": "EnumElement",
-                "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO4liveyA2EmF",
-                "mangledName": "$s11GliaCoreSDK19DependencyContainerV11EnvironmentO4liveyA2EmF",
-                "moduleName": "GliaCoreSDK",
-                "declAttributes": [
-                  "RawDocComment"
-                ],
-                "spi_group_names": [
-                  "GliaWidgets"
-                ]
+                "usr": "s:11GliaCoreSDK19DependencyContainerC6ModuleO4coreyA2EmF",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC6ModuleO4coreyA2EmF",
+                "moduleName": "GliaCoreSDK"
               },
               {
                 "kind": "Var",
-                "name": "test",
-                "printedName": "test",
+                "name": "widgets",
+                "printedName": "widgets",
                 "children": [
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
-                    "printedName": "(GliaCoreSDK.DependencyContainer.Environment.Type) -> GliaCoreSDK.DependencyContainer.Environment",
+                    "printedName": "(GliaCoreSDK.DependencyContainer.Module.Type) -> GliaCoreSDK.DependencyContainer.Module",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "Environment",
-                        "printedName": "GliaCoreSDK.DependencyContainer.Environment",
-                        "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO"
+                        "name": "Module",
+                        "printedName": "GliaCoreSDK.DependencyContainer.Module",
+                        "usr": "s:11GliaCoreSDK19DependencyContainerC6ModuleO"
                       },
                       {
                         "kind": "TypeNominal",
                         "name": "Metatype",
-                        "printedName": "GliaCoreSDK.DependencyContainer.Environment.Type",
+                        "printedName": "GliaCoreSDK.DependencyContainer.Module.Type",
                         "children": [
                           {
                             "kind": "TypeNominal",
-                            "name": "Environment",
-                            "printedName": "GliaCoreSDK.DependencyContainer.Environment",
-                            "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO"
+                            "name": "Module",
+                            "printedName": "GliaCoreSDK.DependencyContainer.Module",
+                            "usr": "s:11GliaCoreSDK19DependencyContainerC6ModuleO"
                           }
                         ]
                       }
@@ -24948,15 +26840,9 @@
                   }
                 ],
                 "declKind": "EnumElement",
-                "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO4testyA2EmF",
-                "mangledName": "$s11GliaCoreSDK19DependencyContainerV11EnvironmentO4testyA2EmF",
-                "moduleName": "GliaCoreSDK",
-                "declAttributes": [
-                  "RawDocComment"
-                ],
-                "spi_group_names": [
-                  "GliaWidgets"
-                ]
+                "usr": "s:11GliaCoreSDK19DependencyContainerC6ModuleO7widgetsyA2EmF",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC6ModuleO7widgetsyA2EmF",
+                "moduleName": "GliaCoreSDK"
               },
               {
                 "kind": "Function",
@@ -24971,26 +26857,23 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "Environment",
-                    "printedName": "GliaCoreSDK.DependencyContainer.Environment",
-                    "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO"
+                    "name": "Module",
+                    "printedName": "GliaCoreSDK.DependencyContainer.Module",
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC6ModuleO"
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "Environment",
-                    "printedName": "GliaCoreSDK.DependencyContainer.Environment",
-                    "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO"
+                    "name": "Module",
+                    "printedName": "GliaCoreSDK.DependencyContainer.Module",
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC6ModuleO"
                   }
                 ],
                 "declKind": "Func",
-                "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO2eeoiySbAE_AEtFZ",
-                "mangledName": "$s11GliaCoreSDK19DependencyContainerV11EnvironmentO2eeoiySbAE_AEtFZ",
+                "usr": "s:11GliaCoreSDK19DependencyContainerC6ModuleO2eeoiySbAE_AEtFZ",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC6ModuleO2eeoiySbAE_AEtFZ",
                 "moduleName": "GliaCoreSDK",
                 "static": true,
                 "implicit": true,
-                "spi_group_names": [
-                  "GliaWidgets"
-                ],
                 "funcSelfKind": "NonMutating"
               },
               {
@@ -25006,13 +26889,10 @@
                   }
                 ],
                 "declKind": "Var",
-                "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO9hashValueSivp",
-                "mangledName": "$s11GliaCoreSDK19DependencyContainerV11EnvironmentO9hashValueSivp",
+                "usr": "s:11GliaCoreSDK19DependencyContainerC6ModuleO9hashValueSivp",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC6ModuleO9hashValueSivp",
                 "moduleName": "GliaCoreSDK",
                 "implicit": true,
-                "spi_group_names": [
-                  "GliaWidgets"
-                ],
                 "accessors": [
                   {
                     "kind": "Accessor",
@@ -25027,13 +26907,10 @@
                       }
                     ],
                     "declKind": "Accessor",
-                    "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO9hashValueSivg",
-                    "mangledName": "$s11GliaCoreSDK19DependencyContainerV11EnvironmentO9hashValueSivg",
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC6ModuleO9hashValueSivg",
+                    "mangledName": "$s11GliaCoreSDK19DependencyContainerC6ModuleO9hashValueSivg",
                     "moduleName": "GliaCoreSDK",
                     "implicit": true,
-                    "spi_group_names": [
-                      "GliaWidgets"
-                    ],
                     "accessorKind": "get"
                   }
                 ]
@@ -25057,27 +26934,240 @@
                   }
                 ],
                 "declKind": "Func",
-                "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO4hash4intoys6HasherVz_tF",
-                "mangledName": "$s11GliaCoreSDK19DependencyContainerV11EnvironmentO4hash4intoys6HasherVz_tF",
+                "usr": "s:11GliaCoreSDK19DependencyContainerC6ModuleO4hash4intoys6HasherVz_tF",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC6ModuleO4hash4intoys6HasherVz_tF",
                 "moduleName": "GliaCoreSDK",
                 "implicit": true,
-                "spi_group_names": [
-                  "GliaWidgets"
-                ],
                 "funcSelfKind": "NonMutating"
               }
             ],
             "declKind": "Enum",
-            "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO",
-            "mangledName": "$s11GliaCoreSDK19DependencyContainerV11EnvironmentO",
+            "usr": "s:11GliaCoreSDK19DependencyContainerC6ModuleO",
+            "mangledName": "$s11GliaCoreSDK19DependencyContainerC6ModuleO",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Hashable",
+                "printedName": "Hashable",
+                "usr": "s:SH",
+                "mangledName": "$sSH"
+              }
+            ]
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "Environment",
+            "printedName": "Environment",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "live",
+                "printedName": "live",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.DependencyContainer.Environment.Type) -> GliaCoreSDK.DependencyContainer.Environment",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Environment",
+                        "printedName": "GliaCoreSDK.DependencyContainer.Environment",
+                        "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.DependencyContainer.Environment.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Environment",
+                            "printedName": "GliaCoreSDK.DependencyContainer.Environment",
+                            "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO4liveyA2EmF",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC11EnvironmentO4liveyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "test",
+                "printedName": "test",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.DependencyContainer.Environment.Type) -> GliaCoreSDK.DependencyContainer.Environment",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Environment",
+                        "printedName": "GliaCoreSDK.DependencyContainer.Environment",
+                        "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.DependencyContainer.Environment.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Environment",
+                            "printedName": "GliaCoreSDK.DependencyContainer.Environment",
+                            "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO4testyA2EmF",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC11EnvironmentO4testyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Environment",
+                    "printedName": "GliaCoreSDK.DependencyContainer.Environment",
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Environment",
+                    "printedName": "GliaCoreSDK.DependencyContainer.Environment",
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO2eeoiySbAE_AEtFZ",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC11EnvironmentO2eeoiySbAE_AEtFZ",
+                "moduleName": "GliaCoreSDK",
+                "static": true,
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Var",
+                "name": "hashValue",
+                "printedName": "hashValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO9hashValueSivp",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC11EnvironmentO9hashValueSivp",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO9hashValueSivg",
+                    "mangledName": "$s11GliaCoreSDK19DependencyContainerC11EnvironmentO9hashValueSivg",
+                    "moduleName": "GliaCoreSDK",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "hash",
+                "printedName": "hash(into:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Hasher",
+                    "printedName": "Swift.Hasher",
+                    "paramValueOwnership": "InOut",
+                    "usr": "s:s6HasherV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO4hash4intoys6HasherVz_tF",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC11EnvironmentO4hash4intoys6HasherVz_tF",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO",
+            "mangledName": "$s11GliaCoreSDK19DependencyContainerC11EnvironmentO",
             "moduleName": "GliaCoreSDK",
             "declAttributes": [
               "AccessControl",
-              "SPIAccessControl",
               "RawDocComment"
-            ],
-            "spi_group_names": [
-              "GliaWidgets"
             ],
             "conformances": [
               {
@@ -25112,6 +27202,50 @@
           },
           {
             "kind": "Var",
+            "name": "widgets",
+            "printedName": "widgets",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Widgets",
+                "printedName": "GliaCoreSDK.DependencyContainer.Widgets",
+                "usr": "s:11GliaCoreSDK19DependencyContainerC7WidgetsC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK19DependencyContainerC7widgetsAC7WidgetsCvp",
+            "mangledName": "$s11GliaCoreSDK19DependencyContainerC7widgetsAC7WidgetsCvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Widgets",
+                    "printedName": "GliaCoreSDK.DependencyContainer.Widgets",
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC7WidgetsC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK19DependencyContainerC7widgetsAC7WidgetsCvg",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC7widgetsAC7WidgetsCvg",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "current",
             "printedName": "current",
             "children": [
@@ -25119,22 +27253,19 @@
                 "kind": "TypeNominal",
                 "name": "DependencyContainer",
                 "printedName": "GliaCoreSDK.DependencyContainer",
-                "usr": "s:11GliaCoreSDK19DependencyContainerV"
+                "usr": "s:11GliaCoreSDK19DependencyContainerC"
               }
             ],
             "declKind": "Var",
-            "usr": "s:11GliaCoreSDK19DependencyContainerV7currentACvpZ",
-            "mangledName": "$s11GliaCoreSDK19DependencyContainerV7currentACvpZ",
+            "usr": "s:11GliaCoreSDK19DependencyContainerC7currentACvpZ",
+            "mangledName": "$s11GliaCoreSDK19DependencyContainerC7currentACvpZ",
             "moduleName": "GliaCoreSDK",
             "static": true,
             "declAttributes": [
+              "Final",
               "AccessControl",
-              "SPIAccessControl",
               "Custom",
               "RawDocComment"
-            ],
-            "spi_group_names": [
-              "GliaWidgets"
             ],
             "accessors": [
               {
@@ -25146,16 +27277,16 @@
                     "kind": "TypeNominal",
                     "name": "DependencyContainer",
                     "printedName": "GliaCoreSDK.DependencyContainer",
-                    "usr": "s:11GliaCoreSDK19DependencyContainerV"
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:11GliaCoreSDK19DependencyContainerV7currentACvgZ",
-                "mangledName": "$s11GliaCoreSDK19DependencyContainerV7currentACvgZ",
+                "usr": "s:11GliaCoreSDK19DependencyContainerC7currentACvgZ",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC7currentACvgZ",
                 "moduleName": "GliaCoreSDK",
                 "static": true,
-                "spi_group_names": [
-                  "GliaWidgets"
+                "declAttributes": [
+                  "Final"
                 ],
                 "accessorKind": "get"
               }
@@ -25170,41 +27301,325 @@
                 "kind": "TypeNominal",
                 "name": "DependencyContainer",
                 "printedName": "GliaCoreSDK.DependencyContainer",
-                "usr": "s:11GliaCoreSDK19DependencyContainerV"
+                "usr": "s:11GliaCoreSDK19DependencyContainerC"
               },
               {
                 "kind": "TypeNominal",
                 "name": "Environment",
                 "printedName": "GliaCoreSDK.DependencyContainer.Environment",
-                "usr": "s:11GliaCoreSDK19DependencyContainerV11EnvironmentO"
+                "usr": "s:11GliaCoreSDK19DependencyContainerC11EnvironmentO"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:11GliaCoreSDK19DependencyContainerV11environmentA2C11EnvironmentO_tcfc",
-            "mangledName": "$s11GliaCoreSDK19DependencyContainerV11environmentA2C11EnvironmentO_tcfc",
+            "usr": "s:11GliaCoreSDK19DependencyContainerC11environmentA2C11EnvironmentO_tcfc",
+            "mangledName": "$s11GliaCoreSDK19DependencyContainerC11environmentA2C11EnvironmentO_tcfc",
             "moduleName": "GliaCoreSDK",
             "declAttributes": [
               "AccessControl",
-              "SPIAccessControl",
               "RawDocComment"
             ],
-            "spi_group_names": [
-              "GliaWidgets"
-            ],
             "init_kind": "Designated"
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "ModuleAccessor",
+            "printedName": "ModuleAccessor",
+            "children": [
+              {
+                "kind": "Subscript",
+                "name": "subscript",
+                "printedName": "subscript(_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Value"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "τ_0_0.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_0_0"
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Subscript",
+                "usr": "s:11GliaCoreSDK19DependencyContainerC14ModuleAccessorCy5ValueQzxmcAA0D3KeyRzluip",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC14ModuleAccessorCy5ValueQzxmcAA0D3KeyRzluip",
+                "moduleName": "GliaCoreSDK",
+                "genericSig": "<τ_0_0 where τ_0_0 : GliaCoreSDK.DependencyKey>",
+                "sugared_genericSig": "<K where K : GliaCoreSDK.DependencyKey>",
+                "declAttributes": [
+                  "AccessControl"
+                ],
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DependentMember",
+                        "printedName": "τ_0_0.Value"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "τ_0_0.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GenericTypeParam",
+                            "printedName": "τ_0_0"
+                          }
+                        ]
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC14ModuleAccessorCy5ValueQzxmcAA0D3KeyRzluig",
+                    "mangledName": "$s11GliaCoreSDK19DependencyContainerC14ModuleAccessorCy5ValueQzxmcAA0D3KeyRzluig",
+                    "moduleName": "GliaCoreSDK",
+                    "genericSig": "<τ_0_0 where τ_0_0 : GliaCoreSDK.DependencyKey>",
+                    "sugared_genericSig": "<K where K : GliaCoreSDK.DependencyKey>",
+                    "accessorKind": "get"
+                  },
+                  {
+                    "kind": "Accessor",
+                    "name": "Set",
+                    "printedName": "Set()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DependentMember",
+                        "printedName": "τ_0_0.Value"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "τ_0_0.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GenericTypeParam",
+                            "printedName": "τ_0_0"
+                          }
+                        ]
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC14ModuleAccessorCy5ValueQzxmcAA0D3KeyRzluis",
+                    "mangledName": "$s11GliaCoreSDK19DependencyContainerC14ModuleAccessorCy5ValueQzxmcAA0D3KeyRzluis",
+                    "moduleName": "GliaCoreSDK",
+                    "genericSig": "<τ_0_0 where τ_0_0 : GliaCoreSDK.DependencyKey>",
+                    "sugared_genericSig": "<K where K : GliaCoreSDK.DependencyKey>",
+                    "accessorKind": "set"
+                  },
+                  {
+                    "kind": "Accessor",
+                    "name": "Modify",
+                    "printedName": "Modify()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "τ_0_0.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GenericTypeParam",
+                            "printedName": "τ_0_0"
+                          }
+                        ]
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC14ModuleAccessorCy5ValueQzxmcAA0D3KeyRzluiM",
+                    "mangledName": "$s11GliaCoreSDK19DependencyContainerC14ModuleAccessorCy5ValueQzxmcAA0D3KeyRzluiM",
+                    "moduleName": "GliaCoreSDK",
+                    "genericSig": "<τ_0_0 where τ_0_0 : GliaCoreSDK.DependencyKey>",
+                    "sugared_genericSig": "<K where K : GliaCoreSDK.DependencyKey>",
+                    "implicit": true,
+                    "accessorKind": "_modify"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Class",
+            "usr": "s:11GliaCoreSDK19DependencyContainerC14ModuleAccessorC",
+            "mangledName": "$s11GliaCoreSDK19DependencyContainerC14ModuleAccessorC",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "hasMissingDesignatedInitializers": true,
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              }
+            ]
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "Widgets",
+            "printedName": "Widgets",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "openTelemetry",
+                "printedName": "openTelemetry",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OpenTelemetry",
+                    "printedName": "GliaCoreSDK.OpenTelemetry",
+                    "usr": "s:11GliaCoreSDK13OpenTelemetryC"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:11GliaCoreSDK19DependencyContainerC7WidgetsC13openTelemetryAA04OpenH0Cvp",
+                "mangledName": "$s11GliaCoreSDK19DependencyContainerC7WidgetsC13openTelemetryAA04OpenH0Cvp",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "AccessControl",
+                  "RawDocComment"
+                ],
+                "isFromExtension": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OpenTelemetry",
+                        "printedName": "GliaCoreSDK.OpenTelemetry",
+                        "usr": "s:11GliaCoreSDK13OpenTelemetryC"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC7WidgetsC13openTelemetryAA04OpenH0Cvg",
+                    "mangledName": "$s11GliaCoreSDK19DependencyContainerC7WidgetsC13openTelemetryAA04OpenH0Cvg",
+                    "moduleName": "GliaCoreSDK",
+                    "isFromExtension": true,
+                    "accessorKind": "get"
+                  },
+                  {
+                    "kind": "Accessor",
+                    "name": "Set",
+                    "printedName": "Set()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OpenTelemetry",
+                        "printedName": "GliaCoreSDK.OpenTelemetry",
+                        "usr": "s:11GliaCoreSDK13OpenTelemetryC"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC7WidgetsC13openTelemetryAA04OpenH0Cvs",
+                    "mangledName": "$s11GliaCoreSDK19DependencyContainerC7WidgetsC13openTelemetryAA04OpenH0Cvs",
+                    "moduleName": "GliaCoreSDK",
+                    "isFromExtension": true,
+                    "accessorKind": "set"
+                  },
+                  {
+                    "kind": "Accessor",
+                    "name": "Modify",
+                    "printedName": "Modify()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC7WidgetsC13openTelemetryAA04OpenH0CvM",
+                    "mangledName": "$s11GliaCoreSDK19DependencyContainerC7WidgetsC13openTelemetryAA04OpenH0CvM",
+                    "moduleName": "GliaCoreSDK",
+                    "implicit": true,
+                    "isFromExtension": true,
+                    "accessorKind": "_modify"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Class",
+            "usr": "s:11GliaCoreSDK19DependencyContainerC7WidgetsC",
+            "mangledName": "$s11GliaCoreSDK19DependencyContainerC7WidgetsC",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "superclassUsr": "s:11GliaCoreSDK19DependencyContainerC14ModuleAccessorC",
+            "hasMissingDesignatedInitializers": true,
+            "inheritsConvenienceInitializers": true,
+            "superclassNames": [
+              "GliaCoreSDK.DependencyContainer.ModuleAccessor"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              }
+            ]
           }
         ],
-        "declKind": "Struct",
-        "usr": "s:11GliaCoreSDK19DependencyContainerV",
-        "mangledName": "$s11GliaCoreSDK19DependencyContainerV",
+        "declKind": "Class",
+        "usr": "s:11GliaCoreSDK19DependencyContainerC",
+        "mangledName": "$s11GliaCoreSDK19DependencyContainerC",
         "moduleName": "GliaCoreSDK",
         "declAttributes": [
+          "Final",
           "AccessControl",
-          "SPIAccessControl",
           "RawDocComment"
-        ],
-        "spi_group_names": [
-          "GliaWidgets"
         ],
         "conformances": [
           {
@@ -25253,9 +27668,6 @@
             "protocolReq": true,
             "declAttributes": [
               "RawDocComment"
-            ],
-            "spi_group_names": [
-              "GliaWidgets"
             ]
           },
           {
@@ -25278,9 +27690,6 @@
             "declAttributes": [
               "RawDocComment"
             ],
-            "spi_group_names": [
-              "GliaWidgets"
-            ],
             "accessors": [
               {
                 "kind": "Accessor",
@@ -25301,9 +27710,6 @@
                 "sugared_genericSig": "<Self where Self : GliaCoreSDK.DependencyKey>",
                 "static": true,
                 "protocolReq": true,
-                "spi_group_names": [
-                  "GliaWidgets"
-                ],
                 "reqNewWitnessTableEntry": true,
                 "accessorKind": "get"
               }
@@ -25316,11 +27722,7 @@
         "moduleName": "GliaCoreSDK",
         "declAttributes": [
           "AccessControl",
-          "SPIAccessControl",
           "RawDocComment"
-        ],
-        "spi_group_names": [
-          "GliaWidgets"
         ],
         "conformances": [
           {
@@ -25361,11 +27763,7 @@
             "moduleName": "GliaCoreSDK",
             "declAttributes": [
               "AccessControl",
-              "SPIAccessControl",
               "RawDocComment"
-            ],
-            "spi_group_names": [
-              "GliaWidgets"
             ],
             "accessors": [
               {
@@ -25385,9 +27783,6 @@
                 "moduleName": "GliaCoreSDK",
                 "genericSig": "<τ_0_0>",
                 "sugared_genericSig": "<Value>",
-                "spi_group_names": [
-                  "GliaWidgets"
-                ],
                 "accessorKind": "get"
               }
             ]
@@ -25419,7 +27814,7 @@
                     "kind": "TypeNominal",
                     "name": "DependencyContainer",
                     "printedName": "GliaCoreSDK.DependencyContainer",
-                    "usr": "s:11GliaCoreSDK19DependencyContainerV"
+                    "usr": "s:11GliaCoreSDK19DependencyContainerC"
                   },
                   {
                     "kind": "TypeNominal",
@@ -25431,18 +27826,14 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:11GliaCoreSDK10DependencyVyACyxGs7KeyPathCyAA0D9ContainerVxGcfc",
-            "mangledName": "$s11GliaCoreSDK10DependencyVyACyxGs7KeyPathCyAA0D9ContainerVxGcfc",
+            "usr": "s:11GliaCoreSDK10DependencyVyACyxGs7KeyPathCyAA0D9ContainerCxGcfc",
+            "mangledName": "$s11GliaCoreSDK10DependencyVyACyxGs7KeyPathCyAA0D9ContainerCxGcfc",
             "moduleName": "GliaCoreSDK",
             "genericSig": "<τ_0_0>",
             "sugared_genericSig": "<Value>",
             "declAttributes": [
               "AccessControl",
-              "SPIAccessControl",
               "RawDocComment"
-            ],
-            "spi_group_names": [
-              "GliaWidgets"
             ],
             "init_kind": "Designated"
           }
@@ -25456,11 +27847,7 @@
         "declAttributes": [
           "AccessControl",
           "PropertyWrapper",
-          "SPIAccessControl",
           "RawDocComment"
-        ],
-        "spi_group_names": [
-          "GliaWidgets"
         ],
         "conformances": [
           {
@@ -39430,6 +41817,20 @@
       },
       {
         "kind": "Import",
+        "name": "PhoenixChannelsClient",
+        "printedName": "PhoenixChannelsClient",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "GliaCoreDependency",
+        "printedName": "GliaCoreDependency",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -43952,6 +46353,27 @@
       },
       {
         "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "Network",
         "printedName": "Network",
         "declKind": "Import",
@@ -43987,6 +46409,13 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "Combine",
         "printedName": "Combine",
         "declKind": "Import",
@@ -44003,6 +46432,20 @@
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
         "declKind": "Import",
         "moduleName": "GliaCoreSDK"
       },
@@ -44176,6 +46619,64 @@
               "Override"
             ],
             "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "otelAttribute",
+            "printedName": "otelAttribute",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaOpenTelemetry.GliaAttributeValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GliaAttributeValue",
+                    "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                    "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK17MediaUpgradeOfferC13otelAttribute0A13OpenTelemetry0aH5ValueOSgvp",
+            "mangledName": "$s11GliaCoreSDK17MediaUpgradeOfferC13otelAttribute0A13OpenTelemetry0aH5ValueOSgvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GliaOpenTelemetry.GliaAttributeValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GliaAttributeValue",
+                        "printedName": "GliaOpenTelemetry.GliaAttributeValue",
+                        "usr": "s:17GliaOpenTelemetry0A14AttributeValueO"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK17MediaUpgradeOfferC13otelAttribute0A13OpenTelemetry0aH5ValueOSgvg",
+                "mangledName": "$s11GliaCoreSDK17MediaUpgradeOfferC13otelAttribute0A13OpenTelemetry0aH5ValueOSgvg",
+                "moduleName": "GliaCoreSDK",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Class",
@@ -45900,7 +48401,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Socket\/PubsubManager.swift",
       "kind": "Dictionary",
-      "offset": 11573,
+      "offset": 12152,
       "length": 3,
       "value": "[]"
     },
@@ -45935,23 +48436,51 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Configurable.swift",
       "kind": "StringLiteral",
-      "offset": 13531,
+      "offset": 14728,
       "length": 18,
       "value": "\"https:\/\/glia.com\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Configurable.swift",
       "kind": "StringLiteral",
-      "offset": 13635,
+      "offset": 14832,
       "length": 17,
       "value": "\"https:\/\/glia.eu\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Configurable.swift",
       "kind": "BooleanLiteral",
-      "offset": 16123,
+      "offset": 17320,
       "length": 4,
       "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/OpenTelemetry\/OtelTracer.swift",
+      "kind": "Dictionary",
+      "offset": 2107,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/OpenTelemetry\/OpenTelemetry.swift",
+      "kind": "StringLiteral",
+      "offset": 3949,
+      "length": 29,
+      "value": "\"yevhen-kyivskyi.dev.samo.io\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/OpenTelemetry\/OpenTelemetry.swift",
+      "kind": "StringLiteral",
+      "offset": 6711,
+      "length": 29,
+      "value": "\"yevhen-kyivskyi.dev.samo.io\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/OpenTelemetry\/OpenTelemetry.swift",
+      "kind": "StringLiteral",
+      "offset": 8585,
+      "length": 34,
+      "value": "\"https:\/\/watchtower.glia.com:4318\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Data\/StateRepository.swift",
@@ -46348,30 +48877,30 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Utilities\/PhoenixClient\/PhoenixClient.Interface.swift",
       "kind": "IntegerLiteral",
-      "offset": 9936,
+      "offset": 4468,
+      "length": 6,
+      "value": "10000"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Utilities\/PhoenixClient\/PhoenixClient.Interface.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7611,
       "length": 3,
       "value": "999"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Utilities\/PhoenixClient\/PhoenixClient.Interface.swift",
       "kind": "IntegerLiteral",
-      "offset": 9962,
+      "offset": 7637,
       "length": 4,
       "value": "1000"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Utilities\/PhoenixClient\/PhoenixClient.Interface.swift",
       "kind": "IntegerLiteral",
-      "offset": 9992,
+      "offset": 7667,
       "length": 4,
       "value": "1001"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Utilities\/PhoenixClient\/PhoenixClient.Interface.swift",
-      "kind": "Dictionary",
-      "offset": 19949,
-      "length": 3,
-      "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/Remote\/RemoteLogRepository.swift",
@@ -46488,28 +49017,28 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "IntegerLiteral",
-      "offset": 2808,
+      "offset": 2976,
       "length": 2,
       "value": "25"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "StringLiteral",
-      "offset": 2912,
+      "offset": 3080,
       "length": 39,
       "value": "\"gliaCore.liveObservation.captureQueue\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "StringLiteral",
-      "offset": 3191,
+      "offset": 3359,
       "length": 13,
       "value": "\"GliaWidgets\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore+Environment.swift",
       "kind": "StringLiteral",
-      "offset": 3228,
+      "offset": 3396,
       "length": 13,
       "value": "\"GliaCoreSDK\""
     },
@@ -46684,301 +49213,315 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 1982,
+      "offset": 1952,
+      "length": 12,
+      "value": "\"watchtower\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2014,
+      "length": 4,
+      "value": "4318"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
+      "kind": "StringLiteral",
+      "offset": 2075,
       "length": 6,
       "value": "\"page\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 2092,
+      "offset": 2185,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 2137,
+      "offset": 2230,
       "length": 2,
       "value": "15"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2220,
+      "offset": 2313,
       "length": 18,
       "value": "\"engagement.start\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2264,
+      "offset": 2357,
       "length": 16,
       "value": "\"engagement.end\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2309,
+      "offset": 2402,
       "length": 28,
       "value": "\"engagement.request.failure\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2367,
+      "offset": 2460,
       "length": 25,
       "value": "\"engagement.chat.message\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2428,
+      "offset": 2521,
       "length": 40,
       "value": "\"engagement.secure_conversation.message\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2514,
+      "offset": 2607,
       "length": 43,
       "value": "\"engagement.chat.typing_indicator.operator\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2598,
+      "offset": 2691,
       "length": 39,
       "value": "\"engagement.files.security_scan_result\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2668,
+      "offset": 2761,
       "length": 21,
       "value": "\"engagement.transfer\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2725,
+      "offset": 2818,
       "length": 32,
       "value": "\"engagement.chat.system_message\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2800,
+      "offset": 2893,
       "length": 24,
       "value": "\"queued_message.created\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2875,
+      "offset": 2968,
       "length": 5,
       "value": "\"end\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2909,
+      "offset": 3002,
       "length": 8,
       "value": "\"cancel\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 2946,
+      "offset": 3039,
       "length": 8,
       "value": "\"accept\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3005,
+      "offset": 3098,
       "length": 5,
       "value": "\"sdk\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3070,
+      "offset": 3163,
       "length": 12,
       "value": "\"omnibrowse\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3174,
+      "offset": 3267,
       "length": 25,
       "value": "\"engagement.chat.message\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3235,
+      "offset": 3328,
       "length": 40,
       "value": "\"engagement.secure_conversation.message\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3318,
+      "offset": 3411,
       "length": 24,
       "value": "\"queued_message.created\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3418,
+      "offset": 3511,
       "length": 6,
       "value": "\"apns\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3450,
+      "offset": 3543,
       "length": 5,
       "value": "\"wss\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3491,
+      "offset": 3584,
       "length": 26,
       "value": "\"\/notifications\/websocket\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3546,
+      "offset": 3639,
       "length": 8,
       "value": "\"pubsub\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3608,
+      "offset": 3701,
       "length": 20,
       "value": "\"Engagement started\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3654,
+      "offset": 3747,
       "length": 18,
       "value": "\"Engagement ended\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3701,
+      "offset": 3794,
       "length": 19,
       "value": "\"Engagement failed\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3750,
+      "offset": 3843,
       "length": 33,
       "value": "\"You have received a new message\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3814,
+      "offset": 3907,
       "length": 21,
       "value": "\"Engagement transfer\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3897,
+      "offset": 3990,
       "length": 5,
       "value": "\"env\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3932,
+      "offset": 4025,
       "length": 19,
       "value": "\"content_available\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 3981,
+      "offset": 4074,
       "length": 9,
       "value": "\"message\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4016,
+      "offset": 4109,
       "length": 5,
       "value": "\"vsn\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4055,
+      "offset": 4148,
       "length": 14,
       "value": "\"access_token\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4130,
+      "offset": 4223,
       "length": 15,
       "value": "\"site_visitor:\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4179,
+      "offset": 4272,
       "length": 13,
       "value": "\"queue:multi\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4227,
+      "offset": 4320,
       "length": 16,
       "value": "\"visitor_state:\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4281,
+      "offset": 4374,
       "length": 19,
       "value": "\"visitor_volatile:\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4356,
+      "offset": 4449,
       "length": 9,
       "value": "\"nothing\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4393,
+      "offset": 4486,
       "length": 66,
       "value": "\"ade24062f6c6ab90c0ca3deeb77a8264911549229fb403761bec3081c7770663\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 4538,
+      "offset": 4631,
       "length": 17,
       "value": "\"SalemoveVisitor\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/Constants.swift",
       "kind": "BooleanLiteral",
-      "offset": 4731,
+      "offset": 4824,
       "length": 5,
       "value": "false"
     },
@@ -47221,6 +49764,20 @@
       "value": "\"file:\/\/\/\""
     },
     {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/OpenTelemetry\/OtelLogger.swift",
+      "kind": "Array",
+      "offset": 3691,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/OpenTelemetry\/OtelLogger.swift",
+      "kind": "Array",
+      "offset": 4226,
+      "length": 2,
+      "value": "[]"
+    },
+    {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/KeychainClient\/KeychainClient.Live.swift",
       "kind": "BooleanLiteral",
       "offset": 1067,
@@ -47335,58 +49892,30 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
       "kind": "StringLiteral",
-      "offset": 11484,
+      "offset": 10091,
       "length": 6,
       "value": "\"send\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
       "kind": "StringLiteral",
-      "offset": 11541,
-      "length": 4,
-      "value": "\"ok\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
-      "kind": "StringLiteral",
-      "offset": 11573,
-      "length": 7,
-      "value": "\"error\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
-      "kind": "StringLiteral",
-      "offset": 11610,
-      "length": 9,
-      "value": "\"timeout\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
-      "kind": "StringLiteral",
-      "offset": 11673,
+      "offset": 10151,
       "length": 3,
       "value": "\"0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
       "kind": "StringLiteral",
-      "offset": 11703,
+      "offset": 10181,
       "length": 3,
       "value": "\"1\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
       "kind": "StringLiteral",
-      "offset": 11733,
+      "offset": 10211,
       "length": 3,
       "value": "\"2\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
-      "kind": "StringLiteral",
-      "offset": 11801,
-      "length": 10,
-      "value": "\"response\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Extensions\/URLSessionConfiguration.swift",
@@ -47447,182 +49976,182 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 5242,
+      "offset": 5586,
       "length": 3,
       "value": "\".\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "IntegerLiteral",
-      "offset": 5281,
+      "offset": 5625,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 5307,
+      "offset": 5651,
       "length": 72,
       "value": "\"Access token has wrong format. Components count='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 5376,
+      "offset": 5720,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "IntegerLiteral",
-      "offset": 5450,
+      "offset": 5794,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 5491,
+      "offset": 5835,
       "length": 3,
       "value": "\"-\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 5502,
+      "offset": 5846,
       "length": 3,
       "value": "\"+\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 5545,
+      "offset": 5889,
       "length": 3,
       "value": "\"_\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 5556,
+      "offset": 5900,
       "length": 3,
       "value": "\"\/\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "IntegerLiteral",
-      "offset": 5641,
+      "offset": 5985,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "IntegerLiteral",
-      "offset": 5646,
+      "offset": 5990,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "IntegerLiteral",
-      "offset": 5651,
+      "offset": 5995,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 5663,
+      "offset": 6007,
       "length": 3,
       "value": "\"=\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "IntegerLiteral",
-      "offset": 5680,
+      "offset": 6024,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 5775,
+      "offset": 6119,
       "length": 80,
       "value": "\"Access token payload can't be base64 encoded. Length='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 5852,
+      "offset": 6196,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 6109,
+      "offset": 6453,
       "length": 50,
       "value": "\"Access token can't be decoded. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 6156,
+      "offset": 6500,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 6276,
+      "offset": 6620,
       "length": 18,
       "value": "\"site_application\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 6329,
+      "offset": 6673,
       "length": 110,
       "value": "\"Access token payload has unexpected format or 'site_application' role not found. Role='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 6436,
+      "offset": 6780,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 6526,
+      "offset": 6870,
       "length": 17,
       "value": "\"visitors:create\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 6774,
+      "offset": 7118,
       "length": 317,
       "value": "\"# # # # #\n\n💥 💥 💥 The Site API Key has unnecessary permissions for visitor applications. This can lead to security issues.\nPlease select 'Create Visitor' permission only and refer to the Site API Keys article for more information.\n\n# # # # #\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 7116,
+      "offset": 7460,
       "length": 98,
       "value": "\"Access token contains unnecessary permissions='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 7206,
+      "offset": 7550,
       "length": 3,
       "value": "\",\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 7211,
+      "offset": 7555,
       "length": 4,
       "value": "\"'.\""
     },
@@ -47951,14 +50480,14 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Utilities\/DependencyInjection\/DependencyContainer.swift",
       "kind": "StringLiteral",
-      "offset": 1093,
+      "offset": 1710,
       "length": 12,
       "value": "\"XCTestCase\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Utilities\/DependencyInjection\/DependencyContainer.swift",
       "kind": "Dictionary",
-      "offset": 1366,
+      "offset": 1993,
       "length": 3,
       "value": "[]"
     },
@@ -48555,7 +51084,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.2.3\""
+      "value": "\"2.3.0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -48588,140 +51117,140 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 2348,
+      "offset": 2413,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2508,
+      "offset": 2573,
       "length": 93,
       "value": "\"Remote string could not be fetched because self was unexpectedly deallocated, key='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2598,
+      "offset": 2663,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2787,
+      "offset": 2852,
       "length": 46,
       "value": "\"Custom locale not initialized, key='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 2830,
+      "offset": 2895,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 2891,
+      "offset": 2956,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 3042,
+      "offset": 3107,
       "length": 53,
       "value": "\"Key does not exist in remote strings, key='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 3092,
+      "offset": 3157,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5486,
+      "offset": 5551,
       "length": 93,
       "value": "\"Setting 'activeEngagement' from '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5538,
+      "offset": 5603,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5541,
+      "offset": 5606,
       "length": 6,
       "value": "\"' to '\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5573,
+      "offset": 5638,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 5576,
+      "offset": 5641,
       "length": 3,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "Dictionary",
-      "offset": 7221,
+      "offset": 7341,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 29679,
+      "offset": 30348,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 30045,
+      "offset": 30714,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48868,
+      "offset": 50633,
       "length": 64,
       "value": "\"Channel connection has not been established. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48929,
+      "offset": 50694,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69183,
+      "offset": 75530,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69242,
+      "offset": 75589,
       "length": 23,
       "value": "\"capabilities:response\""
     },
@@ -48845,6 +51374,27 @@
       "value": "\"audio-unmuted\""
     },
     {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Utilities\/PhoenixClient\/PhoenixClient.FlagManaging.swift",
+      "kind": "BooleanLiteral",
+      "offset": 91,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Utilities\/PhoenixClient\/PhoenixClient.ApiRequestBuilder.swift",
+      "kind": "StringLiteral",
+      "offset": 683,
+      "length": 6,
+      "value": "\"flag\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Utilities\/PhoenixClient\/PhoenixClient.ApiRequestBuilder.swift",
+      "kind": "StringLiteral",
+      "offset": 776,
+      "length": 36,
+      "value": "\"iso-use-third-party-phoenix-client\""
+    },
+    {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Queueable.swift",
       "kind": "StringLiteral",
       "offset": 6586,
@@ -48903,7 +51453,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/NetworkConnectionMonitor.swift",
       "kind": "Array",
-      "offset": 233,
+      "offset": 313,
       "length": 2,
       "value": "[]"
     },
@@ -49039,6 +51589,20 @@
       "offset": 351,
       "length": 12,
       "value": "\"senderType\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/DeviceStateObserver\/DeviceStateObserver.swift",
+      "kind": "BooleanLiteral",
+      "offset": 428,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/DeviceStateObserver\/DeviceStateObserver.swift",
+      "kind": "BooleanLiteral",
+      "offset": 640,
+      "length": 4,
+      "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+SetupAccount.swift",
