@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/salemove/ios-bundle.git', :tag => s.version.to_s }
 
   s.module_name = 'GliaCoreSDK'
-  s.ios.deployment_target = '13.0'
+  s.ios.deployment_target = '15.0'
   s.ios.vendored_frameworks = 'GliaCoreSDK.xcframework'
   s.swift_version = '5.3'
 
