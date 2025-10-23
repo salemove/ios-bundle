@@ -1,2 +1,0 @@
-binary "https://raw.githubusercontent.com/salemove/ios-bundle/master/GliaSDK.json" == 0.30.1
-github "onevcat/Kingfisher" "6.3.0"

@@ -1,5 +1,7 @@
 # Change Log
 
+NOTE: This file is not maintained anymore. Newer changes will be added to the releases change logs. 
+
 ## Unreleased
 
 Unreleased: https://github.com/salemove/ios-sdk/compare/0.32.2...master
