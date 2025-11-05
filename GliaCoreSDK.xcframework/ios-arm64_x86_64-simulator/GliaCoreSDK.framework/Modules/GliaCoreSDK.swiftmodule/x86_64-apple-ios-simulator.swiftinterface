@@ -12,9 +12,7 @@ import GliaCoreDependency
 import GliaCoreDependency/*.ReactiveSwift*/
 import GliaCoreDependency/*.SwiftPhoenixClient*/
 @_exported import GliaCoreSDK
-import GliaOpenTelemetry
 import Network
-import PhoenixChannelsClient
 import ReplayKit
 import ReplayKit/*.RPSampleBufferType*/
 import Security
@@ -49,14 +47,14 @@ public struct VisitorCode : Swift.Decodable {
 public struct EngagementOptions {
   public init(mediaDirection: GliaCoreSDK.MediaDirection? = nil)
 }
-public enum EngagementEndingReason : Swift.String {
+public enum EngagementEndingReason {
   case visitorHungUp
   case operatorHungUp
   case error
   case followUp
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
+  public static func == (a: GliaCoreSDK.EngagementEndingReason, b: GliaCoreSDK.EngagementEndingReason) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
     get
   }
 }
@@ -178,7 +176,19 @@ extension GliaCoreSDK.GliaCore {
   public struct Region {
     public static let us: GliaCoreSDK.GliaCore.Region
     public static let eu: GliaCoreSDK.GliaCore.Region
+    public static let beta: GliaCoreSDK.GliaCore.Region
     public static func custom(_ host: Foundation.URL) -> GliaCoreSDK.GliaCore.Region
+  }
+  public enum RegionType {
+    case eu
+    case us
+    case beta
+    case custom
+    public static func == (a: GliaCoreSDK.GliaCore.RegionType, b: GliaCoreSDK.GliaCore.RegionType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
   }
   public struct Configuration {
     public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, authorizingMethod: GliaCoreSDK.GliaCore.AuthorizationMethod, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled, manualLocaleOverride: Swift.String? = nil, suppressPushNotificationsPermissionRequestDuringAuthentication: Swift.Bool, isPushNotificationProxyEnabled: Swift.Bool = true) throws
@@ -194,52 +204,6 @@ extension GliaCoreSDK.GliaCore.Configuration {
     public var hashValue: Swift.Int {
       get
     }
-  }
-}
-public struct OtelTracer {
-  public func startSpan(event: GliaCoreSDK.OtelLogEvents, attributesBuilder: GliaOpenTelemetry.AttributesBuilder? = nil)
-  public func endSpan(event: GliaCoreSDK.OtelLogEvents)
-  public func recordException(for event: GliaCoreSDK.OtelLogEvents, exception: any Swift.Error)
-  public func addEvent(for spanEvent: GliaCoreSDK.OtelLogEvents, event: GliaCoreSDK.OtelLogEvents, attributesBuilder: GliaOpenTelemetry.AttributesBuilder? = nil)
-}
-extension GliaCoreSDK.OtelTracer {
-  public static func live(telemetry: GliaOpenTelemetry.GliaTelemetry) -> GliaCoreSDK.OtelTracer
-  public static func mock(startSpan: @escaping (GliaCoreSDK.OtelLogEvents, GliaOpenTelemetry.AttributesBuilder?) -> Swift.Void = { _, _ in }, endSpan: @escaping (GliaCoreSDK.OtelLogEvents) -> Swift.Void = { _ in }, recordException: @escaping (GliaCoreSDK.OtelLogEvents, any Swift.Error) -> Swift.Void = { _, _ in }, addEvent: @escaping (GliaCoreSDK.OtelLogEvents, GliaCoreSDK.OtelLogEvents, GliaOpenTelemetry.AttributesBuilder?) -> Swift.Void = { _, _, _ in }) -> GliaCoreSDK.OtelTracer
-}
-public typealias OtelTelemetry = GliaOpenTelemetry.GliaTelemetry
-public typealias OtelAttributes = GliaOpenTelemetry.GliaAttributes
-public typealias OtelLogEvents = GliaOpenTelemetry.LogEvents
-public typealias OtelAttributeValue = GliaOpenTelemetry.GliaAttributeValue
-public typealias OtelAttributesBuilder = GliaOpenTelemetry.AttributesBuilder
-public typealias OtelButtonNames = GliaOpenTelemetry.ButtonNames
-public typealias OtelDialogNames = GliaOpenTelemetry.DialogNames
-public typealias OtelGvaActionTypes = GliaOpenTelemetry.GvaActionTypes
-public typealias OtelEngagementTypes = GliaOpenTelemetry.EngagementTypes
-public typealias OtelEngagementSources = GliaOpenTelemetry.EngagementSources
-public typealias OtelMediaTypes = GliaOpenTelemetry.MediaTypes
-public typealias OtelBubbleStates = GliaOpenTelemetry.BubbleStates
-public typealias OtelViewTypes = GliaOpenTelemetry.ViewTypes
-public typealias OtelEntryWidgetStates = GliaOpenTelemetry.EntryWidgetStates
-public typealias OtelVisitorCodeStates = GliaOpenTelemetry.VisitorCodeStates
-@_hasMissingDesignatedInitializers public class OpenTelemetry {
-  public var logger: GliaCoreSDK.OtelLogger {
-    get
-  }
-  public var tracer: GliaCoreSDK.OtelTracer {
-    get
-  }
-  public func setGlobalAttribute(_ value: GliaCoreSDK.OtelAttributeValue?, forKey key: GliaCoreSDK.OtelAttributes)
-  public func configure(urlString: Swift.String)
-  @objc deinit
-}
-extension GliaCoreSDK.OpenTelemetry {
-  public static func live(configuration: GliaOpenTelemetry.TelemetryConfiguration = .init(domain: "yevhen-kyivskyi.dev.samo.io")) -> GliaCoreSDK.OpenTelemetry
-  public static func mock(configuration: GliaOpenTelemetry.TelemetryConfiguration, logger: GliaCoreSDK.OtelLogger = .mock(), tracer: GliaCoreSDK.OtelTracer = .mock()) -> GliaCoreSDK.OpenTelemetry
-}
-extension GliaCoreSDK.DependencyContainer.Widgets {
-  public var openTelemetry: GliaCoreSDK.OpenTelemetry {
-    get
-    set
   }
 }
 public enum PushType {
@@ -690,9 +654,6 @@ extension GliaCoreSDK.VisitorContext {
   public enum ContextType {
     case assetId(GliaCoreSDK.VisitorContext.AssetId)
   }
-  public var assetContextId: Foundation.UUID? {
-    get
-  }
 }
 extension GliaCoreSDK.VisitorContext : Swift.Encodable {
   public func encode(to encoder: any Swift.Encoder) throws
@@ -709,19 +670,6 @@ public enum MediaType : Swift.String, Swift.Decodable {
   public var rawValue: Swift.String {
     get
   }
-}
-public struct OtelLogger {
-  public func setLogLevel(_ level: GliaOpenTelemetry.GliaLogger.LogLevel)
-  public func e(_ event: GliaOpenTelemetry.LogEvents, message: Swift.String? = nil, error: (any Swift.Error)? = nil, attributesBuilder: GliaCoreSDK.OtelAttributesBuilder? = nil)
-  public func w(_ event: GliaOpenTelemetry.LogEvents, message: Swift.String? = nil, attributesBuilder: GliaCoreSDK.OtelAttributesBuilder? = nil)
-  public func i(_ event: GliaOpenTelemetry.LogEvents, message: Swift.String? = nil, attributesBuilder: GliaCoreSDK.OtelAttributesBuilder? = nil)
-  public func d(_ event: GliaOpenTelemetry.LogEvents, message: Swift.String? = nil, attributesBuilder: GliaCoreSDK.OtelAttributesBuilder? = nil)
-  public func logDeprecatedApiUse(sdkType: GliaOpenTelemetry.SdkType, className: any Any.Type, methodName: Swift.String? = nil, methodParams: [Swift.String] = [])
-  public func logMethodUse(sdkType: GliaOpenTelemetry.SdkType, className: any Any.Type, methodName: Swift.String, methodParams: [Swift.String] = [])
-}
-extension GliaCoreSDK.OtelLogger {
-  public static func live(telemetry: GliaOpenTelemetry.GliaTelemetry) -> GliaCoreSDK.OtelLogger
-  public static func mock(setLogLevel: @escaping (GliaOpenTelemetry.GliaLogger.LogLevel) -> Swift.Void = { _ in }, e: @escaping (GliaOpenTelemetry.LogEvents, Swift.String?, (any Swift.Error)?, GliaCoreSDK.OtelAttributesBuilder?) -> Swift.Void = { _, _, _, _  in }, w: @escaping (GliaOpenTelemetry.LogEvents, Swift.String?, GliaCoreSDK.OtelAttributesBuilder?) -> Swift.Void = { _, _, _  in }, i: @escaping (GliaOpenTelemetry.LogEvents, Swift.String?, GliaCoreSDK.OtelAttributesBuilder?) -> Swift.Void = { _, _, _  in }, d: @escaping (GliaOpenTelemetry.LogEvents, Swift.String?, GliaCoreSDK.OtelAttributesBuilder?) -> Swift.Void = { _, _, _  in }, logDeprecatedApiUse: @escaping (GliaOpenTelemetry.SdkType, any Any.Type, Swift.String?, [Swift.String]) -> Swift.Void = { _, _, _, _  in }, logMethodUse: @escaping (GliaOpenTelemetry.SdkType, any Any.Type, Swift.String, [Swift.String]) -> Swift.Void = { _, _, _, _  in }) -> GliaCoreSDK.OtelLogger
 }
 @_hasMissingDesignatedInitializers @objc public class EngagementFileProgress : ObjectiveC.NSObject {
   final public let fractionCompleted: Swift.Double
@@ -920,64 +868,6 @@ extension GliaCoreSDK.Request {
     public init(from decoder: any Swift.Decoder) throws
     public static func == (a: GliaCoreSDK.Request.Outcome, b: GliaCoreSDK.Request.Outcome) -> Swift.Bool
   }
-}
-final public class DependencyContainer {
-  public enum Module : Swift.Hashable {
-    case core
-    case widgets
-    public static func == (a: GliaCoreSDK.DependencyContainer.Module, b: GliaCoreSDK.DependencyContainer.Module) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public enum Environment {
-    case live
-    case test
-    public static func == (a: GliaCoreSDK.DependencyContainer.Environment, b: GliaCoreSDK.DependencyContainer.Environment) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  final public var widgets: GliaCoreSDK.DependencyContainer.Widgets {
-    get
-  }
-  public static let $current: _Concurrency.TaskLocal<GliaCoreSDK.DependencyContainer>
-  public static var current: GliaCoreSDK.DependencyContainer {
-    get
-  }
-  public init(environment: GliaCoreSDK.DependencyContainer.Environment)
-  @objc deinit
-}
-extension GliaCoreSDK.DependencyContainer {
-  @_hasMissingDesignatedInitializers public class ModuleAccessor {
-    public subscript<K>(key: K.Type) -> K.Value where K : GliaCoreSDK.DependencyKey {
-      get
-      set
-    }
-    @objc deinit
-  }
-  @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class Widgets : GliaCoreSDK.DependencyContainer.ModuleAccessor {
-    @objc deinit
-  }
-}
-#if compiler(>=5.3) && $PrimaryAssociatedTypes2
-public protocol DependencyKey<Value> {
-  associatedtype Value = Self
-  static var live: Self.Value { get }
-}
-#else
-public protocol DependencyKey {
-  associatedtype Value = Self
-  static var live: Self.Value { get }
-}
-#endif
-@propertyWrapper public struct Dependency<Value> {
-  public var wrappedValue: Value {
-    get
-  }
-  public init(_ keyPath: Swift.KeyPath<GliaCoreSDK.DependencyContainer, Value>)
 }
 extension GliaCoreSDK.GliaCore {
   @_hasMissingDesignatedInitializers final public class CallVisualizer {
@@ -1504,11 +1394,6 @@ extension GliaCoreSDK.Push : Swift.Equatable {
   public init(type: GliaCoreSDK.MediaType, direction: GliaCoreSDK.MediaDirection) throws
   @objc deinit
 }
-extension GliaCoreSDK.MediaUpgradeOffer {
-  public var otelAttribute: GliaCoreSDK.OtelAttributeValue? {
-    get
-  }
-}
 public enum MediaDirection : Swift.String {
   case oneWay
   case twoWay
@@ -1523,12 +1408,13 @@ extension GliaCoreSDK.AttachmentType : Swift.Hashable {}
 extension GliaCoreSDK.AttachmentType : Swift.RawRepresentable {}
 extension GliaCoreSDK.EngagementEndingReason : Swift.Equatable {}
 extension GliaCoreSDK.EngagementEndingReason : Swift.Hashable {}
-extension GliaCoreSDK.EngagementEndingReason : Swift.RawRepresentable {}
 extension GliaCoreSDK.PushNotificationsType : Swift.Equatable {}
 extension GliaCoreSDK.PushNotificationsType : Swift.Hashable {}
 extension GliaCoreSDK.PushNotificationsType : Swift.RawRepresentable {}
 extension GliaCoreSDK.GliaCore.ConfigurationProcessError : Swift.Equatable {}
 extension GliaCoreSDK.GliaCore.ConfigurationProcessError : Swift.Hashable {}
+extension GliaCoreSDK.GliaCore.RegionType : Swift.Equatable {}
+extension GliaCoreSDK.GliaCore.RegionType : Swift.Hashable {}
 extension GliaCoreSDK.GliaCore.Configuration.PushNotifications : Swift.Equatable {}
 extension GliaCoreSDK.GliaCore.Configuration.PushNotifications : Swift.Hashable {}
 extension GliaCoreSDK.Message.Metadata.CodingKeys : Swift.Equatable {}
@@ -1544,8 +1430,6 @@ extension GliaCoreSDK.GliaCoreAppDelegate : Swift.Sendable {}
 extension GliaCoreSDK.MediaType : Swift.Equatable {}
 extension GliaCoreSDK.MediaType : Swift.Hashable {}
 extension GliaCoreSDK.MediaType : Swift.RawRepresentable {}
-extension GliaCoreSDK.DependencyContainer.Environment : Swift.Equatable {}
-extension GliaCoreSDK.DependencyContainer.Environment : Swift.Hashable {}
 extension GliaCoreSDK.GliaCore.Authentication.Error : Swift.Equatable {}
 extension GliaCoreSDK.GliaCore.Authentication.Error : Swift.Hashable {}
 extension GliaCoreSDK.GliaCore.Authentication.Behavior : Swift.Equatable {}

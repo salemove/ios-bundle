@@ -380,8 +380,6 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 @end
 
 
-
-
 @interface Engagement (SWIFT_EXTENSION(GliaCoreSDK))
 /// Calculates if engagement is transferred Secure Conversation.
 /// \param engagement. 
@@ -391,6 +389,8 @@ SWIFT_CLASS("_TtC11GliaCoreSDK10Engagement")
 /// Boolean value indicating whether it’s transferred Secure Conversation.
 + (BOOL)isTransferredSecureConversation:(Engagement * _Nonnull)engagement SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 
@@ -555,6 +555,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 
 
 
+
+
+
+
+
+
+
 @class Queue;
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -563,19 +570,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 @end
 
 
+
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Deprecated.
 - (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use cancel(queueTicket:completion:) instead.");
 @end
-
-
-
-
-
-
-
-
-
 
 
 
@@ -597,6 +596,7 @@ enum LogLevel : NSInteger;
 /// </ul>
 - (void)configureLogLevelWithLevel:(enum LogLevel)level;
 @end
+
 
 @class MediaUpgradeOffer;
 
@@ -633,6 +633,11 @@ enum LogLevel : NSInteger;
 
 
 
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
+@end
 
 
 
@@ -701,13 +706,6 @@ enum LogLevel : NSInteger;
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-@end
-
-
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Send a message preview to the Operator.
 /// The latest preview message will always be visible to the Operator. This means that Operators can use the
 /// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
@@ -735,6 +733,7 @@ enum LogLevel : NSInteger;
 ///
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
+
 
 
 
@@ -806,8 +805,6 @@ enum LogLevel : NSInteger;
 
 
 
-
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Unavailable.
 - (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
@@ -816,6 +813,8 @@ enum LogLevel : NSInteger;
 /// Unavailable.
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_UNAVAILABLE_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
 @end
+
+
 
 
 
@@ -993,7 +992,6 @@ SWIFT_CLASS("_TtC11GliaCoreSDK17MediaUpgradeOffer")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
 
 
 
