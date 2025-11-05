@@ -33954,6 +33954,54 @@
                 ]
               },
               {
+                "kind": "Var",
+                "name": "beta",
+                "printedName": "beta",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Region",
+                    "printedName": "GliaCoreSDK.GliaCore.Region",
+                    "usr": "s:11GliaCoreSDK0aB0C6RegionV"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:11GliaCoreSDK0aB0C6RegionV4betaAEvpZ",
+                "mangledName": "$s11GliaCoreSDK0aB0C6RegionV4betaAEvpZ",
+                "moduleName": "GliaCoreSDK",
+                "static": true,
+                "declAttributes": [
+                  "HasInitialValue",
+                  "HasStorage",
+                  "AccessControl",
+                  "RawDocComment"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Region",
+                        "printedName": "GliaCoreSDK.GliaCore.Region",
+                        "usr": "s:11GliaCoreSDK0aB0C6RegionV"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK0aB0C6RegionV4betaAEvgZ",
+                    "mangledName": "$s11GliaCoreSDK0aB0C6RegionV4betaAEvgZ",
+                    "moduleName": "GliaCoreSDK",
+                    "static": true,
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
                 "kind": "Function",
                 "name": "custom",
                 "printedName": "custom(_:)",
@@ -34005,6 +34053,308 @@
                 "printedName": "Escapable",
                 "usr": "s:s9EscapableP",
                 "mangledName": "$ss9EscapableP"
+              }
+            ]
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "RegionType",
+            "printedName": "RegionType",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "eu",
+                "printedName": "eu",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.GliaCore.RegionType.Type) -> GliaCoreSDK.GliaCore.RegionType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RegionType",
+                        "printedName": "GliaCoreSDK.GliaCore.RegionType",
+                        "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.GliaCore.RegionType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "RegionType",
+                            "printedName": "GliaCoreSDK.GliaCore.RegionType",
+                            "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO2euyA2EmF",
+                "mangledName": "$s11GliaCoreSDK0aB0C10RegionTypeO2euyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "us",
+                "printedName": "us",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.GliaCore.RegionType.Type) -> GliaCoreSDK.GliaCore.RegionType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RegionType",
+                        "printedName": "GliaCoreSDK.GliaCore.RegionType",
+                        "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.GliaCore.RegionType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "RegionType",
+                            "printedName": "GliaCoreSDK.GliaCore.RegionType",
+                            "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO2usyA2EmF",
+                "mangledName": "$s11GliaCoreSDK0aB0C10RegionTypeO2usyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "beta",
+                "printedName": "beta",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.GliaCore.RegionType.Type) -> GliaCoreSDK.GliaCore.RegionType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RegionType",
+                        "printedName": "GliaCoreSDK.GliaCore.RegionType",
+                        "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.GliaCore.RegionType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "RegionType",
+                            "printedName": "GliaCoreSDK.GliaCore.RegionType",
+                            "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO4betayA2EmF",
+                "mangledName": "$s11GliaCoreSDK0aB0C10RegionTypeO4betayA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "custom",
+                "printedName": "custom",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.GliaCore.RegionType.Type) -> GliaCoreSDK.GliaCore.RegionType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RegionType",
+                        "printedName": "GliaCoreSDK.GliaCore.RegionType",
+                        "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.GliaCore.RegionType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "RegionType",
+                            "printedName": "GliaCoreSDK.GliaCore.RegionType",
+                            "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO6customyA2EmF",
+                "mangledName": "$s11GliaCoreSDK0aB0C10RegionTypeO6customyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RegionType",
+                    "printedName": "GliaCoreSDK.GliaCore.RegionType",
+                    "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RegionType",
+                    "printedName": "GliaCoreSDK.GliaCore.RegionType",
+                    "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO2eeoiySbAE_AEtFZ",
+                "mangledName": "$s11GliaCoreSDK0aB0C10RegionTypeO2eeoiySbAE_AEtFZ",
+                "moduleName": "GliaCoreSDK",
+                "static": true,
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Var",
+                "name": "hashValue",
+                "printedName": "hashValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO9hashValueSivp",
+                "mangledName": "$s11GliaCoreSDK0aB0C10RegionTypeO9hashValueSivp",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO9hashValueSivg",
+                    "mangledName": "$s11GliaCoreSDK0aB0C10RegionTypeO9hashValueSivg",
+                    "moduleName": "GliaCoreSDK",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "hash",
+                "printedName": "hash(into:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Hasher",
+                    "printedName": "Swift.Hasher",
+                    "paramValueOwnership": "InOut",
+                    "usr": "s:s6HasherV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO4hash4intoys6HasherVz_tF",
+                "mangledName": "$s11GliaCoreSDK0aB0C10RegionTypeO4hash4intoys6HasherVz_tF",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:11GliaCoreSDK0aB0C10RegionTypeO",
+            "mangledName": "$s11GliaCoreSDK0aB0C10RegionTypeO",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Hashable",
+                "printedName": "Hashable",
+                "usr": "s:SH",
+                "mangledName": "$sSH"
               }
             ]
           },
@@ -45935,21 +46285,28 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Configurable.swift",
       "kind": "StringLiteral",
-      "offset": 13531,
+      "offset": 13619,
       "length": 18,
       "value": "\"https:\/\/glia.com\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Configurable.swift",
       "kind": "StringLiteral",
-      "offset": 13635,
+      "offset": 13734,
       "length": 17,
       "value": "\"https:\/\/glia.eu\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Configurable.swift",
+      "kind": "StringLiteral",
+      "offset": 13850,
+      "length": 23,
+      "value": "\"https:\/\/beta.glia.com\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCoreExtensions\/GliaCore+Configurable.swift",
       "kind": "BooleanLiteral",
-      "offset": 16123,
+      "offset": 16591,
       "length": 4,
       "value": "true"
     },
@@ -47747,85 +48104,78 @@
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
-      "kind": "Array",
-      "offset": 264,
-      "length": 876,
-      "value": "[\"turn:turn.salemove.com:443?transport=udp\", \"turn:turn.salemove.com:443?transport=tcp\", \"turn:[2600:1f18:640:e800:91ba:e6da:1ee0:b937]:443?transport=udp\", \"turn:[2600:1f18:640:e800:91ba:e6da:1ee0:b937]:443?transport=tcp\", \"turn:turn2.salemove.com:443?transport=udp\", \"turn:turn2.salemove.com:443?transport=tcp\", \"turn:[2600:1f18:640:e801:b580:f1d8:7814:700d]:443?transport=udp\", \"turn:[2600:1f18:640:e801:b580:f1d8:7814:700d]:443?transport=tcp\", \"turn:turn3.salemove.com:443?transport=udp\", \"turn:turn3.salemove.com:443?transport=tcp\", \"turn:[2600:1f18:640:e802:fee4:5887:72bd:1da0]:443?transport=udp\", \"turn:[2600:1f18:640:e802:fee4:5887:72bd:1da0]:443?transport=tcp\"]"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 1180,
+      "offset": 4318,
       "length": 8,
       "value": "\"smturn\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 1229,
+      "offset": 4367,
       "length": 12,
       "value": "\"smturnpass\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 1318,
+      "offset": 4456,
       "length": 14,
       "value": "\"SALEMOVEMSa1\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 1375,
+      "offset": 4513,
       "length": 14,
       "value": "\"SALEMOVEMSa0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 1433,
+      "offset": 4571,
       "length": 14,
       "value": "\"SALEMOVEMSv1\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 1490,
+      "offset": 4628,
       "length": 14,
       "value": "\"SALEMOVEMSv0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 1549,
+      "offset": 4687,
       "length": 14,
       "value": "\"SALEMOVEMSs1\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 1607,
+      "offset": 4745,
       "length": 14,
       "value": "\"SALEMOVEMSs0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 1663,
+      "offset": 4801,
       "length": 10,
       "value": "\"GLIAMSo0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 1747,
+      "offset": 4885,
       "length": 7,
       "value": "\"offer\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
       "kind": "StringLiteral",
-      "offset": 1787,
+      "offset": 4925,
       "length": 8,
       "value": "\"answer\""
     },
@@ -48555,7 +48905,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.2.3\""
+      "value": "\"2.2.4\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -48686,42 +49036,42 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 29679,
+      "offset": 29732,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 30045,
+      "offset": 30098,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48868,
+      "offset": 48974,
       "length": 64,
       "value": "\"Channel connection has not been established. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 48929,
+      "offset": 49035,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69183,
+      "offset": 69338,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 69242,
+      "offset": 69397,
       "length": 23,
       "value": "\"capabilities:response\""
     },

@@ -634,43 +634,11 @@ enum LogLevel : NSInteger;
 
 
 
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Send a message preview to the Operator.
-/// The latest preview message will always be visible to the Operator. This means that Operators can use the
-/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
-/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
-/// experience.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param message The content of the message preview.
-///
-/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
-///
-- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-
-
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Clear the use session of the client library
 - (void)clearSession;
 @end
+
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -737,6 +705,38 @@ enum LogLevel : NSInteger;
 
 
 
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Send a message preview to the Operator.
+/// The latest preview message will always be visible to the Operator. This means that Operators can use the
+/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
+/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
+/// experience.
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+/// </ul>
+/// \param message The content of the message preview.
+///
+/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
+///
+- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
+@end
+
+
+
+
 
 @class Message;
 
@@ -746,7 +746,6 @@ enum LogLevel : NSInteger;
 /// Deprecated.
 - (void)sendWithMessage:(NSString * _Nonnull)message attachment:(Attachment * _Nullable)attachment completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(messagePayload:completion:)");
 @end
-
 
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -806,7 +805,6 @@ enum LogLevel : NSInteger;
 
 
 
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Unavailable.
 - (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
@@ -815,6 +813,8 @@ enum LogLevel : NSInteger;
 /// Unavailable.
 - (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_UNAVAILABLE_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
 @end
+
+
 
 
 
