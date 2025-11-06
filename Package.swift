@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "GliaSDK",
     platforms: [
-        .iOS(.v13)
+        .iOS("15.5")
     ],
     products: [
         .library(
