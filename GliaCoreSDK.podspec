@@ -17,5 +17,5 @@ Pod::Spec.new do |s|
   s.dependency 'WebRTC-lib', '119.0.0'
   s.dependency 'TwilioVoice', '6.8.0'
   s.dependency 'PhoenixChannelsClient' , '1.0.1'
-  s.dependency 'GliaOpenTelemetry', '1.0.5'
+  s.dependency 'GliaOpenTelemetry', '1.0.6'
 end
