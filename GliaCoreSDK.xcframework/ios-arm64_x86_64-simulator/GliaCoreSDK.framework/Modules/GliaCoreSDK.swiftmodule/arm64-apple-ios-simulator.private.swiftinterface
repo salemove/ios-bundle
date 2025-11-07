@@ -178,7 +178,19 @@ extension GliaCoreSDK.GliaCore {
   public struct Region {
     public static let us: GliaCoreSDK.GliaCore.Region
     public static let eu: GliaCoreSDK.GliaCore.Region
+    public static let beta: GliaCoreSDK.GliaCore.Region
     public static func custom(_ host: Foundation.URL) -> GliaCoreSDK.GliaCore.Region
+  }
+  public enum RegionType {
+    case eu
+    case us
+    case beta
+    case custom
+    public static func == (a: GliaCoreSDK.GliaCore.RegionType, b: GliaCoreSDK.GliaCore.RegionType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
   }
   public struct Configuration {
     public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, authorizingMethod: GliaCoreSDK.GliaCore.AuthorizationMethod, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled, manualLocaleOverride: Swift.String? = nil, suppressPushNotificationsPermissionRequestDuringAuthentication: Swift.Bool, isPushNotificationProxyEnabled: Swift.Bool = true) throws
@@ -1606,6 +1618,8 @@ extension GliaCoreSDK.PushNotificationsType : Swift.Hashable {}
 extension GliaCoreSDK.PushNotificationsType : Swift.RawRepresentable {}
 extension GliaCoreSDK.GliaCore.ConfigurationProcessError : Swift.Equatable {}
 extension GliaCoreSDK.GliaCore.ConfigurationProcessError : Swift.Hashable {}
+extension GliaCoreSDK.GliaCore.RegionType : Swift.Equatable {}
+extension GliaCoreSDK.GliaCore.RegionType : Swift.Hashable {}
 extension GliaCoreSDK.GliaCore.Configuration.PushNotifications : Swift.Equatable {}
 extension GliaCoreSDK.GliaCore.Configuration.PushNotifications : Swift.Hashable {}
 extension GliaCoreSDK.Message.Metadata.CodingKeys : Swift.Equatable {}
