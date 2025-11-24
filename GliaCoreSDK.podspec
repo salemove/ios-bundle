@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'GliaCoreSDK'
-  s.version          = '2.3.1'
+  s.version          = '2.3.2'
   s.summary          = 'The Glia Core SDK'
   s.description      = 'The Glia Core SDK brings the in-person customer experience to iOS devices.'
   s.homepage         = 'https://www.glia.com/'
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/salemove/ios-bundle.git', :tag => s.version.to_s }
 
   s.module_name = 'GliaCoreSDK'
-  s.ios.deployment_target = '15.5'
+  s.ios.deployment_target = '15.1'
   s.ios.vendored_frameworks = 'GliaCoreSDK.xcframework'
   s.swift_version = '5.3'
 
@@ -17,5 +17,5 @@ Pod::Spec.new do |s|
   s.dependency 'WebRTC-lib', '119.0.0'
   s.dependency 'TwilioVoice', '6.8.0'
   s.dependency 'PhoenixChannelsClient' , '1.0.1'
-  s.dependency 'GliaOpenTelemetry', '1.0.6'
+  s.dependency 'GliaOpenTelemetry', '1.0.7'
 end
