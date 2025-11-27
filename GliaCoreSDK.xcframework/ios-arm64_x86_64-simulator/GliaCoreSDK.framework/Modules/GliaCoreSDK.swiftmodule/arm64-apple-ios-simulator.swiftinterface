@@ -1229,6 +1229,59 @@ public enum QueueStatus : Swift.Decodable, Swift.RawRepresentable, Swift.Equatab
   public init(from decoder: any Swift.Decoder) throws
   public typealias RawValue = Swift.String
 }
+final public class DisposableBag {
+  public init(items: [any GliaCoreSDK.DisposableProtocol] = [])
+  final public func add(_ d: any GliaCoreSDK.DisposableProtocol)
+  final public func disposeAll()
+  @objc deinit
+}
+public protocol DisposableProtocol {
+  var isDisposed: Swift.Bool { get }
+  func dispose()
+}
+final public class TaskDisposable : GliaCoreSDK.DisposableProtocol {
+  public init(_ task: _Concurrency.Task<Swift.Void, Swift.Never>)
+  final public var isDisposed: Swift.Bool {
+    get
+  }
+  final public func dispose()
+  @objc deinit
+}
+final public class TaskLifetime {
+  public init()
+  final public func end()
+  final public func onEnd(_ handler: @escaping () -> Swift.Void)
+  final public var hasEnded: Swift.Bool {
+    get
+  }
+  @objc deinit
+}
+final public class ValueRelay<T> {
+  public init(_ initial: T)
+  final public func set(_ newValue: T)
+  final public func modify(_ mutate: (inout T) -> Swift.Void)
+  final public func current() -> T
+  final public func stream(replay: Swift.Bool = true) -> _Concurrency.AsyncStream<T>
+  final public func finishAll()
+  @objc deinit
+}
+extension _Concurrency.AsyncSequence where Self.Element : Swift.Equatable {
+  public func removeDuplicates() -> _Concurrency.AsyncStream<Self.Element>
+}
+extension _Concurrency.AsyncSequence {
+  public func map<U>(_ transform: @escaping (Self.Element) -> U) -> _Concurrency.AsyncStream<U>
+  public func compactMap<U>(_ transform: @escaping (Self.Element) -> U?) -> _Concurrency.AsyncStream<U>
+  public func filter(_ isIncluded: @escaping (Self.Element) -> Swift.Bool) -> _Concurrency.AsyncStream<Self.Element>
+  public func takeFirst(_ n: Swift.Int) -> _Concurrency.AsyncStream<Self.Element>
+  public func takeDuring(_ lifetime: GliaCoreSDK.TaskLifetime) -> _Concurrency.AsyncStream<Self.Element>
+  public func removeDuplicates(by same: @escaping (Self.Element, Self.Element) -> Swift.Bool) -> _Concurrency.AsyncStream<Self.Element>
+  public func handle(onOutput: @escaping (Self.Element) -> Swift.Void) -> _Concurrency.AsyncStream<Self.Element>
+  public func debounce(_ interval: Foundation.TimeInterval) -> _Concurrency.AsyncStream<Self.Element>
+  public func scan<U>(_ initial: U, _ transform: @escaping (U, Self.Element) -> U) -> _Concurrency.AsyncStream<U>
+  public func firstValue() async rethrows -> Self.Element?
+}
+@inline(__always) public func sleepSeconds(_ seconds: Foundation.TimeInterval) async throws
+@inline(__always) public func sleepSecondsNoThrow(_ seconds: Foundation.TimeInterval) async
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class GliaCore : ObjectiveC.NSObject {
   @objc public static let sharedInstance: GliaCoreSDK.GliaCore
   weak final public var currentInteractor: (any GliaCoreSDK.Interactable)?

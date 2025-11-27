@@ -34003,6 +34003,861 @@
         "moduleName": "GliaCoreSDK"
       },
       {
+        "kind": "TypeDecl",
+        "name": "DisposableBag",
+        "printedName": "DisposableBag",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(items:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "DisposableBag",
+                "printedName": "GliaCoreSDK.DisposableBag",
+                "usr": "s:11GliaCoreSDK13DisposableBagC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[any GliaCoreSDK.DisposableProtocol]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DisposableProtocol",
+                    "printedName": "any GliaCoreSDK.DisposableProtocol",
+                    "usr": "s:11GliaCoreSDK18DisposableProtocolP"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11GliaCoreSDK13DisposableBagC5itemsACSayAA0D8Protocol_pG_tcfc",
+            "mangledName": "$s11GliaCoreSDK13DisposableBagC5itemsACSayAA0D8Protocol_pG_tcfc",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "add",
+            "printedName": "add(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DisposableProtocol",
+                "printedName": "any GliaCoreSDK.DisposableProtocol",
+                "usr": "s:11GliaCoreSDK18DisposableProtocolP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK13DisposableBagC3addyyAA0D8Protocol_pF",
+            "mangledName": "$s11GliaCoreSDK13DisposableBagC3addyyAA0D8Protocol_pF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "disposeAll",
+            "printedName": "disposeAll()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK13DisposableBagC10disposeAllyyF",
+            "mangledName": "$s11GliaCoreSDK13DisposableBagC10disposeAllyyF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:11GliaCoreSDK13DisposableBagC",
+        "mangledName": "$s11GliaCoreSDK13DisposableBagC",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "DisposableProtocol",
+        "printedName": "DisposableProtocol",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "isDisposed",
+            "printedName": "isDisposed",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK18DisposableProtocolP10isDisposedSbvp",
+            "mangledName": "$s11GliaCoreSDK18DisposableProtocolP10isDisposedSbvp",
+            "moduleName": "GliaCoreSDK",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK18DisposableProtocolP10isDisposedSbvg",
+                "mangledName": "$s11GliaCoreSDK18DisposableProtocolP10isDisposedSbvg",
+                "moduleName": "GliaCoreSDK",
+                "genericSig": "<τ_0_0 where τ_0_0 : GliaCoreSDK.DisposableProtocol>",
+                "sugared_genericSig": "<Self where Self : GliaCoreSDK.DisposableProtocol>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "dispose",
+            "printedName": "dispose()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK18DisposableProtocolP7disposeyyF",
+            "mangledName": "$s11GliaCoreSDK18DisposableProtocolP7disposeyyF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : GliaCoreSDK.DisposableProtocol>",
+            "sugared_genericSig": "<Self where Self : GliaCoreSDK.DisposableProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:11GliaCoreSDK18DisposableProtocolP",
+        "mangledName": "$s11GliaCoreSDK18DisposableProtocolP",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TaskDisposable",
+        "printedName": "TaskDisposable",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TaskDisposable",
+                "printedName": "GliaCoreSDK.TaskDisposable",
+                "usr": "s:11GliaCoreSDK14TaskDisposableC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Task",
+                "printedName": "_Concurrency.Task<(), Swift.Never>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Never",
+                    "printedName": "Swift.Never",
+                    "usr": "s:s5NeverO"
+                  }
+                ],
+                "usr": "s:ScT"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11GliaCoreSDK14TaskDisposableCyACScTyyts5NeverOGcfc",
+            "mangledName": "$s11GliaCoreSDK14TaskDisposableCyACScTyyts5NeverOGcfc",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "isDisposed",
+            "printedName": "isDisposed",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK14TaskDisposableC10isDisposedSbvp",
+            "mangledName": "$s11GliaCoreSDK14TaskDisposableC10isDisposedSbvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK14TaskDisposableC10isDisposedSbvg",
+                "mangledName": "$s11GliaCoreSDK14TaskDisposableC10isDisposedSbvg",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "dispose",
+            "printedName": "dispose()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK14TaskDisposableC7disposeyyF",
+            "mangledName": "$s11GliaCoreSDK14TaskDisposableC7disposeyyF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:11GliaCoreSDK14TaskDisposableC",
+        "mangledName": "$s11GliaCoreSDK14TaskDisposableC",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "DisposableProtocol",
+            "printedName": "DisposableProtocol",
+            "usr": "s:11GliaCoreSDK18DisposableProtocolP",
+            "mangledName": "$s11GliaCoreSDK18DisposableProtocolP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TaskLifetime",
+        "printedName": "TaskLifetime",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TaskLifetime",
+                "printedName": "GliaCoreSDK.TaskLifetime",
+                "usr": "s:11GliaCoreSDK12TaskLifetimeC"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11GliaCoreSDK12TaskLifetimeCACycfc",
+            "mangledName": "$s11GliaCoreSDK12TaskLifetimeCACycfc",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "end",
+            "printedName": "end()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK12TaskLifetimeC3endyyF",
+            "mangledName": "$s11GliaCoreSDK12TaskLifetimeC3endyyF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onEnd",
+            "printedName": "onEnd(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK12TaskLifetimeC5onEndyyyycF",
+            "mangledName": "$s11GliaCoreSDK12TaskLifetimeC5onEndyyyycF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hasEnded",
+            "printedName": "hasEnded",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK12TaskLifetimeC8hasEndedSbvp",
+            "mangledName": "$s11GliaCoreSDK12TaskLifetimeC8hasEndedSbvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK12TaskLifetimeC8hasEndedSbvg",
+                "mangledName": "$s11GliaCoreSDK12TaskLifetimeC8hasEndedSbvg",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:11GliaCoreSDK12TaskLifetimeC",
+        "mangledName": "$s11GliaCoreSDK12TaskLifetimeC",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ValueRelay",
+        "printedName": "ValueRelay",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ValueRelay",
+                "printedName": "GliaCoreSDK.ValueRelay<τ_0_0>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ],
+                "usr": "s:11GliaCoreSDK10ValueRelayC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11GliaCoreSDK10ValueRelayCyACyxGxcfc",
+            "mangledName": "$s11GliaCoreSDK10ValueRelayCyACyxGxcfc",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0>",
+            "sugared_genericSig": "<T>",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "set",
+            "printedName": "set(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10ValueRelayC3setyyxF",
+            "mangledName": "$s11GliaCoreSDK10ValueRelayC3setyyxF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0>",
+            "sugared_genericSig": "<T>",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "modify",
+            "printedName": "modify(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(inout τ_0_0) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ],
+                "typeAttributes": [
+                  "noescape"
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10ValueRelayC6modifyyyyxzXEF",
+            "mangledName": "$s11GliaCoreSDK10ValueRelayC6modifyyyyxzXEF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0>",
+            "sugared_genericSig": "<T>",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "current",
+            "printedName": "current()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10ValueRelayC7currentxyF",
+            "mangledName": "$s11GliaCoreSDK10ValueRelayC7currentxyF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0>",
+            "sugared_genericSig": "<T>",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stream",
+            "printedName": "stream(replay:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncStream",
+                "printedName": "_Concurrency.AsyncStream<τ_0_0>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ],
+                "usr": "s:ScS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10ValueRelayC6stream6replayScSyxGSb_tF",
+            "mangledName": "$s11GliaCoreSDK10ValueRelayC6stream6replayScSyxGSb_tF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0>",
+            "sugared_genericSig": "<T>",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "finishAll",
+            "printedName": "finishAll()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK10ValueRelayC9finishAllyyF",
+            "mangledName": "$s11GliaCoreSDK10ValueRelayC9finishAllyyF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0>",
+            "sugared_genericSig": "<T>",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:11GliaCoreSDK10ValueRelayC",
+        "mangledName": "$s11GliaCoreSDK10ValueRelayC",
+        "moduleName": "GliaCoreSDK",
+        "genericSig": "<τ_0_0>",
+        "sugared_genericSig": "<T>",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Function",
+        "name": "sleepSeconds",
+        "printedName": "sleepSeconds(_:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Double",
+            "printedName": "Swift.Double",
+            "usr": "s:Sd"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:11GliaCoreSDK12sleepSecondsyySdYaKF",
+        "mangledName": "$s11GliaCoreSDK12sleepSecondsyySdYaKF",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "Inline",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "sleepSecondsNoThrow",
+        "printedName": "sleepSecondsNoThrow(_:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Double",
+            "printedName": "Swift.Double",
+            "usr": "s:Sd"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:11GliaCoreSDK19sleepSecondsNoThrowyySdYaF",
+        "mangledName": "$s11GliaCoreSDK19sleepSecondsNoThrowyySdYaF",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl",
+          "Inline",
+          "RawDocComment"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -47877,6 +48732,548 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "AsyncSequence",
+        "printedName": "AsyncSequence",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "removeDuplicates",
+            "printedName": "removeDuplicates()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncStream",
+                "printedName": "_Concurrency.AsyncStream<τ_0_0.Element>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Element"
+                  }
+                ],
+                "usr": "s:ScS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:Sci11GliaCoreSDKSQ7ElementRpzrlE16removeDuplicatesScSyACGyF",
+            "mangledName": "$sSci11GliaCoreSDKSQ7ElementRpzrlE16removeDuplicatesScSyACGyF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : _Concurrency.AsyncSequence, τ_0_0.Element : Swift.Equatable>",
+            "sugared_genericSig": "<Self where Self : _Concurrency.AsyncSequence, Self.Element : Swift.Equatable>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "map",
+            "printedName": "map(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncStream",
+                "printedName": "_Concurrency.AsyncStream<τ_1_0>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  }
+                ],
+                "usr": "s:ScS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(τ_0_0.Element) -> τ_1_0",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Element"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:Sci11GliaCoreSDKE3mapyScSyqd__Gqd__7ElementQzclF",
+            "mangledName": "$sSci11GliaCoreSDKE3mapyScSyqd__Gqd__7ElementQzclF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0, τ_1_0 where τ_0_0 : _Concurrency.AsyncSequence>",
+            "sugared_genericSig": "<Self, U where Self : _Concurrency.AsyncSequence>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "compactMap",
+            "printedName": "compactMap(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncStream",
+                "printedName": "_Concurrency.AsyncStream<τ_1_0>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  }
+                ],
+                "usr": "s:ScS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(τ_0_0.Element) -> τ_1_0?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "τ_1_0?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_1_0"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Element"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:Sci11GliaCoreSDKE10compactMapyScSyqd__Gqd__Sg7ElementQzclF",
+            "mangledName": "$sSci11GliaCoreSDKE10compactMapyScSyqd__Gqd__Sg7ElementQzclF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0, τ_1_0 where τ_0_0 : _Concurrency.AsyncSequence>",
+            "sugared_genericSig": "<Self, U where Self : _Concurrency.AsyncSequence>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "filter",
+            "printedName": "filter(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncStream",
+                "printedName": "_Concurrency.AsyncStream<τ_0_0.Element>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Element"
+                  }
+                ],
+                "usr": "s:ScS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(τ_0_0.Element) -> Swift.Bool",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Element"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:Sci11GliaCoreSDKE6filteryScSy7ElementQzGSbADcF",
+            "mangledName": "$sSci11GliaCoreSDKE6filteryScSy7ElementQzGSbADcF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : _Concurrency.AsyncSequence>",
+            "sugared_genericSig": "<Self where Self : _Concurrency.AsyncSequence>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "takeFirst",
+            "printedName": "takeFirst(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncStream",
+                "printedName": "_Concurrency.AsyncStream<τ_0_0.Element>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Element"
+                  }
+                ],
+                "usr": "s:ScS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:Sci11GliaCoreSDKE9takeFirstyScSy7ElementQzGSiF",
+            "mangledName": "$sSci11GliaCoreSDKE9takeFirstyScSy7ElementQzGSiF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : _Concurrency.AsyncSequence>",
+            "sugared_genericSig": "<Self where Self : _Concurrency.AsyncSequence>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "takeDuring",
+            "printedName": "takeDuring(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncStream",
+                "printedName": "_Concurrency.AsyncStream<τ_0_0.Element>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Element"
+                  }
+                ],
+                "usr": "s:ScS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TaskLifetime",
+                "printedName": "GliaCoreSDK.TaskLifetime",
+                "usr": "s:11GliaCoreSDK12TaskLifetimeC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:Sci11GliaCoreSDKE10takeDuringyScSy7ElementQzGAA12TaskLifetimeCF",
+            "mangledName": "$sSci11GliaCoreSDKE10takeDuringyScSy7ElementQzGAA12TaskLifetimeCF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : _Concurrency.AsyncSequence>",
+            "sugared_genericSig": "<Self where Self : _Concurrency.AsyncSequence>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "removeDuplicates",
+            "printedName": "removeDuplicates(by:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncStream",
+                "printedName": "_Concurrency.AsyncStream<τ_0_0.Element>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Element"
+                  }
+                ],
+                "usr": "s:ScS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(τ_0_0.Element, τ_0_0.Element) -> Swift.Bool",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(τ_0_0.Element, τ_0_0.Element)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DependentMember",
+                        "printedName": "τ_0_0.Element"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DependentMember",
+                        "printedName": "τ_0_0.Element"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:Sci11GliaCoreSDKE16removeDuplicates2byScSy7ElementQzGSbAE_AEtc_tF",
+            "mangledName": "$sSci11GliaCoreSDKE16removeDuplicates2byScSy7ElementQzGSbAE_AEtc_tF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : _Concurrency.AsyncSequence>",
+            "sugared_genericSig": "<Self where Self : _Concurrency.AsyncSequence>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "handle",
+            "printedName": "handle(onOutput:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncStream",
+                "printedName": "_Concurrency.AsyncStream<τ_0_0.Element>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Element"
+                  }
+                ],
+                "usr": "s:ScS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(τ_0_0.Element) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Element"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:Sci11GliaCoreSDKE6handle8onOutputScSy7ElementQzGyAEc_tF",
+            "mangledName": "$sSci11GliaCoreSDKE6handle8onOutputScSy7ElementQzGyAEc_tF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : _Concurrency.AsyncSequence>",
+            "sugared_genericSig": "<Self where Self : _Concurrency.AsyncSequence>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "debounce",
+            "printedName": "debounce(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncStream",
+                "printedName": "_Concurrency.AsyncStream<τ_0_0.Element>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Element"
+                  }
+                ],
+                "usr": "s:ScS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:Sci11GliaCoreSDKE8debounceyScSy7ElementQzGSdF",
+            "mangledName": "$sSci11GliaCoreSDKE8debounceyScSy7ElementQzGSdF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : _Concurrency.AsyncSequence>",
+            "sugared_genericSig": "<Self where Self : _Concurrency.AsyncSequence>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "scan",
+            "printedName": "scan(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncStream",
+                "printedName": "_Concurrency.AsyncStream<τ_1_0>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  }
+                ],
+                "usr": "s:ScS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_1_0"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(τ_1_0, τ_0_0.Element) -> τ_1_0",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(τ_1_0, τ_0_0.Element)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_1_0"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DependentMember",
+                        "printedName": "τ_0_0.Element"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:Sci11GliaCoreSDKE4scanyScSyqd__Gqd___qd__qd___7ElementQztctlF",
+            "mangledName": "$sSci11GliaCoreSDKE4scanyScSyqd__Gqd___qd__qd___7ElementQztctlF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0, τ_1_0 where τ_0_0 : _Concurrency.AsyncSequence>",
+            "sugared_genericSig": "<Self, U where Self : _Concurrency.AsyncSequence>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "firstValue",
+            "printedName": "firstValue()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "τ_0_0.Element?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Element"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:Sci11GliaCoreSDKE10firstValue7ElementQzSgyYaKF",
+            "mangledName": "$sSci11GliaCoreSDKE10firstValue7ElementQzSgyYaKF",
+            "moduleName": "GliaCoreSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : _Concurrency.AsyncSequence>",
+            "sugared_genericSig": "<Self where Self : _Concurrency.AsyncSequence>",
+            "declAttributes": [
+              "Rethrows",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:Sci",
+        "mangledName": "$sSci",
+        "moduleName": "_Concurrency",
+        "genericSig": "<τ_0_0.AsyncIterator : _Concurrency.AsyncIteratorProtocol, τ_0_0.Element == τ_0_0.AsyncIterator.Element, τ_0_0.Failure == τ_0_0.AsyncIterator.Failure>",
+        "sugared_genericSig": "<Self.AsyncIterator : _Concurrency.AsyncIteratorProtocol, Self.Element == Self.AsyncIterator.Element, Self.Failure == Self.AsyncIterator.Failure>",
+        "intro_Macosx": "10.15",
+        "intro_iOS": "13.0",
+        "intro_tvOS": "13.0",
+        "intro_watchOS": "6.0",
+        "declAttributes": [
+          "Available",
+          "Available",
+          "Available",
+          "Available"
+        ],
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "RTCPeerConnectionFactory",
         "printedName": "RTCPeerConnectionFactory",
         "declKind": "Class",
@@ -51472,6 +52869,41 @@
       "value": "\"\""
     },
     {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Task\/DisposableBag.swift",
+      "kind": "Array",
+      "offset": 750,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Task\/Lifetime.swift",
+      "kind": "BooleanLiteral",
+      "offset": 639,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Task\/Lifetime.swift",
+      "kind": "Array",
+      "offset": 769,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Task\/ValueRelay.swift",
+      "kind": "Dictionary",
+      "offset": 839,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Task\/ValueRelay.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3191,
+      "length": 4,
+      "value": "true"
+    },
+    {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/MedraError.swift",
       "kind": "BooleanLiteral",
       "offset": 2808,
@@ -51483,7 +52915,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.3.2\""
+      "value": "\"2.3.3\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
