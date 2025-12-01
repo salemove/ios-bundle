@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0.2 effective-5.10 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)
-// swift-module-flags: -target arm64-apple-ios15.1 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name GliaCoreSDK
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+// swift-module-flags: -target arm64-apple-ios15.1 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name GliaCoreSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
 import AVFoundation
 import Combine
 import CoreMedia/*.CMSampleBuffer*/
@@ -165,7 +165,7 @@ extension GliaCoreSDK.GliaCore {
       get
     }
   }
-  public typealias ConfigureCompletion = ((Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  public typealias ConfigureCompletion = (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void
   final public func configure(with sdkConfiguration: GliaCoreSDK.GliaCore.Configuration, completion: @escaping GliaCoreSDK.GliaCore.ConfigureCompletion)
   final public func configure(interactor: any GliaCoreSDK.Interactable)
 }
@@ -233,6 +233,7 @@ public typealias OtelBubbleStates = GliaOpenTelemetry.BubbleStates
 public typealias OtelViewTypes = GliaOpenTelemetry.ViewTypes
 public typealias OtelEntryWidgetStates = GliaOpenTelemetry.EntryWidgetStates
 public typealias OtelVisitorCodeStates = GliaOpenTelemetry.VisitorCodeStates
+public typealias OtelSnackBarTypes = GliaOpenTelemetry.SnackBarTypes
 @_hasMissingDesignatedInitializers public class OpenTelemetry {
   public var logger: GliaCoreSDK.OtelLogger {
     get
@@ -974,17 +975,10 @@ extension GliaCoreSDK.DependencyContainer {
     @objc deinit
   }
 }
-#if compiler(>=5.3) && $PrimaryAssociatedTypes2
 public protocol DependencyKey<Value> {
   associatedtype Value = Self
   static var live: Self.Value { get }
 }
-#else
-public protocol DependencyKey {
-  associatedtype Value = Self
-  static var live: Self.Value { get }
-}
-#endif
 @propertyWrapper public struct Dependency<Value> {
   public var wrappedValue: Value {
     get
@@ -1370,7 +1364,7 @@ extension GliaCoreSDK.GliaCore {
   final public func queueForEngagement(using options: GliaCoreSDK.QueueForEngagementOptions, replaceExisting: Swift.Bool, completion: @escaping (Swift.Result<GliaCoreSDK.QueueTicket, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
   @objc final public func cancel(queueTicket: GliaCoreSDK.QueueTicket, completion: @escaping GliaCoreSDK.SuccessBlock)
   @objc final public func listQueues(completion: @escaping GliaCoreSDK.QueueRequestBlock)
-  public typealias SubscribeForQueuesUpdatesCompletion = ((Swift.Result<GliaCoreSDK.Queue, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  public typealias SubscribeForQueuesUpdatesCompletion = (Swift.Result<GliaCoreSDK.Queue, GliaCoreSDK.GliaCoreError>) -> Swift.Void
   @discardableResult
   final public func subscribeForQueuesUpdates(forQueues queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Queue, GliaCoreSDK.GliaCoreError>) -> Swift.Void) -> Swift.String?
   @objc final public func unsubscribeFromUpdates(queueCallbackId: Swift.String, onError: @escaping GliaCoreSDK.ErrorBlock)

@@ -24651,6 +24651,9 @@
                 "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yySSSgcvg",
                 "moduleName": "GliaCoreSDK",
                 "implicit": true,
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -24695,6 +24698,9 @@
                 "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yySSSgcvs",
                 "moduleName": "GliaCoreSDK",
                 "implicit": true,
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -24713,6 +24719,9 @@
                 "mangledName": "$s11GliaCoreSDK32PushNotificationsActionProcessorC013secureMessaged12NotificationF0yySSSgcvM",
                 "moduleName": "GliaCoreSDK",
                 "implicit": true,
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
                 "accessorKind": "_modify"
               }
             ]
@@ -35608,6 +35617,62 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "networkConnectionMonitor",
+            "printedName": "networkConnectionMonitor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NetworkConnectionMonitor",
+                "printedName": "GliaCoreSDK.NetworkConnectionMonitor",
+                "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK0aB0C24networkConnectionMonitorAA07NetworkeF0Cvp",
+            "mangledName": "$s11GliaCoreSDK0aB0C24networkConnectionMonitorAA07NetworkeF0Cvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "SPIAccessControl",
+              "RawDocComment"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NetworkConnectionMonitor",
+                    "printedName": "GliaCoreSDK.NetworkConnectionMonitor",
+                    "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK0aB0C24networkConnectionMonitorAA07NetworkeF0Cvg",
+                "mangledName": "$s11GliaCoreSDK0aB0C24networkConnectionMonitorAA07NetworkeF0Cvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "createLogger",
             "printedName": "createLogger(externalParameters:)",
@@ -44577,6 +44642,328 @@
         "moduleName": "GliaCoreSDK"
       },
       {
+        "kind": "TypeDecl",
+        "name": "NetworkConnectionMonitor",
+        "printedName": "NetworkConnectionMonitor",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "networkStream",
+            "printedName": "networkStream(replay:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncStream",
+                "printedName": "_Concurrency.AsyncStream<GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NetworkStatus",
+                    "printedName": "GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus",
+                    "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO"
+                  }
+                ],
+                "usr": "s:ScS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC13networkStream6replayScSyAC0D6StatusOGSb_tF",
+            "mangledName": "$s11GliaCoreSDK24NetworkConnectionMonitorC13networkStream6replayScSyAC0D6StatusOGSb_tF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "SPIAccessControl",
+              "RawDocComment"
+            ],
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "NetworkStatus",
+            "printedName": "NetworkStatus",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "disconnected",
+                "printedName": "disconnected",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus.Type) -> GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NetworkStatus",
+                        "printedName": "GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus",
+                        "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NetworkStatus",
+                            "printedName": "GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus",
+                            "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO12disconnectedyA2EmF",
+                "mangledName": "$s11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO12disconnectedyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ],
+                "spi_group_names": [
+                  "GliaWidgets"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "connected",
+                "printedName": "connected",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus.Type) -> GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NetworkStatus",
+                        "printedName": "GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus",
+                        "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NetworkStatus",
+                            "printedName": "GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus",
+                            "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO9connectedyA2EmF",
+                "mangledName": "$s11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO9connectedyA2EmF",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ],
+                "spi_group_names": [
+                  "GliaWidgets"
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NetworkStatus",
+                    "printedName": "GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus",
+                    "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NetworkStatus",
+                    "printedName": "GliaCoreSDK.NetworkConnectionMonitor.NetworkStatus",
+                    "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO2eeoiySbAE_AEtFZ",
+                "mangledName": "$s11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO2eeoiySbAE_AEtFZ",
+                "moduleName": "GliaCoreSDK",
+                "static": true,
+                "implicit": true,
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Var",
+                "name": "hashValue",
+                "printedName": "hashValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO9hashValueSivp",
+                "mangledName": "$s11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO9hashValueSivp",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO9hashValueSivg",
+                    "mangledName": "$s11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO9hashValueSivg",
+                    "moduleName": "GliaCoreSDK",
+                    "implicit": true,
+                    "spi_group_names": [
+                      "GliaWidgets"
+                    ],
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "hash",
+                "printedName": "hash(into:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Hasher",
+                    "printedName": "Swift.Hasher",
+                    "paramValueOwnership": "InOut",
+                    "usr": "s:s6HasherV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO4hash4intoys6HasherVz_tF",
+                "mangledName": "$s11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO4hash4intoys6HasherVz_tF",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO",
+            "mangledName": "$s11GliaCoreSDK24NetworkConnectionMonitorC0D6StatusO",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "spi_group_names": [
+              "GliaWidgets"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Hashable",
+                "printedName": "Hashable",
+                "usr": "s:SH",
+                "mangledName": "$sSH"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:11GliaCoreSDK24NetworkConnectionMonitorC",
+        "mangledName": "$s11GliaCoreSDK24NetworkConnectionMonitorC",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "SPIAccessControl",
+          "RawDocComment"
+        ],
+        "spi_group_names": [
+          "GliaWidgets"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -49566,6 +49953,20 @@
             ],
             "usr": "s:7Combine9SchedulerP",
             "mangledName": "$s7Combine9SchedulerP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "TaskExecutor",
+            "printedName": "TaskExecutor",
+            "usr": "s:Sch",
+            "mangledName": "$sSch"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Executor",
+            "printedName": "Executor",
+            "usr": "s:ScF",
+            "mangledName": "$sScF"
           }
         ]
       },
@@ -50267,21 +50668,21 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/OpenTelemetry\/OpenTelemetry.swift",
       "kind": "StringLiteral",
-      "offset": 3949,
+      "offset": 4139,
       "length": 29,
       "value": "\"yevhen-kyivskyi.dev.samo.io\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/OpenTelemetry\/OpenTelemetry.swift",
       "kind": "StringLiteral",
-      "offset": 6711,
+      "offset": 6901,
       "length": 29,
       "value": "\"yevhen-kyivskyi.dev.samo.io\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/OpenTelemetry\/OpenTelemetry.swift",
       "kind": "StringLiteral",
-      "offset": 8585,
+      "offset": 8775,
       "length": 34,
       "value": "\"https:\/\/watchtower.glia.com:4318\""
     },
@@ -51695,6 +52096,111 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
       "kind": "StringLiteral",
+      "offset": 2449,
+      "length": 9,
+      "value": "\"message\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 3059,
+      "length": 56,
+      "value": "\"Channel '\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 3094,
+      "length": 71,
+      "value": "\"' is already joined.\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 3408,
+      "length": 8,
+      "value": "\"event:\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 3463,
+      "length": 10,
+      "value": "\"payload:\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 3522,
+      "length": 9,
+      "value": "\"status:\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 3553,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 3854,
+      "length": 8,
+      "value": "\"event:\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 3909,
+      "length": 10,
+      "value": "\"payload:\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 3968,
+      "length": 9,
+      "value": "\"status:\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 3999,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 4298,
+      "length": 8,
+      "value": "\"event:\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 4353,
+      "length": 10,
+      "value": "\"payload:\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 4412,
+      "length": 9,
+      "value": "\"status:\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
+      "offset": 4443,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Kluster\/Signaler\/Signaler.Channel.swift",
+      "kind": "StringLiteral",
       "offset": 10092,
       "length": 6,
       "value": "\"send\""
@@ -52915,7 +53421,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.3.3\""
+      "value": "\"2.4.0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -53039,49 +53545,49 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "Dictionary",
-      "offset": 7341,
+      "offset": 7672,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 30348,
+      "offset": 30679,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 30714,
+      "offset": 31045,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 50633,
+      "offset": 50964,
       "length": 64,
       "value": "\"Channel connection has not been established. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 50694,
+      "offset": 51025,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 75530,
+      "offset": 75861,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 75589,
+      "offset": 75920,
       "length": 23,
       "value": "\"capabilities:response\""
     },
@@ -53283,8 +53789,15 @@
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/NetworkConnectionMonitor.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1456,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/NetworkConnectionMonitor.swift",
       "kind": "Array",
-      "offset": 313,
+      "offset": 1671,
       "length": 2,
       "value": "[]"
     },
