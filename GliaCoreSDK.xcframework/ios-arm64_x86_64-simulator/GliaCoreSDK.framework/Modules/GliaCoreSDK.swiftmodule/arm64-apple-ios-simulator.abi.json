@@ -14799,6 +14799,13 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -27262,7 +27269,8 @@
             "moduleName": "GliaCoreSDK",
             "declAttributes": [
               "Final",
-              "AccessControl"
+              "AccessControl",
+              "RawDocComment"
             ],
             "accessors": [
               {
@@ -27399,7 +27407,8 @@
                 "genericSig": "<τ_0_0 where τ_0_0 : GliaCoreSDK.DependencyKey>",
                 "sugared_genericSig": "<K where K : GliaCoreSDK.DependencyKey>",
                 "declAttributes": [
-                  "AccessControl"
+                  "AccessControl",
+                  "RawDocComment"
                 ],
                 "accessors": [
                   {
@@ -27749,6 +27758,51 @@
                 "declKind": "Accessor",
                 "usr": "s:11GliaCoreSDK13DependencyKeyP4live5ValueQzvgZ",
                 "mangledName": "$s11GliaCoreSDK13DependencyKeyP4live5ValueQzvgZ",
+                "moduleName": "GliaCoreSDK",
+                "genericSig": "<τ_0_0 where τ_0_0 : GliaCoreSDK.DependencyKey>",
+                "sugared_genericSig": "<Self where Self : GliaCoreSDK.DependencyKey>",
+                "static": true,
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "test",
+            "printedName": "test",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "DependentMember",
+                "printedName": "τ_0_0.Value"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK13DependencyKeyP4test5ValueQzvpZ",
+            "mangledName": "$s11GliaCoreSDK13DependencyKeyP4test5ValueQzvpZ",
+            "moduleName": "GliaCoreSDK",
+            "static": true,
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_0.Value"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK13DependencyKeyP4test5ValueQzvgZ",
+                "mangledName": "$s11GliaCoreSDK13DependencyKeyP4test5ValueQzvgZ",
                 "moduleName": "GliaCoreSDK",
                 "genericSig": "<τ_0_0 where τ_0_0 : GliaCoreSDK.DependencyKey>",
                 "sugared_genericSig": "<Self where Self : GliaCoreSDK.DependencyKey>",
@@ -50533,6 +50587,27 @@
       "value": "true"
     },
     {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/Network\/ApiClient.Mock.swift",
+      "kind": "IntegerLiteral",
+      "offset": 297,
+      "length": 3,
+      "value": "200"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/Network\/ApiClient.Mock.swift",
+      "kind": "StringLiteral",
+      "offset": 407,
+      "length": 22,
+      "value": "\"https:\/\/www.glia.com\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/Network\/ApiClient.Mock.swift",
+      "kind": "Dictionary",
+      "offset": 636,
+      "length": 3,
+      "value": "[]"
+    },
+    {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/Remote\/RemoteLogClient.swift",
       "kind": "IntegerLiteral",
       "offset": 264,
@@ -50685,6 +50760,13 @@
       "offset": 8775,
       "length": 34,
       "value": "\"https:\/\/watchtower.glia.com:4318\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/OpenTelemetry\/OpenTelemetry.swift",
+      "kind": "StringLiteral",
+      "offset": 9000,
+      "length": 18,
+      "value": "\"mock-glia-domain\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Data\/StateRepository.swift",
@@ -51140,6 +51222,27 @@
       "offset": 4099,
       "length": 2,
       "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/Log.DateFormatter.Mock.swift",
+      "kind": "StringLiteral",
+      "offset": 358,
+      "length": 14,
+      "value": "\"HH:mm:ss.SSS\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/Log.DateFormatter.Mock.swift",
+      "kind": "StringLiteral",
+      "offset": 434,
+      "length": 13,
+      "value": "\"en_US_POSIX\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/Log.DateFormatter.Mock.swift",
+      "kind": "IntegerLiteral",
+      "offset": 507,
+      "length": 1,
+      "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.Cancallable.swift",
@@ -52782,14 +52885,14 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Utilities\/DependencyInjection\/DependencyContainer.swift",
       "kind": "StringLiteral",
-      "offset": 1710,
+      "offset": 1751,
       "length": 12,
       "value": "\"XCTestCase\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Utilities\/DependencyInjection\/DependencyContainer.swift",
       "kind": "Dictionary",
-      "offset": 1993,
+      "offset": 2034,
       "length": 3,
       "value": "[]"
     },
@@ -53421,7 +53524,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.4.0\""
+      "value": "\"2.4.1\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",

@@ -1054,6 +1054,7 @@ extension GliaCoreSDK.DependencyContainer {
 public protocol DependencyKey<Value> {
   associatedtype Value = Self
   static var live: Self.Value { get }
+  static var test: Self.Value { get }
 }
 @propertyWrapper public struct Dependency<Value> {
   public var wrappedValue: Value {
