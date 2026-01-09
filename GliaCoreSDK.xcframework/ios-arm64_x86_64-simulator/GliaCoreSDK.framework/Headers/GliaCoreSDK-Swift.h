@@ -547,6 +547,20 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 - (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use cancel(queueTicket:completion:) instead.");
 @end
 
+enum LogLevel : NSInteger;
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
 @class MediaUpgradeOffer;
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Request media upgrade with specific offer
@@ -576,20 +590,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
-enum LogLevel : NSInteger;
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Send a message preview to the Operator.
 /// The latest preview message will always be visible to the Operator. This means that Operators can use the
@@ -617,6 +617,11 @@ enum LogLevel : NSInteger;
 /// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
 ///
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
+@end
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
 @end
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -679,11 +684,6 @@ enum LogLevel : NSInteger;
 /// \param completion A callback that will return an <code>EngagementFileData</code> object if successful, or <code>InternalError</code>.
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, GliaCoreError * _Nullable))completion;
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
 @end
 
 @class Message;
@@ -1682,6 +1682,20 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 - (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use cancel(queueTicket:completion:) instead.");
 @end
 
+enum LogLevel : NSInteger;
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Configure log level
+/// <ul>
+///   <li>
+///     parameters:
+///   </li>
+///   <li>
+///     level: One of the ‘LogLevel’ values that the logger should use
+///   </li>
+/// </ul>
+- (void)configureLogLevelWithLevel:(enum LogLevel)level;
+@end
+
 @class MediaUpgradeOffer;
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Request media upgrade with specific offer
@@ -1711,20 +1725,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _
 - (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
-enum LogLevel : NSInteger;
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
-
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Send a message preview to the Operator.
 /// The latest preview message will always be visible to the Operator. This means that Operators can use the
@@ -1752,6 +1752,11 @@ enum LogLevel : NSInteger;
 /// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
 ///
 - (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
+@end
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Clear the use session of the client library
+- (void)clearSession;
 @end
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
@@ -1814,11 +1819,6 @@ enum LogLevel : NSInteger;
 /// \param completion A callback that will return an <code>EngagementFileData</code> object if successful, or <code>InternalError</code>.
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, GliaCoreError * _Nullable))completion;
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
 @end
 
 @class Message;

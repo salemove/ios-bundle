@@ -877,13 +877,14 @@ extension GliaCoreSDK.GliaCore {
 }
 public struct Site : Swift.Decodable, Swift.Equatable {
   public let id: Foundation.UUID
+  public let allowedFileContentTypes: [Swift.String]
   public let allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders
   public let mobileObservationEnabled: Swift.Bool?
   public let mobileConfirmDialogEnabled: Swift.Bool?
   public let mobileObservationIndicationEnabled: Swift.Bool?
   public let mobileObservationVideoFps: GliaCoreSDK.Site.VideoFps?
   public let readOnlySettings: GliaCoreSDK.Site.ReadOnlySettings?
-  public init(id: Foundation.UUID, defaultOperatorPicture: GliaCoreSDK.OperatorPicture?, alwaysUseDefaultOperatorPicture: Swift.Bool?, allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders, maskingRegularExpressions: [Swift.String], visitorAppDefaultLocale: Swift.String, mobileConfirmDialogEnabled: Swift.Bool, mobileObservationIndicationEnabled: Swift.Bool, mobileObservationVideoFps: GliaCoreSDK.Site.VideoFps, mobileObservationEnabled: Swift.Bool, readOnlySettings: GliaCoreSDK.Site.ReadOnlySettings?)
+  public init(id: Foundation.UUID, defaultOperatorPicture: GliaCoreSDK.OperatorPicture?, alwaysUseDefaultOperatorPicture: Swift.Bool?, allowedFileContentTypes: [Swift.String], allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders, maskingRegularExpressions: [Swift.String], visitorAppDefaultLocale: Swift.String, mobileConfirmDialogEnabled: Swift.Bool, mobileObservationIndicationEnabled: Swift.Bool, mobileObservationVideoFps: GliaCoreSDK.Site.VideoFps, mobileObservationEnabled: Swift.Bool, readOnlySettings: GliaCoreSDK.Site.ReadOnlySettings?)
   public init(from decoder: any Swift.Decoder) throws
   public static func == (a: GliaCoreSDK.Site, b: GliaCoreSDK.Site) -> Swift.Bool
 }
@@ -1001,6 +1002,15 @@ extension GliaCoreSDK.GliaCore.CallVisualizer {
   final public let url: Swift.String?
   @objc deinit
   required public init(from decoder: any Swift.Decoder) throws
+}
+public enum MediaQuality {
+  case good
+  case poor
+  public static func == (a: GliaCoreSDK.MediaQuality, b: GliaCoreSDK.MediaQuality) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
 }
 @objc public class OperatorTypingStatus : ObjectiveC.NSObject {
   @objc public var isTyping: Swift.Bool {
@@ -1608,6 +1618,8 @@ extension GliaCoreSDK.MediaType : Swift.Hashable {}
 extension GliaCoreSDK.MediaType : Swift.RawRepresentable {}
 extension GliaCoreSDK.DependencyContainer.Environment : Swift.Equatable {}
 extension GliaCoreSDK.DependencyContainer.Environment : Swift.Hashable {}
+extension GliaCoreSDK.MediaQuality : Swift.Equatable {}
+extension GliaCoreSDK.MediaQuality : Swift.Hashable {}
 extension GliaCoreSDK.GliaCore.Authentication.Error : Swift.Equatable {}
 extension GliaCoreSDK.GliaCore.Authentication.Error : Swift.Hashable {}
 extension GliaCoreSDK.GliaCore.Authentication.Behavior : Swift.Equatable {}
