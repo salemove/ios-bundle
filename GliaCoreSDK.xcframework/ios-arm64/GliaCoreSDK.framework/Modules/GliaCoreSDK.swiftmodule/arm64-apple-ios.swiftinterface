@@ -172,6 +172,7 @@ extension GliaCoreSDK.GliaCore {
 extension GliaCoreSDK.GliaCore {
   public enum AuthorizationMethod {
     case siteApiKey(id: Swift.String, secret: Swift.String)
+    case userApiKey(id: Swift.String, secret: Swift.String)
   }
 }
 extension GliaCoreSDK.GliaCore {
@@ -1116,6 +1117,7 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
   case invalidSite
   case invalidEnvironment
   case invalidSiteApiKey
+  case invalidUserApiKey
   case invalidRegionEndpoint
   case invalidConfiguration
   public init?(rawValue: Swift.Int)
