@@ -353,10 +353,12 @@ typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
   ConfigurationErrorInvalidEnvironment = 1,
 /// The site Api key is invalid.
   ConfigurationErrorInvalidSiteApiKey = 2,
+/// The user Api key is invalid.
+  ConfigurationErrorInvalidUserApiKey = 3,
 /// The region custom endpoint is invalid.
-  ConfigurationErrorInvalidRegionEndpoint = 3,
+  ConfigurationErrorInvalidRegionEndpoint = 4,
 /// The region custom endpoint is invalid.
-  ConfigurationErrorInvalidConfiguration = 4,
+  ConfigurationErrorInvalidConfiguration = 5,
 };
 static NSString * _Nonnull const ConfigurationErrorDomain = @"GliaCoreSDK.ConfigurationError";
 
@@ -1488,10 +1490,12 @@ typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
   ConfigurationErrorInvalidEnvironment = 1,
 /// The site Api key is invalid.
   ConfigurationErrorInvalidSiteApiKey = 2,
+/// The user Api key is invalid.
+  ConfigurationErrorInvalidUserApiKey = 3,
 /// The region custom endpoint is invalid.
-  ConfigurationErrorInvalidRegionEndpoint = 3,
+  ConfigurationErrorInvalidRegionEndpoint = 4,
 /// The region custom endpoint is invalid.
-  ConfigurationErrorInvalidConfiguration = 4,
+  ConfigurationErrorInvalidConfiguration = 5,
 };
 static NSString * _Nonnull const ConfigurationErrorDomain = @"GliaCoreSDK.ConfigurationError";
 
