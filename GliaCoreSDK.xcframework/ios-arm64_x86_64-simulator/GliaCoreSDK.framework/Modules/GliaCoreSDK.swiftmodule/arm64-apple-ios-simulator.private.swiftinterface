@@ -9,7 +9,6 @@ import CoreServices
 import Dispatch
 import Foundation
 import GliaCoreDependency
-import GliaCoreDependency/*.ReactiveSwift*/
 import GliaCoreDependency/*.SwiftPhoenixClient*/
 @_exported import GliaCoreSDK
 import GliaOpenTelemetry
@@ -628,6 +627,12 @@ extension GliaCoreSDK.GliaCore {
   @available(*, deprecated, message: "Use cancel(queueTicket:completion:) instead.")
   @objc final public func cancel(engagementRequest: GliaCoreSDK.EngagementRequest, completion: @escaping GliaCoreSDK.SuccessBlock)
 }
+final public class DisposableBag {
+  public init(items: [any GliaCoreSDK.DisposableProtocol] = [])
+  final public func add(_ d: any GliaCoreSDK.DisposableProtocol)
+  final public func disposeAll()
+  @objc deinit
+}
 extension GliaCoreSDK.GliaCore {
   @objc final public func requestMediaUpgrade(offer: GliaCoreSDK.MediaUpgradeOffer, completion: @escaping GliaCoreSDK.SuccessBlock)
 }
@@ -640,6 +645,8 @@ extension GliaCoreSDK.GliaCore {
   @objc final public func requestEngagedOperator(completion: @escaping GliaCoreSDK.OperatorBlock)
   @objc final public func endEngagement(completion: @escaping GliaCoreSDK.SuccessBlock)
 }
+@inline(__always) public func sleepSeconds(_ seconds: Foundation.TimeInterval) async throws
+@inline(__always) public func sleepSecondsNoThrow(_ seconds: Foundation.TimeInterval) async
 public enum EngagementSource : Swift.RawRepresentable, Swift.Decodable {
   case coreEngagement
   case callVisualizer
@@ -655,6 +662,21 @@ extension GliaCoreSDK.GliaCore {
   public typealias IdToken = GliaCoreSDK.Tagged<(GliaCoreSDK.GliaCore, idToken: ()), Swift.String>
   public typealias ExternalAccessToken = GliaCoreSDK.Tagged<(GliaCoreSDK.GliaCore, externalAccessToken: ()), Swift.String>
   final public func authentication(with behavior: GliaCoreSDK.GliaCore.Authentication.Behavior) throws -> GliaCoreSDK.GliaCore.Authentication
+}
+extension _Concurrency.AsyncSequence where Self.Element : Swift.Equatable {
+  public func removeDuplicates() -> _Concurrency.AsyncStream<Self.Element>
+}
+extension _Concurrency.AsyncSequence {
+  public func map<U>(_ transform: @escaping (Self.Element) -> U) -> _Concurrency.AsyncStream<U>
+  public func compactMap<U>(_ transform: @escaping (Self.Element) -> U?) -> _Concurrency.AsyncStream<U>
+  public func filter(_ isIncluded: @escaping (Self.Element) -> Swift.Bool) -> _Concurrency.AsyncStream<Self.Element>
+  public func takeFirst(_ n: Swift.Int) -> _Concurrency.AsyncStream<Self.Element>
+  public func takeDuring(_ lifetime: GliaCoreSDK.TaskLifetime) -> _Concurrency.AsyncStream<Self.Element>
+  public func removeDuplicates(by same: @escaping (Self.Element, Self.Element) -> Swift.Bool) -> _Concurrency.AsyncStream<Self.Element>
+  public func handle(onOutput: @escaping (Self.Element) -> Swift.Void) -> _Concurrency.AsyncStream<Self.Element>
+  public func debounce(_ interval: Foundation.TimeInterval) -> _Concurrency.AsyncStream<Self.Element>
+  public func scan<U>(_ initial: U, _ transform: @escaping (U, Self.Element) -> U) -> _Concurrency.AsyncStream<U>
+  public func firstValue() async rethrows -> Self.Element?
 }
 extension GliaCoreSDK.GliaCore {
   final public class Cancellable {
@@ -922,6 +944,18 @@ extension GliaCoreSDK.GliaCore {
 @_spi(GliaWidgets) public struct AnyCombineScheduler {
   @_spi(GliaWidgets) public let mainScheduler: GliaCoreSDK.AnyScheduler
   @_spi(GliaWidgets) public let globalScheduler: GliaCoreSDK.AnyScheduler
+}
+public protocol DisposableProtocol {
+  var isDisposed: Swift.Bool { get }
+  func dispose()
+}
+final public class TaskDisposable : GliaCoreSDK.DisposableProtocol {
+  public init(_ task: _Concurrency.Task<Swift.Void, Swift.Never>)
+  final public var isDisposed: Swift.Bool {
+    get
+  }
+  final public func dispose()
+  @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers public class EngagementRequest : ObjectiveC.NSObject, Swift.Decodable {
   final public let timeout: Swift.Int
@@ -1312,24 +1346,6 @@ public enum QueueStatus : Swift.Decodable, Swift.RawRepresentable, Swift.Equatab
   public init(from decoder: any Swift.Decoder) throws
   public typealias RawValue = Swift.String
 }
-final public class DisposableBag {
-  public init(items: [any GliaCoreSDK.DisposableProtocol] = [])
-  final public func add(_ d: any GliaCoreSDK.DisposableProtocol)
-  final public func disposeAll()
-  @objc deinit
-}
-public protocol DisposableProtocol {
-  var isDisposed: Swift.Bool { get }
-  func dispose()
-}
-final public class TaskDisposable : GliaCoreSDK.DisposableProtocol {
-  public init(_ task: _Concurrency.Task<Swift.Void, Swift.Never>)
-  final public var isDisposed: Swift.Bool {
-    get
-  }
-  final public func dispose()
-  @objc deinit
-}
 final public class TaskLifetime {
   public init()
   final public func end()
@@ -1348,23 +1364,6 @@ final public class ValueRelay<T> {
   final public func finishAll()
   @objc deinit
 }
-extension _Concurrency.AsyncSequence where Self.Element : Swift.Equatable {
-  public func removeDuplicates() -> _Concurrency.AsyncStream<Self.Element>
-}
-extension _Concurrency.AsyncSequence {
-  public func map<U>(_ transform: @escaping (Self.Element) -> U) -> _Concurrency.AsyncStream<U>
-  public func compactMap<U>(_ transform: @escaping (Self.Element) -> U?) -> _Concurrency.AsyncStream<U>
-  public func filter(_ isIncluded: @escaping (Self.Element) -> Swift.Bool) -> _Concurrency.AsyncStream<Self.Element>
-  public func takeFirst(_ n: Swift.Int) -> _Concurrency.AsyncStream<Self.Element>
-  public func takeDuring(_ lifetime: GliaCoreSDK.TaskLifetime) -> _Concurrency.AsyncStream<Self.Element>
-  public func removeDuplicates(by same: @escaping (Self.Element, Self.Element) -> Swift.Bool) -> _Concurrency.AsyncStream<Self.Element>
-  public func handle(onOutput: @escaping (Self.Element) -> Swift.Void) -> _Concurrency.AsyncStream<Self.Element>
-  public func debounce(_ interval: Foundation.TimeInterval) -> _Concurrency.AsyncStream<Self.Element>
-  public func scan<U>(_ initial: U, _ transform: @escaping (U, Self.Element) -> U) -> _Concurrency.AsyncStream<U>
-  public func firstValue() async rethrows -> Self.Element?
-}
-@inline(__always) public func sleepSeconds(_ seconds: Foundation.TimeInterval) async throws
-@inline(__always) public func sleepSecondsNoThrow(_ seconds: Foundation.TimeInterval) async
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class GliaCore : ObjectiveC.NSObject {
   @objc public static let sharedInstance: GliaCoreSDK.GliaCore
   weak final public var currentInteractor: (any GliaCoreSDK.Interactable)?
@@ -1504,11 +1503,13 @@ extension GliaCoreSDK.GliaCore.SecureConversations {
   @discardableResult
   final public func markMessagesAsRead(completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
   final public func getUnreadMessageCount(completion: @escaping (Swift.Result<Swift.Int, any Swift.Error>) -> Swift.Void)
+  @discardableResult
   final public func subscribeToUnreadMessageCount(completion: @escaping (Swift.Result<Swift.Int?, any Swift.Error>) -> Swift.Void) -> Swift.String?
   final public func unsubscribeFromUnreadMessageCount(_ subscriptionToken: Swift.String)
 }
 extension GliaCoreSDK.GliaCore.SecureConversations {
   final public func pendingSecureConversationStatus(_ callback: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void)
+  @discardableResult
   final public func subscribeToPendingSecureConversationStatus(_ callback: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void) -> Swift.String?
   final public func unsubscribeFromPendingSecureConversationStatus(_ subscriptionToken: Swift.String)
 }
