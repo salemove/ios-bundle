@@ -51299,7 +51299,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Socket\/PubsubManager.swift",
       "kind": "Dictionary",
-      "offset": 12554,
+      "offset": 13066,
       "length": 3,
       "value": "[]"
     },
@@ -52741,7 +52741,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Extensions\/URL.swift",
       "kind": "StringLiteral",
-      "offset": 1390,
+      "offset": 1896,
       "length": 10,
       "value": "\"file:\/\/\/\""
     },
@@ -54227,7 +54227,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.6.4\""
+      "value": "\"2.6.5\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
