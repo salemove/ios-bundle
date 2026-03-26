@@ -29833,6 +29833,13 @@
             "printedName": "__DefaultCustomPlaygroundQuickLookable",
             "usr": "s:s38__DefaultCustomPlaygroundQuickLookableP",
             "mangledName": "$ss38__DefaultCustomPlaygroundQuickLookableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
           }
         ]
       },
@@ -53146,99 +53153,64 @@
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
-      "kind": "Array",
-      "offset": 11726,
-      "length": 2,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 11748,
-      "length": 30,
-      "value": "\"JWT payload object:\n\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
-      "kind": "StringLiteral",
-      "offset": 11777,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
-      "kind": "StringLiteral",
-      "offset": 11816,
-      "length": 47,
-      "value": "\"JWT payload JSONSerialization error: \""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
-      "kind": "StringLiteral",
-      "offset": 11862,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
-      "kind": "StringLiteral",
-      "offset": 12066,
+      "offset": 11819,
       "length": 55,
       "value": "\"User access token can't be decoded. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 12118,
+      "offset": 11871,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 12233,
+      "offset": 11986,
       "length": 15,
       "value": "\"site_operator\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 12276,
+      "offset": 12029,
       "length": 113,
       "value": "\"User access token payload has unexpected format or 'site_operator' role not found. Roles='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 12386,
+      "offset": 12139,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 12490,
+      "offset": 12243,
       "length": 68,
       "value": "\"User access token 'site_operator' role is missing 'site_id' field.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 12653,
+      "offset": 12406,
       "length": 9,
       "value": "\"service\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 12682,
+      "offset": 12435,
       "length": 110,
       "value": "\"User access token 'site_operator' role has unexpected 'role' field value='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/API\/SiteAuthorizing\/SiteAuthorizing.Implementation.swift",
       "kind": "StringLiteral",
-      "offset": 12769,
+      "offset": 12522,
       "length": 13,
       "value": "\"'. Expected 'service'.\""
     },
@@ -53315,56 +53287,42 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
       "kind": "BooleanLiteral",
-      "offset": 405,
+      "offset": 463,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
       "kind": "FloatLiteral",
-      "offset": 434,
+      "offset": 492,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
       "kind": "BooleanLiteral",
-      "offset": 1080,
+      "offset": 1207,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
       "kind": "BooleanLiteral",
-      "offset": 1418,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 2554,
+      "offset": 2130,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2561,
+      "offset": 2137,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
       "kind": "BooleanLiteral",
-      "offset": 2697,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 3112,
+      "offset": 2492,
       "length": 5,
       "value": "false"
     },
@@ -54227,7 +54185,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.6.5\""
+      "value": "\"2.6.6\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
