@@ -54164,7 +54164,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.6.7\""
+      "value": "\"2.6.8\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
