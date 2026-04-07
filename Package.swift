@@ -35,7 +35,7 @@ let package = Package(
         .binaryTarget(
             name: "GliaCoreSDK",
             url: "https://github.com/salemove/ios-bundle/releases/download/2.6.7/GliaCoreSDK.xcframework.zip",
-            checksum: "0291da8386750c6853b5a3c6447b77c4b56bbea47becc1471111f99ef877ec0d"
+            checksum: "57a2dee59463752d962d6c5a816981cec0e169cd0a7299157027f1cbea36ec1e"
         ),
         .binaryTarget(
             name: "GliaOpenTelemetry",
