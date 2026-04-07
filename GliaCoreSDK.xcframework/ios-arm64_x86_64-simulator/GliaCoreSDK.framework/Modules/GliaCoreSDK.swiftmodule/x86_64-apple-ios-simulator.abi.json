@@ -29833,13 +29833,6 @@
             "printedName": "__DefaultCustomPlaygroundQuickLookable",
             "usr": "s:s38__DefaultCustomPlaygroundQuickLookableP",
             "mangledName": "$ss38__DefaultCustomPlaygroundQuickLookableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Sendable",
-            "printedName": "Sendable",
-            "usr": "s:s8SendableP",
-            "mangledName": "$ss8SendableP"
           }
         ]
       },
@@ -53287,44 +53280,30 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
       "kind": "BooleanLiteral",
-      "offset": 463,
+      "offset": 467,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
       "kind": "FloatLiteral",
-      "offset": 492,
+      "offset": 496,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
       "kind": "BooleanLiteral",
-      "offset": 1207,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 2130,
+      "offset": 2072,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2137,
+      "offset": 2079,
       "length": 1,
       "value": "0"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/LiveObserver\/LiveObservationManaging+WindowCapturer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 2492,
-      "length": 5,
-      "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/RTCClient.swift",
@@ -54185,7 +54164,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 7,
-      "value": "\"2.6.6\""
+      "value": "\"2.6.7\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
