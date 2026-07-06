@@ -15024,6 +15024,13 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -51934,6 +51941,13 @@
       "value": "false"
     },
     {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Logger\/LogScrubber.swift",
+      "kind": "Array",
+      "offset": 108,
+      "length": 291,
+      "value": "[(\"(?i)(authorization|x-auth-token|x-api-key|x-access-token):\\s*\\S+\", \"[HEADER]\"), (\"(?i)Bearer\\s+[A-Za-z0-9\\-._~+\/]+=*\", \"[BEARER]\"), (\"eyJ[A-Za-z0-9\\-_]+\\.eyJ[A-Za-z0-9\\-_]+\\.[A-Za-z0-9\\-_]+\", \"[JWT]\"), (\"gl[su]_[A-Za-z0-9]+\", \"[API SECRET]\")]"
+    },
+    {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/UserDefaultsClient\/UserDefaultsClient.Mock.swift",
       "kind": "StringLiteral",
       "offset": 110,
@@ -53028,7 +53042,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Data\/VisitorVolatileRepository.swift",
       "kind": "Dictionary",
-      "offset": 167,
+      "offset": 178,
       "length": 3,
       "value": "[]"
     },
@@ -54185,7 +54199,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 8,
-      "value": "\"2.6.11\""
+      "value": "\"2.6.12\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
