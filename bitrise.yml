@@ -103,5 +103,5 @@ workflows:
         - content: pod trunk push GliaCoreSDK.podspec --verbose
 meta:
   bitrise.io:
-    stack: osx-xcode-16.1.x
+    stack: osx-xcode-26.5.x
     machine_type_id: g2-m1.4core
