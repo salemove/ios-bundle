@@ -1,11 +1,12 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
-// swift-module-flags: -target x86_64-apple-ios15.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name GliaCoreSDK
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
+// swift-compiler-version: Apple Swift version 6.3.2 effective-5.10 (swiftlang-6.3.2.1.108 clang-2100.1.1.101)
+// swift-module-flags: -target x86_64-apple-ios15.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name GliaCoreSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.2
 import AVFoundation
 import Combine
 import CoreMedia/*.CMSampleBuffer*/
 import CoreServices
+import CryptoKit
 import Dispatch
 import Foundation
 import GliaCoreDependency
@@ -20,6 +21,7 @@ import Security
 import Swift
 import TwilioVoice
 import UIKit
+import UniformTypeIdentifiers
 import UserNotifications
 import WebRTC
 import _Concurrency
@@ -684,6 +686,7 @@ extension GliaCoreSDK.GliaCore {
 extension GliaCoreSDK.GliaCore {
   @objc final public func sendMessagePreview(message: Swift.String, completion: @escaping GliaCoreSDK.SuccessBlock)
   final public func send(messagePayload: GliaCoreSDK.SendMessagePayload, completion: @escaping (Swift.Result<GliaCoreSDK.Message, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  final public func send(file: GliaCoreSDK.EngagementFile, completion: @escaping (Swift.Result<GliaCoreSDK.Message, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
 }
 public struct SendMessagePayload : Swift.Equatable {
   public typealias MessageId = GliaCoreSDK.Tagged<GliaCoreSDK.SendMessagePayload, Swift.String>
@@ -904,6 +907,7 @@ final public class TaskDisposable : GliaCoreSDK.DisposableProtocol {
   @objc final public let url: Foundation.URL?
   @objc public init(name: Swift.String = "content", url: Foundation.URL)
   @objc public init(id: Swift.String)
+  @objc public init(id: Swift.String?, url: Foundation.URL?)
   @objc deinit
   required public init(from decoder: any Swift.Decoder) throws
 }
@@ -1031,7 +1035,7 @@ extension GliaCoreSDK.GliaCore.CallVisualizer {
   @discardableResult
   final public func requestVisitorCode(completion: @escaping (Swift.Result<GliaCoreSDK.VisitorCode, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
 }
-@objc public class EngagementFileInformation : ObjectiveC.NSObject, Swift.Decodable {
+@_hasMissingDesignatedInitializers @objc public class EngagementFileInformation : ObjectiveC.NSObject, Swift.Decodable {
   final public let id: Swift.String
   final public let isSecurityScanningRequired: Swift.Bool
   final public let url: Swift.String?

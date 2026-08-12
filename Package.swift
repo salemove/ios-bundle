@@ -34,8 +34,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "GliaCoreSDK",
-            url: "https://github.com/salemove/ios-bundle/releases/download/2.6.12/GliaCoreSDK.xcframework.zip",
-            checksum: "3091164c34ad87357c5d97d355c7015d038f28974175ae1821b55c84383f3cc3"
+            url: "https://github.com/salemove/ios-bundle/releases/download/2.6.13/GliaCoreSDK.xcframework.zip",
+            checksum: "e6754e906fc2b1a97a245b85761ea57e1bc5a672e2bb13f877f928864fdc2485"
         ),
         .binaryTarget(
             name: "GliaOpenTelemetry",
@@ -44,8 +44,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "PhoenixChannelsClient",
-            url: "https://github.com/salemove/phoenix-channels-kmm-bundle/releases/download/1.1.3/PhoenixChannelsClient.xcframework.zip",
-            checksum: "ed1396ab1c96d6371b95f45b9c39e33fdcc44dae7180cc58e8cbadcaafac5c03"
+            url: "https://github.com/salemove/phoenix-channels-kmm-bundle/releases/download/1.2.0/PhoenixChannelsClient.xcframework.zip",
+            checksum: "5f9ba724c41196b6d200786dbd2c5cd9c275dcea99cbfe76a169eb9bb2c66bc2"
         ),
         .target(
             name: "GliaSDK",
