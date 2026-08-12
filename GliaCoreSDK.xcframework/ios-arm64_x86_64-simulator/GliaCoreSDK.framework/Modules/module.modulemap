@@ -7,5 +7,4 @@ framework module GliaCoreSDK {
 
 module GliaCoreSDK.Swift {
   header "GliaCoreSDK-Swift.h"
-  requires objc
 }
