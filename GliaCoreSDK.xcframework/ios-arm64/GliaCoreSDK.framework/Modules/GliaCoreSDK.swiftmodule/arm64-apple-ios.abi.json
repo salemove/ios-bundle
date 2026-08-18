@@ -54939,7 +54939,7 @@
       "kind": "StringLiteral",
       "offset": 426,
       "length": 8,
-      "value": "\"2.6.13\""
+      "value": "\"2.6.14\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -55091,49 +55091,49 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "Dictionary",
-      "offset": 8387,
+      "offset": 8423,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 33063,
+      "offset": 33099,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 33429,
+      "offset": 33465,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56228,
+      "offset": 56264,
       "length": 64,
       "value": "\"Channel connection has not been established. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 56289,
+      "offset": 56325,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 83025,
+      "offset": 83186,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 83084,
+      "offset": 83245,
       "length": 23,
       "value": "\"capabilities:response\""
     },

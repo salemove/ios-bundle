@@ -18,7 +18,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		JexKmqf5wMzgqcCOnsLG9ssRaS8=
+		cheaIwkkCBOoJZeOm1s7e1LOkeA=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		9w2x9Yp18amVfSPtqRt+Hky7Br8=
+		dPOPzxA6aKR3qWsWnu4ajytciDQ=
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -42,11 +42,11 @@
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		RL8jM2NOPQzHv21qlXs13HJRig4=
+		Ubkt+PZGny3eOvEKsvUB83rT5eY=
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		9w2x9Yp18amVfSPtqRt+Hky7Br8=
+		dPOPzxA6aKR3qWsWnu4ajytciDQ=
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		8FuAbAInywAXwGHjnPf9gtjPPOQ=
+		hYFgiB7w7ir1bB0nRZZSUj4MaPk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -107,7 +107,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			abRMM6GoNPjELtV9W+5MJkcWn9S3IIitL5YvZGIcVF0=
+			+oVvMIsMRn4suRSNhMt7TPFyHEi3a2UeqzeEMXPJcec=
 			</data>
 		</dict>
 		<key>Modules/GliaCoreSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -135,14 +135,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			u1m3qKfp7yrBWLd71+IY7ONxW1iUzia5sgUgODC1Agw=
+			zCs8S5QrYNxI6cUXcI5RBRAN7XjmhdLkj/F/ZrS7crE=
 			</data>
 		</dict>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			abRMM6GoNPjELtV9W+5MJkcWn9S3IIitL5YvZGIcVF0=
+			+oVvMIsMRn4suRSNhMt7TPFyHEi3a2UeqzeEMXPJcec=
 			</data>
 		</dict>
 		<key>Modules/GliaCoreSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -170,7 +170,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sNDA/iAKJlPeYhmrNydELMcUhpBa06TXaBFwpRpSaTI=
+			IlUxMwQm03U/BtiofXfCNrUBO2q9SIwHVpCGyZIU28I=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
