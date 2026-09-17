@@ -1,6 +1,14 @@
 # Glia iOS SDK
 
-[![Build Status](https://app.bitrise.io/app/ff9d24c2354f2d85/status.svg?token=1M5jvlOg4n_ADEl2k-a9gg&branch=master)](https://app.bitrise.io/app/ff9d24c2354f2d85)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+This repository hosts the released `GliaCoreSDK.xcframework` as GitHub Release
+assets, so that Swift Package Manager has a public URL to resolve the binary
+from. It is written to by the Core SDK's release automation and is not developed
+in directly: there are no pull requests to review or workflows to run here.
+
+The `Package.swift` and `GliaCoreSDK.xcframework` at the repository root are
+frozen. Consumers resolve tagged versions, which are unaffected.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 ### Author
