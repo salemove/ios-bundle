@@ -871,6 +871,7 @@ extension GliaCoreSDK.SurveyResponse : Swift.Decodable {
 }
 extension GliaCoreSDK.GliaCore {
   @objc final public func clearSession()
+  @objc final public func clearSession(stopPushNotifications: Swift.Bool)
   final public func fetchSiteConfiguration(_ completion: @escaping (Swift.Result<GliaCoreSDK.Site, any Swift.Error>) -> Swift.Void)
 }
 public protocol DisposableProtocol {
@@ -918,12 +919,13 @@ public struct Site : Swift.Decodable, Swift.Equatable {
   public let id: Foundation.UUID
   public let allowedFileContentTypes: [Swift.String]
   public let allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders
+  public let accountId: Swift.String?
   public let mobileObservationEnabled: Swift.Bool?
   public let mobileConfirmDialogEnabled: Swift.Bool?
   public let mobileObservationIndicationEnabled: Swift.Bool?
   public let mobileObservationVideoFps: GliaCoreSDK.Site.VideoFps?
   public let readOnlySettings: GliaCoreSDK.Site.ReadOnlySettings?
-  public init(id: Foundation.UUID, defaultOperatorPicture: GliaCoreSDK.OperatorPicture?, alwaysUseDefaultOperatorPicture: Swift.Bool?, allowedFileContentTypes: [Swift.String], allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders, maskingRegularExpressions: [Swift.String], visitorAppDefaultLocale: Swift.String, mobileConfirmDialogEnabled: Swift.Bool, mobileObservationIndicationEnabled: Swift.Bool, mobileObservationVideoFps: GliaCoreSDK.Site.VideoFps, mobileObservationEnabled: Swift.Bool, readOnlySettings: GliaCoreSDK.Site.ReadOnlySettings?)
+  public init(id: Foundation.UUID, defaultOperatorPicture: GliaCoreSDK.OperatorPicture?, alwaysUseDefaultOperatorPicture: Swift.Bool?, allowedFileContentTypes: [Swift.String], allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders, maskingRegularExpressions: [Swift.String], visitorAppDefaultLocale: Swift.String, mobileConfirmDialogEnabled: Swift.Bool, mobileObservationIndicationEnabled: Swift.Bool, mobileObservationVideoFps: GliaCoreSDK.Site.VideoFps, mobileObservationEnabled: Swift.Bool, readOnlySettings: GliaCoreSDK.Site.ReadOnlySettings?, accountId: Swift.String? = nil)
   public init(from decoder: any Swift.Decoder) throws
   public static func == (a: GliaCoreSDK.Site, b: GliaCoreSDK.Site) -> Swift.Bool
 }

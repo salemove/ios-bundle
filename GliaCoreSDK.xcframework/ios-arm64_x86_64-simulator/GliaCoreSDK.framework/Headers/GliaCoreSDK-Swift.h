@@ -668,6 +668,12 @@ SWIFT_ENUM_FWD_DECL(NSInteger, LogLevel)
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Clear the use session of the client library
 - (void)clearSession;
+/// Clear the use session of the client library
+/// \param stopPushNotifications whether to unsubscribe the visitor from Secure
+/// Conversations push notifications on the backend. Has no effect for a visitor that
+/// was never externally authenticated.
+///
+- (void)clearSessionWithStopPushNotifications:(BOOL)stopPushNotifications;
 @end
 
 @class Message;
@@ -743,35 +749,6 @@ SWIFT_ENUM_FWD_DECL(NSInteger, LogLevel)
 @end
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Send a message preview to the Operator.
-/// The latest preview message will always be visible to the Operator. This means that Operators can use the
-/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
-/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
-/// experience.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param message The content of the message preview.
-///
-/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
-///
-- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Uploads a file to an engagement. The uploaded file can be later sent as part of a chat message attachments.
 /// If Glia’s servers require a security check for the uploaded file, then it will be triggered automatically. The completion
 /// will be called with the file information once the check succeeds and reports that the file is clean. If the security
@@ -831,6 +808,35 @@ SWIFT_ENUM_FWD_DECL(NSInteger, LogLevel)
 /// \param completion A callback that will return an <code>EngagementFileData</code> object if successful, or <code>InternalError</code>.
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, GliaCoreError * _Nullable))completion;
+@end
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Send a message preview to the Operator.
+/// The latest preview message will always be visible to the Operator. This means that Operators can use the
+/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
+/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
+/// experience.
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+/// </ul>
+/// \param message The content of the message preview.
+///
+/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
+///
+- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
 @class QueueTicket;
@@ -1878,6 +1884,12 @@ SWIFT_ENUM_FWD_DECL(NSInteger, LogLevel)
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Clear the use session of the client library
 - (void)clearSession;
+/// Clear the use session of the client library
+/// \param stopPushNotifications whether to unsubscribe the visitor from Secure
+/// Conversations push notifications on the backend. Has no effect for a visitor that
+/// was never externally authenticated.
+///
+- (void)clearSessionWithStopPushNotifications:(BOOL)stopPushNotifications;
 @end
 
 @class Message;
@@ -1953,35 +1965,6 @@ SWIFT_ENUM_FWD_DECL(NSInteger, LogLevel)
 @end
 
 @interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Send a message preview to the Operator.
-/// The latest preview message will always be visible to the Operator. This means that Operators can use the
-/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
-/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
-/// experience.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param message The content of the message preview.
-///
-/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
-///
-- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
 /// Uploads a file to an engagement. The uploaded file can be later sent as part of a chat message attachments.
 /// If Glia’s servers require a security check for the uploaded file, then it will be triggered automatically. The completion
 /// will be called with the file information once the check succeeds and reports that the file is clean. If the security
@@ -2041,6 +2024,35 @@ SWIFT_ENUM_FWD_DECL(NSInteger, LogLevel)
 /// \param completion A callback that will return an <code>EngagementFileData</code> object if successful, or <code>InternalError</code>.
 ///
 - (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, GliaCoreError * _Nullable))completion;
+@end
+
+@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
+/// Send a message preview to the Operator.
+/// The latest preview message will always be visible to the Operator. This means that Operators can use the
+/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
+/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
+/// experience.
+/// If the request is unsuccessful for any reason then the completion will have an Error.
+/// The Error may have one of the following causes:
+/// <ul>
+///   <li>
+///     <code>GeneralError.internalError</code>
+///   </li>
+///   <li>
+///     <code>GeneralError.networkError</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidSite</code>
+///   </li>
+///   <li>
+///     <code>ConfigurationError.invalidEnvironment</code>
+///   </li>
+/// </ul>
+/// \param message The content of the message preview.
+///
+/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
+///
+- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
 @end
 
 @class QueueTicket;
