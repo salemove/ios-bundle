@@ -21385,6 +21385,265 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "ChatHistory",
+        "printedName": "ChatHistory",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "messages",
+            "printedName": "messages",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[GliaCoreSDK.Message]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Message",
+                    "printedName": "GliaCoreSDK.Message",
+                    "usr": "c:@M@GliaCoreSDK@objc(cs)Message"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK11ChatHistoryV8messagesSayAA7MessageCGvp",
+            "mangledName": "$s11GliaCoreSDK11ChatHistoryV8messagesSayAA7MessageCGvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[GliaCoreSDK.Message]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Message",
+                        "printedName": "GliaCoreSDK.Message",
+                        "usr": "c:@M@GliaCoreSDK@objc(cs)Message"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK11ChatHistoryV8messagesSayAA7MessageCGvg",
+                "mangledName": "$s11GliaCoreSDK11ChatHistoryV8messagesSayAA7MessageCGvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "olderPage",
+            "printedName": "olderPage",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GliaCoreSDK.ChatHistory.OlderPage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OlderPage",
+                    "printedName": "GliaCoreSDK.ChatHistory.OlderPage",
+                    "usr": "s:11GliaCoreSDK11ChatHistoryV9OlderPageV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11GliaCoreSDK11ChatHistoryV9olderPageAC05OlderG0VSgvp",
+            "mangledName": "$s11GliaCoreSDK11ChatHistoryV9olderPageAC05OlderG0VSgvp",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GliaCoreSDK.ChatHistory.OlderPage?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OlderPage",
+                        "printedName": "GliaCoreSDK.ChatHistory.OlderPage",
+                        "usr": "s:11GliaCoreSDK11ChatHistoryV9OlderPageV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11GliaCoreSDK11ChatHistoryV9olderPageAC05OlderG0VSgvg",
+                "mangledName": "$s11GliaCoreSDK11ChatHistoryV9olderPageAC05OlderG0VSgvg",
+                "moduleName": "GliaCoreSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "OlderPage",
+            "printedName": "OlderPage",
+            "children": [
+              {
+                "kind": "Constructor",
+                "name": "init",
+                "printedName": "init(url:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OlderPage",
+                    "printedName": "GliaCoreSDK.ChatHistory.OlderPage",
+                    "usr": "s:11GliaCoreSDK11ChatHistoryV9OlderPageV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Constructor",
+                "usr": "s:11GliaCoreSDK11ChatHistoryV9OlderPageV3urlAESS_tcfc",
+                "mangledName": "$s11GliaCoreSDK11ChatHistoryV9OlderPageV3urlAESS_tcfc",
+                "moduleName": "GliaCoreSDK",
+                "declAttributes": [
+                  "AccessControl",
+                  "SPIAccessControl",
+                  "RawDocComment"
+                ],
+                "spi_group_names": [
+                  "GliaWidgets"
+                ],
+                "init_kind": "Designated"
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OlderPage",
+                    "printedName": "GliaCoreSDK.ChatHistory.OlderPage",
+                    "usr": "s:11GliaCoreSDK11ChatHistoryV9OlderPageV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OlderPage",
+                    "printedName": "GliaCoreSDK.ChatHistory.OlderPage",
+                    "usr": "s:11GliaCoreSDK11ChatHistoryV9OlderPageV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:11GliaCoreSDK11ChatHistoryV9OlderPageV2eeoiySbAE_AEtFZ",
+                "mangledName": "$s11GliaCoreSDK11ChatHistoryV9OlderPageV2eeoiySbAE_AEtFZ",
+                "moduleName": "GliaCoreSDK",
+                "static": true,
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Struct",
+            "usr": "s:11GliaCoreSDK11ChatHistoryV9OlderPageV",
+            "mangledName": "$s11GliaCoreSDK11ChatHistoryV9OlderPageV",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:11GliaCoreSDK11ChatHistoryV",
+        "mangledName": "$s11GliaCoreSDK11ChatHistoryV",
+        "moduleName": "GliaCoreSDK",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "TypeDecl",
         "name": "Logging",
         "printedName": "Logging",
         "children": [
@@ -28820,8 +29079,22 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
         "name": "UniformTypeIdentifiers",
         "printedName": "UniformTypeIdentifiers",
+        "declKind": "Import",
+        "moduleName": "GliaCoreSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "GliaCoreSDK"
       },
@@ -41903,7 +42176,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(Swift.Result<[GliaCoreSDK.Message], GliaCoreSDK.GliaCoreError>) -> ()",
+                "printedName": "(Swift.Result<GliaCoreSDK.ChatHistory, GliaCoreSDK.GliaCoreError>) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -41913,21 +42186,13 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Result",
-                    "printedName": "Swift.Result<[GliaCoreSDK.Message], GliaCoreSDK.GliaCoreError>",
+                    "printedName": "Swift.Result<GliaCoreSDK.ChatHistory, GliaCoreSDK.GliaCoreError>",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "Array",
-                        "printedName": "[GliaCoreSDK.Message]",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Message",
-                            "printedName": "GliaCoreSDK.Message",
-                            "usr": "c:@M@GliaCoreSDK@objc(cs)Message"
-                          }
-                        ],
-                        "usr": "s:Sa"
+                        "name": "ChatHistory",
+                        "printedName": "GliaCoreSDK.ChatHistory",
+                        "usr": "s:11GliaCoreSDK11ChatHistoryV"
                       },
                       {
                         "kind": "TypeNominal",
@@ -41942,8 +42207,69 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:11GliaCoreSDK0aB0C19fetchChatTranscriptyyys6ResultOySayAA7MessageCGAA0aB5ErrorCGcF",
-            "mangledName": "$s11GliaCoreSDK0aB0C19fetchChatTranscriptyyys6ResultOySayAA7MessageCGAA0aB5ErrorCGcF",
+            "usr": "s:11GliaCoreSDK0aB0C19fetchChatTranscriptyyys6ResultOyAA0E7HistoryVAA0aB5ErrorCGcF",
+            "mangledName": "$s11GliaCoreSDK0aB0C19fetchChatTranscriptyyys6ResultOyAA0E7HistoryVAA0aB5ErrorCGcF",
+            "moduleName": "GliaCoreSDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "fetchChatTranscript",
+            "printedName": "fetchChatTranscript(olderPage:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "OlderPage",
+                "printedName": "GliaCoreSDK.ChatHistory.OlderPage",
+                "usr": "s:11GliaCoreSDK11ChatHistoryV9OlderPageV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<GliaCoreSDK.ChatHistory, GliaCoreSDK.GliaCoreError>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<GliaCoreSDK.ChatHistory, GliaCoreSDK.GliaCoreError>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ChatHistory",
+                        "printedName": "GliaCoreSDK.ChatHistory",
+                        "usr": "s:11GliaCoreSDK11ChatHistoryV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GliaCoreError",
+                        "printedName": "GliaCoreSDK.GliaCoreError",
+                        "usr": "c:@M@GliaCoreSDK@objc(cs)GliaCoreError"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11GliaCoreSDK0aB0C19fetchChatTranscript9olderPage_yAA0E7HistoryV05OlderH0V_ys6ResultOyAgA0aB5ErrorCGctF",
+            "mangledName": "$s11GliaCoreSDK0aB0C19fetchChatTranscript9olderPage_yAA0E7HistoryV05OlderH0V_ys6ResultOyAgA0aB5ErrorCGctF",
             "moduleName": "GliaCoreSDK",
             "declAttributes": [
               "Final",
@@ -52362,7 +52688,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/WebChatConnector\/WebChatConnector.InteractionIdFetcher.swift",
       "kind": "IntegerLiteral",
-      "offset": 791,
+      "offset": 866,
       "length": 1,
       "value": "5"
     },
@@ -53678,7 +54004,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Engagement\/MediaManager\/MediaManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 23057,
+      "offset": 23522,
       "length": 5,
       "value": "false"
     },
@@ -54860,8 +55186,36 @@
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/WebChatConnector\/WebChatConnector.TranscriptFetcher.swift",
+      "kind": "IntegerLiteral",
+      "offset": 801,
+      "length": 4,
+      "value": "1000"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/WebChatConnector\/WebChatConnector.TranscriptFetcher.swift",
+      "kind": "Array",
+      "offset": 6270,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/WebChatConnector\/WebChatConnector.TranscriptFetcher.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6293,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/WebChatConnector\/WebChatConnector.TranscriptFetcher.swift",
+      "kind": "Array",
+      "offset": 6336,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/WebChatConnector\/WebChatConnector.TranscriptFetcher.swift",
       "kind": "Dictionary",
-      "offset": 3369,
+      "offset": 6665,
       "length": 3,
       "value": "[]"
     },
@@ -55569,8 +55923,8 @@
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Constants\/StaticValues.swift",
       "kind": "StringLiteral",
       "offset": 426,
-      "length": 8,
-      "value": "\"2.6.15\""
+      "length": 7,
+      "value": "\"4.0.0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/NetworkConnectionMonitor\/PathMonitorClient.Live.swift",
@@ -55736,49 +56090,49 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "Dictionary",
-      "offset": 10668,
+      "offset": 10735,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 38276,
+      "offset": 39085,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 38642,
+      "offset": 39451,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 62642,
+      "offset": 64611,
       "length": 64,
       "value": "\"Channel connection has not been established. Error='\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 62703,
+      "offset": 64672,
       "length": 4,
       "value": "\"'.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 95799,
+      "offset": 97768,
       "length": 22,
       "value": "\"capabilities:request\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/API\/GliaCore\/GliaCore.swift",
       "kind": "StringLiteral",
-      "offset": 95858,
+      "offset": 97827,
       "length": 23,
       "value": "\"capabilities:response\""
     },
@@ -55890,42 +56244,42 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Conferences\/ConferenceProvider.swift",
       "kind": "BooleanLiteral",
-      "offset": 4408,
+      "offset": 5385,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Conferences\/ConferenceProvider.swift",
       "kind": "BooleanLiteral",
-      "offset": 16674,
+      "offset": 18294,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Conferences\/ConferenceProvider.swift",
       "kind": "BooleanLiteral",
-      "offset": 17934,
+      "offset": 19554,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Conferences\/ConferenceProvider.swift",
       "kind": "IntegerLiteral",
-      "offset": 23997,
+      "offset": 25617,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Conferences\/ConferenceProvider.swift",
       "kind": "FloatLiteral",
-      "offset": 24057,
+      "offset": 25677,
       "length": 3,
       "value": "0.8"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Medra\/Conferences\/ConferenceProvider.swift",
       "kind": "FloatLiteral",
-      "offset": 24063,
+      "offset": 25683,
       "length": 3,
       "value": "1.0"
     },
@@ -56541,9 +56895,9 @@
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Interaction\/Reader\/Interaction.ReaderTrigger.swift",
       "kind": "IntegerLiteral",
-      "offset": 772,
-      "length": 1,
-      "value": "5"
+      "offset": 747,
+      "length": 2,
+      "value": "30"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/GliaCoreSDK\/GliaCoreSDK\/Classes\/Interaction\/Lifecycle\/Interaction.LifecycleDiffer.swift",
