@@ -878,6 +878,14 @@ extension GliaCoreSDK.GliaCore {
   @objc final public func clearSession(stopPushNotifications: Swift.Bool)
   final public func fetchSiteConfiguration(_ completion: @escaping (Swift.Result<GliaCoreSDK.Site, any Swift.Error>) -> Swift.Void)
 }
+public struct ChatHistory {
+  public let messages: [GliaCoreSDK.Message]
+  public let olderPage: GliaCoreSDK.ChatHistory.OlderPage?
+  public struct OlderPage : Swift.Equatable {
+    @_spi(GliaWidgets) public init(url: Swift.String)
+    public static func == (a: GliaCoreSDK.ChatHistory.OlderPage, b: GliaCoreSDK.ChatHistory.OlderPage) -> Swift.Bool
+  }
+}
 @_spi(GliaWidgets) public protocol Logging {
   @_spi(GliaWidgets) func error(_ object: @autoclosure () -> Any, file: Swift.String, function: Swift.String, line: Swift.Int)
   @_spi(GliaWidgets) func warning(_ object: @autoclosure () -> Any, file: Swift.String, function: Swift.String, line: Swift.Int)
@@ -1405,7 +1413,8 @@ final public class ValueRelay<T> {
   @_spi(GliaWidgets) final public func createLogger(externalParameters: [Swift.String : Swift.String]) throws -> any GliaCoreSDK.LogConfigurable & GliaCoreSDK.Logging
 }
 extension GliaCoreSDK.GliaCore {
-  final public func fetchChatTranscript(_ completion: @escaping (Swift.Result<[GliaCoreSDK.Message], GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  final public func fetchChatTranscript(_ completion: @escaping (Swift.Result<GliaCoreSDK.ChatHistory, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  final public func fetchChatTranscript(olderPage: GliaCoreSDK.ChatHistory.OlderPage, _ completion: @escaping (Swift.Result<GliaCoreSDK.ChatHistory, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
 }
 extension GliaCoreSDK.GliaCore {
   @objc final public func configureLogLevel(level: GliaCoreSDK.LogLevel)
