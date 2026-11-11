@@ -414,15 +414,11 @@ SWIFT_PROTOCOL("_TtP11GliaCoreSDK15AudioStreamable_")
 typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
 /// The site ID is invalid.
   ConfigurationErrorInvalidSite = 0,
-/// The environemnt is invalid.
+/// The environment is invalid.
   ConfigurationErrorInvalidEnvironment = 1,
-/// The site Api key is invalid.
-  ConfigurationErrorInvalidSiteApiKey = 2,
-/// The user Api key is invalid.
-  ConfigurationErrorInvalidUserApiKey = 3,
 /// The region custom endpoint is invalid.
   ConfigurationErrorInvalidRegionEndpoint = 4,
-/// The region custom endpoint is invalid.
+/// The SDK configuration could not be applied.
   ConfigurationErrorInvalidConfiguration = 5,
 };
 static NSString * _Nonnull const ConfigurationErrorDomain = @"GliaCoreSDK.ConfigurationError";
@@ -600,346 +596,8 @@ static NSString * _Nonnull const GeneralErrorDomain = @"GliaCoreSDK.GeneralError
 /// Shared instance that can be accessed across all the application
 SWIFT_CLASS("_TtC11GliaCoreSDK8GliaCore")
 @interface GliaCore : NSObject
-/// Use this to access the client library, avoid creating the instance manually
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _Nonnull sharedInstance;)
-+ (GliaCore * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
-/// The current selected environment
-@property (nonatomic, readonly, copy) NSString * _Nonnull environment;
-/// The current selected site
-@property (nonatomic, readonly, copy) NSString * _Nonnull site;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated.
-- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use cancel(queueTicket:completion:) instead.");
-@end
-
-@class Queue;
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated.
-- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.");
-@end
-
-SWIFT_ENUM_FWD_DECL(NSInteger, LogLevel)
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
-
-@class MediaUpgradeOffer;
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Request media upgrade with specific offer
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>MediaUpgradeError.requestError</code>
-///   </li>
-/// </ul>
-/// \param offer The `MediaUpgradeOffer’ that is used for the request
-///
-/// \param completion A callback that returns the upgrade result or <code>GliaCoreError</code>
-///
-- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-/// Clear the use session of the client library
-/// \param stopPushNotifications whether to unsubscribe the visitor from Secure
-/// Conversations push notifications on the backend. Has no effect for a visitor that
-/// was never externally authenticated.
-///
-- (void)clearSessionWithStopPushNotifications:(BOOL)stopPushNotifications;
-@end
-
-@class Message;
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated.
-- (void)sendWithMessage:(NSString * _Nonnull)message queueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(messagePayload:completion:)");
-/// Deprecated.
-- (void)sendWithMessage:(NSString * _Nonnull)message attachment:(Attachment * _Nullable)attachment completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(messagePayload:completion:)");
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Requests information of the Operator(s) that are currently engaged with the Visitor
-/// <ul>
-///   <li>
-///     parameter:
-///   </li>
-///   <li>
-///     completion: A callback that will return a list of all ‘Operator’s in engagement  or <code>GliaCoreError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-- (void)requestEngagedOperatorWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, GliaCoreError * _Nullable))completion;
-/// End an Engagement
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     completion: A callback that will return the ending result or <code>GliaCoreError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Unavailable.
-- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Unavailable.
-- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Unavailable.
-- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_UNAVAILABLE_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Uploads a file to an engagement. The uploaded file can be later sent as part of a chat message attachments.
-/// If Glia’s servers require a security check for the uploaded file, then it will be triggered automatically. The completion
-/// will be called with the file information once the check succeeds and reports that the file is clean. If the security
-/// check fails, then the completion will be called with <code>FileError.infected</code>. In case the security scan is not
-/// needed, the completion will be called right after the file upload is completed.
-/// The error inside the completion may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>FileError.infected</code>
-///   </li>
-///   <li>
-///     <code>FileError.unsupportedFileType</code>
-///   </li>
-///   <li>
-///     <code>FileError.fileTooBig</code>
-///   </li>
-/// </ul>
-/// \param file The file that will be uploaded.
-///
-/// \param progress A callback that reports the upload progress of the file.
-///
-/// \param completion A callback that will return <code>EngagementFileInformation</code> at the end of successful upload and security scan (if needed), or <code>GliaCoreError</code>.
-///
-- (void)uploadFileToEngagement:(EngagementFile * _Nonnull)file progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileInformation * _Nullable, GliaCoreError * _Nullable))completion;
-/// Retrieves a file from Glia’s servers.
-/// The error inside the completion may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param engagementFile A instance of EngagementFile.
-///
-/// \param progress A callback that reports the upload progress of the file.
-///
-/// \param completion A callback that will return an <code>EngagementFileData</code> object if successful, or <code>InternalError</code>.
-///
-- (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, GliaCoreError * _Nullable))completion;
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Send a message preview to the Operator.
-/// The latest preview message will always be visible to the Operator. This means that Operators can use the
-/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
-/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
-/// experience.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param message The content of the message preview.
-///
-/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
-///
-- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-@class QueueTicket;
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Cancel the Engagement queueing with specific ticket
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param queueTicket The <code>QueueTicket</code> that was used to enqueue
-///
-/// \param completion A callback that will return the dequeuing result or <code>GliaCoreError</code>
-///
-- (void)cancelWithQueueTicket:(QueueTicket * _Nonnull)queueTicket completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param completion A callback that will return the <code>Queue</code> list or <code>GliaCoreError</code>
-///
-- (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, GliaCoreError * _Nullable))completion;
-/// Unsubscribes from Queue updates.
-/// \param queueCallbackId ID of callback for which you would like to stop receiving updates.
-///
-/// \param onError A callback that returns <code>GliaCoreError</code> which could have one of the reasons:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-///
-- (void)unsubscribeFromUpdatesWithQueueCallbackId:(NSString * _Nonnull)queueCallbackId onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError;
-@end
-
-@class UIApplication;
-/// The basic gateway class that interacts with the client library through the app delegate
-SWIFT_CLASS("_TtC11GliaCoreSDK19GliaCoreAppDelegate")
-@interface GliaCoreAppDelegate : NSObject <UIApplicationDelegate>
-/// Identify the app launch and initialize the sdk internals.
-/// \param application The current application.
-///
-/// \param launchOptions The options with which the application has been launched.
-///
-/// \param enablePushNotifications Set it to <code>true</code> if you want to enable push notifications. Otherwise, set it to <code>false</code>.
-/// The default value is <code>false</code>.
-///
-///
-/// returns:
-/// <code>true</code> if the application can be started with the specified launch options. Otherwise, it returns <code>false</code>.
-- (BOOL)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
-/// Call this method when <code>application:didRegisterForRemoteNotificationsWithDeviceToken:</code> is called
-/// from <code>UNUserNotificationCenterDelegate</code>.
-/// Send all parameters that you receive in the delegate method as they are, without modifying them.
-/// <h1>Reference</h1>
-/// <a href="https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate">UNUserNotificationCenterDelegate</a>
-/// \param application The current application.
-///
-/// \param deviceToken The data that holds the push notification device token.
-///
-- (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
-/// Call this method if it was unable to register your app with APNs or if your app is not properly configured for remote notifications. During development, make sure your app has the proper entitlements and that its App ID is configured to support push notifications.
-/// \param application The current application.
-///
-/// \param error The error appeared during the registration device with APNs.
-///
-- (void)application:(UIApplication * _Nonnull)application didFailToRegisterForRemoteNotificationsWithError:(NSError * _Nonnull)error;
-/// Handle the application active state and setup the internals.
-/// \param application The current application.
-///
-- (void)applicationDidBecomeActive:(UIApplication * _Nonnull)application;
-- (void)applicationWillResignActive:(UIApplication * _Nonnull)application;
-- (void)applicationDidEnterBackground:(UIApplication * _Nonnull)application;
-- (void)applicationWillEnterForeground:(UIApplication * _Nonnull)application;
-- (void)applicationWillTerminate:(UIApplication * _Nonnull)application;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 /// Wrapped error object.
@@ -969,7 +627,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK11LocalScreen")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-/// Available log levels. This can be configured by <code>GliaCore.sharedInstance.configureLogLevel(level: LogLevel)</code>
+/// Available log levels. This can be configured by <code>GliaCore.sharedInstanceForWidgets.configureLogLevelForWidgets(_:)</code>
 typedef SWIFT_ENUM(NSInteger, LogLevel, open) {
 /// The SDK will not produce any logs
   LogLevelNone = 0,
@@ -1025,7 +683,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK7Message")
 SWIFT_PROTOCOL("_TtP11GliaCoreSDK15MessageHandling_")
 @protocol MessageHandling
 /// Receiving a message from an Operator, or a Visitor in the case the message was successfully delivered
-/// after sending it using <code>GliaCore.send(message:)</code>.
+/// after sending it using <code>GliaCore.sendForWidgets(messagePayload:)</code>.
 /// \param message Instance of <code>Message</code>
 ///
 - (void)receiveWithMessage:(Message * _Nonnull)message;
@@ -1076,6 +734,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK20OperatorTypingStatus")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+/// Push-notification capability used by GliaWidgets.
 SWIFT_CLASS("_TtC11GliaCoreSDK17PushNotifications")
 @interface PushNotifications : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -1086,10 +745,6 @@ SWIFT_CLASS("_TtC11GliaCoreSDK17PushNotifications")
 @class UNNotification;
 @class UNNotificationResponse;
 @interface PushNotifications (SWIFT_EXTENSION(GliaCoreSDK)) <UNUserNotificationCenterDelegate>
-/// See <a href="x-source-tag://PushNotificationsHandlingDidRegister">PushNotificationsHandling</a> for more information.
-- (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
-/// See <a href="x-source-tag://PushNotificationsHandlingDidFailToRegister">PushNotificationsHandling</a> for more information.
-- (void)application:(UIApplication * _Nonnull)application didFailToRegisterForRemoteNotificationsWithError:(NSError * _Nonnull)error;
 /// See <a href="x-source-tag://PushNotificationsHandlingWillPresent">PushNotificationsHandling</a> for more information.
 - (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresentNotification:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
 /// See <a href="x-source-tag://PushNotificationsHandlingDidReceive">PushNotificationsHandling</a> for more information.
@@ -1630,15 +1285,11 @@ SWIFT_PROTOCOL("_TtP11GliaCoreSDK15AudioStreamable_")
 typedef SWIFT_ENUM(NSInteger, ConfigurationError, open) {
 /// The site ID is invalid.
   ConfigurationErrorInvalidSite = 0,
-/// The environemnt is invalid.
+/// The environment is invalid.
   ConfigurationErrorInvalidEnvironment = 1,
-/// The site Api key is invalid.
-  ConfigurationErrorInvalidSiteApiKey = 2,
-/// The user Api key is invalid.
-  ConfigurationErrorInvalidUserApiKey = 3,
 /// The region custom endpoint is invalid.
   ConfigurationErrorInvalidRegionEndpoint = 4,
-/// The region custom endpoint is invalid.
+/// The SDK configuration could not be applied.
   ConfigurationErrorInvalidConfiguration = 5,
 };
 static NSString * _Nonnull const ConfigurationErrorDomain = @"GliaCoreSDK.ConfigurationError";
@@ -1816,346 +1467,8 @@ static NSString * _Nonnull const GeneralErrorDomain = @"GliaCoreSDK.GeneralError
 /// Shared instance that can be accessed across all the application
 SWIFT_CLASS("_TtC11GliaCoreSDK8GliaCore")
 @interface GliaCore : NSObject
-/// Use this to access the client library, avoid creating the instance manually
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) GliaCore * _Nonnull sharedInstance;)
-+ (GliaCore * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
-/// The current selected environment
-@property (nonatomic, readonly, copy) NSString * _Nonnull environment;
-/// The current selected site
-@property (nonatomic, readonly, copy) NSString * _Nonnull site;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated.
-- (void)cancelWithEngagementRequest:(EngagementRequest * _Nonnull)engagementRequest completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use cancel(queueTicket:completion:) instead.");
-@end
-
-@class Queue;
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated.
-- (NSString * _Nullable)subscribeForUpdatesForQueue:(NSArray<NSString *> * _Nonnull)queueIds onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError onUpdate:(void (^ _Nonnull)(Queue * _Nonnull))onUpdate SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.");
-@end
-
-SWIFT_ENUM_FWD_DECL(NSInteger, LogLevel)
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Configure log level
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     level: One of the ‘LogLevel’ values that the logger should use
-///   </li>
-/// </ul>
-- (void)configureLogLevelWithLevel:(enum LogLevel)level;
-@end
-
-@class MediaUpgradeOffer;
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Request media upgrade with specific offer
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>MediaUpgradeError.requestError</code>
-///   </li>
-/// </ul>
-/// \param offer The `MediaUpgradeOffer’ that is used for the request
-///
-/// \param completion A callback that returns the upgrade result or <code>GliaCoreError</code>
-///
-- (void)requestMediaUpgradeWithOffer:(MediaUpgradeOffer * _Nonnull)offer completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Clear the use session of the client library
-- (void)clearSession;
-/// Clear the use session of the client library
-/// \param stopPushNotifications whether to unsubscribe the visitor from Secure
-/// Conversations push notifications on the backend. Has no effect for a visitor that
-/// was never externally authenticated.
-///
-- (void)clearSessionWithStopPushNotifications:(BOOL)stopPushNotifications;
-@end
-
-@class Message;
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Deprecated.
-- (void)sendWithMessage:(NSString * _Nonnull)message queueID:(NSString * _Nonnull)queueID completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(messagePayload:completion:)");
-/// Deprecated.
-- (void)sendWithMessage:(NSString * _Nonnull)message attachment:(Attachment * _Nullable)attachment completion:(void (^ _Nonnull)(Message * _Nullable, GliaCoreError * _Nullable))completion SWIFT_DEPRECATED_MSG("Use send(messagePayload:completion:)");
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Requests information of the Operator(s) that are currently engaged with the Visitor
-/// <ul>
-///   <li>
-///     parameter:
-///   </li>
-///   <li>
-///     completion: A callback that will return a list of all ‘Operator’s in engagement  or <code>GliaCoreError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-- (void)requestEngagedOperatorWithCompletion:(void (^ _Nonnull)(NSArray<Operator *> * _Nullable, GliaCoreError * _Nullable))completion;
-/// End an Engagement
-/// <ul>
-///   <li>
-///     parameters:
-///   </li>
-///   <li>
-///     completion: A callback that will return the ending result or <code>GliaCoreError</code>
-///   </li>
-/// </ul>
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-- (void)endEngagementWithCompletion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Unavailable.
-- (BOOL)configureWithSite:(NSString * _Nonnull)site error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Unavailable.
-- (BOOL)configureWithEnvironment:(NSString * _Nonnull)environment error:(NSError * _Nullable * _Nullable)error SWIFT_UNAVAILABLE_MSG("Use `GliaCore.configure(_ configuration: Configuration)` instead.");
-/// Unavailable.
-- (void)requestVisitorCodeWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, GliaCoreError * _Nullable))completion SWIFT_UNAVAILABLE_MSG("Use `GliaCore.CallVisualizer` to request visitor code.");
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Uploads a file to an engagement. The uploaded file can be later sent as part of a chat message attachments.
-/// If Glia’s servers require a security check for the uploaded file, then it will be triggered automatically. The completion
-/// will be called with the file information once the check succeeds and reports that the file is clean. If the security
-/// check fails, then the completion will be called with <code>FileError.infected</code>. In case the security scan is not
-/// needed, the completion will be called right after the file upload is completed.
-/// The error inside the completion may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-///   <li>
-///     <code>FileError.infected</code>
-///   </li>
-///   <li>
-///     <code>FileError.unsupportedFileType</code>
-///   </li>
-///   <li>
-///     <code>FileError.fileTooBig</code>
-///   </li>
-/// </ul>
-/// \param file The file that will be uploaded.
-///
-/// \param progress A callback that reports the upload progress of the file.
-///
-/// \param completion A callback that will return <code>EngagementFileInformation</code> at the end of successful upload and security scan (if needed), or <code>GliaCoreError</code>.
-///
-- (void)uploadFileToEngagement:(EngagementFile * _Nonnull)file progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileInformation * _Nullable, GliaCoreError * _Nullable))completion;
-/// Retrieves a file from Glia’s servers.
-/// The error inside the completion may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param engagementFile A instance of EngagementFile.
-///
-/// \param progress A callback that reports the upload progress of the file.
-///
-/// \param completion A callback that will return an <code>EngagementFileData</code> object if successful, or <code>InternalError</code>.
-///
-- (void)fetchFileWithEngagementFile:(EngagementFile * _Nonnull)engagementFile progress:(void (^ _Nullable)(EngagementFileProgress * _Nonnull))progress completion:(void (^ _Nonnull)(EngagementFileData * _Nullable, GliaCoreError * _Nullable))completion;
-@end
-
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Send a message preview to the Operator.
-/// The latest preview message will always be visible to the Operator. This means that Operators can use the
-/// preview messages as an indication of Visitor activity. The Operator could also use the preview messages to
-/// start preparing a response before the Visitor finishes typing, ensuring a fast and seamless communication
-/// experience.
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param message The content of the message preview.
-///
-/// \param completion A callback that will return the sending result or <code>GliaCoreError</code>.
-///
-- (void)sendMessagePreviewWithMessage:(NSString * _Nonnull)message completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-@end
-
-@class QueueTicket;
-@interface GliaCore (SWIFT_EXTENSION(GliaCoreSDK))
-/// Cancel the Engagement queueing with specific ticket
-/// If the request is unsuccessful for any reason then the completion will have an Error.
-/// The Error may have one of the following causes:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param queueTicket The <code>QueueTicket</code> that was used to enqueue
-///
-/// \param completion A callback that will return the dequeuing result or <code>GliaCoreError</code>
-///
-- (void)cancelWithQueueTicket:(QueueTicket * _Nonnull)queueTicket completion:(void (^ _Nonnull)(BOOL, GliaCoreError * _Nullable))completion;
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>GeneralError.networkError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-/// \param completion A callback that will return the <code>Queue</code> list or <code>GliaCoreError</code>
-///
-- (void)listQueuesWithCompletion:(void (^ _Nonnull)(NSArray<Queue *> * _Nullable, GliaCoreError * _Nullable))completion;
-/// Unsubscribes from Queue updates.
-/// \param queueCallbackId ID of callback for which you would like to stop receiving updates.
-///
-/// \param onError A callback that returns <code>GliaCoreError</code> which could have one of the reasons:
-/// <ul>
-///   <li>
-///     <code>GeneralError.internalError</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidSite</code>
-///   </li>
-///   <li>
-///     <code>ConfigurationError.invalidEnvironment</code>
-///   </li>
-/// </ul>
-///
-- (void)unsubscribeFromUpdatesWithQueueCallbackId:(NSString * _Nonnull)queueCallbackId onError:(void (^ _Nonnull)(GliaCoreError * _Nonnull))onError;
-@end
-
-@class UIApplication;
-/// The basic gateway class that interacts with the client library through the app delegate
-SWIFT_CLASS("_TtC11GliaCoreSDK19GliaCoreAppDelegate")
-@interface GliaCoreAppDelegate : NSObject <UIApplicationDelegate>
-/// Identify the app launch and initialize the sdk internals.
-/// \param application The current application.
-///
-/// \param launchOptions The options with which the application has been launched.
-///
-/// \param enablePushNotifications Set it to <code>true</code> if you want to enable push notifications. Otherwise, set it to <code>false</code>.
-/// The default value is <code>false</code>.
-///
-///
-/// returns:
-/// <code>true</code> if the application can be started with the specified launch options. Otherwise, it returns <code>false</code>.
-- (BOOL)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
-/// Call this method when <code>application:didRegisterForRemoteNotificationsWithDeviceToken:</code> is called
-/// from <code>UNUserNotificationCenterDelegate</code>.
-/// Send all parameters that you receive in the delegate method as they are, without modifying them.
-/// <h1>Reference</h1>
-/// <a href="https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate">UNUserNotificationCenterDelegate</a>
-/// \param application The current application.
-///
-/// \param deviceToken The data that holds the push notification device token.
-///
-- (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
-/// Call this method if it was unable to register your app with APNs or if your app is not properly configured for remote notifications. During development, make sure your app has the proper entitlements and that its App ID is configured to support push notifications.
-/// \param application The current application.
-///
-/// \param error The error appeared during the registration device with APNs.
-///
-- (void)application:(UIApplication * _Nonnull)application didFailToRegisterForRemoteNotificationsWithError:(NSError * _Nonnull)error;
-/// Handle the application active state and setup the internals.
-/// \param application The current application.
-///
-- (void)applicationDidBecomeActive:(UIApplication * _Nonnull)application;
-- (void)applicationWillResignActive:(UIApplication * _Nonnull)application;
-- (void)applicationDidEnterBackground:(UIApplication * _Nonnull)application;
-- (void)applicationWillEnterForeground:(UIApplication * _Nonnull)application;
-- (void)applicationWillTerminate:(UIApplication * _Nonnull)application;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 /// Wrapped error object.
@@ -2185,7 +1498,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK11LocalScreen")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-/// Available log levels. This can be configured by <code>GliaCore.sharedInstance.configureLogLevel(level: LogLevel)</code>
+/// Available log levels. This can be configured by <code>GliaCore.sharedInstanceForWidgets.configureLogLevelForWidgets(_:)</code>
 typedef SWIFT_ENUM(NSInteger, LogLevel, open) {
 /// The SDK will not produce any logs
   LogLevelNone = 0,
@@ -2241,7 +1554,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK7Message")
 SWIFT_PROTOCOL("_TtP11GliaCoreSDK15MessageHandling_")
 @protocol MessageHandling
 /// Receiving a message from an Operator, or a Visitor in the case the message was successfully delivered
-/// after sending it using <code>GliaCore.send(message:)</code>.
+/// after sending it using <code>GliaCore.sendForWidgets(messagePayload:)</code>.
 /// \param message Instance of <code>Message</code>
 ///
 - (void)receiveWithMessage:(Message * _Nonnull)message;
@@ -2292,6 +1605,7 @@ SWIFT_CLASS("_TtC11GliaCoreSDK20OperatorTypingStatus")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+/// Push-notification capability used by GliaWidgets.
 SWIFT_CLASS("_TtC11GliaCoreSDK17PushNotifications")
 @interface PushNotifications : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -2302,10 +1616,6 @@ SWIFT_CLASS("_TtC11GliaCoreSDK17PushNotifications")
 @class UNNotification;
 @class UNNotificationResponse;
 @interface PushNotifications (SWIFT_EXTENSION(GliaCoreSDK)) <UNUserNotificationCenterDelegate>
-/// See <a href="x-source-tag://PushNotificationsHandlingDidRegister">PushNotificationsHandling</a> for more information.
-- (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
-/// See <a href="x-source-tag://PushNotificationsHandlingDidFailToRegister">PushNotificationsHandling</a> for more information.
-- (void)application:(UIApplication * _Nonnull)application didFailToRegisterForRemoteNotificationsWithError:(NSError * _Nonnull)error;
 /// See <a href="x-source-tag://PushNotificationsHandlingWillPresent">PushNotificationsHandling</a> for more information.
 - (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresentNotification:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
 /// See <a href="x-source-tag://PushNotificationsHandlingDidReceive">PushNotificationsHandling</a> for more information.
