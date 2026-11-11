@@ -73,10 +73,6 @@ public enum PushNotificationsType : Swift.Int {
     get
   }
 }
-extension GliaCoreSDK.GliaCore {
-  @objc final public func uploadFileToEngagement(_ file: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping GliaCoreSDK.EngagementFileCompletionBlock)
-  @objc final public func fetchFile(engagementFile: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping GliaCoreSDK.EngagementFileFetchCompletionBlock)
-}
 public protocol LiveObservation {
   func pause()
   func resume()
@@ -122,9 +118,6 @@ extension GliaCoreSDK.GliaCore {
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
-public protocol PushNotificationsConfigurable {
-  func subscribeTo(_ notifications: [GliaCoreSDK.PushNotificationsType])
-}
 @objc public class QueueTicket : ObjectiveC.NSObject {
   public init(id: Swift.String)
   @objc deinit
@@ -156,7 +149,6 @@ public protocol Interactable : GliaCoreSDK.EngagementHandling, GliaCoreSDK.Error
 }
 extension GliaCoreSDK.GliaCore {
   public enum ConfigurationProcessError : Swift.Error {
-    case invalidSiteApiKeyCredentials
     case siteSettingsRetrieval
     case localeRetrieval
     case emptyLocale
@@ -167,14 +159,6 @@ extension GliaCoreSDK.GliaCore {
     }
   }
   public typealias ConfigureCompletion = (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void
-  final public func configure(with sdkConfiguration: GliaCoreSDK.GliaCore.Configuration, completion: @escaping GliaCoreSDK.GliaCore.ConfigureCompletion)
-  final public func configure(interactor: any GliaCoreSDK.Interactable)
-}
-extension GliaCoreSDK.GliaCore {
-  public enum AuthorizationMethod {
-    case siteApiKey(id: Swift.String, secret: Swift.String)
-    case userApiKey(id: Swift.String, secret: Swift.String)
-  }
 }
 extension GliaCoreSDK.GliaCore {
   public struct Region {
@@ -195,7 +179,7 @@ extension GliaCoreSDK.GliaCore {
     }
   }
   public struct Configuration {
-    public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, authorizingMethod: GliaCoreSDK.GliaCore.AuthorizationMethod, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled, manualLocaleOverride: Swift.String? = nil, suppressPushNotificationsPermissionRequestDuringAuthentication: Swift.Bool, isPushNotificationProxyEnabled: Swift.Bool = true) throws
+    public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled, manualLocaleOverride: Swift.String? = nil, suppressPushNotificationsPermissionRequestDuringAuthentication: Swift.Bool, isPushNotificationProxyEnabled: Swift.Bool = true) throws
   }
 }
 extension GliaCoreSDK.GliaCore.Configuration {
@@ -338,12 +322,8 @@ public struct MessageSenderPicture : Swift.Equatable, Swift.Decodable {
   public static func == (a: GliaCoreSDK.MessageSenderPicture, b: GliaCoreSDK.MessageSenderPicture) -> Swift.Bool
   public init(from decoder: any Swift.Decoder) throws
 }
-public typealias EngagementSessionBlock = (GliaCoreSDK.EngagementRequest?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
 public typealias OperatorBlock = ([GliaCoreSDK.Operator]?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
-public typealias QueueTicketBlock = (GliaCoreSDK.QueueTicket?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
 public typealias QueueRequestBlock = ([GliaCoreSDK.Queue]?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
-public typealias QueueUpdateBlock = (GliaCoreSDK.Queue) -> Swift.Void
-public typealias MessageBlock = (GliaCoreSDK.Message?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
 public typealias EngagementBlock = (GliaCoreSDK.Engagement?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
 public typealias SuccessBlock = (Swift.Bool, GliaCoreSDK.GliaCoreError?) -> Swift.Void
 public typealias AnswerBlock = (Swift.Bool) -> Swift.Void
@@ -365,10 +345,6 @@ public typealias EngagementFileCompletionBlock = (GliaCoreSDK.EngagementFileInfo
 public typealias EngagementFileFetchCompletionBlock = (GliaCoreSDK.EngagementFileData?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
 public typealias StreamableOnHoldHandler = (_ onHold: Swift.Bool) -> Swift.Void
 public typealias EngagementChangedBlock = (GliaCoreSDK.Engagement?) -> Swift.Void
-public protocol PushNotificationsHandling {
-  func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: any Swift.Error)
-  func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
-}
 public struct VisitorInfoUpdate : Swift.Encodable {
   public var name: Swift.String?
   public var email: Swift.String?
@@ -411,22 +387,11 @@ public struct NetworkPath {
   public init(rawValue: Network.NWPath)
 }
 @objc @_hasMissingDesignatedInitializers public class PushNotifications : ObjectiveC.NSObject {
-  public var handler: GliaCoreSDK.PushActionBlock? {
-    get
-    set
-  }
   @objc deinit
 }
-extension GliaCoreSDK.PushNotifications : GliaCoreSDK.PushNotificationsHandling, UserNotifications.UNUserNotificationCenterDelegate {
-  @objc dynamic public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
-  @objc dynamic public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: any Swift.Error)
+extension GliaCoreSDK.PushNotifications : UserNotifications.UNUserNotificationCenterDelegate {
   @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
   @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
-  public func widgetsNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
-  public func widgetsNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
-}
-extension GliaCoreSDK.PushNotifications : GliaCoreSDK.PushNotificationsConfigurable {
-  public func subscribeTo(_ notifications: [GliaCoreSDK.PushNotificationsType])
 }
 @dynamicMemberLookup public struct Tagged<Tag, RawValue> {
   public var rawValue: RawValue
@@ -595,53 +560,11 @@ public protocol VideoStreamable : AnyObject {
   var isRemote: Swift.Bool { get }
   var onHold: GliaCoreSDK.StreamableOnHoldHandler? { get set }
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class GliaCoreAppDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
-  @discardableResult
-  @_Concurrency.MainActor @preconcurrency @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
-  @_Concurrency.MainActor @preconcurrency @objc public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
-  @_Concurrency.MainActor @preconcurrency @objc public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: any Swift.Error)
-  @_Concurrency.MainActor @preconcurrency @objc public func applicationDidBecomeActive(_ application: UIKit.UIApplication)
-  @_Concurrency.MainActor @preconcurrency @objc public func applicationWillResignActive(_ application: UIKit.UIApplication)
-  @_Concurrency.MainActor @preconcurrency @objc public func applicationDidEnterBackground(_ application: UIKit.UIApplication)
-  @_Concurrency.MainActor @preconcurrency @objc public func applicationWillEnterForeground(_ application: UIKit.UIApplication)
-  @_Concurrency.MainActor @preconcurrency @objc public func applicationWillTerminate(_ application: UIKit.UIApplication)
-  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init()
-  @objc deinit
-}
-extension GliaCoreSDK.GliaCore {
-  @available(*, deprecated, message: "Use send(messagePayload:completion:)")
-  @objc final public func send(message: Swift.String, queueID: Swift.String, completion: @escaping GliaCoreSDK.MessageBlock)
-  @available(*, deprecated, message: "Use send(messagePayload:completion:)")
-  @objc final public func send(message: Swift.String = "", attachment: GliaCoreSDK.Attachment? = nil, completion: @escaping GliaCoreSDK.MessageBlock)
-  @available(*, deprecated, message: "Use queueForEngagement(using:replaceExisting:completion:) instead.")
-  final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, replaceExisting: Swift.Bool, completion: @escaping GliaCoreSDK.QueueTicketBlock)
-  @available(*, deprecated, message: "Use queueForEngagement(using:completion: instead.")
-  final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, options: GliaCoreSDK.EngagementOptions?, replaceExisting: Swift.Bool, completion: @escaping GliaCoreSDK.QueueTicketBlock)
-}
-extension GliaCoreSDK.GliaCore {
-  @available(*, deprecated, message: "Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.")
-  @objc final public func subscribeForUpdates(forQueue queueIds: [Swift.String], onError: @escaping GliaCoreSDK.ErrorBlock, onUpdate: @escaping GliaCoreSDK.QueueUpdateBlock) -> Swift.String?
-}
-extension GliaCoreSDK.GliaCore {
-  @available(*, deprecated, message: "Use cancel(queueTicket:completion:) instead.")
-  @objc final public func cancel(engagementRequest: GliaCoreSDK.EngagementRequest, completion: @escaping GliaCoreSDK.SuccessBlock)
-}
 final public class DisposableBag {
   public init(items: [any GliaCoreSDK.DisposableProtocol] = [])
   final public func add(_ d: any GliaCoreSDK.DisposableProtocol)
   final public func disposeAll()
   @objc deinit
-}
-extension GliaCoreSDK.GliaCore {
-  @objc final public func requestMediaUpgrade(offer: GliaCoreSDK.MediaUpgradeOffer, completion: @escaping GliaCoreSDK.SuccessBlock)
-}
-extension GliaCoreSDK.GliaCore {
-  final public func getCurrentEngagement() -> GliaCoreSDK.Engagement?
-  final public func submitSurveyAnswer(_ answers: [GliaCoreSDK.Survey.Answer], surveyId: GliaCoreSDK.Survey.Id, engagementId: Swift.String, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
-}
-extension GliaCoreSDK.GliaCore {
-  @objc final public func requestEngagedOperator(completion: @escaping GliaCoreSDK.OperatorBlock)
-  @objc final public func endEngagement(completion: @escaping GliaCoreSDK.SuccessBlock)
 }
 @inline(__always) public func sleepSeconds(_ seconds: Foundation.TimeInterval) async throws
 @inline(__always) public func sleepSecondsNoThrow(_ seconds: Foundation.TimeInterval) async
@@ -659,7 +582,6 @@ public enum EngagementSource : Swift.RawRepresentable, Swift.Decodable {
 extension GliaCoreSDK.GliaCore {
   public typealias IdToken = GliaCoreSDK.Tagged<(GliaCoreSDK.GliaCore, idToken: ()), Swift.String>
   public typealias ExternalAccessToken = GliaCoreSDK.Tagged<(GliaCoreSDK.GliaCore, externalAccessToken: ()), Swift.String>
-  final public func authentication(with behavior: GliaCoreSDK.GliaCore.Authentication.Behavior) throws -> GliaCoreSDK.GliaCore.Authentication
 }
 extension _Concurrency.AsyncSequence where Self.Element : Swift.Equatable {
   public func removeDuplicates() -> _Concurrency.AsyncStream<Self.Element>
@@ -677,16 +599,11 @@ extension _Concurrency.AsyncSequence {
   public func firstValue() async rethrows -> Self.Element?
 }
 extension GliaCoreSDK.GliaCore {
-  final public class Cancellable {
+  final public class Cancellable : @unchecked Swift.Sendable {
     public init(isCancelled: Swift.Bool = false, cancelOperation: (() -> Swift.Void)? = nil)
     final public func cancel()
     @objc deinit
   }
-}
-extension GliaCoreSDK.GliaCore {
-  @objc final public func sendMessagePreview(message: Swift.String, completion: @escaping GliaCoreSDK.SuccessBlock)
-  final public func send(messagePayload: GliaCoreSDK.SendMessagePayload, completion: @escaping (Swift.Result<GliaCoreSDK.Message, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
-  final public func send(file: GliaCoreSDK.EngagementFile, completion: @escaping (Swift.Result<GliaCoreSDK.Message, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
 }
 public struct SendMessagePayload : Swift.Equatable {
   public typealias MessageId = GliaCoreSDK.Tagged<GliaCoreSDK.SendMessagePayload, Swift.String>
@@ -869,11 +786,6 @@ public struct SurveyResponse : Swift.Equatable {
 extension GliaCoreSDK.SurveyResponse : Swift.Decodable {
   public init(from decoder: any Swift.Decoder) throws
 }
-extension GliaCoreSDK.GliaCore {
-  @objc final public func clearSession()
-  @objc final public func clearSession(stopPushNotifications: Swift.Bool)
-  final public func fetchSiteConfiguration(_ completion: @escaping (Swift.Result<GliaCoreSDK.Site, any Swift.Error>) -> Swift.Void)
-}
 public struct ChatHistory {
   public let messages: [GliaCoreSDK.Message]
   public let olderPage: GliaCoreSDK.ChatHistory.OlderPage?
@@ -919,7 +831,7 @@ final public class TaskDisposable : GliaCoreSDK.DisposableProtocol {
   @objc deinit
   required public init(from decoder: any Swift.Decoder) throws
 }
-@_hasMissingDesignatedInitializers public class PushNotificationsActionProcessor {
+@_hasMissingDesignatedInitializers final public class PushNotificationsActionProcessor {
   @objc deinit
 }
 public struct Site : Swift.Decodable, Swift.Equatable {
@@ -954,10 +866,6 @@ extension GliaCoreSDK.Site {
     public static func == (a: GliaCoreSDK.Site.ReadOnlySettings, b: GliaCoreSDK.Site.ReadOnlySettings) -> Swift.Bool
     public init(from decoder: any Swift.Decoder) throws
   }
-}
-extension GliaCoreSDK.GliaCore {
-  final public func updateVisitorInfo(_ info: GliaCoreSDK.VisitorInfoUpdate, completion: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void)
-  final public func fetchVisitorInfo(_ completion: @escaping (Swift.Result<GliaCoreSDK.GliaCore.VisitorInfo, any Swift.Error>) -> Swift.Void)
 }
 public struct Request : Swift.Equatable, Swift.Decodable {
   public let id: Swift.String
@@ -1039,10 +947,6 @@ extension GliaCoreSDK.GliaCore {
   @_hasMissingDesignatedInitializers final public class CallVisualizer {
     @objc deinit
   }
-}
-extension GliaCoreSDK.GliaCore.CallVisualizer {
-  @discardableResult
-  final public func requestVisitorCode(completion: @escaping (Swift.Result<GliaCoreSDK.VisitorCode, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
 }
 @_hasMissingDesignatedInitializers @objc public class EngagementFileInformation : ObjectiveC.NSObject, Swift.Decodable {
   final public let id: Swift.String
@@ -1161,12 +1065,10 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
   }
 }
 @objc public enum ConfigurationError : Swift.Int, Swift.Error {
-  case invalidSite
-  case invalidEnvironment
-  case invalidSiteApiKey
-  case invalidUserApiKey
-  case invalidRegionEndpoint
-  case invalidConfiguration
+  case invalidSite = 0
+  case invalidEnvironment = 1
+  case invalidRegionEndpoint = 4
+  case invalidConfiguration = 5
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public static var _nsErrorDomain: Swift.String {
@@ -1302,25 +1204,14 @@ final public class ValueRelay<T> {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class GliaCore : ObjectiveC.NSObject {
-  @objc public static let sharedInstance: GliaCoreSDK.GliaCore
-  weak final public var currentInteractor: (any GliaCoreSDK.Interactable)?
-  @objc final public var environment: Swift.String {
-    @objc get
-  }
-  @objc final public var site: Swift.String {
-    @objc get
-  }
   final public var secureConversations: GliaCoreSDK.GliaCore.SecureConversations {
     get
-    set
   }
   final public var callVisualizer: GliaCoreSDK.GliaCore.CallVisualizer {
     get
-    set
   }
   final public var localeProvider: GliaCoreSDK.GliaCore.LocaleProvider {
     get
-    set
   }
   final public var pushNotifications: GliaCoreSDK.PushNotifications {
     get
@@ -1329,13 +1220,6 @@ final public class ValueRelay<T> {
     get
   }
   @objc deinit
-}
-extension GliaCoreSDK.GliaCore {
-  final public func fetchChatTranscript(_ completion: @escaping (Swift.Result<GliaCoreSDK.ChatHistory, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
-  final public func fetchChatTranscript(olderPage: GliaCoreSDK.ChatHistory.OlderPage, _ completion: @escaping (Swift.Result<GliaCoreSDK.ChatHistory, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
-}
-extension GliaCoreSDK.GliaCore {
-  @objc final public func configureLogLevel(level: GliaCoreSDK.LogLevel)
 }
 @_hasMissingDesignatedInitializers @objc public class Operator : ObjectiveC.NSObject, Swift.Decodable {
   @objc final public let name: Swift.String
@@ -1350,28 +1234,7 @@ extension GliaCoreSDK.GliaCore {
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   @objc deinit
 }
-extension GliaCoreSDK.PushNotifications {
-  @available(*, unavailable, message: "Use `GliaCore.Configuration` to make push notifications feature enabled.")
-  public func enable(_ shouldEnablePushNotifications: Swift.Bool)
-}
-extension GliaCoreSDK.GliaCore {
-  @available(*, unavailable, message: "Use `GliaCore.send(messagePayload:completion:)` instead.")
-  final public func send(option: GliaCoreSDK.SingleChoiceOption, completion: @escaping (Swift.Result<GliaCoreSDK.Message, any Swift.Error>) -> Swift.Void)
-  @available(*, unavailable, message: "Use `GliaCore.send(messagePayload:completion:)` instead.")
-  final public func send(selectedOptionValue: Swift.String, completion: @escaping (Swift.Result<GliaCoreSDK.Message, any Swift.Error>) -> Swift.Void)
-  @available(*, unavailable, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
-  @objc final public func configure(site: Swift.String) throws
-  @available(*, unavailable, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
-  @objc final public func configure(environment: Swift.String) throws
-  @available(*, unavailable, message: "Use `GliaCore.CallVisualizer` to request visitor code.")
-  @objc final public func requestVisitorCode(completion: @escaping GliaCoreSDK.VisitorCodeBlock)
-}
-@available(*, deprecated)
-public typealias VisitorCodeBlock = (Swift.String?, GliaCoreSDK.GliaCoreError?) -> Swift.Void
 public typealias InternalOperatorTypingStatusUpdate = (GliaCoreSDK.OperatorTypingStatus) -> Swift.Void
-extension GliaCoreSDK.GliaCore {
-  final public func cameraDeviceManageable() throws -> any GliaCoreSDK.CameraDeviceManageable
-}
 extension GliaCoreSDK.CameraDevice {
   public enum Error : Swift.Error {
     case cameraIsNotAccessibleOnStream
@@ -1385,15 +1248,6 @@ extension GliaCoreSDK.CameraDevice {
 public struct PathMonitorClient {
   public let networkPathPublisher: Combine.AnyPublisher<GliaCoreSDK.NetworkPath, Swift.Never>
   public init(networkPathPublisher: Combine.AnyPublisher<GliaCoreSDK.NetworkPath, Swift.Never>)
-}
-extension GliaCoreSDK.GliaCore {
-  final public func queueForEngagement(using options: GliaCoreSDK.QueueForEngagementOptions, replaceExisting: Swift.Bool, completion: @escaping (Swift.Result<GliaCoreSDK.QueueTicket, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
-  @objc final public func cancel(queueTicket: GliaCoreSDK.QueueTicket, completion: @escaping GliaCoreSDK.SuccessBlock)
-  @objc final public func listQueues(completion: @escaping GliaCoreSDK.QueueRequestBlock)
-  public typealias SubscribeForQueuesUpdatesCompletion = (Swift.Result<GliaCoreSDK.Queue, GliaCoreSDK.GliaCoreError>) -> Swift.Void
-  @discardableResult
-  final public func subscribeForQueuesUpdates(forQueues queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Queue, GliaCoreSDK.GliaCoreError>) -> Swift.Void) -> Swift.String?
-  @objc final public func unsubscribeFromUpdates(queueCallbackId: Swift.String, onError: @escaping GliaCoreSDK.ErrorBlock)
 }
 public struct CameraDevice : Swift.Equatable {
   public let name: Swift.String
@@ -1422,29 +1276,8 @@ public protocol CameraDeviceManageable {
 }
 extension GliaCoreSDK.GliaCore {
   @_hasMissingDesignatedInitializers final public class SecureConversations {
-    final public func send(attachment: GliaCoreSDK.Attachment, queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Message, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
-    final public func send(secureMessage: Swift.String, attachment: GliaCoreSDK.Attachment? = nil, queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Message, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
-    final public func send(secureMessagePayload: GliaCoreSDK.SendMessagePayload, queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Message, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
     @objc deinit
   }
-}
-extension GliaCoreSDK.GliaCore.SecureConversations {
-  final public func uploadFile(_ file: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<GliaCoreSDK.EngagementFileInformation, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
-  final public func downloadFile(_ file: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<GliaCoreSDK.EngagementFileData, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
-}
-extension GliaCoreSDK.GliaCore.SecureConversations {
-  @discardableResult
-  final public func markMessagesAsRead(completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
-  final public func getUnreadMessageCount(completion: @escaping (Swift.Result<Swift.Int, any Swift.Error>) -> Swift.Void)
-  @discardableResult
-  final public func subscribeToUnreadMessageCount(completion: @escaping (Swift.Result<Swift.Int?, any Swift.Error>) -> Swift.Void) -> Swift.String?
-  final public func unsubscribeFromUnreadMessageCount(_ subscriptionToken: Swift.String)
-}
-extension GliaCoreSDK.GliaCore.SecureConversations {
-  final public func pendingSecureConversationStatus(_ callback: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void)
-  @discardableResult
-  final public func subscribeToPendingSecureConversationStatus(_ callback: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void) -> Swift.String?
-  final public func unsubscribeFromPendingSecureConversationStatus(_ subscriptionToken: Swift.String)
 }
 final public class TestCombineScheduler<SchedulerTimeType, SchedulerOptions> : Combine.Scheduler, @unchecked Swift.Sendable where SchedulerTimeType : Swift.Strideable, SchedulerTimeType.Stride : Combine.SchedulerTimeIntervalConvertible {
   final public let minimumTolerance: SchedulerTimeType.Stride
@@ -1480,16 +1313,9 @@ extension Foundation.RunLoop {
 }
 public typealias TestSchedulerOf<Scheduler> = GliaCoreSDK.TestCombineScheduler<Scheduler.SchedulerTimeType, Scheduler.SchedulerOptions> where Scheduler : Combine.Scheduler
 extension GliaCoreSDK.GliaCore {
-  final public func startSocketObservation()
-  final public func stopSocketObservation()
-}
-extension GliaCoreSDK.GliaCore {
   @_hasMissingDesignatedInitializers final public class LocaleProvider {
     @objc deinit
   }
-}
-extension GliaCoreSDK.GliaCore.LocaleProvider {
-  final public func getRemoteString(_ key: Swift.String) -> Swift.String?
 }
 public struct QueueForEngagementOptions {
   public let queueIds: [Swift.String]
@@ -1629,7 +1455,6 @@ extension GliaCoreSDK.VisitorInfoUpdate.NoteUpdateMethod : Swift.RawRepresentabl
 extension GliaCoreSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.Equatable {}
 extension GliaCoreSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.Hashable {}
 extension GliaCoreSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod : Swift.RawRepresentable {}
-extension GliaCoreSDK.GliaCoreAppDelegate : Swift.Sendable {}
 extension GliaCoreSDK.MediaType : Swift.Equatable {}
 extension GliaCoreSDK.MediaType : Swift.Hashable {}
 extension GliaCoreSDK.MediaType : Swift.RawRepresentable {}
