@@ -1,9 +1,6 @@
 format_version: "6"
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: ios
-trigger_map:
-- tag: '*.*.*'
-  workflow: release-to-cocoapods
 workflows:
   post-release:
     steps:
@@ -94,13 +91,6 @@ workflows:
                 },
                 "triggered_by":"curl"
             }'
-  release-to-cocoapods:
-    steps:
-    - activate-ssh-key@4: {}
-    - git-clone@8: {}
-    - script:
-        inputs:
-        - content: pod trunk push GliaCoreSDK.podspec --verbose
 meta:
   bitrise.io:
     stack: osx-xcode-26.5.x
