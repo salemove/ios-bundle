@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.3.2 effective-5.10 (swiftlang-6.3.2.1.108 clang-2100.1.1.101)
-// swift-module-flags: -target arm64-apple-ios15.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name GliaCoreSDK
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.2
+// swift-compiler-version: Apple Swift version 6.2.4 effective-5.10 (swiftlang-6.2.4.1.4 clang-1700.6.4.2)
+// swift-module-flags: -target arm64-apple-ios15.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name GliaCoreSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.4
 import AVFoundation
 import Combine
 import CoreMedia/*.CMSampleBuffer*/
@@ -32,7 +32,9 @@ import _SwiftConcurrencyShims
   case singleChoice
   case singleChoiceResponse
   case ssml
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -48,14 +50,18 @@ public struct VisitorCode : Swift.Decodable {
   @objc deinit
 }
 public struct EngagementOptions {
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(mediaDirection: GliaCoreSDK.MediaDirection? = nil)
+  #endif
 }
 public enum EngagementEndingReason : Swift.String {
   case visitorHungUp
   case operatorHungUp
   case error
   case followUp
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
+  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -67,15 +73,21 @@ public enum PushNotificationsType : Swift.Int {
   case failed
   case message
   case transfer
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
 }
 extension GliaCoreSDK.GliaCore {
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func uploadFileToEngagement(_ file: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping GliaCoreSDK.EngagementFileCompletionBlock)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func fetchFile(engagementFile: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping GliaCoreSDK.EngagementFileFetchCompletionBlock)
+  #endif
 }
 public protocol LiveObservation {
   func pause()
@@ -92,7 +104,9 @@ extension GliaCoreSDK.GliaCore {
   final public let options: [GliaCoreSDK.SingleChoiceOption]?
   final public let imageUrl: Swift.String?
   final public let files: [GliaCoreSDK.EngagementFile]?
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(type: GliaCoreSDK.AttachmentType?, selectedOption: Swift.String?, options: [GliaCoreSDK.SingleChoiceOption]?, files: [GliaCoreSDK.EngagementFile]?, imageUrl: Swift.String?)
+  #endif
   public init(file: GliaCoreSDK.EngagementFile)
   public init(files: [GliaCoreSDK.EngagementFile])
   @objc deinit
@@ -117,7 +131,9 @@ extension GliaCoreSDK.GliaCore {
 @objc @objcMembers public class SingleChoiceOption : ObjectiveC.NSObject, Swift.Codable {
   @objc public var text: Swift.String?
   @objc public var value: Swift.String?
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public init(text: Swift.String?, value: Swift.String?)
+  #endif
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -156,7 +172,6 @@ public protocol Interactable : GliaCoreSDK.EngagementHandling, GliaCoreSDK.Error
 }
 extension GliaCoreSDK.GliaCore {
   public enum ConfigurationProcessError : Swift.Error {
-    case invalidSiteApiKeyCredentials
     case siteSettingsRetrieval
     case localeRetrieval
     case emptyLocale
@@ -169,12 +184,6 @@ extension GliaCoreSDK.GliaCore {
   public typealias ConfigureCompletion = (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void
   final public func configure(with sdkConfiguration: GliaCoreSDK.GliaCore.Configuration, completion: @escaping GliaCoreSDK.GliaCore.ConfigureCompletion)
   final public func configure(interactor: any GliaCoreSDK.Interactable)
-}
-extension GliaCoreSDK.GliaCore {
-  public enum AuthorizationMethod {
-    case siteApiKey(id: Swift.String, secret: Swift.String)
-    case userApiKey(id: Swift.String, secret: Swift.String)
-  }
 }
 extension GliaCoreSDK.GliaCore {
   public struct Region {
@@ -195,7 +204,9 @@ extension GliaCoreSDK.GliaCore {
     }
   }
   public struct Configuration {
-    public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, authorizingMethod: GliaCoreSDK.GliaCore.AuthorizationMethod, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled, manualLocaleOverride: Swift.String? = nil, suppressPushNotificationsPermissionRequestDuringAuthentication: Swift.Bool, isPushNotificationProxyEnabled: Swift.Bool = true) throws
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init(siteId: Swift.String, region: GliaCoreSDK.GliaCore.Region, pushNotifications: GliaCoreSDK.GliaCore.Configuration.PushNotifications = .disabled, manualLocaleOverride: Swift.String? = nil, suppressPushNotificationsPermissionRequestDuringAuthentication: Swift.Bool, isPushNotificationProxyEnabled: Swift.Bool = true) throws
+    #endif
   }
 }
 extension GliaCoreSDK.GliaCore.Configuration {
@@ -211,14 +222,20 @@ extension GliaCoreSDK.GliaCore.Configuration {
   }
 }
 public struct OtelTracer {
+  #if compiler(>=5.3) && $NonescapableTypes
   public func startSpan(event: GliaCoreSDK.OtelLogEvents, attributesBuilder: GliaOpenTelemetry.AttributesBuilder? = nil)
+  #endif
   public func endSpan(event: GliaCoreSDK.OtelLogEvents)
   public func recordException(for event: GliaCoreSDK.OtelLogEvents, exception: any Swift.Error)
+  #if compiler(>=5.3) && $NonescapableTypes
   public func addEvent(for spanEvent: GliaCoreSDK.OtelLogEvents, event: GliaCoreSDK.OtelLogEvents, attributesBuilder: GliaOpenTelemetry.AttributesBuilder? = nil)
+  #endif
 }
 extension GliaCoreSDK.OtelTracer {
   public static func live(telemetry: GliaOpenTelemetry.GliaTelemetry) -> GliaCoreSDK.OtelTracer
+  #if compiler(>=5.3) && $NonescapableTypes
   public static func mock(startSpan: @escaping (GliaCoreSDK.OtelLogEvents, GliaOpenTelemetry.AttributesBuilder?) -> Swift.Void = { _, _ in }, endSpan: @escaping (GliaCoreSDK.OtelLogEvents) -> Swift.Void = { _ in }, recordException: @escaping (GliaCoreSDK.OtelLogEvents, any Swift.Error) -> Swift.Void = { _, _ in }, addEvent: @escaping (GliaCoreSDK.OtelLogEvents, GliaCoreSDK.OtelLogEvents, GliaOpenTelemetry.AttributesBuilder?) -> Swift.Void = { _, _, _ in }) -> GliaCoreSDK.OtelTracer
+  #endif
 }
 public typealias OtelTelemetry = GliaOpenTelemetry.GliaTelemetry
 public typealias OtelAttributes = GliaOpenTelemetry.GliaAttributes
@@ -243,7 +260,9 @@ public typealias OtelSnackBarTypes = GliaOpenTelemetry.SnackBarTypes
   public var tracer: GliaCoreSDK.OtelTracer {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public func setGlobalAttribute(_ value: GliaCoreSDK.OtelAttributeValue?, forKey key: GliaCoreSDK.OtelAttributes)
+  #endif
   public func configure(urlString: Swift.String)
   @objc deinit
 }
@@ -264,7 +283,9 @@ public enum PushType {
 }
 extension GliaCoreSDK.PushType : Swift.RawRepresentable, Swift.Equatable {
   public typealias RawValue = Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
+  #endif
   public var rawValue: Swift.String {
     get
   }
@@ -284,7 +305,9 @@ extension GliaCoreSDK.PushType : Swift.RawRepresentable, Swift.Equatable {
     get
   }
   final public let metadata: GliaCoreSDK.Message.Metadata?
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(id: Swift.String, content: Swift.String, sender: GliaCoreSDK.MessageSender, attachment: GliaCoreSDK.Attachment? = nil, metadata: GliaCoreSDK.Message.Metadata?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
@@ -292,13 +315,21 @@ extension GliaCoreSDK.Message {
   public struct Metadata {
     public enum CodingKeys : Swift.String, Swift.CodingKey {
       case metadata
+      #if compiler(>=5.3) && $NonescapableTypes
       public init?(rawValue: Swift.String)
+      #endif
+      #if compiler(>=5.3) && $NonescapableTypes
       public init?(stringValue: Swift.String)
+      #endif
+      #if compiler(>=5.3) && $NonescapableTypes
       public init?(intValue: Swift.Int)
+      #endif
       public typealias RawValue = Swift.String
+      #if compiler(>=5.3) && $NonescapableTypes
       public var intValue: Swift.Int? {
         get
       }
+      #endif
       public var rawValue: Swift.String {
         get
       }
@@ -325,7 +356,9 @@ extension GliaCoreSDK.MessageSender {
     case omniguide
     case system
     case unknown(Swift.String)
+    #if compiler(>=5.3) && $NonescapableTypes
     public init?(rawValue: Swift.String)
+    #endif
     public var rawValue: Swift.String {
       get
     }
@@ -375,20 +408,26 @@ public struct VisitorInfoUpdate : Swift.Encodable {
   public var phone: Swift.String?
   public var note: Swift.String?
   public var noteUpdateMethod: GliaCoreSDK.VisitorInfoUpdate.NoteUpdateMethod?
+  #if compiler(>=5.3) && $NonescapableTypes
   public var externalID: Swift.String? {
     get
     set
   }
+  #endif
   public var customAttributes: [Swift.String : Swift.String]?
   public var customAttributesUpdateMethod: GliaCoreSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod?
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(name: Swift.String? = nil, email: Swift.String? = nil, phone: Swift.String? = nil, note: Swift.String? = nil, noteUpdateMethod: GliaCoreSDK.VisitorInfoUpdate.NoteUpdateMethod? = nil, externalID: Swift.String? = nil, customAttributes: [Swift.String : Swift.String]? = nil, customAttributesUpdateMethod: GliaCoreSDK.VisitorInfoUpdate.CustomAttributesUpdateMethod? = nil)
+  #endif
   public func encode(to encoder: any Swift.Encoder) throws
 }
 extension GliaCoreSDK.VisitorInfoUpdate {
   public enum NoteUpdateMethod : Swift.String {
     case replace
     case append
+    #if compiler(>=5.3) && $NonescapableTypes
     public init?(rawValue: Swift.String)
+    #endif
     public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
@@ -397,7 +436,9 @@ extension GliaCoreSDK.VisitorInfoUpdate {
   public enum CustomAttributesUpdateMethod : Swift.String, Swift.Encodable {
     case replace
     case merge
+    #if compiler(>=5.3) && $NonescapableTypes
     public init?(rawValue: Swift.String)
+    #endif
     public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
@@ -481,18 +522,26 @@ extension GliaCoreSDK.Tagged : Swift.Equatable where RawValue : Swift.Equatable 
 extension GliaCoreSDK.Tagged : Swift.Error where RawValue : Swift.Error {
 }
 extension GliaCoreSDK.Tagged : Foundation.LocalizedError where RawValue : Swift.Error {
+  #if compiler(>=5.3) && $NonescapableTypes
   public var errorDescription: Swift.String? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public var failureReason: Swift.String? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public var helpAnchor: Swift.String? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public var recoverySuggestion: Swift.String? {
     get
   }
+  #endif
 }
 extension GliaCoreSDK.Tagged : Swift.ExpressibleByBooleanLiteral where RawValue : Swift.ExpressibleByBooleanLiteral {
   public typealias BooleanLiteralType = RawValue.BooleanLiteralType
@@ -530,7 +579,9 @@ extension GliaCoreSDK.Tagged : Swift.Identifiable where RawValue : Swift.Identif
   }
 }
 extension GliaCoreSDK.Tagged : Swift.LosslessStringConvertible where RawValue : Swift.LosslessStringConvertible {
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(_ description: Swift.String)
+  #endif
 }
 extension GliaCoreSDK.Tagged : Swift.AdditiveArithmetic where RawValue : Swift.AdditiveArithmetic {
   public static var zero: GliaCoreSDK.Tagged<Tag, RawValue> {
@@ -542,7 +593,9 @@ extension GliaCoreSDK.Tagged : Swift.AdditiveArithmetic where RawValue : Swift.A
   public static func -= (lhs: inout GliaCoreSDK.Tagged<Tag, RawValue>, rhs: GliaCoreSDK.Tagged<Tag, RawValue>)
 }
 extension GliaCoreSDK.Tagged : Swift.Numeric where RawValue : Swift.Numeric {
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?<T>(exactly source: T) where T : Swift.BinaryInteger
+  #endif
   public var magnitude: RawValue.Magnitude {
     get
   }
@@ -583,7 +636,9 @@ extension GliaCoreSDK.Tagged {
   @objc func unmute()
   @objc var isMuted: Swift.Bool { get }
   @objc var isRemote: Swift.Bool { get }
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc var onHold: GliaCoreSDK.StreamableOnHoldHandler? { get set }
+  #endif
 }
 public protocol VideoStreamable : AnyObject {
   func getStreamView() -> GliaCoreSDK.StreamView
@@ -593,11 +648,15 @@ public protocol VideoStreamable : AnyObject {
   func stop()
   var isPaused: Swift.Bool { get }
   var isRemote: Swift.Bool { get }
+  #if compiler(>=5.3) && $NonescapableTypes
   var onHold: GliaCoreSDK.StreamableOnHoldHandler? { get set }
+  #endif
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class GliaCoreAppDelegate : ObjectiveC.NSObject, UIKit.UIApplicationDelegate {
+  #if compiler(>=5.3) && $NonescapableTypes
   @discardableResult
   @_Concurrency.MainActor @preconcurrency @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]? = nil) -> Swift.Bool
+  #endif
   @_Concurrency.MainActor @preconcurrency @objc public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
   @_Concurrency.MainActor @preconcurrency @objc public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: any Swift.Error)
   @_Concurrency.MainActor @preconcurrency @objc public func applicationDidBecomeActive(_ application: UIKit.UIApplication)
@@ -611,16 +670,24 @@ public protocol VideoStreamable : AnyObject {
 extension GliaCoreSDK.GliaCore {
   @available(*, deprecated, message: "Use send(messagePayload:completion:)")
   @objc final public func send(message: Swift.String, queueID: Swift.String, completion: @escaping GliaCoreSDK.MessageBlock)
+  #if compiler(>=5.3) && $NonescapableTypes
   @available(*, deprecated, message: "Use send(messagePayload:completion:)")
   @objc final public func send(message: Swift.String = "", attachment: GliaCoreSDK.Attachment? = nil, completion: @escaping GliaCoreSDK.MessageBlock)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @available(*, deprecated, message: "Use queueForEngagement(using:replaceExisting:completion:) instead.")
   final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, replaceExisting: Swift.Bool, completion: @escaping GliaCoreSDK.QueueTicketBlock)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @available(*, deprecated, message: "Use queueForEngagement(using:completion: instead.")
   final public func queueForEngagement(queueID: Swift.String, visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, options: GliaCoreSDK.EngagementOptions?, replaceExisting: Swift.Bool, completion: @escaping GliaCoreSDK.QueueTicketBlock)
+  #endif
 }
 extension GliaCoreSDK.GliaCore {
+  #if compiler(>=5.3) && $NonescapableTypes
   @available(*, deprecated, message: "Use the `subscribeForQueuesUpdates` method that provides a `Result` in its completion.")
   @objc final public func subscribeForUpdates(forQueue queueIds: [Swift.String], onError: @escaping GliaCoreSDK.ErrorBlock, onUpdate: @escaping GliaCoreSDK.QueueUpdateBlock) -> Swift.String?
+  #endif
 }
 extension GliaCoreSDK.GliaCore {
   @available(*, deprecated, message: "Use cancel(queueTicket:completion:) instead.")
@@ -636,8 +703,12 @@ extension GliaCoreSDK.GliaCore {
   @objc final public func requestMediaUpgrade(offer: GliaCoreSDK.MediaUpgradeOffer, completion: @escaping GliaCoreSDK.SuccessBlock)
 }
 extension GliaCoreSDK.GliaCore {
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func getCurrentEngagement() -> GliaCoreSDK.Engagement?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func submitSurveyAnswer(_ answers: [GliaCoreSDK.Survey.Answer], surveyId: GliaCoreSDK.Survey.Id, engagementId: Swift.String, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  #endif
 }
 extension GliaCoreSDK.GliaCore {
   @objc final public func requestEngagedOperator(completion: @escaping GliaCoreSDK.OperatorBlock)
@@ -652,7 +723,9 @@ public enum EngagementSource : Swift.RawRepresentable, Swift.Decodable {
   public var rawValue: Swift.String {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
+  #endif
   public init(from decoder: any Swift.Decoder) throws
   public typealias RawValue = Swift.String
 }
@@ -666,7 +739,9 @@ extension _Concurrency.AsyncSequence where Self.Element : Swift.Equatable {
 }
 extension _Concurrency.AsyncSequence {
   public func map<U>(_ transform: @escaping (Self.Element) -> U) -> _Concurrency.AsyncStream<U>
+  #if compiler(>=5.3) && $NonescapableTypes
   public func compactMap<U>(_ transform: @escaping (Self.Element) -> U?) -> _Concurrency.AsyncStream<U>
+  #endif
   public func filter(_ isIncluded: @escaping (Self.Element) -> Swift.Bool) -> _Concurrency.AsyncStream<Self.Element>
   public func takeFirst(_ n: Swift.Int) -> _Concurrency.AsyncStream<Self.Element>
   public func takeDuring(_ lifetime: GliaCoreSDK.TaskLifetime) -> _Concurrency.AsyncStream<Self.Element>
@@ -674,19 +749,27 @@ extension _Concurrency.AsyncSequence {
   public func handle(onOutput: @escaping (Self.Element) -> Swift.Void) -> _Concurrency.AsyncStream<Self.Element>
   public func debounce(_ interval: Foundation.TimeInterval) -> _Concurrency.AsyncStream<Self.Element>
   public func scan<U>(_ initial: U, _ transform: @escaping (U, Self.Element) -> U) -> _Concurrency.AsyncStream<U>
+  #if compiler(>=5.3) && $NonescapableTypes
   public func firstValue() async rethrows -> Self.Element?
+  #endif
 }
 extension GliaCoreSDK.GliaCore {
   final public class Cancellable {
+    #if compiler(>=5.3) && $NonescapableTypes
     public init(isCancelled: Swift.Bool = false, cancelOperation: (() -> Swift.Void)? = nil)
+    #endif
     final public func cancel()
     @objc deinit
   }
 }
 extension GliaCoreSDK.GliaCore {
   @objc final public func sendMessagePreview(message: Swift.String, completion: @escaping GliaCoreSDK.SuccessBlock)
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func send(messagePayload: GliaCoreSDK.SendMessagePayload, completion: @escaping (Swift.Result<GliaCoreSDK.Message, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func send(file: GliaCoreSDK.EngagementFile, completion: @escaping (Swift.Result<GliaCoreSDK.Message, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  #endif
 }
 public struct SendMessagePayload : Swift.Equatable {
   public typealias MessageId = GliaCoreSDK.Tagged<GliaCoreSDK.SendMessagePayload, Swift.String>
@@ -696,7 +779,9 @@ public struct SendMessagePayload : Swift.Equatable {
   public static func == (a: GliaCoreSDK.SendMessagePayload, b: GliaCoreSDK.SendMessagePayload) -> Swift.Bool
 }
 extension GliaCoreSDK.SendMessagePayload {
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(content: Swift.String, attachment: GliaCoreSDK.Attachment?)
+  #endif
 }
 extension GliaCoreSDK.SendMessagePayload : Swift.ExpressibleByStringLiteral {
   public init(stringLiteral value: Swift.String)
@@ -705,7 +790,9 @@ extension GliaCoreSDK.SendMessagePayload : Swift.ExpressibleByStringLiteral {
   public typealias UnicodeScalarLiteralType = Swift.String
 }
 extension GliaCoreSDK.SendMessagePayload {
+  #if compiler(>=5.3) && $NonescapableTypes
   public static func mock(messageIdSuffix: Swift.String = "", content: Swift.String = "", attachment: GliaCoreSDK.Attachment? = nil) -> GliaCoreSDK.SendMessagePayload
+  #endif
 }
 public enum AnyCodable : Swift.Equatable {
   case string(Swift.String)
@@ -721,7 +808,9 @@ extension GliaCoreSDK.AnyCodable : Swift.Codable {
   public init(from decoder: any Swift.Decoder) throws
 }
 @objc public class VisitorContext : ObjectiveC.NSObject {
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(_ contextType: GliaCoreSDK.VisitorContext.ContextType?)
+  #endif
   @objc deinit
 }
 extension GliaCoreSDK.VisitorContext {
@@ -729,9 +818,11 @@ extension GliaCoreSDK.VisitorContext {
   public enum ContextType {
     case assetId(GliaCoreSDK.VisitorContext.AssetId)
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var assetContextId: Foundation.UUID? {
     get
   }
+  #endif
 }
 extension GliaCoreSDK.VisitorContext : Swift.Encodable {
   public func encode(to encoder: any Swift.Encoder) throws
@@ -743,7 +834,9 @@ public enum MediaType : Swift.String, Swift.Decodable {
   case messaging
   case phone
   case unknown
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
+  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -751,16 +844,28 @@ public enum MediaType : Swift.String, Swift.Decodable {
 }
 public struct OtelLogger {
   public func setLogLevel(_ level: GliaOpenTelemetry.GliaLogger.LogLevel)
+  #if compiler(>=5.3) && $NonescapableTypes
   public func e(_ event: GliaOpenTelemetry.LogEvents, message: Swift.String? = nil, error: (any Swift.Error)? = nil, attributesBuilder: GliaCoreSDK.OtelAttributesBuilder? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public func w(_ event: GliaOpenTelemetry.LogEvents, message: Swift.String? = nil, attributesBuilder: GliaCoreSDK.OtelAttributesBuilder? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public func i(_ event: GliaOpenTelemetry.LogEvents, message: Swift.String? = nil, attributesBuilder: GliaCoreSDK.OtelAttributesBuilder? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public func d(_ event: GliaOpenTelemetry.LogEvents, message: Swift.String? = nil, attributesBuilder: GliaCoreSDK.OtelAttributesBuilder? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public func logDeprecatedApiUse(sdkType: GliaOpenTelemetry.SdkType, className: any Any.Type, methodName: Swift.String? = nil, methodParams: [Swift.String] = [])
+  #endif
   public func logMethodUse(sdkType: GliaOpenTelemetry.SdkType, className: any Any.Type, methodName: Swift.String, methodParams: [Swift.String] = [])
 }
 extension GliaCoreSDK.OtelLogger {
   public static func live(telemetry: GliaOpenTelemetry.GliaTelemetry) -> GliaCoreSDK.OtelLogger
+  #if compiler(>=5.3) && $NonescapableTypes
   public static func mock(setLogLevel: @escaping (GliaOpenTelemetry.GliaLogger.LogLevel) -> Swift.Void = { _ in }, e: @escaping (GliaOpenTelemetry.LogEvents, Swift.String?, (any Swift.Error)?, GliaCoreSDK.OtelAttributesBuilder?) -> Swift.Void = { _, _, _, _  in }, w: @escaping (GliaOpenTelemetry.LogEvents, Swift.String?, GliaCoreSDK.OtelAttributesBuilder?) -> Swift.Void = { _, _, _  in }, i: @escaping (GliaOpenTelemetry.LogEvents, Swift.String?, GliaCoreSDK.OtelAttributesBuilder?) -> Swift.Void = { _, _, _  in }, d: @escaping (GliaOpenTelemetry.LogEvents, Swift.String?, GliaCoreSDK.OtelAttributesBuilder?) -> Swift.Void = { _, _, _  in }, logDeprecatedApiUse: @escaping (GliaOpenTelemetry.SdkType, any Any.Type, Swift.String?, [Swift.String]) -> Swift.Void = { _, _, _, _  in }, logMethodUse: @escaping (GliaOpenTelemetry.SdkType, any Any.Type, Swift.String, [Swift.String]) -> Swift.Void = { _, _, _, _  in }) -> GliaCoreSDK.OtelLogger
+  #endif
 }
 @_hasMissingDesignatedInitializers @objc public class EngagementFileProgress : ObjectiveC.NSObject {
   final public let fractionCompleted: Swift.Double
@@ -872,7 +977,9 @@ extension GliaCoreSDK.SurveyResponse : Swift.Decodable {
 extension GliaCoreSDK.GliaCore {
   @objc final public func clearSession()
   @objc final public func clearSession(stopPushNotifications: Swift.Bool)
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func fetchSiteConfiguration(_ completion: @escaping (Swift.Result<GliaCoreSDK.Site, any Swift.Error>) -> Swift.Void)
+  #endif
 }
 public protocol DisposableProtocol {
   var isDisposed: Swift.Bool { get }
@@ -908,7 +1015,9 @@ final public class TaskDisposable : GliaCoreSDK.DisposableProtocol {
   @objc final public let url: Foundation.URL?
   @objc public init(name: Swift.String = "content", url: Foundation.URL)
   @objc public init(id: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public init(id: Swift.String?, url: Foundation.URL?)
+  #endif
   @objc deinit
   required public init(from decoder: any Swift.Decoder) throws
 }
@@ -925,7 +1034,9 @@ public struct Site : Swift.Decodable, Swift.Equatable {
   public let mobileObservationIndicationEnabled: Swift.Bool?
   public let mobileObservationVideoFps: GliaCoreSDK.Site.VideoFps?
   public let readOnlySettings: GliaCoreSDK.Site.ReadOnlySettings?
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(id: Foundation.UUID, defaultOperatorPicture: GliaCoreSDK.OperatorPicture?, alwaysUseDefaultOperatorPicture: Swift.Bool?, allowedFileContentTypes: [Swift.String], allowedFileSenders: GliaCoreSDK.Site.AllowedFileSenders, maskingRegularExpressions: [Swift.String], visitorAppDefaultLocale: Swift.String, mobileConfirmDialogEnabled: Swift.Bool, mobileObservationIndicationEnabled: Swift.Bool, mobileObservationVideoFps: GliaCoreSDK.Site.VideoFps, mobileObservationEnabled: Swift.Bool, readOnlySettings: GliaCoreSDK.Site.ReadOnlySettings?, accountId: Swift.String? = nil)
+  #endif
   public init(from decoder: any Swift.Decoder) throws
   public static func == (a: GliaCoreSDK.Site, b: GliaCoreSDK.Site) -> Swift.Bool
 }
@@ -949,14 +1060,20 @@ extension GliaCoreSDK.Site {
   }
 }
 extension GliaCoreSDK.GliaCore {
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func updateVisitorInfo(_ info: GliaCoreSDK.VisitorInfoUpdate, completion: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func fetchVisitorInfo(_ completion: @escaping (Swift.Result<GliaCoreSDK.GliaCore.VisitorInfo, any Swift.Error>) -> Swift.Void)
+  #endif
 }
 public struct Request : Swift.Equatable, Swift.Decodable {
   public let id: Swift.String
   public let outcome: GliaCoreSDK.Request.Outcome
   public let platform: Swift.String?
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(id: Swift.String, outcome: GliaCoreSDK.Request.Outcome, platform: Swift.String?)
+  #endif
   public static func == (a: GliaCoreSDK.Request, b: GliaCoreSDK.Request) -> Swift.Bool
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -1034,8 +1151,10 @@ extension GliaCoreSDK.GliaCore {
   }
 }
 extension GliaCoreSDK.GliaCore.CallVisualizer {
+  #if compiler(>=5.3) && $NonescapableTypes
   @discardableResult
   final public func requestVisitorCode(completion: @escaping (Swift.Result<GliaCoreSDK.VisitorCode, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+  #endif
 }
 @_hasMissingDesignatedInitializers @objc public class EngagementFileInformation : ObjectiveC.NSObject, Swift.Decodable {
   final public let id: Swift.String
@@ -1065,13 +1184,21 @@ extension GliaCoreSDK.GliaCore {
   }
 }
 extension GliaCoreSDK.GliaCore.Authentication {
+  #if compiler(>=5.3) && $NonescapableTypes
   public func refresh(with idToken: GliaCoreSDK.GliaCore.IdToken, externalAccessToken: GliaCoreSDK.GliaCore.ExternalAccessToken?, _ completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public func authenticate(with idToken: GliaCoreSDK.GliaCore.IdToken, externalAccessToken: GliaCoreSDK.GliaCore.ExternalAccessToken?, shouldRequestPushNotificationSystemPermission: @escaping (@escaping (Swift.Bool) -> Swift.Void) -> Swift.Void, completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public func deauthenticate(shouldStopPushNotifications: Swift.Bool = false, _ completion: @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  #endif
   public var isAuthenticated: Swift.Bool {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(authenticateWithIdToken: @escaping (Swift.String, Swift.String?, @escaping (@escaping (Swift.Bool) -> Swift.Void) -> Swift.Void, @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> Swift.Void = { _, _, _, _ in }, deauthenticateWithCallback: @escaping (Swift.Bool, @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> Swift.Void = { _, _ in }, isAuthenticatedClosure: @escaping () -> Swift.Bool = { false }, refresh: @escaping (Swift.String, Swift.String?, @escaping (Swift.Result<Swift.Void, GliaCoreSDK.GliaCoreError>) -> Swift.Void) -> Swift.Void = { _, _, _ in })
+  #endif
 }
 extension GliaCoreSDK.GliaCore.Authentication {
   public enum Error : Swift.Error {
@@ -1101,7 +1228,9 @@ extension GliaCoreSDK.GliaCore.Authentication {
   case fill
   case aspectFit
   case aspectFill
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -1124,7 +1253,9 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
   case info
   case debug
   public static func >= (a: GliaCoreSDK.LogLevel, b: GliaCoreSDK.LogLevel) -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -1137,14 +1268,18 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
 }
 @_hasMissingDesignatedInitializers @objc public class OperatorPicture : ObjectiveC.NSObject, Swift.Decodable {
   @objc final public let url: Swift.String?
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  #endif
   @objc deinit
   required public init(from decoder: any Swift.Decoder) throws
 }
 @objc public enum GeneralError : Swift.Int, Swift.Error {
   case internalError
   case networkError
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public static var _nsErrorDomain: Swift.String {
     get
@@ -1154,13 +1289,13 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
   }
 }
 @objc public enum ConfigurationError : Swift.Int, Swift.Error {
-  case invalidSite
-  case invalidEnvironment
-  case invalidSiteApiKey
-  case invalidUserApiKey
-  case invalidRegionEndpoint
-  case invalidConfiguration
+  case invalidSite = 0
+  case invalidEnvironment = 1
+  case invalidRegionEndpoint = 4
+  case invalidConfiguration = 5
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public static var _nsErrorDomain: Swift.String {
     get
@@ -1172,7 +1307,9 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
 @objc public enum MediaUpgradeError : Swift.Int, Swift.Error {
   case requestError
   case unsupportedRequest
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public static var _nsErrorDomain: Swift.String {
     get
@@ -1188,7 +1325,9 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
   case visitorCanceled
   case operatorCanceled
   case operatorLeft
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public static var _nsErrorDomain: Swift.String {
     get
@@ -1200,7 +1339,9 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
 @objc public enum MediaError : Swift.Int, Swift.Error {
   case permissionDenied
   case unsupportedEngagementType
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public static var _nsErrorDomain: Swift.String {
     get
@@ -1214,7 +1355,9 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
   case queueFull
   case invalidId
   case alreadyEnqueued
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public static var _nsErrorDomain: Swift.String {
     get
@@ -1230,7 +1373,9 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
   case invalidFileURL
   case fileUnavailable
   case forbidden
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public static var _nsErrorDomain: Swift.String {
     get
@@ -1242,7 +1387,9 @@ extension GliaCoreSDK.StreamView : WebRTC.RTCVideoViewDelegate {
 @objc public class GliaCoreError : ObjectiveC.NSObject, Swift.Error {
   @objc final public let reason: Swift.String
   @objc final public let error: (any Swift.Error)?
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(reason: Swift.String, error: (any Swift.Error)? = nil)
+  #endif
   @objc override dynamic public var description: Swift.String {
     @objc get
   }
@@ -1269,7 +1416,9 @@ public enum QueueStatus : Swift.Decodable, Swift.RawRepresentable, Swift.Equatab
   case full
   case unstaffed
   case unknown(Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
+  #endif
   public var rawValue: Swift.String {
     get
   }
@@ -1324,7 +1473,9 @@ final public class ValueRelay<T> {
   @objc deinit
 }
 extension GliaCoreSDK.GliaCore {
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func fetchChatTranscript(_ completion: @escaping (Swift.Result<[GliaCoreSDK.Message], GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  #endif
 }
 extension GliaCoreSDK.GliaCore {
   @objc final public func configureLogLevel(level: GliaCoreSDK.LogLevel)
@@ -1337,9 +1488,13 @@ extension GliaCoreSDK.GliaCore {
   public var availableMedia: [GliaCoreSDK.MediaType]? {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(id: Swift.String, name: Swift.String, picture: GliaCoreSDK.OperatorPicture?, availableMedia: [GliaCoreSDK.MediaType]?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  #endif
   @objc deinit
 }
 extension GliaCoreSDK.PushNotifications {
@@ -1347,10 +1502,14 @@ extension GliaCoreSDK.PushNotifications {
   public func enable(_ shouldEnablePushNotifications: Swift.Bool)
 }
 extension GliaCoreSDK.GliaCore {
+  #if compiler(>=5.3) && $NonescapableTypes
   @available(*, unavailable, message: "Use `GliaCore.send(messagePayload:completion:)` instead.")
   final public func send(option: GliaCoreSDK.SingleChoiceOption, completion: @escaping (Swift.Result<GliaCoreSDK.Message, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @available(*, unavailable, message: "Use `GliaCore.send(messagePayload:completion:)` instead.")
   final public func send(selectedOptionValue: Swift.String, completion: @escaping (Swift.Result<GliaCoreSDK.Message, any Swift.Error>) -> Swift.Void)
+  #endif
   @available(*, unavailable, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
   @objc final public func configure(site: Swift.String) throws
   @available(*, unavailable, message: "Use `GliaCore.configure(_ configuration: Configuration)` instead.")
@@ -1379,12 +1538,16 @@ public struct PathMonitorClient {
   public init(networkPathPublisher: Combine.AnyPublisher<GliaCoreSDK.NetworkPath, Swift.Never>)
 }
 extension GliaCoreSDK.GliaCore {
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func queueForEngagement(using options: GliaCoreSDK.QueueForEngagementOptions, replaceExisting: Swift.Bool, completion: @escaping (Swift.Result<GliaCoreSDK.QueueTicket, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  #endif
   @objc final public func cancel(queueTicket: GliaCoreSDK.QueueTicket, completion: @escaping GliaCoreSDK.SuccessBlock)
   @objc final public func listQueues(completion: @escaping GliaCoreSDK.QueueRequestBlock)
   public typealias SubscribeForQueuesUpdatesCompletion = (Swift.Result<GliaCoreSDK.Queue, GliaCoreSDK.GliaCoreError>) -> Swift.Void
+  #if compiler(>=5.3) && $NonescapableTypes
   @discardableResult
   final public func subscribeForQueuesUpdates(forQueues queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Queue, GliaCoreSDK.GliaCoreError>) -> Swift.Void) -> Swift.String?
+  #endif
   @objc final public func unsubscribeFromUpdates(queueCallbackId: Swift.String, onError: @escaping GliaCoreSDK.ErrorBlock)
 }
 public struct CameraDevice : Swift.Equatable {
@@ -1410,32 +1573,54 @@ extension GliaCoreSDK.CameraDevice {
 public protocol CameraDeviceManageable {
   func setCameraDevice(_ cameraDevice: GliaCoreSDK.CameraDevice)
   func cameraDevices() -> [GliaCoreSDK.CameraDevice]
+  #if compiler(>=5.3) && $NonescapableTypes
   func currentCameraDevice() -> GliaCoreSDK.CameraDevice?
+  #endif
 }
 extension GliaCoreSDK.GliaCore {
   @_hasMissingDesignatedInitializers final public class SecureConversations {
+    #if compiler(>=5.3) && $NonescapableTypes
     final public func send(attachment: GliaCoreSDK.Attachment, queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Message, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
     final public func send(secureMessage: Swift.String, attachment: GliaCoreSDK.Attachment? = nil, queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Message, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
     final public func send(secureMessagePayload: GliaCoreSDK.SendMessagePayload, queueIds: [Swift.String], completion: @escaping (Swift.Result<GliaCoreSDK.Message, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+    #endif
     @objc deinit
   }
 }
 extension GliaCoreSDK.GliaCore.SecureConversations {
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func uploadFile(_ file: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<GliaCoreSDK.EngagementFileInformation, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func downloadFile(_ file: GliaCoreSDK.EngagementFile, progress: GliaCoreSDK.EngagementFileProgressBlock?, completion: @escaping (Swift.Result<GliaCoreSDK.EngagementFileData, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+  #endif
 }
 extension GliaCoreSDK.GliaCore.SecureConversations {
+  #if compiler(>=5.3) && $NonescapableTypes
   @discardableResult
   final public func markMessagesAsRead(completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void) -> GliaCoreSDK.GliaCore.Cancellable
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func getUnreadMessageCount(completion: @escaping (Swift.Result<Swift.Int, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @discardableResult
   final public func subscribeToUnreadMessageCount(completion: @escaping (Swift.Result<Swift.Int?, any Swift.Error>) -> Swift.Void) -> Swift.String?
+  #endif
   final public func unsubscribeFromUnreadMessageCount(_ subscriptionToken: Swift.String)
 }
 extension GliaCoreSDK.GliaCore.SecureConversations {
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func pendingSecureConversationStatus(_ callback: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @discardableResult
   final public func subscribeToPendingSecureConversationStatus(_ callback: @escaping (Swift.Result<Swift.Bool, any Swift.Error>) -> Swift.Void) -> Swift.String?
+  #endif
   final public func unsubscribeFromPendingSecureConversationStatus(_ subscriptionToken: Swift.String)
 }
 final public class TestCombineScheduler<SchedulerTimeType, SchedulerOptions> : Combine.Scheduler, @unchecked Swift.Sendable where SchedulerTimeType : Swift.Strideable, SchedulerTimeType.Stride : Combine.SchedulerTimeIntervalConvertible {
@@ -1450,9 +1635,15 @@ final public class TestCombineScheduler<SchedulerTimeType, SchedulerOptions> : C
   @_Concurrency.MainActor final public func advance(to instant: SchedulerTimeType) async
   final public func run()
   @_Concurrency.MainActor final public func run() async
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func schedule(after date: SchedulerTimeType, interval: SchedulerTimeType.Stride, tolerance _: SchedulerTimeType.Stride, options _: SchedulerOptions?, _ action: @escaping () -> Swift.Void) -> any Combine.Cancellable
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func schedule(after date: SchedulerTimeType, tolerance _: SchedulerTimeType.Stride, options _: SchedulerOptions?, _ action: @escaping () -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func schedule(options _: SchedulerOptions?, _ action: @escaping () -> Swift.Void)
+  #endif
   @objc deinit
 }
 extension Dispatch.DispatchQueue {
@@ -1481,7 +1672,9 @@ extension GliaCoreSDK.GliaCore {
   }
 }
 extension GliaCoreSDK.GliaCore.LocaleProvider {
+  #if compiler(>=5.3) && $NonescapableTypes
   final public func getRemoteString(_ key: Swift.String) -> Swift.String?
+  #endif
 }
 public struct QueueForEngagementOptions {
   public let queueIds: [Swift.String]
@@ -1489,7 +1682,9 @@ public struct QueueForEngagementOptions {
   public let shouldCloseAllQueues: Swift.Bool
   public let mediaType: GliaCoreSDK.MediaType
   public let engagementOptions: GliaCoreSDK.EngagementOptions?
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(queueIds: [Swift.String], visitorContext: GliaCoreSDK.VisitorContext? = nil, shouldCloseAllQueues: Swift.Bool = true, mediaType: GliaCoreSDK.MediaType, engagementOptions: GliaCoreSDK.EngagementOptions? = nil)
+  #endif
 }
 @objc @objcMembers public class Engagement : ObjectiveC.NSObject {
   @objc final public let id: Swift.String
@@ -1500,7 +1695,9 @@ public struct QueueForEngagementOptions {
   public var status: GliaCoreSDK.Engagement.Status
   final public let capabilities: GliaCoreSDK.Engagement.Capabilities?
   final public let actionOnEnd: GliaCoreSDK.Engagement.ActionOnEnd
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(id: Swift.String, engagedOperator: GliaCoreSDK.Operator?, source: GliaCoreSDK.EngagementSource, fetchSurvey: @escaping GliaCoreSDK.Engagement.FetchSurvey, restartedFromEngagementId: Swift.String? = nil, mediaStreams: GliaCoreSDK.Engagement.Media, status: GliaCoreSDK.Engagement.Status, capabilities: GliaCoreSDK.Engagement.Capabilities?, actionOnEnd: GliaCoreSDK.Engagement.ActionOnEnd)
+  #endif
   @objc deinit
 }
 extension GliaCoreSDK.Engagement {
@@ -1509,13 +1706,17 @@ extension GliaCoreSDK.Engagement {
 extension GliaCoreSDK.Engagement {
   public typealias FetchSurveyCallback = (Swift.Result<GliaCoreSDK.Survey?, GliaCoreSDK.GliaCoreError>) -> Swift.Void
   public typealias FetchSurvey = (_ engagementId: Swift.String, _ callback: @escaping GliaCoreSDK.Engagement.FetchSurveyCallback) -> Swift.Void
+  #if compiler(>=5.3) && $NonescapableTypes
   public func getSurvey(completion: @escaping (Swift.Result<GliaCoreSDK.Survey?, GliaCoreSDK.GliaCoreError>) -> Swift.Void)
+  #endif
 }
 extension GliaCoreSDK.Engagement {
   public struct Media {
     public let audio: GliaCoreSDK.MediaDirection?
     public let video: GliaCoreSDK.MediaDirection?
+    #if compiler(>=5.3) && $NonescapableTypes
     public init(audio: GliaCoreSDK.MediaDirection?, video: GliaCoreSDK.MediaDirection?)
+    #endif
   }
 }
 extension GliaCoreSDK.Engagement {
@@ -1571,7 +1772,9 @@ extension GliaCoreSDK.Push : Swift.Equatable {
   case inApp
   case background
   case unidentified
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -1584,14 +1787,18 @@ extension GliaCoreSDK.Push : Swift.Equatable {
   @objc deinit
 }
 extension GliaCoreSDK.MediaUpgradeOffer {
+  #if compiler(>=5.3) && $NonescapableTypes
   public var otelAttribute: GliaCoreSDK.OtelAttributeValue? {
     get
   }
+  #endif
 }
 public enum MediaDirection : Swift.String {
   case oneWay
   case twoWay
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
+  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
